@@ -1,0 +1,61 @@
+---
+title: "Datacamp Course on `Regression Modeling with Actuarial and Financial Applications` "
+author: Edward W. (Jed) Frees, University of Wisconsin-Madison
+output: 
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+    number_sections: true
+#  slidy_presentation:
+#    font_adjustment: +2
+ # html_document:
+ #   toc: yes
+ #   toc_depth: 3
+ #   toc_float: true
+ #   number_sections: true
+ #   code_folding: hide
+ #   highlight: kate
+ #   fig_width: 6
+ #   fig_height: 4
+---
+<p style = "text-align:right;">
+Date: `r today <- Sys.Date();format(today, format = "%d %B %Y")`</p>
+
+
+```{r include = FALSE}
+knitr::opts_chunk$set(results = "hold")
+EVALUATE_CHAP1 <- FALSE
+EVALUATE_CHAP1 <- TRUE
+EVALUATE_CHAP2 <- FALSE
+#EVALUATE_CHAP2 <- TRUE
+EVALUATE_CHAP3 <- FALSE
+#EVALUATE_CHAP3 <- TRUE
+EVALUATE_CHAP4 <- FALSE
+#EVALUATE_CHAP4 <- TRUE
+EVALUATE_CHAP5 <- FALSE
+#EVALUATE_CHAP5 <- TRUE
+
+```
+
+Check out the online version of the book at https://www.ssc.wisc.edu/~jfrees/regression/
+
+The book resources are available at http://instruction.bus.wisc.edu/jfrees/jfreesbooks/Regression%20Modeling/BookWebDec2010/home.html 
+
+```{r child = 'WelcomeToTheCourse.Rmd'}
+```
+
+```{r child = 'Chapter1_03July2018.Rmd'}
+```
+
+```{r child = 'Chapter2_09June2018.Rmd'}
+```
+
+```{r child = 'Chapter3_09June2018.Rmd'}
+```
+
+```{r child = 'Chapter4_01July2018.Rmd'}
+```
+
+```{r child = 'Chapter5_01July2018.Rmd'}
+```
+

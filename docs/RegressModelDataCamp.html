@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Datacamp Course on Regression Modeling with Actuarial and Financial Applications</title>
+  <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Datacamp Course on Regression Modeling with Actuarial and Financial Applications" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  <meta name="github-repo" content="<a href="https://github.com/openacttexts/Loss-Data-Analytics" class="uri">https://github.com/openacttexts/Loss-Data-Analytics</a>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Datacamp Course on Regression Modeling with Actuarial and Financial Applications" />
+  
+  <meta name="twitter:description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  
+
+<meta name="author" content="Edward W. (Jed) Frees, University of Wisconsin-Madison">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+</script>
+
+<script language="javascript">
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+</script>
+<script language="javascript">
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+</script>
+<script language="javascript">
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+</script>
+
+<script language="javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125587869-1');
+</script>
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Datacamp Course on <code>Regression Modeling with Actuarial and Financial Applications</code></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Datacamp Course on <code>Regression Modeling with Actuarial and Financial Applications</code></h1>
+<h4 class="author"><em>Edward W. (Jed) Frees, University of Wisconsin-Madison</em></h4>
+</div>
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<script language="javascript" src="//cdn.datacamp.com/dcl-react.js.gz>
+</script>
+
+
+
+
+# Preface {-}
+
+<p style="text-align:right;">
+*Date: 15 October 2018*</p>
+
+
+## Acknowledgements {-}
+
+Edward Frees acknowledges the John and Anne Oros Distinguished Chair for Inspired Learning in Business which provided seed money to support the project. Frees and his Wisconsin colleagues also acknowledge a Society of Actuaries Center of Excellence Grant that provided funding to support work in dependence modeling and health initiatives.
+
+We thank Rob Hyndman, Monash University, for allowing us to use his excellent style files to produce the online version of the book.
+
+We thank Yihui Xie and his colleagues at [Rstudio](https://www.rstudio.com/) for the [R bookdown](https://bookdown.org/yihui/bookdown/) package that allows us to produce this book.
+
+
+
+#  Regression and the Normal Distribution
+
+**Chapter description**
+
+Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter introduces the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships.
+
+## Fitting a normal distribution
+
+###Video (Exercise). Fitting a normal distribution
+
+#### Learning Objectives
+
+In this exercise, you learn how to:
+
+-    Calculate and interpret two basic summary statistics
+-    Fit a data set to a normal curve
+-    Calculate probabilities under a standard normal curve
+
+#### Video Overheads
+
+**Overhead A. Description of the data**
+
+To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton's 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents' height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father's height and rescaled mother's height. Galton was aware that the parents' and the adult child's height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.
+
+
+```r
+heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
+#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+plot(jitter(heights$parent_ht),jitter(heights$child_ht), ylim = c(60,80), xlim = c(60,80),
+     ylab = "height of child", xlab = "height of parents")
+abline(lm(heights$child_ht~heights$parent_ht))
+abline(0,1,col = "red")
+```
+
+<img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
+
+**Overhead B. Read and examine data structure**
+
+The data has already been read into a dataset called `heights`. Examine the *structure* of the data with the function [str()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/) and use the [head()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/) command to looks at the first few records.
+
+
+```r
+heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
+#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+str(heights)
+head(heights)
+```
+
+**Overhead C. Summary stats for parents' height**
+
+Next, examine the distribution of the child's height and then examine the distribution of the parents height.
+
+
+```r
+ht_par <- heights$parent_ht
+hist(ht_par)
+mean(ht_par)
+sd(ht_par)
+```
+
+**Overhead D. Fit a normal curve to parents' height**
+
+
+```r
+(mparent <- mean(ht_par))
+(sdparent <- sd(ht_par))
+x <- seq(60, 80,by = 0.1)
+hist(ht_par, freq = FALSE)
+lines(x, dnorm(x, mean = mparent, sd = sdparent), col = "blue")
+```
+
+**Overhead E. Use the normal approximation to determine the probability of the height of tall parents**
+
+
+```r
+TallHeight <- 72
+pnorm(TallHeight, mean = mparent, sd = sdparent)
+pnorm(72, mean = mean(ht_par), sd = sd(ht_par))
+(StdUnitsTallHeight <- (TallHeight - mparent)/sdparent)
+pnorm(StdUnitsTallHeight, mean = 0, sd = 1)
+```
+
+### Exercise. Fitting Galton's height data
+
+**Assignment Text**
+
+The Galton data has already been read into a dataframe called `heights`. These data include the heights of 928 adult children `child_ht`, together with an index of their parents' height `parent_ht`.  The video explored the distribution of the parents' height; in this assignment, we investigate the distribution of the heights of the adult children.
+
+**Instructions**
+
+-  Define the height of an adult child as a global variable
+-  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
+-  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that an adult child's height is less than 72 inches
+
+**Hint**
+
+Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
+
+
+
+
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiMgUHJlLWV4ZXJjaXNlIGNvZGVcbiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKSIsInNhbXBsZSI6IiNEZWZpbmUgdGhlIGdsb2JhbCB2YXJpYWJsZVxuI2h0X2NoaWxkIDwtIFxuXG4jQ2FsY3VsYXRlIHRoZSBtZWFuIGhlaWdodFxuI21jaGlsZCA8LSBcbiNtY2hpbGRcblxuI0NhbGN1bGF0ZSB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGhlaWdodHNcbiNzZGNoaWxkIDwtIFxuI3NkY2hpbGRcblxuI0RldGVybWluZSB0aGUgcHJvYmFiaWxpdHkgdGhhdCB0aGUgaGVpZ2h0IGlzIGxlc3MgdGhhbiA3MlxuIyg3MiwgbWVhbj1tY2hpbGQsIHNkPXNkY2hpbGQpIiwic29sdXRpb24iOiIjIFNvbHV0aW9uXG5odF9jaGlsZCA8LSBoZWlnaHRzJGNoaWxkX2h0XG5tY2hpbGQgPC0gbWVhbihodF9jaGlsZClcbnNkY2hpbGQgPC0gc2QoaHRfY2hpbGQpXG5tY2hpbGRcbnNkY2hpbGRcbnBub3JtKDcyLCBtZWFuID0gbWNoaWxkLCBzZCA9IHNkY2hpbGQpIiwic2N0IjoiIyB0ZXN0X2Vycm9yKClcbiMgdGVzdF9vYmplY3QoXCJodF9jaGlsZFwiLCBpbmNvcnJlY3RfbXNnID0gXCJUaGUgY2hpbGQncyBoZWlnaHQgdmFyaWFibGUgd2FzIGRlZmluZWQgaW4gdGhlIHdyb25nIHdheS4gKFlvdSBtaWdodCBjaGVjayB0aGUgaGludC4pXCIpXG4jIHRlc3Rfb2JqZWN0KFwibWNoaWxkXCIsIGluY29ycmVjdF9tc2cgPSBcIlRoZSBtZWFuIGNoaWxkJ3MgaGVpZ2h0IGlzIGNhbGN1bGF0ZWQgaW5jb3JyZWN0bHkuIENoZWNrIG91dCB0aGUgbWVhbigpIGZ1bmN0aW9uLlwiKVxuIyB0ZXN0X29iamVjdChcInNkY2hpbGRcIiwgaW5jb3JyZWN0X21zZyA9IFwiVGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvZiBjaGlsZCdzIGhlaWdodCBpcyBjYWxjdWxhdGVkIGluY29ycmVjdGx5LiBDaGVjayBvdXQgdGhlIHNkKCkgZnVuY3Rpb24uXCIpXG4jdHV0b3JpYWw6OnN1Y2Nlc3NfbXNnKFwiRXhjZWxsZW50ISBXaXRoIHRoaXMgcHJvY2VkdXJlLCB5b3UgY2FuIG5vdyBjYWxjdWxhdGUgcHJvYmFiaWxpdGllcyBmb3IgYW55IGRpc3RyaWJ1dGlvbiB1c2luZyBhIG5vcm1hbCBjdXJ2ZSBhcHByb3hpbWF0aW9uLlwiKSJ9</div>
+
+
+
+
+
+
+
+
+
+
+
+###  Exercise. Visualizing child's height distribution
+
+**Assignment Text**
+
+As in the prior exercise, from the Galton dataset `heights`, the heights of 928 adult children have been used to create a global variable called `ht_child`. We also have basic summary statistics, the mean height `mchild` and the standard deviation of heights in `sdchild`. In this exercise, we explore the fit of the normal curve to this distribution.
+
+**Instructions**
+
+-  To visualize the distribution, use the function [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) to calculate the histogram. Use the `freq = FALSE` option to give a histogram with proportions instead of counts.
+-  Use the function [seq()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/seq) to determine a sequence that can be used for plotting. Then, with the function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/),  superimpose a normal curve on the histogram
+-  Determine the probability that a child's height is greater than 72 inches
+
+**Hint**
+- Use the function [dnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) to calculate the normal density, similar to the cumulative probabilites that you calculated using [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)
+-  To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG4jaGVpZ2h0cyA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzL2M4NWVkZTZjMjA1ZDIyMDQ5ZTc2NmJkMDg5NTZiMjI1YzU3NjI1NWIvZ2FsdG9uX2hlaWdodC5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmh0X2NoaWxkIDwtIGhlaWdodHMkY2hpbGRfaHRcbm1jaGlsZCA8LSBtZWFuKGh0X2NoaWxkKVxuc2RjaGlsZCA8LSBzZChodF9jaGlsZCkifQ==</div>
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgQHNhbXBsZV9jb2RlYFxuI1Zpc3VhbGl6ZSB0aGUgRGlzdHJpYnV0aW9uXG5fX18oX19fLCBmcmVxID0gRkFMU0UpXG5cbiNEZXRlcm1pbmUgYSBzZXF1ZW5jZS4gVGhlbiwgZ3JhcGggYSBoaXN0b2dyYW0gd2l0aCBhIG5vcm1hbCBjdXJ2ZSBzdXBlcmltcG9zZWRcbnggPC0gc2VxKDYwLCA4MCxieSA9IDAuMSlcbl9fXyh4LCBkbm9ybSh4LG1lYW4gPSBtY2hpbGQsIHNkID0gc2RjaGlsZCksIGNvbCA9IFwiYmx1ZVwiKVxuXG4jIERldGVybWluZSB0aGUgcHJvYmFiaWxpdHkgdGhhdCBhIGNoaWxkJ3MgaGVpZ2h0IGlzIGdyZWF0ZXIgdGhhbiA3MlxucHJvYiA8LSAxIC0gXG5wcm9iIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG5oaXN0KGh0X2NoaWxkLCBmcmVxID0gRkFMU0UpXG54IDwtIHNlcSg2MCwgODAsYnkgPSAwLjEpXG5saW5lcyh4LCBkbm9ybSh4LCBtZWFuID0gbWNoaWxkLCBzZCA9IHNkY2hpbGQpLCBjb2wgPSBcImJsdWVcIilcbnByb2IgPC0gMSAtIHBub3JtKDcyLCBtZWFuID0gbWNoaWxkICwgc2QgPSBzZGNoaWxkKVxucHJvYiJ9</div>
+
+
+**Submission Correctness Tests (SCT)**
+test_error()
+test_object("prob", incorrect_msg = "The probability of being greater than 72 was calculated incorrectly. (You might check the hint.)")
+success_msg("Excellent! Visualizing a distribution, especially with reference to a normal, is important for communicating results of your analysis.")
+
+
+## Visualizing distributions
+
+###Video (Exercise). Visualizing distributions
+
+#### Learning Objectives
+
+In this section, you learn how to:
+
+-    Calculate and interpret distributions using histograms
+-    Calculate and interpret distributions using density plots
+
+#### Video Data Description
+
+For our first look at an insurance data set, we consider data from Rempala and Derrig (2005). They considered claims arising from automobile bodily injury insurance coverages. These are amounts incurred for outpatient medical treatments that arise from automobile accidents, typically sprains, broken collarbones and the like. The data consists of a sample of 272 claims from Massachusetts that were closed in 2001 (by "closed," we mean that the claim is settled and no additional liabilities can arise from the same accident). Rempala and Derrig were interested in developing procedures for handling mixtures of "typical" claims and others from providers who reported claims fraudulently. For this sample, we consider only those typical claims, ignoring the potentially fraudulent ones.
+
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFJlZm9ybWF0IERhdGEgU2V0XG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCb2RpbHlJbmp1cnkuY3N2XCIsaGVhZGVyID0gVFJVRSlcbnN0cihpbmp1cnkpXG5oZWFkKGluanVyeSlcbiMgIFBJQ0sgVEhFIFNVQlNFVCBPRiBUSEUgREFUQSBDT1JSRVNQT05ESU5HIFRPIFBST1ZJREVSIEFcbmluanVyeTIgPC0gc3Vic2V0KGluanVyeSwgcHJvdmlkZXJBICEgPSAwIClcbmluanVyeTIkY2xhaW1zIDwtIDEwMDAqaW5qdXJ5MiRjbGFpbXNcbmluanVyeTIkbG9nY2xhaW1zIDwtIGxvZyhpbmp1cnkyJGNsYWltcylcbmluanVyeTMgPC0gaW5qdXJ5MltjKFwiY2xhaW1zXCIsXCJsb2djbGFpbXNcIildXG53cml0ZS5jc3YoaW5qdXJ5MyxcIkNTVkRhdGFcXFxcTWFzc0JJLmNzdlwiLHJvdy5uYW1lcyA9IEZBTFNFKSJ9</div>
+
+####Video
+
+**Overhead A. Bring in Data, Introduce Logarithmic Claims**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuIyAgQ0hFQ0sgVEhFIE5BTUVTLCBESU1FTlNJT04gSU4gVEhFIEZJTEUgQU5EIExJU1QgVEhFIEZJUlNUIDggT0JTRVJWQVRJT05TICA7XG5zdHIoaW5qdXJ5KVxuaGVhZChpbmp1cnkpXG5hdHRhY2goaW5qdXJ5KVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXNcbnBhcihtZnJvdyA9IGMoMSwgMikpXG5oaXN0KGNsYWltcylcbmhpc3QobG9nY2xhaW1zKSJ9</div>
+
+**Overhead B. Show how to get a finer grid for histograms**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJwYXIobWZyb3cgPSBjKDEsIDIpKVxuaGlzdChsb2djbGFpbXMpXG5oaXN0KGxvZ2NsYWltcyxicmVha3MgPSAxNSkifQ==</div>
+
+**Overhead C.  Introduce the density plot**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJwYXIobWZyb3cgPSBjKDEsIDIpKVxucGxvdChkZW5zaXR5KGxvZ2NsYWltcykpXG5oaXN0KGxvZ2NsYWltcywgYnJlYWtzID0gMTUsZnJlcSA9IEZBTFNFKVxubGluZXMoZGVuc2l0eShsb2djbGFpbXMpKSJ9</div>
+
+###Exercise. Visualizing bodily injury claims with density plots
+
+**Assignment Text**
+
+In the prior video, you learned about the Massachusetts bodily injury dataset. This dataframe, `injury`, has been read in and the global variable `claims` has been created. This assignment reviews the  [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function for visualizing distributions and allows you to explore density plotting, a smoothed version of the histogram.
+
+**Instructions**
+
+-  Use the function [log()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/log/) to create the logarithmic version of the claims variable
+-  Calculate a histogram of logarithmic with 40 bins using an option in the [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function,  `breaks = `.
+-  Create a density plot of logarithmic claims using the functions [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot/) and [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/).
+-  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `. 
+
+**Hint**
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuI2luanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMifQ==</div>
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgU2FtcGxlQ29kZWBcbiNDcmVhdGUgdGhlIGxvZ2FyaXRobWljIGNsYWltcyB2YXJpYWJsZVxubG9nY2xhaW1zIDwtIF9fX1xuXG4jQ3JlYXRlIGEgaGlzdG9ncmFtIHVzaW5zIDQwIGJpbnNcbl9fXyhsb2djbGFpbXMsIGJyZWFrcyA9IDQwLGZyZXEgPSBGQUxTRSlcbmJveCgpXG5cbiMgQ3JlYXRlIGEgZGVuc2l0eSBwbG90IG9mIGxvZ2FyaXRobWljIGNsYWltc1xucGxvdChfX18obG9nY2xhaW1zKSlcblxuIyBDcmVhdGUgYSBkZW5zaXR5IHBsb3Qgb2YgbG9nYXJpdGhtaWMgY2xhaW1zIHdpdGggYSBzbWFsbGVyIGJhbmR3aWR0aFxuX19fIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG5sb2djbGFpbXMgPC0gbG9nKGNsYWltcylcbmhpc3QobG9nY2xhaW1zICwgYnJlYWtzID0gNDAsZnJlcSA9IEZBTFNFKVxuYm94KClcbnBsb3QoZGVuc2l0eShsb2djbGFpbXMpKVxucGxvdChkZW5zaXR5KGxvZ2NsYWltcywgYncgPSAwLjAzKSkifQ==</div>
+
+**Submission Correctness Tests (SCT)**
+
+success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
+
+## Summarizing distributions
+
+###Video (Exercise). Summarizing distributions
+
+#### Learning Objectives
+
+In this section, you learn how to:
+
+-    Calculate and interpret basic summary statistics
+-    Calculate and interpret distributions using boxplots
+-    Calculate and interpret distributions using qq plots
+
+####Video Overheads
+
+**Overhead A. Summary Statistics**
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuI2luanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuYXR0YWNoKGluanVyeSlcblxuIyBTVU1NQVJZIFNUQVRJU1RJQ1NcbnN1bW1hcnkoaW5qdXJ5KVxuc2QoY2xhaW1zKTtzZChsb2djbGFpbXMpXG5sZW5ndGgoY2xhaW1zKSJ9</div>
+
+**Overhead B. Boxplot**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEJBU0lDIEJPWFBMT1RcbmJveHBsb3QobG9nY2xhaW1zKVxucXVhbnRpbGUobG9nY2xhaW1zLCBwcm9icyA9IDAuNzUpXG5cbiMgQk9YUExPVCBXSVRIIEFOTk9UQVRJT05cbmJveHBsb3QobG9nY2xhaW1zLCBtYWluID0gXCJCb3hwbG90IG9mIGxvZ2NsYWltc1wiKVxudGV4dCgxLCAgNy42LCAgXCJtZWRpYW5cIiwgY2V4ID0gMC43KVxudGV4dCgxLCAgNi41NSwgXCIyNXRoIHBlcmNlbnRpbGVcIiwgY2V4ID0gMC43KVxudGV4dCgxLCAgNy45NSwgXCI3NXRoIHBlcmNlbnRpbGVcIiwgY2V4ID0gMC43KVxuYXJyb3dzKDEuMDUsIDQuOSwgMS4wNSwgMy42LCBjb2wgPSBcImJsdWVcIiwgY29kZSA9IDMsIGFuZ2xlID0gMjAsIGxlbmd0aCA9IDAuMSlcbnRleHQoMS4xLCAgNC40LCBcIm91dGxpZXJzXCIsIGNleCA9IDAuNylcbnRleHQoMS4xLCAxMC45LCBcIm91dGxpZXJcIiwgIGNleCA9IDAuNykifQ==</div>
+
+
+**Overhead C. QQ Plot**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzdW1tYXJ5KGluanVyeSlcbnF1YW50aWxlKGNsYWltcywgcHJvYnMgPSAwLjc1KVxucXVhbnRpbGUobG9nY2xhaW1zLCBwcm9icyA9IDAuNzUpXG5sb2cocXVhbnRpbGUoY2xhaW1zLCBwcm9icyA9IDAuNzUpKVxucW5vcm0ocCA9IDAuNzUsIG1lYW4gPSBtZWFuKGxvZ2NsYWltcyksIHNkID0gc2QobG9nY2xhaW1zKSlcbihxbm9ybShwID0gMC43NSwgbWVhbiA9IG1lYW4obG9nY2xhaW1zKSwgc2QgPSBzZChsb2djbGFpbXMpKSAtbWVhbihsb2djbGFpbXMpKSAvXG4gICAgICAgc2QobG9nY2xhaW1zKVxucW5vcm0ocCA9IDAuNzUsIG1lYW4gPSAwLCBzZCA9IDEpXG5cbiMgIFFVQU5USUxFIC0gUVVBTlRJTEUgUExPVFxucXFub3JtKGxvZ2NsYWltcylcbnFxbGluZShsb2djbGFpbXMpICAgIn0=</div>
+
+### Exercise. Summarizing bodily injury claims with box and qq plots
+
+**Assignment Text**
+
+The Massachusetts bodily injury data has already been read and used to create the global variable `claims` representing bodily injury claims. The previous video showed how to present the distribution of logarithmic claims which appeared to be approximately normally distributed. However, users are not really interested in log dollars but want to know about a unit of measurement that is more intuitive, such as dollars. 
+
+So this assignment is based on claims, not the logarithmic version. You will use the  functions [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/boxplot/) and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) to visualize the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret these results readily.
+
+**Instructions**
+
+-  Produce a box plot for claims
+-  Determine the 25th empirical percentile for claims using the  [quantile()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/quantile/) function.
+-  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
+-  Produce a normal qq plot for claims using the function [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
+
+**Hint**
+
+Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJodHRwczovL2Fzc2V0cy5kYXRhY2FtcC5jb20vcHJvZHVjdGlvbi9yZXBvc2l0b3JpZXMvMjYxMC9kYXRhc2V0cy84Y2NhMTlkMDUwM2ZjZjZlOWQzMGQ5Y2I5MTJkZTViYTk1ZWNiOWMxL01hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmNsYWltcyA8LSBpbmp1cnkkY2xhaW1zIn0=</div>
+
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgU2FtcGxlQ29kZWBcbiNQcm9kdWNlIGEgYm94IHBsb3QgZm9yIGNsYWltc1xuX19fKGNsYWltcylcblxuI0RldGVybWluZSB0aGUgMjV0aCBlbXBpcmljYWwgcGVyY2VudGlsZSBmb3IgY2xhaW1zXG5xMjUgPC0gX19fKGNsYWltcywgcHJvYnMgPSBfX18pXG5xMjVcblxuI0RldGVybWluZSB0aGUgMjV0aCBwZXJjZW50aWxlIGZvciBjbGFpbXMgYmFzZWQgb24gYSBub3JtYWwgZGlzdHJpYnV0aW9uXG5xbjI1IDwtIF9fXyhwID0gX19fLCBtZWFuID0gbWVhbihjbGFpbXMpLCBzZCA9IHNkKGNsYWltcykpXG5xbjI1XG5cbiNQcm9kdWNlIGEgbm9ybWFsIHFxIHBsb3QgZm9yIGNsYWltc1xuX19fKGNsYWltcylcbl9fXyhjbGFpbXMpIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG5ib3hwbG90KGNsYWltcylcbnEyNSA8LSBxdWFudGlsZShjbGFpbXMsIHByb2JzID0gMC4yNSlcbnEyNVxucW4yNSA8LSBxbm9ybShwID0gMC4yNSwgbWVhbiA9IG1lYW4oY2xhaW1zKSwgc2QgPSBzZChjbGFpbXMpKVxucW4yNVxucXFub3JtKGNsYWltcylcbnFxbGluZShjbGFpbXMpICAgIn0=</div>
+
+**Submission Correctness Tests (SCT)**
+
+test_error()
+test_object("q25", incorrect_msg = "You calculated the 25th quantile incorrectly. Check out the quantile() function.")
+test_object("qn25", incorrect_msg = "You calculated the 25th quantile incorrectly. Check out the qnorm() function.")
+success_msg("Congratulations on learning about box and qq plots. Although you are unlikely to show these plots to consumers of your analysis, you will find them useful tools for exploring multivariate aspects of data.")
+
+
+###Exercise. Effects on distributions of removing the largest claim
+
+**Assignment Text**
+
+The Massachusetts bodily injury dataframe `injury` has been read in; our focus is on the `claims` variable in that dataset. 
+
+In the previous exercise, we learned that the Massachusetts bodily injury `claims` distribution was not even close to approximately normal (as evidenced by the box and qq- plots). Non-normality may be induced by skewness (that we will handle via transformations in the next section). But, seeming non-normality can also be induced by one or two very large observations (called an *outlier* later in the course). So, this exercise examines the effects on the distribution of removing the largest claims.
+
+
+**Instructions**
+
+-  Use the function [tail()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head) to examine the `injury` dataset and identify the largest claim
+-  Use the function  [subset()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/subset) to create a subset omitting the largest claim
+-  Compare the summary statistics of the omitted claim distribution to the full distribution
+-  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
+
+**Hint**
+
+For this data set, the [subset()] argument `claims < 25000` will keep all but the largest claim
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJodHRwczovL2Fzc2V0cy5kYXRhY2FtcC5jb20vcHJvZHVjdGlvbi9yZXBvc2l0b3JpZXMvMjYxMC9kYXRhc2V0cy84Y2NhMTlkMDUwM2ZjZjZlOWQzMGQ5Y2I5MTJkZTViYTk1ZWNiOWMxL01hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmNsYWltcyA8LSBpbmp1cnkkY2xhaW1zIn0=</div>
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgU2FtcGxlQ29kZWBcbiMgRXhhbWluZSB0aGUgdGFpbCBvZiB0aGUgYGluanVyeWAgZGF0YXNldFxudGFpbChfX18pXG5cbiMgQ3JlYXRlIGEgc3Vic2V0IG9taXR0aW5nIHRoZSBsYXJnZXN0IGNsYWltXG5pbmp1cnkyIDwtIHN1YnNldChpbmp1cnksIF9fXylcblxuIyBDb21wYXJlIHRoZSBzdW1tYXJ5IHN0YXRpc3RpY3Mgb2YgdGhlIG9taXR0ZWQgY2xhaW0gZGlzdHJpYnV0aW9uIHRvIHRoZSBmdWxsIGRpc3RyaWJ1dGlvblxuc3VtbWFyeShfX18pXG5zdW1tYXJ5KGluanVyeTIpXG5cbiMgQ29tcGFyZSB0aGUgdHdvIGRpc3RyaWJ1dGlvbnMgdmlzdWFsbHkgdmlhIGhpc3RvZ3JhbXMgcGxvdHRlZCBuZXh0IHRvIGFub3RoZXJcbnBhcihtZnJvdyA9IGMoMSwgMikpXG5oaXN0KF9fXywgZnJlcSA9IEZBTFNFLCAgbWFpbiA9IFwiRnVsbCBEYXRhXCIpXG5oaXN0KF9fXywgZnJlcSA9IEZBTFNFLCAgbWFpbiA9IFwiTGFyZ2VzdCBDbGFpbSBPbWl0dGVkXCIpIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG50YWlsKGluanVyeSlcbmluanVyeTIgPC0gc3Vic2V0KGluanVyeSwgY2xhaW1zIDwgMjUwMDAgKVxuc3VtbWFyeShpbmp1cnkpXG5zdW1tYXJ5KGluanVyeTIpXG5cbnBhcihtZnJvdyA9IGMoMSwgMikpXG5oaXN0KGNsYWltcywgZnJlcSA9IEZBTFNFLCAgbWFpbiA9IFwiRnVsbCBEYXRhXCIpXG5oaXN0KGluanVyeTIkY2xhaW1zLCBmcmVxID0gRkFMU0UsICBtYWluID0gXCJMYXJnZXN0IENsYWltIE9taXR0ZWRcIikifQ==</div>
+
+**Submission Correctness Tests (SCT)**
+
+test_error()
+test_object("injury2", incorrect_msg = "You defined the `injury` dataframe incorrectly. Check out the subset function (and maybe look over the hint).")
+success_msg("Congratulations! The goal of predictive modeling is to discover patterns in the data. However, sometimes seeming 'patterns' are the result of one or two unusual observations. Unusual observations may be due to incorrect data gathering procedures or just due to wild fluctuations in a process of interest but are common in predictive modeling.")
+
+## Transformations
+
+###Video (Exercise). Transformations
+
+#### Learning Objectives
+
+In this exercise, you learn how to:
+
+-    Symmetrize a skewed distribution using a logarithmic transformation
+
+####Video Overheads
+
+**Overhead A. Simulate a moderately skewed distribution, with transforms**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjICBGSUdVUkUgMS43IC0gU0lNVUxBVEUgQ0hJLVNRVUFSRSwgQ1JFQVRFIDMgVFJBTlNGT1JNQVRJT05TXG5zZXQuc2VlZCgxMjM3KSAgICAgICAgICAgICAgICAgICMgc2V0IHRoZSBzZWVkIG9mIHRoZSByYW5kb20gbnVtYmVyIGdlbmVyYXRvclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjIGFsbG93cyB1cyB0byByZXBsaWNhdGUgcmVzdWx0c1xuWDEgPC0gMTAwMDAqcmNoaXNxKDUwMCwgZGYgPSAyKSAjIGdlbmVyYXRlIHZhcmlhYmxlcyByYW5kb21seSBmcm9tIGEgc2tld2VkIGRpc3RyaWJ1dGlvblxuWDIgPC0gWDFeKDAuNSkgICAgICAgICAgICAgICAgICAjIHNxdWFyZSByb290IHRyYW5zZm9ybSwgY291bGQgYWxzbyB1c2Ugc3FydChYMSlcblgzIDwtIGxvZyhYMSkgICAgICAgICAgICAgICAgICAgIyBsb2dhcml0aG1pYyB0cmFuc2Zvcm1cblg0IDwtIC0xL1gxICAgICAgICAgICAgICAgICAgICAgIyBuZWdhdGl2ZSByZWNpcHJvY2FsIHRyYW5zZm9ybSJ9</div>
+
+
+**Overhead B. Visualize the distributions**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJwYXIobWZyb3cgPSBjKDIsIDIpLCBjZXggPSAuNzUsIG1hciA9IGMoMyw1LDEuNSwwKSlcbmhpc3QoWDEsIGZyZXEgPSBGQUxTRSwgIG5jbGFzcyA9IDE2LCBtYWluID0gXCJcIiwgeGxhYiA9IFwiXCIsIHlsYWIgPSBcIlwiLCBcbiAgICAgIGxhcyA9IDEsIHlheHQgPSBcIm5cIix4bGltID0gYygwLDIwMDAwMCkseWxpbSA9IGMoMCwuMDAwMDUpKVxuYXhpcygyLCBhdCA9IHNlcSgwLC4wMDAwNSwuMDAwMDEpLGxhcyA9IDEsIGNleCA9IC4zLCBcbiAgbGFiZWxzID0gYyhcIjBcIiwgXCIwLjAwMDAxXCIsIFwiMC4wMDAwMlwiLFwiMC4wMDAwM1wiLCBcIjAuMDAwMDRcIiwgXCIwLjAwMDA1XCIpKVxubXRleHQoXCJEZW5zaXR5XCIsIHNpZGUgPSAyLCBhdCA9IC4wMDAwNTUsIGxhcyA9IDEsIGNleCA9IC43NSlcbm10ZXh0KFwieVwiLCBzaWRlID0gMSwgY2V4ID0gLjc1LCBsaW5lID0gMilcblxucGFyKG1hciA9IGMoMyw0LDEuNSwwLjIpKVxuaGlzdChYMiwgZnJlcSA9IEZBTFNFLCAgbmNsYXNzID0gMTYsIG1haW4gPSBcIlwiLCB4bGFiID0gXCJcIiwgeWxhYiA9IFwiXCIsIFxuICAgICAgbGFzID0gMSx4bGltID0gYygwLDQwMCksIHlsaW0gPSBjKDAsLjAwOCkpXG5tdGV4dChcIkRlbnNpdHlcIiwgc2lkZSA9IDIsIGF0ID0gLjAwODgsIGxhcyA9IDEsIGNleCA9IC43NSlcbm10ZXh0KFwiU3F1YXJlIHJvb3Qgb2YgeVwiLCBzaWRlID0gMSwgY2V4ID0gLjc1LCBsaW5lID0gMilcblxucGFyKG1hciA9IGMoMy4yLDUsMSwwKSlcbmhpc3QoWDMsICBmcmVxID0gRkFMU0UsICBuY2xhc3MgPSAxNiwgbWFpbiA9IFwiXCIsIHhsYWIgPSBcIlwiLCB5bGFiID0gXCJcIiwgbGFzID0gMSwgeWxpbSA9IGMoMCwuNCkpXG5tdGV4dChcIkRlbnNpdHlcIiwgc2lkZSA9IDIsIGF0ID0gLjQ0LCBsYXMgPSAxLCBjZXggPSAuNzUpXG5tdGV4dChcIkxvZ2FyaXRobWljIHlcIiwgc2lkZSA9IDEsIGNleCA9IC43NSwgbGluZSA9IDIpXG5cbnBhcihtYXIgPSBjKDMuMiw0LDEsMC4yKSlcbmhpc3QoWDQsIGZyZXEgPSBGQUxTRSwgIG5jbGFzcyA9IDE2LCBtYWluID0gXCJcIix4bGFiID0gXCJcIiwgeWxhYiA9IFwiXCIsIGxhcyA9IDEsIHlsaW0gPSBjKDAsMTAwKSlcbm10ZXh0KFwiRGVuc2l0eVwiLCBzaWRlID0gMiwgYXQgPSAxMTAsIGxhcyA9IDEsIGNleCA9IC43NSlcbm10ZXh0KFwiTmVnYXRpdmUgcmVjaXByb2NhbCBvZiB5XCIsIHNpZGUgPSAxLCBjZXggPSAuNzUsIGxpbmUgPSAyKSJ9</div>
+
+###Exercise. Distribution of transformed bodily injury claims
+
+**Assignment Text**
+
+We have now examined the distributions of bodily injury claims and its logarithmic version. Grudgingly, we have concluded that to fit a normal curve the logarithmic version of claims is a better choice (again, we really do not like log dollars but you'll get used to it in this course). But, why logarithmic and not some other transformations?
+
+A partial response to this question will appear in later chapters when we describe interpretation of regression coefficients. Another partial response is that the log transform seems to work well with skewed insurance data sets, as we demonstrate visually in this exercise.
+
+**Instructions**
+
+Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matrix format for easy comparisons. Plot the [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/density) of
+
+-  claims
+-  square root of claims
+-  logarithmic claims
+-  negative reciprocal of claims
+
+**Hint**
+
+For negative reciprocal claims, use `plot(density(-claims^(-1)))`
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJodHRwczovL2Fzc2V0cy5kYXRhY2FtcC5jb20vcHJvZHVjdGlvbi9yZXBvc2l0b3JpZXMvMjYxMC9kYXRhc2V0cy84Y2NhMTlkMDUwM2ZjZjZlOWQzMGQ5Y2I5MTJkZTViYTk1ZWNiOWMxL01hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmNsYWltcyA8LSBpbmp1cnkkY2xhaW1zIn0=</div>
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgU2FtcGxlQ29kZWBcbiNUaGlzIGNvZGUgaGVscHMgdG8gb3JnYW5pemUgdGhlIGZvdXIgZ3JhcGhzIGludG8gYSAyIGJ5IDIgZm9ybWF0XG5wYXIobWZyb3cgPSBjKDIsIDIpKVxuI1Bsb3QgdGhlIGRlbnNpdHkgb2YgY2xhaW1zXG5wbG90KGRlbnNpdHkoX19fKSlcblxuI1Bsb3QgdGhlIGRlbnNpdHkgb2Ygc3F1YXJlIHJvb3Qgb2YgY2xhaW1zXG5wbG90KGRlbnNpdHkoX19fKSkgXG5cbiNQbG90IHRoZSBkZW5zaXR5IG9mIGxvZ2FyaXRobWljIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpXG5cbiNQbG90IHRoZSBkZW5zaXR5IG9mIHRoZSBuZWdhdGl2ZSByZWNpcHJvY2FsIG9mIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG5wYXIobWZyb3cgPSBjKDIsIDIpKVxucGxvdChkZW5zaXR5KGNsYWltcykpICAgIFxucGxvdChkZW5zaXR5KGNsYWltc14oMC41KSkpICBcbnBsb3QoZGVuc2l0eShsb2coY2xhaW1zKSkpICBcbnBsb3QoZGVuc2l0eSgtY2xhaW1zXigtMSkpKSAgIn0=</div>
+
+**Submission Correctness Tests (SCT)**
+
+success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<script language="javascript" src="//cdn.datacamp.com/dcl-react.js.gz&gt;">
+</script>
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"text": "Edit"
+},
+"download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

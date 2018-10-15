@@ -1,0 +1,48 @@
+--- 
+title: "Datacamp Course on `Regression Modeling with Actuarial and Financial Applications`"
+author: "Edward W. (Jed) Frees, University of Wisconsin-Madison"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook
+documentclass: book
+bibliography: ["Bibliography/LDAReferenceB.bib"]
+biblio-style: econPeriod
+link-citations: yes
+github-repo: https://github.com/openacttexts/Loss-Data-Analytics
+description: "Loss Data Analytics is an interactive, online, freely available text.
+-  The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning.
+-  A subset of the book will be available in pdf format for low-cost printing.
+-  The online text will be available in multiple languages to promote access to a worldwide audience."
+---
+
+
+
+
+```{r include = FALSE}
+knitr::opts_chunk$set(results = "hold")
+EVALUATE_CHAP1 <- FALSE
+EVALUATE_CHAP1 <- TRUE
+EVALUATE_CHAP2 <- FALSE
+#EVALUATE_CHAP2 <- TRUE
+EVALUATE_CHAP3 <- FALSE
+#EVALUATE_CHAP3 <- TRUE
+EVALUATE_CHAP4 <- FALSE
+#EVALUATE_CHAP4 <- TRUE
+EVALUATE_CHAP5 <- FALSE
+#EVALUATE_CHAP5 <- TRUE
+
+```
+
+# Preface {-}
+
+<p style="text-align:right;">
+*Date: `r format(Sys.Date(), "%d %B %Y")`*</p>
+
+
+## Acknowledgements {-}
+
+Edward Frees acknowledges the John and Anne Oros Distinguished Chair for Inspired Learning in Business which provided seed money to support the project. Frees and his Wisconsin colleagues also acknowledge a Society of Actuaries Center of Excellence Grant that provided funding to support work in dependence modeling and health initiatives.
+
+We thank Rob Hyndman, Monash University, for allowing us to use his excellent style files to produce the online version of the book.
+
+We thank Yihui Xie and his colleagues at [Rstudio](https://www.rstudio.com/) for the [R bookdown](https://bookdown.org/yihui/bookdown/) package that allows us to produce this book.

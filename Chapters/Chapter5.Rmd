@@ -1,0 +1,868 @@
+
+# Interpreting Regression Results
+
+**Chapter description**
+
+A case study, on determining an individual's characteristics that influence its health expenditures, illustrates the regression modeling process from start to finish. Subsequently, the chapter summarizes what we learn from the modeling process, underscoring the importance of variable selection.
+
+
+
+```{r comment = "", eval = FALSE, echo = FALSE, warning = FALSE}
+# Reformat Data Set
+meps0 <- read.csv("CSVData\\HealthExpend.csv", header = TRUE)
+str(meps0)
+head(meps0)
+meps <- subset(meps0, EXPENDOP>0)
+# Change Variable Names to lower case
+meps$expendop <- meps$EXPENDOP
+meps$gender   <- meps$GENDER
+meps$age      <- meps$AGE
+meps$race     <- meps$RACE
+meps$region   <- meps$REGION
+meps$educ     <- meps$EDUC
+meps$phstat   <- meps$PHSTAT
+meps$mpoor    <- meps$MNHPOOR
+meps$anylimit <- meps$ANYLIMIT
+meps$income   <- meps$INCOME
+meps$insure   <- meps$insure
+meps$usc      <- meps$USC
+meps$unemploy <- meps$UNEMPLOY
+meps$managedcare <- meps$MANAGEDCARE
+meps2 <- meps[c("expendop", "gender", "age", "race", "region", "educ", "phstat", "mpoor", "anylimit", "income", "insure", "usc", "unemploy", "managedcare")]
+summary(meps2)
+#write.csv(meps2,"CSVData\\HealthMeps.csv", row.names = FALSE)
+```
+
+## Case study: MEPS health expenditures
+
+###Video (Exercise). Case study: MEPS health expenditures
+
+#### Learning Objectives
+
+In this module, you learn how to:
+  
+-  
+
+#### Video Overheads
+
+**Overhead A. MEPS health expenditures**
+
+This exercise considers data from the *Medical Expenditure Panel Survey* (MEPS), conducted by the U.S. Agency of Health Research and Quality. MEPS is a probability survey that provides nationally representative estimates of health care use, expenditures, sources of payment, and insurance coverage for the U.S. civilian population. This survey collects detailed information on individuals of each medical care episode by type of services including physician office visits, hospital emergency room visits, hospital outpatient visits, hospital inpatient stays, all other medical provider visits, and use of prescribed medicines. This detailed information allows one to develop models of health care utilization to predict future expenditures. You can learn more about MEPS at http://www.meps.ahrq.gov/mepsweb/.
+
+We consider MEPS data from the panels 7 and 8 of 2003 that consists of 18,735 individuals between ages 18 and 65. From this sample, we took a random sample of 2,000 individuals that appear in the file `HealthExpend`. From this sample, there are 1,352 that had positive outpatient expenditures. 
+
+Our dependent variable is the amount of expenditures for outpatient visits, `expendop`. For MEPS, outpatient events include hospital outpatient department visits, office-based provider visits and emergency room visits excluding dental services. (Dental services, compared to other types of health care services, are more predictable and occur in a more regular basis.) Hospital stays with the same date of admission and discharge, known as "zero-night stays," were included in outpatient counts and expenditures. (Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures. Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.)
+
+**Overhead B. Overhead MEPS health expenditures**
+
+Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Agency of Health Research and Quality (AHRQ).
+
+- A probability survey that provides nationally representative estimates of health care use, expenditures, sources of payment, and insurance coverage for the U.S. civilian population.
+- Collects detailed information on individuals of each medical care episode by type of services including
+    - physician office visits,
+    - hospital emergency room visits,
+    - hospital outpatient visits,
+    - hospital inpatient stays,
+    - all other medical provider visits, and
+    - use of prescribed medicines.
+- This detailed information allows one to develop models of health care utilization to predict future expenditures.
+- We consider MEPS data from the first panel of 2003 and take a random sample of *n* = 2, 000 individuals between ages 18 and 65.
+
+
+**Overhead C. Outcome variable**
+
+Our dependent variable is expenditures for outpatient admissions.
+
+- For MEPS, inpatient admissions include persons who were admitted to a hospital and stayed overnight.
+- In contrast, outpatient events include hospital outpatient department visits, office-based provider visits and emergency room visits excluding dental services.
+    - Hospital stays with the same date of admission and discharge, known as "zero-night stays," were included in outpatient counts and expenditures.
+    - Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures.
+    - Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.
+
+**Overhead D. Explanatory variables**
+
+9 variables in the database. Here 13 most relevant.
+
+$$
+{\small \begin{array}{ll}
+expendop    & \text{Amounts of expenditures for outpatient visits} \\
+gender      & \text{Indicate gender of patient (=1 if female, =0 if male)} \\
+age         & \text{Age in years between 18 and 65 }\\
+race        & \text{Race of patient described as Asian, Black, Native, White and other} \\
+region      & \text{Region of patient described as WEST, NORTHEAST, MIDWEST and SOUTH} \\
+educ        & \text{Level of education received described by words (LHIGHSC, HIGHSCH and COLLEGE)} \\
+phstat      & \text{Self-rated physical health status described as EXCE, VGOO, GOOD, FAIR and POOR} \\
+mpoor       & \text{Self-rated mental health (=1 if poor or fair, =0 if good to excellent mental health)} \\
+anylimit    & \text{Any activity limitation (=1 if any functional/activity limitation, =0 if otherwise)} \\
+income      & \text{Income compared to poverty line described as POOR, NPOOR, LINCOME, MINCOME and HINCOME} \\
+insure      & \text{Insurance coverage (=1 if covered by public/private health insurance in any month of 1996, =0 otherwise)} \\
+usc         & \text{1 if dissatisfied with one's usual source of care} \\
+unemploy    & \text{Employment status of patients} \\
+managedcare & \text{1 if enrolled in an HMO or gatekeeper plan} \\
+\end{array}}
+$$
+
+
+
+**Overhead E. Case study outline**
+
+The next series of exercises leads you through an analysis of the steps for understanding a complex data set. Because of the complexity of the data, in each step only a sample of procedures will be executed.
+
+The outline consists of:
+
+- Summary statistics
+- Splitting the data into training and testing portions with initial model fits
+- Selecting variables to be included in the model
+
+###Exercise. Summarizing data
+
+**Assignment Text**
+
+With a complex dataset, you will probably want to take a look at the structure of the data. You are already familiar with taking a [summary()] of a dataframe which provides summary statistics for many variables. You will see that several variables in this dataframe are categorical, or factor, variables. We can use the  [table()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/table) function to summarize them.
+
+After getting a sense of the distributions of explanatory variables, we want to take a deeper dive into the distribution of the outcome variable, `expendop`. We will do this by comparing the histograms of the variable to that of its logarithmic version.
+
+To examine relationships of the outcome variable visually, we look to scatterplots for continuous variables (such as `age`) and boxplots for categorical variables (such as `phstat`).
+
+
+**Instructions**
+
+- Examine the structure of the `meps` dataframe using the [str()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/) function. Also, get a [summary()] of the dataframe.
+- Examine the distribution of the `race` variable using the [table()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/table) function.
+- Compare the expenditures distribution to its logarithmic version visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create.
+- Examine the distribution of logarithmic expenditures in terms of levels of `phstat` visually using the 
+[boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/boxplot/) function.
+- Examine the relationship of age versus logarithmic expenditures using a scatter plot. Superimpose a local fitting line using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines) and
+[lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess) functions.
+
+**Hint**
+
+**Pre-exercise code**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Pre-exercise code
+meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+```
+
+**Sample_code**
+
+```{r eval = FALSE}
+`@sample_code`
+# Examine the structure and get a summary of the `meps` dataframe 
+str(___)
+summary(___)
+
+# Examine the distribution of the `race` variable 
+table(___)
+
+# Compare the expenditures distribution to its logarithmic version visually
+par(mfrow = c(1, 2))
+hist(___, main = "", xlab = "outpatient expenditures")
+hist(log(___), main = "", xlab = "log expenditures")
+
+# Examine the distribution of logarithmic expenditures in terms of levels of `phstat` 
+par(mfrow = c(1, 1))
+meps$logexpend <- log(meps$expendop)
+boxplot(logexpend ~ ___, data = meps, main = "boxplot of log expend")
+
+# Examine the relationship of age versus logarithmic expenditures. Superimpose a local fitting line.
+plot(___,___, xlab = "age", ylab = "log expend")
+lines(lowess(___, ___), col="red")
+
+```
+
+
+**Solution**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Solution
+str(meps)
+summary(meps)
+table(meps$race)
+par(mfrow = c(1, 2))
+hist(meps$expendop, main = "", xlab = "outpatient expenditures")
+hist(log(meps$expendop), main = "", xlab = "log expenditures")
+par(mfrow = c(1, 1))
+meps$logexpend <- log(meps$expendop)
+boxplot(logexpend ~ phstat, data = meps, main = "boxplot of log expend")
+plot(meps$age,meps$logexpend, xlab = "age", ylab = "log expend")
+lines(lowess(meps$age, meps$logexpend), col="red")
+
+```
+**Submission correctness test (SCT)**
+
+success_msg("Excellent! Summarizing data, without reference to a model, is probably the most time-consuming part of any predictive modeling exercise. Summary statistics are also a key part of any report as they illustrate features of the data that are accessible to a broad audience.")
+
+
+###Exercise. Fit a benchmark multiple linear regression model
+
+**Assignment Text**
+
+As part of the pre-processing for the model fitting, we will split the data into training and test subsamples. For this exercise, we use a 75/25 split although other choices are certainly suitable. Some analysts prefer to do this splitting before looking at the data. Another approach, adopted here, is that the final report typically contains summary statistcs of the entire data set and so it makes sense to do so when examining summary statistics.
+
+We start by fitting a benchmark model. It is common to use all available explanatory variables with the outcome on the original scale and so we use this as our benchmark model. This exercise shows that when you [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) a fitted linear regression model in `R`, the result provides four graphs that you have seen before. These can be useful for identifying an appropriate model.
+
+
+
+**Instructions**
+
+- Randomly split the data into a training and a testing data sets. Use 75\% for the training, 25\% for the testing.
+- Fit a full model using `expendop` as the outcome and all explanatory variables. Summarize the results of this model fitting.
+- You can [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) the fitted model to view several diagnostic plots. These plots provide evidence that expenditures may not be the best scale for linear regression.
+- Fit a full model using `logexpend` as the outcome and all explanatory variables and summarize the fit. Use the [plot()]() function for evidence that this variable is more suited for linear regression methods than expenditures on the original scale.
+
+**Hint**
+
+A `plot` of a regression object such as plot(mlr) provides four diagnostic plots. These can be organized as a 2 by 2 array using `par(mfrow = c(2, 2))`.
+
+**Pre-exercise code**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Pre-exercise code
+meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+meps$logexpend <- log(meps$expendop)
+```
+
+**Sample_code**
+
+```{r eval = FALSE}
+`@sample_code`
+# Randomly split the data into a training and a testing data sets. Use 75\% for the training, 25\% for the testing.
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+
+# Fit a full model using `expendop` as the outcome and all explanatory variables. Summarize the results of this model fitting.
+meps_mlr1 <- lm(___ ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = ___)
+summary(meps_mlr1)
+
+# Provide diagnostic plots of the fitted model. 
+par(mfrow = c(2, 2))
+plot(___)
+
+# Fit a full model using `logexpend` as the outcome and all explanatory variables. Summarize the fit and examine diagnostic plots of the fitted model. 
+meps_mlr2 <- lm(___ ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = ___)
+summary(meps_mlr2)
+plot(meps_mlr2)
+
+```
+
+
+**Solution**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Solution
+
+# Split the sample into a `training` and `test` data
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+
+meps_mlr1 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+summary(meps_mlr1)
+par(mfrow = c(2, 2))
+plot(meps_mlr1)
+
+meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+summary(meps_mlr2)
+plot(meps_mlr2)
+
+```
+
+**Submission correctness test (SCT)**
+
+success_msg("Excellent! You may have compared the four diagnostic graphs from the MLR model fit of 'expend' to those created using the same procedure but with logarithmic expenditures as the outcome. This provides another piece of evidence that log expenditures are more suitable for regression modeling. Using logarithmic outcomes is a common feature of actuarial applications but can be difficult to diagnose and interpret without practice.")
+
+
+###Exercise. Variable selection
+
+**Assignment Text**
+
+Modeling building can be approached using a "ground-up" strategy, where the analyst introduces a variable, examines residuls from a regression fit, and then seeks to understand the relationship between these residuals and other available variables so that these variables might be added to the model.
+
+Another approach is a "top-down" strategy where all available variables are entered into a model and unnecessary variables are pruned from the model. Both approaches are helpful when using data to specify models. This exercise illustrates the latter approach, using the [step()] function to help narrow our search for the best fitting model.
+
+**Instructions**
+
+From our prior work, the training dataframe `train_meps` has already been loaded in. A multiple linear regression model fit object `meps_mlr2` is available that summarizes a fit of `logexpend` as the outcome variable using all 13 explanatory variables.
+
+- Use the [step()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/step) function function to drop unnecessary variables from the full fitted model summarized in the object `meps_mlr2` and summarize this recommended model.
+- As an alternative, use the explanatory variables in the recommended model and add the varibles `phstat`. Summarize the fit and note that statistical significance of the new variable.
+- You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
+
+**Hint**
+
+**Pre-exercise code**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Pre-exercise code
+meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+meps$logexpend <- log(meps$expendop)
+# Split the sample into a `training` and `test` data
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+```
+
+
+**Sample_code**
+
+```{r eval = FALSE}
+`@sample_code`
+meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+# Use the step() to drop unnecessary variables from the full fitted model summarized in the object `meps_mlr2` and summarize this recommended model.
+model_stepwise <- step(meps_mlr2, data = ___, direction= "both", k = log(nrow(X)), trace = 0) 
+summary(model_stepwise)
+
+# As an alternative, use the explanatory variables in the recommended model and add the varibles `mpoor`. Summarize the fit  and note that statistical significance of the new variable.
+meps_mlr4 <- lm(___ ~ gender + age + phstat + anylimit + insure  + ___, data = train_meps)
+summary(meps_mlr4)
+
+# You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `mpoor`). Note the statistical significance of the variable `usc`with this fitted model.
+meps_mlr5 <- lm(logexpend ~ age + phstat + anylimit + insure  + ___, data = train_meps)
+summary(___)
+
+```
+
+
+**Solution**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Solution
+meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+#library(Rcmdr)
+#temp <- stepwise(meps_mlr2, direction = 'backward/forward')
+model_stepwise <- step(meps_mlr2, data = X, direction= "both", k = log(nrow(X)), trace = 0) 
+summary(model_stepwise)
+meps_mlr3 <- lm(logexpend ~ gender + age + phstat + anylimit + insure , data = train_meps)
+summary(meps_mlr3)
+meps_mlr4 <- lm(logexpend ~ gender + age + phstat + anylimit + insure  + mpoor, data = train_meps)
+summary(meps_mlr4)
+meps_mlr5 <- lm(logexpend ~ age + phstat + anylimit + insure  + mpoor, data = train_meps)
+summary(meps_mlr5)
+
+# par(mfrow = c(2, 2))
+# plot(meps_mlr3)
+# 
+# meps_mlr4 <- lm(logexpend ~ gender + age + mpoor + anylimit + insure + usc  + phstat, data = train_meps)
+# summary(meps_mlr4)
+# 
+# 
+# meps_mlr5 <- lm(logexpend ~ age  + anylimit + mpoor + insure  + usc  + phstat, data = train_meps)
+# summary(meps_mlr5)
+# anova(meps_mlr4, meps_mlr5)
+# 
+# #boxplot(train_meps$logexpend ~ train_meps$phstat*train_meps$usc)
+
+```
+
+
+**Submission correctness test (SCT)**
+
+success_msg("Excellent! Sometimes variables may have good predictive power but are unacceptable for policy purposes - in insurance, ethnicity and sometimes sex are good examples. This implies that model interpretation can be just as important as the ability to predict.")
+
+###Exercise. Model comparisons using cross-validation
+
+**Assignment Text**
+
+To compare alternative models, you decide to utilize cross-validation. For this exercise, you split the training sample into six subsamples of approximately equal size.
+
+In the sample code, the cross-validation procedure has been summarized into a function that you can call. The input to the function is a list of variables that you select as your model explanatory variables. With this function, you can readily test several candidate models.
+
+**Instructions**
+
+- Run the cross validation (`crossvalfct`) function using the explanatory variables suggested by the stepwise function.
+- Run the function again but adding the `mpoor` variable
+- Run the function again but omitting the `gender` variable
+
+Note which model is suggested by the cross validation function.
+
+**Hint**
+
+The cross validation function of this is very similar to the one we did earlier. Different number of subsamples, different test/training data and a different outcome variable. Except for these minor changes, it is the same function that we worked with earlier.
+
+**Pre-exercise code**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Pre-exercise code
+meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+meps$logexpend <- log(meps$expendop)
+# Split the sample into a `training` and `test` data
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+
+## Cross - Validation
+
+crossvalfct <- function(explvars){
+  cvdata   <- train_meps[, c("logexpend", explvars)]
+  crossval <- 0
+  for (i in 1:6) {
+    indices <- (((i-1) * round((1/6)*nrow(cvdata))) + 1):((i*round((1/6) * nrow(cvdata))))
+    # Exclude them from the train set
+    train_mlr <- lm(logexpend ~ ., data = cvdata[-indices,])
+    # Include them in the test set
+    test  <- data.frame(cvdata[indices, explvars])
+    names(test)  <- explvars
+    predict_test <- exp(predict(train_mlr, test))
+    # Compare predicted to held-out and summarize
+    predict_err  <- exp(cvdata[indices, "logexpend"]) - predict_test
+    crossval <- crossval + sum(abs(predict_err))
+  }
+  crossval/1000000
+}
+```
+
+**Sample_code**
+
+```{r eval = FALSE}
+`@sample_code`
+# Run the cross validation (`crossvalfct`) function using the explanatory variables suggested by the stepwise function.
+explvars <- c("gender", "age", "phstat", "anylimit", "insure")
+crossvalfct(explvars)
+
+# Run the function again but adding the `mpoor` variable
+explvars <- c(___)
+crossvalfct(explvars)
+
+# Run the function again but omitting the `gender` variable
+explvars <- c( ___)
+crossvalfct(explvars)
+
+```
+
+
+**Solution**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+#Solution
+
+explvars <- c("gender", "age", "phstat", "anylimit", "insure")
+crossvalfct(explvars)
+explvars <- c("gender", "age", "phstat", "anylimit", "insure", "mpoor")
+crossvalfct(explvars)
+explvars <- c( "age", "phstat", "anylimit", "insure", "mpoor")
+crossvalfct(explvars)
+```
+
+
+**Submission correctness test (SCT)**
+
+success_msg("Excellent! Cross-validation has become an essential piece of the data analysts toolkit. Good that you now have additional experience with it.")
+
+
+###Exercise. Out of sample validation 
+
+**Assignment Text**
+
+From our prior work, the training `train_meps` and test `test_meps` dataframes have already been loaded in. We think our best model is based on logarithmic expenditures as the outcome and the following explanatory variables:
+
+```
+explvars3 <- c("gender", "age", "phstat", "anylimit", "insure", "mpoor")
+```
+We will compare this to a benchmark model that is based on expenditures as the outcome and all 13 explanatory variables
+
+```
+explvars4 <- c(explvars3, "race", "income", "region", "educ", "unemploy", "managedcare", "usc")
+```
+
+The comparisons will be based on expenditures in dollars using the held-out validation sample.
+
+**Instructions**
+
+- Use the training sample to fit a linear model with `logexpend` and explanatory variables listed in `explvars3`
+- Predict expenditures (not logged) for the test data and summarize the fit using the sum of absolute prediction errors.
+- Use the training sample to fit a benchmark linear model with `expendop` and explanatory variables listed in `explvars4`
+- Predict expenditures for the test data and summarize the fit for the benchmark model using the sum of absolute prediction errors.
+- Compare the predictions of the models graphically.
+
+**Hint**
+
+**Pre-exercise code**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Pre-exercise code
+meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+meps$logexpend <- log(meps$expendop)
+# Split the sample into a `training` and `test` data
+n <- nrow(meps)
+set.seed(12347)
+shuffled_meps <- meps[sample(n), ]
+train_indices <- 1:round(0.75 * n)
+train_meps    <- shuffled_meps[train_indices, ]
+test_indices  <- (round(0.25 * n) + 1):n
+test_meps     <- shuffled_meps[test_indices, ]
+explvars3 <- c("gender", "age", "race", "mpoor", "anylimit", "income", "insure", "usc")
+explvars4 <- c(explvars3, "region", "educ", "phstat", "unemploy", "managedcare")
+```
+
+
+**Sample_code**
+
+```{r eval = FALSE}
+`@sample_code`
+# Regress `logexpend` on the explanatory variables listed in `explvars3`
+meps_mlr3 <- lm(logexpend ~ gender + age + phstat + anylimit  + insure + mpoor, data = train_meps)
+
+# Predict expenditures (not logged) and summarize using the sum of absolute prediction errors.
+explvars3 <- c("gender", "age", "phstat", "anylimit", "insure", "mpoor")
+predict_meps3 <- test_meps[,explvars3]
+predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
+predict_err_mlr3 <- test_meps$expendop - predict_mlr3
+sape3     <- sum(abs(predict_err_mlr3))/1000
+
+# Regress `expendop` on all 13 explanatory variables
+meps_mlr4 <- lm(___~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+
+# Predict expenditures and summarize using the sum of absolute prediction errors.
+predict_meps4 <- test_meps[,explvars4]
+predict_mlr4  <- predict(meps_mlr4, predict_meps4)
+predict_err_mlr4 <- test_meps$expendop - predict_mlr4
+sape4     <- sum(abs(predict_err_mlr4))/1000
+sape3;sape4
+
+# Compare the predictions of the models graphically.
+par(mfrow = c(1, 2))
+plot(predict_err_mlr4, predict_err_mlr3, xlab = "Benchmark Predict Error", ylab = "MLR Predict Error")
+plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out Expends")
+
+```
+
+
+**Solution**
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
+# Solution
+meps_mlr3 <- lm(logexpend ~ gender + age + phstat + anylimit  + insure + mpoor, data = train_meps)
+predict_meps3 <- test_meps[,explvars3]
+explvars3 <- c("gender", "age", "phstat", "anylimit", "insure", "mpoor")
+predict_meps3 <- test_meps[,explvars3]
+predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
+predict_err_mlr3 <- test_meps$expendop - predict_mlr3
+sape3     <- sum(abs(predict_err_mlr3))/1000
+
+meps_mlr4 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+predict_meps4 <- test_meps[,explvars4]
+predict_mlr4  <- predict(meps_mlr4, predict_meps4)
+predict_err_mlr4 <- test_meps$expendop - predict_mlr4
+sape4     <- sum(abs(predict_err_mlr4))/1000
+
+sape3;sape4
+
+par(mfrow = c(1, 2))
+plot(predict_err_mlr4, predict_err_mlr3, xlab = "Benchmark Predict Error", ylab = "MLR Predict Error")
+plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out Expends")
+
+
+```
+
+
+
+**Submission correctness test (SCT)**
+
+success_msg("Excellent! We found that the model of log expenditures outperforms the benchmark that models expenditures, even when the out of sample criterion was in the original 'dollar' units. It is comoforting to know that a search for a good model does well when using different out of sample criteria.")
+
+
+```{r comment = "", warning = FALSE, message = FALSE, eval = FALSE, echo = FALSE}
+explvars <- c("gender")
+cvdata   <- train_meps[, c("logexpend", explvars)]
+train_mlr <- lm(logexpend ~ ., data = cvdata[-indices,])
+temp <- data.frame(cvdata[indices, explvars])
+str(temp)
+names(temp) <- explvars
+str(temp)
+predict_testa  <- exp(predict(train_mlr, temp))
+
+predict_testa  <- exp(predict(train_mlr, gender=temp))
+sum(predict_testa)
+predict_testb  <- exp(predict(train_mlr, explvars=data.frame(cvdata[indices, explvars])))
+sum(predict_testb)
+predict_testc  <- exp(predict(train_mlr, explvars=cvdata[indices, explvars]))
+sum(predict_testc)
+```
+
+
+
+## What the modeling procedure tells us
+
+###Video (Exercise). What the modeling procedure tells us
+
+#### Learning Objectives
+
+In this module, you learn how to:
+  
+- Interpret individual effects, based on their substantive and statistical significance
+- Describe other purposes of regression modeling, including regression function for pricing, benchmarking studies, and predicting future observations.
+
+#### Video Overheads
+
+**Overhead A. Interpreting individual effects**
+
+- Substantive Effect
+    - Does a 1 unit change in $x$ imply an economically meaningful change in $y$?
+    - Example: Looking at urban and rural claims experience, is there a big enough difference to warrant differentiating prices by location? 
+- Statistical Significance
+    - We have standards for deciding whether or not a variable is statistically significant.
+    - A "statistically significant effect" is the result of a  regression coefficient that is large relative to its standard error.
+- Statistical significance is driven by
+    - precision of $s$,
+    - collinearity ($VIF$) and
+    - sample size
+- **Causal Effects**
+    - If we change $x$, would $y$ change?
+
+**Overhead B. Other Interpretations**
+
+- Regression function and pricing
+    - The regression function is $\mathrm{E~}y = \beta_0 + \beta_1 x_1 + \cdots +\beta _k x_k$.
+    - Think about expected claims as our baseline price for short-term insurance coverages.
+- Benchmarking studies
+    - In studies of CEO's salaries, who is making a lot (or a little), controlled for industry, years of experience and so forth?
+    - In studies of medical claims, who are the high-cost patients?
+- Prediction
+    - A new patient comes in with a given set of characteristics, what can I say about his or her future medical claims?
+    
+    
+###MC Exercise. What the modeling procedure tells us
+
+Which of the following are not important when interpreting the effects of individual variables?
+
+- A. Substantive significance
+- B. Statistical significance
+- C. The amount of effort that it took to gather the data and do the analysis
+- D. Role of causality 
+
+Which of the following is not a potential explanation for the lack of statistical significance of an explanatory variable?
+
+- A. Large variation of the disturbance term
+- B. High collinearity, so that the variable may be confounded with other variables.
+- C. The coefficient of determination, $R^2$, is not sufficiently large.
+
+Which of the following is not an important purpose of regression modeling?
+
+- A. Pricing of risks such as insurance contracts
+- B. Benchmarking studies, to compare an observation to others
+- C. Prediction
+- D. Keeping a computer occupied with work
+
+## The importance of variable selection
+
+###Video (Exercise). The importance of variable selection
+
+#### Learning Objectives
+
+In this module, you learn how to:
+  
+- Describe the bias that can occur when omitting important variables
+- Describe the principle of parsimony and reasons for adopting this approach
+
+
+#### Video Overheads
+
+**Overhead A. The importance of variable selection**
+
+- With too many or too few variables, $s$ is too large an estimate of $\sigma$.
+    - Prediction intervals are too large
+    - Standard errors for the partial slopes are too large
+- With too few or incorrect variables, we produce biased estimates of the slopes $\beta$. Thus, our predictions are biased and hence inaccurate.
+
+
+**Overhead B. Example. Regression using one explanatory variable**
+
+- **Too Many Variables**
+    - The "true" model is $y_i = \beta_0+ \varepsilon_i$
+    - We mistakenly use $y_i = \beta_0+ \beta_1 x_i^* + \varepsilon_i$
+    - The prediction at a generic level $x$ is $b_0^* + b_1^* x$.
+    - It is not to hard to confirm that $Bias   =   \mathrm{E} (b_0^* + b_1^* x) - \mathrm{E } y= 0$.
+- **Too Few Variables**
+    - The "true" model is   $y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$.
+    - We mistakenly use  $y_i = \beta_0^* \varepsilon_i$.
+    - Under the true model,  $\overline{y} = \beta_0 + \beta_1 \overline{x} + \overline{\varepsilon}$
+    - Thus, the bias is
+
+$$
+Bias  = \text{E }\bar{y} - \text{E }(\beta_0 + \beta_1 x + \varepsilon) \\
+= \text{E }(\beta_0 + \beta_1 \bar{x}+\bar{\varepsilon})-(\beta_0+\beta_1 x)=\beta_1 (\bar{x}-x).
+$$
+
+
+There is a persistent, long-term error in omitting the explanatory variable $x$.
+
+
+**Overhead C. Principle of parsimony**
+
+- The principle of parsimony, also known as *Occam's Razor*, states that when there are several possible explanations for a phenomenon, use the simplest.
+    - A simpler explanation is easier to interpret.
+    - Simpler models, also known as ``more parsimonious'' models, often do well on fitting out-of-sample data
+    - Extraneous variables can cause problems of collinearity, leading to difficulty in interpreting individual coefficients.
+- In contrast, in a quote often attributed to Albert Einstein, we should use "the simplest model possible, but no simpler."
+    - Omitting important variables can lead to biased results, a potentially serious error.
+    - Including extraneous variables decreases the degrees of freedom and increases the estimate of variability, typically of less concern in actuarial applications.
+    
+    
+###MC Exercise. Principle of parsimony
+
+Which of the following is true about under- and over-fitting a model?
+
+- A. When we over-fit a model, estimates of regression coefficients are over-biased as is $s^2$, the estimate of model variance $\sigma^2$.
+- B. When we over-fit a model, estimates of regression coefficients are remain unbiased whereas $s^2$, the estimate of model variance  $\sigma^2$, is over-biased.
+- C. When we over-fit a model, estimates of regression coefficients are remain under-biased as is $s^2$, the estimate of model variance  $\sigma^2$.
+- D. When we under-fit a model, estimates of regression coefficients are remain unbiased whereas $s^2$, the estimate of model variance  $\sigma^2$, is over-biased. 
+
+
+Which of the following is not true of Occam's Razor?
+
+- A. When there are several possible explanations for a phenomenon, use the simplest one.
+- B. Simpler models are easier to interpret.
+- C. Variables can be statistically significant but practically unimportant.
+- D. Simpler models often do better for predicting out-of-sample data 
+
+
+
+**Overhead D. Course wrap up**
+
+Thanks for watching
+
+
+```{r comment = "", eval = FALSE, echo = FALSE}
+
+## Risk Manager's Analysis
+survey <- read.table("CSVData\\RiskSurvey.csv", header = TRUE, sep = ",")
+str(survey)
+attach(survey)
+
+lmsurvey <- lm(FIRMCOST ~ ASSUME + CAP + SIZELOG + INDCOST + SOPH + CENTRAL,
+   data = survey)
+summary(lmsurvey)
+
+#  hist(lmsurvey$residuals)
+survey$rstudent.lmsurvey <- rstudent(lmsurvey)
+survey$hatvalues.lmsurvey <- hatvalues(lmsurvey)
+
+#  FIGURE  6.5
+par(mfrow = c(1, 2))
+library(Rcmdr)
+Hist(survey$rstudent.lmsurvey, scale = "frequency", breaks = 16)
+Hist(survey$hatvalues.lmsurvey, scale = "frequency", breaks = 16)
+
+
+#  TABLE 6.3 SUMMARY STATS
+library(abind)
+numSummary(survey[,c("ASSUME", "CAP", "CENTRAL", "FIRMCOST", "INDCOST", "SIZELOG", "SOPH")], 
+  statistics = c("mean", "sd", "quantiles"), quantiles = c(0,.5,1))
+
+#  TABLE 6.4 MEANS BY LEVEL OF CAP
+survey$COSTLOG <- with(survey, log(FIRMCOST))
+survey$CAPfactor <- as.factor(survey$CAP)
+
+numSummary(survey[,c("ASSUME", "CAP", "CENTRAL", "COSTLOG", "FIRMCOST", "INDCOST", "SIZELOG", "SOPH")], 
+  groups = survey$CAPfactor, statistics = c("mean", "sd", "quantiles"), quantiles = c(0,.5,1))
+
+#  TABLE 6.5 CORRELATIONS
+cor(survey[,c("ASSUME","CAP","CENTRAL","COSTLOG","FIRMCOST","INDCOST", "SIZELOG","SOPH")], use = "complete.obs")
+
+#  FIGURE  6.6
+layout(matrix(c(1,2,3,4,5,6,7,8,9,10,11,12),byrow = TRUE,ncol = 6))
+par("oma" = c(3,3,3,3),"mai" = c(0,0,0.1,0))
+
+plot.new()
+Hist(survey$ASSUME,scale = "frequency",breaks = 18,main = "ASSUME", xaxt = "n", yaxt = "n")
+Hist(survey$SIZELOG,scale = "frequency",breaks = 18,main = "SIZELOG", xaxt = "n", yaxt = "n")
+Hist(survey$INDCOST,scale = "frequency",breaks = 18,main = "INDCOST", xaxt = "n", yaxt = "n")
+Hist(survey$CENTRAL,scale = "frequency",breaks = 18,main = "CENTRAL", xaxt = "n", yaxt = "n")
+Hist(survey$SOPH,scale = "frequency",breaks = 18,main = "SOPH", xaxt = "n", yaxt = "n")
+Hist(survey$FIRMCOST,scale = "frequency",breaks = 18,main = "FIRMCOST", xaxt = "n", yaxt = "n")
+
+plot(ASSUME,FIRMCOST, xaxt = "n", yaxt = "n")
+plot(SIZELOG,FIRMCOST, xaxt = "n", yaxt = "n")
+plot(INDCOST,FIRMCOST, xaxt = "n", yaxt = "n")
+plot(CENTRAL,FIRMCOST, xaxt = "n", yaxt = "n")
+plot(SOPH,FIRMCOST, xaxt = "n", yaxt = "n")
+
+#  FIGURE  6.7
+Hist(survey$COSTLOG, scale = "frequency", breaks = 16)
+
+#  FIGURE  6.8
+layout(matrix(c(1,2,3,4,5),byrow = TRUE,ncol = 5))
+par("oma" = c(3,5,3,3),"mai" = c(0,0,0.2,0))
+plot(ASSUME,survey$COSTLOG,main = "ASSUME",xaxt = "n",yaxt = "n",ylab = "COSTLOG")
+plot(SIZELOG,survey$COSTLOG,main = "SIZELOG",xaxt = "n",yaxt = "n")
+plot(INDCOST,survey$COSTLOG,main = "INDCOST",xaxt = "n",yaxt = "n")
+plot(CENTRAL,survey$COSTLOG,main = "CENTRAL",xaxt = "n",yaxt = "n")
+plot(SOPH,survey$COSTLOG,main = "SOPH",xaxt = "n",yaxt = "n")
+dev.off()
+
+lm2survey <- lm(COSTLOG~ASSUME+CAP+SIZELOG+INDCOST+CENTRAL+SOPH,
+  data = survey)
+summary(lm2survey)
+#hist(lm2survey$residuals)
+survey$rstudent.lm2survey <- rstudent(lm2survey)
+survey$hatvalues.lm2survey <- hatvalues(lm2survey)
+
+#  FIGURE  6.9
+par(mfrow = c(1, 2))
+Hist(survey$rstudent.lm2survey, scale = "frequency", breaks = 16)
+Hist(survey$hatvalues.lm2survey, scale = "frequency", breaks = 16)
+
+
+#  VARIANCE INFLATION FACTORS NOT A PROBLEM
+#  library(faraway)
+#  The "vif" function is also under the library "faraway" if you haven't opened up the Rcmdr library. 
+
+vif(lm2survey)
+
+# STEPWISE REGRESSION SUGGESTS SIZELOG AND INDCOST
+stepwise(lm2survey, direction = 'backward/forward', criterion = 'AIC')
+
+# The "stepwise" function is in the Rcmdr library, alternatively, you can use the following codes:
+# step(im2survey)
+
+lm3survey <- lm(COSTLOG~SIZELOG+INDCOST,data = survey)
+summary(lm3survey)
+#hist(lm3survey$residuals)
+survey$rstudent.lm3survey <- rstudent(lm3survey)
+survey$hatvalues.lm3survey <- hatvalues(lm3survey)
+
+#  FIGURE  6.10
+par(mfrow = c(1, 2))
+Hist(survey$rstudent.lm3survey, scale = "frequency", breaks = 16)
+Hist(survey$hatvalues.lm3survey, scale = "frequency", breaks = 16)
+
+
+#  FIGURE  6.11 
+survey$residuals.lm3survey <- residuals(lm3survey)
+plot(INDCOST,survey$residuals.lm3survey,xlab = "INDCOST",ylab = "RESIDUAL")
+survey$INDCOST2 <- with(survey, INDCOST*INDCOST)
+
+lm4survey <- lm(survey$residuals.lm3survey~INDCOST+INDCOST2,data = survey)
+summary(lm4survey)
+
+lm5survey <- lm(COSTLOG~SIZELOG+INDCOST+INDCOST2,data = survey)
+summary(lm5survey)
+
+#quadfit <- lm4survey$coefficients[1] + lm4survey$coefficients[2]*INDCOST #+lm4survey$coefficients[3]*INDCOST2
+plot(INDCOST,survey$residuals.lm3survey,xlab = "INDCOST",ylab = "RESIDUAL")
+lines(lowess(INDCOST,survey$residuals.lm3survey, f = .8))
+
+```
