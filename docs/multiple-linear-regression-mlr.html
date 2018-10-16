@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
+  <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
+  <meta name="github-repo" content="<a href="https://github.com/ewfreesRes/RegressModel" class="uri">https://github.com/ewfreesRes/RegressModel</a>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  
+  <meta name="twitter:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
+  
+
+<meta name="author" content="Edward W. (Jed) Frees, University of Wisconsin-Madison">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="basic-linear-regression.html">
+<link rel="next" href="variable-selection.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+</script>
+
+<script language="javascript">
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+</script>
+<script language="javascript">
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+</script>
+<script language="javascript">
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+</script>
+
+<script language="javascript">
+function toggleDet(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
+</script>
+
+<script language="javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+<style>
+/* Rearrange console label */
+.datacamp-exercise ol li, .datacamp-exercise ul li {
+  margin-bottom: 0em !important;
+}
+
+/* Remove bullet marker */
+.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
+  content: '' !important;
+}
+</style>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125587869-1');
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Regression Modeling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#topic-description"><i class="fa fa-check"></i>Topic Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tutorial-description"><i class="fa fa-check"></i>Tutorial Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#welcome-to-the-tutorial-video"><i class="fa fa-check"></i>Welcome to the Tutorial Video</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>1</b> Regression and the Normal Distribution</a><ul>
+<li class="chapter" data-level="1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#fitting-a-normal-distribution"><i class="fa fa-check"></i><b>1.1</b> Fitting a normal distribution</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video"><i class="fa fa-check"></i><b>1.1.1</b> Video</a></li>
+<li class="chapter" data-level="1.1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-fitting-galtons-height-data"><i class="fa fa-check"></i><b>1.1.2</b> Exercise. Fitting Galton’s height data</a></li>
+<li class="chapter" data-level="1.1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-childs-height-distribution"><i class="fa fa-check"></i><b>1.1.3</b> Exercise. Visualizing child’s height distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#visualizing-distributions"><i class="fa fa-check"></i><b>1.2</b> Visualizing distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-1"><i class="fa fa-check"></i><b>1.2.1</b> Video</a></li>
+<li class="chapter" data-level="1.2.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-bodily-injury-claims-with-density-plots"><i class="fa fa-check"></i><b>1.2.2</b> Exercise. Visualizing bodily injury claims with density plots</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#summarizing-distributions"><i class="fa fa-check"></i><b>1.3</b> Summarizing distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
+<li class="chapter" data-level="1.3.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots"><i class="fa fa-check"></i><b>1.3.2</b> Exercise. Summarizing bodily injury claims with box and qq plots</a></li>
+<li class="chapter" data-level="1.3.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-effects-on-distributions-of-removing-the-largest-claim"><i class="fa fa-check"></i><b>1.3.3</b> Exercise. Effects on distributions of removing the largest claim</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#transformations"><i class="fa fa-check"></i><b>1.4</b> Transformations</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-4"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
+<li class="chapter" data-level="1.4.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-distribution-of-transformed-bodily-injury-claims"><i class="fa fa-check"></i><b>1.4.2</b> Exercise. Distribution of transformed bodily injury claims</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Basic Linear Regression</a><ul>
+<li class="chapter" data-level="2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#correlation"><i class="fa fa-check"></i><b>2.1</b> Correlation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-correlation"><i class="fa fa-check"></i><b>2.1.1</b> Video (Exercise). Correlation</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-correlations-and-the-wisconsin-lottery"><i class="fa fa-check"></i><b>2.1.2</b> Exercise. Correlations and the Wisconsin lottery</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#method-of-least-squares"><i class="fa fa-check"></i><b>2.2</b> Method of least squares</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-method-of-least-squares"><i class="fa fa-check"></i><b>2.2.1</b> Video (Exercise). Method of least squares</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-least-squares-fit-using-housing-prices"><i class="fa fa-check"></i><b>2.2.2</b> Exercise. Least squares fit using housing prices</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#understanding-variability"><i class="fa fa-check"></i><b>2.3</b> Understanding variability</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-understanding-variability"><i class="fa fa-check"></i><b>2.3.1</b> Video (Exercise). Understanding variability</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-summarizing-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.2</b> Exercise. Summarizing measures of uncertainty</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-effects-of-linear-transforms-on-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.3</b> Exercise. Effects of linear transforms on measures of uncertainty</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#statistical-inference"><i class="fa fa-check"></i><b>2.4</b> Statistical inference</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-statistical-inference"><i class="fa fa-check"></i><b>2.4.1</b> Video (Exercise). Statistical inference</a></li>
+<li class="chapter" data-level="2.4.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-statistical-inference-and-wisconsin-lottery"><i class="fa fa-check"></i><b>2.4.2</b> Exercise. Statistical inference and Wisconsin lottery</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#diagnostics"><i class="fa fa-check"></i><b>2.5</b> Diagnostics</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-diagnostics"><i class="fa fa-check"></i><b>2.5.1</b> Video (Exercise). Diagnostics</a></li>
+<li class="chapter" data-level="2.5.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-assessing-outliers-in-lottery-sales"><i class="fa fa-check"></i><b>2.5.2</b> Exercise. Assessing outliers in lottery sales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html"><i class="fa fa-check"></i><b>3</b> Multiple Linear Regression (MLR)</a><ul>
+<li class="chapter" data-level="3.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1</b> Method of least squares</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1.1</b> Video (Exercise). Method of least squares</a></li>
+<li class="chapter" data-level="3.1.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-least-squares-and-term-life-data"><i class="fa fa-check"></i><b>3.1.2</b> Exercise. Least squares and term life data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-interpreting-coefficients-as-proportional-changes"><i class="fa fa-check"></i><b>3.1.3</b> Exercise. Interpreting coefficients as proportional changes</a></li>
+<li class="chapter" data-level="3.1.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-interpreting-coefficients-as-elasticities"><i class="fa fa-check"></i><b>3.1.4</b> Exercise. Interpreting coefficients as elasticities</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#foundations-of-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.2</b> Foundations of multiple linear regresson</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-foundations-of-multiple-linear-regression"><i class="fa fa-check"></i><b>3.2.1</b> Video (Exercise). Foundations of multiple linear regression</a></li>
+<li class="chapter" data-level="3.2.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-multiple-choice-exercise-on-the-theory-maybeee"><i class="fa fa-check"></i><b>3.2.2</b> Exercise. Multiple choice exercise on the theory… Maybeee</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#statistical-inference-and-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.3</b> Statistical inference and multiple linear regresson</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-statistical-inference-and-multiple-linear-regression"><i class="fa fa-check"></i><b>3.3.1</b> Video (Exercise). Statistical inference and multiple linear regression</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-statistical-inference-and-term-life"><i class="fa fa-check"></i><b>3.3.2</b> Exercise. Statistical inference and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#binary-variables"><i class="fa fa-check"></i><b>3.4</b> Binary variables</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-binary-variables"><i class="fa fa-check"></i><b>3.4.1</b> Video (Exercise). Binary variables</a></li>
+<li class="chapter" data-level="3.4.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-binary-variables-and-term-life"><i class="fa fa-check"></i><b>3.4.2</b> Exercise. Binary variables and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#categorical-variables"><i class="fa fa-check"></i><b>3.5</b> Categorical variables</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-categorical-variables"><i class="fa fa-check"></i><b>3.5.1</b> Video (Exercise). Categorical variables</a></li>
+<li class="chapter" data-level="3.5.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-categorical-variables-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.5.2</b> Exercise. Categorical variables and Wisconsin hospital costs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#general-linear-hypothesis"><i class="fa fa-check"></i><b>3.6</b> General linear hypothesis</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-hypothesis-testing"><i class="fa fa-check"></i><b>3.6.1</b> Video (Exercise). Hypothesis testing</a></li>
+<li class="chapter" data-level="3.6.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-term-life"><i class="fa fa-check"></i><b>3.6.2</b> Exercise. Hypothesis testing and term life</a></li>
+<li class="chapter" data-level="3.6.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.6.3</b> Exercise. Hypothesis testing and Wisconsin hospital costs</a></li>
+<li class="chapter" data-level="3.6.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-auto-claims"><i class="fa fa-check"></i><b>3.6.4</b> Exercise. Hypothesis testing and auto claims</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variable-selection.html"><a href="variable-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Selection</a><ul>
+<li class="chapter" data-level="4.1" data-path="variable-selection.html"><a href="variable-selection.html#an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1</b> An iterative approach to data analysis and modeling</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1.1</b> Video (Exercise). An iterative approach to data analysis and modeling</a></li>
+<li class="chapter" data-level="4.1.2" data-path="variable-selection.html"><a href="variable-selection.html#mc-exercise.-an-iterative-approach-to-data-modeling"><i class="fa fa-check"></i><b>4.1.2</b> MC Exercise. An iterative approach to data modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="variable-selection.html"><a href="variable-selection.html#automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2</b> Automatic variable selection procedures</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2.1</b> Video (Exercise). Automatic variable selection procedures</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-data-snooping-in-stepwise-regression"><i class="fa fa-check"></i><b>4.2.2</b> Exercise. Data-snooping in stepwise regression</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="variable-selection.html"><a href="variable-selection.html#residual-analysis"><i class="fa fa-check"></i><b>4.3</b> Residual analysis</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-residual-analysis"><i class="fa fa-check"></i><b>4.3.1</b> Video (Exercise). Residual analysis</a></li>
+<li class="chapter" data-level="4.3.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-residual-analysis-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.3.2</b> Exercise. Residual analysis and risk manager survey</a></li>
+<li class="chapter" data-level="4.3.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-added-variable-plot-and-refrigerator-prices"><i class="fa fa-check"></i><b>4.3.3</b> Exercise. Added variable plot and refrigerator prices</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="variable-selection.html"><a href="variable-selection.html#unusual-observations"><i class="fa fa-check"></i><b>4.4</b> Unusual observations</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-unusual-observations"><i class="fa fa-check"></i><b>4.4.1</b> Video (Exercise). Unusual observations</a></li>
+<li class="chapter" data-level="4.4.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-outlier-example"><i class="fa fa-check"></i><b>4.4.2</b> Exercise. Outlier example</a></li>
+<li class="chapter" data-level="4.4.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-high-leverage-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.4.3</b> Exercise. High leverage and risk manager survey</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="variable-selection.html"><a href="variable-selection.html#collinearity"><i class="fa fa-check"></i><b>4.5</b> Collinearity</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-collinearity"><i class="fa fa-check"></i><b>4.5.1</b> Video (Exercise). Collinearity</a></li>
+<li class="chapter" data-level="4.5.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-collinearity-and-term-life"><i class="fa fa-check"></i><b>4.5.2</b> Exercise. Collinearity and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="variable-selection.html"><a href="variable-selection.html#selection-criteria"><i class="fa fa-check"></i><b>4.6</b> Selection criteria</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-selection-criteria"><i class="fa fa-check"></i><b>4.6.1</b> Video (Exercise). Selection criteria</a></li>
+<li class="chapter" data-level="4.6.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-cross-validation-and-term-life"><i class="fa fa-check"></i><b>4.6.2</b> Exercise. Cross-validation and term life</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html"><i class="fa fa-check"></i><b>5</b> Interpreting Regression Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1</b> Case study: MEPS health expenditures</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1.1</b> Video (Exercise). Case study: MEPS health expenditures</a></li>
+<li class="chapter" data-level="5.1.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-summarizing-data"><i class="fa fa-check"></i><b>5.1.2</b> Exercise. Summarizing data</a></li>
+<li class="chapter" data-level="5.1.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-fit-a-benchmark-multiple-linear-regression-model"><i class="fa fa-check"></i><b>5.1.3</b> Exercise. Fit a benchmark multiple linear regression model</a></li>
+<li class="chapter" data-level="5.1.4" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-variable-selection"><i class="fa fa-check"></i><b>5.1.4</b> Exercise. Variable selection</a></li>
+<li class="chapter" data-level="5.1.5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-model-comparisons-using-cross-validation"><i class="fa fa-check"></i><b>5.1.5</b> Exercise. Model comparisons using cross-validation</a></li>
+<li class="chapter" data-level="5.1.6" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-out-of-sample-validation"><i class="fa fa-check"></i><b>5.1.6</b> Exercise. Out of sample validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.1</b> Video (Exercise). What the modeling procedure tells us</a></li>
+<li class="chapter" data-level="5.2.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.2</b> MC Exercise. What the modeling procedure tells us</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3.1</b> Video (Exercise). The importance of variable selection</a></li>
+<li class="chapter" data-level="5.3.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-principle-of-parsimony"><i class="fa fa-check"></i><b>5.3.2</b> MC Exercise. Principle of parsimony</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/ewfreesRes/RegressModel" target="blank">Regression Modeling Tutorial on GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Online Tutorial on <code>Regression Modeling with Actuarial and Financial Applications</code></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multiple-linear-regression-mlr" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Multiple Linear Regression (MLR)</h1>
+<p><strong>Chapter description</strong></p>
+<p>This chapter introduces linear regression in the case of several explanatory variables, known as multiple linear regression (MLR). Many basic linear regression concepts extend directly, including goodness of fit measures such as the coefficient of determination and inference using t-statistics. Multiple linear regression models provide a framework for summarizing highly complex, multivariate data. Because this framework requires only linearity in the parameters, we are able to fit models that are nonlinear functions of the explanatory variables, thus providing a wide scope of potential applications.</p>
+<div id="method-of-least-squares-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Method of least squares</h2>
+<div id="video-exercise.-method-of-least-squares-1" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Video (Exercise). Method of least squares</h3>
+<div id="learning-objectives-5" class="section level4">
+<h4><span class="header-section-number">3.1.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Interpret correlation coefficients by visualizing a scatterplot matrix</li>
+<li>Fit a plane to data using the method of least squares</li>
+<li>Predict an observation using a least squares fitted plane</li>
+</ul>
+</div>
+<div id="video-overheads-3" class="section level4">
+<h4><span class="header-section-number">3.1.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Demand for term life insurance</strong></p>
+<p>“Who buys insurance and how much do they buy?”</p>
+<ul>
+<li>Companies have data on current customers</li>
+<li>How do get info on potential (new) customers?</li>
+</ul>
+<p>To understand demand, consider the Survey of Consumer Finances (<em>SCF</em>)</p>
+<ul>
+<li>This is a nationally representative sample that contains extensive information on potential U.S. customers.</li>
+<li>We study a random sample of 500 of the 4,519 households with positive income that were interviewed in the 2004 survey.</li>
+<li>We now focus on <em>n</em> = 275 households that purchased term life insurance</li>
+</ul>
+<p><strong>Overhead B. Term life insurance summary statistics</strong></p>
+<p>We study <em>y = face</em>, the amount that the company will pay in the event of the death of the named insured.</p>
+<p>We focus on <em>k</em> = 3 explanatory variables - annual <em>income</em>, - the number of years of <em>education</em> of the survey respondent and - the number of household members, <em>numhh</em>.</p>
+<p>The data suggest that <em>income</em> and <em>face</em> are skewed so we also introduce logarithmic versions.</p>
+<p><strong>Overhead C. Summary statistics</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#  PICK THE SUBSET OF THE DATA CORRESPONDING TO TERM PURCHASE</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+<span class="kw">str</span>(Term1)
+<span class="kw">head</span>(Term1)
+
+<span class="kw">library</span>(Rcmdr)
+Term2 &lt;-<span class="st"> </span>Term1[, <span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;face&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;numhh&quot;</span>)]
+<span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">100</span>, <span class="dt">digits =</span> <span class="dv">4</span>)
+summvar &lt;-<span class="st"> </span><span class="kw">numSummary</span>(Term2, <span class="dt">statistic =</span> <span class="kw">c</span>(<span class="st">&quot;mean&quot;</span>, <span class="st">&quot;sd&quot;</span>, <span class="st">&quot;quantiles&quot;</span>), <span class="dt">quantiles =</span> <span class="kw">c</span>(<span class="dv">0</span>, .<span class="dv">5</span>, <span class="dv">1</span>))
+summvar</code></pre></div>
+<p><strong>Overhead C. Scatter plots of income versus face in original and logarithmic units</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">plot</span>(Term2<span class="op">$</span>income, Term2<span class="op">$</span>face, <span class="dt">xlab =</span> <span class="st">&quot;income&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;face&quot;</span>)
+<span class="kw">plot</span>(Term2<span class="op">$</span>logincome, Term2<span class="op">$</span>logface, <span class="dt">xlab =</span> <span class="st">&quot;log&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log face&quot;</span>)</code></pre></div>
+<p><strong>Overhead D. Correlation table</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">cor</span>(Term2), <span class="dt">digits=</span><span class="dv">3</span>)</code></pre></div>
+<p><strong>Overhead E. Scatterplot matrix</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term3 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>)]
+<span class="kw">pairs</span>(Term3, <span class="dt">upper.panel =</span> <span class="ot">NULL</span>, <span class="dt">gap =</span> <span class="dv">0</span>, <span class="dt">cex.labels =</span> <span class="fl">1.25</span>)</code></pre></div>
+<p><strong>Overhead F. Visualizing a regression plane</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">education &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="dt">length =</span> <span class="dv">15</span>)
+logincome &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dt">length =</span> <span class="dv">15</span>)
+f &lt;-<span class="st"> </span><span class="cf">function</span>(education,logincome){ 
+  r &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.221</span><span class="op">*</span>education <span class="op">+</span><span class="st"> </span><span class="fl">0.354</span><span class="op">*</span>logincome
+}
+logface &lt;-<span class="st"> </span><span class="kw">outer</span>(education, logincome, f)
+<span class="kw">persp</span>(education, logincome, logface, <span class="dt">theta =</span> <span class="dv">30</span>, 
+      <span class="dt">phi =</span> <span class="dv">30</span>, <span class="dt">expand =</span> <span class="fl">0.5</span>, <span class="dt">ticktype =</span> <span class="st">&quot;detailed&quot;</span>)
+<span class="kw">rm</span>(education,logincome,logface)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">education &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="dt">length =</span> <span class="dv">15</span>)
+logincome &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dt">length =</span> <span class="dv">15</span>)
+f &lt;-<span class="st"> </span><span class="cf">function</span>(education,logincome){ 
+  r &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.221</span><span class="op">*</span>education <span class="op">+</span><span class="st"> </span><span class="fl">0.354</span><span class="op">*</span>logincome
+}
+logface &lt;-<span class="st"> </span><span class="kw">outer</span>(education, logincome, f)
+<span class="kw">persp</span>(education, logincome, logface, <span class="dt">theta =</span> <span class="dv">30</span>, 
+      <span class="dt">phi =</span> <span class="dv">30</span>, <span class="dt">expand =</span> <span class="fl">0.5</span>, <span class="dt">ticktype =</span> <span class="st">&quot;simple&quot;</span>, <span class="co">#ticktype = &quot;detailed&quot;, #</span>
+      <span class="dt">xlab =</span> <span class="st">&quot;x1&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;x2&quot;</span>,<span class="dt">zlab=</span><span class="st">&quot;y&quot;</span>, <span class="dt">nticks =</span> <span class="dv">1</span>)
+<span class="kw">rm</span>(education,logincome,logface)</code></pre></div>
+<p><strong>Overhead G. Method of least squares</strong></p>
+<ul>
+<li>For observation <span class="math inline">\(\{(y, x_1, \ldots, x_k)\}\)</span>, the height of the regression plane is <span class="math display">\[b_0 + b_1 x_1 + \cdots + b_k x_k .\]</span></li>
+<li>Thus, <span class="math inline">\(y - (b_0 + b_1 x_1 + \cdots + b_k x_k)\)</span> represents the deviation.</li>
+<li>The sum of squared deviations is <span class="math display">\[SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2 .\]</span></li>
+<li>The <em>method of least squares</em> – determine values of <span class="math inline">\(b_0, \ldots, b_k\)</span> that minimize <span class="math inline">\(SS\)</span>.</li>
+</ul>
+<p><strong>Overhead H. Fit a multiple linear regression model</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+<span class="kw">round</span>(<span class="kw">coefficients</span>(Term_mlr), <span class="dt">digits=</span><span class="dv">4</span>)
+newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> <span class="kw">log</span>(<span class="dv">60000</span>), <span class="dt">education =</span> <span class="dv">12</span>, <span class="dt">numhh =</span> <span class="dv">3</span>)
+<span class="kw">exp</span>(<span class="kw">predict</span>(Term_mlr, newdata))</code></pre></div>
+</div>
+</div>
+<div id="exercise.-least-squares-and-term-life-data" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Exercise. Least squares and term life data</h3>
+<p><strong>Assignment Text</strong></p>
+<p>The prior video introduced the <em>Survey of Consumer Finances</em> (SCF) term life data. A subset consisting of only those who purchased term life insurance, has already been read into a dataframe <code>Term2</code>.</p>
+<p>Suppose that you wish to predict the amount of term life insurance that someone will purchase but are uneasy about the <code>education</code> variable. The SCF <code>education</code> variable is the number of completed years of schooling and so 12 corresponds to completing high school in the US. Your sense is that, for purposes of purchasing life insurance, high school graduates and those that attend college should be treated the same. So, in this exercise, your will create a new variable, <code>education1</code>, that is equal to years of education for those with education less than or equal to 12 and is equal to 12 otherwise.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Use the <a href="https://www.rdocumentation.org/packages/mc2d/versions/0.1-17/topics/pmin">pmin()</a> function to create the <code>education1</code> variable as part of the <code>Term2</code> dataframe.</li>
+<li>Check your work by examining summary statistics for the revised <code>Term2</code> dataframe.</li>
+<li>Examine correlations for the revised dataframe.</li>
+<li>Using the method of least squares and the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm">lm()</a>, fit a MLR model using <code>logface</code> as the dependent variables and using <code>education</code>, <code>numhh</code>, and <code>logincome</code> as explanatory variables.</li>
+<li>With this fitted model and the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict">predict()</a>, predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>Remember that your prediction is in log dollars so you need to exponentiate it to get the results in the original dollar units</p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+<span class="co">#library(Rcmdr)</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term2 &lt;-<span class="st"> </span>Term1[, <span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;face&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;numhh&quot;</span>)]</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Create the `education1` variable as part of the `Term2` dataframe.</span>
+Term2<span class="op">$</span>education1 &lt;-<span class="st"> </span><span class="kw">pmin</span>(<span class="dv">12</span>, Term2<span class="op">$</span>education)
+
+<span class="co"># Check your work by examining summary statistics for the revised `Term2` dataframe.</span>
+<span class="kw">summary</span>(___)
+
+<span class="co"># Examine correlations for the revised dataframe.</span>
+<span class="kw">round</span>(<span class="kw">cor</span>(___), <span class="dt">digits=</span><span class="dv">3</span>)
+
+<span class="co"># Fit a MLR model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.</span>
+Term_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>___ <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+
+<span class="co"># Predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.</span>
+newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> <span class="kw">log</span>(<span class="dv">40000</span>), <span class="dt">education1 =</span> <span class="dv">11</span>, <span class="dt">numhh =</span> <span class="dv">4</span>)
+<span class="kw">exp</span>(<span class="kw">predict</span>(___, newdata))</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+Term2<span class="op">$</span>education1 &lt;-<span class="st"> </span><span class="kw">pmin</span>(<span class="dv">12</span>, Term2<span class="op">$</span>education)
+<span class="co">#Rcmdr::numSummary(Term2, statistic = c(&quot;mean&quot;, &quot;sd&quot;, &quot;quantiles&quot;), quantiles = c(0, .5, 1))</span>
+<span class="kw">summary</span>(Term2)
+<span class="kw">round</span>(<span class="kw">cor</span>(Term2), <span class="dt">digits=</span><span class="dv">3</span>)
+Term_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education1 <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> <span class="kw">log</span>(<span class="dv">40000</span>), <span class="dt">education1 =</span> <span class="dv">11</span>, <span class="dt">numhh =</span> <span class="dv">4</span>)
+<span class="kw">exp</span>(<span class="kw">predict</span>(Term_mlr2, newdata))</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“Term2”, incorrect_msg = “Is the new education variable properly defined using the pmin() function?”) test_object(“Term_mlr2”, incorrect_msg = “The MLR model is incorrectly specified.”) test_object(“newdata”, incorrect_msg = “The new data object is incorrectly specified.”) success_msg(“Congratulations! You now have experience fitting a regression plane and using this plane for predictions. Prediction is one of the key tasks of ‘predictive modeling.’ Well done!”)</p>
+</div>
+<div id="exercise.-interpreting-coefficients-as-proportional-changes" class="section level3">
+<h3><span class="header-section-number">3.1.3</span> Exercise. Interpreting coefficients as proportional changes</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In a previous exercise, you fit a MLR model using <code>logface</code> as the outcome variable and using <code>education</code>, <code>numhh</code>, and <code>logincome</code> as explanatory variables; the resulting fit is in the object <code>Term_mlr</code>. For this fit, the coefficient associated with <code>education</code> is 0.2064. We now wish to interpret this regression coefficient.</p>
+<p>The typical interpretation of coefficients in a regression model is as a partial slope. That is, for the coefficient <span class="math inline">\(b_1\)</span> associated with <span class="math inline">\(x_1\)</span>, we interpret <span class="math inline">\(b_1\)</span> to be amount that the expected outcome changes per unit change in <span class="math inline">\(x_1\)</span>, holding the other explanatory variables fixed.</p>
+<p>For the term life example, the units of the outcome are in logarithmic dollars. So, for small values of <span class="math inline">\(b_1\)</span>, we can interpret this to be a <em>proportional</em> change in dollars.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Determine least square fitted values for several selected values of <code>education</code>, holding other explantory variables fixed. For this part of the demonstration, we used their mean values.</li>
+<li>Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for <code>education</code> equal to 0.2064.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term2 &lt;-<span class="st"> </span>Term1[, <span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;face&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;numhh&quot;</span>)]
+Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+<span class="kw">summary</span>(Term_mlr)<span class="op">$</span>coefficients[,<span class="dv">1</span>]</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+<span class="kw">summary</span>(Term_mlr)<span class="op">$</span>coefficients[,<span class="dv">1</span>]
+
+<span class="co"># Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed.</span>
+educ_predict &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">14</span>,<span class="fl">14.1</span>,<span class="fl">14.2</span>,<span class="fl">14.3</span>)
+newdata1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> <span class="kw">mean</span>(Term2<span class="op">$</span>logincome), <span class="dt">education =</span> educ_predict, <span class="dt">numhh =</span> <span class="kw">mean</span>(Term2<span class="op">$</span>numhh))
+lsfits1 &lt;-<span class="st"> </span><span class="kw">predict</span>(Term_mlr, newdata1)
+lsfits1
+
+<span class="co"># Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.</span>
+lsfits1[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>lsfits1[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]
+pchange_fits1 &lt;-<span class="st"> </span><span class="kw">exp</span>(lsfits1[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>lsfits1[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])
+pchange_fits1</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+educ_predict &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">14</span>,<span class="fl">14.1</span>,<span class="fl">14.2</span>,<span class="fl">14.3</span>)
+newdata1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> <span class="kw">mean</span>(Term2<span class="op">$</span>logincome), <span class="dt">education =</span> educ_predict, <span class="dt">numhh =</span> <span class="kw">mean</span>(Term2<span class="op">$</span>numhh))
+lsfits1 &lt;-<span class="st"> </span><span class="kw">predict</span>(Term_mlr, newdata1)
+lsfits1
+lsfits1[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>lsfits1[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]
+pchange_fits1 &lt;-<span class="st"> </span><span class="kw">exp</span>(lsfits1[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>] <span class="op">-</span><span class="st"> </span>lsfits1[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])
+pchange_fits1</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“educ_predict”, incorrect_msg = “Check to see that values of the education predictor variable are properly coded.”) test_object(“newdata1”, incorrect_msg = “The new data object is incorrectly specified.”) test_object(“lsfits1”, incorrect_msg = “The predicted fits at different values of education are incorrectly specified.”) test_object(“pchange_fits1”, incorrect_msg = “The proportional changes at different values of education are incorrectly specified.”) success_msg(“Congratulations! From calculus, small changes in logarithmic values can be interpreted as proportional changes. This is the reason for using natural logarithms.”)</p>
+</div>
+<div id="exercise.-interpreting-coefficients-as-elasticities" class="section level3">
+<h3><span class="header-section-number">3.1.4</span> Exercise. Interpreting coefficients as elasticities</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In a previous exercise, you fit a MLR model using <code>logface</code> as the outcome variable and using <code>education</code>, <code>numhh</code>, and <code>logincome</code> as explanatory variables; the resulting fit is in the object <code>Term_mlr</code>. From this fit, the coefficient associated with <code>logincome</code> is 0.4935. We now wish to interpret this regression coefficient.</p>
+<p>The typical interpretation of coefficients in a regression model is as a partial slope. When both <span class="math inline">\(x_1\)</span> and <span class="math inline">\(y\)</span> are in logarithmic units, then we can interpret <span class="math inline">\(b_1\)</span> to be ratio of two percentage changes, known as an <em>elasticity</em> in economics. Mathematically, we summarize this as <span class="math display">\[
+\frac{\partial \ln y}{\partial \ln x} = \left(\frac{\partial y}{y}\right) ~/ ~\left(\frac{\partial x}{x}\right) .
+\]</span></p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>For several selected values of <code>logincome</code>, determine the corresponding proportional changes.</li>
+<li>Determine least square fitted values for several selected values of <code>logincome</code>, holding other explantory variables fixed.</li>
+<li>Determine the corresponding proportional changes for the fitted values.</li>
+<li>Calculate the ratio of proportional changes of fitted values to those for income. Note the relation between these values (from a discrete change approximation) to the regression coefficient for <code>logincome</code> equal to 0.4935.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>When you calculate the ratio of proportional changes of fitted values to those for income, note the relation between these values (from a discrete change approximation) to the regression coefficient for <code>logincome</code> equal to 0.4935.</p>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+<span class="kw">summary</span>(Term_mlr)<span class="op">$</span>coefficients[,<span class="dv">1</span>]
+<span class="co"># For several selected values of `logincome`, determine the corresponding proportional changes.</span>
+logincome_pred &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>,<span class="fl">11.1</span>,<span class="fl">11.2</span>,<span class="fl">11.3</span>)
+pchange_income &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span>(<span class="kw">exp</span>(logincome_pred[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>])<span class="op">/</span><span class="kw">exp</span>(logincome_pred[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])<span class="op">-</span><span class="dv">1</span>)
+pchange_income
+
+<span class="co"># Determine least square fitted values for several selected values of `logincome`, holding other explantory variables fixed.</span>
+newdata2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> logincome_pred, <span class="dt">education =</span> <span class="kw">mean</span>(Term2<span class="op">$</span>education), <span class="dt">numhh =</span> <span class="kw">mean</span>(Term2<span class="op">$</span>numhh))
+lsfits2 &lt;-<span class="st"> </span><span class="kw">predict</span>(Term_mlr, newdata2)
+
+<span class="co"># Determine the corresponding proportional changes for the fitted values. </span>
+pchange_fits2 &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span>(<span class="kw">exp</span>(lsfits2[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>])<span class="op">/</span><span class="kw">exp</span>(lsfits2[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])<span class="op">-</span><span class="dv">1</span>)
+pchange_fits2
+
+<span class="co"># Calculate the ratio of proportional changes of fitted values to those for income.</span>
+pchange_fits2<span class="op">/</span>pchange_income</code></pre></div>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term2 &lt;-<span class="st"> </span>Term1[, <span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;face&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;numhh&quot;</span>)]
+Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+<span class="kw">summary</span>(Term_mlr)<span class="op">$</span>coefficients[,<span class="dv">1</span>]</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+logincome_pred &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">11</span>,<span class="fl">11.1</span>,<span class="fl">11.2</span>,<span class="fl">11.3</span>)
+pchange_income &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span>(<span class="kw">exp</span>(logincome_pred[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>])<span class="op">/</span><span class="kw">exp</span>(logincome_pred[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])<span class="op">-</span><span class="dv">1</span>)
+pchange_income
+newdata2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> logincome_pred, <span class="dt">education =</span> <span class="kw">mean</span>(Term2<span class="op">$</span>education), <span class="dt">numhh =</span> <span class="kw">mean</span>(Term2<span class="op">$</span>numhh))
+lsfits2 &lt;-<span class="st"> </span><span class="kw">predict</span>(Term_mlr, newdata2)
+pchange_fits2 &lt;-<span class="st"> </span><span class="dv">100</span><span class="op">*</span>(<span class="kw">exp</span>(lsfits2[<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>])<span class="op">/</span><span class="kw">exp</span>(lsfits2[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])<span class="op">-</span><span class="dv">1</span>)
+pchange_fits2
+pchange_fits2<span class="op">/</span>pchange_income</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“logincome_pred”, incorrect_msg = “Check to see that values of the logarithmic income predictor variable are properly coded.”) test_object(“pchange_income”, incorrect_msg = “Check to see that the proportional changes of logarithmic income predictor variable are properly coded.”) test_object(“newdata2”, incorrect_msg = “The new data object is incorrectly specified.”) test_object(“lsfits2”, incorrect_msg = “The predicted fits at different values of logarithmic income are incorrectly specified.”) test_object(“pchange_fits2”, incorrect_msg = “The proportional changes at different values of logarithmic income are incorrectly specified.”) success_msg(“Congratulations! When both <span class="math inline">\(x_1\)</span> and <span class="math inline">\(y\)</span> are in logarithmic units, then we can interpret <span class="math inline">\(b_1\)</span> to be ratio of two percentage changes, known as an <em>elasticity</em> in economics.”)</p>
+</div>
+</div>
+<div id="foundations-of-multiple-linear-regresson" class="section level2">
+<h2><span class="header-section-number">3.2</span> Foundations of multiple linear regresson</h2>
+<div id="video-exercise.-foundations-of-multiple-linear-regression" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Video (Exercise). Foundations of multiple linear regression</h3>
+<div id="learning-objectives-6" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Contrast the observable to the error representation of the model</li>
+<li>Describe the unbiasedness and determine the variance of least squares regression coefficients</li>
+<li>Motivate the least squares method using the Gauss-Markov and normality of estimators</li>
+</ul>
+</div>
+<div id="video-overheads-4" class="section level4">
+<h4><span class="header-section-number">3.2.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. xxx</strong></p>
+</div>
+</div>
+<div id="exercise.-multiple-choice-exercise-on-the-theory-maybeee" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Exercise. Multiple choice exercise on the theory… Maybeee</h3>
+<p><strong>Assignment Text</strong></p>
+<p><strong>Instructions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+
+<span class="co"># Solution</span></code></pre></div>
+</div>
+</div>
+<div id="statistical-inference-and-multiple-linear-regresson" class="section level2">
+<h2><span class="header-section-number">3.3</span> Statistical inference and multiple linear regresson</h2>
+<div id="video-exercise.-statistical-inference-and-multiple-linear-regression" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Video (Exercise). Statistical inference and multiple linear regression</h3>
+<div id="learning-objectives-7" class="section level4">
+<h4><span class="header-section-number">3.3.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Explain mean square error and residual standard error in terms of degrees of freedom</li>
+<li>Develop an ANOVA table and use it to derive the coefficient of determination</li>
+<li>Calculate and interpret the coefficient of determination adjusted for degrees of freedom</li>
+<li>Conduct a test of a regression coefficient</li>
+<li>Summarize regression coefficients using point and interval estimators</li>
+</ul>
+</div>
+<div id="video-overheads-5" class="section level4">
+<h4><span class="header-section-number">3.3.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Goodness of fit</strong></p>
+<p>Summarize</p>
+<ul>
+<li>deviations</li>
+<li><span class="math inline">\(s^2\)</span></li>
+<li><span class="math inline">\(R^2\)</span></li>
+<li><span class="math inline">\(R_a^2\)</span></li>
+<li>ANOVA table</li>
+</ul>
+<p><strong>Overhead B. Goodness of fit and term life</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+<span class="kw">summary</span>(Term_mlr)
+<span class="kw">anova</span>(Term_mlr)</code></pre></div>
+<p><strong>Overhead C. Statistical inference</strong></p>
+<ul>
+<li>hypothesis testing of a regression coefficient</li>
+<li>confidence intervals</li>
+</ul>
+<p><strong>Overhead D. Statistical inference and term life</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
+model_sum &lt;-<span class="st"> </span><span class="kw">summary</span>(Term_mlr)
+model_sum<span class="op">$</span>coefficients
+
+<span class="kw">round</span>(Rcmdr<span class="op">::</span><span class="kw">Confint</span>(Term_mlr, <span class="dt">level =</span> .<span class="dv">95</span>), <span class="dt">digits =</span> <span class="dv">3</span>)
+
+<span class="kw">round</span>(<span class="kw">confint</span>(Term_mlr, <span class="dt">level =</span> .<span class="dv">95</span>), <span class="dt">digits =</span> <span class="dv">3</span>)</code></pre></div>
+</div>
+</div>
+<div id="exercise.-statistical-inference-and-term-life" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Exercise. Statistical inference and term life</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In later chapters, we will learn how to specify a model using diagnostics techniques; these techniques were used to specify face in log dollars for the outcome and similarly income in log dollars as an explanatory variable. Just to see how things work, in this exercise we will create new variables <code>face</code> and <code>income</code> that are in the original units and run a regression with these. We have already seen that rescaling by constants do not affect relationships but can be helpful with interpretations, so we define both <code>face</code> and <code>income</code> to be in thousands of dollars. A prior video introduced the term life dataframe <code>Term2</code>.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Create <code>Term2$face</code> by exponentiating <code>logface</code> and dividing by 1000. For convenience, we are storing this variable in the data set <code>Term2</code>. Use the same process to create <code>Term2$income</code>.</li>
+<li>Run a regression using <code>face</code> as the outcome variable and <code>education</code>, <code>numhh</code>, and <code>income</code> as explanatory variables.</li>
+<li>Summarize this model and identify the residual standard error (<span class="math inline">\(s\)</span>) as well as the coefficient of determination (<span class="math inline">\(R^2\)</span>) and the version adjusted for degrees of freedom (<span class="math inline">\(R_a^2\)</span>).</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term2 &lt;-<span class="st"> </span>Term1[, <span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;face&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;numhh&quot;</span>)]</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Create `Term2$face` and  `Term2$income`</span>
+Term2<span class="op">$</span>face &lt;-<span class="st"> </span><span class="kw">exp</span>(___)<span class="op">/</span>___
+Term2<span class="op">$</span>income &lt;-<span class="st"> </span><span class="kw">exp</span>(___)<span class="op">/</span>___
+
+<span class="co"># Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.</span>
+Term_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(face <span class="op">~</span><span class="st"> </span>___, <span class="dt">data =</span> Term2)
+
+<span class="co"># Summarize this model</span>
+<span class="kw">summary</span>(Term_mlr1)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+Term2<span class="op">$</span>face &lt;-<span class="st"> </span><span class="kw">exp</span>(Term2<span class="op">$</span>logface)<span class="op">/</span><span class="dv">1000</span>
+Term2<span class="op">$</span>income &lt;-<span class="st"> </span><span class="kw">exp</span>(Term2<span class="op">$</span>logincome)<span class="op">/</span><span class="dv">1000</span>
+Term_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(face <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>income, <span class="dt">data =</span> Term2)
+<span class="kw">summary</span>(Term_mlr1)</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>success_msg(“Congratulations! Compare these goodness of fit measures to those where income and face are in logarithmic units. Although not the only indicators, you will see that the proportion of variability explained (R square) and the statistical significance of coefficients are strikingly higher in the model with variables in logged units.”)</p>
+</div>
+</div>
+<div id="binary-variables" class="section level2">
+<h2><span class="header-section-number">3.4</span> Binary variables</h2>
+<div id="video-exercise.-binary-variables" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Video (Exercise). Binary variables</h3>
+<div id="learning-objectives-8" class="section level4">
+<h4><span class="header-section-number">3.4.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Interpret regression coefficients associated with binary variables</li>
+<li>Use binary variables and interaction terms to create regression models that are nonlinear in the covariates</li>
+</ul>
+</div>
+<div id="video-overheads-6" class="section level4">
+<h4><span class="header-section-number">3.4.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Binary variables</strong></p>
+<ul>
+<li><p>We can define a new variable <span class="math display">\[
+single= \left\{ \begin{array}{ll}
+    0 &amp; \text{for other respondents} \\
+    1 &amp; \text{for single respondents}
+\end{array} \right.
+\]</span></p></li>
+<li>The variable <em>single</em> is said to be an <em>indicator</em>, or <em>dummy</em>, variable.</li>
+<li><p>To interpret coefficients, we now consider the regression function</p></li>
+</ul>
+<p><span class="math display">\[\text{E }logface = \beta_0 + \beta_1 logincome + \beta_2 single
+\]</span> - This can be expressed as two lines <span class="math display">\[
+\text{E }logface = \left\{ \begin{array}{ll}
+        \beta_0 + \beta_1  logincome           &amp; \textrm{for other respondents} \\
+        \beta_0 + \beta_2 + \beta_1  logincome &amp; \textrm{for single respondents}
+\end{array} \right. .
+\]</span> - The least squares method of calculating the estimators, and the resulting theoretical properties, are the still valid when using binary variables.</p>
+<p><strong>Overhead B. Visualize effect of binary variables</strong></p>
+<p><strong>Overhead C. R script for visualization</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;marstat&quot;</span>)]
+Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
+<span class="kw">table</span>(Term4<span class="op">$</span>marstat)
+Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
+model_single &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>single, <span class="dt">data =</span> Term4)
+<span class="kw">summary</span>(model_single)
+
+<span class="kw">plot</span>(Term4<span class="op">$</span>logincome,Term4<span class="op">$</span>logface,<span class="dt">xlab=</span><span class="st">&quot;logarithmic income&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;log face&quot;</span>,
+    <span class="dt">pch=</span> <span class="dv">1</span><span class="op">+</span><span class="dv">16</span><span class="op">*</span>Term4<span class="op">$</span>single, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)[Term4<span class="op">$</span>marstat])
+Ey1 &lt;-<span class="st"> </span>model_single<span class="op">$</span>coefficients[<span class="dv">1</span>]<span class="op">+</span>model_single<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span>Term4<span class="op">$</span>logincome
+Ey2 &lt;-<span class="st"> </span>Ey1 <span class="op">+</span><span class="st"> </span>model_single<span class="op">$</span>coefficients[<span class="dv">3</span>]
+<span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey1)
+<span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey2, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><strong>Overhead D. Interaction Terms</strong></p>
+<ul>
+<li>Linear regression models are defined in terms of linear combinations of explanatory varibles but we can expand their scope through nonlinear transformations</li>
+<li>One type of nonlinear transform is the product of two varibles that is used to create what is known as an <em>interaction</em> variable</li>
+<li>To interpret coefficients, we now consider the regression function</li>
+</ul>
+<p><span class="math display">\[\text{E }logface = \beta_0 + \beta_1 logincome + \beta_2 single + \beta_3 single*logincome
+\]</span> - This can be expressed as two lines with different slopes <span class="math display">\[
+\text{E }logface = \left\{ \begin{array}{ll}
+        \beta_0 + \beta_1   logincome           &amp; \textrm{for other respondents} \\
+        \beta_0 + \beta_2 + (\beta_1  + \beta_3) logincome &amp; \textrm{for single respondents}
+\end{array} \right. .
+\]</span></p>
+<p><strong>Overhead E. Visualizing binary variables with interactions terms</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;marstat&quot;</span>)]
+Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
+<span class="kw">table</span>(Term4<span class="op">$</span>marstat)
+Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
+model_single_inter &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>single <span class="op">+</span><span class="st"> </span>single<span class="op">*</span>logincome, <span class="dt">data =</span> Term4)
+<span class="kw">summary</span>(model_single_inter)
+
+<span class="kw">plot</span>(Term4<span class="op">$</span>logincome,Term4<span class="op">$</span>logface,<span class="dt">xlab=</span><span class="st">&quot;logarithmic income&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;log face&quot;</span>,
+    <span class="dt">pch=</span> <span class="dv">1</span><span class="op">+</span><span class="dv">16</span><span class="op">*</span>Term4<span class="op">$</span>single, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)[Term4<span class="op">$</span>marstat])
+Ey1 &lt;-<span class="st"> </span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">1</span>]<span class="op">+</span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span>Term4<span class="op">$</span>logincome
+Ey2 &lt;-<span class="st"> </span>Ey1 <span class="op">+</span><span class="st"> </span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">3</span>]<span class="op">+</span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">4</span>]<span class="op">*</span>Term4<span class="op">$</span>logincome
+<span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey1)
+<span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey2, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+</div>
+</div>
+<div id="exercise.-binary-variables-and-term-life" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Exercise. Binary variables and term life</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In the prior video, we saw how the variable <code>single</code> can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The coefficient associated with this variable turns out to be negative which is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the event of unexpected death.</p>
+<p>In this exercise, we will extend this by incorporating <code>single</code> into our larger regression model that contains other explanatory varibles, <code>logincome</code>, <code>education</code> and <code>numhh</code>. The data have been pre-loaded into the dataframe <code>Term4</code>.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Calculate a table of correlation coefficients to examine pairwise linear relationships among the variables <code>numhh</code>, <code>education</code>, <code>logincome</code>, <code>single</code>, and <code>logface</code>.</li>
+<li>Fit a MLR model of <code>logface</code> using explanatory variables <code>numhh</code>, <code>education</code>, <code>logincome</code>, and <code>single</code>. Examine the residual standard deviation <span class="math inline">\(s\)</span>, the coefficient of determination <span class="math inline">\(R^2\)</span>, and the adjusted version <span class="math inline">\(R_a^2\)</span>. Also note the statistical significance of the coefficient associated with <code>single</code>.</li>
+<li>Repeat the MLR model fit while adding the interaction term <code>single*logincome</code>.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>, <span class="st">&quot;logface&quot;</span>)]
+Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Calculate a table of correlation coefficients</span>
+<span class="kw">round</span>(<span class="kw">___</span>(Term4[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;logface&quot;</span>)]), <span class="dt">digits =</span> <span class="dv">3</span>)
+
+<span class="co"># Fit a MLR model of `logface` using explanatory variables `numhh`, `education`, `logincome`, and `single`.</span>
+Term_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>single, <span class="dt">data =</span> Term4)
+<span class="kw">summary</span>(Term_mlr3)
+
+<span class="co"># Repeat the MLR model fit while adding the interaction term  `single*logincome`.</span>
+Term_mlr4 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>single <span class="op">+</span><span class="st"> </span>single<span class="op">*</span>logincome, <span class="dt">data =</span> Term4)
+<span class="kw">summary</span>(Term_mlr4)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+<span class="kw">round</span>(<span class="kw">cor</span>(Term4[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;logface&quot;</span>)]), <span class="dt">digits =</span> <span class="dv">3</span>)
+Term_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>single, <span class="dt">data =</span> Term4)
+<span class="kw">summary</span>(Term_mlr3)
+Term_mlr4 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>single <span class="op">+</span><span class="st"> </span>single<span class="op">*</span>logincome, <span class="dt">data =</span> Term4)
+<span class="kw">summary</span>(Term_mlr4)</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>success_msg(“Congratulations! From a correlation table, you saw that there are relationships with among explanatory variables and so it is not clear whether adding <code>single</code> to the model would be helpful. You explored this by first fitting a model by just adding the binary variable single, examined summary statistics, and checked the significance of the variable. Then, you explored the utility of the interaction of <code>single</code> with logarithmic income. Well done!”)</p>
+</div>
+</div>
+<div id="categorical-variables" class="section level2">
+<h2><span class="header-section-number">3.5</span> Categorical variables</h2>
+<div id="video-exercise.-categorical-variables" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Video (Exercise). Categorical variables</h3>
+<div id="learning-objectives-9" class="section level4">
+<h4><span class="header-section-number">3.5.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Represent categorical variables using a set of binary variables</li>
+<li>Interpret the regression coefficients associated with categorical variables</li>
+<li>Describe the effect of the reference level choice on the model fit</li>
+</ul>
+</div>
+<div id="video-overheads-7" class="section level4">
+<h4><span class="header-section-number">3.5.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Categorical variables</strong></p>
+<ul>
+<li><em>Categorical variables</em> provide labels for observations to denote membership in distinct groups, or categories.</li>
+<li>A <em>binary variable</em> is a special case of a categorical variable.
+<ul>
+<li>To illustrate, a binary variable may tell us whether or not someone has health insurance.</li>
+<li>A categorical variable could tell us whether someone has (i) private individual health insurance, (ii) private group insurance, (iii) public insurance or (iv) no health insurance.</li>
+</ul></li>
+<li>For categorical variables, there may or may not be an ordering of the groups.
+<ul>
+<li>For health insurance, it is difficult to say which is ‘larger’, private individual versus public health insurance (such as Medicare).</li>
+<li>However, for education, we may group individuals from a dataset into ‘low’, ‘intermediate’ and ‘high’ years of education.</li>
+</ul></li>
+<li><em>Factor</em> is another term used for a (unordered) categorical explanatory variable.</li>
+</ul>
+<p><strong>Overhead B. Term life example</strong></p>
+<ul>
+<li>We studied <em>y = logface</em>, the amount that the company will pay in the event of the death of the named insured (in logarithmic dollars), focusing on the explanatory variables <em>logincome</em>, <em>education</em>, and <em>numhh</em>.</li>
+<li>We now supplement this by including the categorical variable, <em>marstat</em>, that is the marital status of the survey respondent. This may be:
+<ul>
+<li>1, for married</li>
+<li>2, for living with partner</li>
+<li>0, for other (SCF actually breaks this category into separated, divorced, widowed, never married and inapplicable, for persons age 17 or less or no further persons)</li>
+</ul></li>
+</ul>
+<p><strong>Overhead C. Term life boxplots</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>, <span class="st">&quot;logface&quot;</span>)]
+Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
+Term4<span class="op">$</span>marstat&lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
+<span class="kw">boxplot</span>(logface <span class="op">~</span><span class="st"> </span>marstat, <span class="dt">ylab =</span> <span class="st">&quot;log face&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Marital Status&quot;</span>, <span class="dt">data =</span> Term4)
+<span class="kw">table</span>(Term4<span class="op">$</span>marstat)
+<span class="co">#  SUMMARY BY LEVEL OF MARSTAT</span>
+<span class="kw">library</span>(Rcmdr)
+<span class="kw">numSummary</span>(Term4[, <span class="st">&quot;logface&quot;</span>], <span class="dt">groups =</span> Term4<span class="op">$</span>marstat, <span class="dt">statistics =</span> <span class="kw">c</span>(<span class="st">&quot;mean&quot;</span>, <span class="st">&quot;sd&quot;</span>))
+<span class="kw">numSummary</span>(Term4[, <span class="st">&quot;logface&quot;</span>], <span class="dt">statistics =</span> <span class="kw">c</span>(<span class="st">&quot;mean&quot;</span>, <span class="st">&quot;sd&quot;</span>))</code></pre></div>
+<p><strong>Overhead D. Regression with a categorical variable</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
+Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">relevel</span>(Term4<span class="op">$</span>marstat, <span class="dt">ref =</span> <span class="st">&quot;2&quot;</span>)
+<span class="kw">summary</span>(<span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome<span class="op">+</span>education<span class="op">+</span>numhh<span class="op">+</span>marstat, <span class="dt">data =</span> Term4))</code></pre></div>
+<p><strong>Overhead E. t-ratios depend on the reference level</strong></p>
+<p><span class="math display">\[\begin{array}{l|rr|rr|rr}
+ \hline
+ &amp; \text{Model 1}&amp;&amp; \text{Model 2}&amp;&amp; \text{Model 3}&amp;\\
+ \hline
+ \text{Var}&amp; \text{Coef} &amp; \text{t-stat} &amp; \text{Coef} &amp; \text{t-stat} &amp;\text{Coef} &amp; \text{t-stat} \\\hline
+logincome &amp; 0.452 &amp; 5.74 &amp; 0.452 &amp; 5.74 &amp; 0.452 &amp; 5.74 \\
+education &amp;0.205 &amp; 5.30 &amp;0.205 &amp; 5.30&amp;0.205 &amp; 5.30 \\
+numhh     &amp; 0.248 &amp; 3.57 &amp; 0.248 &amp; 3.57 &amp; 0.248 &amp; 3.57 \\\hline
+\text{Intercept} &amp; 3.395 &amp; 3.77  &amp; 2.605&amp;  2.74 &amp; 2.838 &amp; 3.34\\
+\text{mar=0}    &amp; -0.557 &amp; -2.15&amp;  0.232 &amp;  0.44\\
+\text{mar=1} &amp; &amp; &amp; 0.789 &amp; 1.59 &amp; 0.557 &amp; 2.15\\
+\text{mar=2}&amp; -0.789 &amp; -1.59 &amp; &amp; &amp; -0.232 &amp; -0.44\\
+\hline
+\end{array}\]</span></p>
+</div>
+</div>
+<div id="exercise.-categorical-variables-and-wisconsin-hospital-costs" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> Exercise. Categorical variables and Wisconsin hospital costs</h3>
+<p><strong>Assignment Text</strong></p>
+<p>This exercise examines the impact of various predictors on hospital charges. Identifying predictors of hospital charges can provide direction for hospitals, government, insurers and consumers in controlling these variables that in turn leads to better control of hospital costs. The data, from 1989, are aggregated by:</p>
+<ul>
+<li><code>drg</code>, diagnostic related groups of costs,</li>
+<li><code>payer</code>, type of health care provider (Fee for service, HMO, and other), and</li>
+<li><code>hsa</code>, nine major geographic areas in Wisconsin.</li>
+</ul>
+<p>Some preliminary analysis of the data has already been done. In this exercise, we will analyze <code>logcharge</code>, the logarithm of total hospital charges per number of discharges, in terms of <code>log_numdschg</code>, the logarithm of the number of discharges. In the dataframe <code>Hcost</code> which has been loaded in advance, we restrict consideration to three types of drgs, numbers 209, 391, and 431.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Fit a basic linear regression model using logarithmic number of discharges to predict logarithmic hospital costs and superimposed the fitted regression line on the scatter plot.</li>
+<li>Produce a scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Allow plotting symbols and colors to vary by diagnostic related group.</li>
+<li>Fit a MLR model using logarithmic number of discharges to predict logarithmic hospital costs, allowing intercepts and slopes to vary by diagnostic related groups.</li>
+<li>Superimpose the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Hcost &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">WiscHcosts.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Hcost &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/2cc1e2739bf827093db31d7c4e6dcdc348ac984e/WiscHcosts.csv&quot;, header = TRUE)</span>
+Hcost1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Hcost, drg <span class="op">==</span><span class="st"> </span><span class="dv">209</span><span class="op">|</span>drg <span class="op">==</span><span class="st"> </span><span class="dv">391</span><span class="op">|</span>drg <span class="op">==</span><span class="st"> </span><span class="dv">430</span>)</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Fit a basic linear regression model using logarithmic number of discharges to predict logarithmic hospital costs and superimposed the fitted regression line on the scatter plot.</span>
+hosp_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge<span class="op">~</span>log_numdschg, <span class="dt">data=</span>Hcost1)
+<span class="kw">plot</span>(logcharge<span class="op">~</span>log_numdschg, <span class="dt">data=</span>Hcost1, <span class="dt">xlab =</span> <span class="st">&quot;log number discharges&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log charge&quot;</span>)
+<span class="kw">abline</span>(hosp_blr, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+
+<span class="co"># Produce a scatter plot of logarithmic number of discharges to predict logarithmic hospital costs. Allow plotting symbols and colors to vary by diagnostic related group.</span>
+<span class="kw">plot</span>(logcharge<span class="op">~</span>log_numdschg, <span class="dt">data=</span>Hcost1, <span class="dt">xlab =</span> <span class="st">&quot;log number discharges&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log charge&quot;</span>,
+    <span class="dt">pch=</span> <span class="kw">as.numeric</span>(<span class="kw">as.factor</span>(Hcost1<span class="op">$</span>drg)), 
+    <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="kw">as.factor</span>(Hcost1<span class="op">$</span>drg)])
+<span class="kw">legend</span>(<span class="st">&quot;left&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;drg 209&quot;</span>,<span class="st">&quot;drg 391&quot;</span>, <span class="st">&quot;drg 430&quot;</span>), <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))
+
+<span class="co"># Fit a MLR model allowing intercepts and slopes to vary by drg.</span>
+hosp_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge<span class="op">~</span>log_numdschg <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(drg)<span class="op">*</span>log_numdschg, <span class="dt">data=</span>Hcost1)
+
+<span class="co"># Superimpose the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs.</span>
+<span class="kw">plot</span>(logcharge<span class="op">~</span>log_numdschg, <span class="dt">data=</span>Hcost1, <span class="dt">xlab =</span> <span class="st">&quot;log number discharges&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log charge&quot;</span>,
+         <span class="dt">pch=</span> <span class="kw">as.numeric</span>(<span class="kw">as.factor</span>(Hcost1<span class="op">$</span>drg)), 
+    <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="kw">as.factor</span>(Hcost1<span class="op">$</span>drg)])
+xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dt">length.out=</span><span class="dv">100</span>)
+coef &lt;-<span class="st"> </span><span class="kw">summary</span>(hosp_mlr)<span class="op">$</span>coefficients[,<span class="dv">1</span>]
+fit209 &lt;-<span class="st"> </span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">2</span>]<span class="op">*</span>xseq
+<span class="kw">lines</span>(xseq,fit209, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+fit391 &lt;-<span class="st"> </span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">3</span>] <span class="op">+</span><span class="st"> </span>(coef[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">5</span>])<span class="op">*</span>xseq
+<span class="kw">lines</span>(xseq,fit391, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)
+fit430 &lt;-<span class="st"> </span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>(coef[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">6</span>])<span class="op">*</span>xseq
+<span class="kw">lines</span>(xseq,fit430, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+<span class="co">#par(mfrow = c(2, 1))</span>
+hosp_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge<span class="op">~</span>log_numdschg, <span class="dt">data=</span>Hcost1)
+<span class="kw">plot</span>(logcharge<span class="op">~</span>log_numdschg, <span class="dt">data=</span>Hcost1, <span class="dt">xlab =</span> <span class="st">&quot;log number discharges&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log charge&quot;</span>)
+<span class="kw">abline</span>(hosp_blr, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+
+<span class="kw">plot</span>(logcharge<span class="op">~</span>log_numdschg, <span class="dt">data=</span>Hcost1, <span class="dt">xlab =</span> <span class="st">&quot;log number discharges&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log charge&quot;</span>,
+    <span class="dt">pch=</span> <span class="kw">as.numeric</span>(<span class="kw">as.factor</span>(Hcost1<span class="op">$</span>drg)), 
+    <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="kw">as.factor</span>(Hcost1<span class="op">$</span>drg)])
+<span class="kw">legend</span>(<span class="st">&quot;left&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&quot;drg 209&quot;</span>,<span class="st">&quot;drg 391&quot;</span>, <span class="st">&quot;drg 430&quot;</span>), <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">pch =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))
+
+hosp_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge<span class="op">~</span>log_numdschg <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(drg)<span class="op">*</span>log_numdschg, <span class="dt">data=</span>Hcost1)
+<span class="co">#summary(hosp_mlr)$coefficients[,1]</span>
+<span class="kw">plot</span>(logcharge<span class="op">~</span>log_numdschg, <span class="dt">data=</span>Hcost1, <span class="dt">xlab =</span> <span class="st">&quot;log number discharges&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log charge&quot;</span>,
+         <span class="dt">pch=</span> <span class="kw">as.numeric</span>(<span class="kw">as.factor</span>(Hcost1<span class="op">$</span>drg)), 
+    <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>)[<span class="kw">as.factor</span>(Hcost1<span class="op">$</span>drg)])
+xseq &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dt">length.out=</span><span class="dv">100</span>)
+coef &lt;-<span class="st"> </span><span class="kw">summary</span>(hosp_mlr)<span class="op">$</span>coefficients[,<span class="dv">1</span>]
+fit209 &lt;-<span class="st"> </span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">2</span>]<span class="op">*</span>xseq
+<span class="kw">lines</span>(xseq,fit209, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+fit391 &lt;-<span class="st"> </span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">3</span>] <span class="op">+</span><span class="st"> </span>(coef[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">5</span>])<span class="op">*</span>xseq
+<span class="kw">lines</span>(xseq,fit391, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>)
+fit430 &lt;-<span class="st"> </span>coef[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">4</span>] <span class="op">+</span><span class="st"> </span>(coef[<span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>coef[<span class="dv">6</span>])<span class="op">*</span>xseq
+<span class="kw">lines</span>(xseq,fit430, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>success_msg(“Congratulations! When you superimposed the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs, note how slopes differ dramatically from the slope from the basic linear regression model.”)</p>
+</div>
+</div>
+<div id="general-linear-hypothesis" class="section level2">
+<h2><span class="header-section-number">3.6</span> General linear hypothesis</h2>
+<div id="video-exercise.-hypothesis-testing" class="section level3">
+<h3><span class="header-section-number">3.6.1</span> Video (Exercise). Hypothesis testing</h3>
+<div id="learning-objectives-10" class="section level4">
+<h4><span class="header-section-number">3.6.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Jointly test the significance of a set of regression coefficients using the general linear hypothesis</li>
+<li>Conduct a test of a regression coefficient versus one- or two-side alternatives</li>
+</ul>
+</div>
+<div id="video-overheads-8" class="section level4">
+<h4><span class="header-section-number">3.6.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Testing the significance of a categorical variable</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>, <span class="st">&quot;logface&quot;</span>)]
+Term_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat), <span class="dt">data =</span> Term4)
+<span class="kw">anova</span>(Term_mlr1)
+Term_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh, <span class="dt">data =</span> Term4)
+
+Fstat &lt;-<span class="st"> </span>(<span class="kw">anova</span>(Term_mlr2)<span class="op">$</span><span class="st">`</span><span class="dt">Sum Sq</span><span class="st">`</span>[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="kw">anova</span>(Term_mlr1)<span class="op">$</span><span class="st">`</span><span class="dt">Sum Sq</span><span class="st">`</span>[<span class="dv">5</span>])<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span><span class="kw">anova</span>(Term_mlr1)<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">5</span>])
+Fstat
+<span class="kw">cat</span>(<span class="st">&quot;p-value is&quot;</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(Fstat, <span class="dt">df1 =</span> <span class="dv">2</span> , <span class="dt">df2 =</span> <span class="kw">anova</span>(Term_mlr1)<span class="op">$</span>Df[<span class="dv">5</span>]))</code></pre></div>
+<p><strong>Overhead B. Overview of the general linear hypothesis</strong></p>
+<ul>
+<li>The likelihood ratio is a general statistical test procedure that compares a model to a subset</li>
+<li>The general linear hypothesis test procedure is similar.
+<ul>
+<li>Start with a (large) linear regression model, examine the fit to a set of data</li>
+<li>Compare this to smaller model that is a subset of the large model.</li>
+<li>“Subset” is the sense that regression coefficients from the small model are linear combinations of regression coefficients of the large model (e.g., set them to zero)</li>
+</ul></li>
+<li>Although the likelihood ratio test is more generally available, the general linear hypothesis test is more accurate for smaller data sets (for normally distributed data)</li>
+</ul>
+<p><strong>Overhead C. Procedure for conducting the general linear hypothesis</strong></p>
+<ul>
+<li>Run the full regression and get the error sum of squares and mean square error, which we label as <span class="math inline">\((Error SS)_{full}\)</span> and <span class="math inline">\(s^2_{full}\)</span>, respectively.</li>
+<li>Run a reduced regression and get the error sum of squares, labelled <span class="math inline">\((Error SS)_{reduced}\)</span>.</li>
+<li>Using <span class="math inline">\(p\)</span> for the number of linear restrictions, calculate <span class="math display">\[
+F-ratio = \frac{(Error SS)_{reduced}-(Error SS)_{full}}{p s^2_{full}} .
+\]</span></li>
+<li>The probability value is <span class="math inline">\(p-value = \Pr(F_{p,df} &gt; F-ratio)\)</span> where <span class="math inline">\(F_{p,df}\)</span> has an <em>F</em> distribution with degrees of freedom <em>p</em> and <em>df</em>, respectively. (Here, <em>df</em> is the degrees of freedom for the full model.)</li>
+</ul>
+<p><strong>Overhead D. The general linear hypothesis for a single variable</strong></p>
+<ul>
+<li>Suppose that you wish to test the hypothesisthat a regression coefficient equals 0.
+<ul>
+<li>One could use the general linear hypothsis procedure with <span class="math inline">\(p=1\)</span>.</li>
+<li>One could also examine the corresponding <span class="math inline">\(t-ratio\)</span>.</li>
+<li>Which is correct?</li>
+</ul></li>
+<li>Both. One can show that <span class="math inline">\((t-ratio)^2 = F-ratio\)</span>, so they are equivalent statistics.
+<ul>
+<li>The general linear hypothesis is useful because it can be extended to multiple coefficients.</li>
+<li>The <em>t-ratio</em> is useful because it can be used to examine one-sided alternative hypotheses.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="exercise.-hypothesis-testing-and-term-life" class="section level3">
+<h3><span class="header-section-number">3.6.2</span> Exercise. Hypothesis testing and term life</h3>
+<p><strong>Assignment Text</strong></p>
+<p>With our <code>Term life</code> data, let us compare a model based on the binary variable that indicates whether a survey respondent is single versus the more complex marital status, <code>marstat</code>. In principle, more detailed information is better. But, it may be that the additional information in <code>marstat</code>, compared to <code>single</code>, does not help fit the data in a significantly better way.</p>
+<p>As part of the preparatory work, the dataframe <code>Term4</code> is available that includes the binary variable <code>single</code> and the factor <code>marstat</code>. Moreover, the regression object <code>Term_mlr</code> contains information in a multiple linear regression fit of <code>logface</code> on the base explanatory variables ’logincome<code>,</code>education<code>, and</code>numhh`.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Fit a MLR model using the base explanatory variables plus <code>single</code> and another model using the base variables plus <code>marstat</code>.</li>
+<li>Use the F test to decide whether the additional complexity <code>marstat</code> is warranted by calculating the p-value associated with this test.</li>
+<li>Fit a MLR model using the base explanatory variables plus <code>single</code> interacted with <code>logincome</code> and another model using the base variables plus <code>marstat</code> interacted with <code>logincome</code>.</li>
+<li>Use the F test to decide whether the additional complexity <code>marstat</code> is warranted by calculating the p-value associated with this test.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<pre><code>Here is the code to calculate it by hand
+Fstat12 &lt;- (anova(Term_mlr1)$`Sum Sq`[5] - 
+              anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])
+Fstat12
+cat(&quot;p-value is&quot;, 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))</code></pre>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>, <span class="st">&quot;logface&quot;</span>)]
+Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
+Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
+Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh , <span class="dt">data =</span> Term4)
+<span class="kw">anova</span>(Term_mlr)</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Fit a MLR model using the base explanatory variables plus `single` and another model using the base variables plus `marstat`.</span>
+Term_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span>single, <span class="dt">data =</span> Term4)
+Term_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span>marstat, <span class="dt">data =</span> Term4)
+
+<span class="co"># Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.</span>
+<span class="kw">anova</span>(Term_mlr1,Term_mlr2)
+
+<span class="co"># Fit a MLR model using the base explanatory variables plus `single` interacted with `logincome` and another model using the base variables plus `marstat` interacted with `logincome`.</span>
+Term_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>single<span class="op">*</span>logincome, <span class="dt">data =</span> Term4)
+Term_mlr4 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span>marstat<span class="op">*</span>logincome, <span class="dt">data =</span> Term4)
+
+<span class="co"># Use the F test to decide whether the additional complexity `marstat` is warranted by calculating the p-value associated with this test.</span>
+<span class="kw">anova</span>(Term_mlr3,Term_mlr4)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+Term_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span>single, <span class="dt">data =</span> Term4)
+Term_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span>marstat, <span class="dt">data =</span> Term4)
+<span class="kw">anova</span>(Term_mlr1,Term_mlr2)
+<span class="co">#Fstat12 &lt;- (anova(Term_mlr1)$`Sum Sq`[5] - </span>
+<span class="co">#              anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])</span>
+<span class="co">#Fstat12</span>
+<span class="co">#cat(&quot;p-value is&quot;, 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))</span>
+Term_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>single<span class="op">*</span>logincome, <span class="dt">data =</span> Term4)
+Term_mlr4 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span>marstat<span class="op">*</span>logincome, <span class="dt">data =</span> Term4)
+<span class="kw">anova</span>(Term_mlr3,Term_mlr4)</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>success_msg(“Congratulations! Hypothesis testing is a primary tool for ‘inferring’ about the real world {in contrast to mathematical ‘deduction’.} Moreover, as we will see in the next chapter, it can also be used to develop a model.”)</p>
+</div>
+<div id="exercise.-hypothesis-testing-and-wisconsin-hospital-costs" class="section level3">
+<h3><span class="header-section-number">3.6.3</span> Exercise. Hypothesis testing and Wisconsin hospital costs</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In a previous exercise, you were introduced to a dataset with hospital charges aggregated by:</p>
+<ul>
+<li><code>drg</code>, diagnostic related groups of costs,</li>
+<li><code>payer</code>, type of health care provider (Fee for service, HMO, and other), and</li>
+<li><code>hsa</code>, nine major geographic areas.</li>
+</ul>
+<p>We continue our analysis of the outcome variable <code>logcharge</code>, the logarithm of total hospital charges per number of discharges, in terms of <code>log_numdschg</code>, the logarithm of the number of discharges, as well as the three categorical variables used in the aggregation. As before, we restrict consideration to three types of drgs, numbers 209, 391, and 431 that has been preloaded in the dataframe <code>Hcost1</code>.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Fit a basic linear regression model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges.</li>
+<li>Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variables logarithmic number of discharges and the categorical variable diagnostic related group. Identify the <em>F</em> statistic and <em>p</em> value that test the importance of diagnostic related group.</li>
+<li>Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges interacted with diagnostic related group. Identify the <em>F</em> statistic and <em>p</em> value that test the importance of diagnostic related group interaction with logarithmic number of discharges.</li>
+<li>Calculate a coefficient of determination, <span class="math inline">\(R^2\)</span>, for each of these models as well as for a model using logarithmic number of discharges and categorical variable <code>hsa</code> as predictors.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Hcost &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">WiscHcosts.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Hcost &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/2cc1e2739bf827093db31d7c4e6dcdc348ac984e/WiscHcosts.csv&quot;, header = TRUE)</span>
+Hcost1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Hcost, drg <span class="op">==</span><span class="st"> </span><span class="dv">209</span><span class="op">|</span>drg <span class="op">==</span><span class="st"> </span><span class="dv">391</span><span class="op">|</span>drg <span class="op">==</span><span class="st"> </span><span class="dv">430</span>)</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Regress log charges on log number of discharges</span>
+hosp_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge <span class="op">~</span><span class="st"> </span>log_numdschg , <span class="dt">data=</span>Hcost1)
+<span class="kw">anova</span>(hosp_blr)
+
+<span class="co"># Regress log charges on log number of discharges and drg. Identify the *F* statistic and *p* value that test the importance of diagnostic related group.</span>
+hosp_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge <span class="op">~</span><span class="st"> </span>log_numdschg <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(drg), <span class="dt">data=</span>Hcost1)
+<span class="kw">anova</span>(hosp_mlr1)
+
+<span class="co"># Regress log charges on the interaction of log number of discharges and drg. </span>
+hosp_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge <span class="op">~</span><span class="st"> </span>log_numdschg <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(drg)<span class="op">*</span>log_numdschg, <span class="dt">data=</span>Hcost1)
+<span class="kw">anova</span>(hosp_mlr2)
+
+<span class="co"># Calculate a coefficient of determination, $R^2$, for each of these models as well as for a model using logarithmic number of discharges and categorical variable `hsa` as predictors.</span>
+<span class="kw">summary</span>(hosp_blr)<span class="op">$</span>r.squared
+<span class="kw">summary</span>(hosp_mlr1)<span class="op">$</span>r.squared
+<span class="kw">summary</span>(hosp_mlr2)<span class="op">$</span>r.squared
+
+hosp_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge <span class="op">~</span><span class="st"> </span>log_numdschg <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(hsa)<span class="op">*</span>log_numdschg, <span class="dt">data=</span>Hcost1)
+<span class="kw">summary</span>(hosp_mlr3)<span class="op">$</span>r.squared</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+
+hosp_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge <span class="op">~</span><span class="st"> </span>log_numdschg , <span class="dt">data=</span>Hcost1)
+<span class="kw">anova</span>(hosp_blr)
+hosp_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge <span class="op">~</span><span class="st"> </span>log_numdschg <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(drg), <span class="dt">data=</span>Hcost1)
+<span class="kw">anova</span>(hosp_mlr1)
+hosp_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge <span class="op">~</span><span class="st"> </span>log_numdschg <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(drg)<span class="op">*</span>log_numdschg, <span class="dt">data=</span>Hcost1)
+<span class="kw">anova</span>(hosp_mlr2)
+<span class="kw">summary</span>(hosp_blr)<span class="op">$</span>r.squared
+<span class="kw">summary</span>(hosp_mlr1)<span class="op">$</span>r.squared
+<span class="kw">summary</span>(hosp_mlr2)<span class="op">$</span>r.squared
+
+hosp_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcharge <span class="op">~</span><span class="st"> </span>log_numdschg <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(hsa)<span class="op">*</span>log_numdschg, <span class="dt">data=</span>Hcost1)
+<span class="kw">summary</span>(hosp_mlr3)<span class="op">$</span>r.squared</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>success_msg(“Congratulations! By examining the coefficients of determination, <span class="math inline">\(R^2\)</span>, for each of these models, you see that this provides one piece of evidence that the <code>hsa</code> is a far poorer predictor of costs than <code>drg</code>.”)</p>
+</div>
+<div id="exercise.-hypothesis-testing-and-auto-claims" class="section level3">
+<h3><span class="header-section-number">3.6.4</span> Exercise. Hypothesis testing and auto claims</h3>
+<p><strong>Assignment Text</strong></p>
+<p>As an actuarial analyst, you are working with a large insurance company to help them understand their claims distribution for their private passenger automobile policies. You have available claims data for a recent year, consisting of:</p>
+<ul>
+<li><code>state</code>: codes 01 through 17 used, with each code randomly assigned to an actual individual state</li>
+<li><code>class</code>: rating class of operator, based on age, gender, marital status, and use of vehicle</li>
+<li><code>gender</code>: operator gender</li>
+<li><code>age</code>: operator age</li>
+<li><code>paid</code>: amount paid to settle and close a claim.</li>
+</ul>
+<p>You are focusing on older drivers, 50 and higher, for which there are <em>n</em> = 6,773 claims available.</p>
+<p><strong>Instructions</strong></p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Run a regression of <code>logpaid</code> on <code>age</code>. Is <code>age</code> a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule. Also comment on the goodness of fit of this variable.</p></li>
+<li><p>Consider using class as a single explanatory variable. Use the one factor to estimate the model and respond to the following questions.</p>
+<p>b (i). What is the point estimate of claims in class C7, drivers 50-69, driving to work or school, less than 30 miles per week with annual mileage under 7500, in natural logarithmic units?</p>
+<p>b (ii). Determine the corresponding 95% confidence interval of expected claims, in natural logarithmic units.</p>
+<p>b (iii). Convert the 95% confidence interval of expected claims that you determined in part b(ii) to dollars.</p></li>
+<li><p>Run a regression of <code>logpaid</code> on <code>age</code>, <code>gender</code> and the categorical variables <code>state</code> and <code>class</code>.</p>
+<p>c (i). Is <code>gender</code> a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule.</p>
+<p>c (ii). Is <code>class</code> a statistically significant variable? To respond to this question, use a formal test of hypothesis. State your null and alternative hypotheses, decision-making criterion, and your decision-making rule.</p>
+<p>c (iii). Use the model to provide a point estimate of claims in dollars (not log dollars) for a male age 60 in STATE 2 in <code>class</code> C7.</p>
+<p>c (iv). Write down the coefficient associated with <code>class</code> C7 and interpret this coefficient.</p></li>
+</ol>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>success_msg(“Congratulations!”)</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-linear-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variable-selection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/Chapters/Chapter3.Rmd",
+"text": "Edit"
+},
+"download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

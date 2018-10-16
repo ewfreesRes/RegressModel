@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
+  <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
+  <meta name="github-repo" content="<a href="https://github.com/ewfreesRes/RegressModel" class="uri">https://github.com/ewfreesRes/RegressModel</a>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  
+  <meta name="twitter:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
+  
+
+<meta name="author" content="Edward W. (Jed) Frees, University of Wisconsin-Madison">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="regression-and-the-normal-distribution.html">
+<link rel="next" href="multiple-linear-regression-mlr.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+</script>
+
+<script language="javascript">
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+</script>
+<script language="javascript">
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+</script>
+<script language="javascript">
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+</script>
+
+<script language="javascript">
+function toggleDet(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
+</script>
+
+<script language="javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+<style>
+/* Rearrange console label */
+.datacamp-exercise ol li, .datacamp-exercise ul li {
+  margin-bottom: 0em !important;
+}
+
+/* Remove bullet marker */
+.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
+  content: '' !important;
+}
+</style>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125587869-1');
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Regression Modeling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#topic-description"><i class="fa fa-check"></i>Topic Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tutorial-description"><i class="fa fa-check"></i>Tutorial Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#welcome-to-the-tutorial-video"><i class="fa fa-check"></i>Welcome to the Tutorial Video</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>1</b> Regression and the Normal Distribution</a><ul>
+<li class="chapter" data-level="1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#fitting-a-normal-distribution"><i class="fa fa-check"></i><b>1.1</b> Fitting a normal distribution</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video"><i class="fa fa-check"></i><b>1.1.1</b> Video</a></li>
+<li class="chapter" data-level="1.1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-fitting-galtons-height-data"><i class="fa fa-check"></i><b>1.1.2</b> Exercise. Fitting Galton’s height data</a></li>
+<li class="chapter" data-level="1.1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-childs-height-distribution"><i class="fa fa-check"></i><b>1.1.3</b> Exercise. Visualizing child’s height distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#visualizing-distributions"><i class="fa fa-check"></i><b>1.2</b> Visualizing distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-1"><i class="fa fa-check"></i><b>1.2.1</b> Video</a></li>
+<li class="chapter" data-level="1.2.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-bodily-injury-claims-with-density-plots"><i class="fa fa-check"></i><b>1.2.2</b> Exercise. Visualizing bodily injury claims with density plots</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#summarizing-distributions"><i class="fa fa-check"></i><b>1.3</b> Summarizing distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
+<li class="chapter" data-level="1.3.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots"><i class="fa fa-check"></i><b>1.3.2</b> Exercise. Summarizing bodily injury claims with box and qq plots</a></li>
+<li class="chapter" data-level="1.3.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-effects-on-distributions-of-removing-the-largest-claim"><i class="fa fa-check"></i><b>1.3.3</b> Exercise. Effects on distributions of removing the largest claim</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#transformations"><i class="fa fa-check"></i><b>1.4</b> Transformations</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-4"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
+<li class="chapter" data-level="1.4.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-distribution-of-transformed-bodily-injury-claims"><i class="fa fa-check"></i><b>1.4.2</b> Exercise. Distribution of transformed bodily injury claims</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Basic Linear Regression</a><ul>
+<li class="chapter" data-level="2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#correlation"><i class="fa fa-check"></i><b>2.1</b> Correlation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-correlation"><i class="fa fa-check"></i><b>2.1.1</b> Video (Exercise). Correlation</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-correlations-and-the-wisconsin-lottery"><i class="fa fa-check"></i><b>2.1.2</b> Exercise. Correlations and the Wisconsin lottery</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#method-of-least-squares"><i class="fa fa-check"></i><b>2.2</b> Method of least squares</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-method-of-least-squares"><i class="fa fa-check"></i><b>2.2.1</b> Video (Exercise). Method of least squares</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-least-squares-fit-using-housing-prices"><i class="fa fa-check"></i><b>2.2.2</b> Exercise. Least squares fit using housing prices</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#understanding-variability"><i class="fa fa-check"></i><b>2.3</b> Understanding variability</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-understanding-variability"><i class="fa fa-check"></i><b>2.3.1</b> Video (Exercise). Understanding variability</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-summarizing-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.2</b> Exercise. Summarizing measures of uncertainty</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-effects-of-linear-transforms-on-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.3</b> Exercise. Effects of linear transforms on measures of uncertainty</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#statistical-inference"><i class="fa fa-check"></i><b>2.4</b> Statistical inference</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-statistical-inference"><i class="fa fa-check"></i><b>2.4.1</b> Video (Exercise). Statistical inference</a></li>
+<li class="chapter" data-level="2.4.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-statistical-inference-and-wisconsin-lottery"><i class="fa fa-check"></i><b>2.4.2</b> Exercise. Statistical inference and Wisconsin lottery</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#diagnostics"><i class="fa fa-check"></i><b>2.5</b> Diagnostics</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-diagnostics"><i class="fa fa-check"></i><b>2.5.1</b> Video (Exercise). Diagnostics</a></li>
+<li class="chapter" data-level="2.5.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-assessing-outliers-in-lottery-sales"><i class="fa fa-check"></i><b>2.5.2</b> Exercise. Assessing outliers in lottery sales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html"><i class="fa fa-check"></i><b>3</b> Multiple Linear Regression (MLR)</a><ul>
+<li class="chapter" data-level="3.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1</b> Method of least squares</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1.1</b> Video (Exercise). Method of least squares</a></li>
+<li class="chapter" data-level="3.1.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-least-squares-and-term-life-data"><i class="fa fa-check"></i><b>3.1.2</b> Exercise. Least squares and term life data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-interpreting-coefficients-as-proportional-changes"><i class="fa fa-check"></i><b>3.1.3</b> Exercise. Interpreting coefficients as proportional changes</a></li>
+<li class="chapter" data-level="3.1.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-interpreting-coefficients-as-elasticities"><i class="fa fa-check"></i><b>3.1.4</b> Exercise. Interpreting coefficients as elasticities</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#foundations-of-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.2</b> Foundations of multiple linear regresson</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-foundations-of-multiple-linear-regression"><i class="fa fa-check"></i><b>3.2.1</b> Video (Exercise). Foundations of multiple linear regression</a></li>
+<li class="chapter" data-level="3.2.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-multiple-choice-exercise-on-the-theory-maybeee"><i class="fa fa-check"></i><b>3.2.2</b> Exercise. Multiple choice exercise on the theory… Maybeee</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#statistical-inference-and-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.3</b> Statistical inference and multiple linear regresson</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-statistical-inference-and-multiple-linear-regression"><i class="fa fa-check"></i><b>3.3.1</b> Video (Exercise). Statistical inference and multiple linear regression</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-statistical-inference-and-term-life"><i class="fa fa-check"></i><b>3.3.2</b> Exercise. Statistical inference and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#binary-variables"><i class="fa fa-check"></i><b>3.4</b> Binary variables</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-binary-variables"><i class="fa fa-check"></i><b>3.4.1</b> Video (Exercise). Binary variables</a></li>
+<li class="chapter" data-level="3.4.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-binary-variables-and-term-life"><i class="fa fa-check"></i><b>3.4.2</b> Exercise. Binary variables and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#categorical-variables"><i class="fa fa-check"></i><b>3.5</b> Categorical variables</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-categorical-variables"><i class="fa fa-check"></i><b>3.5.1</b> Video (Exercise). Categorical variables</a></li>
+<li class="chapter" data-level="3.5.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-categorical-variables-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.5.2</b> Exercise. Categorical variables and Wisconsin hospital costs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#general-linear-hypothesis"><i class="fa fa-check"></i><b>3.6</b> General linear hypothesis</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-hypothesis-testing"><i class="fa fa-check"></i><b>3.6.1</b> Video (Exercise). Hypothesis testing</a></li>
+<li class="chapter" data-level="3.6.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-term-life"><i class="fa fa-check"></i><b>3.6.2</b> Exercise. Hypothesis testing and term life</a></li>
+<li class="chapter" data-level="3.6.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.6.3</b> Exercise. Hypothesis testing and Wisconsin hospital costs</a></li>
+<li class="chapter" data-level="3.6.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-auto-claims"><i class="fa fa-check"></i><b>3.6.4</b> Exercise. Hypothesis testing and auto claims</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variable-selection.html"><a href="variable-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Selection</a><ul>
+<li class="chapter" data-level="4.1" data-path="variable-selection.html"><a href="variable-selection.html#an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1</b> An iterative approach to data analysis and modeling</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1.1</b> Video (Exercise). An iterative approach to data analysis and modeling</a></li>
+<li class="chapter" data-level="4.1.2" data-path="variable-selection.html"><a href="variable-selection.html#mc-exercise.-an-iterative-approach-to-data-modeling"><i class="fa fa-check"></i><b>4.1.2</b> MC Exercise. An iterative approach to data modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="variable-selection.html"><a href="variable-selection.html#automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2</b> Automatic variable selection procedures</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2.1</b> Video (Exercise). Automatic variable selection procedures</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-data-snooping-in-stepwise-regression"><i class="fa fa-check"></i><b>4.2.2</b> Exercise. Data-snooping in stepwise regression</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="variable-selection.html"><a href="variable-selection.html#residual-analysis"><i class="fa fa-check"></i><b>4.3</b> Residual analysis</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-residual-analysis"><i class="fa fa-check"></i><b>4.3.1</b> Video (Exercise). Residual analysis</a></li>
+<li class="chapter" data-level="4.3.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-residual-analysis-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.3.2</b> Exercise. Residual analysis and risk manager survey</a></li>
+<li class="chapter" data-level="4.3.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-added-variable-plot-and-refrigerator-prices"><i class="fa fa-check"></i><b>4.3.3</b> Exercise. Added variable plot and refrigerator prices</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="variable-selection.html"><a href="variable-selection.html#unusual-observations"><i class="fa fa-check"></i><b>4.4</b> Unusual observations</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-unusual-observations"><i class="fa fa-check"></i><b>4.4.1</b> Video (Exercise). Unusual observations</a></li>
+<li class="chapter" data-level="4.4.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-outlier-example"><i class="fa fa-check"></i><b>4.4.2</b> Exercise. Outlier example</a></li>
+<li class="chapter" data-level="4.4.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-high-leverage-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.4.3</b> Exercise. High leverage and risk manager survey</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="variable-selection.html"><a href="variable-selection.html#collinearity"><i class="fa fa-check"></i><b>4.5</b> Collinearity</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-collinearity"><i class="fa fa-check"></i><b>4.5.1</b> Video (Exercise). Collinearity</a></li>
+<li class="chapter" data-level="4.5.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-collinearity-and-term-life"><i class="fa fa-check"></i><b>4.5.2</b> Exercise. Collinearity and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="variable-selection.html"><a href="variable-selection.html#selection-criteria"><i class="fa fa-check"></i><b>4.6</b> Selection criteria</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-selection-criteria"><i class="fa fa-check"></i><b>4.6.1</b> Video (Exercise). Selection criteria</a></li>
+<li class="chapter" data-level="4.6.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-cross-validation-and-term-life"><i class="fa fa-check"></i><b>4.6.2</b> Exercise. Cross-validation and term life</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html"><i class="fa fa-check"></i><b>5</b> Interpreting Regression Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1</b> Case study: MEPS health expenditures</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1.1</b> Video (Exercise). Case study: MEPS health expenditures</a></li>
+<li class="chapter" data-level="5.1.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-summarizing-data"><i class="fa fa-check"></i><b>5.1.2</b> Exercise. Summarizing data</a></li>
+<li class="chapter" data-level="5.1.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-fit-a-benchmark-multiple-linear-regression-model"><i class="fa fa-check"></i><b>5.1.3</b> Exercise. Fit a benchmark multiple linear regression model</a></li>
+<li class="chapter" data-level="5.1.4" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-variable-selection"><i class="fa fa-check"></i><b>5.1.4</b> Exercise. Variable selection</a></li>
+<li class="chapter" data-level="5.1.5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-model-comparisons-using-cross-validation"><i class="fa fa-check"></i><b>5.1.5</b> Exercise. Model comparisons using cross-validation</a></li>
+<li class="chapter" data-level="5.1.6" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-out-of-sample-validation"><i class="fa fa-check"></i><b>5.1.6</b> Exercise. Out of sample validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.1</b> Video (Exercise). What the modeling procedure tells us</a></li>
+<li class="chapter" data-level="5.2.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.2</b> MC Exercise. What the modeling procedure tells us</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3.1</b> Video (Exercise). The importance of variable selection</a></li>
+<li class="chapter" data-level="5.3.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-principle-of-parsimony"><i class="fa fa-check"></i><b>5.3.2</b> MC Exercise. Principle of parsimony</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/ewfreesRes/RegressModel" target="blank">Regression Modeling Tutorial on GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Online Tutorial on <code>Regression Modeling with Actuarial and Financial Applications</code></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-linear-regression" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Basic Linear Regression</h1>
+<p><strong>Chapter description</strong></p>
+<p>This chapter considers regression in the case of only one explanatory variable. Despite this seeming simplicity, many deep ideas of regression can be developed in this framework. By limiting ourselves to the one variable case, we can illustrate the relationships between two variables graphically. Graphical tools prove to be important for developing a link between the data and a predictive model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reformat Data</span>
+Lot &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">WiscLottery.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)
+<span class="kw">str</span>(Lot)
+<span class="kw">cor</span>(Lot)
+Lot<span class="op">$</span>pop &lt;-<span class="st"> </span>Lot<span class="op">$</span>POP
+Lot<span class="op">$</span>sales &lt;-<span class="st"> </span>Lot<span class="op">$</span>SALES
+Lot<span class="op">$</span>medhome &lt;-<span class="st"> </span>Lot<span class="op">$</span>MEDHVL
+Lot2 &lt;-<span class="st"> </span>Lot[<span class="kw">c</span>(<span class="st">&quot;pop&quot;</span>,<span class="st">&quot;sales&quot;</span>,<span class="st">&quot;medhome&quot;</span>)]
+<span class="co">#write.csv(Lot2,&quot;CSVData\\Wisc_lottery.csv&quot;,row.names = FALSE)</span>
+
+
+outlr &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">OutlierExample.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="kw">str</span>(outlr)
+outlr<span class="op">$</span>y &lt;-<span class="st"> </span>outlr<span class="op">$</span>Y 
+outlr<span class="op">$</span>x &lt;-<span class="st"> </span>outlr<span class="op">$</span>X
+outlr<span class="op">$</span>codes &lt;-<span class="st"> </span>outlr<span class="op">$</span>CODES
+outlr2 &lt;-<span class="st"> </span>outlr[<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>,<span class="st">&quot;codes&quot;</span>)]
+<span class="co">#write.csv(outlr2,&quot;CSVData\\Outlier.csv&quot;,row.names = FALSE)</span></code></pre></div>
+<div id="correlation" class="section level2">
+<h2><span class="header-section-number">2.1</span> Correlation</h2>
+<div id="video-exercise.-correlation" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Video (Exercise). Correlation</h3>
+<div id="learning-objectives" class="section level4">
+<h4><span class="header-section-number">2.1.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Calculate and interpret a correlation coefficient</li>
+<li>Interpret correlation coefficients by visualizing scatter plots</li>
+</ul>
+</div>
+<div id="video-overheads" class="section level4">
+<h4><span class="header-section-number">2.1.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Wisconsin lottery data description</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>)
+<span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span>
+<span class="kw">str</span>(Lot)</code></pre></div>
+<p><strong>Overhead B. Summary statistics</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#options(scipen = 100, digits = 4)</span>
+<span class="co">#numSummary(Lot[,c(&quot;pop&quot;, &quot;sales&quot;)], statistics = c(&quot;mean&quot;, &quot;sd&quot;, &quot;quantiles&quot;), quantiles = c(0,.5,1))</span>
+(<span class="kw">as.data.frame</span>(psych<span class="op">::</span><span class="kw">describe</span>(Lot)))[,<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>)]
+<span class="co">#Rcmdr::numSummary(Lot[,c(&quot;pop&quot;, &quot;sales&quot;)], statistics = c(&quot;mean&quot;, &quot;sd&quot;, &quot;quantiles&quot;), quantiles = c(0,.5,1))</span></code></pre></div>
+<p><strong>Overhead C. Visualizing skewed distributions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">hist</span>(Lot<span class="op">$</span>pop, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>)
+<span class="kw">hist</span>(Lot<span class="op">$</span>sales, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;sales&quot;</span>)</code></pre></div>
+<p><strong>Overhead D. Visualizing relationships with a scatter plot</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales, <span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;sales&quot;</span>)</code></pre></div>
+<p><strong>Overhead E. Correlation coefficient</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales)</code></pre></div>
+</div>
+</div>
+<div id="exercise.-correlations-and-the-wisconsin-lottery" class="section level3">
+<h3><span class="header-section-number">2.1.2</span> Exercise. Correlations and the Wisconsin lottery</h3>
+<p><strong>Assignment Text</strong></p>
+<p>The Wisconsin lottery dataset, <code>Wisc_lottery</code>,has already been read into a dataframe <code>Lot</code>.</p>
+<p>Like insurance, lotteries are uncertain events and so the skills to work with and interpret lottery data are readily applicable to insurance. It is common to report sales and population in thousands of units, so this exercise gives you practice in rescaling data via linear transformations.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>From the available population and sales variables, create new variables in the dataframe <code>Lot</code>, <code>pop_1000</code> and <code>sales_1000</code> that are in thousands (of people and of dollars, respectively).</li>
+<li>Create summary statistics for the dataframe that includes these new variables.</li>
+<li>Plot <code>pop_1000</code> versus <code>sales_1000</code>.</li>
+<li>Calculate the correlation between <code>pop_1000</code> versus <code>sales_1000</code> using the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor">cor()</a>. How does this differ between the correlation between population and sales in the original units?</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>Use the dataframe to refer to pop and sales as <code>Lot$pop</code> and <code>Lot$sales</code>, respectively</p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+<span class="co">#library(Rcmdr)</span>
+<span class="co">#library(psych)</span>
+Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span></code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@Sample_code</span><span class="st">`</span>
+<span class="co"># Create new variables, say, `pop_1000` and `sales_1000`</span>
+Lot<span class="op">$</span>pop_<span class="dv">1000</span> &lt;-<span class="st"> </span>___
+___ &lt;-<span class="st"> </span>Lot<span class="op">$</span>sales<span class="op">/</span><span class="dv">1000</span>
+
+<span class="co"># Create summary statistics for the dataframe</span>
+<span class="kw">summary</span>(___)
+
+<span class="co"># Plot `pop_1000` versus `sales_1000`.</span>
+<span class="kw">plot</span>(___, ___)
+
+<span class="co"># Calculate the correlation between `pop_1000` versus `sales_1000` </span>
+<span class="kw">cor</span>(___, ___)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+Lot<span class="op">$</span>pop_<span class="dv">1000</span> &lt;-<span class="st"> </span>Lot<span class="op">$</span>pop<span class="op">/</span><span class="dv">1000</span>
+Lot<span class="op">$</span>sales_<span class="dv">1000</span> &lt;-<span class="st"> </span>Lot<span class="op">$</span>sales<span class="op">/</span><span class="dv">1000</span>
+<span class="kw">summary</span>(Lot)
+<span class="co">#(as.data.frame(psych::describe(Lot)))[,c(2,3,4,5,8,9)]</span>
+<span class="co">#(as.data.frame(psych::describe(Lot[,c(&quot;pop_1000&quot;, &quot;sales_1000&quot;)])))[,c(2,3,4,5,8,9)]</span>
+<span class="co">#Rcmdr::numSummary(Lot[,c(&quot;pop_1000&quot;, &quot;sales_1000&quot;)], statistics = c(&quot;mean&quot;, &quot;sd&quot;, &quot;quantiles&quot;), quantiles = c(0,.5,1))</span>
+<span class="kw">plot</span>(Lot<span class="op">$</span>pop_<span class="dv">1000</span>, Lot<span class="op">$</span>sales_<span class="dv">1000</span>)
+<span class="kw">cor</span>(Lot<span class="op">$</span>pop_<span class="dv">1000</span>, Lot<span class="op">$</span>sales_<span class="dv">1000</span>)</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“Lot”, incorrect_msg = “Looks like a variable is defined incorrectly. The hint may help.”) success_msg(“Congratulations! We will rescale data using ‘linear’ transformations regularly. In part we do this for communicating our analysis to others. Also in part, this is for our own convenience as it can allow us to see patterns more readily.”)</p>
+</div>
+</div>
+<div id="method-of-least-squares" class="section level2">
+<h2><span class="header-section-number">2.2</span> Method of least squares</h2>
+<div id="video-exercise.-method-of-least-squares" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Video (Exercise). Method of least squares</h3>
+<div id="learning-objectives-1" class="section level4">
+<h4><span class="header-section-number">2.2.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Fit a line to data using the method of least squares</li>
+<li>Predict an observation using a least squares fitted line</li>
+</ul>
+</div>
+<div id="video-overheads-1" class="section level4">
+<h4><span class="header-section-number">2.2.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Where to fit the line?</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
+<span class="kw">plot</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales,<span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;sales&quot;</span>)
+<span class="kw">abline</span>(model_blr, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)
+<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><strong>Overhead B. Method of least squares</strong></p>
+<ul>
+<li>For observation <span class="math inline">\(\{(y, x)\}\)</span>, the height of the regression line is <span class="math display">\[b_0 + b_1 x.\]</span></li>
+<li>Thus, <span class="math inline">\(y - (b_0 + b_1 x)\)</span> represents the deviation.</li>
+<li>The sum of squared deviations is <span class="math display">\[SS(b_0, b_1) = \sum (y - (b_0 + b_1 x))^2 .\]</span></li>
+<li>The <em>method of least squares</em> – determine values of <span class="math inline">\(b_0, b_1\)</span> that minimize <span class="math inline">\(SS\)</span>.</li>
+</ul>
+<p><strong>Overhead C. Regression coefficients</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
+<span class="kw">round</span>(<span class="kw">coefficients</span>(model_blr), <span class="dt">digits=</span><span class="dv">4</span>)
+<span class="kw">plot</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales,<span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;sales&quot;</span>)
+<span class="kw">abline</span>(model_blr, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><strong>Overhead D. Prediction</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">coefficients</span>(model_blr), <span class="dt">digits=</span><span class="dv">6</span>)
+<span class="kw">coefficients</span>(model_blr)[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="kw">coefficients</span>(model_blr)[<span class="dv">2</span>]<span class="op">*</span><span class="dv">30000</span>
+
+newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pop =</span> <span class="dv">30000</span>)
+<span class="kw">predict</span>(model_blr, newdata)</code></pre></div>
+</div>
+</div>
+<div id="exercise.-least-squares-fit-using-housing-prices" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Exercise. Least squares fit using housing prices</h3>
+<p><strong>Assignment Text</strong></p>
+<p>The prior video analyzed the effect that a zip code’s population has on lottery sales. Instead of population, suppose that you wish to understand the effect that housing prices have on the sale of lottery tickets. The dataframe <code>Lot</code>, read in from the Wisconsin lottery dataset <code>Wisc_lottery</code>, contains the variable <code>medhome</code> which is the median house price for each zip code, in thousands of dollars. In this exercise, you will get a feel for the distribution of this variable by examining summary statistics, examine its relationship with sales graphically and via correlations, fit a basic linear regression model and use this model to predict sales.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Summarize the dataframe <code>Lot</code> that contains <code>medhome</code> and <code>sales</code>.</li>
+<li>Plot <code>medhome</code> versus <code>sales</code>. Summarize this relationship by calculating the corresponding correlation coefficient using the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor">cor()</a>.</li>
+<li>Using the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm">lm()</a>, regress <code>medhome</code>, the explanatory variable, on <code>sales</code>, the outcome variable. Display the regression coefficients to four significant digits.</li>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict">predict()</a> and the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+<span class="co">#library(Rcmdr)</span>
+Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span></code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@Sample_code</span><span class="st">`</span>
+<span class="co"># Summarize the dataframe `Lot` that contains `medhome` and `sales`</span>
+<span class="kw">summary</span>(Lot)
+<span class="co"># Plot and calculate the correlation of `medhome` versus `sales`. </span>
+<span class="kw">cor</span>(___, ___)
+<span class="kw">plot</span>(___, ___)
+
+<span class="co"># Regress `medhome`  on `sales`. Display the regression coefficients to four significant digits.</span>
+model_blr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(___ <span class="op">~</span><span class="st"> </span>___, <span class="dt">data =</span> Lot)
+<span class="kw">round</span>(<span class="kw">coefficients</span>(model_blr1), <span class="dt">digits=</span> <span class="op">---</span>)
+
+<span class="co"># Predict sales assuming that the median house price is 50 </span>
+newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">medhome =</span> ___)
+<span class="kw">predict</span>(model_blr1, newdata)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+<span class="co">#numSummary(Lot[,c(&quot;medhome&quot;, &quot;sales&quot;)], statistics = c(&quot;mean&quot;, &quot;sd&quot;, &quot;quantiles&quot;), quantiles = c(0,.5,1))</span>
+<span class="co">#(as.data.frame(psych::describe(Lot[,c(&quot;medhome&quot;, &quot;sales&quot;)])))[,c(2,3,4,5,8,9)]</span>
+<span class="kw">summary</span>(Lot)
+<span class="kw">cor</span>(Lot<span class="op">$</span>medhome,Lot<span class="op">$</span>sales)
+<span class="kw">plot</span>(Lot<span class="op">$</span>medhome,Lot<span class="op">$</span>sales)
+model_blr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>medhome, <span class="dt">data =</span> Lot)
+<span class="kw">round</span>(<span class="kw">coefficients</span>(model_blr1), <span class="dt">digits=</span><span class="dv">4</span>)
+newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">medhome =</span> <span class="dv">50</span>)
+<span class="kw">predict</span>(model_blr1, newdata)</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“model_blr1”, incorrect_msg = “The basic linear regression model is incorrectly specified.”) test_object(“newdata”, incorrect_msg = “The new data is incorrectly specified.”) success_msg(“Congratulations! You now have experience fitting a regression line and using this line for predictions, just as Galton did when he used parents’ heights to predict the height of an adult child. Well done!”)</p>
+</div>
+</div>
+<div id="understanding-variability" class="section level2">
+<h2><span class="header-section-number">2.3</span> Understanding variability</h2>
+<div id="video-exercise.-understanding-variability" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> Video (Exercise). Understanding variability</h3>
+<div id="learning-objectives-2" class="section level4">
+<h4><span class="header-section-number">2.3.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Visualize the ANOVA decomposition of variability</li>
+<li>Calculate and interpret <span class="math inline">\(R^2\)</span>, the coefficient of determination</li>
+<li>Calculate and interpret <span class="math inline">\(s^2\)</span> the mean square error</li>
+<li>Explain the components of the ANOVA table</li>
+</ul>
+</div>
+<div id="video-overheads-2" class="section level4">
+<h4><span class="header-section-number">2.3.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Visualizing the uncertainty about a line</strong></p>
+<p><strong>Overhead B. R script for visualizing the uncertainty about a line</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="fl">2.2</span>,<span class="fl">2.1</span>,.<span class="dv">2</span>,.<span class="dv">2</span>),<span class="dt">cex=</span><span class="fl">1.2</span>)
+x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">len=</span><span class="dv">101</span>)
+y &lt;-<span class="st"> </span>x
+<span class="kw">plot</span>(x, y, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">4</span>), <span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>, <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)
+<span class="kw">axis</span>(<span class="dv">1</span>, <span class="dt">at =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>),<span class="dt">lab =</span> <span class="kw">expression</span>(<span class="kw">bar</span>(x), x))
+<span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">at =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>),<span class="dt">lab =</span> <span class="kw">expression</span>(<span class="kw">bar</span>(y), <span class="kw">hat</span>(y), y), <span class="dt">las=</span><span class="dv">1</span>)
+<span class="kw">abline</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
+<span class="kw">segments</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dt">lty=</span><span class="dv">2</span>)
+<span class="kw">segments</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
+<span class="kw">segments</span>(<span class="dv">1</span>, <span class="op">-</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
+<span class="kw">segments</span>(<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
+
+<span class="kw">points</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dt">cex=</span><span class="fl">1.5</span>, <span class="dt">pch=</span><span class="dv">19</span>)
+
+<span class="kw">arrows</span>(<span class="fl">1.0</span>, <span class="dv">1</span>, <span class="fl">1.0</span>, <span class="dv">3</span>, <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">angle=</span><span class="dv">15</span>, <span class="dt">length=</span><span class="fl">0.12</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">text</span>(<span class="fl">1.3</span>, <span class="fl">2.2</span>,   <span class="kw">expression</span>( y<span class="op">-</span><span class="kw">hat</span>(y)),<span class="dt">cex=</span><span class="fl">0.8</span>) 
+<span class="kw">text</span>(<span class="op">-</span>.<span class="dv">3</span>,<span class="fl">2.2</span>,<span class="st">&quot;&#39;unexplained&#39; deviation&quot;</span>, <span class="dt">cex=</span>.<span class="dv">8</span>) 
+<span class="kw">arrows</span>(<span class="fl">1.0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="fl">1.0</span>, <span class="dv">1</span>, <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">angle=</span><span class="dv">15</span>, <span class="dt">length=</span><span class="fl">0.12</span>, <span class="dt">lwd=</span><span class="dv">2</span>)
+<span class="kw">text</span>(<span class="fl">1.85</span>, <span class="dv">0</span>, <span class="kw">expression</span>(<span class="kw">hat</span>(y)<span class="op">-</span><span class="kw">bar</span>(y) <span class="op">==</span><span class="st"> </span>b[<span class="dv">1</span>](x<span class="op">-</span><span class="kw">bar</span>(x)) ), <span class="dt">cex=</span><span class="fl">0.8</span> )
+<span class="kw">text</span>(<span class="fl">2.1</span>, <span class="op">-</span><span class="fl">0.5</span>, <span class="st">&quot; &#39;explained&#39; deviation&quot;</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">arrows</span>(<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">angle=</span><span class="dv">15</span>, <span class="dt">length=</span><span class="fl">0.12</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
+<span class="kw">text</span>(<span class="dv">0</span>, <span class="op">-</span><span class="fl">1.3</span>, <span class="kw">expression</span>( x<span class="op">-</span><span class="kw">bar</span>(x)), <span class="dt">cex=</span><span class="fl">0.8</span>  )
+<span class="kw">text</span>(<span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="kw">expression</span>( <span class="kw">hat</span>(y)<span class="op">==</span><span class="st"> </span>b[<span class="dv">0</span>]<span class="op">+</span><span class="st"> </span>b[<span class="dv">1</span>]<span class="op">*</span>x), <span class="dt">cex=</span><span class="fl">0.8</span>  )</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p><strong>Overhead C. The coefficient of determination, <span class="math inline">\(R^2\)</span> </strong></p>
+<p><strong>Overhead D. The mean square error, <span class="math inline">\(s^2\)</span> </strong></p>
+<p><strong>Overhead E. ANOVA Table</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
+<span class="kw">anova</span>(model_blr)
+<span class="kw">sqrt</span>(<span class="kw">anova</span>(model_blr)<span class="op">$</span>Mean[<span class="dv">2</span>])
+<span class="kw">summary</span>(model_blr)<span class="op">$</span>r.squared</code></pre></div>
+</div>
+</div>
+<div id="exercise.-summarizing-measures-of-uncertainty" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Exercise. Summarizing measures of uncertainty</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In a previous exercise, you developed a regression line to fit the variable <code>medhome</code>, the median house price for each zip code, as a predictor of lottery sales. The regression of <code>medhome</code> on <code>sales</code> has been summarized in the <code>R</code> object <code>model_blr</code>.</p>
+<p>How reliable is the regression line? In this excercise, you will compute some of the standard measures that are used to summarize the goodness of this fit.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Summarize the fitted regression model in an ANOVA table.</li>
+<li>Determine the size of the typical residual, <span class="math inline">\(s\)</span>.</li>
+<li>Determine the coefficient of determination, <span class="math inline">\(R^2\)</span>.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>Learn more about possibilities through the <code>Rdocumentation</code> site. If you have not done so already, check out the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/anova">anova()</a></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span></code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@Sample_code</span><span class="st">`</span>
+model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales  <span class="op">~</span><span class="st"> </span>medhome, <span class="dt">data =</span> Lot)
+
+<span class="co"># Summarize the fitted regression model in an ANOVA table.</span>
+<span class="kw">anova</span>(___)
+
+<span class="co"># Determine the size of the typical residual, $s$.</span>
+<span class="kw">sqrt</span>(<span class="kw">anova</span>(___)<span class="op">$</span>Mean[<span class="dv">2</span>])
+
+<span class="co"># Determine the coefficient of determination, $R^2$. </span>
+<span class="kw">summary</span>(___)<span class="op">$</span>r.squared</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales  <span class="op">~</span><span class="st"> </span>medhome, <span class="dt">data =</span> Lot)
+<span class="kw">anova</span>(model_blr)
+<span class="kw">sqrt</span>(<span class="kw">anova</span>(model_blr)<span class="op">$</span>Mean[<span class="dv">2</span>])
+<span class="kw">summary</span>(model_blr)<span class="op">$</span>r.squared</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“model_blr”, incorrect_msg = “The basic linear regression model is incorrectly specified.”) success_msg(“Congratulations! It will be helpful if you compare the results of this exercise to the regression of <code>pop</code> on <code>sales</code> from the prior video. We have seen that <code>pop</code> is more highly correlated with <code>sales</code> than <code>medhome</code>, so we are expecting greater uncertainty in this regression fit.”)</p>
+</div>
+<div id="exercise.-effects-of-linear-transforms-on-measures-of-uncertainty" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Exercise. Effects of linear transforms on measures of uncertainty</h3>
+<p><strong>Assignment Text</strong></p>
+<p>Let us see how rescaling, a linear transformation, affects our measures of uncertainty. As before, the Wisconsin lottery dataset <code>Wisc_lottery</code> has been read into a dataframe <code>Lot</code> that also contains <code>sales_1000</code>, sales in thousands of dollars, and <code>pop_1000</code>, zip code population in thousands. How do measures of uncertainty change when going from the original units to thousands of those units?</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Run a regression of <code>pop</code> on <code>sales_1000</code> and summarize this in an ANOVA table.</li>
+<li>For this regression, determine the <span class="math inline">\(s\)</span> and the coefficient of determination, <span class="math inline">\(R^2\)</span>.<br />
+</li>
+<li>Run a regression of <code>pop_1000</code> on <code>sales_1000</code> and summarize this in an ANOVA table.</li>
+<li>For this regression, determine the <span class="math inline">\(s\)</span> and the coefficient of determination, <span class="math inline">\(R^2\)</span>.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>The residual standard error is also available as <code>summary(model_blr1)$sigma</code>. The coefficient of determination is also available as <code>summary(model_blr1)$r.squared</code>.</p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+<span class="co">#library(Rcmdr)</span>
+Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span>
+Lot<span class="op">$</span>pop_<span class="dv">1000</span> &lt;-<span class="st"> </span>Lot<span class="op">$</span>pop<span class="op">/</span><span class="dv">1000</span>
+Lot<span class="op">$</span>sales_<span class="dv">1000</span> &lt;-<span class="st"> </span>Lot<span class="op">$</span>sales<span class="op">/</span><span class="dv">1000</span></code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@Sample_code</span><span class="st">`</span>
+<span class="co"># Run a regression of `pop` on `sales_1000` and summarize this in an ANOVA table.</span>
+model_blr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(sales_<span class="dv">1000</span>  <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
+<span class="kw">anova</span>(___)
+
+<span class="co"># Determine the $s$ and the coefficient of determination, $R^2$.  </span>
+<span class="kw">sqrt</span>(<span class="kw">anova</span>(___)<span class="op">$</span>Mean[<span class="dv">2</span>])
+<span class="kw">summary</span>(___)<span class="op">$</span>r.squared
+
+<span class="co"># Run a regression of `pop_1000` on `sales_1000` and summarize this in an ANOVA table.</span>
+model_blr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(___  <span class="op">~</span><span class="st"> </span>___, <span class="dt">data =</span> Lot)
+<span class="kw">anova</span>(model_blr2)
+
+<span class="co"># Determine the $s$ and the coefficient of determination, $R^2$. </span>
+___
+___</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+model_blr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(sales_<span class="dv">1000</span>  <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
+<span class="kw">anova</span>(model_blr1)
+<span class="kw">sqrt</span>(<span class="kw">anova</span>(model_blr1)<span class="op">$</span>Mean[<span class="dv">2</span>])
+<span class="kw">summary</span>(model_blr1)<span class="op">$</span>r.squared
+model_blr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(sales_<span class="dv">1000</span>  <span class="op">~</span><span class="st"> </span>pop_<span class="dv">1000</span> , <span class="dt">data =</span> Lot)
+<span class="kw">anova</span>(model_blr2)
+<span class="kw">sqrt</span>(<span class="kw">anova</span>(model_blr2)<span class="op">$</span>Mean[<span class="dv">2</span>])
+<span class="kw">summary</span>(model_blr2)<span class="op">$</span>r.squared</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“model_blr1”, incorrect_msg = “The basic linear regression model is incorrectly specified.”) success_msg(“Congratulations! In this exercise, you have seen that rescaling does not affect our measures of goodness of fit in any meaningful way. For example, the coefficient of determinations are completely unaffected. This is helpful because we will rescale variables extensively in our search for patterns in the data.”)</p>
+</div>
+</div>
+<div id="statistical-inference" class="section level2">
+<h2><span class="header-section-number">2.4</span> Statistical inference</h2>
+<div id="video-exercise.-statistical-inference" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Video (Exercise). Statistical inference</h3>
+<div id="learning-objectives-3" class="section level4">
+<h4><span class="header-section-number">2.4.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Conduct a hypothesis test for a regression coefficient using either a rejection/acceptance procedure or a p-value</li>
+<li>Calculate and interpret a confidence interval for a regression coefficient</li>
+<li>Calculate and interpret a prediction interval at a specific value of a predictor variable</li>
+</ul>
+<p><strong>Overhead A. Summary of basic linear regression model</strong></p>
+<p>Introduce the output in the <em>summary</em> of the basic linear regression model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span>
+<span class="co">#options(scipen = 8, digits = 4)</span>
+model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
+<span class="kw">summary</span>(model_blr)</code></pre></div>
+<p><strong>Overhead B. Hypothesis testing</strong></p>
+<pre><code>&gt; summary(model_blr)$coefficients
+            Estimate Std. Error t value  Pr(&gt;|t|)
+(Intercept) 469.7036  702.90619  0.6682 5.072e-01
+pop           0.6471    0.04881 13.2579 1.158e-17</code></pre>
+<p><strong>Overhead C. Confidence intervals</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Rcmdr<span class="op">::</span><span class="kw">Confint</span>(model_blr, <span class="dt">level =</span> .<span class="dv">90</span>)
+Rcmdr<span class="op">::</span><span class="kw">Confint</span>(model_blr, <span class="dt">level =</span> .<span class="dv">95</span>)</code></pre></div>
+<p><strong>Overhead D. Confidence intervals check</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Just for checking</span>
+<span class="kw">summary</span>(model_blr)<span class="op">$</span>coefficients[<span class="dv">2</span>,<span class="dv">1</span>]
+<span class="kw">summary</span>(model_blr)<span class="op">$</span>coefficients[<span class="dv">2</span>,<span class="dv">2</span>]
+<span class="kw">qt</span>(.<span class="dv">975</span>, <span class="dv">48</span>)
+
+<span class="kw">summary</span>(model_blr)<span class="op">$</span>coefficients[<span class="dv">2</span>,<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summary</span>(model_blr)<span class="op">$</span>coefficients[<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">*</span><span class="kw">qt</span>(.<span class="dv">975</span>, <span class="dv">48</span>)
+
+Rcmdr<span class="op">::</span><span class="kw">Confint</span>(model_blr, <span class="dt">level =</span> .<span class="dv">95</span>)
+<span class="kw">confint</span>(model_blr, <span class="dt">level =</span> .<span class="dv">95</span>)</code></pre></div>
+<p><strong>Overhead E. Prediction intervals</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">NewData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pop =</span> <span class="dv">10000</span>)
+<span class="kw">predict</span>(model_blr, NewData, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="dt">level =</span> .<span class="dv">90</span>)
+<span class="kw">predict</span>(model_blr, NewData, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="dt">level =</span> .<span class="dv">99</span>)</code></pre></div>
+</div>
+</div>
+<div id="exercise.-statistical-inference-and-wisconsin-lottery" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Exercise. Statistical inference and Wisconsin lottery</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In a previous exercise, you developed a regression line with the variable <code>medhome</code>, the median house price for each zip code, as a predictor of lottery sales. The regression of <code>medhome</code> on <code>sales</code> has been summarized in the <code>R</code> object <code>model_blr</code>.</p>
+<p>This exercise allows you to practice the standard inferential tasks: hypothesis testing, confidence intervals, and prediction.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Summarize the regression model and identify the <em>t</em>-statistic for testing the importance of the regression coefficient associated with <code>medhome</code>.</li>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/confint">confint()</a> to provide a 95% confidence interval for the regression coefficient associated with <code>medhome</code>.</li>
+<li>Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Use the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict">predict()</a> to provide a point prediction and a 95% prediction interval for sales.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>Taking a [summary()] of a regression object produces a new objeect. You can use the [str()] structure command to learn more about the new object. Try out a command such as <code>str(summary(model_blr))</code></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span></code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+model_blr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>medhome, <span class="dt">data =</span> Lot)
+<span class="co"># Summarize the regression model and identify the $t$-statistic for testing the importance of the regression coefficient associated with `medhome`.</span>
+<span class="kw">summary</span>(___)
+<span class="kw">summary</span>(___)<span class="op">$</span>coefficients
+<span class="kw">summary</span>(___)<span class="op">$</span>coefficients[,<span class="dv">3</span>]
+
+<span class="co"># Provide a 95\% confidence interval for the regression coefficient associated with `medhome`.</span>
+<span class="kw">confint</span>(___, <span class="dt">level =</span> ___)
+
+<span class="co"># Provide a point prediction and a 95\% prediction interval for sales.</span>
+NewData1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">medhome =</span> <span class="dv">50</span>)
+<span class="kw">predict</span>(___, NewData1, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="dt">level =</span> ___)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+model_blr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>medhome, <span class="dt">data =</span> Lot)
+<span class="kw">summary</span>(model_blr1)
+<span class="kw">summary</span>(model_blr1)<span class="op">$</span>coefficients
+<span class="kw">summary</span>(model_blr1)<span class="op">$</span>coefficients[,<span class="dv">3</span>]
+
+<span class="co">#Rcmdr::Confint(model_blr1, level = .95)</span>
+<span class="kw">confint</span>(model_blr1, <span class="dt">level =</span> .<span class="dv">95</span>)
+
+NewData1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">medhome =</span> <span class="dv">50</span>)
+<span class="kw">predict</span>(model_blr1, NewData1, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="dt">level =</span> .<span class="dv">95</span>)</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“model_blr1”, incorrect_msg = “The basic linear regression model is incorrectly specified.”) test_object(“NewData1”, incorrect_msg = “The new data object is incorrectly specified.”) success_msg(“Congratulations! Much of what we learn from a data modeling exercise can be summarized using standard inferential tools: hypothesis testing, confidence intervals, and prediction.”)</p>
+</div>
+</div>
+<div id="diagnostics" class="section level2">
+<h2><span class="header-section-number">2.5</span> Diagnostics</h2>
+<div id="video-exercise.-diagnostics" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Video (Exercise). Diagnostics</h3>
+<div id="learning-objectives-4" class="section level4">
+<h4><span class="header-section-number">2.5.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Describe how diagnostic checking and residual analysis are used in a statistical analysis</li>
+<li>Describe several model misspecifications commonly encountered in a regression analysis</li>
+</ul>
+<p><strong>Overhead A. Unusual observations in regression</strong></p>
+<ul>
+<li>We have defined regression estimates as minimizers of a least squares objective function.</li>
+<li>An appealing intuitive feature of linear regressions is that regression estimates can be expressed as weighted averages of outcomes.</li>
+<li>The weights vary by observation, some observations are more important than others.</li>
+<li>“Unusual” observations are far from the majority of the data set:</li>
+<li>Unusual in the vertical direction is called an <em>outlier</em>.</li>
+<li>Unusual in the horizontal directional is called a <em>high leverage point</em>.</li>
+</ul>
+<p><strong>Overhead B. Example. Outliers and High Leverage Points</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">outlr &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Outlier.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+
+<span class="co">#  FIGURE 2.7</span>
+<span class="kw">plot</span>(outlr<span class="op">$</span>x, outlr<span class="op">$</span>y, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">9</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
+<span class="kw">text</span>(<span class="fl">4.5</span>, <span class="fl">8.0</span>, <span class="st">&quot;A&quot;</span>)
+<span class="kw">text</span>(<span class="fl">9.8</span>, <span class="fl">8.0</span>, <span class="st">&quot;B&quot;</span>)
+<span class="kw">text</span>(<span class="fl">9.8</span>, <span class="fl">2.5</span>, <span class="st">&quot;C&quot;</span>)</code></pre></div>
+<p><strong>Overhead C. Regression fit with 19 base observations</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_outlr0 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">22</span>))
+<span class="kw">summary</span>(model_outlr0)
+<span class="kw">plot</span>(outlr<span class="op">$</span>x[<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>], outlr<span class="op">$</span>y[<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>], <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">9</span>))
+<span class="kw">abline</span>(model_outlr0)</code></pre></div>
+<p><strong>Overhead D. Regression fit with 19 base observations plus C</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_outlrC &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>))
+<span class="kw">summary</span>(model_outlrC)
+<span class="kw">plot</span>(outlr<span class="op">$</span>x[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>,<span class="dv">22</span>)], outlr<span class="op">$</span>y[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>,<span class="dv">22</span>)], <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">9</span>))
+<span class="kw">text</span>(<span class="fl">9.8</span>, <span class="fl">2.5</span>, <span class="st">&quot;C&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
+<span class="kw">abline</span>(model_outlrC)</code></pre></div>
+<p><strong>Overhead E. R code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_outlr0 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">22</span>))
+<span class="kw">summary</span>(model_outlr0)
+model_outlrA &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">21</span>,<span class="dv">22</span>))
+<span class="kw">summary</span>(model_outlrA)
+model_outlrB &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">22</span>))
+<span class="kw">summary</span>(model_outlrB)
+model_outlrC &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>))
+<span class="kw">summary</span>(model_outlrC)</code></pre></div>
+<p><strong>Overhead F. Visualizing four regression fits</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(outlr<span class="op">$</span>x, outlr<span class="op">$</span>y, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">9</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
+<span class="kw">text</span>(<span class="fl">4.5</span>, <span class="fl">8.0</span>, <span class="st">&quot;A&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">text</span>(<span class="fl">9.8</span>, <span class="fl">8.0</span>, <span class="st">&quot;B&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>)
+<span class="kw">text</span>(<span class="fl">9.8</span>, <span class="fl">2.5</span>, <span class="st">&quot;C&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)
+<span class="kw">abline</span>(model_outlr0)
+<span class="kw">abline</span>(model_outlrA, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
+<span class="kw">abline</span>(model_outlrB, <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>)
+<span class="kw">abline</span>(model_outlrC, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><strong>Overhead G. Results from four regression models</strong></p>
+<p><span class="math display">\[\begin{matrix}
+\begin{array}{c}
+\text{Results from Four Regressions}
+\end{array}\\\scriptsize
+\begin{array}{l|rrrrr} \hline \text{Data} &amp; b_0 &amp; b_1 &amp; s &amp; R^2(\%) &amp; t(b_1) \\ \hline \text{19 Base Points} &amp; 1.869 &amp; 0.611 &amp; 0.288 &amp; 89.0 &amp; 11.71 \\ \text{19 Base Points} ~+~ A &amp; 1.750 &amp; 0.693 &amp; 0.846 &amp; 53.7 &amp; 4.57 \\ \text{19 Base Points} ~+~ B &amp; 1.775 &amp; 0.640 &amp; 0.285 &amp; 94.7 &amp; 18.01 \\ \text{19 Base Points} ~+~ C &amp; 3.356 &amp; 0.155 &amp; 0.865 &amp; 10.3 &amp; 1.44 \\ \hline \end{array} 
+\end{matrix}\]</span></p>
+</div>
+</div>
+<div id="exercise.-assessing-outliers-in-lottery-sales" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Exercise. Assessing outliers in lottery sales</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In an earlier video, we made a scatter plot of population versus sales. This plot exhibits an outlier; the point in the upper left-hand side of the plot represents a zip code that includes Kenosha, Wisconsin. Sales for this zip code are unusually high given its population.</p>
+<p>This exercise summarizes the regression fit both with and without this zip code in order to see how robust our results are to the inclusion of this unusual observation.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>A basic linear regression fit of population on sales has already been fit in the object <code>model_blr</code>. Re-fit this same model to the data, this time omitting Kenosha (observation number 9).</li>
+<li>Plot these two least squares fitted lines superimposed on the full data set.</li>
+<li>What is the effect on the distribution of residuals by removing this point? Calculate a normal qq plot with and without Kenosha.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>You can extract the residuals from a regression object with the function [residuals()].</p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span></code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+model_blr &lt;-<span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
+<span class="kw">summary</span>(model_blr)
+<span class="co"># Re-fit this model to the data, this time omitting Kenosha (observation number 9).</span>
+model_Kenosha &lt;-<span class="st"> </span><span class="kw">lm</span>(___ <span class="op">~</span><span class="st"> </span>___, <span class="dt">data =</span> Lot, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">9</span>))
+<span class="kw">summary</span>(___)
+
+<span class="co"># Plot these two least squares fitted lines superimposed on the full data set.</span>
+<span class="kw">plot</span>(___, ___, <span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;sales&quot;</span>)
+<span class="kw">text</span>(<span class="dv">5000</span>, <span class="dv">24000</span>, <span class="st">&quot;Kenosha&quot;</span>)
+<span class="kw">abline</span>(model_blr, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)
+<span class="kw">abline</span>(___, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+
+<span class="co"># Calculate a normal qq plot with and without Kenosha.</span>
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">qqnorm</span>(<span class="kw">residuals</span>(___), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)
+<span class="kw">qqline</span>(<span class="kw">residuals</span>(___))<span class="er">)</span>
+<span class="kw">qqnorm</span>(<span class="kw">residuals</span>(___)), main =<span class="st"> &quot;&quot;</span><span class="er">)</span>
+<span class="kw">qqline</span>(<span class="kw">residuals</span>(___))<span class="er">)</span></code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+model_blr &lt;-<span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
+<span class="kw">summary</span>(model_blr)
+model_Kenosha &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">9</span>))
+<span class="kw">summary</span>(model_Kenosha)
+
+<span class="kw">plot</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales, <span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;sales&quot;</span>)
+<span class="kw">text</span>(<span class="dv">5000</span>, <span class="dv">24000</span>, <span class="st">&quot;Kenosha&quot;</span>)
+<span class="kw">abline</span>(model_blr, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)
+<span class="kw">abline</span>(model_Kenosha, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)
+
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">qqnorm</span>(<span class="kw">residuals</span>(model_blr), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)
+<span class="kw">qqline</span>(<span class="kw">residuals</span>(model_blr))
+<span class="kw">qqnorm</span>(<span class="kw">residuals</span>(model_Kenosha), <span class="dt">main =</span> <span class="st">&quot;&quot;</span>)
+<span class="kw">qqline</span>(<span class="kw">residuals</span>(model_Kenosha))</code></pre></div>
+<p><strong>Submission Correctness Tests (SCT)</strong></p>
+<p>test_error() test_object(“model_blr1”, incorrect_msg = “The basic linear regression model is incorrectly specified.”) test_object(“model_Kenosha”, incorrect_msg = “The linear regression model without Kenosha is incorrectly specified.”) success_msg(“Congratulations! Just because an observation is unusual does not make it bad or noninformative. Kenosha is close to the Illinois border; residents from Illinois probably participate in the Wisconsin lottery thus effectively increasing the potential pool of sales in Kenosha. Although unusual, there is interesting information to be learned from this observation.”)</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regression-and-the-normal-distribution.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multiple-linear-regression-mlr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/Chapters/Chapter2.Rmd",
+"text": "Edit"
+},
+"download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

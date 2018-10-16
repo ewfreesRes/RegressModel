@@ -14,9 +14,9 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Loss Data Analytics</a></li>
+        <li><a href="./">Regression Modeling</a></li>
       after: |
-        <li><a href="https://openacttexts.github.io/Loss-Data-Analytics/" target="blank">Loss Data Analytics on GitHub</a></li>
+        <li><a href="https://github.com/ewfreesRes/RegressModel" target="blank">Regression Modeling Tutorial on GitHub</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
     download: null
     sharing:

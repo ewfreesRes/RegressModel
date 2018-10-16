@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
+  <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
+  <meta name="github-repo" content="<a href="https://github.com/ewfreesRes/RegressModel" class="uri">https://github.com/ewfreesRes/RegressModel</a>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  
+  <meta name="twitter:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
+  
+
+<meta name="author" content="Edward W. (Jed) Frees, University of Wisconsin-Madison">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="multiple-linear-regression-mlr.html">
+<link rel="next" href="interpreting-regression-results.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+</script>
+
+<script language="javascript">
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+</script>
+<script language="javascript">
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+</script>
+<script language="javascript">
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+</script>
+
+<script language="javascript">
+function toggleDet(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
+</script>
+
+<script language="javascript">
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+<style>
+/* Rearrange console label */
+.datacamp-exercise ol li, .datacamp-exercise ul li {
+  margin-bottom: 0em !important;
+}
+
+/* Remove bullet marker */
+.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
+  content: '' !important;
+}
+</style>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-125587869-1');
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Regression Modeling</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#topic-description"><i class="fa fa-check"></i>Topic Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tutorial-description"><i class="fa fa-check"></i>Tutorial Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#welcome-to-the-tutorial-video"><i class="fa fa-check"></i>Welcome to the Tutorial Video</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>1</b> Regression and the Normal Distribution</a><ul>
+<li class="chapter" data-level="1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#fitting-a-normal-distribution"><i class="fa fa-check"></i><b>1.1</b> Fitting a normal distribution</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video"><i class="fa fa-check"></i><b>1.1.1</b> Video</a></li>
+<li class="chapter" data-level="1.1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-fitting-galtons-height-data"><i class="fa fa-check"></i><b>1.1.2</b> Exercise. Fitting Galton’s height data</a></li>
+<li class="chapter" data-level="1.1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-childs-height-distribution"><i class="fa fa-check"></i><b>1.1.3</b> Exercise. Visualizing child’s height distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#visualizing-distributions"><i class="fa fa-check"></i><b>1.2</b> Visualizing distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-1"><i class="fa fa-check"></i><b>1.2.1</b> Video</a></li>
+<li class="chapter" data-level="1.2.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-bodily-injury-claims-with-density-plots"><i class="fa fa-check"></i><b>1.2.2</b> Exercise. Visualizing bodily injury claims with density plots</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#summarizing-distributions"><i class="fa fa-check"></i><b>1.3</b> Summarizing distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
+<li class="chapter" data-level="1.3.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots"><i class="fa fa-check"></i><b>1.3.2</b> Exercise. Summarizing bodily injury claims with box and qq plots</a></li>
+<li class="chapter" data-level="1.3.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-effects-on-distributions-of-removing-the-largest-claim"><i class="fa fa-check"></i><b>1.3.3</b> Exercise. Effects on distributions of removing the largest claim</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#transformations"><i class="fa fa-check"></i><b>1.4</b> Transformations</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-4"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
+<li class="chapter" data-level="1.4.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-distribution-of-transformed-bodily-injury-claims"><i class="fa fa-check"></i><b>1.4.2</b> Exercise. Distribution of transformed bodily injury claims</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Basic Linear Regression</a><ul>
+<li class="chapter" data-level="2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#correlation"><i class="fa fa-check"></i><b>2.1</b> Correlation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-correlation"><i class="fa fa-check"></i><b>2.1.1</b> Video (Exercise). Correlation</a></li>
+<li class="chapter" data-level="2.1.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-correlations-and-the-wisconsin-lottery"><i class="fa fa-check"></i><b>2.1.2</b> Exercise. Correlations and the Wisconsin lottery</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#method-of-least-squares"><i class="fa fa-check"></i><b>2.2</b> Method of least squares</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-method-of-least-squares"><i class="fa fa-check"></i><b>2.2.1</b> Video (Exercise). Method of least squares</a></li>
+<li class="chapter" data-level="2.2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-least-squares-fit-using-housing-prices"><i class="fa fa-check"></i><b>2.2.2</b> Exercise. Least squares fit using housing prices</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#understanding-variability"><i class="fa fa-check"></i><b>2.3</b> Understanding variability</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-understanding-variability"><i class="fa fa-check"></i><b>2.3.1</b> Video (Exercise). Understanding variability</a></li>
+<li class="chapter" data-level="2.3.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-summarizing-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.2</b> Exercise. Summarizing measures of uncertainty</a></li>
+<li class="chapter" data-level="2.3.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-effects-of-linear-transforms-on-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.3</b> Exercise. Effects of linear transforms on measures of uncertainty</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#statistical-inference"><i class="fa fa-check"></i><b>2.4</b> Statistical inference</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-statistical-inference"><i class="fa fa-check"></i><b>2.4.1</b> Video (Exercise). Statistical inference</a></li>
+<li class="chapter" data-level="2.4.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-statistical-inference-and-wisconsin-lottery"><i class="fa fa-check"></i><b>2.4.2</b> Exercise. Statistical inference and Wisconsin lottery</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#diagnostics"><i class="fa fa-check"></i><b>2.5</b> Diagnostics</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-exercise.-diagnostics"><i class="fa fa-check"></i><b>2.5.1</b> Video (Exercise). Diagnostics</a></li>
+<li class="chapter" data-level="2.5.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-assessing-outliers-in-lottery-sales"><i class="fa fa-check"></i><b>2.5.2</b> Exercise. Assessing outliers in lottery sales</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html"><i class="fa fa-check"></i><b>3</b> Multiple Linear Regression (MLR)</a><ul>
+<li class="chapter" data-level="3.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1</b> Method of least squares</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1.1</b> Video (Exercise). Method of least squares</a></li>
+<li class="chapter" data-level="3.1.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-least-squares-and-term-life-data"><i class="fa fa-check"></i><b>3.1.2</b> Exercise. Least squares and term life data</a></li>
+<li class="chapter" data-level="3.1.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-interpreting-coefficients-as-proportional-changes"><i class="fa fa-check"></i><b>3.1.3</b> Exercise. Interpreting coefficients as proportional changes</a></li>
+<li class="chapter" data-level="3.1.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-interpreting-coefficients-as-elasticities"><i class="fa fa-check"></i><b>3.1.4</b> Exercise. Interpreting coefficients as elasticities</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#foundations-of-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.2</b> Foundations of multiple linear regresson</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-foundations-of-multiple-linear-regression"><i class="fa fa-check"></i><b>3.2.1</b> Video (Exercise). Foundations of multiple linear regression</a></li>
+<li class="chapter" data-level="3.2.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-multiple-choice-exercise-on-the-theory-maybeee"><i class="fa fa-check"></i><b>3.2.2</b> Exercise. Multiple choice exercise on the theory… Maybeee</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#statistical-inference-and-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.3</b> Statistical inference and multiple linear regresson</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-statistical-inference-and-multiple-linear-regression"><i class="fa fa-check"></i><b>3.3.1</b> Video (Exercise). Statistical inference and multiple linear regression</a></li>
+<li class="chapter" data-level="3.3.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-statistical-inference-and-term-life"><i class="fa fa-check"></i><b>3.3.2</b> Exercise. Statistical inference and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#binary-variables"><i class="fa fa-check"></i><b>3.4</b> Binary variables</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-binary-variables"><i class="fa fa-check"></i><b>3.4.1</b> Video (Exercise). Binary variables</a></li>
+<li class="chapter" data-level="3.4.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-binary-variables-and-term-life"><i class="fa fa-check"></i><b>3.4.2</b> Exercise. Binary variables and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#categorical-variables"><i class="fa fa-check"></i><b>3.5</b> Categorical variables</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-categorical-variables"><i class="fa fa-check"></i><b>3.5.1</b> Video (Exercise). Categorical variables</a></li>
+<li class="chapter" data-level="3.5.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-categorical-variables-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.5.2</b> Exercise. Categorical variables and Wisconsin hospital costs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#general-linear-hypothesis"><i class="fa fa-check"></i><b>3.6</b> General linear hypothesis</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#video-exercise.-hypothesis-testing"><i class="fa fa-check"></i><b>3.6.1</b> Video (Exercise). Hypothesis testing</a></li>
+<li class="chapter" data-level="3.6.2" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-term-life"><i class="fa fa-check"></i><b>3.6.2</b> Exercise. Hypothesis testing and term life</a></li>
+<li class="chapter" data-level="3.6.3" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.6.3</b> Exercise. Hypothesis testing and Wisconsin hospital costs</a></li>
+<li class="chapter" data-level="3.6.4" data-path="multiple-linear-regression-mlr.html"><a href="multiple-linear-regression-mlr.html#exercise.-hypothesis-testing-and-auto-claims"><i class="fa fa-check"></i><b>3.6.4</b> Exercise. Hypothesis testing and auto claims</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variable-selection.html"><a href="variable-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Selection</a><ul>
+<li class="chapter" data-level="4.1" data-path="variable-selection.html"><a href="variable-selection.html#an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1</b> An iterative approach to data analysis and modeling</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1.1</b> Video (Exercise). An iterative approach to data analysis and modeling</a></li>
+<li class="chapter" data-level="4.1.2" data-path="variable-selection.html"><a href="variable-selection.html#mc-exercise.-an-iterative-approach-to-data-modeling"><i class="fa fa-check"></i><b>4.1.2</b> MC Exercise. An iterative approach to data modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="variable-selection.html"><a href="variable-selection.html#automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2</b> Automatic variable selection procedures</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2.1</b> Video (Exercise). Automatic variable selection procedures</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-data-snooping-in-stepwise-regression"><i class="fa fa-check"></i><b>4.2.2</b> Exercise. Data-snooping in stepwise regression</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="variable-selection.html"><a href="variable-selection.html#residual-analysis"><i class="fa fa-check"></i><b>4.3</b> Residual analysis</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-residual-analysis"><i class="fa fa-check"></i><b>4.3.1</b> Video (Exercise). Residual analysis</a></li>
+<li class="chapter" data-level="4.3.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-residual-analysis-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.3.2</b> Exercise. Residual analysis and risk manager survey</a></li>
+<li class="chapter" data-level="4.3.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-added-variable-plot-and-refrigerator-prices"><i class="fa fa-check"></i><b>4.3.3</b> Exercise. Added variable plot and refrigerator prices</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="variable-selection.html"><a href="variable-selection.html#unusual-observations"><i class="fa fa-check"></i><b>4.4</b> Unusual observations</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-unusual-observations"><i class="fa fa-check"></i><b>4.4.1</b> Video (Exercise). Unusual observations</a></li>
+<li class="chapter" data-level="4.4.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-outlier-example"><i class="fa fa-check"></i><b>4.4.2</b> Exercise. Outlier example</a></li>
+<li class="chapter" data-level="4.4.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-high-leverage-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.4.3</b> Exercise. High leverage and risk manager survey</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="variable-selection.html"><a href="variable-selection.html#collinearity"><i class="fa fa-check"></i><b>4.5</b> Collinearity</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-collinearity"><i class="fa fa-check"></i><b>4.5.1</b> Video (Exercise). Collinearity</a></li>
+<li class="chapter" data-level="4.5.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-collinearity-and-term-life"><i class="fa fa-check"></i><b>4.5.2</b> Exercise. Collinearity and term life</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="variable-selection.html"><a href="variable-selection.html#selection-criteria"><i class="fa fa-check"></i><b>4.6</b> Selection criteria</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="variable-selection.html"><a href="variable-selection.html#video-exercise.-selection-criteria"><i class="fa fa-check"></i><b>4.6.1</b> Video (Exercise). Selection criteria</a></li>
+<li class="chapter" data-level="4.6.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-cross-validation-and-term-life"><i class="fa fa-check"></i><b>4.6.2</b> Exercise. Cross-validation and term life</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html"><i class="fa fa-check"></i><b>5</b> Interpreting Regression Results</a><ul>
+<li class="chapter" data-level="5.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1</b> Case study: MEPS health expenditures</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1.1</b> Video (Exercise). Case study: MEPS health expenditures</a></li>
+<li class="chapter" data-level="5.1.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-summarizing-data"><i class="fa fa-check"></i><b>5.1.2</b> Exercise. Summarizing data</a></li>
+<li class="chapter" data-level="5.1.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-fit-a-benchmark-multiple-linear-regression-model"><i class="fa fa-check"></i><b>5.1.3</b> Exercise. Fit a benchmark multiple linear regression model</a></li>
+<li class="chapter" data-level="5.1.4" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-variable-selection"><i class="fa fa-check"></i><b>5.1.4</b> Exercise. Variable selection</a></li>
+<li class="chapter" data-level="5.1.5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-model-comparisons-using-cross-validation"><i class="fa fa-check"></i><b>5.1.5</b> Exercise. Model comparisons using cross-validation</a></li>
+<li class="chapter" data-level="5.1.6" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-out-of-sample-validation"><i class="fa fa-check"></i><b>5.1.6</b> Exercise. Out of sample validation</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.1</b> Video (Exercise). What the modeling procedure tells us</a></li>
+<li class="chapter" data-level="5.2.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.2</b> MC Exercise. What the modeling procedure tells us</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-exercise.-the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3.1</b> Video (Exercise). The importance of variable selection</a></li>
+<li class="chapter" data-level="5.3.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-principle-of-parsimony"><i class="fa fa-check"></i><b>5.3.2</b> MC Exercise. Principle of parsimony</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/ewfreesRes/RegressModel" target="blank">Regression Modeling Tutorial on GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Online Tutorial on <code>Regression Modeling with Actuarial and Financial Applications</code></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variable-selection" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Variable Selection</h1>
+<p><strong>Chapter description</strong></p>
+<p>This chapter describes tools and techniques to help you select variables to enter into a linear regression model, beginning with an iterative model selection process. In applications with many potential explanatory variables, automatic variable selection procedures are available that will help you quickly evaluate many models. Nonetheless, automatic procedures have serious limitations including the inability to account properly for nonlinearities such as the impact of unusual points; this chapter expands upon the Chapter 2 discussion of unusual points. It also describes collinearity, a common feature of regression data where explanatory variables are linearly related to one another. Other topics that impact variable selection, including out-of-sample validation, are also introduced.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reformat Data</span>
+RSurvey &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">RiskSurvey.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="kw">str</span>(RSurvey)
+RSurvey<span class="op">$</span>firmcost &lt;-<span class="st"> </span>RSurvey<span class="op">$</span>FIRMCOST
+RSurvey<span class="op">$</span>assume &lt;-<span class="st"> </span>RSurvey<span class="op">$</span>ASSUME
+RSurvey<span class="op">$</span>cap &lt;-<span class="st"> </span>RSurvey<span class="op">$</span>CAP
+RSurvey<span class="op">$</span>logsize &lt;-<span class="st"> </span>RSurvey<span class="op">$</span>SIZELOG
+RSurvey<span class="op">$</span>indcost &lt;-<span class="st"> </span>RSurvey<span class="op">$</span>INDCOST
+RSurvey<span class="op">$</span>central &lt;-<span class="st"> </span>RSurvey<span class="op">$</span>CENTRAL
+RSurvey<span class="op">$</span>soph &lt;-<span class="st"> </span>RSurvey<span class="op">$</span>SOPH
+RSurvey2 &lt;-<span class="st"> </span>RSurvey[,<span class="kw">c</span>(<span class="st">&quot;firmcost&quot;</span>, <span class="st">&quot;assume&quot;</span>, <span class="st">&quot;cap&quot;</span>, <span class="st">&quot;logsize&quot;</span>, <span class="st">&quot;indcost&quot;</span>, <span class="st">&quot;central&quot;</span>, <span class="st">&quot;soph&quot;</span>)]
+<span class="kw">str</span>(RSurvey2)
+<span class="co">#write.csv(RSurvey2,&quot;CSVData\\Risk_survey.csv&quot;,row.names = FALSE)</span></code></pre></div>
+<div id="an-iterative-approach-to-data-analysis-and-modeling" class="section level2">
+<h2><span class="header-section-number">4.1</span> An iterative approach to data analysis and modeling</h2>
+<div id="video-exercise.-an-iterative-approach-to-data-analysis-and-modeling" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Video (Exercise). An iterative approach to data analysis and modeling</h3>
+<div id="learning-objectives-11" class="section level4">
+<h4><span class="header-section-number">4.1.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Describe the iterative approach to data analysis and modeling.</li>
+</ul>
+</div>
+<div id="video-overheads-9" class="section level4">
+<h4><span class="header-section-number">4.1.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Iterative approach</strong></p>
+<ul>
+<li>Model formulation stage</li>
+<li>Fitting</li>
+<li>Diagnostic checking - the data and model must be consistent with one another before additional inferences can be made.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot.new</span>()
+<span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">cex=</span><span class="fl">0.9</span>)
+<span class="kw">plot.window</span>(<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">18</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>))
+
+<span class="kw">text</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dt">labels=</span><span class="st">&quot;DATA&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">text</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dt">labels=</span><span class="st">&quot;PLOTS&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">text</span>(<span class="dv">1</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dt">labels=</span><span class="st">&quot;THEORY&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">text</span>(<span class="fl">3.9</span>,<span class="dv">0</span>,<span class="dt">labels=</span><span class="st">&quot;MODEL</span><span class="ch">\n</span><span class="st">FORMULATION&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">text</span>(<span class="fl">8.1</span>,<span class="dv">0</span>,<span class="dt">labels=</span><span class="st">&quot;FITTING&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">text</span>(<span class="dv">11</span>,<span class="dv">0</span>,<span class="dt">labels=</span><span class="st">&quot;DIAGNOSTIC</span><span class="ch">\n</span><span class="st">CHECKING&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">text</span>(<span class="dv">15</span>,<span class="dv">0</span>,<span class="dt">labels=</span><span class="st">&quot;INFERENCE&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)
+<span class="kw">text</span>(<span class="fl">14.1</span>,<span class="fl">0.5</span>,<span class="dt">labels=</span><span class="st">&quot;OK&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">0.6</span>)
+
+<span class="kw">rect</span>(<span class="fl">0.8</span>,<span class="fl">2.0</span>,<span class="fl">2.6</span>,<span class="fl">4.0</span>)
+<span class="kw">arrows</span>(<span class="fl">1.7</span>,<span class="fl">2.0</span>,<span class="fl">1.7</span>,<span class="fl">1.0</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
+<span class="kw">rect</span>(<span class="fl">0.8</span>,<span class="op">-</span><span class="fl">1.0</span>,<span class="fl">2.6</span>,<span class="fl">1.0</span>)
+<span class="kw">arrows</span>(<span class="fl">1.7</span>,<span class="op">-</span><span class="fl">2.0</span>,<span class="fl">1.7</span>,<span class="op">-</span><span class="fl">1.0</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
+<span class="kw">rect</span>(<span class="fl">0.8</span>,<span class="op">-</span><span class="fl">4.0</span>,<span class="fl">2.6</span>,<span class="op">-</span><span class="fl">2.0</span>)
+
+<span class="kw">arrows</span>(<span class="fl">2.6</span>,<span class="dv">0</span>,<span class="fl">3.2</span>,<span class="dv">0</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
+
+x&lt;-<span class="kw">c</span>(<span class="dv">5</span>,<span class="fl">7.0</span>,<span class="dv">5</span>,<span class="fl">3.2</span>)
+y&lt;-<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">0</span>)
+<span class="kw">polygon</span>(x,y)
+<span class="kw">arrows</span>(<span class="fl">7.0</span>,<span class="dv">0</span>,<span class="fl">8.0</span>,<span class="dv">0</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
+
+<span class="kw">rect</span>(<span class="fl">8.0</span>,<span class="op">-</span><span class="fl">1.0</span>,<span class="fl">9.7</span>,<span class="fl">1.0</span>)
+<span class="kw">arrows</span>(<span class="fl">9.7</span>,<span class="dv">0</span>,<span class="fl">10.2</span>,<span class="dv">0</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
+
+x1&lt;-<span class="kw">c</span>(<span class="dv">12</span>,<span class="fl">14.0</span>,<span class="dv">12</span>,<span class="fl">10.2</span>)
+y1&lt;-<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">0</span>)
+<span class="kw">polygon</span>(x1,y1)
+<span class="kw">arrows</span>(<span class="fl">14.0</span>,<span class="dv">0</span>,<span class="fl">14.8</span>,<span class="dv">0</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
+
+<span class="kw">rect</span>(<span class="fl">14.8</span>,<span class="op">-</span><span class="fl">1.0</span>,<span class="fl">17.5</span>,<span class="fl">1.0</span>)
+<span class="kw">arrows</span>(<span class="dv">12</span>,<span class="op">-</span><span class="fl">2.0</span>,<span class="dv">12</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
+<span class="kw">arrows</span>(<span class="dv">12</span>,<span class="op">-</span><span class="fl">3.0</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
+<span class="kw">arrows</span>(<span class="dv">5</span>,<span class="op">-</span><span class="fl">3.0</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)</code></pre></div>
+<p><strong>Overhead B. Many possible models</strong></p>
+<p><span class="math display">\[\begin{array}{l|r}
+\hline
+\text{E }y = \beta _{0} &amp;     \text{1 model with no variables }  \\
+\text{E }y = \beta _{0}+\beta_1 x_{i}, &amp;  \text{4 models with one variable}  \\
+\text{E }y = \beta _{0}+\beta_1 x_{i}+\beta_{2} x_{j}, &amp;  \text{6 models with two variables}  \\
+\text{E }y = \beta _{0}+\beta_{1} x_{1}+\beta_{2} x_{j} +\beta_{3} x_{k},&amp;  \text{4 models with three variables} \\
+\text{E }y = \beta_{0} + \beta_{1} x_{1} + \beta_{2} x_{2} +\beta_{3} x_{3}+\beta_{4} x_{4} &amp;  \text{1 model with all variables}  \\ 
+\hline
+\end{array}\]</span></p>
+<ul>
+<li>With <em>k</em> explanatory variables, there are <span class="math inline">\(2^k\)</span> possible linear models</li>
+<li>There are infinitely many nonlinear ones!!</li>
+</ul>
+<p><strong>Overhead C. Model validation</strong></p>
+<ul>
+<li>Model validation is the process of confirming our proposed model.</li>
+<li>Concern: <em>data-snooping</em> - fitting many models to a single set of data.
+<ul>
+<li>Response to concern: <em>out-of-sample validation</em>.</li>
+<li>Divide the data into <em>model development</em>, or <em>training</em> and <em>validation</em>, or <em>test</em>, subsamples.</li>
+</ul></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>,<span class="dv">0</span>,<span class="dv">0</span>))
+<span class="kw">plot.new</span>()
+<span class="kw">plot.window</span>(<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">18</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>))
+<span class="kw">rect</span>(<span class="dv">1</span>,<span class="op">-</span><span class="fl">1.2</span>,<span class="dv">14</span>,<span class="fl">1.2</span>)
+<span class="kw">rect</span>(<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">15</span>,<span class="dv">8</span>)
+<span class="kw">rect</span>(<span class="dv">1</span>,<span class="op">-</span><span class="dv">8</span>,<span class="dv">6</span>,<span class="op">-</span><span class="dv">4</span>)
+x&lt;-<span class="kw">seq</span>(<span class="fl">1.5</span>,<span class="dv">9</span>,<span class="dt">length=</span><span class="dv">6</span>)
+y&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">6</span>)
+<span class="kw">text</span>(x,y,<span class="dt">labels=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>),<span class="dt">cex=</span><span class="fl">1.5</span>)
+x1&lt;-<span class="kw">seq</span>(<span class="fl">10.5</span>,<span class="fl">11.5</span>,<span class="dt">length=</span><span class="dv">3</span>)
+y1&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">3</span>)
+<span class="kw">text</span>(x1,y1,<span class="dt">labels=</span><span class="kw">rep</span>(<span class="st">&quot;.&quot;</span>,<span class="dv">3</span>),<span class="dt">cex=</span><span class="dv">3</span>)
+<span class="kw">text</span>(<span class="dv">13</span>,<span class="dv">0</span>,<span class="dt">labels=</span><span class="st">&quot;n&quot;</span>,<span class="dt">cex=</span><span class="fl">1.5</span>)
+
+<span class="kw">text</span>(<span class="dv">15</span>,<span class="dv">0</span>,<span class="dt">labels=</span><span class="st">&quot;ORIGINAL</span><span class="ch">\n</span><span class="st">SAMPLE</span><span class="ch">\n</span><span class="st">SIZE n&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>)
+<span class="kw">text</span>(<span class="fl">7.5</span>,<span class="dv">6</span>,<span class="dt">labels=</span><span class="st">&quot;MODEL DEVELOPMENT</span><span class="ch">\n</span><span class="st">SUBSAMPLE SIZE&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>)
+<span class="kw">text</span>(<span class="fl">12.5</span>,<span class="fl">5.3</span>, <span class="kw">expression</span>(n[<span class="dv">1</span>]), <span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">1.1</span>)
+<span class="kw">text</span>(<span class="fl">1.4</span>,<span class="op">-</span><span class="dv">6</span>,<span class="dt">labels=</span><span class="st">&quot;VALIDATION</span><span class="ch">\n</span><span class="st">SUBSAMPLE</span><span class="ch">\n</span><span class="st">SIZE&quot;</span>,<span class="dt">adj=</span><span class="dv">0</span>)
+<span class="kw">text</span>(<span class="fl">2.8</span>,<span class="op">-</span><span class="fl">7.2</span>,<span class="kw">expression</span>(n[<span class="dv">2</span>]),<span class="dt">adj=</span><span class="dv">0</span>, <span class="dt">cex=</span><span class="fl">1.1</span>)
+
+<span class="kw">arrows</span>(<span class="fl">1.8</span>,<span class="fl">0.8</span>,<span class="fl">8.3</span>,<span class="fl">3.9</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
+<span class="kw">arrows</span>(<span class="fl">4.8</span>,<span class="fl">0.8</span>,<span class="dv">9</span>,<span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
+<span class="kw">arrows</span>(<span class="fl">9.1</span>,<span class="fl">0.9</span>,<span class="fl">9.5</span>,<span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
+<span class="kw">arrows</span>(<span class="fl">12.8</span>,<span class="fl">0.8</span>,<span class="dv">10</span>,<span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
+<span class="kw">arrows</span>(<span class="fl">2.9</span>,<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">2.5</span>,<span class="op">-</span><span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
+<span class="kw">arrows</span>(<span class="fl">5.9</span>,<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">3.1</span>,<span class="op">-</span><span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
+<span class="kw">arrows</span>(<span class="fl">7.4</span>,<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">3.5</span>,<span class="op">-</span><span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)</code></pre></div>
+</div>
+</div>
+<div id="mc-exercise.-an-iterative-approach-to-data-modeling" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> MC Exercise. An iterative approach to data modeling</h3>
+<p>Which of the following is not true?</p>
+<ul>
+<li>A. Diagnostic checking reveals symptoms of mistakes made in previous specifications.</li>
+<li>B. Diagnostic checking provides ways to correct mistakes made in previous specifications.</li>
+<li>C. Model formulation is accomplished by using prior knowledge of relationships.</li>
+<li>D. Understanding theoretical model properties is not really helpful when matching a model to data or inferring general relationships based on the data.</li>
+</ul>
+</div>
+</div>
+<div id="automatic-variable-selection-procedures" class="section level2">
+<h2><span class="header-section-number">4.2</span> Automatic variable selection procedures</h2>
+<div id="video-exercise.-automatic-variable-selection-procedures" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Video (Exercise). Automatic variable selection procedures</h3>
+<div id="learning-objectives-12" class="section level4">
+<h4><span class="header-section-number">4.2.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Identify some examples of automatic variable selection procedures</li>
+<li>Describe the purpose of automatic variable selection procedures and their limitations</li>
+<li>Describe “data-snooping”</li>
+</ul>
+</div>
+<div id="video-overheads-10" class="section level4">
+<h4><span class="header-section-number">4.2.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Classic stepwise regression algorithm</strong></p>
+<p>Suppose that the analyst has identified one variable as the outcome, <span class="math inline">\(y\)</span>, and <span class="math inline">\(k\)</span> potential explanatory variables, <span class="math inline">\(x_1, x_2, \ldots, x_k\)</span>.</p>
+<ul>
+<li>(i). Consider all possible regressions using one explanatory variable. Choose the one with the highest <em>t</em>-statistic.</li>
+<li>(ii). Add a variable to the model from the previous step. The variable to enter is with the highest <em>t</em>-statistic.</li>
+<li>(iii). Delete a variable to the model from the previous step. Delete the variable with the small <em>t</em>-statistic if the statistic is less than, e.g., 2 in absolute value.</li>
+<li>(iv). Repeat steps (ii) and (iii) until all possible additions and deletions are performed.</li>
+</ul>
+<p><strong>Overhead B. Drawbacks of stepwise regression</strong></p>
+<ul>
+<li>The procedure “snoops” through a large number of models and may fit the data “too well.”</li>
+<li>There is no guarantee that the selected model is the best.
+<ul>
+<li>The algorithm does not consider models that are based on nonlinear combinations of explanatory variables.</li>
+<li>It ignores the presence of outliers and high leverage points.</li>
+</ul></li>
+</ul>
+<p><strong>Overhead C. Data-snooping in stepwise regression</strong></p>
+<ul>
+<li>Generate <span class="math inline">\(y\)</span> and <span class="math inline">\(x_1 - x_{50}\)</span> using a random number generator</li>
+<li>By design, there is no relation between <span class="math inline">\(y\)</span> and <span class="math inline">\(x_1 - x_{50}\)</span>.</li>
+<li><strong>But</strong>, through stepwise regression, we <strong>“discover”</strong> a relationship that explains 14% of the variation!!!</li>
+</ul>
+<pre><code>Call: lm(formula = y ~ xvar27 + xvar29 + xvar32, data = X)
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept) -0.04885    0.09531  -0.513   0.6094  
+xvar27        0.21063    0.09724   2.166   0.0328 *
+xvar29        0.24887    0.10185   2.443   0.0164 *
+xvar32        0.25390    0.09823   2.585   0.0112 *
+
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.9171 on 96 degrees of freedom
+Multiple R-squared:  0.1401,    Adjusted R-squared:  0.1132 
+F-statistic: 5.212 on 3 and 96 DF,  p-value: 0.002233</code></pre>
+<p><strong>Overhead D. Variants of stepwise regression</strong></p>
+<p>This uses the <code>R</code> function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/step">step()</a></p>
+<ul>
+<li>The option <code>direction</code> can be used to change how variables enter
+<ul>
+<li>Forward selection. Add one variable at a time without trying to delete variables.</li>
+<li>Backwards selection. Start with the full model and delete one variable at a time without trying to add variables.</li>
+</ul></li>
+<li>The option <code>scope</code> can be used to specify which variables must be included</li>
+</ul>
+<p><strong>Overhead E. Automatic variable selection procedures</strong></p>
+<ul>
+<li>Stepwise regression is a type of automatic variable selection procedure.</li>
+<li>These procedures are useful because they can quickly search through several candidate models. They mechanize certain routine tasks and are excellent at discovering patterns in data.</li>
+<li>They are so good at detecting patterns that they analyst must be wary of overfitting (data-snooping)<br />
+</li>
+<li>They can miss certain patterns (nonlinearities, unusual points)</li>
+<li>A model suggested by automatic variable selection procedures should be subject to the same careful diagnostic checking procedures as a model arrived at by any other means</li>
+</ul>
+</div>
+</div>
+<div id="exercise.-data-snooping-in-stepwise-regression" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Exercise. Data-snooping in stepwise regression</h3>
+<p><strong>Assignment Text</strong></p>
+<p>Automatic variable selection procedures, such as the classic stepwise regression algorithm, are very good at detecting patterns. Sometimes they are too good in the sense that they detect patterns in the sample that are not evident in the population from which the data are drawn. The detect “spurious” patterns.</p>
+<p>This exercise illustrates this phenomenom by using a simulation, designed so that the outcome variable (<em>y</em>) and the explanatory variables are mutually independent. So, by design, there is no relationship between the outcome and the explanatory variables.</p>
+<p>As part of the code set-up, we have <em>n</em> = 100 observations generated of the outcome <em>y</em> and 50 explanatory variables, <code>xvar1</code> through <code>xvar50</code>. As anticipated, collections of explanatory variables are not statistically significant. However, with the <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/step">step()</a> function, you will find some statistically significant relationships!</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Fit a basic linear regression model and MLR model with the first ten explanatory variables. Compare the models via an <em>F</em> test.</li>
+<li>Fit a multiple linear regression model with all fifty explanatory variables. Compare this model to the one with ten variables via an <em>F</em> test.</li>
+<li>Use the <code>step</code> function to find the best model starting with the fitted model containing all fifty explanatory variables and summarize the fit.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>The code shows stepwise regression using BIC, a criterion that results in simpler models than AIC. For AIC, use the option <code>k=2</code> in the [step()] function (the default)</p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+<span class="kw">set.seed</span>(<span class="dv">1237</span>)
+X &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span><span class="op">*</span><span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">ncol =</span> <span class="dv">50</span>))
+<span class="kw">colnames</span>(X) &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;xvar&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">50</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>)
+X<span class="op">$</span>y &lt;-<span class="st"> </span><span class="kw">with</span>(X, <span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span><span class="op">*</span><span class="dv">1</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>), <span class="dt">ncol =</span> <span class="dv">1</span>))
+<span class="co">#cor(X[,c(&quot;xvar1&quot;,&quot;xvar2&quot;,&quot;xvar3&quot;,&quot;xvar4&quot;,&quot;xvar5&quot;,&quot;xvar6&quot;,&quot;xvar7&quot;,&quot;xvar8&quot;,&quot;xvar9&quot;,&quot;xvar10&quot;,&quot;y&quot;)], use = &quot;complete.obs&quot;)</span></code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Fit a basic linear regression model and MLR model with the first ten explanatory variables. Compare the models via an *F* test.</span>
+model_step1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>xvar1, <span class="dt">data =</span> X)
+model_step10 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>xvar1 <span class="op">+</span><span class="st"> </span>xvar2 <span class="op">+</span><span class="st"> </span>xvar3 <span class="op">+</span><span class="st"> </span>xvar4 <span class="op">+</span><span class="st"> </span>xvar5 <span class="op">+</span><span class="st"> </span>xvar6 <span class="op">+</span><span class="st"> </span>xvar7 <span class="op">+</span><span class="st"> </span>xvar8 <span class="op">+</span><span class="st"> </span>xvar9 <span class="op">+</span><span class="st"> </span>xvar10, <span class="dt">data =</span> X)
+<span class="kw">anova</span>(___, ___)
+
+<span class="co"># Fit a multiple linear regression model with all fifty explanatory variables. Compare this model to the one with ten variables via an *F* test.</span>
+model_step50 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>xvar1 <span class="op">+</span><span class="st"> </span>xvar2 <span class="op">+</span><span class="st"> </span>xvar3 <span class="op">+</span><span class="st"> </span>xvar4 <span class="op">+</span><span class="st"> </span>xvar5 <span class="op">+</span><span class="st"> </span>xvar6 <span class="op">+</span><span class="st"> </span>xvar7 <span class="op">+</span><span class="st"> </span>xvar8 <span class="op">+</span><span class="st"> </span>xvar9 <span class="op">+</span><span class="st"> </span>xvar10 <span class="op">+</span><span class="st"> </span>xvar11 <span class="op">+</span><span class="st"> </span>xvar12 <span class="op">+</span><span class="st"> </span>xvar13 <span class="op">+</span><span class="st"> </span>xvar14 <span class="op">+</span><span class="st"> </span>xvar15 <span class="op">+</span><span class="st"> </span>xvar16 <span class="op">+</span><span class="st"> </span>xvar17 <span class="op">+</span><span class="st"> </span>xvar18 <span class="op">+</span><span class="st"> </span>xvar19 <span class="op">+</span><span class="st"> </span>xvar20 <span class="op">+</span><span class="st"> </span>xvar21 <span class="op">+</span><span class="st"> </span>xvar22 <span class="op">+</span><span class="st"> </span>xvar23 <span class="op">+</span><span class="st"> </span>xvar24 <span class="op">+</span><span class="st"> </span>xvar25 <span class="op">+</span><span class="st"> </span>xvar26 <span class="op">+</span><span class="st"> </span>xvar27 <span class="op">+</span><span class="st"> </span>xvar28 <span class="op">+</span><span class="st"> </span>xvar29 <span class="op">+</span><span class="st"> </span>xvar30 <span class="op">+</span><span class="st"> </span>xvar31 <span class="op">+</span><span class="st"> </span>xvar32 <span class="op">+</span><span class="st"> </span>xvar33 <span class="op">+</span><span class="st"> </span>xvar34 <span class="op">+</span><span class="st"> </span>xvar35 <span class="op">+</span><span class="st"> </span>xvar36 <span class="op">+</span><span class="st"> </span>xvar37 <span class="op">+</span><span class="st"> </span>xvar38 <span class="op">+</span><span class="st"> </span>xvar39 <span class="op">+</span><span class="st"> </span>xvar40 <span class="op">+</span><span class="st"> </span>xvar41 <span class="op">+</span><span class="st"> </span>xvar42 <span class="op">+</span><span class="st"> </span>xvar43 <span class="op">+</span><span class="st"> </span>xvar44 <span class="op">+</span><span class="st"> </span>xvar45 <span class="op">+</span><span class="st"> </span>xvar46 <span class="op">+</span><span class="st"> </span>xvar47 <span class="op">+</span><span class="st"> </span>xvar48 <span class="op">+</span><span class="st"> </span>xvar49 <span class="op">+</span><span class="st"> </span>xvar50, <span class="dt">data =</span> X)
+<span class="kw">anova</span>(___, ___)
+
+<span class="co"># Use the `step` function, starting with the fitted model containing all fifty explanatory variables and summarize the fit.</span>
+<span class="co">#For BIC: </span>
+model_stepwise &lt;-<span class="st"> </span><span class="kw">step</span>(___, <span class="dt">data =</span> X, <span class="dt">direction=</span> <span class="st">&quot;both&quot;</span>, <span class="dt">k =</span> <span class="kw">log</span>(<span class="kw">nrow</span>(X)), <span class="dt">trace =</span> <span class="dv">0</span>) 
+<span class="kw">summary</span>(model_stepwise)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+model_step1 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>xvar1, <span class="dt">data =</span> X)
+model_step10 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>xvar1 <span class="op">+</span><span class="st"> </span>xvar2 <span class="op">+</span><span class="st"> </span>xvar3 <span class="op">+</span><span class="st"> </span>xvar4 <span class="op">+</span><span class="st"> </span>xvar5 <span class="op">+</span><span class="st"> </span>xvar6 <span class="op">+</span><span class="st"> </span>xvar7 <span class="op">+</span><span class="st"> </span>xvar8 <span class="op">+</span><span class="st"> </span>xvar9 <span class="op">+</span><span class="st"> </span>xvar10, <span class="dt">data =</span> X)
+<span class="kw">anova</span>(model_step1,model_step10)
+model_step50 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>xvar1 <span class="op">+</span><span class="st"> </span>xvar2 <span class="op">+</span><span class="st"> </span>xvar3 <span class="op">+</span><span class="st"> </span>xvar4 <span class="op">+</span><span class="st"> </span>xvar5 <span class="op">+</span><span class="st"> </span>xvar6 <span class="op">+</span><span class="st"> </span>xvar7 <span class="op">+</span><span class="st"> </span>xvar8 <span class="op">+</span><span class="st"> </span>xvar9 <span class="op">+</span><span class="st"> </span>xvar10 <span class="op">+</span><span class="st"> </span>xvar11 <span class="op">+</span><span class="st"> </span>xvar12 <span class="op">+</span><span class="st"> </span>xvar13 <span class="op">+</span><span class="st"> </span>xvar14 <span class="op">+</span><span class="st"> </span>xvar15 <span class="op">+</span><span class="st"> </span>xvar16 <span class="op">+</span><span class="st"> </span>xvar17 <span class="op">+</span><span class="st"> </span>xvar18 <span class="op">+</span><span class="st"> </span>xvar19 <span class="op">+</span><span class="st"> </span>xvar20 <span class="op">+</span><span class="st"> </span>xvar21 <span class="op">+</span><span class="st"> </span>xvar22 <span class="op">+</span><span class="st"> </span>xvar23 <span class="op">+</span><span class="st"> </span>xvar24 <span class="op">+</span><span class="st"> </span>xvar25 <span class="op">+</span><span class="st"> </span>xvar26 <span class="op">+</span><span class="st"> </span>xvar27 <span class="op">+</span><span class="st"> </span>xvar28 <span class="op">+</span><span class="st"> </span>xvar29 <span class="op">+</span><span class="st"> </span>xvar30 <span class="op">+</span><span class="st"> </span>xvar31 <span class="op">+</span><span class="st"> </span>xvar32 <span class="op">+</span><span class="st"> </span>xvar33 <span class="op">+</span><span class="st"> </span>xvar34 <span class="op">+</span><span class="st"> </span>xvar35 <span class="op">+</span><span class="st"> </span>xvar36 <span class="op">+</span><span class="st"> </span>xvar37 <span class="op">+</span><span class="st"> </span>xvar38 <span class="op">+</span><span class="st"> </span>xvar39 <span class="op">+</span><span class="st"> </span>xvar40 <span class="op">+</span><span class="st"> </span>xvar41 <span class="op">+</span><span class="st"> </span>xvar42 <span class="op">+</span><span class="st"> </span>xvar43 <span class="op">+</span><span class="st"> </span>xvar44 <span class="op">+</span><span class="st"> </span>xvar45 <span class="op">+</span><span class="st"> </span>xvar46 <span class="op">+</span><span class="st"> </span>xvar47 <span class="op">+</span><span class="st"> </span>xvar48 <span class="op">+</span><span class="st"> </span>xvar49 <span class="op">+</span><span class="st"> </span>xvar50, <span class="dt">data =</span> X)
+<span class="kw">anova</span>(model_step10,model_step50)
+
+<span class="co">#For BIC: </span>
+model_stepwise &lt;-<span class="st"> </span><span class="kw">step</span>(model_step50, <span class="dt">data =</span> X, <span class="dt">direction=</span> <span class="st">&quot;both&quot;</span>, <span class="dt">k =</span> <span class="kw">log</span>(<span class="kw">nrow</span>(X)), <span class="dt">trace =</span> <span class="dv">0</span>) 
+<span class="kw">summary</span>(model_stepwise)
+
+<span class="co"># An example with scope</span>
+<span class="co">#model_step5a &lt;- step(model_step4, data = X, direction= &quot;both&quot;, k=log(nrow(X)), trace = 0,</span>
+    <span class="co">#            scope = list(lower = ~xvar1+xvar2, upper = model_step4)) </span>
+<span class="co">#summary(model_step5a)</span>
+<span class="co">#For AIC: </span>
+<span class="co">#step(model_step4, data = X, direction= &quot;both&quot;, k=2, trace = 0) # k=2 is by default </span></code></pre></div>
+<p><strong>Submission correctness test (SCT)</strong></p>
+<p>success_msg(“Excellent! The step procedure repeatedly fits many models to a data set. We summarize each fit with hypothesis testing statistics like t-statistics and p-values. But, remember that hypothesis tests are designed to falsely detect a relationship a fraction of the time (typically 5%). For example, if you run a t-test 50 times (for each explanatory variable), you can expect to get two or three statistically significant explanatory variables even for unrelated variables (because 50 times 0.05 = 2.5).”)</p>
+</div>
+</div>
+<div id="residual-analysis" class="section level2">
+<h2><span class="header-section-number">4.3</span> Residual analysis</h2>
+<div id="video-exercise.-residual-analysis" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Video (Exercise). Residual analysis</h3>
+<div id="learning-objectives-13" class="section level4">
+<h4><span class="header-section-number">4.3.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Explain how residual analysis can be used to improve a model specification</li>
+<li>Use relationships between residuals and potential explanatory variables to improve model specification</li>
+</ul>
+</div>
+<div id="video-overheads-11" class="section level4">
+<h4><span class="header-section-number">4.3.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Residual analysis</strong></p>
+<ul>
+<li>Use <span class="math inline">\(e_i = y_i - \hat{y}_i\)</span> as the <em>i</em>th residual.</li>
+<li>Later, I will discuss rescaling by, for example, <span class="math inline">\(s\)</span>, to get a standardized residual.</li>
+<li><em>Role of residuals</em>: If the model formulation is correct, then residuals should be approximately equal to random errors or “white noise.”</li>
+<li><em>Method of attack</em>: Look for patterns in the residuals. Use this information to improve the model specification.</li>
+</ul>
+<p><strong>Overhead B. Using residuals to select explanatory variables</strong></p>
+<ul>
+<li>Residual analysis can help identify additional explanatory variables that may be used to improve the formulation of the model.</li>
+<li>If the model is correct, then residuals should resemble random errors and contain no discernible patterns.</li>
+<li>Thus, when comparing residuals to explanatory variables, we do not expect any relationships.</li>
+<li>If we do detect a relationship, then this suggests the need to control for this additional variable.</li>
+</ul>
+<p><strong>Overhead C. Detecting relationships between residuals and explanatory variables</strong></p>
+<ul>
+<li>Calculate summary statistics and display the distribution of residuals to identify outliers.</li>
+<li>Calculate the correlation between the residuals and additional explanatory variables to search for linear relationships.</li>
+<li>Create scatter plots between the residuals and additional explanatory variables to search for nonlinear relationships.</li>
+</ul>
+</div>
+</div>
+<div id="exercise.-residual-analysis-and-risk-manager-survey" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Exercise. Residual analysis and risk manager survey</h3>
+<p><strong>Assignment Text</strong></p>
+<p>This exercise examines data, pre-loaded in the dataframe <code>survey</code>, from a survey on the cost effectiveness of risk management practices. Risk management practices are activities undertaken by a firm to minimize the potential cost of future losses, such as the event of a fire in a warehouse or an accident that injures employees. This exercise develops a model that can be used to make statements about cost of managing risks.</p>
+<p>A measure of risk management cost effectiveness, <code>logcost</code>, is the outcome variable. This variable is defined as total property and casualty premiums and uninsured losses as a proportion of total assets, in logarithmic units. It is a proxy for annual expenditures associated with insurable events, standardized by company size. Explanatory variables include <code>logsize</code>, the logarithm of total firm assets, and <code>indcost</code>, a measure of the firm’s industry risk.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Fit and summarize a MLR model using <code>logcost</code> as the outcome variable and <code>logsize</code> and <code>indcost</code> as explanatory variables.</li>
+<li>Plot residuals of the fitted model versus <code>indcost</code> and superimpose a locally fitted line using the <code>R</code> function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess">lowess()</a>.</li>
+<li>Fit and summarize a MLR model of <code>logcost</code> on <code>logsize</code>, <code>indcost</code> and a squared version of <code>indcost</code>.</li>
+<li>Plot residuals of the fitted model versus `indcost’ and superimpose a locally fitted line using <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess">lowess()</a>.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>You can access model residuals using <code>mlr.survey1$residuals</code> or <code>mlr.survey1($residuals)</code></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+survey &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Risk_survey.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>)
+<span class="co">#survey &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/dc1c5bce43ef076aa77169a242118e2e58d01f82/Risk_survey.csv&quot;, header=TRUE)</span>
+survey<span class="op">$</span>logcost &lt;-<span class="st"> </span><span class="kw">log</span>(survey<span class="op">$</span>firmcost)
+<span class="co">#str(survey)</span></code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Regress `logcost` on `logsize` and `indcost` </span>
+mlr.survey1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcost <span class="op">~</span><span class="st"> </span>logsize <span class="op">+</span><span class="st"> </span>indcost, <span class="dt">data =</span> survey)
+<span class="kw">summary</span>(___)
+
+<span class="co"># Plot residuals of the fitted model versus `indcost` and superimpose a locally fitted line using the  function [lowess()]</span>
+<span class="kw">plot</span>(survey<span class="op">$</span>indcost,  ___)
+<span class="kw">lines</span>(<span class="kw">lowess</span>(survey<span class="op">$</span>indcost, ___))
+
+<span class="co"># Regress `logcost` on `logsize` and `indcost` and `indcost` squared</span>
+mlr.survey2 &lt;-<span class="st"> </span><span class="kw">lm</span>(___ <span class="op">~</span><span class="st"> </span>logsize <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(indcost,<span class="dv">2</span>), <span class="dt">data =</span> survey)
+<span class="kw">summary</span>(___)
+
+<span class="co"># Plot residuals of this fitted model and superimpose a locally fitted line using the function [lowess()]</span>
+<span class="kw">plot</span>(survey<span class="op">$</span>indcost, ___)
+<span class="kw">lines</span>(<span class="kw">lowess</span>(survey<span class="op">$</span>indcost, ___))</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+mlr.survey1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcost <span class="op">~</span><span class="st"> </span>logsize <span class="op">+</span><span class="st"> </span>indcost, <span class="dt">data =</span> survey)
+<span class="kw">summary</span>(mlr.survey1)
+
+<span class="kw">plot</span>(survey<span class="op">$</span>indcost, mlr.survey1<span class="op">$</span>residuals)
+<span class="kw">lines</span>(<span class="kw">lowess</span>(survey<span class="op">$</span>indcost,mlr.survey1<span class="op">$</span>residuals))
+
+mlr.survey2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcost <span class="op">~</span><span class="st"> </span>logsize <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(indcost,<span class="dv">2</span>), <span class="dt">data =</span> survey)
+<span class="kw">summary</span>(mlr.survey2)
+
+<span class="kw">plot</span>(survey<span class="op">$</span>indcost, mlr.survey2<span class="op">$</span>residuals)
+<span class="kw">lines</span>(<span class="kw">lowess</span>(survey<span class="op">$</span>indcost,mlr.survey2<span class="op">$</span>residuals))</code></pre></div>
+<p><strong>Submission correctness test (SCT)</strong></p>
+<p>success_msg(“Excellent! In this exercise, you examined residuals from a preliminary model fit and detected a mild quadratic pattern in a variable. This suggested entering the squared term of that variable into the model specification. The refit of this new model suggests that the squared term has important explanatory information. The squared term is a nonlinear alternative that is not available in many automatic variable selection procedures.”)</p>
+</div>
+<div id="exercise.-added-variable-plot-and-refrigerator-prices" class="section level3">
+<h3><span class="header-section-number">4.3.3</span> Exercise. Added variable plot and refrigerator prices</h3>
+<p><strong>Assignment Text</strong></p>
+<p>What characteristics of a refrigerator are important in determining its price (<code>price</code>)? We consider here several characteristics of a refrigerator, including the size of the refrigerator in cubic feet (<code>rsize</code>), the size of the freezer compartment in cubic feet (<code>fsize</code>), the average amount of money spent per year to operate the refrigerator (<code>ecost</code>, for energy cost), the number of shelves in the refrigerator and freezer doors (<code>shelves</code>), and the number of features (<code>features</code>). The features variable includes shelves for cans, see-through crispers, ice makers, egg racks and so on.</p>
+<p>Both consumers and manufacturers are interested in models of refrigerator prices. Other things equal, consumers generally prefer larger refrigerators with lower energy costs that have more features. Due to forces of supply and demand, we would expect consumers to pay more for these refrigerators. A larger refrigerator with lower energy costs that has more features at the similar price is considered a bargain to the consumer. How much extra would the consumer be willing to pay for this additional space? A model of prices for refrigerators on the market provides some insight to this question.</p>
+<p>To this end, we analyze data from <em>n</em> = 37 refrigerators.</p>
+<p><strong>Instructions</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Refrig &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Refrig.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)
+<span class="kw">summary</span>(Refrig)
+Refrig1 &lt;-<span class="st"> </span>Refrig[<span class="kw">c</span>(<span class="st">&quot;price&quot;</span>, <span class="st">&quot;ecost&quot;</span>, <span class="st">&quot;rsize&quot;</span>, <span class="st">&quot;fsize&quot;</span>, <span class="st">&quot;shelves&quot;</span>, <span class="st">&quot;s_sq_ft&quot;</span>, <span class="st">&quot;features&quot;</span>)]
+<span class="kw">round</span>(<span class="kw">cor</span>(Refrig1), <span class="dt">digits =</span> <span class="dv">3</span>)
+refrig_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(price <span class="op">~</span><span class="st"> </span>rsize <span class="op">+</span><span class="st"> </span>fsize <span class="op">+</span><span class="st"> </span>shelves <span class="op">+</span><span class="st"> </span>features, <span class="dt">data =</span> Refrig)
+<span class="kw">summary</span>(refrig_mlr1)
+Refrig<span class="op">$</span>residuals1 &lt;-<span class="st"> </span><span class="kw">residuals</span>(refrig_mlr1)
+refrig_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(ecost <span class="op">~</span><span class="st"> </span>rsize <span class="op">+</span><span class="st"> </span>fsize <span class="op">+</span><span class="st"> </span>shelves <span class="op">+</span><span class="st"> </span>features, <span class="dt">data =</span> Refrig)
+<span class="kw">summary</span>(refrig_mlr2)
+Refrig<span class="op">$</span>residuals2 &lt;-<span class="st"> </span><span class="kw">residuals</span>(refrig_mlr2)
+<span class="kw">plot</span>(Refrig<span class="op">$</span>residuals2, Refrig<span class="op">$</span>residuals1)
+
+<span class="kw">library</span>(Rcmdr)
+refrig_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(price <span class="op">~</span><span class="st"> </span>rsize <span class="op">+</span><span class="st"> </span>fsize <span class="op">+</span><span class="st"> </span>shelves <span class="op">+</span><span class="st"> </span>features <span class="op">+</span><span class="st"> </span>ecost, <span class="dt">data =</span> Refrig)
+<span class="kw">avPlots</span>(refrig_mlr3, <span class="dt">terms =</span> <span class="st">&quot;ecost&quot;</span>)</code></pre></div>
+</div>
+</div>
+<div id="unusual-observations" class="section level2">
+<h2><span class="header-section-number">4.4</span> Unusual observations</h2>
+<div id="video-exercise.-unusual-observations" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Video (Exercise). Unusual observations</h3>
+<div id="learning-objectives-14" class="section level4">
+<h4><span class="header-section-number">4.4.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Compare and contrast three alternative definitions of a standardized residual</li>
+<li>Evaluate three alternative options for dealing with outliers</li>
+<li>Assess the impact of a high leverage observation</li>
+<li>Evaluate options for dealing with high leverage observations</li>
+<li>Describe the notion of influence and Cook’s Distance for quantifying influence</li>
+</ul>
+</div>
+<div id="video-overheads-12" class="section level4">
+<h4><span class="header-section-number">4.4.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Unusual observations</strong></p>
+<ul>
+<li>Regression coefficients can be expressed as (matrix) weighted averages of outcomes
+<ul>
+<li>Averages, even weighted averages can be strongly influenced by unusual observations</li>
+</ul></li>
+<li>Observations may be unusual in the <em>y</em> direction or in the <em>X</em> space</li>
+<li>For unusual in the <em>y</em> direction, we use a residual <span class="math inline">\(e = y - \hat{y}\)</span>
+<ul>
+<li>By subtracting the fitted value <span class="math inline">\(\hat{y}\)</span>, we look to the <em>y</em> distance from the regression plane</li>
+<li>In this way, we “control” for values of explanatory variables</li>
+</ul></li>
+</ul>
+<p><strong>Overhead B. Standardized residuals</strong></p>
+<p>We standardize residuals so that we can focus on relationships of interest and achieve carry-over of experience from one data set to another.</p>
+<p>Three commonly used definitions of standardize residuals are:</p>
+<p><span class="math display">\[
+\text{(a) }\frac{e_i}{s}, \ \ \ \text{ (b) }\frac{e_i}{s\sqrt{1-h_{ii}}}, \  \   \    
+\text{(c)}\frac{e_i}{s_{(i)}\sqrt{1-h_{ii}}}.
+\]</span></p>
+<ul>
+<li>First choice is simple</li>
+<li>Second choice, from theory, <span class="math inline">\(\mathrm{Var}(e_i)=\sigma ^{2}(1-h_{ii}).\)</span> Here, <span class="math inline">\(h_{ii}\)</span> is the <span class="math inline">\(i\)</span>th <em>leverage</em> (defined later).</li>
+<li>Third choice is termed “studentized residuals”. Idea: numerator is independent of the denominator.</li>
+</ul>
+<p><strong>Overhead C. Outlier - an unusal standardized residual</strong></p>
+<ul>
+<li>An <em>outlier</em> is an observation that is not well fit by the model; these are observations where the residual is unusually large.</li>
+<li>Unusual means what? Many packages mark a point if the |standardized residual| &gt; 2.</li>
+<li>Options for handling outliers
+<ul>
+<li>Ignore them in the analysis but be sure to discuss their effects.</li>
+<li>Delete them from the data set (but be sure to discuss their effects).</li>
+<li>Create a binary variable to indicator their presence. (This will increase your <span class="math inline">\(R^2\)</span>!)</li>
+</ul></li>
+</ul>
+<p><strong>Overhead D. High leverage points</strong></p>
+<ul>
+<li>A high leverage point is an observation that is “far away” in the <span class="math inline">\(x\)</span>-space from others.</li>
+<li>One can get a feel for high leverage observations by looking a summary statistics (mins, maxs) for each explanatory variable.</li>
+<li>Options for dealing with high leverage points are comparable to outliers, we can ignore their effects, delete them, or mark them with a binary indicator variable.</li>
+</ul>
+<p><strong>Overhead E. High leverage point graph</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cluster)
+<span class="co">#library(MASS)</span>
+<span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="fl">3.2</span>,<span class="fl">5.4</span>,.<span class="dv">2</span>,.<span class="dv">2</span>))
+<span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dt">type=</span><span class="st">&quot;p&quot;</span>,<span class="dt">pch=</span><span class="dv">19</span>,<span class="dt">cex=</span><span class="fl">1.5</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">cex.lab=</span><span class="fl">1.5</span>,<span class="dt">xaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">5</span>),<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">12</span>,<span class="dv">12</span>))
+<span class="kw">mtext</span>(<span class="kw">expression</span>(x[<span class="dv">2</span>]), <span class="dt">side=</span><span class="dv">1</span>,<span class="dt">line=</span><span class="dv">2</span>, <span class="dt">cex=</span><span class="fl">2.0</span>)
+<span class="kw">mtext</span>(<span class="kw">expression</span>(x[<span class="dv">1</span>]), <span class="dt">side=</span><span class="dv">2</span>, <span class="dt">line=</span><span class="dv">2</span>, <span class="dt">las=</span><span class="dv">2</span>, <span class="dt">cex=</span><span class="fl">2.0</span>)
+<span class="kw">arrows</span>(<span class="fl">1.5</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dt">code=</span><span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.25</span>)
+xycov&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="op">-</span><span class="dv">5</span>,<span class="op">-</span><span class="dv">5</span>, <span class="dv">20</span>),<span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">ncol=</span><span class="dv">2</span>)
+xyloc&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),<span class="dt">nrow=</span><span class="dv">1</span>,<span class="dt">ncol=</span><span class="dv">2</span>)
+<span class="kw">polygon</span>(<span class="kw">ellipsoidPoints</span>(xycov, <span class="dt">d2 =</span> <span class="dv">2</span>, <span class="dt">loc=</span>xyloc),<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</code></pre></div>
+<p><strong>Overhead F. Leverage</strong></p>
+<ul>
+<li>Using matrix algebra, one can express the <em>i</em>th fitted value as a linear combination of observations</li>
+</ul>
+<p><span class="math display">\[
+\hat{y}_{i} = h_{i1} y_{1} + \cdots +h_{ii}y_{i}+\cdots+h_{in}y_{n}.
+\]</span></p>
+<ul>
+<li>The term <span class="math inline">\(h_{ii}\)</span> is known as the <em>i</em>th leverage
+<ul>
+<li>The larger the value of <span class="math inline">\(h_{ii}\)</span>, the greater the effect of the <em>i</em>th observation <span class="math inline">\(y_i\)</span> on the <em>i</em>th fitted value <span class="math inline">\(\hat{y}_i\)</span>.</li>
+<li>Statistical routines have values of the leverage coded, so computing this quantity. The key thing to know is that <span class="math inline">\(h_{ii}\)</span> is based solely on the explanatory variables. If you change the <span class="math inline">\(y\)</span> values, the leverage does not change.</li>
+<li>As a commonly used rule of thumb, a leverage is deemed to be “unusual” if its value exceeds three times the average (= number of regression coefficients divided by the number of observations.)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="exercise.-outlier-example" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Exercise. Outlier example</h3>
+<p>In chapter 2, we consider a fictitious data set of 19 “base” points plus three different types of unusual points. In this exercise, we consider the effect of one unusal point, “C”, this both an outlier (unusual in the “y” direction) and a high leverage point (usual in the x-space). The data have been pre-loaded in the dataframe <code>outlrC</code>.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Fit a basic linear regression model of <code>y</code> on <code>x</code> and store the result in an object.</li>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures">rstandard()</a> to extract the standardized residuals from the fitted regression model object and summarize them.</li>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures">hatvalues()</a> to extract the leverages from the model fitted and summarize them.</li>
+<li>Plot the standardized residuals versus the leverages to see the relationship between these two measures that calibrate how unusual an observation is.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+outlr &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Outlier.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#outlr &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/7a38912e544c31fc6f5fca12b9a2eb645f2bcd32/Outlier.csv&quot;, header = TRUE)</span>
+outlrC &lt;-<span class="st"> </span>outlr[<span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>),<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>)]</code></pre></div>
+<p><strong>Sample)code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+outlrC &lt;-<span class="st"> </span>outlr[<span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>),<span class="kw">c</span>(<span class="st">&quot;x&quot;</span>,<span class="st">&quot;y&quot;</span>)]
+
+<span class="co"># Fit a basic linear regression model of `y` on `x` and store the result in an object.</span>
+model_outlrC &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlrC)
+
+<span class="co"># Extract the standardized residuals from the fitted regression model object and summarize them.</span>
+ri &lt;-<span class="st"> </span><span class="kw">rstandard</span>(model_outlrC)
+<span class="kw">summary</span>(ri)
+
+<span class="co"># Extract the leverages from the model fitted and summarize them. </span>
+hii &lt;-<span class="st"> </span><span class="kw">hatvalues</span>(model_outlrC)
+<span class="kw">summary</span>(hii)
+
+<span class="co"># Plot the standardized residuals versus the leverages</span>
+<span class="kw">plot</span>(hii,ri)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># solution</span>
+<span class="kw">plot</span>(outlrC)
+model_outlrC &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlrC)
+ri &lt;-<span class="st"> </span><span class="kw">rstandard</span>(model_outlrC)
+<span class="kw">summary</span>(ri)
+hii &lt;-<span class="st"> </span><span class="kw">hatvalues</span>(model_outlrC)
+<span class="kw">summary</span>(hii)
+<span class="kw">plot</span>(hii,ri)</code></pre></div>
+<p><strong>Submission correctness test (SCT)</strong></p>
+<p>success_msg(“Excellent! With only two variables, we could argue graphically that observations were unusual. In this exercise, we showed how statistics could also be used to identify usual observations. Although not really necessary in basic linear regression, the main advantage of the statistics is that they work readily in a multivariate setting.”)</p>
+</div>
+<div id="exercise.-high-leverage-and-risk-manager-survey" class="section level3">
+<h3><span class="header-section-number">4.4.3</span> Exercise. High leverage and risk manager survey</h3>
+<p><strong>Assignment Text</strong></p>
+<p>In a prior exercise, we fit a regression model of <code>logcost</code> on <code>logsize</code>, <code>indcost</code> and a squared version of <code>indcost</code>. This model is summarized in the object <code>mlr_survey2</code>. In this exercise, we examine the robustness of the model to unusual observations.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Use the <code>R</code> functions <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures">rstandard()</a> and <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures">hatvalues()</a> to extract the standardized residuals and leverages from the model fitted. Summarize the distributions graphically.</li>
+<li>You will see that there are two observations where the leverages are high, numbers 10 and 16. On looking at the dataset, these turn out to be observations in a high risk industry. Create a histogram of the variable <code>indcost</code> to corroborate this.</li>
+<li>Re-run the regression omitting observations 10 and 16. Summarize this regression and the regression in the object <code>mlr_survey2</code>, noting differences in the coefficients.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+survey &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Risk_survey.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>)
+<span class="co">#survey &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/dc1c5bce43ef076aa77169a242118e2e58d01f82/Risk_survey.csv&quot;, header=TRUE)</span>
+survey<span class="op">$</span>logcost &lt;-<span class="st"> </span><span class="kw">log</span>(survey<span class="op">$</span>firmcost)
+mlr.survey2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcost <span class="op">~</span><span class="st"> </span>logsize <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(indcost,<span class="dv">2</span>), <span class="dt">data =</span> survey)</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+mlr.survey2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcost <span class="op">~</span><span class="st"> </span>logsize <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(indcost,<span class="dv">2</span>), <span class="dt">data =</span> survey)
+<span class="co"># Extract the standardized residuals and leverages from the model fitted. Summarize the distributions graphically.</span>
+ri &lt;-<span class="st"> </span><span class="kw">___</span>(mlr.survey2)
+hii &lt;-<span class="st"> </span><span class="kw">___</span>(mlr.survey2)
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">hist</span>(ri, <span class="dt">nclass=</span><span class="dv">16</span>, <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Standardized Residuals&quot;</span>)
+<span class="kw">hist</span>(hii, <span class="dt">nclass=</span><span class="dv">16</span>, <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Leverages&quot;</span>)
+
+<span class="co"># Create a histogram of the variable `indcost`</span>
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))
+<span class="kw">hist</span>(___, <span class="dt">nclass=</span><span class="dv">16</span>)
+
+<span class="co"># Re-run the regression omitting observations 10 and 16. Summarize this regression and the regression in the object  `mlr_survey2`, noting differences in the coefficients.</span>
+mlr.survey3 &lt;-<span class="st"> </span><span class="kw">lm</span>(___ <span class="op">~</span><span class="st"> </span>logsize <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(indcost,<span class="dv">2</span>), <span class="dt">data =</span> survey, <span class="dt">subset =</span><span class="op">-</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">16</span>))
+<span class="kw">summary</span>(mlr.survey2)
+<span class="kw">summary</span>(mlr.survey3)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+<span class="co">#summary(mlr.survey2)</span>
+ri &lt;-<span class="st"> </span><span class="kw">rstandard</span>(mlr.survey2)
+hii &lt;-<span class="st"> </span><span class="kw">hatvalues</span>(mlr.survey2)
+
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">hist</span>(ri, <span class="dt">nclass=</span><span class="dv">16</span>, <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Standardized Residuals&quot;</span>)
+<span class="kw">hist</span>(hii, <span class="dt">nclass=</span><span class="dv">16</span>, <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Leverages&quot;</span>)
+<span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))
+<span class="kw">hist</span>(survey<span class="op">$</span>indcost, <span class="dt">nclass=</span><span class="dv">16</span>)
+mlr.survey3 &lt;-<span class="st"> </span><span class="kw">lm</span>(logcost <span class="op">~</span><span class="st"> </span>logsize <span class="op">+</span><span class="st"> </span><span class="kw">poly</span>(indcost,<span class="dv">2</span>), <span class="dt">data =</span>  survey, <span class="dt">subset =</span><span class="op">-</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">16</span>))
+<span class="kw">summary</span>(mlr.survey2)
+<span class="kw">summary</span>(mlr.survey3)</code></pre></div>
+<p><strong>Submission correctness test (SCT)</strong></p>
+<p>success_msg(“Excellent! You will have noted that after removing these two influential observations from a high risk industry, the variable associated with the <code>indcost</code> squared became less statistically significant. This illustrates a general phenomena; sometimes, the ‘signicance’ of a variable may actually due to a few unusual observations, not the entire variable.”)</p>
+</div>
+</div>
+<div id="collinearity" class="section level2">
+<h2><span class="header-section-number">4.5</span> Collinearity</h2>
+<div id="video-exercise.-collinearity" class="section level3">
+<h3><span class="header-section-number">4.5.1</span> Video (Exercise). Collinearity</h3>
+<div id="learning-objectives-15" class="section level4">
+<h4><span class="header-section-number">4.5.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Define collinearity and describe its potential impact on regression inference</li>
+<li>Define a variance inflation factor and describe its effect on a regression coefficients standard error</li>
+<li>Describe rules of thumb for assessing collinearity and options for model reformulation in the presence of severe collinearity</li>
+<li>Compare and contrast effects of leverage and collinearity</li>
+</ul>
+</div>
+<div id="video-overheads-13" class="section level4">
+<h4><span class="header-section-number">4.5.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Collinearity</strong></p>
+<ul>
+<li><em>Collinearity</em>, or <em>multicollinearity</em>, occurs when one explanatory variable is, or nearly is, a linear combination of the other explanatory variables.
+<ul>
+<li>Useful to think of the explanatory variables as being highly correlated with one another.</li>
+</ul></li>
+<li>Collinearity neither precludes us from getting good fits nor from making predictions of new observations.
+<ul>
+<li>Estimates of error variances and, therefore, tests of model adequacy, are still reliable.</li>
+</ul></li>
+<li>In cases of serious collinearity, standard errors of individual regression coefficients can be large.
+<ul>
+<li>With large standard errors, individual regression coefficients may not be meaningful.</li>
+<li>Because a large standard error means that the corresponding <em>t</em>-ratio is small, it is difficult to detect the importance of a variable.</li>
+</ul></li>
+</ul>
+<p><strong>Overhead B. Quantifying collinearity</strong></p>
+<p>A common way to quantify collinearity is through the <em>variance inflation factor (VIF)</em>.</p>
+<ul>
+<li>Suppose that the set of explanatory variables is labeled <span class="math inline">\(x_{1},x_{2},\dots,x_{k}\)</span>.</li>
+<li>Run the regression using <span class="math inline">\(x_{j}\)</span> as the “outcome” and the other <span class="math inline">\(x\)</span>’s as the explanatory variables.</li>
+<li>Denote the coefficient of determination from this regression by <span class="math inline">\(R_j^2\)</span>.</li>
+<li>Define the variance inflation factor</li>
+</ul>
+<p><span class="math display">\[
+VIF_{j}=\frac{1}{1-R_{j}^{2}},\ \ \ \text{ for } j = 1,2,\ldots, k.
+\]</span></p>
+<p><strong>Overhead C. Options for handling collinearity</strong></p>
+<ul>
+<li>Rule of thumb: When <span class="math inline">\(VIF_{j}\)</span> exceeds 10 (which is equivalent to <span class="math inline">\(R_{j}^{2}&gt;90\%\)</span>), we say that severe collinearity exists. This may signal is a need for action.</li>
+<li>Recode the variables by “centering” - that is, subtract the mean and divide by the standard deviation.</li>
+<li>Ignore the collinearity in the analysis but comment on it in the interpretation. Probably the most common approach.</li>
+<li>Replace one or more variables by auxiliary variables or transformed versions.</li>
+<li>Remove one or more variables. Easy. Which One? is hard.
+<ul>
+<li>Use interpretation. Which variable(s) do you feel most comfortable with?</li>
+<li>Use automatic variable selection procedures to suggest a model.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="exercise.-collinearity-and-term-life" class="section level3">
+<h3><span class="header-section-number">4.5.2</span> Exercise. Collinearity and term life</h3>
+<p><strong>Assignment Text</strong> We have seen that adding an explanatory variable <span class="math inline">\(x^2\)</span> to a model is sometimes helpful even though it is perfectly related to <span class="math inline">\(x\)</span> (such as through the function <span class="math inline">\(f(x)=x^2\)</span>). But, for some data sets, higher order polynomials and interactions can be approximately linearly related (depending on the range of the data).</p>
+<p>This exercise returns to our term life data set <code>Term1</code> (preloaded) and demonstrates that collinearity can be severe when introducing interaction terms.</p>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Fit a MLR model of <code>logface</code> on explantory variables <code>education</code>, <code>numhh</code> and <code>logincome</code></li>
+<li>Use the function <a href="https://www.rdocumentation.org/packages/car/versions/3.0-0/topics/vif">vif()</a> from the <code>car</code> package (preloaded) to calculate variance inflation factors.</li>
+<li>Fit and summarize a MLR model of <code>logface</code> on explantory variables <code>education</code> , <code>numhh</code> and <code>logincome</code> with an interaction between <code>numhh</code> and <code>logincome</code>, then extract variance inflation factors.</li>
+</ul>
+<p><strong>Hint</strong></p>
+<p>If the <code>car</code> package is not available to you, then you could calculate vifs using the [lm()] function, treating each variable separately. For example</p>
+<p><code>1/(1-summary(lm(education ~ numhh + logincome, data = Term1))$r.squared)</code></p>
+<p>gives the <code>education</code> vif.</p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+<span class="co">#str(Term1)</span></code></pre></div>
+<p>*Sample_code**</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Fit a MLR model of `logface` on explantory variables `education`, `numhh` and `logincome`</span>
+Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term1)
+
+<span class="co"># Calculate the variance inflation factors.</span>
+car<span class="op">::</span><span class="kw">vif</span>(Term_mlr)
+
+<span class="co"># Fit and summarize a MLR model of `logface` on explantory variables `education` , `numhh` and `logincome` with an interaction between `numhh` and `logincome`, then extract variance inflation  factors.</span>
+Term_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh<span class="op">*</span>logincome , <span class="dt">data =</span> Term1)
+<span class="kw">summary</span>(Term_mlr1)
+car<span class="op">::</span><span class="kw">vif</span>(Term_mlr1)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term1)
+car<span class="op">::</span><span class="kw">vif</span>(Term_mlr)
+Term_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh<span class="op">*</span>logincome , <span class="dt">data =</span> Term1)
+<span class="kw">summary</span>(Term_mlr1)
+car<span class="op">::</span><span class="kw">vif</span>(Term_mlr1)</code></pre></div>
+<p><strong>Submission correctness test (SCT)</strong></p>
+<p>success_msg(“Excellent! This exercise underscores that colinearity among explanatory variables can be induced when introducing higher order terms such as interactions. Note that in the interaction model the variable ‘numhh’ does not appear to be statistically signficant effect. This is one of the big dangers of collinearity - it can mask important effects.”)</p>
+</div>
+</div>
+<div id="selection-criteria" class="section level2">
+<h2><span class="header-section-number">4.6</span> Selection criteria</h2>
+<div id="video-exercise.-selection-criteria" class="section level3">
+<h3><span class="header-section-number">4.6.1</span> Video (Exercise). Selection criteria</h3>
+<div id="learning-objectives-16" class="section level4">
+<h4><span class="header-section-number">4.6.1.1</span> Learning Objectives</h4>
+<p>In this module, you learn how to:</p>
+<ul>
+<li>Summarize a regression fit using alternative goodness of fit measures</li>
+<li>Validate a model using in-sample and out-of-sample data to mitigate issues of data-snooping</li>
+<li>Compare and contrast <em>SSPE</em> and <em>PRESS</em> statistics for model validation</li>
+</ul>
+</div>
+<div id="video-overheads-14" class="section level4">
+<h4><span class="header-section-number">4.6.1.2</span> Video Overheads</h4>
+<p><strong>Overhead A. Goodness of fit</strong></p>
+<ul>
+<li>Criteria that measure the proximity of the fitted model and realized data are known as <em>goodness of fit</em> statistics.</li>
+<li>Basic examples include:
+<ul>
+<li>the coefficient of determination <span class="math inline">\((R^{2})\)</span>,</li>
+<li>an adjusted version <span class="math inline">\((R_{a}^{2})\)</span>,</li>
+<li>the size of the typical error <span class="math inline">\((s)\)</span>, and</li>
+<li><span class="math inline">\(t\)</span>-ratios for each regression coefficient.</li>
+</ul></li>
+</ul>
+<p><strong>Overhead B. Goodness of fit and information criteria</strong></p>
+<p>A general measure is <em>Akaike’s Information Criterion</em>, defined as</p>
+<p><span class="math display">\[
+AIC = -2 \times (fitted~log~likelihood) + 2 \times
+(number~of~parameters)
+\]</span></p>
+<ul>
+<li>For model comparison, the smaller the <span class="math inline">\(AIC,\)</span> the better is the fit.</li>
+<li>This measures balances the fit (in the first part) with a penalty for complexity (in the second part)</li>
+<li>It is a general measure - for linear regression, it reduces to</li>
+</ul>
+<p><span class="math display">\[
+AIC = n \ln (s^2) + n \ln (2 \pi) +n +k + 3 .
+\]</span></p>
+<ul>
+<li>So, selecting a model to minimize <span class="math inline">\(s\)</span> or <span class="math inline">\(s^2\)</span> is equivalent to model selection based on minimizing <span class="math inline">\(AIC\)</span> (same <em>k</em>).</li>
+</ul>
+<p><strong>Overhead C. Out of sample validation</strong></p>
+<ul>
+<li>When you choose a model to minimize <span class="math inline">\(s\)</span> or <span class="math inline">\(AIC\)</span>, it is based on how well the model fits the data at hand, or the <em>model development</em>, or <em>training</em>, data</li>
+<li>As we have seen, this approach is susceptible to overfitting.</li>
+<li>A better approach is to validate the model on a <em>model validation</em>, or <em>test</em> data set, held out for this purpose.</li>
+</ul>
+<p><strong>Overhead D. Out of sample validation procedure</strong></p>
+<ul>
+<li><ol style="list-style-type: lower-roman">
+<li>Using the model development subsample, fit a candidate model.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-roman">
+<li>Using the Step (ii) model and the explanatory variables from the validation subsample, “predict” the dependent variables in the validation subsample, <span class="math inline">\(\hat{y}_i\)</span>, where <span class="math inline">\(i=n_{1}+1,...,n_{1}+n_{2}\)</span>.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: lower-roman">
+<li>Calc the *sum of absolute prediction errors**</li>
+</ol></li>
+</ul>
+<p><span class="math display">\[SAPE=\sum_{i=n_{1}+1}^{n_{1}+n_{2}} |y_{i}-\hat{y}_{i}| . \]</span></p>
+<p>Repeat Steps (i) through (iii) for each candidate model. Choose the model with the smallest <em>SAPE</em>.</p>
+<p><strong>Overhead E. Cross - validation</strong></p>
+<ul>
+<li>With out-of-sample validation, the statistic depends on a random split between in-sample and out-of-sample data (a problem for data sets that are not large)</li>
+<li>Alternatively, one may use <em>cross-validation</em>
+<ul>
+<li>Use a random mechanism to split the data into <em>k</em> subsets, (e.g., 5-10)</li>
+<li>Use the first <em>k-1</em> subsamples to estimate model parameters. Then, “predict” the outcomes for the <em>k</em>th subsample and use <em>SAE</em> to summarize the fit</li>
+<li>Repeat this by holding out each of the <em>k</em> sub-samples, summarizing with a cumulative <em>SAE</em>.</li>
+</ul></li>
+<li>Repeat these steps for several candidate models.
+<ul>
+<li>Choose the model with the lowest cumulative <em>SAE</em> statistic.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="exercise.-cross-validation-and-term-life" class="section level3">
+<h3><span class="header-section-number">4.6.2</span> Exercise. Cross-validation and term life</h3>
+<p><strong>Assignment Text</strong></p>
+<p>Here is some sample code to give you a better feel for cross-validation.</p>
+<p>The first part of the randomly re-orders (“shuffles”) the data. It also identifies explanatory variables <code>explvars</code>.</p>
+<p>The function starts by pulling out only the needed data into <code>cvdata</code>. Then, for each subsample, a model is fit based on all the data except for the subsample, in <code>train_mlr</code> with the subsample in <code>test</code>. This is repeated for each subsample, then results are summarized.</p>
+<pre><code># Randomly re-order data - &quot;shuffle it&quot;
+n &lt;- nrow(Term1)
+set.seed(12347)
+shuffled_Term1 &lt;- Term1[sample(n), ]
+explvars &lt;- c(&quot;education&quot;, &quot;numhh&quot;, &quot;logincome&quot;)
+
+## Cross - Validation
+crossvalfct &lt;- function(explvars){
+  cvdata   &lt;- shuffled_Term1[, c(&quot;logface&quot;, explvars)]
+  crossval &lt;- 0
+  k &lt;- 5
+  for (i in 1:k) {
+    indices &lt;- (((i-1) * round((1/k)*nrow(cvdata))) + 1):((i*round((1/k) * nrow(cvdata))))
+    # Exclude them from the train set
+    train_mlr &lt;- lm(logface ~ ., data = cvdata[-indices,])
+    # Include them in the test set
+    test  &lt;- data.frame(cvdata[indices, explvars])
+    names(test)  &lt;- explvars
+    predict_test &lt;- exp(predict(train_mlr, test))
+    # Compare predicted to held-out and summarize
+    predict_err  &lt;- exp(cvdata[indices, &quot;logface&quot;]) - predict_test
+    crossval &lt;- crossval + sum(abs(predict_err))
+  }
+  crossval/1000
+}
+
+crossvalfct(explvars)</code></pre>
+<p><strong>Instructions</strong></p>
+<ul>
+<li>Calculate the cross-validation statistic using only logarithmic income, <code>logincome</code>.</li>
+<li>Calculate the cross-validation statistic using <code>logincome</code>, <code>education</code> and <code>numhh</code>.</li>
+<li>Calculate the cross-validation statistic using <code>logincome</code>, <code>education</code>, <code>numhh</code> and <code>marstat</code>.</li>
+</ul>
+<p>The best model has the lowest cross-validation statistic.</p>
+<p><strong>Hint</strong></p>
+<p>The function [sample()] is for taking random samples. We use it without replacement so it results in a re-ordering of data.</p>
+<p><strong>Pre-exercise code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
+Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co">#Term &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;, header = TRUE)</span>
+Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
+Term1<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term1<span class="op">$</span>marstat)
+
+crossvalfct &lt;-<span class="st"> </span><span class="cf">function</span>(explvars){
+  cvdata   &lt;-<span class="st"> </span>shuffled_Term1[, <span class="kw">c</span>(<span class="st">&quot;logface&quot;</span>, explvars)]
+  crossval &lt;-<span class="st"> </span><span class="dv">0</span>
+  k &lt;-<span class="st"> </span><span class="dv">5</span>
+  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>k) {
+    indices &lt;-<span class="st"> </span>(((i<span class="op">-</span><span class="dv">1</span>) <span class="op">*</span><span class="st"> </span><span class="kw">round</span>((<span class="dv">1</span><span class="op">/</span>k)<span class="op">*</span><span class="kw">nrow</span>(cvdata))) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>)<span class="op">:</span>((i<span class="op">*</span><span class="kw">round</span>((<span class="dv">1</span><span class="op">/</span>k) <span class="op">*</span><span class="st"> </span><span class="kw">nrow</span>(cvdata))))
+    <span class="co"># Exclude them from the train set</span>
+    train_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> cvdata[<span class="op">-</span>indices,])
+    <span class="co"># Include them in the test set</span>
+    test  &lt;-<span class="st"> </span><span class="kw">data.frame</span>(cvdata[indices, explvars])
+    <span class="kw">names</span>(test)  &lt;-<span class="st"> </span>explvars
+    predict_test &lt;-<span class="st"> </span><span class="kw">exp</span>(<span class="kw">predict</span>(train_mlr, test))
+    <span class="co"># Compare predicted to held-out and summarize</span>
+    predict_err  &lt;-<span class="st"> </span><span class="kw">exp</span>(cvdata[indices, <span class="st">&quot;logface&quot;</span>]) <span class="op">-</span><span class="st"> </span>predict_test
+    crossval &lt;-<span class="st"> </span>crossval <span class="op">+</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">abs</span>(predict_err))
+  }
+  crossval<span class="op">/</span><span class="dv">1000000</span>
+}</code></pre></div>
+<p><strong>Sample_code</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">`</span><span class="dt">@sample_code</span><span class="st">`</span>
+<span class="co"># Calculate the cross-validation statistic using only logarithmic income, `logincome`.</span>
+explvars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;logincome&quot;</span>)
+<span class="kw">crossvalfct</span>(explvars)
+
+<span class="co"># Calculate the cross-validation statistic using `logincome`, `education` and `numhh`.</span>
+explvars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;logincome&quot;</span>)
+<span class="kw">crossvalfct</span>(___)
+
+<span class="co"># Calculate the cross-validation statistic using `logincome`, `education`, `numhh` and `marstat`.</span>
+explvars &lt;-<span class="st"> </span><span class="kw">c</span>(___)
+<span class="kw">crossvalfct</span>(explvars)</code></pre></div>
+<p><strong>Solution</strong></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Solution</span>
+<span class="co"># Randomly re-order data - &quot;shuffle it&quot;</span>
+n &lt;-<span class="st"> </span><span class="kw">nrow</span>(Term1)
+<span class="kw">set.seed</span>(<span class="dv">12347</span>)
+shuffled_Term1 &lt;-<span class="st"> </span>Term1[<span class="kw">sample</span>(n), ]
+## Cross - Validation
+explvars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;logincome&quot;</span>)
+<span class="kw">crossvalfct</span>(explvars)
+explvars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;logincome&quot;</span>)
+<span class="kw">crossvalfct</span>(explvars)
+explvars &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>)
+<span class="kw">crossvalfct</span>(explvars)</code></pre></div>
+<p><strong>Submission correctness test (SCT)</strong></p>
+<p>success_msg(“Excellent! This exercises demonstrates the use of cross-validation, a very important technique in model selection. The exercise builds the procedure from the ground up so that you can see all the steps involved. Further, it illustrates how you can develop your own functions to automate procedures and save steps.”)</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="multiple-linear-regression-mlr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interpreting-regression-results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"google": true,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/Chapters/Chapter4.Rmd",
+"text": "Edit"
+},
+"download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
