@@ -48,6 +48,8 @@ Statistical techniques can be used to address new situations. This is important 
 
 - For advanced regression applications in insurance, you may be interested in the series, [Predictive Modeling Applications in Actuarial Science](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/predictive-modeling-applications-actuarial-science-volume-1). Sample code and data for this series are available at [series website](http://instruction.bus.wisc.edu/jfrees/jfreesbooks/PredictiveModelingVol1/index.htm).
 
+- An earlier version of this tutorial, a [Short Course](https://www.datacamp.com/courses/8743) constructed for Indonesian actuaries, uses the [Datacamp](https://www.datacamp.com/) learning platform.
+
 ### Tutorial Description {-}
 
 - This online tutorial is designed to guide you through the foundations of regession with applications in actuarial science. 
