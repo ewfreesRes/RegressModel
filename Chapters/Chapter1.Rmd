@@ -18,24 +18,22 @@ In this section, you learn how to:
 
 ###Video 
 
-#### Video Overhead 
-
 <center>
 
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_e885sczm&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_tnia11ze" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 
 </center>
 
-#### Video Overhead Details
+#### Video Overhead Details {-}
 
-<h5 style="text-align: center;"><a id="displayOver1.1A" href="javascript:toggleDet('toggleOver1.1A','displayOver1.1A');"><i><strong>Show Overhead A. Description of the data details</strong></i></a> </h5>
+<h6 style="text-align: center;"><a id="displayOver1.1A" href="javascript:toggleDet('toggleOver1.1A','displayOver1.1A');"><i><strong>Show Overhead A Details. Description of the data</strong></i></a> </h6>
 <div id="toggleOver1.1A" style="display: none">
 
 To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton's 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents' height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father's height and rescaled mother's height. Galton was aware that the parents' and the adult child's height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.
 
 ```{r comment = ""}
-#heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
-heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+heights <- read.csv("CSVData\\galton_height.csv", header = TRUE)
+#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 plot(jitter(heights$parent_ht),jitter(heights$child_ht), ylim = c(60,80), xlim = c(60,80),
      ylab = "height of child", xlab = "height of parents")
 abline(lm(heights$child_ht~heights$parent_ht))
@@ -47,13 +45,13 @@ abline(0,1,col = "red")
 
 
 
-<h5 style="text-align: center;"><a id="displayOver1.1B" href="javascript:toggleDet('toggleOver1.1B','displayOver1.1B');"><i><strong>Show Overhead B. Read and examine data structure details</strong></i></a> </h5>
+<h6 style="text-align: center;"><a id="displayOver1.1B" href="javascript:toggleDet('toggleOver1.1B','displayOver1.1B');"><i><strong>Show Overhead B Details. Read and examine data structure</strong></i></a> </h6>
 <div id="toggleOver1.1B" style="display: none">
 
 
 The data has already been read into a dataset called `heights`. Examine the *structure* of the data with the function [str()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/) and use the [head()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/) command to looks at the first few records.
 
-```{r comment = "", eval = EVALUATE_CHAP1}
+```{r comment = ""}
 heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
 #heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 str(heights)
@@ -65,13 +63,13 @@ head(heights)
 
 
 
-<h5 style="text-align: center;"><a id="displayOver1.1C" href="javascript:toggleDet('toggleOver1.1C','displayOver1.1C');"><i><strong>Show Overhead C. Summary stats for parents' height details</strong></i></a> </h5>
+<h6 style="text-align: center;"><a id="displayOver1.1C" href="javascript:toggleDet('toggleOver1.1C','displayOver1.1C');"><i><strong>Show Overhead C Details. Summary stats for parents' height</strong></i></a> </h6>
 <div id="toggleOver1.1C" style="display: none">
 
 
 Next, examine the distribution of the child's height and then examine the distribution of the parents height.
 
-```{r comment = "", eval = EVALUATE_CHAP1}
+```{r comment = ""}
 ht_par <- heights$parent_ht
 hist(ht_par)
 mean(ht_par)
@@ -82,7 +80,7 @@ sd(ht_par)
 </div>
 
 
-<h5 style="text-align: center;"><a id="displayOver1.1D" href="javascript:toggleDet('toggleOver1.1D','displayOver1.1D');"><i><strong>Show Overhead D. Fit a normal curve to parents' height details</strong></i></a> </h5>
+<h6 style="text-align: center;"><a id="displayOver1.1D" href="javascript:toggleDet('toggleOver1.1D','displayOver1.1D');"><i><strong>Show Overhead D. Fit a normal curve to parents' height details</strong></i></a> </h6>
 <div id="toggleOver1.1D" style="display: none">
 
 
@@ -98,7 +96,7 @@ lines(x, dnorm(x, mean = mparent, sd = sdparent), col = "blue")
 </div>
 
 
-<h5 style="text-align: center;"><a id="displayOver1.1E" href="javascript:toggleDet('toggleOver1.1E','displayOver1.1E');"><i><strong>Show Overhead E. Use the normal approximation to determine the probability of the height of tall parents details</strong></i></a> </h5>
+<h6 style="text-align: center;"><a id="displayOver1.1E" href="javascript:toggleDet('toggleOver1.1E','displayOver1.1E');"><i><strong>Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents</strong></i></a> </h6>
 <div id="toggleOver1.1E" style="display: none">
 
 
@@ -125,9 +123,7 @@ The Galton data has already been read into a dataframe called `heights`. These d
 -  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
 -  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that an adult child's height is less than 72 inches
 
-**Hint**
-
-Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
+**Hint.** Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
 
 ```{r, include=FALSE}
 tutorial::go_interactive(greedy = FALSE)
@@ -135,23 +131,22 @@ tutorial::go_interactive(greedy = FALSE)
 
 
 
-```{r ex="create_a", type="pre-exercise-code", tut=TRUE}
-# Pre-exercise code
+```{r ex="ExerRegMod1.1.2", type="pre-exercise-code", tut=TRUE}
 #heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
 heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 ```
 
 
-```{r ex="create_a", type="sample-code", tut=TRUE}
+```{r ex="ExerRegMod1.1.2", type="sample-code", tut=TRUE}
 #Define the global variable
-ht_child <- 
+ht_child <- ___
 
 #Calculate the mean height
-#mchild <- 
+mchild <- ___
 mchild
 
 #Calculate the standard deviation of heights
-#sdchild <- 
+sdchild <- ___
 sdchild
 
 #Determine the probability that the height is less than 72
@@ -159,7 +154,7 @@ ___(72, mean=mchild, sd=sdchild)
 ```
 
 
-```{r ex="create_a", type="solution", tut=TRUE}
+```{r ex="ExerRegMod1.1.2", type="solution", tut=TRUE}
 # Solution
 ht_child <- heights$child_ht
 mchild <- mean(ht_child)
@@ -167,15 +162,15 @@ sdchild <- sd(ht_child)
 mchild
 sdchild
 pnorm(72, mean = mchild, sd = sdchild)
-
+ 
 ```
 
-```{r ex="create_a", type="sct", tut=TRUE}
-# test_error()
-# test_object("ht_child", incorrect_msg = "The child's height variable was defined in the wrong way. (You might check the hint.)")
-# test_object("mchild", incorrect_msg = "The mean child's height is calculated incorrectly. Check out the mean() function.")
-# test_object("sdchild", incorrect_msg = "The standard deviation of child's height is calculated incorrectly. Check out the sd() function.")
-#tutorial::success_msg("Excellent! With this procedure, you can now calculate probabilities for any distribution using a normal curve approximation.")
+```{r ex="ExerRegMod1.1.2", type="sct", tut=TRUE}
+ex() %>% check_object("ht_child",undefined_msg="Make sure you assign the children's hight to ht_child") %>% check_equal(incorrect_msg="Remember that in order to call a specific column from a dataframe, use the $ operator")
+ex() %>% check_object("mchild")  %>% check_equal()
+ex() %>% check_object("sdchild") %>% check_equal()
+ex() %>% check_object("pr") %>% check_equal()
+success_msg("Excellent! With this procedure, you can now calculate probabilities for any distribution using a normal curve approximation.")
 ```
 
 
@@ -192,25 +187,21 @@ As in the prior exercise, from the Galton dataset `heights`, the heights of 928 
 -  Use the function [seq()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/seq) to determine a sequence that can be used for plotting. Then, with the function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/),  superimpose a normal curve on the histogram
 -  Determine the probability that a child's height is greater than 72 inches
 
-**Hint**
-- Use the function [dnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) to calculate the normal density, similar to the cumulative probabilites that you calculated using [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)
--  To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability
+**Hint 1.** Use the function [dnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) to calculate the normal density, similar to the cumulative probabilites that you calculated using [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)
+
+**Hint 2.** To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability
 
 **Pre-exercise code**
 
-```{r comment = "", eval = EVALUATE_CHAP1}
-# Pre-exercise code
-heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
-#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+```{r ex="ExerRegMod1.1.3", type="pre-exercise-code", tut=TRUE}
+#heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
+heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
 ht_child <- heights$child_ht
 mchild <- mean(ht_child)
 sdchild <- sd(ht_child)
 ```
 
-**SampleCode**
-
-```{r eval = FALSE}
-`@sample_code`
+```{r ex="ExerRegMod1.1.3", type="sample-code", tut=TRUE}
 #Visualize the Distribution
 ___(___, freq = FALSE)
 
@@ -223,10 +214,7 @@ prob <- 1 -
 prob
 ```
 
-**Solution**
-
-```{r comment = "", eval = EVALUATE_CHAP1}
-# Solution
+```{r ex="ExerRegMod1.1.3", type="solution", tut=TRUE}
 hist(ht_child, freq = FALSE)
 x <- seq(60, 80,by = 0.1)
 lines(x, dnorm(x, mean = mchild, sd = sdchild), col = "blue")
@@ -235,15 +223,11 @@ prob
 ```
 
 
-**Submission Correctness Tests (SCT)**
-test_error()
-test_object("prob", incorrect_msg = "The probability of being greater than 72 was calculated incorrectly. (You might check the hint.)")
+```{r ex="ExerRegMod1.1.3", type="sct", tut=TRUE}
 success_msg("Excellent! Visualizing a distribution, especially with reference to a normal, is important for communicating results of your analysis.")
-
+```
 
 ## Visualizing distributions
-
-
 
 ***
 
@@ -257,19 +241,17 @@ In this section, you learn how to:
 
 ###Video 
 
-#### Video Overhead 
-
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_p7gt98qk&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_04w1xjbe" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 
 </center>
 
-#### Video Overhead Details
+#### Video Overhead Details {-}
 
+<h6 style="text-align: center;"><a id="displayOver1.2" href="javascript:toggleDet('toggleOver1.2','displayOver1.2');"><i><strong>Show Overhead Details. Data description</strong></i></a> </h6>
+<div id="toggleOver1.2" style="display: none">
 
-
-**Video Data Description**
-
+***
 
 For our first look at an insurance data set, we consider data from Rempala and Derrig (2005). They considered claims arising from automobile bodily injury insurance coverages. These are amounts incurred for outpatient medical treatments that arise from automobile accidents, typically sprains, broken collarbones and the like. The data consists of a sample of 272 claims from Massachusetts that were closed in 2001 (by "closed," we mean that the claim is settled and no additional liabilities can arise from the same accident). Rempala and Derrig were interested in developing procedures for handling mixtures of "typical" claims and others from providers who reported claims fraudulently. For this sample, we consider only those typical claims, ignoring the potentially fraudulent ones.
 
@@ -284,12 +266,14 @@ injury2 <- subset(injury, providerA ! = 0 )
 injury2$claims <- 1000*injury2$claims
 injury2$logclaims <- log(injury2$claims)
 injury3 <- injury2[c("claims","logclaims")]
-write.csv(injury3,"CSVData\\MassBI.csv",row.names = FALSE)
+#write.csv(injury3,"CSVData\\MassBI.csv",row.names = FALSE)
 ```
 
-####Video
+</div> 
 
-**Overhead A. Bring in Data, Introduce Logarithmic Claims**
+<h6 style="text-align: center;"><a id="displayOver1.2A" href="javascript:toggleDet('toggleOver1.2A','displayOver1.2A');"><i><strong>Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims</strong></i></a> </h6>
+<div id="toggleOver1.2A" style="display: none">
+
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
 injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
@@ -303,7 +287,11 @@ hist(claims)
 hist(logclaims)
 ```
 
-**Overhead B. Show how to get a finer grid for histograms**
+</div> 
+
+<h6 style="text-align: center;"><a id="displayOver1.2B" href="javascript:toggleDet('toggleOver1.2B','displayOver1.2B');"><i><strong>Show Overhead B Details. Show how to get a finer grid for histograms</strong></i></a> </h6>
+<div id="toggleOver1.2B" style="display: none">
+
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
 par(mfrow = c(1, 2))
@@ -311,7 +299,11 @@ hist(logclaims)
 hist(logclaims,breaks = 15)
 ```
 
-**Overhead C.  Introduce the density plot**
+</div> 
+
+<h6 style="text-align: center;"><a id="displayOver1.2C" href="javascript:toggleDet('toggleOver1.2C','displayOver1.2C');"><i><strong>Show Overhead C Details. Introduce the density plot</strong></i></a> </h6>
+<div id="toggleOver1.2C" style="display: none">
+
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
 par(mfrow = c(1, 2))
@@ -320,6 +312,9 @@ hist(logclaims, breaks = 15,freq = FALSE)
 lines(density(logclaims))
 
 ```
+
+</div> 
+
 
 ###Exercise. Visualizing bodily injury claims with density plots
 
@@ -334,21 +329,15 @@ In the prior video, you learned about the Massachusetts bodily injury dataset. T
 -  Create a density plot of logarithmic claims using the functions [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot/) and [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/).
 -  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `. 
 
-**Hint**
 
-**Pre-exercise code**
-
-```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
-# Pre-exercise code
-injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
-#injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
+```{r ex="ExerRegMod1.2.1", type="pre-exercise-code", tut=TRUE}
+#injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
+injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
 
-**SampleCode**
 
-```{r eval = FALSE}
-`SampleCode`
+```{r ex="ExerRegMod1.2.1", type="sample-code", tut=TRUE}
 #Create the logarithmic claims variable
 logclaims <- ___
 
@@ -363,10 +352,7 @@ plot(___(logclaims))
 ___
 ```
 
-**Solution**
-
-```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
-# Solution
+```{r ex="ExerRegMod1.2.1", type="solution", tut=TRUE}
 logclaims <- log(claims)
 hist(logclaims , breaks = 40,freq = FALSE)
 box()
@@ -375,9 +361,9 @@ plot(density(logclaims, bw = 0.03))
 
 ```
 
-**Submission Correctness Tests (SCT)**
-
+```{r ex="ExerRegMod1.2.1", type="sct", tut=TRUE}
 success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
+```
 
 ## Summarizing distributions
 
@@ -393,17 +379,15 @@ In this section, you learn how to:
 
 ###Video 
 
-#### Video Overhead 
-
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_4yk0k2m4&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_n2n42jwy" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details
+#### Video Overhead Details {-}
 
+<h6 style="text-align: center;"><a id="displayOver1.3A" href="javascript:toggleDet('toggleOver1.3A','displayOver1.3A');"><i><strong>Show Overhead A Details. Summary statistics</strong></i></a> </h6>
+<div id="toggleOver1.3A" style="display: none">
 
-
-**Overhead A. Summary Statistics**
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
 injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
 #injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
@@ -415,7 +399,10 @@ sd(claims);sd(logclaims)
 length(claims)
 ```
 
-**Overhead B. Boxplot**
+</div> 
+
+<h6 style="text-align: center;"><a id="displayOver1.3B" href="javascript:toggleDet('toggleOver1.3B','displayOver1.3B');"><i><strong>Show Overhead B Details. Boxplot</strong></i></a> </h6>
+<div id="toggleOver1.3B" style="display: none">
 
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
 # BASIC BOXPLOT
@@ -432,8 +419,11 @@ text(1.1,  4.4, "outliers", cex = 0.7)
 text(1.1, 10.9, "outlier",  cex = 0.7)
 ```
 
+</div> 
 
-**Overhead C. QQ Plot**
+<h6 style="text-align: center;"><a id="displayOver1.3C" href="javascript:toggleDet('toggleOver1.3C','displayOver1.3C');"><i><strong>Show Overhead C Details. QQ Plot</strong></i></a> </h6>
+<div id="toggleOver1.3C" style="display: none">
+
 
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
 summary(injury)
@@ -450,6 +440,8 @@ qqnorm(logclaims)
 qqline(logclaims)   
 ```
 
+</div> 
+
 ### Exercise. Summarizing bodily injury claims with box and qq plots
 
 **Assignment Text**
@@ -465,24 +457,16 @@ So this assignment is based on claims, not the logarithmic version. You will use
 -  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
 -  Produce a normal qq plot for claims using the function [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
-**Hint**
+**Hint.** Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
 
-Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
-
-**Pre-exercise code**
-
-```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
-# Pre-exercise code
-injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
-#injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
+```{r ex="ExerRegMod1.3.2", type="pre-exercise-code", tut=TRUE}
+#injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
+injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
 
 
-**SampleCode**
-
-```{r eval = FALSE}
-`SampleCode`
+```{r ex="ExerRegMod1.3.2", type="sample-code", tut=TRUE}
 #Produce a box plot for claims
 ___(claims)
 
@@ -499,9 +483,7 @@ ___(claims)
 ___(claims)
 ```
 
-**Solution**
-
-```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
+```{r ex="ExerRegMod1.3.2", type="solution", tut=TRUE}
 # Solution
 boxplot(claims)
 q25 <- quantile(claims, probs = 0.25)
@@ -512,13 +494,9 @@ qqnorm(claims)
 qqline(claims)   
 ```
 
-**Submission Correctness Tests (SCT)**
-
-test_error()
-test_object("q25", incorrect_msg = "You calculated the 25th quantile incorrectly. Check out the quantile() function.")
-test_object("qn25", incorrect_msg = "You calculated the 25th quantile incorrectly. Check out the qnorm() function.")
+```{r ex="ExerRegMod1.3.2", type="sct", tut=TRUE}
 success_msg("Congratulations on learning about box and qq plots. Although you are unlikely to show these plots to consumers of your analysis, you will find them useful tools for exploring multivariate aspects of data.")
-
+```
 
 ###Exercise. Effects on distributions of removing the largest claim
 
@@ -536,23 +514,15 @@ In the previous exercise, we learned that the Massachusetts bodily injury `claim
 -  Compare the summary statistics of the omitted claim distribution to the full distribution
 -  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
 
-**Hint**
+**Hint.** For this data set, the [subset()] argument `claims < 25000` will keep all but the largest claim
 
-For this data set, the [subset()] argument `claims < 25000` will keep all but the largest claim
-
-**Pre-exercise code**
-
-```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
-# Pre-exercise code
-injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
-#injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
+```{r ex="ExerRegMod1.3.3", type="pre-exercise-code", tut=TRUE}
+#injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
+injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
 
-**SampleCode**
-
-```{r eval = FALSE}
-`SampleCode`
+```{r ex="ExerRegMod1.3.3", type="sample-code", tut=TRUE}
 # Examine the tail of the `injury` dataset
 tail(___)
 
@@ -569,10 +539,7 @@ hist(___, freq = FALSE,  main = "Full Data")
 hist(___, freq = FALSE,  main = "Largest Claim Omitted")
 ```
 
-**Solution**
-
-```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
-# Solution
+```{r ex="ExerRegMod1.3.3", type="solution", tut=TRUE}
 tail(injury)
 injury2 <- subset(injury, claims < 25000 )
 summary(injury)
@@ -584,11 +551,10 @@ hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 
 ```
 
-**Submission Correctness Tests (SCT)**
 
-test_error()
-test_object("injury2", incorrect_msg = "You defined the `injury` dataframe incorrectly. Check out the subset function (and maybe look over the hint).")
+```{r ex="ExerRegMod1.3.3", type="sct", tut=TRUE}
 success_msg("Congratulations! The goal of predictive modeling is to discover patterns in the data. However, sometimes seeming 'patterns' are the result of one or two unusual observations. Unusual observations may be due to incorrect data gathering procedures or just due to wild fluctuations in a process of interest but are common in predictive modeling.")
+```
 
 ## Transformations
 
@@ -603,15 +569,15 @@ In this exercise, you learn how to:
 
 ###Video 
 
-#### Video Overhead 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_5yfuwrbc&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_6h3ur8eu" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details
+#### Video Overhead Details {-}
 
-**Overhead A. Simulate a moderately skewed distribution, with transforms**
+<h6 style="text-align: center;"><a id="displayOver1.4A" href="javascript:toggleDet('toggleOver1.4A','displayOver1.4A');"><i><strong>Show Overhead A Details. Simulate a moderately skewed distribution, with transforms</strong></i></a> </h6>
+<div id="toggleOver1.4A" style="display: none">
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
 #  FIGURE 1.7 - SIMULATE CHI-SQUARE, CREATE 3 TRANSFORMATIONS
@@ -623,8 +589,11 @@ X3 <- log(X1)                   # logarithmic transform
 X4 <- -1/X1                     # negative reciprocal transform
 ```
 
+</div> 
 
-**Overhead B. Visualize the distributions**
+<h6 style="text-align: center;"><a id="displayOver1.4B" href="javascript:toggleDet('toggleOver1.4B','displayOver1.4B');"><i><strong>Show Overhead B Details. Visualize the distributions</strong></i></a> </h6>
+<div id="toggleOver1.4B" style="display: none">
+
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
 par(mfrow = c(2, 2), cex = .75, mar = c(3,5,1.5,0))
@@ -652,6 +621,8 @@ mtext("Density", side = 2, at = 110, las = 1, cex = .75)
 mtext("Negative reciprocal of y", side = 1, cex = .75, line = 2)
 ```
 
+</div> 
+
 ###Exercise. Distribution of transformed bodily injury claims
 
 **Assignment Text**
@@ -669,23 +640,15 @@ Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matri
 -  logarithmic claims
 -  negative reciprocal of claims
 
-**Hint**
+**Hint.** For negative reciprocal claims, use `plot(density(-claims^(-1)))`
 
-For negative reciprocal claims, use `plot(density(-claims^(-1)))`
-
-**Pre-exercise code**
-
-```{r comment = "", eval = EVALUATE_CHAP1}
-# Pre-exercise code
-injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
-#injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
+```{r ex="ExerRegMod1.4.2", type="pre-exercise-code", tut=TRUE}
+#injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
+injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)
 claims <- injury$claims
 ```
 
-**SampleCode**
-
-```{r eval = FALSE}
-`SampleCode`
+```{r ex="ExerRegMod1.4.2", type="sample-code", tut=TRUE}
 #This code helps to organize the four graphs into a 2 by 2 format
 par(mfrow = c(2, 2))
 #Plot the density of claims
@@ -701,10 +664,7 @@ plot(density(___))
 plot(density(___))
 ```
 
-**Solution**
-
-```{r comment = "", eval = EVALUATE_CHAP1}
-# Solution
+```{r ex="ExerRegMod1.4.2", type="solution", tut=TRUE}
 par(mfrow = c(2, 2))
 plot(density(claims))    
 plot(density(claims^(0.5)))  
@@ -712,10 +672,9 @@ plot(density(log(claims)))
 plot(density(-claims^(-1)))  
 ```
 
-**Submission Correctness Tests (SCT)**
-
+```{r ex="ExerRegMod1.4.2", type="sct", tut=TRUE}
 success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
-
+```
 
 
 

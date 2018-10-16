@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -169,7 +169,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Regression Modeling</a></li>
+<li><a href="./">Regression Modeling Online Tutorial</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
@@ -189,12 +189,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.2.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-bodily-injury-claims-with-density-plots"><i class="fa fa-check"></i><b>1.2.2</b> Exercise. Visualizing bodily injury claims with density plots</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#summarizing-distributions"><i class="fa fa-check"></i><b>1.3</b> Summarizing distributions</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
+<li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-2"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
 <li class="chapter" data-level="1.3.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots"><i class="fa fa-check"></i><b>1.3.2</b> Exercise. Summarizing bodily injury claims with box and qq plots</a></li>
 <li class="chapter" data-level="1.3.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-effects-on-distributions-of-removing-the-largest-claim"><i class="fa fa-check"></i><b>1.3.3</b> Exercise. Effects on distributions of removing the largest claim</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#transformations"><i class="fa fa-check"></i><b>1.4</b> Transformations</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-4"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
+<li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
 <li class="chapter" data-level="1.4.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-distribution-of-transformed-bodily-injury-claims"><i class="fa fa-check"></i><b>1.4.2</b> Exercise. Distribution of transformed bodily injury claims</a></li>
 </ul></li>
 </ul></li>
@@ -547,7 +547,7 @@ y &lt;-<span class="st"> </span>x
 <span class="kw">arrows</span>(<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="fl">1.0</span>, <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">angle=</span><span class="dv">15</span>, <span class="dt">length=</span><span class="fl">0.12</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
 <span class="kw">text</span>(<span class="dv">0</span>, <span class="op">-</span><span class="fl">1.3</span>, <span class="kw">expression</span>( x<span class="op">-</span><span class="kw">bar</span>(x)), <span class="dt">cex=</span><span class="fl">0.8</span>  )
 <span class="kw">text</span>(<span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="kw">expression</span>( <span class="kw">hat</span>(y)<span class="op">==</span><span class="st"> </span>b[<span class="dv">0</span>]<span class="op">+</span><span class="st"> </span>b[<span class="dv">1</span>]<span class="op">*</span>x), <span class="dt">cex=</span><span class="fl">0.8</span>  )</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p><strong>Overhead C. The coefficient of determination, <span class="math inline">\(R^2\)</span> </strong></p>
 <p><strong>Overhead D. The mean square error, <span class="math inline">\(s^2\)</span> </strong></p>
 <p><strong>Overhead E. ANOVA Table</strong></p>
@@ -888,11 +888,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
-"linkedin": false
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -916,9 +916,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

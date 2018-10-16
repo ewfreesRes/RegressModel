@@ -18,7 +18,7 @@ description: "Statistical techniques can be used to address new situations. This
 ```{r include = FALSE}
 knitr::opts_chunk$set(results = "hold")
 EVALUATE_CHAP1 <- FALSE
-#EVALUATE_CHAP1 <- TRUE
+EVALUATE_CHAP1 <- TRUE
 EVALUATE_CHAP2 <- FALSE
 #EVALUATE_CHAP2 <- TRUE
 EVALUATE_CHAP3 <- FALSE
@@ -43,24 +43,20 @@ Statistical techniques can be used to address new situations. This is important 
 ### Resources {-}
 
 - This tutorial is based on the book [Regression Modeling with Actuarial and Financial Applications](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/regression-modeling-actuarial-and-financial-applications?format=PB).
-
-- For resources associated with the textbook, please visit the [Regression Modeling book web site](http://research.bus.wisc.edu/RegActuaries). 
-
-- For advanced regression applications in insurance, you may be interested in the series, [Predictive Modeling Applications in Actuarial Science](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/predictive-modeling-applications-actuarial-science-volume-1). Sample code and data for this series are available at [series website](http://instruction.bus.wisc.edu/jfrees/jfreesbooks/PredictiveModelingVol1/index.htm).
-
+    - For resources associated with the book, please visit the [Regression Modeling book web site](http://research.bus.wisc.edu/RegActuaries). 
+- For advanced regression applications in insurance, you may be interested in the series, [Predictive Modeling Applications in Actuarial Science](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/predictive-modeling-applications-actuarial-science-volume-1). 
+    - Sample code and data for the series are available at [series website](http://instruction.bus.wisc.edu/jfrees/jfreesbooks/PredictiveModelingVol1/index.htm).
 - An earlier version of this tutorial, a [Short Course](https://www.datacamp.com/courses/8743) constructed for Indonesian actuaries, uses the [Datacamp](https://www.datacamp.com/) learning platform.
 
 ### Tutorial Description {-}
 
 - This online tutorial is designed to guide you through the foundations of regession with applications in actuarial science. 
-
-- Anticipated completion time is approximation six hours.
-
+- Anticipated completion time is approximately six hours.
 -  The tutorial assumes that you are familiar with the foundations in the statistical software `R`, such as Datacamp's [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r%20).
 
-There are five chapters in this tutorial that summarize the foundations of multiple linear regression. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 4-8 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying `R` code for the analysis presented in the video. 
+**General Layout.** There are five chapters in this tutorial that summarize the foundations of multiple linear regression. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 4-8 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying `R` code for the analysis presented in the video. 
 
-Following each video, there are one or two exercises that allow you to practice skills to make sure that you fully grasp the learning outcomes. The exercises are implented using an online learning platfor provided by [Datacamp](https://www.datacamp.com/) so that you need not install `R`. Feedback is programmed into the exercises so that you will learn a lot by making mistakes! You will be pacing yourself, so always feel free to reveal the answers by hitting the `Solution` tab. Remember, going through quickly is not equivalent to learning deeply. Use this tool to enhance your understanding of one of the foundations of data science, regression analysis.
+**Role of Exercises.** Following each video, there are one or two exercises that allow you to practice skills to make sure that you fully grasp the learning outcomes. The exercises are implented using an online learning platfor provided by [Datacamp](https://www.datacamp.com/) so that you need not install `R`. Feedback is programmed into the exercises so that you will learn a lot by making mistakes! You will be pacing yourself, so always feel free to reveal the answers by hitting the `Solution` tab. Remember, going through quickly is not equivalent to learning deeply. Use this tool to enhance your understanding of one of the foundations of data science, regression analysis.
 
 
 ### Welcome to the Tutorial Video {-}

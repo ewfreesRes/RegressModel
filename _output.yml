@@ -14,7 +14,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Regression Modeling</a></li>
+        <li><a href="./">Regression Modeling Online Tutorial</a></li>
       after: |
         <li><a href="https://github.com/ewfreesRes/RegressModel" target="blank">Regression Modeling Tutorial on GitHub</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s

@@ -116,16 +116,17 @@
 }
 
 \setlength{\droptitle}{-2em}
+
   \title{Online Tutorial on
 \texttt{Regression\ Modeling\ with\ Actuarial\ and\ Financial\ Applications}}
-  \pretitle{\vspace{\droptitle}\centering\huge}
+    \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \author{Edward W. (Jed) Frees, University of Wisconsin-Madison}
-  \preauthor{\centering\large\emph}
+    \author{Edward W. (Jed) Frees, University of Wisconsin-Madison}
+    \preauthor{\centering\large\emph}
   \postauthor{\par}
-  \date{}
-  \predate{}\postdate{}
-
+    \date{}
+    \predate{}\postdate{}
+  
 \usepackage{booktabs}
 \setcounter{secnumdepth}{2}
 
@@ -174,33 +175,49 @@ used to analyze real data of interest.
 \addcontentsline{toc}{subsection}{Resources}
 
 \begin{itemize}
+\tightlist
 \item
   This tutorial is based on the book
   \href{http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/regression-modeling-actuarial-and-financial-applications?format=PB}{Regression
   Modeling with Actuarial and Financial Applications}.
-\item
-  For resources associated with the textbook, please visit the
-  \href{http://research.bus.wisc.edu/RegActuaries}{Regression Modeling
-  book web site}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For resources associated with the book, please visit the
+    \href{http://research.bus.wisc.edu/RegActuaries}{Regression Modeling
+    book web site}.
+  \end{itemize}
 \item
   For advanced regression applications in insurance, you may be
   interested in the series,
   \href{http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/predictive-modeling-applications-actuarial-science-volume-1}{Predictive
-  Modeling Applications in Actuarial Science}. Sample code and data for
-  this series are available at
-  \href{http://instruction.bus.wisc.edu/jfrees/jfreesbooks/PredictiveModelingVol1/index.htm}{series
-  website}.
+  Modeling Applications in Actuarial Science}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sample code and data for the series are available at
+    \href{http://instruction.bus.wisc.edu/jfrees/jfreesbooks/PredictiveModelingVol1/index.htm}{series
+    website}.
+  \end{itemize}
+\item
+  An earlier version of this tutorial, a
+  \href{https://www.datacamp.com/courses/8743}{Short Course} constructed
+  for Indonesian actuaries, uses the
+  \href{https://www.datacamp.com/}{Datacamp} learning platform.
 \end{itemize}
 
 \subsection*{Tutorial Description}\label{tutorial-description}
 \addcontentsline{toc}{subsection}{Tutorial Description}
 
 \begin{itemize}
+\tightlist
 \item
   This online tutorial is designed to guide you through the foundations
   of regession with applications in actuarial science.
 \item
-  Anticipated completion time is approximation six hours.
+  Anticipated completion time is approximately six hours.
 \item
   The tutorial assumes that you are familiar with the foundations in the
   statistical software \texttt{R}, such as Datacamp's
@@ -208,23 +225,24 @@ used to analyze real data of interest.
   to R}.
 \end{itemize}
 
-There are five chapters in this tutorial that summarize the foundations
-of multiple linear regression. Each chapter is subdivided into several
-sections. At the beginning of each section is a short video, typically
-4-8 minutes, that summarizes the section key learning outcomes.
-Following the video, you can see more details about the underlying
-\texttt{R} code for the analysis presented in the video.
+\textbf{General Layout.} There are five chapters in this tutorial that
+summarize the foundations of multiple linear regression. Each chapter is
+subdivided into several sections. At the beginning of each section is a
+short video, typically 4-8 minutes, that summarizes the section key
+learning outcomes. Following the video, you can see more details about
+the underlying \texttt{R} code for the analysis presented in the video.
 
-Following each video, there are one or two exercises that allow you to
-practice skills to make sure that you fully grasp the learning outcomes.
-The exercises are implented using an online learning platfor provided by
-\href{https://www.datacamp.com/}{Datacamp} so that you need not install
-\texttt{R}. Feedback is programmed into the exercises so that you will
-learn a lot by making mistakes! You will be pacing yourself, so always
-feel free to reveal the answers by hitting the \texttt{Solution} tab.
-Remember, going through quickly is not equivalent to learning deeply.
-Use this tool to enhance your understanding of one of the foundations of
-data science, regression analysis.
+\textbf{Role of Exercises.} Following each video, there are one or two
+exercises that allow you to practice skills to make sure that you fully
+grasp the learning outcomes. The exercises are implented using an online
+learning platfor provided by \href{https://www.datacamp.com/}{Datacamp}
+so that you need not install \texttt{R}. Feedback is programmed into the
+exercises so that you will learn a lot by making mistakes! You will be
+pacing yourself, so always feel free to reveal the answers by hitting
+the \texttt{Solution} tab. Remember, going through quickly is not
+equivalent to learning deeply. Use this tool to enhance your
+understanding of one of the foundations of data science, regression
+analysis.
 
 \subsection*{Welcome to the Tutorial
 Video}\label{welcome-to-the-tutorial-video}
@@ -301,9 +319,37 @@ Show Overhead B. Supporting R Code
      \DataTypeTok{ylab =} \StringTok{"height of child"}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{"height of parents"}\NormalTok{)}
 \KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(heights}\OperatorTok{$}\NormalTok{child_ht}\OperatorTok{~}\NormalTok{heights}\OperatorTok{$}\NormalTok{parent_ht))}
 \KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{summary}\NormalTok{(}\KeywordTok{lm}\NormalTok{(heights}\OperatorTok{$}\NormalTok{child_ht}\OperatorTok{~}\NormalTok{heights}\OperatorTok{$}\NormalTok{parent_ht))}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = heights$child_ht ~ heights$parent_ht)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8.2577 -1.4280  0.1323  1.5720  5.7918 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(>|t|)    
+(Intercept)       25.84856    2.69009   9.609   <2e-16 ***
+heights$parent_ht  0.60992    0.03882  15.710   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.26 on 926 degrees of freedom
+Multiple R-squared:  0.2104,    Adjusted R-squared:  0.2096 
+F-statistic: 246.8 on 1 and 926 DF,  p-value: < 2.2e-16
+\end{verbatim}
 
 \chapter{Regression and the Normal
 Distribution}\label{regression-and-the-normal-distribution}
@@ -336,11 +382,10 @@ In this section, you learn how to:
 
 \subsection{Video}\label{video}
 
-\subsubsection{Video Overhead}\label{video-overhead-1}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details}
-
-Show Overhead A. Description of the data details
+Show Overhead A Details. Description of the data
 
 \hypertarget{toggleOver1.1A}{}
 To illustrate a data set that can be analyzed using regression methods,
@@ -355,8 +400,8 @@ provided a single model for the joint distribution of heights.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#heights <- read.csv("CSVData\textbackslash{}\textbackslash{}galton_height.csv",header = TRUE)}
-\NormalTok{heights <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{heights <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{galton_height.csv"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{jitter}\NormalTok{(heights}\OperatorTok{$}\NormalTok{parent_ht),}\KeywordTok{jitter}\NormalTok{(heights}\OperatorTok{$}\NormalTok{child_ht), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{60}\NormalTok{,}\DecValTok{80}\NormalTok{), }\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{60}\NormalTok{,}\DecValTok{80}\NormalTok{),}
      \DataTypeTok{ylab =} \StringTok{"height of child"}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{"height of parents"}\NormalTok{)}
 \KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(heights}\OperatorTok{$}\NormalTok{child_ht}\OperatorTok{~}\NormalTok{heights}\OperatorTok{$}\NormalTok{parent_ht))}
@@ -366,7 +411,7 @@ provided a single model for the joint distribution of heights.
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-4-1.pdf}
 
-Show Overhead B. Read and examine data structure details
+Show Overhead B Details. Read and examine data structure
 
 \hypertarget{toggleOver1.1B}{}
 The data has already been read into a dataset called \texttt{heights}.
@@ -385,7 +430,20 @@ command to looks at the first few records.
 \end{Highlighting}
 \end{Shaded}
 
-Show Overhead C. Summary stats for parents' height details
+\begin{verbatim}
+'data.frame':   928 obs. of  2 variables:
+ $ child_ht : num  72.2 73.2 73.2 73.2 68.2 ...
+ $ parent_ht: num  74.5 74.5 74.5 74.5 73.5 73.5 73.5 73.5 73.5 73.5 ...
+  child_ht parent_ht
+1     72.2      74.5
+2     73.2      74.5
+3     73.2      74.5
+4     73.2      74.5
+5     68.2      73.5
+6     69.2      73.5
+\end{verbatim}
+
+Show Overhead C Details. Summary stats for parents' height
 
 \hypertarget{toggleOver1.1C}{}
 Next, examine the distribution of the child's height and then examine
@@ -395,10 +453,22 @@ the distribution of the parents height.
 \begin{Highlighting}[]
 \NormalTok{ht_par <-}\StringTok{ }\NormalTok{heights}\OperatorTok{$}\NormalTok{parent_ht}
 \KeywordTok{hist}\NormalTok{(ht_par)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{mean}\NormalTok{(ht_par)}
 \KeywordTok{sd}\NormalTok{(ht_par)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+[1] 69.26293
+[1] 1.912274
+\end{verbatim}
 
 Show Overhead D. Fit a normal curve to parents' height details
 
@@ -413,8 +483,15 @@ Show Overhead D. Fit a normal curve to parents' height details
 \end{Highlighting}
 \end{Shaded}
 
-Show Overhead E. Use the normal approximation to determine the
-probability of the height of tall parents details
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{verbatim}
+[1] 69.26293
+[1] 1.912274
+\end{verbatim}
+
+Show Overhead E Details. Use the normal approximation to determine the
+probability of the height of tall parents
 
 \hypertarget{toggleOver1.1E}{}
 \begin{Shaded}
@@ -426,6 +503,13 @@ probability of the height of tall parents details
 \KeywordTok{pnorm}\NormalTok{(StdUnitsTallHeight, }\DataTypeTok{mean =} \DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+[1] 0.9238302
+[1] 0.9238302
+[1] 1.431317
+[1] 0.9238302
+\end{verbatim}
 
 \subsection{Exercise. Fitting Galton's height
 data}\label{exercise.-fitting-galtons-height-data}
@@ -458,12 +542,11 @@ heights of the adult children.
   inches
 \end{itemize}
 
-\textbf{Hint}
+\textbf{Hint.} Remember that we can reference a variable, say
+\texttt{var}, from a data set such as \texttt{heights}, as
+\texttt{heights\$var}.
 
-Remember that we can reference a variable, say \texttt{var}, from a data
-set such as \texttt{heights}, as \texttt{heights\$var}.
-
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiMgUHJlLWV4ZXJjaXNlIGNvZGVcbiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKSIsInNhbXBsZSI6IiNEZWZpbmUgdGhlIGdsb2JhbCB2YXJpYWJsZVxuaHRfY2hpbGQgPC0gXG5cbiNDYWxjdWxhdGUgdGhlIG1lYW4gaGVpZ2h0XG4jbWNoaWxkIDwtIFxubWNoaWxkXG5cbiNDYWxjdWxhdGUgdGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvZiBoZWlnaHRzXG4jc2RjaGlsZCA8LSBcbnNkY2hpbGRcblxuI0RldGVybWluZSB0aGUgcHJvYmFiaWxpdHkgdGhhdCB0aGUgaGVpZ2h0IGlzIGxlc3MgdGhhbiA3MlxuX19fKDcyLCBtZWFuPW1jaGlsZCwgc2Q9c2RjaGlsZCkiLCJzb2x1dGlvbiI6IiMgU29sdXRpb25cbmh0X2NoaWxkIDwtIGhlaWdodHMkY2hpbGRfaHRcbm1jaGlsZCA8LSBtZWFuKGh0X2NoaWxkKVxuc2RjaGlsZCA8LSBzZChodF9jaGlsZClcbm1jaGlsZFxuc2RjaGlsZFxucG5vcm0oNzIsIG1lYW4gPSBtY2hpbGQsIHNkID0gc2RjaGlsZCkiLCJzY3QiOiIjIHRlc3RfZXJyb3IoKVxuIyB0ZXN0X29iamVjdChcImh0X2NoaWxkXCIsIGluY29ycmVjdF9tc2cgPSBcIlRoZSBjaGlsZCdzIGhlaWdodCB2YXJpYWJsZSB3YXMgZGVmaW5lZCBpbiB0aGUgd3Jvbmcgd2F5LiAoWW91IG1pZ2h0IGNoZWNrIHRoZSBoaW50LilcIilcbiMgdGVzdF9vYmplY3QoXCJtY2hpbGRcIiwgaW5jb3JyZWN0X21zZyA9IFwiVGhlIG1lYW4gY2hpbGQncyBoZWlnaHQgaXMgY2FsY3VsYXRlZCBpbmNvcnJlY3RseS4gQ2hlY2sgb3V0IHRoZSBtZWFuKCkgZnVuY3Rpb24uXCIpXG4jIHRlc3Rfb2JqZWN0KFwic2RjaGlsZFwiLCBpbmNvcnJlY3RfbXNnID0gXCJUaGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGNoaWxkJ3MgaGVpZ2h0IGlzIGNhbGN1bGF0ZWQgaW5jb3JyZWN0bHkuIENoZWNrIG91dCB0aGUgc2QoKSBmdW5jdGlvbi5cIilcbiN0dXRvcmlhbDo6c3VjY2Vzc19tc2coXCJFeGNlbGxlbnQhIFdpdGggdGhpcyBwcm9jZWR1cmUsIHlvdSBjYW4gbm93IGNhbGN1bGF0ZSBwcm9iYWJpbGl0aWVzIGZvciBhbnkgZGlzdHJpYnV0aW9uIHVzaW5nIGEgbm9ybWFsIGN1cnZlIGFwcHJveGltYXRpb24uXCIpIn0=
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKSIsInNhbXBsZSI6IiNEZWZpbmUgdGhlIGdsb2JhbCB2YXJpYWJsZVxuaHRfY2hpbGQgPC0gX19fXG5cbiNDYWxjdWxhdGUgdGhlIG1lYW4gaGVpZ2h0XG5tY2hpbGQgPC0gX19fXG5tY2hpbGRcblxuI0NhbGN1bGF0ZSB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGhlaWdodHNcbnNkY2hpbGQgPC0gX19fXG5zZGNoaWxkXG5cbiNEZXRlcm1pbmUgdGhlIHByb2JhYmlsaXR5IHRoYXQgdGhlIGhlaWdodCBpcyBsZXNzIHRoYW4gNzJcbl9fXyg3MiwgbWVhbj1tY2hpbGQsIHNkPXNkY2hpbGQpIiwic29sdXRpb24iOiIjIFNvbHV0aW9uXG5odF9jaGlsZCA8LSBoZWlnaHRzJGNoaWxkX2h0XG5tY2hpbGQgPC0gbWVhbihodF9jaGlsZClcbnNkY2hpbGQgPC0gc2QoaHRfY2hpbGQpXG5tY2hpbGRcbnNkY2hpbGRcbnBub3JtKDcyLCBtZWFuID0gbWNoaWxkLCBzZCA9IHNkY2hpbGQpIiwic2N0IjoiZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwiaHRfY2hpbGRcIix1bmRlZmluZWRfbXNnPVwiTWFrZSBzdXJlIHlvdSBhc3NpZ24gdGhlIGNoaWxkcmVuJ3MgaGlnaHQgdG8gaHRfY2hpbGRcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJSZW1lbWJlciB0aGF0IGluIG9yZGVyIHRvIGNhbGwgYSBzcGVjaWZpYyBjb2x1bW4gZnJvbSBhIGRhdGFmcmFtZSwgdXNlIHRoZSAkIG9wZXJhdG9yXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJtY2hpbGRcIikgICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJzZGNoaWxkXCIpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJwclwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuc3VjY2Vzc19tc2coXCJFeGNlbGxlbnQhIFdpdGggdGhpcyBwcm9jZWR1cmUsIHlvdSBjYW4gbm93IGNhbGN1bGF0ZSBwcm9iYWJpbGl0aWVzIGZvciBhbnkgZGlzdHJpYnV0aW9uIHVzaW5nIGEgbm9ybWFsIGN1cnZlIGFwcHJveGltYXRpb24uXCIpIn0=
 
 \subsection{Exercise. Visualizing child's height
 distribution}\label{exercise.-visualizing-childs-height-distribution}
@@ -498,64 +581,18 @@ curve to this distribution.
   inches
 \end{itemize}
 
-\textbf{Hint} - Use the function
+\textbf{Hint 1.} Use the function
 \href{https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/}{dnorm()}
 to calculate the normal density, similar to the cumulative probabilites
 that you calculated using
 \href{https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/}{pnorm()}
-- To calculate probabilities greater that an amount, simply use 1 minus
-the cumulative probability
+
+\textbf{Hint 2.} To calculate probabilities greater that an amount,
+simply use 1 minus the cumulative probability
 
 \textbf{Pre-exercise code}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Pre-exercise code}
-\NormalTok{heights <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{galton_height.csv"}\NormalTok{,}\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
-\CommentTok{#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)}
-\NormalTok{ht_child <-}\StringTok{ }\NormalTok{heights}\OperatorTok{$}\NormalTok{child_ht}
-\NormalTok{mchild <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(ht_child)}
-\NormalTok{sdchild <-}\StringTok{ }\KeywordTok{sd}\NormalTok{(ht_child)}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{SampleCode}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\StringTok{`}\DataTypeTok{@sample_code}\StringTok{`}
-\CommentTok{#Visualize the Distribution}
-\KeywordTok{___}\NormalTok{(___, }\DataTypeTok{freq =} \OtherTok{FALSE}\NormalTok{)}
-
-\CommentTok{#Determine a sequence. Then, graph a histogram with a normal curve superimposed}
-\NormalTok{x <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{60}\NormalTok{, }\DecValTok{80}\NormalTok{,}\DataTypeTok{by =} \FloatTok{0.1}\NormalTok{)}
-\KeywordTok{___}\NormalTok{(x, }\KeywordTok{dnorm}\NormalTok{(x,}\DataTypeTok{mean =}\NormalTok{ mchild, }\DataTypeTok{sd =}\NormalTok{ sdchild), }\DataTypeTok{col =} \StringTok{"blue"}\NormalTok{)}
-
-\CommentTok{# Determine the probability that a child's height is greater than 72}
-\NormalTok{prob <-}\StringTok{ }\DecValTok{1} \OperatorTok{-}\StringTok{ }
-\NormalTok{prob}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Solution}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Solution}
-\KeywordTok{hist}\NormalTok{(ht_child, }\DataTypeTok{freq =} \OtherTok{FALSE}\NormalTok{)}
-\NormalTok{x <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{60}\NormalTok{, }\DecValTok{80}\NormalTok{,}\DataTypeTok{by =} \FloatTok{0.1}\NormalTok{)}
-\KeywordTok{lines}\NormalTok{(x, }\KeywordTok{dnorm}\NormalTok{(x, }\DataTypeTok{mean =}\NormalTok{ mchild, }\DataTypeTok{sd =}\NormalTok{ sdchild), }\DataTypeTok{col =} \StringTok{"blue"}\NormalTok{)}
-\NormalTok{prob <-}\StringTok{ }\DecValTok{1} \OperatorTok{-}\StringTok{ }\KeywordTok{pnorm}\NormalTok{(}\DecValTok{72}\NormalTok{, }\DataTypeTok{mean =}\NormalTok{ mchild , }\DataTypeTok{sd =}\NormalTok{ sdchild)}
-\NormalTok{prob}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Submission Correctness Tests (SCT)} test\_error()
-test\_object(``prob'', incorrect\_msg = ``The probability of being
-greater than 72 was calculated incorrectly. (You might check the
-hint.)'') success\_msg(``Excellent! Visualizing a distribution,
-especially with reference to a normal, is important for communicating
-results of your analysis.'')
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuaHRfY2hpbGQgPC0gaGVpZ2h0cyRjaGlsZF9odFxubWNoaWxkIDwtIG1lYW4oaHRfY2hpbGQpXG5zZGNoaWxkIDwtIHNkKGh0X2NoaWxkKSIsInNhbXBsZSI6IiNWaXN1YWxpemUgdGhlIERpc3RyaWJ1dGlvblxuX19fKF9fXywgZnJlcSA9IEZBTFNFKVxuXG4jRGV0ZXJtaW5lIGEgc2VxdWVuY2UuIFRoZW4sIGdyYXBoIGEgaGlzdG9ncmFtIHdpdGggYSBub3JtYWwgY3VydmUgc3VwZXJpbXBvc2VkXG54IDwtIHNlcSg2MCwgODAsYnkgPSAwLjEpXG5fX18oeCwgZG5vcm0oeCxtZWFuID0gbWNoaWxkLCBzZCA9IHNkY2hpbGQpLCBjb2wgPSBcImJsdWVcIilcblxuIyBEZXRlcm1pbmUgdGhlIHByb2JhYmlsaXR5IHRoYXQgYSBjaGlsZCdzIGhlaWdodCBpcyBncmVhdGVyIHRoYW4gNzJcbnByb2IgPC0gMSAtIFxucHJvYiIsInNvbHV0aW9uIjoiaGlzdChodF9jaGlsZCwgZnJlcSA9IEZBTFNFKVxueCA8LSBzZXEoNjAsIDgwLGJ5ID0gMC4xKVxubGluZXMoeCwgZG5vcm0oeCwgbWVhbiA9IG1jaGlsZCwgc2QgPSBzZGNoaWxkKSwgY29sID0gXCJibHVlXCIpXG5wcm9iIDwtIDEgLSBwbm9ybSg3MiwgbWVhbiA9IG1jaGlsZCAsIHNkID0gc2RjaGlsZClcbnByb2IiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkV4Y2VsbGVudCEgVmlzdWFsaXppbmcgYSBkaXN0cmlidXRpb24sIGVzcGVjaWFsbHkgd2l0aCByZWZlcmVuY2UgdG8gYSBub3JtYWwsIGlzIGltcG9ydGFudCBmb3IgY29tbXVuaWNhdGluZyByZXN1bHRzIG9mIHlvdXIgYW5hbHlzaXMuXCIpIn0=
 
 \section{Visualizing distributions}\label{visualizing-distributions}
 
@@ -575,11 +612,13 @@ In this section, you learn how to:
 
 \subsection{Video}\label{video-1}
 
-\subsubsection{Video Overhead}\label{video-overhead-2}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-1}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-1}
+Show Overhead Details. Data description
 
-\textbf{Video Data Description}
+\hypertarget{toggleOver1.2}{}
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 For our first look at an insurance data set, we consider data from
 Rempala and Derrig (2005). They considered claims arising from
@@ -605,14 +644,13 @@ potentially fraudulent ones.
 \NormalTok{injury2}\OperatorTok{$}\NormalTok{claims <-}\StringTok{ }\DecValTok{1000}\OperatorTok{*}\NormalTok{injury2}\OperatorTok{$}\NormalTok{claims}
 \NormalTok{injury2}\OperatorTok{$}\NormalTok{logclaims <-}\StringTok{ }\KeywordTok{log}\NormalTok{(injury2}\OperatorTok{$}\NormalTok{claims)}
 \NormalTok{injury3 <-}\StringTok{ }\NormalTok{injury2[}\KeywordTok{c}\NormalTok{(}\StringTok{"claims"}\NormalTok{,}\StringTok{"logclaims"}\NormalTok{)]}
-\KeywordTok{write.csv}\NormalTok{(injury3,}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{,}\DataTypeTok{row.names =} \OtherTok{FALSE}\NormalTok{)}
+\CommentTok{#write.csv(injury3,"CSVData\textbackslash{}\textbackslash{}MassBI.csv",row.names = FALSE)}
 \end{Highlighting}
 \end{Shaded}
 
-\subsubsection{Video}\label{video-2}
+Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims
 
-\textbf{Overhead A. Bring in Data, Introduce Logarithmic Claims}
-
+\hypertarget{toggleOver1.2A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{injury <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{,}\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
@@ -627,8 +665,24 @@ potentially fraudulent ones.
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Overhead B. Show how to get a finer grid for histograms}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-19-1.pdf}
 
+\begin{verbatim}
+'data.frame':   272 obs. of  2 variables:
+ $ claims   : int  45 47 70 75 77 92 117 117 140 145 ...
+ $ logclaims: num  3.81 3.85 4.25 4.32 4.34 ...
+  claims logclaims
+1     45  3.806662
+2     47  3.850148
+3     70  4.248495
+4     75  4.317488
+5     77  4.343805
+6     92  4.521789
+\end{verbatim}
+
+Show Overhead B Details. Show how to get a finer grid for histograms
+
+\hypertarget{toggleOver1.2B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
@@ -637,8 +691,11 @@ potentially fraudulent ones.
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Overhead C. Introduce the density plot}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-20-1.pdf}
 
+Show Overhead C Details. Introduce the density plot
+
+\hypertarget{toggleOver1.2C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
@@ -647,6 +704,8 @@ potentially fraudulent ones.
 \KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(logclaims))}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-21-1.pdf}
 
 \subsection{Exercise. Visualizing bodily injury claims with density
 plots}\label{exercise.-visualizing-bodily-injury-claims-with-density-plots}
@@ -686,57 +745,7 @@ plotting, a smoothed version of the histogram.
   function, \texttt{bw\ =}.
 \end{itemize}
 
-\textbf{Hint}
-
-\textbf{Pre-exercise code}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Pre-exercise code}
-\NormalTok{injury <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{,}\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
-\CommentTok{#injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)}
-\NormalTok{claims <-}\StringTok{ }\NormalTok{injury}\OperatorTok{$}\NormalTok{claims}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{SampleCode}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\StringTok{`}\DataTypeTok{SampleCode}\StringTok{`}
-\CommentTok{#Create the logarithmic claims variable}
-\NormalTok{logclaims <-}\StringTok{ }\NormalTok{___}
-
-\CommentTok{#Create a histogram usins 40 bins}
-\KeywordTok{___}\NormalTok{(logclaims, }\DataTypeTok{breaks =} \DecValTok{40}\NormalTok{,}\DataTypeTok{freq =} \OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{box}\NormalTok{()}
-
-\CommentTok{# Create a density plot of logarithmic claims}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{___}\NormalTok{(logclaims))}
-
-\CommentTok{# Create a density plot of logarithmic claims with a smaller bandwidth}
-\NormalTok{___}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Solution}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Solution}
-\NormalTok{logclaims <-}\StringTok{ }\KeywordTok{log}\NormalTok{(claims)}
-\KeywordTok{hist}\NormalTok{(logclaims , }\DataTypeTok{breaks =} \DecValTok{40}\NormalTok{,}\DataTypeTok{freq =} \OtherTok{FALSE}\NormalTok{)}
-\KeywordTok{box}\NormalTok{()}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(logclaims))}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(logclaims, }\DataTypeTok{bw =} \FloatTok{0.03}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Submission Correctness Tests (SCT)}
-
-success\_msg(``Excellent! Visualizing the distribution is important and
-smoothing techniques allow viewers to see important patterns without
-being distracted by random fluctations.'')
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuaW5qdXJ5IDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvOGNjYTE5ZDA1MDNmY2Y2ZTlkMzBkOWNiOTEyZGU1YmE5NWVjYjljMS9NYXNzQkkuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5jbGFpbXMgPC0gaW5qdXJ5JGNsYWltcyIsInNhbXBsZSI6IiNDcmVhdGUgdGhlIGxvZ2FyaXRobWljIGNsYWltcyB2YXJpYWJsZVxubG9nY2xhaW1zIDwtIF9fX1xuXG4jQ3JlYXRlIGEgaGlzdG9ncmFtIHVzaW5zIDQwIGJpbnNcbl9fXyhsb2djbGFpbXMsIGJyZWFrcyA9IDQwLGZyZXEgPSBGQUxTRSlcbmJveCgpXG5cbiMgQ3JlYXRlIGEgZGVuc2l0eSBwbG90IG9mIGxvZ2FyaXRobWljIGNsYWltc1xucGxvdChfX18obG9nY2xhaW1zKSlcblxuIyBDcmVhdGUgYSBkZW5zaXR5IHBsb3Qgb2YgbG9nYXJpdGhtaWMgY2xhaW1zIHdpdGggYSBzbWFsbGVyIGJhbmR3aWR0aFxuX19fIiwic29sdXRpb24iOiJsb2djbGFpbXMgPC0gbG9nKGNsYWltcylcbmhpc3QobG9nY2xhaW1zICwgYnJlYWtzID0gNDAsZnJlcSA9IEZBTFNFKVxuYm94KClcbnBsb3QoZGVuc2l0eShsb2djbGFpbXMpKVxucGxvdChkZW5zaXR5KGxvZ2NsYWltcywgYncgPSAwLjAzKSkiLCJzY3QiOiJzdWNjZXNzX21zZyhcIkV4Y2VsbGVudCEgVmlzdWFsaXppbmcgdGhlIGRpc3RyaWJ1dGlvbiBpcyBpbXBvcnRhbnQgYW5kIHNtb290aGluZyB0ZWNobmlxdWVzIGFsbG93IHZpZXdlcnMgdG8gc2VlIGltcG9ydGFudCBwYXR0ZXJucyB3aXRob3V0IGJlaW5nIGRpc3RyYWN0ZWQgYnkgcmFuZG9tIGZsdWN0YXRpb25zLlwiKSJ9
 
 \section{Summarizing distributions}\label{summarizing-distributions}
 
@@ -756,14 +765,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-3}
+\subsection{Video}\label{video-2}
 
-\subsubsection{Video Overhead}\label{video-overhead-3}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-2}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-2}
+Show Overhead A Details. Summary statistics
 
-\textbf{Overhead A. Summary Statistics}
-
+\hypertarget{toggleOver1.3A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{injury <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{,}\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
@@ -777,12 +786,33 @@ In this section, you learn how to:
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Overhead B. Boxplot}
+\begin{verbatim}
+     claims          logclaims     
+ Min.   :   45.0   Min.   : 3.807  
+ 1st Qu.:  892.5   1st Qu.: 6.794  
+ Median : 2210.0   Median : 7.701  
+ Mean   : 2697.7   Mean   : 7.388  
+ 3rd Qu.: 3215.0   3rd Qu.: 8.076  
+ Max.   :50000.0   Max.   :10.820  
+[1] 3944.445
+[1] 1.10093
+[1] 272
+\end{verbatim}
 
+Show Overhead B Details. Boxplot
+
+\hypertarget{toggleOver1.3B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# BASIC BOXPLOT}
 \KeywordTok{boxplot}\NormalTok{(logclaims)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{quantile}\NormalTok{(logclaims, }\DataTypeTok{probs =} \FloatTok{0.75}\NormalTok{)}
 
 \CommentTok{# BOXPLOT WITH ANNOTATION}
@@ -796,8 +826,16 @@ In this section, you learn how to:
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Overhead C. QQ Plot}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-27-2.pdf}
 
+\begin{verbatim}
+     75% 
+8.075579 
+\end{verbatim}
+
+Show Overhead C Details. QQ Plot
+
+\hypertarget{toggleOver1.3C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{summary}\NormalTok{(injury)}
@@ -814,6 +852,27 @@ In this section, you learn how to:
 \KeywordTok{qqline}\NormalTok{(logclaims)   }
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\begin{verbatim}
+     claims          logclaims     
+ Min.   :   45.0   Min.   : 3.807  
+ 1st Qu.:  892.5   1st Qu.: 6.794  
+ Median : 2210.0   Median : 7.701  
+ Mean   : 2697.7   Mean   : 7.388  
+ 3rd Qu.: 3215.0   3rd Qu.: 8.076  
+ Max.   :50000.0   Max.   :10.820  
+ 75% 
+3215 
+     75% 
+8.075579 
+     75% 
+8.075583 
+[1] 8.131056
+[1] 0.6744898
+[1] 0.6744898
+\end{verbatim}
 
 \subsection{Exercise. Summarizing bodily injury claims with box and qq
 plots}\label{exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots}
@@ -861,72 +920,13 @@ readily.
   function is handy for producing a reference line.
 \end{itemize}
 
-\textbf{Hint}
-
-Note that
+\textbf{Hint.} Note that
 \href{https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/}{qnorm()}
 (one \texttt{q}) is for a normal quantile and
 \href{https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/}{qqnorm()}.
 (two \texttt{q}'s!) is for the normal qq plot
 
-\textbf{Pre-exercise code}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Pre-exercise code}
-\NormalTok{injury <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
-\CommentTok{#injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)}
-\NormalTok{claims <-}\StringTok{ }\NormalTok{injury}\OperatorTok{$}\NormalTok{claims}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{SampleCode}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\StringTok{`}\DataTypeTok{SampleCode}\StringTok{`}
-\CommentTok{#Produce a box plot for claims}
-\KeywordTok{___}\NormalTok{(claims)}
-
-\CommentTok{#Determine the 25th empirical percentile for claims}
-\NormalTok{q25 <-}\StringTok{ }\KeywordTok{___}\NormalTok{(claims, }\DataTypeTok{probs =}\NormalTok{ ___)}
-\NormalTok{q25}
-
-\CommentTok{#Determine the 25th percentile for claims based on a normal distribution}
-\NormalTok{qn25 <-}\StringTok{ }\KeywordTok{___}\NormalTok{(}\DataTypeTok{p =}\NormalTok{ ___, }\DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(claims), }\DataTypeTok{sd =} \KeywordTok{sd}\NormalTok{(claims))}
-\NormalTok{qn25}
-
-\CommentTok{#Produce a normal qq plot for claims}
-\KeywordTok{___}\NormalTok{(claims)}
-\KeywordTok{___}\NormalTok{(claims)}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Solution}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Solution}
-\KeywordTok{boxplot}\NormalTok{(claims)}
-\NormalTok{q25 <-}\StringTok{ }\KeywordTok{quantile}\NormalTok{(claims, }\DataTypeTok{probs =} \FloatTok{0.25}\NormalTok{)}
-\NormalTok{q25}
-\NormalTok{qn25 <-}\StringTok{ }\KeywordTok{qnorm}\NormalTok{(}\DataTypeTok{p =} \FloatTok{0.25}\NormalTok{, }\DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(claims), }\DataTypeTok{sd =} \KeywordTok{sd}\NormalTok{(claims))}
-\NormalTok{qn25}
-\KeywordTok{qqnorm}\NormalTok{(claims)}
-\KeywordTok{qqline}\NormalTok{(claims)   }
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Submission Correctness Tests (SCT)}
-
-test\_error() test\_object(``q25'', incorrect\_msg = ``You calculated
-the 25th quantile incorrectly. Check out the quantile() function.'')
-test\_object(``qn25'', incorrect\_msg = ``You calculated the 25th
-quantile incorrectly. Check out the qnorm() function.'')
-success\_msg(``Congratulations on learning about box and qq plots.
-Although you are unlikely to show these plots to consumers of your
-analysis, you will find them useful tools for exploring multivariate
-aspects of data.'')
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjUHJvZHVjZSBhIGJveCBwbG90IGZvciBjbGFpbXNcbl9fXyhjbGFpbXMpXG5cbiNEZXRlcm1pbmUgdGhlIDI1dGggZW1waXJpY2FsIHBlcmNlbnRpbGUgZm9yIGNsYWltc1xucTI1IDwtIF9fXyhjbGFpbXMsIHByb2JzID0gX19fKVxucTI1XG5cbiNEZXRlcm1pbmUgdGhlIDI1dGggcGVyY2VudGlsZSBmb3IgY2xhaW1zIGJhc2VkIG9uIGEgbm9ybWFsIGRpc3RyaWJ1dGlvblxucW4yNSA8LSBfX18ocCA9IF9fXywgbWVhbiA9IG1lYW4oY2xhaW1zKSwgc2QgPSBzZChjbGFpbXMpKVxucW4yNVxuXG4jUHJvZHVjZSBhIG5vcm1hbCBxcSBwbG90IGZvciBjbGFpbXNcbl9fXyhjbGFpbXMpXG5fX18oY2xhaW1zKSIsInNvbHV0aW9uIjoiIyBTb2x1dGlvblxuYm94cGxvdChjbGFpbXMpXG5xMjUgPC0gcXVhbnRpbGUoY2xhaW1zLCBwcm9icyA9IDAuMjUpXG5xMjVcbnFuMjUgPC0gcW5vcm0ocCA9IDAuMjUsIG1lYW4gPSBtZWFuKGNsYWltcyksIHNkID0gc2QoY2xhaW1zKSlcbnFuMjVcbnFxbm9ybShjbGFpbXMpXG5xcWxpbmUoY2xhaW1zKSAgICIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiQ29uZ3JhdHVsYXRpb25zIG9uIGxlYXJuaW5nIGFib3V0IGJveCBhbmQgcXEgcGxvdHMuIEFsdGhvdWdoIHlvdSBhcmUgdW5saWtlbHkgdG8gc2hvdyB0aGVzZSBwbG90cyB0byBjb25zdW1lcnMgb2YgeW91ciBhbmFseXNpcywgeW91IHdpbGwgZmluZCB0aGVtIHVzZWZ1bCB0b29scyBmb3IgZXhwbG9yaW5nIG11bHRpdmFyaWF0ZSBhc3BlY3RzIG9mIGRhdGEuXCIpIn0=
 
 \subsection{Exercise. Effects on distributions of removing the largest
 claim}\label{exercise.-effects-on-distributions-of-removing-the-largest-claim}
@@ -966,70 +966,10 @@ the largest claims.
   plots you create. Do not alter this code.
 \end{itemize}
 
-\textbf{Hint}
-
-For this data set, the {[}subset(){]} argument
+\textbf{Hint.} For this data set, the {[}subset(){]} argument
 \texttt{claims\ \textless{}\ 25000} will keep all but the largest claim
 
-\textbf{Pre-exercise code}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Pre-exercise code}
-\NormalTok{injury <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
-\CommentTok{#injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)}
-\NormalTok{claims <-}\StringTok{ }\NormalTok{injury}\OperatorTok{$}\NormalTok{claims}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{SampleCode}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\StringTok{`}\DataTypeTok{SampleCode}\StringTok{`}
-\CommentTok{# Examine the tail of the `injury` dataset}
-\KeywordTok{tail}\NormalTok{(___)}
-
-\CommentTok{# Create a subset omitting the largest claim}
-\NormalTok{injury2 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(injury, ___)}
-
-\CommentTok{# Compare the summary statistics of the omitted claim distribution to the full distribution}
-\KeywordTok{summary}\NormalTok{(___)}
-\KeywordTok{summary}\NormalTok{(injury2)}
-
-\CommentTok{# Compare the two distributions visually via histograms plotted next to another}
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\KeywordTok{hist}\NormalTok{(___, }\DataTypeTok{freq =} \OtherTok{FALSE}\NormalTok{,  }\DataTypeTok{main =} \StringTok{"Full Data"}\NormalTok{)}
-\KeywordTok{hist}\NormalTok{(___, }\DataTypeTok{freq =} \OtherTok{FALSE}\NormalTok{,  }\DataTypeTok{main =} \StringTok{"Largest Claim Omitted"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Solution}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Solution}
-\KeywordTok{tail}\NormalTok{(injury)}
-\NormalTok{injury2 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(injury, claims }\OperatorTok{<}\StringTok{ }\DecValTok{25000}\NormalTok{ )}
-\KeywordTok{summary}\NormalTok{(injury)}
-\KeywordTok{summary}\NormalTok{(injury2)}
-
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\KeywordTok{hist}\NormalTok{(claims, }\DataTypeTok{freq =} \OtherTok{FALSE}\NormalTok{,  }\DataTypeTok{main =} \StringTok{"Full Data"}\NormalTok{)}
-\KeywordTok{hist}\NormalTok{(injury2}\OperatorTok{$}\NormalTok{claims, }\DataTypeTok{freq =} \OtherTok{FALSE}\NormalTok{,  }\DataTypeTok{main =} \StringTok{"Largest Claim Omitted"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Submission Correctness Tests (SCT)}
-
-test\_error() test\_object(``injury2'', incorrect\_msg = ``You defined
-the \texttt{injury} dataframe incorrectly. Check out the subset function
-(and maybe look over the hint).'') success\_msg(``Congratulations! The
-goal of predictive modeling is to discover patterns in the data.
-However, sometimes seeming `patterns' are the result of one or two
-unusual observations. Unusual observations may be due to incorrect data
-gathering procedures or just due to wild fluctuations in a process of
-interest but are common in predictive modeling.'')
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjIEV4YW1pbmUgdGhlIHRhaWwgb2YgdGhlIGBpbmp1cnlgIGRhdGFzZXRcbnRhaWwoX19fKVxuXG4jIENyZWF0ZSBhIHN1YnNldCBvbWl0dGluZyB0aGUgbGFyZ2VzdCBjbGFpbVxuaW5qdXJ5MiA8LSBzdWJzZXQoaW5qdXJ5LCBfX18pXG5cbiMgQ29tcGFyZSB0aGUgc3VtbWFyeSBzdGF0aXN0aWNzIG9mIHRoZSBvbWl0dGVkIGNsYWltIGRpc3RyaWJ1dGlvbiB0byB0aGUgZnVsbCBkaXN0cmlidXRpb25cbnN1bW1hcnkoX19fKVxuc3VtbWFyeShpbmp1cnkyKVxuXG4jIENvbXBhcmUgdGhlIHR3byBkaXN0cmlidXRpb25zIHZpc3VhbGx5IHZpYSBoaXN0b2dyYW1zIHBsb3R0ZWQgbmV4dCB0byBhbm90aGVyXG5wYXIobWZyb3cgPSBjKDEsIDIpKVxuaGlzdChfX18sIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkZ1bGwgRGF0YVwiKVxuaGlzdChfX18sIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkxhcmdlc3QgQ2xhaW0gT21pdHRlZFwiKSIsInNvbHV0aW9uIjoidGFpbChpbmp1cnkpXG5pbmp1cnkyIDwtIHN1YnNldChpbmp1cnksIGNsYWltcyA8IDI1MDAwIClcbnN1bW1hcnkoaW5qdXJ5KVxuc3VtbWFyeShpbmp1cnkyKVxuXG5wYXIobWZyb3cgPSBjKDEsIDIpKVxuaGlzdChjbGFpbXMsIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkZ1bGwgRGF0YVwiKVxuaGlzdChpbmp1cnkyJGNsYWltcywgZnJlcSA9IEZBTFNFLCAgbWFpbiA9IFwiTGFyZ2VzdCBDbGFpbSBPbWl0dGVkXCIpIiwic2N0Ijoic3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIFRoZSBnb2FsIG9mIHByZWRpY3RpdmUgbW9kZWxpbmcgaXMgdG8gZGlzY292ZXIgcGF0dGVybnMgaW4gdGhlIGRhdGEuIEhvd2V2ZXIsIHNvbWV0aW1lcyBzZWVtaW5nICdwYXR0ZXJucycgYXJlIHRoZSByZXN1bHQgb2Ygb25lIG9yIHR3byB1bnVzdWFsIG9ic2VydmF0aW9ucy4gVW51c3VhbCBvYnNlcnZhdGlvbnMgbWF5IGJlIGR1ZSB0byBpbmNvcnJlY3QgZGF0YSBnYXRoZXJpbmcgcHJvY2VkdXJlcyBvciBqdXN0IGR1ZSB0byB3aWxkIGZsdWN0dWF0aW9ucyBpbiBhIHByb2Nlc3Mgb2YgaW50ZXJlc3QgYnV0IGFyZSBjb21tb24gaW4gcHJlZGljdGl2ZSBtb2RlbGluZy5cIikifQ==
 
 \section{Transformations}\label{transformations}
 
@@ -1045,15 +985,15 @@ In this exercise, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-4}
+\subsection{Video}\label{video-3}
 
-\subsubsection{Video Overhead}\label{video-overhead-4}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-3}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-3}
+Show Overhead A Details. Simulate a moderately skewed distribution, with
+transforms
 
-\textbf{Overhead A. Simulate a moderately skewed distribution, with
-transforms}
-
+\hypertarget{toggleOver1.4A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#  FIGURE 1.7 - SIMULATE CHI-SQUARE, CREATE 3 TRANSFORMATIONS}
@@ -1066,8 +1006,9 @@ transforms}
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Overhead B. Visualize the distributions}
+Show Overhead B Details. Visualize the distributions
 
+\hypertarget{toggleOver1.4B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DataTypeTok{cex =}\NormalTok{ .}\DecValTok{75}\NormalTok{, }\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\FloatTok{1.5}\NormalTok{,}\DecValTok{0}\NormalTok{))}
@@ -1095,6 +1036,8 @@ transforms}
 \KeywordTok{mtext}\NormalTok{(}\StringTok{"Negative reciprocal of y"}\NormalTok{, }\DataTypeTok{side =} \DecValTok{1}\NormalTok{, }\DataTypeTok{cex =}\NormalTok{ .}\DecValTok{75}\NormalTok{, }\DataTypeTok{line =} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-38-1.pdf}
 
 \subsection{Exercise. Distribution of transformed bodily injury
 claims}\label{exercise.-distribution-of-transformed-bodily-injury-claims}
@@ -1131,61 +1074,10 @@ of
   negative reciprocal of claims
 \end{itemize}
 
-\textbf{Hint}
-
-For negative reciprocal claims, use
+\textbf{Hint.} For negative reciprocal claims, use
 \texttt{plot(density(-claims\^{}(-1)))}
 
-\textbf{Pre-exercise code}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Pre-exercise code}
-\NormalTok{injury <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
-\CommentTok{#injury <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv", header = TRUE)}
-\NormalTok{claims <-}\StringTok{ }\NormalTok{injury}\OperatorTok{$}\NormalTok{claims}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{SampleCode}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\StringTok{`}\DataTypeTok{SampleCode}\StringTok{`}
-\CommentTok{#This code helps to organize the four graphs into a 2 by 2 format}
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\CommentTok{#Plot the density of claims}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(___))}
-
-\CommentTok{#Plot the density of square root of claims}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(___)) }
-
-\CommentTok{#Plot the density of logarithmic claims}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(___))}
-
-\CommentTok{#Plot the density of the negative reciprocal of claims}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(___))}
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Solution}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# Solution}
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(claims))    }
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(claims}\OperatorTok{^}\NormalTok{(}\FloatTok{0.5}\NormalTok{)))  }
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(}\KeywordTok{log}\NormalTok{(claims)))  }
-\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(}\OperatorTok{-}\NormalTok{claims}\OperatorTok{^}\NormalTok{(}\OperatorTok{-}\DecValTok{1}\NormalTok{)))  }
-\end{Highlighting}
-\end{Shaded}
-
-\textbf{Submission Correctness Tests (SCT)}
-
-success\_msg(``Excellent! Transformations of data is a tool that
-incredibly expands potential applicability of (linear) regression
-techniques.'')
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjVGhpcyBjb2RlIGhlbHBzIHRvIG9yZ2FuaXplIHRoZSBmb3VyIGdyYXBocyBpbnRvIGEgMiBieSAyIGZvcm1hdFxucGFyKG1mcm93ID0gYygyLCAyKSlcbiNQbG90IHRoZSBkZW5zaXR5IG9mIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpXG5cbiNQbG90IHRoZSBkZW5zaXR5IG9mIHNxdWFyZSByb290IG9mIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpIFxuXG4jUGxvdCB0aGUgZGVuc2l0eSBvZiBsb2dhcml0aG1pYyBjbGFpbXNcbnBsb3QoZGVuc2l0eShfX18pKVxuXG4jUGxvdCB0aGUgZGVuc2l0eSBvZiB0aGUgbmVnYXRpdmUgcmVjaXByb2NhbCBvZiBjbGFpbXNcbnBsb3QoZGVuc2l0eShfX18pKSIsInNvbHV0aW9uIjoicGFyKG1mcm93ID0gYygyLCAyKSlcbnBsb3QoZGVuc2l0eShjbGFpbXMpKSAgICBcbnBsb3QoZGVuc2l0eShjbGFpbXNeKDAuNSkpKSAgXG5wbG90KGRlbnNpdHkobG9nKGNsYWltcykpKSAgXG5wbG90KGRlbnNpdHkoLWNsYWltc14oLTEpKSkgICIsInNjdCI6InN1Y2Nlc3NfbXNnKFwiRXhjZWxsZW50ISBUcmFuc2Zvcm1hdGlvbnMgb2YgZGF0YSBpcyBhIHRvb2wgdGhhdCBpbmNyZWRpYmx5IGV4cGFuZHMgcG90ZW50aWFsIGFwcGxpY2FiaWxpdHkgb2YgKGxpbmVhcikgcmVncmVzc2lvbiB0ZWNobmlxdWVzLlwiKSJ9
 
 \chapter{Basic Linear Regression}\label{basic-linear-regression}
 
@@ -1613,7 +1505,7 @@ line}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-58-1.pdf}
 
 \textbf{Overhead C. The coefficient of determination, \(R^2\) }
 
