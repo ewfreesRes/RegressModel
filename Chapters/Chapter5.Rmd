@@ -35,17 +35,18 @@ summary(meps2)
 
 ## Case study: MEPS health expenditures
 
-###Video (Exercise). Case study: MEPS health expenditures
 
-#### Learning Objectives
+###Video 
 
-In this module, you learn how to:
-  
--  
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_itjvn841&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_i3ynk1nx" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
 
-#### Video Overheads
+#### Video Overhead Details {-}
 
-**Overhead A. MEPS health expenditures**
+<h6 style="text-align: center;"><a id="displayOver5.1A" href="javascript:toggleDet('toggleOver5.1A','displayOver5.1A');"><i><strong>Show Overhead A Details. MEPS health expenditures</strong></i></a> </h6>
+<div id="toggleOver5.1A" style="display: none">
+
 
 This exercise considers data from the *Medical Expenditure Panel Survey* (MEPS), conducted by the U.S. Agency of Health Research and Quality. MEPS is a probability survey that provides nationally representative estimates of health care use, expenditures, sources of payment, and insurance coverage for the U.S. civilian population. This survey collects detailed information on individuals of each medical care episode by type of services including physician office visits, hospital emergency room visits, hospital outpatient visits, hospital inpatient stays, all other medical provider visits, and use of prescribed medicines. This detailed information allows one to develop models of health care utilization to predict future expenditures. You can learn more about MEPS at http://www.meps.ahrq.gov/mepsweb/.
 
@@ -53,7 +54,11 @@ We consider MEPS data from the panels 7 and 8 of 2003 that consists of 18,735 in
 
 Our dependent variable is the amount of expenditures for outpatient visits, `expendop`. For MEPS, outpatient events include hospital outpatient department visits, office-based provider visits and emergency room visits excluding dental services. (Dental services, compared to other types of health care services, are more predictable and occur in a more regular basis.) Hospital stays with the same date of admission and discharge, known as "zero-night stays," were included in outpatient counts and expenditures. (Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures. Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.)
 
-**Overhead B. Overhead MEPS health expenditures**
+</div> 
+
+<h6 style="text-align: center;"><a id="displayOver5.1B" href="javascript:toggleDet('toggleOver5.1B','displayOver5.1B');"><i><strong>Show Overhead B Details. Overhead MEPS health expenditures</strong></i></a> </h6>
+<div id="toggleOver5.1B" style="display: none">
+
 
 Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Agency of Health Research and Quality (AHRQ).
 
@@ -68,8 +73,11 @@ Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Age
 - This detailed information allows one to develop models of health care utilization to predict future expenditures.
 - We consider MEPS data from the first panel of 2003 and take a random sample of *n* = 2, 000 individuals between ages 18 and 65.
 
+</div> 
 
-**Overhead C. Outcome variable**
+<h6 style="text-align: center;"><a id="displayOver5.1C" href="javascript:toggleDet('toggleOver5.1C','displayOver5.1C');"><i><strong>Show Overhead C Details. Outcome variable</strong></i></a> </h6>
+<div id="toggleOver5.1C" style="display: none">
+
 
 Our dependent variable is expenditures for outpatient admissions.
 
@@ -79,7 +87,11 @@ Our dependent variable is expenditures for outpatient admissions.
     - Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures.
     - Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.
 
-**Overhead D. Explanatory variables**
+</div> 
+
+<h6 style="text-align: center;"><a id="displayOver5.1D" href="javascript:toggleDet('toggleOver5.1D','displayOver5.1D');"><i><strong>Show Overhead D Details. Explanatory variables</strong></i></a> </h6>
+<div id="toggleOver5.1D" style="display: none">
+
 
 9 variables in the database. Here 13 most relevant.
 
@@ -102,9 +114,10 @@ managedcare & \text{1 if enrolled in an HMO or gatekeeper plan} \\
 \end{array}}
 $$
 
+</div> 
 
-
-**Overhead E. Case study outline**
+<h6 style="text-align: center;"><a id="displayOver5.1E" href="javascript:toggleDet('toggleOver5.1E','displayOver5.1E');"><i><strong>Show Overhead E Details. Case study outline</strong></i></a> </h6>
+<div id="toggleOver5.1E" style="display: none">
 
 The next series of exercises leads you through an analysis of the steps for understanding a complex data set. Because of the complexity of the data, in each step only a sample of procedures will be executed.
 
@@ -113,6 +126,8 @@ The outline consists of:
 - Summary statistics
 - Splitting the data into training and testing portions with initial model fits
 - Selecting variables to be included in the model
+
+</div> 
 
 ###Exercise. Summarizing data
 
@@ -135,20 +150,12 @@ To examine relationships of the outcome variable visually, we look to scatterplo
 - Examine the relationship of age versus logarithmic expenditures using a scatter plot. Superimpose a local fitting line using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines) and
 [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess) functions.
 
-**Hint**
-
-**Pre-exercise code**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Pre-exercise code
-meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
-#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+```{r ex="ExerRegMod5.1.2", type="pre-exercise-code", tut=TRUE}
+#meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
 ```
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@sample_code`
+```{r ex="ExerRegMod5.1.2", type="sample-code", tut=TRUE}
 # Examine the structure and get a summary of the `meps` dataframe 
 str(___)
 summary(___)
@@ -173,10 +180,7 @@ lines(lowess(___, ___), col="red")
 ```
 
 
-**Solution**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Solution
+```{r ex="ExerRegMod5.1.2", type="solution", tut=TRUE}
 str(meps)
 summary(meps)
 table(meps$race)
@@ -190,10 +194,11 @@ plot(meps$age,meps$logexpend, xlab = "age", ylab = "log expend")
 lines(lowess(meps$age, meps$logexpend), col="red")
 
 ```
-**Submission correctness test (SCT)**
 
+
+```{r ex="ExerRegMod5.1.2", type="sct", tut=TRUE}
 success_msg("Excellent! Summarizing data, without reference to a model, is probably the most time-consuming part of any predictive modeling exercise. Summary statistics are also a key part of any report as they illustrate features of the data that are accessible to a broad audience.")
-
+```
 
 ###Exercise. Fit a benchmark multiple linear regression model
 
@@ -212,23 +217,15 @@ We start by fitting a benchmark model. It is common to use all available explana
 - You can [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot) the fitted model to view several diagnostic plots. These plots provide evidence that expenditures may not be the best scale for linear regression.
 - Fit a full model using `logexpend` as the outcome and all explanatory variables and summarize the fit. Use the [plot()]() function for evidence that this variable is more suited for linear regression methods than expenditures on the original scale.
 
-**Hint**
+**Hint.** A `plot` of a regression object such as plot(mlr) provides four diagnostic plots. These can be organized as a 2 by 2 array using `par(mfrow = c(2, 2))`.
 
-A `plot` of a regression object such as plot(mlr) provides four diagnostic plots. These can be organized as a 2 by 2 array using `par(mfrow = c(2, 2))`.
-
-**Pre-exercise code**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Pre-exercise code
-meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
-#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+```{r ex="ExerRegMod5.1.3", type="pre-exercise-code", tut=TRUE}
+#meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
 meps$logexpend <- log(meps$expendop)
 ```
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@sample_code`
+```{r ex="ExerRegMod5.1.3", type="sample-code", tut=TRUE}
 # Randomly split the data into a training and a testing data sets. Use 75\% for the training, 25\% for the testing.
 n <- nrow(meps)
 set.seed(12347)
@@ -254,11 +251,7 @@ plot(meps_mlr2)
 ```
 
 
-**Solution**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Solution
-
+```{r ex="ExerRegMod5.1.3", type="solution", tut=TRUE}
 # Split the sample into a `training` and `test` data
 n <- nrow(meps)
 set.seed(12347)
@@ -279,10 +272,9 @@ plot(meps_mlr2)
 
 ```
 
-**Submission correctness test (SCT)**
-
+```{r ex="ExerRegMod5.1.3", type="sct", tut=TRUE}
 success_msg("Excellent! You may have compared the four diagnostic graphs from the MLR model fit of 'expend' to those created using the same procedure but with logarithmic expenditures as the outcome. This provides another piece of evidence that log expenditures are more suitable for regression modeling. Using logarithmic outcomes is a common feature of actuarial applications but can be difficult to diagnose and interpret without practice.")
-
+```
 
 ###Exercise. Variable selection
 
@@ -301,13 +293,9 @@ From our prior work, the training dataframe `train_meps` has already been loaded
 - You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
 
 **Hint**
-
-**Pre-exercise code**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Pre-exercise code
-meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
-#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+```{r ex="ExerRegMod5.1.4", type="pre-exercise-code", tut=TRUE}
+#meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
 meps$logexpend <- log(meps$expendop)
 # Split the sample into a `training` and `test` data
 n <- nrow(meps)
@@ -320,10 +308,8 @@ test_meps     <- shuffled_meps[test_indices, ]
 ```
 
 
-**Sample_code**
 
-```{r eval = FALSE}
-`@sample_code`
+```{r ex="ExerRegMod5.1.4", type="sample-code", tut=TRUE}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 # Use the step() to drop unnecessary variables from the full fitted model summarized in the object `meps_mlr2` and summarize this recommended model.
 model_stepwise <- step(meps_mlr2, data = ___, direction= "both", k = log(nrow(X)), trace = 0) 
@@ -340,10 +326,7 @@ summary(___)
 ```
 
 
-**Solution**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Solution
+```{r ex="ExerRegMod5.1.4", type="solution", tut=TRUE}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 #library(Rcmdr)
 #temp <- stepwise(meps_mlr2, direction = 'backward/forward')
@@ -372,9 +355,9 @@ summary(meps_mlr5)
 ```
 
 
-**Submission correctness test (SCT)**
-
+```{r ex="ExerRegMod5.1.4", type="sct", tut=TRUE}
 success_msg("Excellent! Sometimes variables may have good predictive power but are unacceptable for policy purposes - in insurance, ethnicity and sometimes sex are good examples. This implies that model interpretation can be just as important as the ability to predict.")
+```
 
 ###Exercise. Model comparisons using cross-validation
 
@@ -392,16 +375,11 @@ In the sample code, the cross-validation procedure has been summarized into a fu
 
 Note which model is suggested by the cross validation function.
 
-**Hint**
+**Hint.** The cross validation function of this is very similar to the one we did earlier. Different number of subsamples, different test/training data and a different outcome variable. Except for these minor changes, it is the same function that we worked with earlier.
 
-The cross validation function of this is very similar to the one we did earlier. Different number of subsamples, different test/training data and a different outcome variable. Except for these minor changes, it is the same function that we worked with earlier.
-
-**Pre-exercise code**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Pre-exercise code
-meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
-#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+```{r ex="ExerRegMod5.1.5", type="pre-exercise-code", tut=TRUE}
+#meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
 meps$logexpend <- log(meps$expendop)
 # Split the sample into a `training` and `test` data
 n <- nrow(meps)
@@ -433,10 +411,7 @@ crossvalfct <- function(explvars){
 }
 ```
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@sample_code`
+```{r ex="ExerRegMod5.1.5", type="sample-code", tut=TRUE}
 # Run the cross validation (`crossvalfct`) function using the explanatory variables suggested by the stepwise function.
 explvars <- c("gender", "age", "phstat", "anylimit", "insure")
 crossvalfct(explvars)
@@ -452,10 +427,7 @@ crossvalfct(explvars)
 ```
 
 
-**Solution**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-#Solution
+```{r ex="ExerRegMod5.1.5", type="solution", tut=TRUE}
 
 explvars <- c("gender", "age", "phstat", "anylimit", "insure")
 crossvalfct(explvars)
@@ -466,9 +438,9 @@ crossvalfct(explvars)
 ```
 
 
-**Submission correctness test (SCT)**
-
+```{r ex="ExerRegMod5.1.5", type="sct", tut=TRUE}
 success_msg("Excellent! Cross-validation has become an essential piece of the data analysts toolkit. Good that you now have additional experience with it.")
+```
 
 
 ###Exercise. Out of sample validation 
@@ -496,14 +468,9 @@ The comparisons will be based on expenditures in dollars using the held-out vali
 - Predict expenditures for the test data and summarize the fit for the benchmark model using the sum of absolute prediction errors.
 - Compare the predictions of the models graphically.
 
-**Hint**
-
-**Pre-exercise code**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Pre-exercise code
-meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
-#meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
+```{r ex="ExerRegMod5.1.6", type="pre-exercise-code", tut=TRUE}
+#meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
+meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
 meps$logexpend <- log(meps$expendop)
 # Split the sample into a `training` and `test` data
 n <- nrow(meps)
@@ -518,10 +485,7 @@ explvars4 <- c(explvars3, "region", "educ", "phstat", "unemploy", "managedcare")
 ```
 
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@sample_code`
+```{r ex="ExerRegMod5.1.6", type="sample-code", tut=TRUE}
 # Regress `logexpend` on the explanatory variables listed in `explvars3`
 meps_mlr3 <- lm(logexpend ~ gender + age + phstat + anylimit  + insure + mpoor, data = train_meps)
 
@@ -550,10 +514,7 @@ plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out E
 ```
 
 
-**Solution**
-
-```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP5}
-# Solution
+```{r ex="ExerRegMod5.1.6", type="solution", tut=TRUE}
 meps_mlr3 <- lm(logexpend ~ gender + age + phstat + anylimit  + insure + mpoor, data = train_meps)
 predict_meps3 <- test_meps[,explvars3]
 explvars3 <- c("gender", "age", "phstat", "anylimit", "insure", "mpoor")
@@ -579,10 +540,9 @@ plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out E
 
 
 
-**Submission correctness test (SCT)**
-
+```{r ex="ExerRegMod5.1.6", type="sct", tut=TRUE}
 success_msg("Excellent! We found that the model of log expenditures outperforms the benchmark that models expenditures, even when the out of sample criterion was in the original 'dollar' units. It is comoforting to know that a search for a good model does well when using different out of sample criteria.")
-
+```
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = FALSE, echo = FALSE}
 explvars <- c("gender")
@@ -606,18 +566,26 @@ sum(predict_testc)
 
 ## What the modeling procedure tells us
 
-###Video (Exercise). What the modeling procedure tells us
+***
 
-#### Learning Objectives
-
-In this module, you learn how to:
+In this section, you learn how to:
   
 - Interpret individual effects, based on their substantive and statistical significance
 - Describe other purposes of regression modeling, including regression function for pricing, benchmarking studies, and predicting future observations.
 
-#### Video Overheads
+***
 
-**Overhead A. Interpreting individual effects**
+###Video 
+
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_j3k2286f&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_zdgkxkik" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Video Overhead Details {-}
+
+<h6 style="text-align: center;"><a id="displayOver5.2A" href="javascript:toggleDet('toggleOver5.2A','displayOver5.2A');"><i><strong>Show Overhead A Details. Interpreting individual effects</strong></i></a> </h6>
+<div id="toggleOver5.2A" style="display: none">
+
 
 - Substantive Effect
     - Does a 1 unit change in $x$ imply an economically meaningful change in $y$?
@@ -632,7 +600,11 @@ In this module, you learn how to:
 - **Causal Effects**
     - If we change $x$, would $y$ change?
 
-**Overhead B. Other Interpretations**
+</div> 
+
+<h6 style="text-align: center;"><a id="displayOver5.2B" href="javascript:toggleDet('toggleOver5.2B','displayOver5.2B');"><i><strong>Show Overhead B Details. Other Interpretations</strong></i></a> </h6>
+<div id="toggleOver5.2B" style="display: none">
+
 
 - Regression function and pricing
     - The regression function is $\mathrm{E~}y = \beta_0 + \beta_1 x_1 + \cdots +\beta _k x_k$.
@@ -642,7 +614,8 @@ In this module, you learn how to:
     - In studies of medical claims, who are the high-cost patients?
 - Prediction
     - A new patient comes in with a given set of characteristics, what can I say about his or her future medical claims?
-    
+
+</div>     
     
 ###MC Exercise. What the modeling procedure tells us
 
@@ -668,27 +641,35 @@ Which of the following is not an important purpose of regression modeling?
 
 ## The importance of variable selection
 
-###Video (Exercise). The importance of variable selection
+***
 
-#### Learning Objectives
-
-In this module, you learn how to:
+In this section, you learn how to:
   
 - Describe the bias that can occur when omitting important variables
 - Describe the principle of parsimony and reasons for adopting this approach
 
+***
 
-#### Video Overheads
+###Video 
 
-**Overhead A. The importance of variable selection**
+<center>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_g3ysmpxy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qjxtcbse" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+</center>
+
+#### Video Overhead Details {-}
+
+<h6 style="text-align: center;"><a id="displayOver5.3A" href="javascript:toggleDet('toggleOver5.3A','displayOver5.3A');"><i><strong>Show Overhead A Details. The importance of variable selection</strong></i></a> </h6>
+<div id="toggleOver5.3A" style="display: none">
 
 - With too many or too few variables, $s$ is too large an estimate of $\sigma$.
     - Prediction intervals are too large
     - Standard errors for the partial slopes are too large
 - With too few or incorrect variables, we produce biased estimates of the slopes $\beta$. Thus, our predictions are biased and hence inaccurate.
 
+</div> 
 
-**Overhead B. Example. Regression using one explanatory variable**
+<h6 style="text-align: center;"><a id="displayOver5.3B" href="javascript:toggleDet('toggleOver5.3B','displayOver5.3B');"><i><strong>Show Overhead B Details. Example. Regression using one explanatory variable</strong></i></a> </h6>
+<div id="toggleOver5.3B" style="display: none">
 
 - **Too Many Variables**
     - The "true" model is $y_i = \beta_0+ \varepsilon_i$
@@ -709,8 +690,10 @@ $$
 
 There is a persistent, long-term error in omitting the explanatory variable $x$.
 
+</div> 
 
-**Overhead C. Principle of parsimony**
+<h6 style="text-align: center;"><a id="displayOver5.3C" href="javascript:toggleDet('toggleOver5.3C','displayOver5.3C');"><i><strong>Show Overhead C Details. Principle of parsimony</strong></i></a> </h6>
+<div id="toggleOver5.3C" style="display: none">
 
 - The principle of parsimony, also known as *Occam's Razor*, states that when there are several possible explanations for a phenomenon, use the simplest.
     - A simpler explanation is easier to interpret.
@@ -719,7 +702,8 @@ There is a persistent, long-term error in omitting the explanatory variable $x$.
 - In contrast, in a quote often attributed to Albert Einstein, we should use "the simplest model possible, but no simpler."
     - Omitting important variables can lead to biased results, a potentially serious error.
     - Including extraneous variables decreases the degrees of freedom and increases the estimate of variability, typically of less concern in actuarial applications.
-    
+
+</div>     
     
 ###MC Exercise. Principle of parsimony
 
@@ -740,9 +724,9 @@ Which of the following is not true of Occam's Razor?
 
 
 
-**Overhead D. Course wrap up**
+<!-- **Overhead D. Course wrap up** -->
 
-Thanks for watching
+<!-- Thanks for watching -->
 
 
 ```{r comment = "", eval = FALSE, echo = FALSE}

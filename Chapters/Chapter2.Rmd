@@ -118,25 +118,15 @@ Like insurance, lotteries are uncertain events and so the skills to work with an
 - Plot `pop_1000` versus `sales_1000`.
 - Calculate the correlation between `pop_1000` versus `sales_1000` using the function [cor()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor). How does this differ between the correlation between population and sales in the original units?
 
-**Hint**
-
-Use the dataframe to refer to pop and sales as `Lot$pop` and `Lot$sales`, respectively
+**Hint.** Use the dataframe to refer to pop and sales as `Lot$pop` and `Lot$sales`, respectively
 
 
-**Pre-exercise code**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Pre-exercise code
-#library(Rcmdr)
-#library(psych)
-Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
-#Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```{r ex="ExerRegMod2.1.2", type="pre-exercise-code", tut=TRUE}
+#Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 ```
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@Sample_code`
+```{r ex="ExerRegMod2.1.2", type="sample-code", tut=TRUE}
 # Create new variables, say, `pop_1000` and `sales_1000`
 Lot$pop_1000 <- ___
 ___ <- Lot$sales/1000
@@ -153,26 +143,20 @@ cor(___, ___)
 ```
 
 
-**Solution**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Solution
+```{r ex="ExerRegMod2.1.2", type="solution", tut=TRUE}
 Lot$pop_1000 <- Lot$pop/1000
 Lot$sales_1000 <- Lot$sales/1000
 summary(Lot)
-#(as.data.frame(psych::describe(Lot)))[,c(2,3,4,5,8,9)]
-#(as.data.frame(psych::describe(Lot[,c("pop_1000", "sales_1000")])))[,c(2,3,4,5,8,9)]
-#Rcmdr::numSummary(Lot[,c("pop_1000", "sales_1000")], statistics = c("mean", "sd", "quantiles"), quantiles = c(0,.5,1))
 plot(Lot$pop_1000, Lot$sales_1000)
 cor(Lot$pop_1000, Lot$sales_1000)
 
 ```
 
-**Submission Correctness Tests (SCT)**
 
-test_error()
-test_object("Lot", incorrect_msg = "Looks like a variable is defined incorrectly. The hint may help.")
+```{r ex="ExerRegMod2.1.2", type="sct", tut=TRUE}
 success_msg("Congratulations! We will rescale data using 'linear' transformations regularly. In part we do this for communicating our analysis to others. Also in part, this is for our own convenience as it can allow us to see patterns more readily.")
+```
+
 
 ## Method of least squares
 
@@ -258,23 +242,14 @@ The prior video analyzed the effect that a zip code's population has on lottery 
 - Using the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), regress `medhome`, the explanatory variable, on `sales`, the outcome variable. Display the regression coefficients to four significant digits.
 - Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) and the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).
 
-**Hint**
 
-
-**Pre-exercise code**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Pre-exercise code
-#library(Rcmdr)
-Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
-#Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```{r ex="ExerRegMod2.2.2", type="pre-exercise-code", tut=TRUE}
+#Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 
 ```
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@Sample_code`
+```{r ex="ExerRegMod2.2.2", type="sample-code", tut=TRUE}
 # Summarize the dataframe `Lot` that contains `medhome` and `sales`
 summary(Lot)
 # Plot and calculate the correlation of `medhome` versus `sales`. 
@@ -291,12 +266,7 @@ predict(model_blr1, newdata)
 
 ```
 
-**Solution**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Solution
-#numSummary(Lot[,c("medhome", "sales")], statistics = c("mean", "sd", "quantiles"), quantiles = c(0,.5,1))
-#(as.data.frame(psych::describe(Lot[,c("medhome", "sales")])))[,c(2,3,4,5,8,9)]
+```{r ex="ExerRegMod2.2.2", type="solution", tut=TRUE}
 summary(Lot)
 cor(Lot$medhome,Lot$sales)
 plot(Lot$medhome,Lot$sales)
@@ -307,12 +277,10 @@ predict(model_blr1, newdata)
 
 ```
 
-**Submission Correctness Tests (SCT)**
-
-test_error()
-test_object("model_blr1", incorrect_msg = "The basic linear regression model is incorrectly specified.")
-test_object("newdata", incorrect_msg = "The new data is incorrectly specified.")
+```{r ex="ExerRegMod2.2.2", type="sct", tut=TRUE}
 success_msg("Congratulations! You now have experience fitting a regression line and using this line for predictions, just as Galton did when he used parents' heights to predict the height of an adult child. Well done!")
+```
+
 
 ## Understanding variability
 
@@ -394,22 +362,15 @@ How reliable is the regression line? In this excercise, you will compute some of
 - Determine the size of the typical residual, $s$.
 - Determine the coefficient of determination, $R^2$.  
 
-**Hint**
+**Hint.** Learn more about possibilities through the `Rdocumentation` site. If you have not done so already, check out the function [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/anova)
 
-Learn more about possibilities through the `Rdocumentation` site. If you have not done so already, check out the function [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/anova)
 
-**Pre-exercise code**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Pre-exercise code
-Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
-#Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```{r ex="ExerRegMod2.3.2", type="pre-exercise-code", tut=TRUE}
+#Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 ```
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@Sample_code`
+```{r ex="ExerRegMod2.3.2", type="sample-code", tut=TRUE}
 model_blr <- lm(sales  ~ medhome, data = Lot)
 
 # Summarize the fitted regression model in an ANOVA table.
@@ -424,10 +385,7 @@ summary(___)$r.squared
 ```
 
 
-**Solution**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Solution
+```{r ex="ExerRegMod2.3.2", type="solution", tut=TRUE}
 model_blr <- lm(sales  ~ medhome, data = Lot)
 anova(model_blr)
 sqrt(anova(model_blr)$Mean[2])
@@ -436,11 +394,9 @@ summary(model_blr)$r.squared
 ```
 
 
-**Submission Correctness Tests (SCT)**
-
-test_error()
-test_object("model_blr", incorrect_msg = "The basic linear regression model is incorrectly specified.")
+```{r ex="ExerRegMod2.3.2", type="sct", tut=TRUE}
 success_msg("Congratulations! It will be helpful if you compare the results of this exercise to the regression of `pop` on `sales` from the prior video. We have seen that `pop` is more highly correlated with `sales` than `medhome`, so we are expecting greater uncertainty in this regression fit.")
+```
 
 ###Exercise. Effects of linear transforms on measures of uncertainty
 
@@ -455,26 +411,17 @@ Let us see how rescaling, a linear transformation, affects our measures of uncer
 - Run a regression of `pop_1000` on `sales_1000` and summarize this in an ANOVA table.
 - For this regression, determine the $s$ and the coefficient of determination, $R^2$. 
 
-**Hint**
+**Hint.** The residual standard error is also available as `summary(model_blr1)$sigma`. The coefficient of determination is also available as `summary(model_blr1)$r.squared`.
 
-The residual standard error is also available as `summary(model_blr1)$sigma`. The coefficient of determination is also available as `summary(model_blr1)$r.squared`.
-
- **Pre-exercise code**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Pre-exercise code
-#library(Rcmdr)
-Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
-#Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```{r ex="ExerRegMod2.3.3", type="pre-exercise-code", tut=TRUE}
+#Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 Lot$pop_1000 <- Lot$pop/1000
 Lot$sales_1000 <- Lot$sales/1000
 ```
 
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@Sample_code`
+```{r ex="ExerRegMod2.3.3", type="sample-code", tut=TRUE}
 # Run a regression of `pop` on `sales_1000` and summarize this in an ANOVA table.
 model_blr1 <- lm(sales_1000  ~ pop, data = Lot)
 anova(___)
@@ -493,10 +440,7 @@ ___
 ```
  
 
-**Solution**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Solution
+```{r ex="ExerRegMod2.3.3", type="solution", tut=TRUE}
 model_blr1 <- lm(sales_1000  ~ pop, data = Lot)
 anova(model_blr1)
 sqrt(anova(model_blr1)$Mean[2])
@@ -509,11 +453,10 @@ summary(model_blr2)$r.squared
 ```
 
 
-**Submission Correctness Tests (SCT)**
 
-test_error()
-test_object("model_blr1", incorrect_msg = "The basic linear regression model is incorrectly specified.")
+```{r ex="ExerRegMod2.3.3", type="sct", tut=TRUE}
 success_msg("Congratulations! In this exercise, you have seen that rescaling does not affect our measures of goodness of fit in any meaningful way. For example, the coefficient of determinations are completely unaffected. This is helpful because we will rescale variables extensively in our search for patterns in the data.")
+```
 
 ## Statistical inference
 
@@ -620,22 +563,14 @@ This exercise allows you to practice the standard inferential tasks: hypothesis 
 - Use the function [confint()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/confint) to provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
 - Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) to provide a point prediction and a 95\% prediction interval for sales.
 
-**Hint**
+**Hint.** Taking a [summary()] of a regression object produces a new objeect. You can use the [str()] structure command to learn more about the new object. Try out a command such as `str(summary(model_blr))`
 
-Taking a [summary()] of a regression object produces a new objeect. You can use the [str()] structure command to learn more about the new object. Try out a command such as `str(summary(model_blr))`
-
-**Pre-exercise code**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Pre-exercise code
-Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
-#Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```{r ex="ExerRegMod2.4.2", type="pre-exercise-code", tut=TRUE}
+#Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 ```
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@sample_code`
+```{r ex="ExerRegMod2.4.2", type="sample-code", tut=TRUE}
 model_blr1 <- lm(sales ~ medhome, data = Lot)
 # Summarize the regression model and identify the $t$-statistic for testing the importance of the regression coefficient associated with `medhome`.
 summary(___)
@@ -652,10 +587,8 @@ predict(___, NewData1, interval = "prediction", level = ___)
 ```
 
 
-**Solution**
 
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Solution
+```{r ex="ExerRegMod2.4.2", type="solution", tut=TRUE}
 model_blr1 <- lm(sales ~ medhome, data = Lot)
 summary(model_blr1)
 summary(model_blr1)$coefficients
@@ -669,13 +602,10 @@ predict(model_blr1, NewData1, interval = "prediction", level = .95)
 
 ```
 
-**Submission Correctness Tests (SCT)**
 
-test_error()
-test_object("model_blr1", incorrect_msg = "The basic linear regression model is incorrectly specified.")
-test_object("NewData1", incorrect_msg = "The new data object is incorrectly specified.")
+```{r ex="ExerRegMod2.4.2", type="sct", tut=TRUE}
 success_msg("Congratulations! Much of what we learn from a data modeling exercise can be summarized using standard inferential tools: hypothesis testing, confidence intervals, and prediction.")
-
+```
 
 ## Diagnostics
 
@@ -817,22 +747,14 @@ This exercise summarizes the regression fit both with and without this zip code 
 - Plot these two least squares fitted lines superimposed on the full data set.
 - What is the effect on the distribution  of residuals by removing this point? Calculate a normal qq plot with and without Kenosha.
 
-**Hint**
+**Hint.** You can extract the residuals from a regression object with the function [residuals()].
 
-You can extract the residuals from a regression object with the function [residuals()].
-
-**Pre-exercise code**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Pre-exercise code
-Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
-#Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
+```{r ex="ExerRegMod2.5.2", type="pre-exercise-code", tut=TRUE}
+#Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
+Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 ```
 
-**Sample_code**
-
-```{r eval = FALSE}
-`@sample_code`
+```{r ex="ExerRegMod2.5.2", type="sample-code", tut=TRUE}
 model_blr <-lm(sales ~ pop, data = Lot)
 summary(model_blr)
 # Re-fit this model to the data, this time omitting Kenosha (observation number 9).
@@ -854,10 +776,7 @@ qqline(residuals(___)))
 
 ```
 
-**Solution**
-
-```{r comment = "", eval = EVALUATE_CHAP2}
-# Solution
+```{r ex="ExerRegMod2.5.2", type="solution", tut=TRUE}
 model_blr <-lm(sales ~ pop, data = Lot)
 summary(model_blr)
 model_Kenosha <- lm(sales ~ pop, data = Lot, subset = -c(9))
@@ -877,11 +796,7 @@ qqline(residuals(model_Kenosha))
 ```
 
 
-**Submission Correctness Tests (SCT)**
-
-test_error()
-test_object("model_blr1", incorrect_msg = "The basic linear regression model is incorrectly specified.")
-test_object("model_Kenosha", incorrect_msg = "The linear regression model without Kenosha is incorrectly specified.")
+```{r ex="ExerRegMod2.5.2", type="sct", tut=TRUE}
 success_msg("Congratulations! Just because an observation is unusual does not make it bad or noninformative. Kenosha is close to the Illinois border; residents from Illinois probably participate in the Wisconsin lottery thus effectively increasing the potential pool of sales in Kenosha. Although unusual, there is interesting information to be learned from this observation.")
-
+```
 
