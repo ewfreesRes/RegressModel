@@ -125,11 +125,6 @@ The Galton data has already been read into a dataframe called `heights`. These d
 
 **Hint.** Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
 
-```{r, include=FALSE}
-tutorial::go_interactive(greedy = FALSE)
-```
-
-
 
 ```{r ex="ExerRegMod1.1.2", type="pre-exercise-code", tut=TRUE}
 #heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)

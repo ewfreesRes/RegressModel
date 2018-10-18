@@ -1,0 +1,116 @@
+\contentsline {chapter}{Preface}{5}{chapter*.2}
+\contentsline {subsection}{About Regression Modeling}{5}{section*.3}
+\contentsline {subsection}{Resources}{5}{section*.4}
+\contentsline {subsection}{Tutorial Description}{5}{section*.5}
+\contentsline {subsection}{Welcome to the Tutorial Video}{6}{section*.6}
+\contentsline {subsubsection}{Video Overhead}{6}{section*.7}
+\contentsline {chapter}{\numberline {1}Regression and the Normal Distribution}{9}{chapter.1}
+\contentsline {section}{\numberline {1.1}Fitting a normal distribution}{9}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Video}{9}{subsection.1.1.1}
+\contentsline {subsubsection}{Video Overhead Details}{9}{section*.8}
+\contentsline {subsection}{\numberline {1.1.2}Exercise. Fitting Galton's height data}{12}{subsection.1.1.2}
+\contentsline {subsection}{\numberline {1.1.3}Exercise. Visualizing child's height distribution}{13}{subsection.1.1.3}
+\contentsline {section}{\numberline {1.2}Visualizing distributions}{13}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Video}{13}{subsection.1.2.1}
+\contentsline {subsubsection}{Video Overhead Details}{13}{section*.9}
+\contentsline {subsection}{\numberline {1.2.2}Exercise. Visualizing bodily injury claims with density plots}{16}{subsection.1.2.2}
+\contentsline {section}{\numberline {1.3}Summarizing distributions}{16}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Video}{17}{subsection.1.3.1}
+\contentsline {subsubsection}{Video Overhead Details}{17}{section*.10}
+\contentsline {subsection}{\numberline {1.3.2}Exercise. Summarizing bodily injury claims with box and qq plots}{20}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Exercise. Effects on distributions of removing the largest claim}{21}{subsection.1.3.3}
+\contentsline {section}{\numberline {1.4}Transformations}{21}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Video}{21}{subsection.1.4.1}
+\contentsline {subsubsection}{Video Overhead Details}{21}{section*.11}
+\contentsline {subsection}{\numberline {1.4.2}Exercise. Distribution of transformed bodily injury claims}{23}{subsection.1.4.2}
+\contentsline {chapter}{\numberline {2}Basic Linear Regression}{25}{chapter.2}
+\contentsline {section}{\numberline {2.1}Correlation}{25}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Video}{25}{subsection.2.1.1}
+\contentsline {subsubsection}{Video Overhead Details}{25}{section*.12}
+\contentsline {subsection}{\numberline {2.1.2}Exercise. Correlations and the Wisconsin lottery}{27}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Method of least squares}{28}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Video}{28}{subsection.2.2.1}
+\contentsline {subsubsection}{Video Overheads}{28}{section*.13}
+\contentsline {subsection}{\numberline {2.2.2}Exercise. Least squares fit using housing prices}{30}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Understanding variability}{30}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Video}{30}{subsection.2.3.1}
+\contentsline {subsubsection}{Video Overhead Details}{30}{section*.14}
+\contentsline {subsection}{\numberline {2.3.2}Exercise. Summarizing measures of uncertainty}{32}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Exercise. Effects of linear transforms on measures of uncertainty}{32}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Statistical inference}{32}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Video}{33}{subsection.2.4.1}
+\contentsline {subsubsection}{Video Overhead Details}{33}{section*.15}
+\contentsline {subsection}{\numberline {2.4.2}Exercise. Statistical inference and Wisconsin lottery}{34}{subsection.2.4.2}
+\contentsline {section}{\numberline {2.5}Diagnostics}{35}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Video}{35}{subsection.2.5.1}
+\contentsline {subsubsection}{Video Overhead Details}{35}{section*.16}
+\contentsline {subsection}{\numberline {2.5.2}Exercise. Assessing outliers in lottery sales}{41}{subsection.2.5.2}
+\contentsline {chapter}{\numberline {3}Multiple Linear Regression}{43}{chapter.3}
+\contentsline {section}{Term Life Data}{43}{section*.17}
+\contentsline {subsubsection}{Video Overhead Details}{43}{section*.18}
+\contentsline {section}{\numberline {3.1}Method of least squares}{45}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Video}{45}{subsection.3.1.1}
+\contentsline {subsubsection}{Video Overhead Details}{45}{section*.19}
+\contentsline {subsection}{\numberline {3.1.2}Exercise. Least squares and term life data}{49}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Exercise. Interpreting coefficients as proportional changes}{49}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Exercise. Interpreting coefficients as elasticities}{49}{subsection.3.1.4}
+\contentsline {section}{\numberline {3.2}Statistical inference and multiple linear regresson}{50}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Video}{50}{subsection.3.2.1}
+\contentsline {subsubsection}{Video Overhead Details}{50}{section*.20}
+\contentsline {subsection}{\numberline {3.2.2}Exercise. Statistical inference and term life}{52}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Binary variables}{52}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Video}{52}{subsection.3.3.1}
+\contentsline {subsubsection}{Video Overhead Details}{52}{section*.21}
+\contentsline {subsection}{\numberline {3.3.2}Exercise. Binary variables and term life}{56}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Categorical variables}{56}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Video}{57}{subsection.3.4.1}
+\contentsline {subsubsection}{Video Overhead Details}{57}{section*.22}
+\contentsline {subsection}{\numberline {3.4.2}Exercise. Categorical variables and Wisconsin hospital costs}{59}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}General linear hypothesis}{60}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Video}{60}{subsection.3.5.1}
+\contentsline {subsubsection}{Video Overhead Details}{60}{section*.23}
+\contentsline {subsection}{\numberline {3.5.2}Exercise. Hypothesis testing and term life}{61}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Exercise. Hypothesis testing and Wisconsin hospital costs}{62}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Exercise. Hypothesis testing and auto claims}{62}{subsection.3.5.4}
+\contentsline {chapter}{\numberline {4}Variable Selection}{69}{chapter.4}
+\contentsline {section}{\numberline {4.1}An iterative approach to data analysis and modeling}{69}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Video}{69}{subsection.4.1.1}
+\contentsline {subsubsection}{Video Overhead Details}{69}{section*.24}
+\contentsline {subsection}{\numberline {4.1.2}MC Exercise. An iterative approach to data modeling}{72}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Automatic variable selection procedures}{73}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Video}{73}{subsection.4.2.1}
+\contentsline {subsubsection}{Video Overhead Details}{73}{section*.25}
+\contentsline {subsection}{\numberline {4.2.2}Exercise. Data-snooping in stepwise regression}{74}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Residual analysis}{75}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Video}{75}{subsection.4.3.1}
+\contentsline {subsubsection}{Video Overhead Details}{75}{section*.26}
+\contentsline {subsection}{\numberline {4.3.2}Exercise. Residual analysis and risk manager survey}{75}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Exercise. Added variable plot and refrigerator prices}{76}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Unusual observations}{79}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Video}{80}{subsection.4.4.1}
+\contentsline {subsubsection}{Video Overhead Details}{80}{section*.27}
+\contentsline {subsection}{\numberline {4.4.2}Exercise. Outlier example}{81}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Exercise. High leverage and risk manager survey}{82}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Collinearity}{82}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Video}{82}{subsection.4.5.1}
+\contentsline {subsubsection}{Video Overhead Details}{82}{section*.28}
+\contentsline {subsection}{\numberline {4.5.2}Exercise. Collinearity and term life}{83}{subsection.4.5.2}
+\contentsline {section}{\numberline {4.6}Selection criteria}{83}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Video}{84}{subsection.4.6.1}
+\contentsline {subsubsection}{Video Overhead Details}{84}{section*.29}
+\contentsline {subsection}{\numberline {4.6.2}Exercise. Cross-validation and term life}{85}{subsection.4.6.2}
+\contentsline {chapter}{\numberline {5}Interpreting Regression Results}{87}{chapter.5}
+\contentsline {section}{\numberline {5.1}Case study: MEPS health expenditures}{87}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Video}{87}{subsection.5.1.1}
+\contentsline {subsubsection}{Video Overhead Details}{87}{section*.30}
+\contentsline {subsection}{\numberline {5.1.2}Exercise. Summarizing data}{89}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Exercise. Fit a benchmark multiple linear regression model}{89}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Exercise. Variable selection}{90}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Exercise. Model comparisons using cross-validation}{90}{subsection.5.1.5}
+\contentsline {subsection}{\numberline {5.1.6}Exercise. Out of sample validation}{91}{subsection.5.1.6}
+\contentsline {section}{\numberline {5.2}What the modeling procedure tells us}{91}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Video}{91}{subsection.5.2.1}
+\contentsline {subsubsection}{Video Overhead Details}{91}{section*.31}
+\contentsline {section}{\numberline {5.3}The importance of variable selection}{92}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Video}{93}{subsection.5.3.1}
+\contentsline {subsubsection}{Video Overhead Details}{93}{section*.32}

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -105,6 +105,32 @@ $(document).ready(function(){
   content: '' !important;
 }
 </style>
+
+
+<script language="javascript">
+var submitAnswer = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+    alert('please select choice answer');
+  } else if ( val == "Correct" ) {
+    alert('Answer is correct !');
+  } else {
+    alert('Answer is wrong');
+  }
+};
+</script>
+
+
+
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -287,11 +313,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
-<li class="chapter" data-level="5.2.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.2</b> MC Exercise. What the modeling procedure tells us</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
-<li class="chapter" data-level="5.3.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-principle-of-parsimony"><i class="fa fa-check"></i><b>5.3.2</b> MC Exercise. Principle of parsimony</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -321,7 +345,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
 <p style="text-align:right;">
-<em>Date: 17 October 2018</em>
+<em>Date: 18 October 2018</em>
 </p>
 <div id="about-regression-modeling" class="section level3 unnumbered">
 <h3>About Regression Modeling</h3>
@@ -414,8 +438,27 @@ heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span cla
 <span class="kw">plot</span>(<span class="kw">jitter</span>(heights<span class="op">$</span>parent_ht),<span class="kw">jitter</span>(heights<span class="op">$</span>child_ht), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>),
      <span class="dt">ylab =</span> <span class="st">&quot;height of child&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;height of parents&quot;</span>)
 <span class="kw">abline</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))
-<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)
-<span class="kw">summary</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</code></pre></div>
+<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</code></pre></div>
+<pre><code>
+Call:
+lm(formula = heights$child_ht ~ heights$parent_ht)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-8.258 -1.428  0.132  1.572  5.792 
+
+Coefficients:
+                  Estimate Std. Error t value            Pr(&gt;|t|)    
+(Intercept)        25.8486     2.6901    9.61 &lt;0.0000000000000002 ***
+heights$parent_ht   0.6099     0.0388   15.71 &lt;0.0000000000000002 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.26 on 926 degrees of freedom
+Multiple R-squared:  0.21,  Adjusted R-squared:  0.21 
+F-statistic:  247 on 1 and 926 DF,  p-value: &lt;0.0000000000000002</code></pre>
 </div>
 
 </div>
@@ -445,11 +488,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
 },
 "fontsettings": {
 "theme": "white",
@@ -473,11 +516,9 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

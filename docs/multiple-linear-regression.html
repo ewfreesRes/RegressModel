@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -105,6 +105,32 @@ $(document).ready(function(){
   content: '' !important;
 }
 </style>
+
+
+<script language="javascript">
+var submitAnswer = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+    alert('please select choice answer');
+  } else if ( val == "Correct" ) {
+    alert('Answer is correct !');
+  } else {
+    alert('Answer is wrong');
+  }
+};
+</script>
+
+
+
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -287,11 +313,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
-<li class="chapter" data-level="5.2.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.2</b> MC Exercise. What the modeling procedure tells us</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
-<li class="chapter" data-level="5.3.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-principle-of-parsimony"><i class="fa fa-check"></i><b>5.3.2</b> MC Exercise. Principle of parsimony</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -395,7 +419,7 @@ numhh          2.96       1.493   1.000      3.00        9.00 275</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">plot</span>(Term2<span class="op">$</span>income, Term2<span class="op">$</span>face, <span class="dt">xlab =</span> <span class="st">&quot;income&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;face&quot;</span>)
 <span class="kw">plot</span>(Term2<span class="op">$</span>logincome, Term2<span class="op">$</span>logface, <span class="dt">xlab =</span> <span class="st">&quot;log&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log face&quot;</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-92-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -436,7 +460,7 @@ numhh        -0.064 0.107  0.142   0.288     0.179  1.000</code></pre>
 <div id="toggleOver3.1B" style="display: none">
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term3 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>)]
 <span class="kw">pairs</span>(Term3, <span class="dt">upper.panel =</span> <span class="ot">NULL</span>, <span class="dt">gap =</span> <span class="dv">0</span>, <span class="dt">cex.labels =</span> <span class="fl">1.25</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
 </div>
 <h6 style="text-align: center;">
 <a id="displayOver3.1C" href="javascript:toggleDet('toggleOver3.1C','displayOver3.1C');"><i><strong>Show Overhead C Details. Visualizing a regression plane</strong></i></a>
@@ -450,7 +474,7 @@ f &lt;-<span class="st"> </span><span class="cf">function</span>(education,login
 logface &lt;-<span class="st"> </span><span class="kw">outer</span>(education, logincome, f)
 <span class="kw">persp</span>(education, logincome, logface, <span class="dt">theta =</span> <span class="dv">30</span>, 
       <span class="dt">phi =</span> <span class="dv">30</span>, <span class="dt">expand =</span> <span class="fl">0.5</span>, <span class="dt">ticktype =</span> <span class="st">&quot;detailed&quot;</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-94-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(education,logincome,logface)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">education &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="dt">length =</span> <span class="dv">15</span>)
 logincome &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dt">length =</span> <span class="dv">15</span>)
@@ -461,7 +485,7 @@ logface &lt;-<span class="st"> </span><span class="kw">outer</span>(education, l
 <span class="kw">persp</span>(education, logincome, logface, <span class="dt">theta =</span> <span class="dv">30</span>, 
       <span class="dt">phi =</span> <span class="dv">30</span>, <span class="dt">expand =</span> <span class="fl">0.5</span>, <span class="dt">ticktype =</span> <span class="st">&quot;simple&quot;</span>, <span class="co">#ticktype = &quot;detailed&quot;, #</span>
       <span class="dt">xlab =</span> <span class="st">&quot;x1&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;x2&quot;</span>,<span class="dt">zlab=</span><span class="st">&quot;y&quot;</span>, <span class="dt">nticks =</span> <span class="dv">1</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(education,logincome,logface)</code></pre></div>
 </div>
 <h6 style="text-align: center;">
@@ -739,7 +763,7 @@ Ey1 &lt;-<span class="st"> </span>model_single<span class="op">$</span>coefficie
 Ey2 &lt;-<span class="st"> </span>Ey1 <span class="op">+</span><span class="st"> </span>model_single<span class="op">$</span>coefficients[<span class="dv">3</span>]
 <span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey1)
 <span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey2, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
 <pre><code>
   0   1   2 
  57 208  10 
@@ -798,7 +822,7 @@ Ey1 &lt;-<span class="st"> </span>model_single_inter<span class="op">$</span>coe
 Ey2 &lt;-<span class="st"> </span>Ey1 <span class="op">+</span><span class="st"> </span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">3</span>]<span class="op">+</span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">4</span>]<span class="op">*</span>Term4<span class="op">$</span>logincome
 <span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey1)
 <span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey2, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <pre><code>
   0   1   2 
  57 208  10 
@@ -905,7 +929,7 @@ Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class
 Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)
 Term4<span class="op">$</span>marstat&lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
 <span class="kw">boxplot</span>(logface <span class="op">~</span><span class="st"> </span>marstat, <span class="dt">ylab =</span> <span class="st">&quot;log face&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Marital Status&quot;</span>, <span class="dt">data =</span> Term4)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(Term4<span class="op">$</span>marstat)
 <span class="co">#  SUMMARY BY LEVEL OF MARSTAT</span>
 <span class="kw">library</span>(Rcmdr)
@@ -1165,7 +1189,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNIY29zdCA8LSByZWFkLmNzdihcIkNT
 <p>c (iii). Use the model to provide a point estimate of claims in dollars (not log dollars) for a male age 60 in STATE 2 in <code>class</code> C7.</p>
 <p>c (iv). Write down the coefficient associated with <code>class</code> C7 and interpret this coefficient.</p></li>
 </ol>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-137-1.png" width="672" /><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-137-2.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-136-1.png" width="672" /><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-136-2.png" width="672" /></p>
 <pre><code>
 Variable: logpaid 
      mean     sd    0%   50%   100%    n
@@ -1371,11 +1395,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
 },
 "fontsettings": {
 "theme": "white",
@@ -1399,11 +1423,9 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

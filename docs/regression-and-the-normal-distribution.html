@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -105,6 +105,32 @@ $(document).ready(function(){
   content: '' !important;
 }
 </style>
+
+
+<script language="javascript">
+var submitAnswer = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+    alert('please select choice answer');
+  } else if ( val == "Correct" ) {
+    alert('Answer is correct !');
+  } else {
+    alert('Answer is wrong');
+  }
+};
+</script>
+
+
+
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -287,11 +313,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
-<li class="chapter" data-level="5.2.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.2</b> MC Exercise. What the modeling procedure tells us</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
-<li class="chapter" data-level="5.3.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-principle-of-parsimony"><i class="fa fa-check"></i><b>5.3.2</b> MC Exercise. Principle of parsimony</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -391,6 +415,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60</span>, <span class="dv">80</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)
 <span class="kw">hist</span>(ht_par, <span class="dt">freq =</span> <span class="ot">FALSE</span>)
 <span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="dt">mean =</span> mparent, <span class="dt">sd =</span> sdparent), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre><code>[1] 69.26
+[1] 1.912</code></pre>
 </div>
 <h6 style="text-align: center;">
 <a id="displayOver1.1E" href="javascript:toggleDet('toggleOver1.1E','displayOver1.1E');"><i><strong>Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents</strong></i></a>
@@ -401,6 +428,10 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60<
 <span class="kw">pnorm</span>(<span class="dv">72</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(ht_par), <span class="dt">sd =</span> <span class="kw">sd</span>(ht_par))
 (StdUnitsTallHeight &lt;-<span class="st"> </span>(TallHeight <span class="op">-</span><span class="st"> </span>mparent)<span class="op">/</span>sdparent)
 <span class="kw">pnorm</span>(StdUnitsTallHeight, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>[1] 0.9238
+[1] 0.9238
+[1] 1.431
+[1] 0.9238</code></pre>
 </div>
 </div>
 </div>
@@ -479,11 +510,34 @@ injury3 &lt;-<span class="st"> </span>injury2[<span class="kw">c</span>(<span cl
 <span class="co">#  CHECK THE NAMES, DIMENSION IN THE FILE AND LIST THE FIRST 8 OBSERVATIONS  ;</span>
 <span class="kw">str</span>(injury)
 <span class="kw">head</span>(injury)
-<span class="kw">attach</span>(injury)
-claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
+<span class="kw">attach</span>(injury)</code></pre></div>
+<pre><code>The following objects are masked from injury (pos = 3):
+
+    claims, logclaims</code></pre>
+<pre><code>The following objects are masked from injury (pos = 4):
+
+    claims, logclaims</code></pre>
+<pre><code>The following objects are masked from injury (pos = 13):
+
+    claims, logclaims</code></pre>
+<pre><code>The following objects are masked from injury (pos = 14):
+
+    claims, logclaims</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">hist</span>(claims)
 <span class="kw">hist</span>(logclaims)</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<pre><code>&#39;data.frame&#39;:   272 obs. of  2 variables:
+ $ claims   : int  45 47 70 75 77 92 117 117 140 145 ...
+ $ logclaims: num  3.81 3.85 4.25 4.32 4.34 ...
+  claims logclaims
+1     45     3.807
+2     47     3.850
+3     70     4.248
+4     75     4.317
+5     77     4.344
+6     92     4.522</code></pre>
 </div>
 <h6 style="text-align: center;">
 <a id="displayOver1.2B" href="javascript:toggleDet('toggleOver1.2B','displayOver1.2B');"><i><strong>Show Overhead B Details. Show how to get a finer grid for histograms</strong></i></a>
@@ -492,6 +546,7 @@ claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">hist</span>(logclaims)
 <span class="kw">hist</span>(logclaims,<span class="dt">breaks =</span> <span class="dv">15</span>)</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
 <h6 style="text-align: center;">
 <a id="displayOver1.2C" href="javascript:toggleDet('toggleOver1.2C','displayOver1.2C');"><i><strong>Show Overhead C Details. Introduce the density plot</strong></i></a>
@@ -501,6 +556,7 @@ claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
 <span class="kw">plot</span>(<span class="kw">density</span>(logclaims))
 <span class="kw">hist</span>(logclaims, <span class="dt">breaks =</span> <span class="dv">15</span>,<span class="dt">freq =</span> <span class="ot">FALSE</span>)
 <span class="kw">lines</span>(<span class="kw">density</span>(logclaims))</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -550,14 +606,25 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 <span class="kw">summary</span>(injury)
 <span class="kw">sd</span>(claims);<span class="kw">sd</span>(logclaims)
 <span class="kw">length</span>(claims)</code></pre></div>
+<pre><code>     claims        logclaims    
+ Min.   :   45   Min.   : 3.81  
+ 1st Qu.:  892   1st Qu.: 6.79  
+ Median : 2210   Median : 7.70  
+ Mean   : 2698   Mean   : 7.39  
+ 3rd Qu.: 3215   3rd Qu.: 8.08  
+ Max.   :50000   Max.   :10.82  
+[1] 3944
+[1] 1.101
+[1] 272</code></pre>
 </div>
 <h6 style="text-align: center;">
 <a id="displayOver1.3B" href="javascript:toggleDet('toggleOver1.3B','displayOver1.3B');"><i><strong>Show Overhead B Details. Boxplot</strong></i></a>
 </h6>
 <div id="toggleOver1.3B" style="display: none">
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># BASIC BOXPLOT</span>
-<span class="kw">boxplot</span>(logclaims)
-<span class="kw">quantile</span>(logclaims, <span class="dt">probs =</span> <span class="fl">0.75</span>)
+<span class="kw">boxplot</span>(logclaims)</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(logclaims, <span class="dt">probs =</span> <span class="fl">0.75</span>)
 
 <span class="co"># BOXPLOT WITH ANNOTATION</span>
 <span class="kw">boxplot</span>(logclaims, <span class="dt">main =</span> <span class="st">&quot;Boxplot of logclaims&quot;</span>)
@@ -567,6 +634,9 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 <span class="kw">arrows</span>(<span class="fl">1.05</span>, <span class="fl">4.9</span>, <span class="fl">1.05</span>, <span class="fl">3.6</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">angle =</span> <span class="dv">20</span>, <span class="dt">length =</span> <span class="fl">0.1</span>)
 <span class="kw">text</span>(<span class="fl">1.1</span>,  <span class="fl">4.4</span>, <span class="st">&quot;outliers&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)
 <span class="kw">text</span>(<span class="fl">1.1</span>, <span class="fl">10.9</span>, <span class="st">&quot;outlier&quot;</span>,  <span class="dt">cex =</span> <span class="fl">0.7</span>)</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-26-2.png" width="672" /></p>
+<pre><code>  75% 
+8.076 </code></pre>
 </div>
 <h6 style="text-align: center;">
 <a id="displayOver1.3C" href="javascript:toggleDet('toggleOver1.3C','displayOver1.3C');"><i><strong>Show Overhead C Details. QQ Plot</strong></i></a>
@@ -584,6 +654,23 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 <span class="co">#  QUANTILE - QUANTILE PLOT</span>
 <span class="kw">qqnorm</span>(logclaims)
 <span class="kw">qqline</span>(logclaims)   </code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<pre><code>     claims        logclaims    
+ Min.   :   45   Min.   : 3.81  
+ 1st Qu.:  892   1st Qu.: 6.79  
+ Median : 2210   Median : 7.70  
+ Mean   : 2698   Mean   : 7.39  
+ 3rd Qu.: 3215   3rd Qu.: 8.08  
+ Max.   :50000   Max.   :10.82  
+ 75% 
+3215 
+  75% 
+8.076 
+  75% 
+8.076 
+[1] 8.131
+[1] 0.6745
+[1] 0.6745</code></pre>
 </div>
 </div>
 </div>
@@ -677,6 +764,7 @@ X4 &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</sp
 <span class="kw">hist</span>(X4, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))
 <span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="dv">110</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>)
 <span class="kw">mtext</span>(<span class="st">&quot;Negative reciprocal of y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>, <span class="dt">line =</span> <span class="dv">2</span>)</code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -725,11 +813,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
 },
 "fontsettings": {
 "theme": "white",
@@ -753,11 +841,9 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

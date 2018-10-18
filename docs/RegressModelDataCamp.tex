@@ -116,17 +116,16 @@
 }
 
 \setlength{\droptitle}{-2em}
-
   \title{Online Tutorial on
 \texttt{Regression\ Modeling\ with\ Actuarial\ and\ Financial\ Applications}}
-    \pretitle{\vspace{\droptitle}\centering\huge}
+  \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-    \author{Edward W. (Jed) Frees, University of Wisconsin-Madison}
-    \preauthor{\centering\large\emph}
+  \author{Edward W. (Jed) Frees, University of Wisconsin-Madison}
+  \preauthor{\centering\large\emph}
   \postauthor{\par}
-    \date{}
-    \predate{}\postdate{}
-  
+  \date{}
+  \predate{}\postdate{}
+
 \usepackage{booktabs}
 \setcounter{secnumdepth}{2}
 
@@ -154,7 +153,7 @@
 \chapter*{Preface}\label{preface}
 \addcontentsline{toc}{chapter}{Preface}
 
-\emph{Date: 17 October 2018}
+\emph{Date: 18 October 2018}
 
 \subsection*{About Regression Modeling}\label{about-regression-modeling}
 \addcontentsline{toc}{subsection}{About Regression Modeling}
@@ -319,9 +318,37 @@ Show Overhead B. Supporting R Code
      \DataTypeTok{ylab =} \StringTok{"height of child"}\NormalTok{, }\DataTypeTok{xlab =} \StringTok{"height of parents"}\NormalTok{)}
 \KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(heights}\OperatorTok{$}\NormalTok{child_ht}\OperatorTok{~}\NormalTok{heights}\OperatorTok{$}\NormalTok{parent_ht))}
 \KeywordTok{abline}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{summary}\NormalTok{(}\KeywordTok{lm}\NormalTok{(heights}\OperatorTok{$}\NormalTok{child_ht}\OperatorTok{~}\NormalTok{heights}\OperatorTok{$}\NormalTok{parent_ht))}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+
+Call:
+lm(formula = heights$child_ht ~ heights$parent_ht)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8.2577 -1.4280  0.1323  1.5720  5.7918 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(>|t|)    
+(Intercept)       25.84856    2.69009   9.609   <2e-16 ***
+heights$parent_ht  0.60992    0.03882  15.710   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.26 on 926 degrees of freedom
+Multiple R-squared:  0.2104,    Adjusted R-squared:  0.2096 
+F-statistic: 246.8 on 1 and 926 DF,  p-value: < 2.2e-16
+\end{verbatim}
 
 \chapter{Regression and the Normal
 Distribution}\label{regression-and-the-normal-distribution}
@@ -455,6 +482,13 @@ Show Overhead D. Fit a normal curve to parents' height details
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{verbatim}
+[1] 69.26293
+[1] 1.912274
+\end{verbatim}
+
 Show Overhead E Details. Use the normal approximation to determine the
 probability of the height of tall parents
 
@@ -468,6 +502,13 @@ probability of the height of tall parents
 \KeywordTok{pnorm}\NormalTok{(StdUnitsTallHeight, }\DataTypeTok{mean =} \DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+[1] 0.9238302
+[1] 0.9238302
+[1] 1.431317
+[1] 0.9238302
+\end{verbatim}
 
 \subsection{Exercise. Fitting Galton's height
 data}\label{exercise.-fitting-galtons-height-data}
@@ -623,6 +664,21 @@ Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{verbatim}
+'data.frame':   272 obs. of  2 variables:
+ $ claims   : int  45 47 70 75 77 92 117 117 140 145 ...
+ $ logclaims: num  3.81 3.85 4.25 4.32 4.34 ...
+  claims logclaims
+1     45  3.806662
+2     47  3.850148
+3     70  4.248495
+4     75  4.317488
+5     77  4.343805
+6     92  4.521789
+\end{verbatim}
+
 Show Overhead B Details. Show how to get a finer grid for histograms
 
 \hypertarget{toggleOver1.2B}{}
@@ -633,6 +689,8 @@ Show Overhead B Details. Show how to get a finer grid for histograms
 \KeywordTok{hist}\NormalTok{(logclaims,}\DataTypeTok{breaks =} \DecValTok{15}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-19-1.pdf}
 
 Show Overhead C Details. Introduce the density plot
 
@@ -645,6 +703,8 @@ Show Overhead C Details. Introduce the density plot
 \KeywordTok{lines}\NormalTok{(}\KeywordTok{density}\NormalTok{(logclaims))}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-20-1.pdf}
 
 \subsection{Exercise. Visualizing bodily injury claims with density
 plots}\label{exercise.-visualizing-bodily-injury-claims-with-density-plots}
@@ -725,6 +785,19 @@ Show Overhead A Details. Summary statistics
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+     claims          logclaims     
+ Min.   :   45.0   Min.   : 3.807  
+ 1st Qu.:  892.5   1st Qu.: 6.794  
+ Median : 2210.0   Median : 7.701  
+ Mean   : 2697.7   Mean   : 7.388  
+ 3rd Qu.: 3215.0   3rd Qu.: 8.076  
+ Max.   :50000.0   Max.   :10.820  
+[1] 3944.445
+[1] 1.10093
+[1] 272
+\end{verbatim}
+
 Show Overhead B Details. Boxplot
 
 \hypertarget{toggleOver1.3B}{}
@@ -732,6 +805,13 @@ Show Overhead B Details. Boxplot
 \begin{Highlighting}[]
 \CommentTok{# BASIC BOXPLOT}
 \KeywordTok{boxplot}\NormalTok{(logclaims)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{quantile}\NormalTok{(logclaims, }\DataTypeTok{probs =} \FloatTok{0.75}\NormalTok{)}
 
 \CommentTok{# BOXPLOT WITH ANNOTATION}
@@ -744,6 +824,13 @@ Show Overhead B Details. Boxplot
 \KeywordTok{text}\NormalTok{(}\FloatTok{1.1}\NormalTok{, }\FloatTok{10.9}\NormalTok{, }\StringTok{"outlier"}\NormalTok{,  }\DataTypeTok{cex =} \FloatTok{0.7}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-26-2.pdf}
+
+\begin{verbatim}
+     75% 
+8.075579 
+\end{verbatim}
 
 Show Overhead C Details. QQ Plot
 
@@ -764,6 +851,27 @@ Show Overhead C Details. QQ Plot
 \KeywordTok{qqline}\NormalTok{(logclaims)   }
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\begin{verbatim}
+     claims          logclaims     
+ Min.   :   45.0   Min.   : 3.807  
+ 1st Qu.:  892.5   1st Qu.: 6.794  
+ Median : 2210.0   Median : 7.701  
+ Mean   : 2697.7   Mean   : 7.388  
+ 3rd Qu.: 3215.0   3rd Qu.: 8.076  
+ Max.   :50000.0   Max.   :10.820  
+ 75% 
+3215 
+     75% 
+8.075579 
+     75% 
+8.075583 
+[1] 8.131056
+[1] 0.6744898
+[1] 0.6744898
+\end{verbatim}
 
 \subsection{Exercise. Summarizing bodily injury claims with box and qq
 plots}\label{exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots}
@@ -928,6 +1036,8 @@ Show Overhead B Details. Visualize the distributions
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-37-1.pdf}
+
 \subsection{Exercise. Distribution of transformed bodily injury
 claims}\label{exercise.-distribution-of-transformed-bodily-injury-claims}
 
@@ -1048,7 +1158,7 @@ Show Overhead C Details. Visualizing skewed distributions
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-46-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-45-1.pdf}
 
 Show Overhead D Details. Visualizing relationships with a scatter plot
 
@@ -1059,7 +1169,7 @@ Show Overhead D Details. Visualizing relationships with a scatter plot
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-47-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-46-1.pdf}
 
 Show Overhead E Details. Correlation coefficient
 
@@ -1147,7 +1257,7 @@ Show Overhead A Details. Where to fit the line?
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-52-1.pdf}
 
 Show Overhead B Details. Method of least squares
 
@@ -1179,7 +1289,7 @@ Show Overhead C Details. Regression coefficients
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-54-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-53-1.pdf}
 
 \begin{verbatim}
 (Intercept)         pop 
@@ -1307,7 +1417,7 @@ Show OverheadS A and B Details. Visualizing the uncertainty about a line
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-60-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-59-1.pdf}
 
 Show Overheads C, D and E Details. ANOVA Table
 
@@ -1650,7 +1760,7 @@ Show Overhead B Details. Example. Outliers and High Leverage Points
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-78-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-77-1.pdf}
 
 Show Overhead C Details. Regression fit with 19 base observations
 
@@ -1664,7 +1774,7 @@ Show Overhead C Details. Regression fit with 19 base observations
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-79-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-78-1.pdf}
 
 \begin{verbatim}
 
@@ -1700,7 +1810,7 @@ Show Overhead D Details. Regression fit with 19 base observations plus C
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-80-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-79-1.pdf}
 
 \begin{verbatim}
 
@@ -1833,7 +1943,7 @@ Show Overhead F Details. Visualizing four regression fits
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-82-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-81-1.pdf}
 
 Show Overhead G Details. Results from four regression models
 
@@ -1999,7 +2109,7 @@ and logarithmic units
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-92-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-91-1.pdf}
 
 \section{Method of least squares}\label{method-of-least-squares-1}
 
@@ -2053,7 +2163,7 @@ Show Overhead B Details. Scatterplot matrix
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-94-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-93-1.pdf}
 
 Show Overhead C Details. Visualizing a regression plane
 
@@ -2071,7 +2181,7 @@ Show Overhead C Details. Visualizing a regression plane
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-95-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-94-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2093,7 +2203,7 @@ Show Overhead C Details. Visualizing a regression plane
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-96-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-95-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2528,7 +2638,7 @@ Show Overhead C Details. R script for visualization
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-116-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-115-1.pdf}
 
 \begin{verbatim}
 
@@ -2602,7 +2712,7 @@ terms
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-117-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-116-1.pdf}
 
 \begin{verbatim}
 
@@ -2779,7 +2889,7 @@ Show Overhead C Details. Term life boxplots
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-122-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-121-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3248,8 +3358,8 @@ You are focusing on older drivers, 50 and higher, for which there are
   and interpret this coefficient.
 \end{enumerate}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-137-1.pdf}
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-137-2.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-136-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-136-2.pdf}
 
 \begin{verbatim}
 
@@ -3527,7 +3637,7 @@ Show Overhead A Details. Iterative approach
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-139-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-138-1.pdf}
 
 Show Overhead B Details. Many possible models
 
@@ -3606,7 +3716,7 @@ Show Overhead C Details. Model validation
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-140-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-139-1.pdf}
 
 \subsection{MC Exercise. An iterative approach to data
 modeling}\label{mc-exercise.-an-iterative-approach-to-data-modeling}
@@ -3999,7 +4109,7 @@ To this end, we analyze data from \emph{n} = 37 refrigerators.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-149-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-148-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4009,7 +4119,7 @@ To this end, we analyze data from \emph{n} = 37 refrigerators.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-149-2.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-148-2.pdf}
 
 \begin{verbatim}
      price          ecost          rsize          fsize     
@@ -4229,7 +4339,7 @@ Show Overhead E Details. High leverage point graph
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-150-1.pdf}
+\includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-149-1.pdf}
 
 Show Overhead F Details. Leverage
 
@@ -5265,54 +5375,32 @@ Show Overhead B Details. Other Interpretations
   \end{itemize}
 \end{itemize}
 
-\subsection{MC Exercise. What the modeling procedure tells
-us}\label{mc-exercise.-what-the-modeling-procedure-tells-us}
+\textbf{MC Exercise. Which of the following are not important when
+interpreting the effects of individual variables?}
 
-Which of the following are not important when interpreting the effects
-of individual variables?
+ Substantive significance Statistical significance The amount of effort
+that it took to gather the data and do the analysis Role of causality
 
-\begin{itemize}
-\tightlist
-\item
-  A. Substantive significance
-\item
-  B. Statistical significance
-\item
-  C. The amount of effort that it took to gather the data and do the
-  analysis
-\item
-  D. Role of causality
-\end{itemize}
+Submit Answer
 
-Which of the following is not a potential explanation for the lack of
-statistical significance of an explanatory variable?
+\textbf{MC Exercise. Which of the following is not a potential
+explanation for the lack of statistical significance of an explanatory
+variable?}
 
-\begin{itemize}
-\tightlist
-\item
-  A. Large variation of the disturbance term
-\item
-  B. High collinearity, so that the variable may be confounded with
-  other variables.
-\item
-  C. The coefficient of determination, \(R^2\), is not sufficiently
-  large.
-\end{itemize}
+ Large variation of the disturbance term High collinearity, so that the
+variable may be confounded with other variables The coefficient of
+determination, \(R^2\), is not sufficiently large
 
-Which of the following is not an important purpose of regression
-modeling?
+Submit Answer
 
-\begin{itemize}
-\tightlist
-\item
-  A. Pricing of risks such as insurance contracts
-\item
-  B. Benchmarking studies, to compare an observation to others
-\item
-  C. Prediction
-\item
-  D. Keeping a computer occupied with work
-\end{itemize}
+\textbf{MC Exercise. Which of the following is not an important purpose
+of regression modeling?}
+
+ Pricing of risks such as insurance contracts Benchmarking studies, to
+compare an observation to others Prediction Keeping a computer occupied
+with work
+
+Submit Answer
 
 \section{The importance of variable
 selection}\label{the-importance-of-variable-selection}
@@ -5443,46 +5531,30 @@ Show Overhead C Details. Principle of parsimony
   \end{itemize}
 \end{itemize}
 
-\subsection{MC Exercise. Principle of
-parsimony}\label{mc-exercise.-principle-of-parsimony}
+ \textbf{MC Exercise. Which of the following is true about under- and
+over-fitting a model?}
 
-Which of the following is true about under- and over-fitting a model?
+ When we over-fit a model, estimates of regression coefficients are
+over-biased as is \(s^2\), the estimate of model variance \(\sigma^2\).
+When we over-fit a model, estimates of regression coefficients remain
+unbiased whereas \(s^2\), the estimate of model variance \(\sigma^2\),
+is over-biased. When we over-fit a model, estimates of regression
+coefficients remain under-biased as is \(s^2\), the estimate of model
+variance \(\sigma^2\). When we under-fit a model, estimates of
+regression coefficients remain unbiased whereas \(s^2\), the estimate of
+model variance \(\sigma^2\), is over-biased.
 
-\begin{itemize}
-\tightlist
-\item
-  A. When we over-fit a model, estimates of regression coefficients are
-  over-biased as is \(s^2\), the estimate of model variance
-  \(\sigma^2\).
-\item
-  B. When we over-fit a model, estimates of regression coefficients are
-  remain unbiased whereas \(s^2\), the estimate of model variance
-  \(\sigma^2\), is over-biased.
-\item
-  C. When we over-fit a model, estimates of regression coefficients are
-  remain under-biased as is \(s^2\), the estimate of model variance
-  \(\sigma^2\).
-\item
-  D. When we under-fit a model, estimates of regression coefficients are
-  remain unbiased whereas \(s^2\), the estimate of model variance
-  \(\sigma^2\), is over-biased.
-\end{itemize}
+Submit Answer
 
-Which of the following is not true of Occam's Razor?
+\textbf{MC Exercise. Which of the following is not true of Occam's
+Razor?}
 
-\begin{itemize}
-\tightlist
-\item
-  A. When there are several possible explanations for a phenomenon, use
-  the simplest one.
-\item
-  B. Simpler models are easier to interpret.
-\item
-  C. Variables can be statistically significant but practically
-  unimportant.
-\item
-  D. Simpler models often do better for predicting out-of-sample data
-\end{itemize}
+ When there are several possible explanations for a phenomenon, use the
+simplest one. Simpler models are easier to interpret. Variables can be
+statistically significant but practically unimportant. Simpler models
+often do better for predicting out-of-sample data
+
+Submit Answer
 
 \bibliography{Bibliography/LDAReferenceB.bib}
 

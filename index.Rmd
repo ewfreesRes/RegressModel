@@ -18,7 +18,7 @@ description: "Statistical techniques can be used to address new situations. This
 ```{r include = FALSE}
 knitr::opts_chunk$set(results = "hold")
 EVALUATE_CHAP1 <- FALSE
-#EVALUATE_CHAP1 <- TRUE
+EVALUATE_CHAP1 <- TRUE
 EVALUATE_CHAP2 <- FALSE
 EVALUATE_CHAP2 <- TRUE
 EVALUATE_CHAP3 <- FALSE
@@ -27,8 +27,9 @@ EVALUATE_CHAP4 <- FALSE
 EVALUATE_CHAP4 <- TRUE
 EVALUATE_CHAP5 <- FALSE
 EVALUATE_CHAP5 <- TRUE
-
+tutorial::go_interactive(greedy = FALSE)
 ```
+
 
 # Preface {-}
 

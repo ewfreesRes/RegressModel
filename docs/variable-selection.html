@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -105,6 +105,32 @@ $(document).ready(function(){
   content: '' !important;
 }
 </style>
+
+
+<script language="javascript">
+var submitAnswer = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+    alert('please select choice answer');
+  } else if ( val == "Correct" ) {
+    alert('Answer is correct !');
+  } else {
+    alert('Answer is wrong');
+  }
+};
+</script>
+
+
+
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -287,11 +313,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
-<li class="chapter" data-level="5.2.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.2</b> MC Exercise. What the modeling procedure tells us</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
-<li class="chapter" data-level="5.3.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-principle-of-parsimony"><i class="fa fa-check"></i><b>5.3.2</b> MC Exercise. Principle of parsimony</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -381,7 +405,7 @@ y1&lt;-<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</s
 <span class="kw">arrows</span>(<span class="dv">12</span>,<span class="op">-</span><span class="fl">2.0</span>,<span class="dv">12</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
 <span class="kw">arrows</span>(<span class="dv">12</span>,<span class="op">-</span><span class="fl">3.0</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
 <span class="kw">arrows</span>(<span class="dv">5</span>,<span class="op">-</span><span class="fl">3.0</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 </div>
 <h6 style="text-align: center;">
 <a id="displayOver4.1B" href="javascript:toggleDet('toggleOver4.1B','displayOver4.1B');"><i><strong>Show Overhead B Details. Many possible models</strong></i></a>
@@ -442,7 +466,7 @@ y1&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">3<
 <span class="kw">arrows</span>(<span class="fl">2.9</span>,<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">2.5</span>,<span class="op">-</span><span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
 <span class="kw">arrows</span>(<span class="fl">5.9</span>,<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">3.1</span>,<span class="op">-</span><span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
 <span class="kw">arrows</span>(<span class="fl">7.4</span>,<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">3.5</span>,<span class="op">-</span><span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -658,11 +682,11 @@ refrig_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(ecost <span
 <span class="kw">summary</span>(refrig_mlr2)
 Refrig<span class="op">$</span>residuals2 &lt;-<span class="st"> </span><span class="kw">residuals</span>(refrig_mlr2)
 <span class="kw">plot</span>(Refrig<span class="op">$</span>residuals2, Refrig<span class="op">$</span>residuals1)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Rcmdr)
 refrig_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(price <span class="op">~</span><span class="st"> </span>rsize <span class="op">+</span><span class="st"> </span>fsize <span class="op">+</span><span class="st"> </span>shelves <span class="op">+</span><span class="st"> </span>features <span class="op">+</span><span class="st"> </span>ecost, <span class="dt">data =</span> Refrig)
 <span class="kw">avPlots</span>(refrig_mlr3, <span class="dt">terms =</span> <span class="st">&quot;ecost&quot;</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-149-2.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-148-2.png" width="672" /></p>
 <pre><code>     price          ecost          rsize          fsize     
  Min.   : 460   Min.   :60.0   Min.   :12.6   Min.   :4.10  
  1st Qu.: 545   1st Qu.:66.0   1st Qu.:12.9   1st Qu.:4.40  
@@ -822,7 +846,7 @@ F-statistic: 25.9 on 4 and 32 DF,  p-value: 0.00000000125</code></pre>
 xycov&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="op">-</span><span class="dv">5</span>,<span class="op">-</span><span class="dv">5</span>, <span class="dv">20</span>),<span class="dt">nrow=</span><span class="dv">2</span>,<span class="dt">ncol=</span><span class="dv">2</span>)
 xyloc&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),<span class="dt">nrow=</span><span class="dv">1</span>,<span class="dt">ncol=</span><span class="dv">2</span>)
 <span class="kw">polygon</span>(<span class="kw">ellipsoidPoints</span>(xycov, <span class="dt">d2 =</span> <span class="dv">2</span>, <span class="dt">loc=</span>xyloc),<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
 </div>
 <h6 style="text-align: center;">
 <a id="displayOver4.4F" href="javascript:toggleDet('toggleOver4.4F','displayOver4.4F');"><i><strong>Show Overhead F Details. Leverage</strong></i></a>
@@ -1143,11 +1167,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
 },
 "fontsettings": {
 "theme": "white",
@@ -1171,11 +1195,9 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

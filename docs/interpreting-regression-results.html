@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -105,6 +105,32 @@ $(document).ready(function(){
   content: '' !important;
 }
 </style>
+
+
+<script language="javascript">
+var submitAnswer = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+    alert('please select choice answer');
+  } else if ( val == "Correct" ) {
+    alert('Answer is correct !');
+  } else {
+    alert('Answer is wrong');
+  }
+};
+</script>
+
+
+
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -287,11 +313,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
-<li class="chapter" data-level="5.2.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2.2</b> MC Exercise. What the modeling procedure tells us</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
-<li class="chapter" data-level="5.3.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#mc-exercise.-principle-of-parsimony"><i class="fa fa-check"></i><b>5.3.2</b> MC Exercise. Principle of parsimony</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -564,30 +588,31 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNtZXBzIDwtIHJlYWQuY3N2KFwiQ1NW
 </ul></li>
 </ul>
 </div>
+<p><br></p>
+<a style="color:blue"><strong>MC Exercise. Which of the following are not important when interpreting the effects of individual variables?</strong></a>
+<form>
+<input type="radio" name="choice" value="Incorrect"> Substantive significance<br> <input type="radio" name="choice" value="Incorrect"> Statistical significance<br> <input type="radio" name="choice" value="Correct"> The amount of effort that it took to gather the data and do the analysis<br> <input type="radio" name="choice" value="Incorrect"> Role of causality <br>
+</form>
+<button onclick="submitAnswer()">
+Submit Answer
+</button>
+<p><br><br></p>
+<a style="color:blue"><strong>MC Exercise. Which of the following is not a potential explanation for the lack of statistical significance of an explanatory variable?</strong></a>
+<form>
+<input type="radio" name="choice" value="Incorrect"> Large variation of the disturbance term<br> <input type="radio" name="choice" value="Incorrect"> High collinearity, so that the variable may be confounded with other variables<br> <input type="radio" name="choice" value="Correct"> The coefficient of determination, <span class="math inline">\(R^2\)</span>, is not sufficiently large<br>
+</form>
+<button onclick="submitAnswer()">
+Submit Answer
+</button>
+<p><br><br></p>
+<a style="color:blue"><strong>MC Exercise. Which of the following is not an important purpose of regression modeling?</strong></a>
+<form>
+<input type="radio" name="choice" value="Incorrect"> Pricing of risks such as insurance contracts<br> <input type="radio" name="choice" value="Incorrect"> Benchmarking studies, to compare an observation to others<br> <input type="radio" name="choice" value="Incorrect"> Prediction<br> <input type="radio" name="choice" value="Correct"> Keeping a computer occupied with work<br>
+</form>
+<button onclick="submitAnswer()">
+Submit Answer
+</button>
 </div>
-</div>
-<div id="mc-exercise.-what-the-modeling-procedure-tells-us" class="section level3">
-<h3><span class="header-section-number">5.2.2</span> MC Exercise. What the modeling procedure tells us</h3>
-<p>Which of the following are not important when interpreting the effects of individual variables?</p>
-<ul>
-<li>A. Substantive significance</li>
-<li>B. Statistical significance</li>
-<li>C. The amount of effort that it took to gather the data and do the analysis</li>
-<li>D. Role of causality</li>
-</ul>
-<p>Which of the following is not a potential explanation for the lack of statistical significance of an explanatory variable?</p>
-<ul>
-<li>A. Large variation of the disturbance term</li>
-<li>B. High collinearity, so that the variable may be confounded with other variables.</li>
-<li>C. The coefficient of determination, <span class="math inline">\(R^2\)</span>, is not sufficiently large.</li>
-</ul>
-<p>Which of the following is not an important purpose of regression modeling?</p>
-<ul>
-<li>A. Pricing of risks such as insurance contracts</li>
-<li>B. Benchmarking studies, to compare an observation to others</li>
-<li>C. Prediction</li>
-<li>D. Keeping a computer occupied with work</li>
-</ul>
 </div>
 </div>
 <div id="the-importance-of-variable-selection" class="section level2">
@@ -664,27 +689,25 @@ Bias  = \text{E }\bar{y} - \text{E }(\beta_0 + \beta_1 x + \varepsilon) \\
 </ul></li>
 </ul>
 </div>
-</div>
-</div>
-<div id="mc-exercise.-principle-of-parsimony" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> MC Exercise. Principle of parsimony</h3>
-<p>Which of the following is true about under- and over-fitting a model?</p>
-<ul>
-<li>A. When we over-fit a model, estimates of regression coefficients are over-biased as is <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>.</li>
-<li>B. When we over-fit a model, estimates of regression coefficients are remain unbiased whereas <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>, is over-biased.</li>
-<li>C. When we over-fit a model, estimates of regression coefficients are remain under-biased as is <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>.</li>
-<li>D. When we under-fit a model, estimates of regression coefficients are remain unbiased whereas <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>, is over-biased.</li>
-</ul>
-<p>Which of the following is not true of Occam’s Razor?</p>
-<ul>
-<li>A. When there are several possible explanations for a phenomenon, use the simplest one.</li>
-<li>B. Simpler models are easier to interpret.</li>
-<li>C. Variables can be statistically significant but practically unimportant.</li>
-<li>D. Simpler models often do better for predicting out-of-sample data</li>
-</ul>
+<br> <a style="color:blue"><strong>MC Exercise. Which of the following is true about under- and over-fitting a model?</strong></a>
+<form>
+<input type="radio" name="choice" value="Incorrect"> When we over-fit a model, estimates of regression coefficients are over-biased as is <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>.<br> <input type="radio" name="choice" value="Correct"> When we over-fit a model, estimates of regression coefficients remain unbiased whereas <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>, is over-biased.<br> <input type="radio" name="choice" value="Incorrect"> When we over-fit a model, estimates of regression coefficients remain under-biased as is <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>.<br> <input type="radio" name="choice" value="Incorrect"> When we under-fit a model, estimates of regression coefficients remain unbiased whereas <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>, is over-biased.<br>
+</form>
+<button onclick="submitAnswer()">
+Submit Answer
+</button>
+<p><br><br></p>
+<a style="color:blue"><strong>MC Exercise. Which of the following is not true of Occam’s Razor?</strong></a>
+<form>
+<input type="radio" name="choice" value="Incorrect"> When there are several possible explanations for a phenomenon, use the simplest one.<br> <input type="radio" name="choice" value="Incorrect"> Simpler models are easier to interpret.<br> <input type="radio" name="choice" value="Correct"> Variables can be statistically significant but practically unimportant.<br> <input type="radio" name="choice" value="Incorrect"> Simpler models often do better for predicting out-of-sample data<br>
+</form>
+<button onclick="submitAnswer()">
+Submit Answer
+</button>
 <!-- **Overhead D. Course wrap up** -->
 <!-- Thanks for watching -->
 
+</div>
 </div>
 </div>
 </div>
@@ -712,11 +735,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
 },
 "fontsettings": {
 "theme": "white",
@@ -740,11 +763,9 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
