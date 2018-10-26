@@ -155,8 +155,8 @@ cor(Lot$pop_1000, Lot$sales_1000)
 
 ```{r ex="ExerRegMod2.1.2", type="sct", tut=TRUE}
 ex() %>% check_object("Lot") %>% {
-  check_column("pop_1000") %>% check_equal()
-  check_column("sales_1000") %>% check_equal()
+  check_column(., "pop_1000") %>% check_equal()
+  check_column(., "sales_1000") %>% check_equal()
 }
 ex() %>% check_function("summary") %>% check_result() %>% check_equal()
 ex() %>% check_function("plot") %>%{
