@@ -126,11 +126,11 @@ Term1 <- subset(Term, subset = face > 0)
 str(Term1)
 head(Term1)
 
-library(Rcmdr)
+library(psych)
 Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
 options(scipen = 100, digits = 4)
-summvar <- numSummary(Term2, statistic = c("mean", "sd", "quantiles"), quantiles = c(0, .5, 1))
-summvar
+head(Term2)
+describe(Term2)[,c(3,4,8,5,9,2)]
 ```
 
 </div> 
@@ -304,6 +304,26 @@ exp(predict(Term_mlr2, newdata))
 ```
 
 ```{r ex="ExerRegMod3.1.2", type="sct", tut=TRUE}
+ex() %>% check_object("Term2") %>% check_column("education1") %>% check_equal()
+ex() %>% check_function("summary") %>% {
+  check_arg(., "object") %>% check_equal()
+  check_result() %>% check_equal()
+}
+ex() %>% check_function("round") %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "digits") %>% check_equal()
+}
+ex() %>% check_object("Term_mlr2") %>% check_equal()
+ex() %>% check_function("lm") %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_object("newdata") %>% check_equal()
+ex() %>% check_function("exp") %>% check_result() %>% check_equal()
+ex() %>% check_function("predict") %>% {
+  check_arg(., "object") %>% check_equal()
+  check_arg(., "newdata") %>% check_equal()
+}
 success_msg("Congratulations! You now have experience fitting a regression plane and using this plane for predictions. Prediction is one of the key tasks of 'predictive modeling.' Well done!")
 ```
 
@@ -360,6 +380,16 @@ pchange_fits1
 ```
 
 ```{r ex="ExerRegMod3.1.3", type="sct", tut=TRUE}
+ex() %>% check_object("educ_predict") %>% check_equal()
+ex() %>% check_object("newdata1") %>% check_equal()
+ex() %>% check_function("predict") %>% {
+  check_arg(., "object") %>% check_equal()
+  check_arg(., "newdata") %>% check_equal()
+}
+ex() %>% check_object("lsfits1") %>% check_equal()
+ex() %>% check_operator("-",index=1) %>% check_result() %>% check_equal()
+ex() %>% check_object("pchange_fits1") %>% check_equal()
+ex() %>% check_function("exp") %>% check_arg("x") %>% check_equal()
 success_msg("Congratulations! From calculus, small changes in logarithmic values can be interpreted as proportional changes. This is the reason for using natural logarithms.")
 ```
 
@@ -428,12 +458,16 @@ pchange_fits2/pchange_income
 
 
 ```{r ex="ExerRegMod3.1.4", type="sct", tut=TRUE}
-test_error()
-test_object("logincome_pred", incorrect_msg = "Check to see that values of the logarithmic income predictor variable are properly coded.")
-test_object("pchange_income", incorrect_msg = "Check to see that the proportional changes of logarithmic income predictor variable are properly coded.")
-test_object("newdata2", incorrect_msg = "The new data object is incorrectly specified.")
-test_object("lsfits2", incorrect_msg = "The predicted fits at different values of logarithmic income are incorrectly specified.")
-test_object("pchange_fits2", incorrect_msg = "The proportional changes at different values of logarithmic income are incorrectly specified.")
+ex() %>% check_object("logincome_pred") %>% check_equal()
+ex() %>% check_object("pchange_income") %>% check_equal()
+ex() %>% check_object("newdata2") %>% check_equal()
+ex() %>% check_object("lsfits2") %>% chec_equal()
+ex() %>% check_function("predict") %>% {
+  check_arg(., "object") %>% check_equal()
+  check_arg(., "newdata") %>% check_equal()
+}
+ex() %>% check_object("pchange_fits2") %>% check_equal()
+ex() %>% check_expression("/",index=3) %>% check_result() %>% check_equal()
 success_msg("Congratulations! When both $x_1$ and $y$ are in logarithmic units, then we can interpret $b_1$ to be ratio of two percentage changes, known as an *elasticity* in economics.")
 ```
 
@@ -519,7 +553,7 @@ Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
 model_sum <- summary(Term_mlr)
 model_sum$coefficients
 
-round(Rcmdr::Confint(Term_mlr, level = .95), digits = 3)
+round(confint(Term_mlr, level = .95), digits = 3)
 
 round(confint(Term_mlr, level = .95), digits = 3)
 
@@ -574,6 +608,16 @@ summary(Term_mlr1)
 
   
 ```{r ex="ExerRegMod3.2.2", type="sct", tut=TRUE}
+ex() %>% check_object("Term2") %>% {
+  check_column(., "face") %>% check_equal()
+  check_column(., "income") %>% check_equal()
+ }
+ex() %>% check_object("Term_mlr1") %>% check_equal()
+ex() %>% check_function("lm") %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("summary") %>% check_result() %>% check_equal()
 success_msg("Congratulations! Compare these goodness of fit measures to those where income and face are in logarithmic units. Although not the only indicators, you will see that the proportion of variability explained (R square) and the statistical significance of coefficients are strikingly higher in the model with variables in logged units.")
 ```
 
@@ -748,6 +792,19 @@ summary(Term_mlr4)
 
 
 ```{r ex="ExerRegMod3.3.2", type="sct", tut=TRUE}
+ex() %>% check_function("round") %>% check_result() %>% check_equal()
+ex() %>% check_object("Term_mlr3") %>% check_equal()
+ex() %>% check_function("lm",index=1) %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("summary",index=1) %>% check_result() %>% check_equal()
+ex() %>% check_object("Term_mlr4") %>% check_equal()
+ex() %>% check_function("lm",index=2) %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("summary",index=2) %>% check_result() %>% check_equal()
 success_msg("Congratulations! From a correlation table, you saw that there are relationships with among explanatory variables and so it is not clear whether adding `single` to the model would be helpful. You explored this by first fitting a model by just adding the binary variable single, examined summary statistics, and checked the significance of the variable. Then, you explored the utility of the interaction of `single` with logarithmic income. Well done!")
 ```
 
@@ -814,9 +871,9 @@ Term4$marstat<- as.factor(Term4$marstat)
 boxplot(logface ~ marstat, ylab = "log face", xlab = "Marital Status", data = Term4)
 table(Term4$marstat)
 #  SUMMARY BY LEVEL OF MARSTAT
-library(Rcmdr)
-numSummary(Term4[, "logface"], groups = Term4$marstat, statistics = c("mean", "sd"))
-numSummary(Term4[, "logface"], statistics = c("mean", "sd"))
+#library(Rcmdr)
+#numSummary(Term4[, "logface"], groups = Term4$marstat, statistics = c("mean", "sd"))
+#numSummary(Term4[, "logface"], statistics = c("mean", "sd"))
 
 ```
 
@@ -1099,6 +1156,12 @@ anova(Term_mlr3,Term_mlr4)
 
 
 ```{r ex="ExerRegMod3.5.2", type="sct", tut=TRUE}
+ex() %>% check_object("Term_mlr1") %>% check_equal()
+ex() %>% check_object("Term_mlr2") %>% check_equal()
+ex() %>% check_function("anova",index=1) %>% check_result() %>% check_equal()
+ex() %>% check_object("Term_mlr3") %>% check_equal()
+ex() %>% check_object("Term_mlr4") %>% check_equal()
+ex() %>% check_function("anova",index=2) %>% check_result() %>% check_equal()
 success_msg("Congratulations! Hypothesis testing is a primary tool for  'inferring' about the real world {in contrast to mathematical 'deduction'.} Moreover, as we will see in the next chapter, it can also be used to develop a model.")
 ```
 
@@ -1223,8 +1286,8 @@ c. Run a regression of `logpaid` on `age`, `gender` and the categorical variable
 AutoC <- read.csv("CSVData\\Auto_claims.csv", header = TRUE)
 boxplot(logpaid ~ class, data = AutoC)
 
-library(Rcmdr)
-numSummary(AutoC[, c("logpaid","paid")], groups = AutoC$class, statistics = c("mean", "sd", "quantiles"), quantiles = c(0, .5, 1))
+#library(Rcmdr)
+#numSummary(AutoC[, c("logpaid","paid")], groups = AutoC$class, statistics = c("mean", "sd", "quantiles"), quantiles = c(0, .5, 1))
 
 #  Alternatively, you can use the following codes, and write the output out to a word processor: 
 #  library(Hmisc)
