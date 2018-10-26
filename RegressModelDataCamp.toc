@@ -70,7 +70,7 @@
 \contentsline {subsection}{\numberline {3.5.1}Video}{60}{subsection.3.5.1}
 \contentsline {subsubsection}{Video Overhead Details}{60}{section*.23}
 \contentsline {subsection}{\numberline {3.5.2}Exercise. Hypothesis testing and term life}{61}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Exercise. Hypothesis testing and Wisconsin hospital costs}{62}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.3}Exercise. Hypothesis testing and Wisconsin hospital costs}{61}{subsection.3.5.3}
 \contentsline {subsection}{\numberline {3.5.4}Exercise. Hypothesis testing and auto claims}{62}{subsection.3.5.4}
 \contentsline {chapter}{\numberline {4}Variable Selection}{69}{chapter.4}
 \contentsline {section}{\numberline {4.1}An iterative approach to data analysis and modeling}{69}{section.4.1}
@@ -95,7 +95,7 @@
 \contentsline {subsection}{\numberline {4.5.1}Video}{82}{subsection.4.5.1}
 \contentsline {subsubsection}{Video Overhead Details}{82}{section*.28}
 \contentsline {subsection}{\numberline {4.5.2}Exercise. Collinearity and term life}{83}{subsection.4.5.2}
-\contentsline {section}{\numberline {4.6}Selection criteria}{83}{section.4.6}
+\contentsline {section}{\numberline {4.6}Selection criteria}{84}{section.4.6}
 \contentsline {subsection}{\numberline {4.6.1}Video}{84}{subsection.4.6.1}
 \contentsline {subsubsection}{Video Overhead Details}{84}{section*.29}
 \contentsline {subsection}{\numberline {4.6.2}Exercise. Cross-validation and term life}{85}{subsection.4.6.2}

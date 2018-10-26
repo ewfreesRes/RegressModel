@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -345,7 +345,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
 <p style="text-align:right;">
-<em>Date: 23 October 2018</em>
+<em>Date: 26 October 2018</em>
 </p>
 <div id="about-regression-modeling" class="section level3 unnumbered">
 <h3>About Regression Modeling</h3>
@@ -446,19 +446,19 @@ Call:
 lm(formula = heights$child_ht ~ heights$parent_ht)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--8.258 -1.428  0.132  1.572  5.792 
+    Min      1Q  Median      3Q     Max 
+-8.2577 -1.4280  0.1323  1.5720  5.7918 
 
 Coefficients:
-                  Estimate Std. Error t value            Pr(&gt;|t|)    
-(Intercept)        25.8486     2.6901    9.61 &lt;0.0000000000000002 ***
-heights$parent_ht   0.6099     0.0388   15.71 &lt;0.0000000000000002 ***
+                  Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)       25.84856    2.69009   9.609   &lt;2e-16 ***
+heights$parent_ht  0.60992    0.03882  15.710   &lt;2e-16 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
 Residual standard error: 2.26 on 926 degrees of freedom
-Multiple R-squared:  0.21,  Adjusted R-squared:  0.21 
-F-statistic:  247 on 1 and 926 DF,  p-value: &lt;0.0000000000000002</code></pre>
+Multiple R-squared:  0.2104,    Adjusted R-squared:  0.2096 
+F-statistic: 246.8 on 1 and 926 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 
 </div>
@@ -488,11 +488,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
-"linkedin": false
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -516,9 +516,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

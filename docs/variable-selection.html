@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -683,24 +683,43 @@ refrig_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(ecost <span
 Refrig<span class="op">$</span>residuals2 &lt;-<span class="st"> </span><span class="kw">residuals</span>(refrig_mlr2)
 <span class="kw">plot</span>(Refrig<span class="op">$</span>residuals2, Refrig<span class="op">$</span>residuals1)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Rcmdr)
-refrig_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(price <span class="op">~</span><span class="st"> </span>rsize <span class="op">+</span><span class="st"> </span>fsize <span class="op">+</span><span class="st"> </span>shelves <span class="op">+</span><span class="st"> </span>features <span class="op">+</span><span class="st"> </span>ecost, <span class="dt">data =</span> Refrig)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Rcmdr)</code></pre></div>
+<pre><code>Loading required package: splines</code></pre>
+<pre><code>Loading required package: RcmdrMisc</code></pre>
+<pre><code>Loading required package: car</code></pre>
+<pre><code>Loading required package: carData</code></pre>
+<pre><code>
+Attaching package: &#39;car&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:psych&#39;:
+
+    logit</code></pre>
+<pre><code>Loading required package: sandwich</code></pre>
+<pre><code>Loading required package: effects</code></pre>
+<pre><code>lattice theme set by effectsTheme()
+See ?effectsTheme for details.</code></pre>
+<pre><code>The Commander GUI is launched only in interactive sessions</code></pre>
+<pre><code>
+Attaching package: &#39;Rcmdr&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:car&#39;:
+
+    Confint</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">refrig_mlr3 &lt;-<span class="st"> </span><span class="kw">lm</span>(price <span class="op">~</span><span class="st"> </span>rsize <span class="op">+</span><span class="st"> </span>fsize <span class="op">+</span><span class="st"> </span>shelves <span class="op">+</span><span class="st"> </span>features <span class="op">+</span><span class="st"> </span>ecost, <span class="dt">data =</span> Refrig)
 <span class="kw">avPlots</span>(refrig_mlr3, <span class="dt">terms =</span> <span class="st">&quot;ecost&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-148-2.png" width="672" /></p>
-<pre><code>     price          ecost          rsize          fsize     
- Min.   : 460   Min.   :60.0   Min.   :12.6   Min.   :4.10  
- 1st Qu.: 545   1st Qu.:66.0   1st Qu.:12.9   1st Qu.:4.40  
- Median : 590   Median :68.0   Median :13.2   Median :5.10  
- Mean   : 626   Mean   :70.5   Mean   :13.4   Mean   :5.18  
- 3rd Qu.: 685   3rd Qu.:75.0   3rd Qu.:13.9   3rd Qu.:5.70  
- Max.   :1200   Max.   :94.0   Max.   :14.7   Max.   :7.40  
-    shelves        s_sq_ft        features    
- Min.   :1.00   Min.   :20.6   Min.   : 1.00  
- 1st Qu.:2.00   1st Qu.:23.4   1st Qu.: 2.00  
- Median :2.00   Median :24.0   Median : 3.00  
- Mean   :2.51   Mean   :24.5   Mean   : 3.46  
- 3rd Qu.:3.00   3rd Qu.:25.5   3rd Qu.: 5.00  
- Max.   :5.00   Max.   :30.2   Max.   :12.00  
+<pre><code>     price            ecost           rsize          fsize      
+ Min.   : 460.0   Min.   :60.00   Min.   :12.6   Min.   :4.100  
+ 1st Qu.: 545.0   1st Qu.:66.00   1st Qu.:12.9   1st Qu.:4.400  
+ Median : 590.0   Median :68.00   Median :13.2   Median :5.100  
+ Mean   : 626.4   Mean   :70.51   Mean   :13.4   Mean   :5.184  
+ 3rd Qu.: 685.0   3rd Qu.:75.00   3rd Qu.:13.9   3rd Qu.:5.700  
+ Max.   :1200.0   Max.   :94.00   Max.   :14.7   Max.   :7.400  
+    shelves         s_sq_ft         features     
+ Min.   :1.000   Min.   :20.60   Min.   : 1.000  
+ 1st Qu.:2.000   1st Qu.:23.40   1st Qu.: 2.000  
+ Median :2.000   Median :24.00   Median : 3.000  
+ Mean   :2.514   Mean   :24.53   Mean   : 3.459  
+ 3rd Qu.:3.000   3rd Qu.:25.50   3rd Qu.: 5.000  
+ Max.   :5.000   Max.   :30.20   Max.   :12.000  
           price  ecost  rsize  fsize shelves s_sq_ft features
 price     1.000  0.522 -0.024  0.720   0.400   0.155    0.697
 ecost     0.522  1.000 -0.033  0.855   0.188   0.058    0.334
@@ -714,44 +733,44 @@ Call:
 lm(formula = price ~ rsize + fsize + shelves + features, data = Refrig)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--128.20  -34.96    7.08   28.72  155.10 
+     Min       1Q   Median       3Q      Max 
+-128.200  -34.963    7.081   28.716  155.096 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  -698.89     302.60   -2.31   0.0275 *  
-rsize          56.50      20.56    2.75   0.0098 ** 
-fsize          75.40      13.93    5.41 0.000006 ***
-shelves        35.92      11.08    3.24   0.0028 ** 
-features       25.16       5.04    4.99 0.000020 ***
+(Intercept)  -698.89     302.60  -2.310  0.02752 *  
+rsize          56.50      20.56   2.748  0.00977 ** 
+fsize          75.40      13.93   5.414 5.96e-06 ***
+shelves        35.92      11.08   3.243  0.00277 ** 
+features       25.16       5.04   4.992 2.04e-05 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 68.1 on 32 degrees of freedom
-Multiple R-squared:  0.789, Adjusted R-squared:  0.763 
-F-statistic: 29.9 on 4 and 32 DF,  p-value: 0.00000000021
+Residual standard error: 68.11 on 32 degrees of freedom
+Multiple R-squared:  0.789, Adjusted R-squared:  0.7626 
+F-statistic: 29.92 on 4 and 32 DF,  p-value: 2.102e-10
 
 
 Call:
 lm(formula = ecost ~ rsize + fsize + shelves + features, data = Refrig)
 
 Residuals:
-   Min     1Q Median     3Q    Max 
--7.848 -4.306  0.515  2.632  9.360 
+    Min      1Q  Median      3Q     Max 
+-7.8483 -4.3064  0.5154  2.6324  9.3596 
 
 Coefficients:
-            Estimate Std. Error t value      Pr(&gt;|t|)    
-(Intercept)  -14.217     20.936   -0.68         0.502    
-rsize          2.874      1.422    2.02         0.052 .  
-fsize          8.909      0.964    9.24 0.00000000015 ***
-shelves        0.289      0.766    0.38         0.708    
-features      -0.201      0.349   -0.58         0.569    
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -14.2165    20.9365  -0.679   0.5020    
+rsize         2.8744     1.4225   2.021   0.0517 .  
+fsize         8.9085     0.9636   9.245 1.49e-10 ***
+shelves       0.2895     0.7664   0.378   0.7081    
+features     -0.2006     0.3487  -0.575   0.5692    
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 
-Residual standard error: 4.71 on 32 degrees of freedom
-Multiple R-squared:  0.764, Adjusted R-squared:  0.734 
-F-statistic: 25.9 on 4 and 32 DF,  p-value: 0.00000000125</code></pre>
+Residual standard error: 4.712 on 32 degrees of freedom
+Multiple R-squared:  0.7637,    Adjusted R-squared:  0.7342 
+F-statistic: 25.86 on 4 and 32 DF,  p-value: 1.247e-09</code></pre>
 </div>
 </div>
 <div id="unusual-observations" class="section level2">
@@ -1167,11 +1186,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
-"linkedin": false
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1195,9 +1214,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
