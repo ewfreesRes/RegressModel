@@ -154,6 +154,16 @@ cor(Lot$pop_1000, Lot$sales_1000)
 
 
 ```{r ex="ExerRegMod2.1.2", type="sct", tut=TRUE}
+ex() %>% check_object("Lot") %>% {
+  check_column("pop_1000") %>% check_equal()
+  check_column("sales_1000") %>% check_equal()
+}
+ex() %>% check_function("summary") %>% check_result() %>% check_equal()
+ex() %>% check_function("plot") %>%{
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
+ex() %>% check_function("cor") %>% check_result() %>% check_equal()
 success_msg("Congratulations! We will rescale data using 'linear' transformations regularly. In part we do this for communicating our analysis to others. Also in part, this is for our own convenience as it can allow us to see patterns more readily.")
 ```
 
@@ -278,6 +288,25 @@ predict(model_blr1, newdata)
 ```
 
 ```{r ex="ExerRegMod2.2.2", type="sct", tut=TRUE}
+ex() %>% check_function("cor") %>% check_result() %>% check_equal()
+ex() %>% check_function("plot") %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
+ex() %>% check_object("model_blr1") %>% check_equal()
+ex() %>% check_function("lm") %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("round") %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "digits") %>% check_equal()
+}
+ex() %>% check_object("newdata") %>% check_equal()
+ex() %>% check_function("predict") %>% {
+  check_arg(., "object") %>% check_equal()
+  check_arg(., "newdata") %>% check_equal()
+}
 success_msg("Congratulations! You now have experience fitting a regression line and using this line for predictions, just as Galton did when he used parents' heights to predict the height of an adult child. Well done!")
 ```
 
@@ -395,6 +424,14 @@ summary(model_blr)$r.squared
 
 
 ```{r ex="ExerRegMod2.3.2", type="sct", tut=TRUE}
+ex() %>% check_object("model_blr") %>% check_equal()
+ex() %>% check_function("lm") %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("anova") %>% check_arg("object") %>% check_equal()
+ex() %>% check_function("sqrt") %>% check_result() %>% check_equal()
+ex() %>% check_function("summary") %>% check_result() %>% check_equal()
 success_msg("Congratulations! It will be helpful if you compare the results of this exercise to the regression of `pop` on `sales` from the prior video. We have seen that `pop` is more highly correlated with `sales` than `medhome`, so we are expecting greater uncertainty in this regression fit.")
 ```
 
@@ -455,7 +492,21 @@ summary(model_blr2)$r.squared
 
 
 ```{r ex="ExerRegMod2.3.3", type="sct", tut=TRUE}
-success_msg("Congratulations! In this exercise, you have seen that rescaling does not affect our measures of goodness of fit in any meaningful way. For example, the coefficient of determinations are completely unaffected. This is helpful because we will rescale variables extensively in our search for patterns in the data.")
+ex() %>% check_object("model_blr1") %>% check_equal()
+ex() %>% check_function("anova",index=1) %>% check_result() %>% check_equal()
+ex() %>% check_function("sqrt",index=1) %>% check_result() %>% check_equal()
+ex() %>% check_function("anova",index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function("summary",index=1) %>% check_result() %>% check_equal()
+ex() %>% check_object("model_blr2") %>% check_equal()
+ex() %>% check_function("lm",index=2) %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("anova",index=3) %>% check_result() %>% check_equal()
+ex() %>% check_function("sqrt",index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function("anova",index=4) %>% check_result() %>% check_equal()
+ex() %>% check_function("summary",index=2) %>% check_result() %>% check_equal()
+success_msg("Congratulations! In this exercise, you have seen that rescaling does not affect our measures of goodness of fit in any meaningful way. For example, coeffcient of determinations are completely unaffected. This is helpful because we will rescale variables extensively in our search for patterns in the data.")
 ```
 
 ## Statistical inference
@@ -511,8 +562,8 @@ pop           0.6471    0.04881 13.2579 1.158e-17
 <div id="toggleOver2.4C" style="display: none">
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
-Rcmdr::Confint(model_blr, level = .90)
-Rcmdr::Confint(model_blr, level = .95)
+confint(model_blr, level = .90)
+confint(model_blr, level = .95)
 
 ```
 
@@ -531,7 +582,7 @@ qt(.975, 48)
 summary(model_blr)$coefficients[2,1] - 
   summary(model_blr)$coefficients[2,2]*qt(.975, 48)
 
-Rcmdr::Confint(model_blr, level = .95)
+confint(model_blr, level = .95)
 confint(model_blr, level = .95)
 
 ```
@@ -594,7 +645,6 @@ summary(model_blr1)
 summary(model_blr1)$coefficients
 summary(model_blr1)$coefficients[,3]
 
-#Rcmdr::Confint(model_blr1, level = .95)
 confint(model_blr1, level = .95)
 
 NewData1 <- data.frame(medhome = 50)
@@ -604,6 +654,27 @@ predict(model_blr1, NewData1, interval = "prediction", level = .95)
 
 
 ```{r ex="ExerRegMod2.4.2", type="sct", tut=TRUE}
+ex() %>% check_object("model_blr1") %>% check_equal()
+ex() %>% check_function("lm") %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("summary",index=1) %>% check_arg("object") %>% check_equal()
+ex() %>% check_function("summary",index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function("summary",index=3) %>% check_result() %>% check_equal()
+ex() %>% check_function("confint") %>% {
+  check_arg(., "object") %>% check_equal()
+  check_arg(., "level") %>% check_equal()
+}
+ex() %>% check_function("confint") %>% check_result() %>% check_equal()
+ex() %>% check_object("NewData1") %>% check_equal()
+ex() %>% check_function("predict") %>% {
+  check_arg(., "object") %>% check_equal()
+  check_arg(., "newdata") %>% check_equal()
+  check_arg(., "interval") %>% check_equal()
+  check_arg(., "level") %>% check_equal()
+}
+ex() %>% check_function("predict") %>% check_result() %>% check_equal()
 success_msg("Congratulations! Much of what we learn from a data modeling exercise can be summarized using standard inferential tools: hypothesis testing, confidence intervals, and prediction.")
 ```
 
@@ -797,6 +868,32 @@ qqline(residuals(model_Kenosha))
 
 
 ```{r ex="ExerRegMod2.5.2", type="sct", tut=TRUE}
+ex() %>% check_object("model_blr") %>% check_equal()
+ex() %>% check_function("lm",index=1) %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("summary", index=1) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_function("summary", index=1) %>% check_result() %>% check_equal()
+ex() %>% check_object("model_Kenosha") %>% check_equal()
+ex() %>% check_function("lm", index=2) %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+  check_arg(., "subset") %>% check_equal()
+}
+ex() %>% check_function("summary", index=2) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_function("summary", index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function("plot") %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
+ex() %>% check_function("abline",index=1) %>% check_arg(., "reg") %>% check_equal()
+ex() %>% check_function("abline",index=2) %>% check_arg(., "reg") %>% check_equal()
+ex() %>% check_function("par") %>% check_arg(., "mfrow") %>% check_equal()
+ex() %>% check_function("qqnorm",index=1) %>% check_arg(., "y") %>% check_equal()
+ex() %>% check_function("qqline",index=1) %>% check_arg(., "y") %>% check_equal()
+ex() %>% check_function("qqnorm",index=2) %>% check_arg(., "y") %>% check_equal()
+ex() %>% check_function("qqline",index=2) %>% check_arg(., "y") %>% check_equal()
 success_msg("Congratulations! Just because an observation is unusual does not make it bad or noninformative. Kenosha is close to the Illinois border; residents from Illinois probably participate in the Wisconsin lottery thus effectively increasing the potential pool of sales in Kenosha. Although unusual, there is interesting information to be learned from this observation.")
 ```
 
