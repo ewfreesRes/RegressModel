@@ -324,6 +324,13 @@ summary(model_stepwise)
 ```
 
 ```{r ex="ExerRegMod4.2.2", type="sct", tut=TRUE}
+ex() %>% check_object("model_step1") %>% check_equal()
+ex() %>% check_object("model_step10") %>% check_equal()
+ex() %>% check_function("anova",index=1) %>% check_result() %>% check_equal()
+ex() %>% check_object("model_step50") %>% check_equal()
+ex() %>% check_function("anova",index=2) %>% check_result() %>% check_equal()
+ex() %>% check_object("model_stepwise") %>% check_equal()
+ex() %>% check_function("summary") %>% check_arg(., "object") %>% check_equal()
 success_msg("Excellent! The step procedure repeatedly fits many models to a data set. We summarize each fit with hypothesis testing statistics like t-statistics and p-values. But, remember that hypothesis tests are designed to falsely detect a relationship a fraction of the time (typically 5%). For example, if you run a t-test 50 times (for each explanatory variable), you can expect to get two or three statistically significant explanatory variables even for unrelated variables (because 50 times 0.05 = 2.5).")
 ```
 
@@ -440,6 +447,28 @@ lines(lowess(survey$indcost,mlr.survey2$residuals))
 ```
 
 ```{r ex="ExerRegMod4.3.2", type="sct", tut=TRUE}
+ex() %>% check_object("mlr.survey1") %>% check_equal()
+ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
+ex() %>% chek_function("plot",index=1) %>%{
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
+ex() %>% check_function("lines",index=1)
+ex() %>% check_function("lowess",index=1) %>%{
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
+ex() %>% check_object("mlr.survey2") %>% check_equal()
+ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
+ex() %>% chek_function("plot",index=2) %>%{
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
+ex() %>% check_function("lines",index=2)
+ex() %>% check_function("lowess",index=2) %>%{
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% chec_equal()
+}
 success_msg("Excellent! In this exercise, you examined residuals from a preliminary model fit and detected a mild quadratic pattern in a variable. This suggested entering the squared term of that variable into the model specification. The refit of this new model suggests that the squared term has important explanatory information. The squared term is a nonlinear alternative that is not available in many automatic variable selection procedures.")
 ```
 
@@ -474,9 +503,9 @@ summary(refrig_mlr2)
 Refrig$residuals2 <- residuals(refrig_mlr2)
 plot(Refrig$residuals2, Refrig$residuals1)
 
-library(Rcmdr)
-refrig_mlr3 <- lm(price ~ rsize + fsize + shelves + features + ecost, data = Refrig)
-avPlots(refrig_mlr3, terms = "ecost")
+#library(Rcmdr)
+#refrig_mlr3 <- lm(price ~ rsize + fsize + shelves + features + ecost, data = Refrig)
+#avPlots(refrig_mlr3, terms = "ecost")
 
 ```
 
@@ -638,6 +667,16 @@ plot(hii,ri)
 
 
 ```{r ex="ExerRegMod4.4.2", type="sct", tut=TRUE}
+ex() %>% check_function("plot",index=1) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_object("model_outlrC") %>% check_equal()
+ex() %>% check_object("ri") %>% check_equal()
+ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_object("hii") %>% check_equal()
+ex() %>% check_function("summary",index=2) %>% chec_arg(., "object") %>% check_equal()
+ex() %>% check_function("plot",index=2) %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
 success_msg("Excellent! With only two variables, we could argue graphically that observations were unusual. In this exercise, we showed how statistics could also be used to identify usual observations. Although not really necessary in basic linear regression, the main advantage of the statistics is that they work readily in a multivariate setting.")
 ```
 
@@ -698,6 +737,25 @@ summary(mlr.survey3)
 ```
 
 ```{r ex="ExerRegMod4.4.3", type="sct", tut=TRUE}
+ex() %>% check_object("ri") %>% check_equal()
+ex() %>% check_object("hii") %>% check_equal()
+ex() %>% check_function("par",index=1) %>% check_arg(., "mfrow") %>% check_equal()
+ex() %>% check_function("hist",index=1) %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "nclass") %>% check_equal()
+}
+ex() %>% check_function("hist",index=2) %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "nclass") %>% check_equal()
+}
+ex() %>% check_function("par",index=2) %>% check_arg(., "mfrow") %>% check_equal()
+ex() %>% check_function("hist",index=3) %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "nclass") %>% check_equal()
+}
+ex() %>% check_object("mlr.survey3") %>% check_euqal()
+ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
 success_msg("Excellent! You will have noted that after removing these two influential observations from a high risk industry, the variable associated with the `indcost` squared became less statistically significant. This illustrates a general phenomena; sometimes, the 'signicance' of a variable may actually due to a few unusual observations, not the entire variable.")
 ```
 
@@ -819,6 +877,11 @@ car::vif(Term_mlr1)
 ```
 
 ```{r ex="ExerRegMod4.5.2", type="sct", tut=TRUE}
+ex() %>% check_object("Term_mlr") %>% check_equal()
+ex() %>% check_function("vif",index=1) %>% check_arg(., "mod") %>% check_equal()
+ex() %>% check_object("Term_mlr1") %>% check_equal()
+ex() %>% check_function("summary") %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_function("vif",index=2) %>% check_arg(., "mod") %>% check_equal()
 success_msg("Excellent! This exercise underscores that colinearity among explanatory variables can be induced when introducing higher order terms such as interactions. Note that in the interaction model the variable 'numhh' does not appear to be statistically signficant effect. This is one of the big dangers of collinearity - it can mask important effects.")
 ```
 
@@ -997,6 +1060,11 @@ crossvalfct <- function(explvars){
 
 
 ```{r ex="ExerRegMod4.6.2", type="sample-code", tut=TRUE}
+# Randomly re-order data - "shuffle it"
+n <- nrow(Term1)
+set.seed(12347)
+shuffled_Term1 <- Term1[sample(n), ]
+
 # Calculate the cross-validation statistic using only logarithmic income, `logincome`.
 explvars <- c("logincome")
 crossvalfct(explvars)
@@ -1008,7 +1076,6 @@ crossvalfct(___)
 # Calculate the cross-validation statistic using `logincome`, `education`, `numhh` and `marstat`.
 explvars <- c(___)
 crossvalfct(explvars)
-
 ```
 
 
@@ -1017,17 +1084,23 @@ crossvalfct(explvars)
 n <- nrow(Term1)
 set.seed(12347)
 shuffled_Term1 <- Term1[sample(n), ]
-## Cross - Validation
-explvars <- c("logincome")
-crossvalfct(explvars)
-explvars <- c("education", "numhh", "logincome")
-crossvalfct(explvars)
-explvars <- c("education", "numhh", "logincome", "marstat")
-crossvalfct(explvars)
+# Cross - Validation
+explvars.1 <- c("logincome")
+crossvalfct(explvars.1)
+explvars.2 <- c("education", "numhh", "logincome")
+crossvalfct(explvars.2)
+explvars.3 <- c("education", "numhh", "logincome", "marstat")
+crossvalfct(explvars.3)
 ```
 
 
 ```{r ex="ExerRegMod4.6.2", type="sct", tut=TRUE}
+ex() %>% check_object("explvars.1") %>% check_equal()
+ex() %>% check_function("crossvalfct",index=1) %>% check_arg(., "explvars") %>% check_equal()
+ex() %>% check_object("explvars.2") %>% check_equal()
+ex() %>% check_function("crossvalfct",index=2) %>% check_arg(., "explvars") %>% check_equal()
+ex() %>% check_object("explvars.3") %>% check_equal()
+ex() %>% check_function("crossvalfct",index=3) %>% check_arg(., "explvars") %>% check_equal()
 success_msg("Excellent! This exercises demonstrates the use of cross-validation, a very important technique in model selection. The exercise builds the procedure from the ground up so that you can see all the steps involved. Further, it illustrates how you can develop your own functions to automate procedures and save steps.")
 ```
 

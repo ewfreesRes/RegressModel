@@ -197,6 +197,27 @@ lines(lowess(meps$age, meps$logexpend), col="red")
 
 
 ```{r ex="ExerRegMod5.1.2", type="sct", tut=TRUE}
+ex() %>% check_function("str") %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_function("summary") %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_function("table") %>% check_result() %>% check_equal()
+ex() %>% check_function("par",index=1) %>% check_arg(., "mfrow") %>% check_equal()
+ex() %>% check_function("hist",index=1) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_function("hist",index=2) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_function("par",index=2) %>% check_arg(., "mfrow") %>% check_equal()
+ex() %>% check_object("meps") %>% check_column("logexpend") %>% check_equal()
+ex() %>% check_function("boxplot") %>% {
+  check_arg(., "formula") %>% check_equal()
+  check_arg(., "data") %>% check_equal()
+}
+ex() %>% check_function("plot") %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
+ex() %>% check_function("lines") 
+ex() %>% check_function("lowess") %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
 success_msg("Excellent! Summarizing data, without reference to a model, is probably the most time-consuming part of any predictive modeling exercise. Summary statistics are also a key part of any report as they illustrate features of the data that are accessible to a broad audience.")
 ```
 
@@ -264,7 +285,7 @@ test_meps     <- shuffled_meps[test_indices, ]
 meps_mlr1 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 summary(meps_mlr1)
 par(mfrow = c(2, 2))
-plot(meps_mlr1)
+plot(x=meps_mlr1)
 
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 summary(meps_mlr2)
@@ -273,6 +294,13 @@ plot(meps_mlr2)
 ```
 
 ```{r ex="ExerRegMod5.1.3", type="sct", tut=TRUE}
+ex() %>% check_object(meps_mlr1) %>% check_equal()
+ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_function("par") %>% check_arg(., "mfrow") %>% check_equal()
+ex() %>% check_function("plot",index=1) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_object("meps_mlr2") %>% check_equal()
+ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_function("plot",index=2) %>% check_arg(., "x") %>% check_equal()
 success_msg("Excellent! You may have compared the four diagnostic graphs from the MLR model fit of 'expend' to those created using the same procedure but with logarithmic expenditures as the outcome. This provides another piece of evidence that log expenditures are more suitable for regression modeling. Using logarithmic outcomes is a common feature of actuarial applications but can be difficult to diagnose and interpret without practice.")
 ```
 
@@ -356,6 +384,15 @@ summary(meps_mlr5)
 
 
 ```{r ex="ExerRegMod5.1.4", type="sct", tut=TRUE}
+ex() %>% check_object("meps_mlr2") %>% check_equal()
+ex() %>% check_object("model_stepwise") %>% check_equal()
+ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_object("meps_mlr3") %>% check_equal()
+ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_object("meps_mlr4") %>% check_equal()
+ex() %>% check_function("summary",index=3) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_object("meps_mlr5") %>% check_equal()
+ex() %>% check_function("summary",index=4) %>% check_arg(., "object") %>% check_equal()
 success_msg("Excellent! Sometimes variables may have good predictive power but are unacceptable for policy purposes - in insurance, ethnicity and sometimes sex are good examples. This implies that model interpretation can be just as important as the ability to predict.")
 ```
 
@@ -413,32 +450,38 @@ crossvalfct <- function(explvars){
 
 ```{r ex="ExerRegMod5.1.5", type="sample-code", tut=TRUE}
 # Run the cross validation (`crossvalfct`) function using the explanatory variables suggested by the stepwise function.
-explvars <- c("gender", "age", "phstat", "anylimit", "insure")
+explvars.1 <- c("gender", "age", "phstat", "anylimit", "insure")
 crossvalfct(explvars)
 
 # Run the function again but adding the `mpoor` variable
-explvars <- c(___)
-crossvalfct(explvars)
+explvars.2 <- c(___)
+crossvalfct(explvars.2)
 
 # Run the function again but omitting the `gender` variable
-explvars <- c( ___)
-crossvalfct(explvars)
+explvars.3 <- c( ___)
+crossvalfct(explvars.3)
 
 ```
 
 
 ```{r ex="ExerRegMod5.1.5", type="solution", tut=TRUE}
 
-explvars <- c("gender", "age", "phstat", "anylimit", "insure")
-crossvalfct(explvars)
-explvars <- c("gender", "age", "phstat", "anylimit", "insure", "mpoor")
-crossvalfct(explvars)
-explvars <- c( "age", "phstat", "anylimit", "insure", "mpoor")
-crossvalfct(explvars)
+explvars.1 <- c("gender", "age", "phstat", "anylimit", "insure")
+crossvalfct(explvars.1)
+explvars.2 <- c("gender", "age", "phstat", "anylimit", "insure", "mpoor")
+crossvalfct(explvars.2)
+explvars.3 <- c( "age", "phstat", "anylimit", "insure", "mpoor")
+crossvalfct(explvars.3)
 ```
 
 
 ```{r ex="ExerRegMod5.1.5", type="sct", tut=TRUE}
+ex() %>% check_object("explvars.1") %>% check_equal()
+ex() %>% check_function("crossvalfct",index=1) %>% check_arg(., "explvars") %>% check_equal()
+ex() %>% check_object("explvars.2") %>% check_equal()
+ex() %>% check_function("crossvalfct",index=2) %>% check_arg(., "explvars") %>% check_equal()
+ex() %>% check_object("explvars.3") %>% check_equal()
+ex() %>% check_function("crossvalfct",index=3) %>% check_arg(., "explvars") %>% check_equal()
 success_msg("Excellent! Cross-validation has become an essential piece of the data analysts toolkit. Good that you now have additional experience with it.")
 ```
 
@@ -500,6 +543,7 @@ sape3     <- sum(abs(predict_err_mlr3))/1000
 meps_mlr4 <- lm(___~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 
 # Predict expenditures and summarize using the sum of absolute prediction errors.
+explvars4 <- c("gender","age","race","region","educ","phstat","mpoor","anylimit","income","insure","usc","unemploy","managedcare")
 predict_meps4 <- test_meps[,explvars4]
 predict_mlr4  <- predict(meps_mlr4, predict_meps4)
 predict_err_mlr4 <- test_meps$expendop - predict_mlr4
@@ -516,7 +560,6 @@ plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out E
 
 ```{r ex="ExerRegMod5.1.6", type="solution", tut=TRUE}
 meps_mlr3 <- lm(logexpend ~ gender + age + phstat + anylimit  + insure + mpoor, data = train_meps)
-predict_meps3 <- test_meps[,explvars3]
 explvars3 <- c("gender", "age", "phstat", "anylimit", "insure", "mpoor")
 predict_meps3 <- test_meps[,explvars3]
 predict_mlr3  <- exp(predict(meps_mlr3, predict_meps3))
@@ -524,6 +567,7 @@ predict_err_mlr3 <- test_meps$expendop - predict_mlr3
 sape3     <- sum(abs(predict_err_mlr3))/1000
 
 meps_mlr4 <- lm(expendop ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
+explvars4 <- c("gender","age","race","region","educ","phstat","mpoor","anylimit","income","insure","usc","unemploy","managedcare")
 predict_meps4 <- test_meps[,explvars4]
 predict_mlr4  <- predict(meps_mlr4, predict_meps4)
 predict_err_mlr4 <- test_meps$expendop - predict_mlr4
@@ -541,6 +585,43 @@ plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out E
 
 
 ```{r ex="ExerRegMod5.1.6", type="sct", tut=TRUE}
+ex() %>% check_object("meps_mlr3") %>% check_equal()
+ex() %>% check_object("explvars3") %>% check_equal()
+ex() %>% check_object("predict_meps3") %>% check_equal()
+ex() %>% check_function("exp",index=1) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_function("predict",index=1) %>% {
+  check_arg(., "object") %>% check_equal()
+  check_arg(., "newdata") %>% check_equal()
+}
+ex() %>% check_object("predict_mlr3") %>% check_equal()
+ex() %>% check_object("predict_err_mlr3")
+ex() %>% check_function("abs",index=1) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_function("sum",index=1) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_object(sape3) %>% check_equal()
+
+ex() %>% check_object("meps_mlr4") %>% check_equal()
+ex() %>% check_object("explvars4") %>% check_equal()
+ex() %>% check_object("predict_meps4") %>% check_equal()
+ex() %>% check_function("exp",index=2) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_function("predict",index=2) %>% {
+  check_arg(., "object") %>% check_equal()
+  check_arg(., "newdata") %>% check_equal()
+}
+ex() %>% check_object("predict_mlr4") %>% check_equal()
+ex() %>% check_object("predict_err_mlr4")
+ex() %>% check_function("abs",index=2) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_function("sum",index=2) %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_object(sape4) %>% check_equal()
+
+ex() %>% check_function("par") %>% check_arg(., "mfrow") %>% check_equal()
+ex() %>% check_function("plot",index=1) %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
+ex() %>% check_function("plot",index=2) %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "y") %>% check_equal()
+}
 success_msg("Excellent! We found that the model of log expenditures outperforms the benchmark that models expenditures, even when the out of sample criterion was in the original 'dollar' units. It is comoforting to know that a search for a good model does well when using different out of sample criteria.")
 ```
 
