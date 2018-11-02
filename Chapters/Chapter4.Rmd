@@ -456,7 +456,7 @@ ex() %>% chek_function("plot",index=1) %>%{
 ex() %>% check_function("lines",index=1)
 ex() %>% check_function("lowess",index=1) %>%{
   check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% chec_equal()
+  check_arg(., "y") %>% check_equal()
 }
 ex() %>% check_object("mlr.survey2") %>% check_equal()
 ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
