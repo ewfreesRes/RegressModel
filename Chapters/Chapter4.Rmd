@@ -449,7 +449,7 @@ lines(lowess(survey$indcost,mlr.survey2$residuals))
 ```{r ex="ExerRegMod4.3.2", type="sct", tut=TRUE}
 ex() %>% check_object("mlr.survey1") %>% check_equal()
 ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
-ex() %>% chek_function("plot",index=1) %>%{
+ex() %>% check_function("plot",index=1) %>%{
   check_arg(., "x") %>% check_equal()
   check_arg(., "y") %>% check_equal()
 }
@@ -467,7 +467,7 @@ ex() %>% check_function("plot",index=2) %>%{
 ex() %>% check_function("lines",index=2)
 ex() %>% check_function("lowess",index=2) %>%{
   check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% chec_equal()
+  check_arg(., "y") %>% check_equal()
 }
 success_msg("Excellent! In this exercise, you examined residuals from a preliminary model fit and detected a mild quadratic pattern in a variable. This suggested entering the squared term of that variable into the model specification. The refit of this new model suggests that the squared term has important explanatory information. The squared term is a nonlinear alternative that is not available in many automatic variable selection procedures.")
 ```
@@ -672,7 +672,7 @@ ex() %>% check_object("model_outlrC") %>% check_equal()
 ex() %>% check_object("ri") %>% check_equal()
 ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
 ex() %>% check_object("hii") %>% check_equal()
-ex() %>% check_function("summary",index=2) %>% chec_arg(., "object") %>% check_equal()
+ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
 ex() %>% check_function("plot",index=2) %>% {
   check_arg(., "x") %>% check_equal()
   check_arg(., "y") %>% check_equal()
