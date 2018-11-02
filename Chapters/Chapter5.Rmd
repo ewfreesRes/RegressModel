@@ -543,7 +543,7 @@ sape3     <- sum(abs(predict_err_mlr3))/1000
 meps_mlr4 <- lm(___~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 
 # Predict expenditures and summarize using the sum of absolute prediction errors.
-eexplvars4 <- c("gender","age","race","region","educ","phstat","mpoor","anylimit","income","insure","usc","unemploy","managedcare")
+explvars4 <- c("gender","age","race","region","educ","phstat","mpoor","anylimit","income","insure","usc","unemploy","managedcare")
 predict_meps4 <- test_meps[,explvars4]
 predict_mlr4  <- predict(meps_mlr4, predict_meps4)
 predict_err_mlr4 <- test_meps$expendop - predict_mlr4
