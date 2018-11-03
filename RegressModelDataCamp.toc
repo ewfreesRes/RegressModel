@@ -86,19 +86,19 @@
 \contentsline {subsubsection}{Video Overhead Details}{75}{section*.26}
 \contentsline {subsection}{\numberline {4.3.2}Exercise. Residual analysis and risk manager survey}{75}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Exercise. Added variable plot and refrigerator prices}{76}{subsection.4.3.3}
-\contentsline {section}{\numberline {4.4}Unusual observations}{79}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Video}{80}{subsection.4.4.1}
-\contentsline {subsubsection}{Video Overhead Details}{80}{section*.27}
-\contentsline {subsection}{\numberline {4.4.2}Exercise. Outlier example}{81}{subsection.4.4.2}
-\contentsline {subsection}{\numberline {4.4.3}Exercise. High leverage and risk manager survey}{82}{subsection.4.4.3}
-\contentsline {section}{\numberline {4.5}Collinearity}{82}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Video}{82}{subsection.4.5.1}
-\contentsline {subsubsection}{Video Overhead Details}{82}{section*.28}
-\contentsline {subsection}{\numberline {4.5.2}Exercise. Collinearity and term life}{83}{subsection.4.5.2}
-\contentsline {section}{\numberline {4.6}Selection criteria}{84}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Video}{84}{subsection.4.6.1}
-\contentsline {subsubsection}{Video Overhead Details}{84}{section*.29}
-\contentsline {subsection}{\numberline {4.6.2}Exercise. Cross-validation and term life}{85}{subsection.4.6.2}
+\contentsline {section}{\numberline {4.4}Unusual observations}{78}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Video}{79}{subsection.4.4.1}
+\contentsline {subsubsection}{Video Overhead Details}{79}{section*.27}
+\contentsline {subsection}{\numberline {4.4.2}Exercise. Outlier example}{80}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Exercise. High leverage and risk manager survey}{81}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Collinearity}{81}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Video}{81}{subsection.4.5.1}
+\contentsline {subsubsection}{Video Overhead Details}{81}{section*.28}
+\contentsline {subsection}{\numberline {4.5.2}Exercise. Collinearity and term life}{82}{subsection.4.5.2}
+\contentsline {section}{\numberline {4.6}Selection criteria}{83}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Video}{83}{subsection.4.6.1}
+\contentsline {subsubsection}{Video Overhead Details}{83}{section*.29}
+\contentsline {subsection}{\numberline {4.6.2}Exercise. Cross-validation and term life}{84}{subsection.4.6.2}
 \contentsline {chapter}{\numberline {5}Interpreting Regression Results}{87}{chapter.5}
 \contentsline {section}{\numberline {5.1}Case study: MEPS health expenditures}{87}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Video}{87}{subsection.5.1.1}

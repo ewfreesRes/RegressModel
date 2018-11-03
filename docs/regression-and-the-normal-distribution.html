@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -510,8 +510,20 @@ injury3 &lt;-<span class="st"> </span>injury2[<span class="kw">c</span>(<span cl
 <span class="co">#  CHECK THE NAMES, DIMENSION IN THE FILE AND LIST THE FIRST 8 OBSERVATIONS  ;</span>
 <span class="kw">str</span>(injury)
 <span class="kw">head</span>(injury)
-<span class="kw">attach</span>(injury)
-claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
+<span class="kw">attach</span>(injury)</code></pre></div>
+<pre><code>The following objects are masked from injury (pos = 3):
+
+    claims, logclaims</code></pre>
+<pre><code>The following objects are masked from injury (pos = 4):
+
+    claims, logclaims</code></pre>
+<pre><code>The following objects are masked from injury (pos = 7):
+
+    claims, logclaims</code></pre>
+<pre><code>The following objects are masked from injury (pos = 8):
+
+    claims, logclaims</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">hist</span>(claims)
 <span class="kw">hist</span>(logclaims)</code></pre></div>
@@ -801,11 +813,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
 },
 "fontsettings": {
 "theme": "white",
@@ -829,11 +841,9 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
