@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -358,12 +358,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_e885sczm&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_tnia11ze" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details" class="section level4 unnumbered">
-<h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver1.1A" href="javascript:toggleDet('toggleOver1.1A','displayOver1.1A');"><i><strong>Show Overhead A Details. Description of the data</strong></i></a>
-</h6>
-<div id="toggleOver1.1A" style="display: none">
+<div id="video-overhead-details" class="section level4 tabset">
+<h4><span class="header-section-number">1.1.1.1</span> Video Overhead Details</h4>
+<div id="show-overhead-a-details.-description-of-the-data" class="section level5">
+<h5><span class="header-section-number">1.1.1.1.1</span> Show Overhead A Details. Description of the data</h5>
 <p>To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton’s 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents’ height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father’s height and rescaled mother’s height. Galton was aware that the parents’ and the adult child’s height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="co">#heights &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;, header = TRUE)</span>
@@ -373,10 +371,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.1B" href="javascript:toggleDet('toggleOver1.1B','displayOver1.1B');"><i><strong>Show Overhead B Details. Read and examine data structure</strong></i></a>
-</h6>
-<div id="toggleOver1.1B" style="display: none">
+<div id="show-overhead-b-details.-read-and-examine-data-structure" class="section level5">
+<h5><span class="header-section-number">1.1.1.1.2</span> Show Overhead B Details. Read and examine data structure</h5>
 <p>The data has already been read into a dataset called <code>heights</code>. Examine the <em>structure</em> of the data with the function <a href="https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/">str()</a> and use the <a href="https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/">head()</a> command to looks at the first few records.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">galton_height.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="co">#heights &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;, header = TRUE)</span>
@@ -393,10 +389,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 5     68.2      73.5
 6     69.2      73.5</code></pre>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.1C" href="javascript:toggleDet('toggleOver1.1C','displayOver1.1C');"><i><strong>Show Overhead C Details. Summary stats for parents’ height</strong></i></a>
-</h6>
-<div id="toggleOver1.1C" style="display: none">
+<div id="show-overhead-c-details.-summary-stats-for-parents-height" class="section level5">
+<h5><span class="header-section-number">1.1.1.1.3</span> Show Overhead C Details. Summary stats for parents’ height</h5>
 <p>Next, examine the distribution of the child’s height and then examine the distribution of the parents height.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ht_par &lt;-<span class="st"> </span>heights<span class="op">$</span>parent_ht
 <span class="kw">hist</span>(ht_par)</code></pre></div>
@@ -406,10 +400,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <pre><code>[1] 69.26293
 [1] 1.912274</code></pre>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.1D" href="javascript:toggleDet('toggleOver1.1D','displayOver1.1D');"><i><strong>Show Overhead D. Fit a normal curve to parents’ height details</strong></i></a>
-</h6>
-<div id="toggleOver1.1D" style="display: none">
+<div id="show-overhead-d.-fit-a-normal-curve-to-parents-height-details" class="section level5">
+<h5><span class="header-section-number">1.1.1.1.4</span> Show Overhead D. Fit a normal curve to parents’ height details</h5>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(mparent &lt;-<span class="st"> </span><span class="kw">mean</span>(ht_par))
 (sdparent &lt;-<span class="st"> </span><span class="kw">sd</span>(ht_par))
 x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60</span>, <span class="dv">80</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)
@@ -419,10 +411,8 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60<
 <pre><code>[1] 69.26293
 [1] 1.912274</code></pre>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.1E" href="javascript:toggleDet('toggleOver1.1E','displayOver1.1E');"><i><strong>Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents</strong></i></a>
-</h6>
-<div id="toggleOver1.1E" style="display: none">
+<div id="show-overhead-e-details.-use-the-normal-approximation-to-determine-the-probability-of-the-height-of-tall-parents" class="section level5">
+<h5><span class="header-section-number">1.1.1.1.5</span> Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents</h5>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TallHeight &lt;-<span class="st"> </span><span class="dv">72</span>
 <span class="kw">pnorm</span>(TallHeight, <span class="dt">mean =</span> mparent, <span class="dt">sd =</span> sdparent)
 <span class="kw">pnorm</span>(<span class="dv">72</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(ht_par), <span class="dt">sd =</span> <span class="kw">sd</span>(ht_par))
@@ -510,20 +500,8 @@ injury3 &lt;-<span class="st"> </span>injury2[<span class="kw">c</span>(<span cl
 <span class="co">#  CHECK THE NAMES, DIMENSION IN THE FILE AND LIST THE FIRST 8 OBSERVATIONS  ;</span>
 <span class="kw">str</span>(injury)
 <span class="kw">head</span>(injury)
-<span class="kw">attach</span>(injury)</code></pre></div>
-<pre><code>The following objects are masked from injury (pos = 3):
-
-    claims, logclaims</code></pre>
-<pre><code>The following objects are masked from injury (pos = 4):
-
-    claims, logclaims</code></pre>
-<pre><code>The following objects are masked from injury (pos = 7):
-
-    claims, logclaims</code></pre>
-<pre><code>The following objects are masked from injury (pos = 8):
-
-    claims, logclaims</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
+<span class="kw">attach</span>(injury)
+claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">hist</span>(claims)
 <span class="kw">hist</span>(logclaims)</code></pre></div>
@@ -813,11 +791,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
-"linkedin": false
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -841,9 +819,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

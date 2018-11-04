@@ -16,7 +16,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 
@@ -24,10 +24,9 @@ In this section, you learn how to:
 
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver1.1A" href="javascript:toggleDet('toggleOver1.1A','displayOver1.1A');"><i><strong>Show Overhead A Details. Description of the data</strong></i></a> </h6>
-<div id="toggleOver1.1A" style="display: none">
+##### Show Overhead A Details. Description of the data
 
 To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton's 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents' height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father's height and rescaled mother's height. Galton was aware that the parents' and the adult child's height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.
 
@@ -41,12 +40,10 @@ abline(0,1,col = "red")
 
 ```
 
-</div>
 
 
 
-<h6 style="text-align: center;"><a id="displayOver1.1B" href="javascript:toggleDet('toggleOver1.1B','displayOver1.1B');"><i><strong>Show Overhead B Details. Read and examine data structure</strong></i></a> </h6>
-<div id="toggleOver1.1B" style="display: none">
+##### Show Overhead B Details. Read and examine data structure
 
 
 The data has already been read into a dataset called `heights`. Examine the *structure* of the data with the function [str()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/) and use the [head()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/) command to looks at the first few records.
@@ -59,12 +56,10 @@ head(heights)
 
 ```
 
-</div>
 
 
 
-<h6 style="text-align: center;"><a id="displayOver1.1C" href="javascript:toggleDet('toggleOver1.1C','displayOver1.1C');"><i><strong>Show Overhead C Details. Summary stats for parents' height</strong></i></a> </h6>
-<div id="toggleOver1.1C" style="display: none">
+##### Show Overhead C Details. Summary stats for parents' height
 
 
 Next, examine the distribution of the child's height and then examine the distribution of the parents height.
@@ -77,11 +72,9 @@ sd(ht_par)
 
 ```
 
-</div>
 
 
-<h6 style="text-align: center;"><a id="displayOver1.1D" href="javascript:toggleDet('toggleOver1.1D','displayOver1.1D');"><i><strong>Show Overhead D. Fit a normal curve to parents' height details</strong></i></a> </h6>
-<div id="toggleOver1.1D" style="display: none">
+##### Show Overhead D. Fit a normal curve to parents' height details
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
@@ -93,11 +86,9 @@ lines(x, dnorm(x, mean = mparent, sd = sdparent), col = "blue")
 
 ```
 
-</div>
 
 
-<h6 style="text-align: center;"><a id="displayOver1.1E" href="javascript:toggleDet('toggleOver1.1E','displayOver1.1E');"><i><strong>Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents</strong></i></a> </h6>
-<div id="toggleOver1.1E" style="display: none">
+##### Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
@@ -109,7 +100,6 @@ pnorm(StdUnitsTallHeight, mean = 0, sd = 1)
 
 ```
 
-</div>
 
 ### Exercise. Fitting Galton's height data
 
@@ -242,10 +232,9 @@ In this section, you learn how to:
 
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver1.2" href="javascript:toggleDet('toggleOver1.2','displayOver1.2');"><i><strong>Show Overhead Details. Data description</strong></i></a> </h6>
-<div id="toggleOver1.2" style="display: none">
+##### Show Overhead Details. Data description
 
 ***
 
@@ -265,10 +254,8 @@ injury3 <- injury2[c("claims","logclaims")]
 #write.csv(injury3,"CSVData\\MassBI.csv",row.names = FALSE)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.2A" href="javascript:toggleDet('toggleOver1.2A','displayOver1.2A');"><i><strong>Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims</strong></i></a> </h6>
-<div id="toggleOver1.2A" style="display: none">
+##### Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
@@ -283,10 +270,8 @@ hist(claims)
 hist(logclaims)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.2B" href="javascript:toggleDet('toggleOver1.2B','displayOver1.2B');"><i><strong>Show Overhead B Details. Show how to get a finer grid for histograms</strong></i></a> </h6>
-<div id="toggleOver1.2B" style="display: none">
+##### Show Overhead B Details. Show how to get a finer grid for histograms
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
@@ -295,10 +280,8 @@ hist(logclaims)
 hist(logclaims,breaks = 15)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.2C" href="javascript:toggleDet('toggleOver1.2C','displayOver1.2C');"><i><strong>Show Overhead C Details. Introduce the density plot</strong></i></a> </h6>
-<div id="toggleOver1.2C" style="display: none">
+##### Show Overhead C Details. Introduce the density plot
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
@@ -309,7 +292,6 @@ lines(density(logclaims))
 
 ```
 
-</div> 
 
 
 ###Exercise. Visualizing bodily injury claims with density plots
@@ -387,10 +369,9 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_4yk0k2m4&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_n2n42jwy" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver1.3A" href="javascript:toggleDet('toggleOver1.3A','displayOver1.3A');"><i><strong>Show Overhead A Details. Summary statistics</strong></i></a> </h6>
-<div id="toggleOver1.3A" style="display: none">
+##### Show Overhead A Details. Summary statistics
 
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
 injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
@@ -403,10 +384,8 @@ sd(claims);sd(logclaims)
 length(claims)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.3B" href="javascript:toggleDet('toggleOver1.3B','displayOver1.3B');"><i><strong>Show Overhead B Details. Boxplot</strong></i></a> </h6>
-<div id="toggleOver1.3B" style="display: none">
+##### Show Overhead B Details. Boxplot
 
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
 # BASIC BOXPLOT
@@ -423,10 +402,8 @@ text(1.1,  4.4, "outliers", cex = 0.7)
 text(1.1, 10.9, "outlier",  cex = 0.7)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.3C" href="javascript:toggleDet('toggleOver1.3C','displayOver1.3C');"><i><strong>Show Overhead C Details. QQ Plot</strong></i></a> </h6>
-<div id="toggleOver1.3C" style="display: none">
+##### Show Overhead C Details. QQ Plot
 
 
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
@@ -444,7 +421,6 @@ qqnorm(logclaims)
 qqline(logclaims)   
 ```
 
-</div> 
 
 ### Exercise. Summarizing bodily injury claims with box and qq plots
 
@@ -597,10 +573,9 @@ In this exercise, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_5yfuwrbc&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_6h3ur8eu" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver1.4A" href="javascript:toggleDet('toggleOver1.4A','displayOver1.4A');"><i><strong>Show Overhead A Details. Simulate a moderately skewed distribution, with transforms</strong></i></a> </h6>
-<div id="toggleOver1.4A" style="display: none">
+##### Show Overhead A Details. Simulate a moderately skewed distribution, with transforms
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
 #  FIGURE 1.7 - SIMULATE CHI-SQUARE, CREATE 3 TRANSFORMATIONS
@@ -612,10 +587,8 @@ X3 <- log(X1)                   # logarithmic transform
 X4 <- -1/X1                     # negative reciprocal transform
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.4B" href="javascript:toggleDet('toggleOver1.4B','displayOver1.4B');"><i><strong>Show Overhead B Details. Visualize the distributions</strong></i></a> </h6>
-<div id="toggleOver1.4B" style="display: none">
+##### Show Overhead B Details. Visualize the distributions
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
@@ -643,8 +616,6 @@ hist(X4, freq = FALSE,  nclass = 16, main = "",xlab = "", ylab = "", las = 1, yl
 mtext("Density", side = 2, at = 110, las = 1, cex = .75)
 mtext("Negative reciprocal of y", side = 1, cex = .75, line = 2)
 ```
-
-</div> 
 
 ###Exercise. Distribution of transformed bodily injury claims
 
