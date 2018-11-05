@@ -1,5 +1,5 @@
 --- 
-title: "Online Tutorial on `Regression Modeling with Actuarial and Financial Applications`"
+title: "Online Tutorial on Regression Modeling with Actuarial and Financial Applications"
 author: "Edward W. (Jed) Frees, University of Wisconsin-Madison"
 site: bookdown::bookdown_site
 output:
