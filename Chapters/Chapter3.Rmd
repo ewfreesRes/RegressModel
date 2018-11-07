@@ -120,7 +120,8 @@ The data suggest that *income* and *face* are skewed so we also introduce logari
   
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
-Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
 #  PICK THE SUBSET OF THE DATA CORRESPONDING TO TERM PURCHASE
 Term1 <- subset(Term, subset = face > 0)
 str(Term1)
@@ -128,7 +129,7 @@ head(Term1)
 
 library(psych)
 Term2 <- Term1[, c("education", "face", "income", "logface", "logincome", "numhh")]
-options(scipen = 100, digits = 4)
+#options(scipen = 100, digits = 4)
 head(Term2)
 describe(Term2)[,c(3,4,8,5,9,2)]
 ```
@@ -862,8 +863,8 @@ of the death of the named insured (in logarithmic dollars), focusing on the expl
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
 # Pre-exercise code
-Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
-#Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
 Term1 <- subset(Term, subset = face > 0)
 Term4 <- Term1[,c("numhh", "education", "logincome", "marstat", "logface")]
 Term4$single <- 1*(Term4$marstat == 0)
@@ -936,8 +937,8 @@ Some preliminary analysis of the data has already been done. In this exercise, w
 
 
 ```{r ex="ExerRegMod3.4.2", type="pre-exercise-code", tut=TRUE}
-Hcost <- read.csv("CSVData\\WiscHcosts.csv", header = TRUE)
-#Hcost <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/2cc1e2739bf827093db31d7c4e6dcdc348ac984e/WiscHcosts.csv", header = TRUE)
+#Hcost <- read.csv("CSVData\\WiscHcosts.csv", header = TRUE)
+Hcost <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/2cc1e2739bf827093db31d7c4e6dcdc348ac984e/WiscHcosts.csv", header = TRUE)
 Hcost1 <- subset(Hcost, drg == 209|drg == 391|drg == 430)
 ```
 
@@ -1029,8 +1030,8 @@ In this section, you learn how to:
 <div id="toggleOver3.5A" style="display: none">
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
-Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
-#Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
+#Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
+Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
 Term1 <- subset(Term, subset = face > 0)
 Term4 <- Term1[,c("numhh", "education", "logincome", "marstat", "logface")]
 Term_mlr1 <- lm(logface ~ logincome + education + numhh + as.factor(Term4$marstat), data = Term4)
