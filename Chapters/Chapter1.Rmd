@@ -217,8 +217,14 @@ prob
 
 
 ```{r ex="ExerRegMod1.1.3", type="sct", tut=TRUE}
-ex() %>% check_function("hist",not_called_msg="Use the hist command to create a histogram of the children's heights.") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create a histogram of the children's heights.")
-ex() %>% check_function("lines",not_called_msg="Please use the lines function to overlay a normal curve on your histogram")
+ex() %>% check_function("hist",not_called_msg="Use the hist command to create a histogram of the children's heights.") %>% {
+  check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to create a histogram of the children's heights.")
+  check_arg(., "freq") %>% check_equal()
+}
+ex() %>% check_function("lines",not_called_msg="Please use the lines function to overlay a normal curve on your histogram") %>% {
+  check_arg(., "x") %>% check_equal()
+  check_Arg(., "y") %>% check_equal()
+}
 ex() %>% check_object("prob", undefined_msg="Make sure to assign the probability of a child's height being greater than 72 inches to prob.") %>% check_equal(incorrect_msg="Make sure to find the probability of a child's height being GREATER than 72 inches.")
 success_msg("Excellent! Visualizing a distribution, especially with reference to a normal, is important for communicating results of your analysis.")
 ```
@@ -364,7 +370,9 @@ ex() %>% check_function("hist",not_called_msg="Make sure to use `hist` to create
   check_arg(., "freq") %>% check_equal(incorrect_msg="Please create a density histogram instead of a frequency histogram.")
 }
 ex() %>% check_function("plot",index=1) %>% check_arg("x") %>% check_equal(incorrect_msg="Use the density function to plot the density of logclaims.")
-ex() %>% check_function("plot",index=2,not_called_msg="Create another plot using `plot` that displays the density of logarithmic claims with a binwidtch of 0.03.") %>% check_arg("x") %>% check_equal()
+ex() %>% check_function("plot",index=2,not_called_msg="Create another plot using `plot` that displays the density of logarithmic claims with a binwidtch of 0.03.") %>% {
+  check_arg(., "x") %>% check_equal()
+  check_arg(., "bw") %>% check_equal()
 success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
 
 ```
@@ -500,7 +508,9 @@ qqline(claims)
 
 ```{r ex="ExerRegMod1.3.2", type="sct", tut=TRUE}
 ex() %>% check_function("boxplot") %>% check_arg("x") %>% check_equal(incorrect_msg="Please create a boxplot of `claims`.")
-ex() %>% check_function("quantile") %>% check_arg("probs") %>% check_equal(incorrect_msg="If we want to find the Yth percentile, make sure to set probs equal to Y in decimal format.")
+ex() %>% check_function("quantile") %>% {
+  check_arg("probs") %>% check_equal(incorrect_msg="If we want to find the Yth percentile, make sure to set probs equal to Y in decimal format.")
+  check_arg(., "x") %>% check_equal()
 ex() %>% check_object("q25",undefined_msg="Make sure to assign the 25th quantile to `q25") %>% check_equal()
 ex() %>% check_object("qn25",undefined_msg="Make sure to assign the normal value associated with the 25th percentile to qn25") %>% check_equal()
 ex() %>% check_function("qqnorm") %>% check_arg("y") %>% check_equal(incorrect_msg="Make sure that you are creating a qq-plot for `claims`.")
@@ -563,10 +573,10 @@ hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 
 ```{r ex="ExerRegMod1.3.3", type="sct", tut=TRUE}
 ex() %>% check_function("tail") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to use tail to see the las 6 entries in `injury`.")
+ex() %>% check_function("subset") %>% check_arg(., "x") %>% check_equal()
 ex() %>% check_object("injury2") %>% check_equal(incorrect_msg="Make sure that `injury2` is the same as `injury` but without the largest claim. Try and think of creative ways to remove that observation from the data!")
-ex() %>% check_function("subset")
-ex() %>% check_function("summary",index=1) %>% check_arg("object") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury2`.")
-ex() %>% chec_function("summary",index=2) %>% check_arg("object") %>% check_equal()
+ex() %>% check_function("summary",index=1) %>% check_arg("object") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury`.")
+ex() %>% chec_function("summary",index=2) %>% check_arg("object") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury2`.")
 ex() %>% check_function("par") %>% check_arg("mfrow") %>% check_equal(incorrect_msg="Please dont change this part. it should read `par(mfrow=c(2,1))`")
 ex() %>% check_function("hist",index=1) %>% {
   check_arg("x") %>% check_equal(incorrect_msg="Create the first histogram using all of the observed claims.")
@@ -706,7 +716,3 @@ ex() %>% check_function("plot",index=3,not_called_msg="Did you plot the density 
 ex() %>% check_function("plot",index=4,not_called_msg="Did you plot the density of the negative reciprocal of claims?") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the fourth histogram based on the negative reciprocal () of `claims`.")
 success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
 ```
-
-
-
-
