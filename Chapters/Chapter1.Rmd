@@ -150,7 +150,6 @@ pr=___(72, mean=mchild, sd=sdchild)
 
 
 ```{r ex="ExerRegMod1.1.2", type="solution", tut=TRUE}
-# Solution
 ht_child <- heights$child_ht
 mchild <- mean(ht_child)
 sdchild <- sd(ht_child)
@@ -160,9 +159,9 @@ pr=pnorm(72, mean = mchild, sd = sdchild)
 
 ```{r ex="ExerRegMod1.1.2", type="sct", tut=TRUE}
 ex() %>% check_object("ht_child",undefined_msg="Make sure you assign the children's hight to ht_child") %>% check_equal(incorrect_msg="Remember that in order to call a specific column from a dataframe, use the $ operator")
-ex() %>% check_object("mchild")  %>% check_equal()
-ex() %>% check_object("sdchild") %>% check_equal()
-ex() %>% check_object("pr") %>% check_equal()
+ex() %>% check_object("mchild",undefined_msg="Make sure to assign the mean of the children's heights to `mchild`.")  %>% check_equal()
+ex() %>% check_object("sdchild",undefined_msg="Make sure to assign the standard deviation of the children's heights to `sdchild`.") %>% check_equal()
+ex() %>% check_object("pr",undefined_msg="Make sure to assign the probability of a child being less than 72 inches to `pr`.") %>% check_equal()
 success_msg("Excellent! With this procedure, you can now calculate probabilities for any distribution using a normal curve approximation.")
 ```
 
@@ -218,12 +217,12 @@ prob
 
 ```{r ex="ExerRegMod1.1.3", type="sct", tut=TRUE}
 ex() %>% check_function("hist",not_called_msg="Use the hist command to create a histogram of the children's heights.") %>% {
-  check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to create a histogram of the children's heights.")
-  check_arg(., "freq") %>% check_equal()
+  check_arg(., "x",arg_not_specified_msg="Have you specified what data to make a histogram from?") %>% check_equal(incorrect_msg="Make sure to create a histogram of the children's heights.")
+  check_arg(., "freq",arg_not_specified_msg="Have you specified that you would like a density histogram?") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
 }
 ex() %>% check_function("lines",not_called_msg="Please use the lines function to overlay a normal curve on your histogram") %>% {
-  check_arg(., "x") %>% check_equal()
-  check_Arg(., "y") %>% check_equal()
+  check_arg(., "x",arg_not_specified_msg="Have you specified the independant variable correctly?") %>% check_equal(incorrect_msg="Remeber that we are interested in how probability changes as our value of x changes!")
+  check_arg(., "y",arg_not_specified_msg="Have you specified the dependant variable correctly?") %>% check_equal(incorrect_msg="Remeber that we are interested in how probability changes as our value of x changes!")
 }
 ex() %>% check_object("prob", undefined_msg="Make sure to assign the probability of a child's height being greater than 72 inches to prob.") %>% check_equal(incorrect_msg="Make sure to find the probability of a child's height being GREATER than 72 inches.")
 success_msg("Excellent! Visualizing a distribution, especially with reference to a normal, is important for communicating results of your analysis.")
@@ -364,15 +363,16 @@ plot(density(logclaims, bw = 0.03))
 ```
 
 ```{r ex="ExerRegMod1.2.1", type="sct", tut=TRUE}
-ex() %>% check_object("logclaims") %>% check_equal(incorrect_msg = "You made an error in the definition of the logarithmic claims. Check out the definition of the log() function.")
+ex() %>% check_object("logclaims",undefined_msg="Make sure to assign the log of the claims data to `logclaims`.") %>% check_equal(incorrect_msg = "You made an error in the definition of the logarithmic claims. Check out the definition of the log() function.")
 ex() %>% check_function("hist",not_called_msg="Make sure to use `hist` to create a histogram.") %>% {
-  check_arg(., "x") %>% check_equal(incorrect_msg="Please create a histogram of logclaims.")
-  check_arg(., "freq") %>% check_equal(incorrect_msg="Please create a density histogram instead of a frequency histogram.")
+  check_arg(., "x",arg_not_specified_msg="Did you assign x to be the log of our claims data?") %>% check_equal(incorrect_msg="Please create a histogram of logclaims.")
+  check_arg(., "freq",arg_not_specified_msg="Did you specify that we would like a density histogram?") %>% check_equal(incorrect_msg="Please create a density histogram instead of a frequency histogram.")
+  check_arg(., "breaks",arg_not_specified_msg="Did you specify the number of breaks we would like in our histogram?") %>% check_equal(incorrect_msg="Make sure to set breaks equal to 40!")
 }
-ex() %>% check_function("plot",index=1) %>% check_arg("x") %>% check_equal(incorrect_msg="Use the density function to plot the density of logclaims.")
-ex() %>% check_function("plot",index=2,not_called_msg="Create another plot using `plot` that displays the density of logarithmic claims with a binwidtch of 0.03.") %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "bw") %>% check_equal()
+ex() %>% check_function("box",not_called_msg="Make sure to call `box` in order to create a decorative box around our histogram!")
+ex() %>% check_function("plot",index=1,not_called_msg="Have you plotted the density of the log of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified the data we should use to create the plot?") %>% check_equal(incorrect_msg="Use the density function to plot the density of logclaims.")
+ex() %>% check_function("plot",index=2,not_called_msg="Create another plot using `plot` that displays the density of logarithmic claims with a binwidtch of 0.03.") %>%
+  check_arg(., "x",arg_not_specified_msg="Have you specified the data we should use to create the plot?") %>% check_equal(incorrect_msg="Use the density function to plot the density of logclaims. Also remember that `bw` is an argument of density, not plot.")
 success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
 
 ```
@@ -507,14 +507,15 @@ qqline(claims)
 ```
 
 ```{r ex="ExerRegMod1.3.2", type="sct", tut=TRUE}
-ex() %>% check_function("boxplot") %>% check_arg("x") %>% check_equal(incorrect_msg="Please create a boxplot of `claims`.")
-ex() %>% check_function("quantile") %>% {
-  check_arg("probs") %>% check_equal(incorrect_msg="If we want to find the Yth percentile, make sure to set probs equal to Y in decimal format.")
-  check_arg(., "x") %>% check_equal()
-ex() %>% check_object("q25",undefined_msg="Make sure to assign the 25th quantile to `q25") %>% check_equal()
-ex() %>% check_object("qn25",undefined_msg="Make sure to assign the normal value associated with the 25th percentile to qn25") %>% check_equal()
-ex() %>% check_function("qqnorm") %>% check_arg("y") %>% check_equal(incorrect_msg="Make sure that you are creating a qq-plot for `claims`.")
-ex() %>% check_function("qqline") %>% check_arg("y") %>% check_equal(incorrect_msg="Make sure that you are adding a qq-line for `claims`.")
+ex() %>% check_function("boxplot",not_called_msg="Make sure to use `boxplot` to create a visual representation of the data.") %>% check_arg(., "x", arg_not_specified_msg="Have you specified the data R should use to create the boxplot?") %>% check_equal(incorrect_msg="Please create a boxplot of `claims`.")
+ex() %>% check_function("quantile",not_called_msg="Have you called `quantile` to find the empirical percentile?") %>% {
+  check_arg(., "probs",arg_not_specified_msg="Have you specified what empirical percentile we would like to find?") %>% check_equal(incorrect_msg="If we want to find the Yth percentile, make sure to set probs equal to Y in decimal format.")
+  check_arg(., "x",arg_not_specified_msg="Have you specified which data R should use to find the 25th empirical percentile?") %>% check_equal(incorrect_msg="Make sure to find the 25th empirical percentile of `claims`.")
+}
+ex() %>% check_object("q25",undefined_msg="Make sure to assign the 25th quantile to `q25") %>% check_equal(incorrect_msg="Make sure to find the 25th quantile of claims.")
+ex() %>% check_object("qn25",undefined_msg="Make sure to assign the normal value associated with the 25th percentile to qn25") %>% check_equal(incorrect_msg="We can use a normal approximation to solve for qn25 using `qnorm`.")
+ex() %>% check_function("qqnorm",not_called_msg="Have you called `qqnorm` to create a normal qq plot?") %>% check_arg(., "y",arg_not_specified_msg="Have you specified which data R should use to create the qq plot?") %>% check_equal(incorrect_msg="Make sure that you are creating a qq-plot for `claims`.")
+ex() %>% check_function("qqline",not_called_msg="Have you called `qqline` to overlay a normal line on your qq plot?") %>% check_arg(., "y",arg_not_specified_msg="Have you specified which data R should use to create and plot the line?") %>% check_equal(incorrect_msg="Make sure that you are adding a qq-line for `claims`.")
 success_msg("Congratulations on learning about box and qq plots. Although you are unlikely to show these plots to consumers of your analysis, you will find them useful tools as we explore multivariate aspects of data.")
 ```
 
@@ -572,19 +573,19 @@ hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 
 
 ```{r ex="ExerRegMod1.3.3", type="sct", tut=TRUE}
-ex() %>% check_function("tail") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to use tail to see the las 6 entries in `injury`.")
-ex() %>% check_function("subset") %>% check_arg(., "x") %>% check_equal()
+ex() %>% check_function("tail",not_called_msg="Have you used `tail` to view the last 6 observations of the data?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which dataframe you would like to view?") %>% check_equal(incorrect_msg="Make sure to use tail to see the las 6 entries in `injury`.")
+ex() %>% check_function("subset",not_called_msg="Have you called `subset` to create a subset of our original data?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified the original data you would like to take a subset from?") %>% check_equal(incorrect_msg="Make sure to create a subset of `injury`.")
 ex() %>% check_object("injury2") %>% check_equal(incorrect_msg="Make sure that `injury2` is the same as `injury` but without the largest claim. Try and think of creative ways to remove that observation from the data!")
-ex() %>% check_function("summary",index=1) %>% check_arg("object") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury`.")
-ex() %>% chec_function("summary",index=2) %>% check_arg("object") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury2`.")
-ex() %>% check_function("par") %>% check_arg("mfrow") %>% check_equal(incorrect_msg="Please dont change this part. it should read `par(mfrow=c(2,1))`")
-ex() %>% check_function("hist",index=1) %>% {
-  check_arg("x") %>% check_equal(incorrect_msg="Create the first histogram using all of the observed claims.")
-  check_arg("freq") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
+ex() %>% check_function("summary",index=1,not_called_msg="Have you called `summary` to view basic statistics about the data?") %>% check_arg(., "object",arg_not_specified_msg="Have you specified which data you would like a summary of?") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury`.")
+ex() %>% check_function("summary",index=2,not_called_msg="Have you called `summary` to view basic statistics about the data?") %>% check_arg(., "object",arg_not_specified_msg="Have you specified which data you would like a summary of?") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury2`.")
+ex() %>% check_function("par",not_called_msg="Have you called `par` to change the graphical parameters?") %>% check_arg(., "mfrow", arg_not_specified_msg="Have you specified the number of rows/columns for your plot to have?") %>% check_equal(incorrect_msg="Please dont change this part. it should read `par(mfrow=c(2,1))`")
+ex() %>% check_function("hist",index=1,not_called_msg="Have you called `hist` to create a histogram of the data?") %>% {
+  check_arg(., "x",arg_not_specified_msg="Have you specified which data should be used to create a histogram?") %>% check_equal(incorrect_msg="Create the first histogram using all of the observed claims.")
+  check_arg(., "freq",arg_not_specified_msg="Have you specified that we would like a density histogram?") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
 }
-ex() %>% check_function("hist",index=2) %>% {
-  check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the second histogram based on claims with the largest one removed.")
-  check_arg("freq") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
+ex() %>% check_function("hist",index=2,not_called_msg="Have you called `hist` to create another histogram of the data?") %>% {
+  check_arg(., "x",arg_not_specified_msg="Have you specified which data should be used to create a histogram?") %>% check_equal(incorrect_msg="Make sure to create the second histogram based on claims with the largest one removed.")
+  check_arg(., "freq",arg_not_specified_msg="Have you specified that we would like a density histogram?") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
 }
 success_msg("Congratulations! The goal of predictive modeling is to discover patterns in the data. However, sometimes seeming 'patterns' are the result of one or two unusual observations. Unusual observations may be due to incorrect data gathering procedures or just due to wild fluctuations in a process of interest but are common in predictive modeling.")
 ```
@@ -706,13 +707,22 @@ plot(density(-claims^(-1)))
 ```
 
 ```{r ex="ExerRegMod1.4.2", type="sct", tut=TRUE}
-ex() %>% check_function("par") %>% check_arg("mfrow") %>% check_equal("Please do not change this part of the code. It should read `par(mfrow=c(2,2))`")
-ex() %>% check_function("plot",index=1,not_called_msg="Did you plot the density of claims?") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the first histogram using `claims`")
+ex() %>% check_function("par",not_called_msg="Have you called `par` to change the graphical parameters?") %>% check_arg(., "mfrow", arg_not_specified_msg="Have you specified the number of rows/columns for your plot to have?") %>% check_equal(incorrect_msg="Please dont change this part. it should read `par(mfrow=c(2,2))`")
+
+ex() %>% check_function("plot",index=1,not_called_msg="Did you plot the density of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the first histogram using `claims`")
+
 ex() %>% check_or(
-check_function(.,"plot") %>% check_arg(., "x") %>% check_equal(),
-  override_solution(.,"plot(density(sqrt(claims)))") %>% check_function("plot") %>% check_arg(., "x") %>% check_equal()
+check_function(.,"plot",index=2,not_called_msg="did you plot the square root of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the second histogram based on the square root of `claims`."),
+  override_solution(.,'par(mfrow = c(2, 2))
+plot(density(claims))    
+plot(density(claims^(0.5)))  
+plot(density(log(claims)))  
+plot(density(-claims^(-1)))') %>% check_function("plot",index=2,not_called_msg="did you plot the square root of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the second histogram based on the square root of `claims`.")
 )
-ex() %>% check_function("plot",index=3,not_called_msg="Did you plot the density of logarithmic claims?") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the third histogram based on the natural log of `claims`.")
-ex() %>% check_function("plot",index=4,not_called_msg="Did you plot the density of the negative reciprocal of claims?") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the fourth histogram based on the negative reciprocal () of `claims`.")
+
+ex() %>% check_function("plot",index=3,not_called_msg="Did you plot the density of logarithmic claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the third histogram based on the natural log of `claims`.")
+
+ex() %>% check_function("plot",index=4,not_called_msg="Did you plot the density of the negative reciprocal of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the fourth histogram based on the negative reciprocal () of `claims`.")
+
 success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
 ```
