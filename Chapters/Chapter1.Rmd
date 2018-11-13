@@ -123,8 +123,9 @@ The Galton data has already been read into a dataframe called `heights`. These d
 -  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
 -  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that an adult child's height is less than 72 inches
 
-**Hint.** Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
-
+```{r ex="ExerRegMod1.1.2", type="hint", tut=TRUE}
+Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
+```
 
 ```{r ex="ExerRegMod1.1.2", type="pre-exercise-code", tut=TRUE}
 #heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
@@ -179,11 +180,11 @@ As in the prior exercise, from the Galton dataset `heights`, the heights of 928 
 -  Use the function [seq()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/seq) to determine a sequence that can be used for plotting. Then, with the function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/),  superimpose a normal curve on the histogram
 -  Determine the probability that a child's height is greater than 72 inches
 
-**Hint 1.** Use the function [dnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) to calculate the normal density, similar to the cumulative probabilites that you calculated using [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)
+```{r ex="ExerRegMod1.1.3", type="hint", tut=TRUE}
+Use the function [dnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) to calculate the normal density, similar to the cumulative probabilites that you calculated using [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)
 
-**Hint 2.** To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability
-
-**Pre-exercise code**
+To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability
+```
 
 ```{r ex="ExerRegMod1.1.3", type="pre-exercise-code", tut=TRUE}
 #heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
@@ -330,6 +331,11 @@ In the prior video, you learned about the Massachusetts bodily injury dataset. T
 -  Create a density plot of logarithmic claims using the functions [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot/) and [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/).
 -  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `. 
 
+```{r ex="ExerRegMod1.2.1", type="hint", tut=TRUE}
+Remember that you can nest functions to create a desired outcome! In this example, it is useful to nest `density()` inside of `plot()` to create  density plot!
+  
+bandwidth or `bw` is an argument of `density()`, so in order to change the default value, you must specify it inside of your `density()` call.
+```
 
 ```{r ex="ExerRegMod1.2.1", type="pre-exercise-code", tut=TRUE}
 #injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
@@ -469,7 +475,9 @@ So this assignment is based on claims, not the logarithmic version. You will use
 -  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
 -  Produce a normal qq plot for claims using the function [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
-**Hint.** Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
+```{r ex="ExerRegMod1.3.2", type="hint", tut=TRUE}
+Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
+```
 
 ```{r ex="ExerRegMod1.3.2", type="pre-exercise-code", tut=TRUE}
 #injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
@@ -535,7 +543,9 @@ In the previous exercise, we learned that the Massachusetts bodily injury `claim
 -  Compare the summary statistics of the omitted claim distribution to the full distribution
 -  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
 
-**Hint.** For this data set, the [subset()] argument `claims < 25000` will keep all but the largest claim
+```{r ex="ExerRegMod1.3.3", type="hint", tut=TRUE}
+For this data set, the [subset()] argument `claims < 25000` will keep all but the largest claim
+```
 
 ```{r ex="ExerRegMod1.3.3", type="pre-exercise-code", tut=TRUE}
 #injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
@@ -674,7 +684,9 @@ Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matri
 -  logarithmic claims
 -  negative reciprocal of claims
 
-**Hint.** For negative reciprocal claims, use `plot(density(-claims^(-1)))`
+```{r ex="ExerRegMod1.4.2", type="hint", tut=TRUE}
+For negative reciprocal claims, use `plot(density(-claims^(-1)))`
+```
 
 ```{r ex="ExerRegMod1.4.2", type="pre-exercise-code", tut=TRUE}
 #injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
