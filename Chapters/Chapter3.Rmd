@@ -82,10 +82,9 @@ summary(Refrig2)
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_izascs5a&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_cxgam03z" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver3.0A" href="javascript:toggleDet('toggleOver3.0A','displayOver3.0A');"><i><strong>Show Overhead A Details. Demand for term life insurance</strong></i></a> </h6>
-<div id="toggleOver3.0A" style="display: none">
+##### Show Overhead A Details. Demand for term life insurance
 
 
 "Who buys insurance and how much do they buy?"
@@ -99,10 +98,8 @@ To understand demand, consider the Survey of Consumer Finances (*SCF*)
 - We study a random sample of 500 of the 4,519 households with positive income that were interviewed in the 2004 survey.
 - We now focus on *n* = 275 households that purchased term life insurance
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.0B" href="javascript:toggleDet('toggleOver3.0B','displayOver3.0B');"><i><strong>Show Overhead B Details. Term life insurance summary statistics</strong></i></a> </h6>
-<div id="toggleOver3.0B" style="display: none">
+##### Show Overhead B Details. Term life insurance summary statistics
 
 We study *y = face*, the amount that the company will pay in the event of the death of the named insured.
 
@@ -113,10 +110,8 @@ We study *y = face*, the amount that the company will pay in the event of the de
 
 The data suggest that *income* and *face* are skewed so we also introduce logarithmic versions.
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.0C" href="javascript:toggleDet('toggleOver3.0C','displayOver3.0C');"><i><strong>Show Overhead C Details. Summary statistics</strong></i></a> </h6>
-<div id="toggleOver3.0C" style="display: none">
+##### Show Overhead C Details. Summary statistics
   
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
@@ -134,10 +129,8 @@ head(Term2)
 describe(Term2)[,c(3,4,8,5,9,2)]
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.0D" href="javascript:toggleDet('toggleOver3.0D','displayOver3.0D');"><i><strong>Show Overhead D Details. Scatter plots of income versus face in original and logarithmic units</strong></i></a> </h6>
-<div id="toggleOver3.0D" style="display: none">
+##### Show Overhead D Details. Scatter plots of income versus face in original and logarithmic units
 
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
@@ -146,7 +139,6 @@ plot(Term2$income, Term2$face, xlab = "income", ylab = "face")
 plot(Term2$logincome, Term2$logface, xlab = "log", ylab = "log face")
 ```
 
-</div> 
 
 ## Method of least squares
 
@@ -160,16 +152,15 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_9zszyh42&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_0xy78e1p" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver3.1A" href="javascript:toggleDet('toggleOver3.1A','displayOver3.1A');"><i><strong>Show Overhead A Details. Correlation table</strong></i></a> </h6>
-<div id="toggleOver3.1A" style="display: none">
+##### Show Overhead A Details. Correlation table
 
   
 ```{r comment = "", eval = EVALUATE_CHAP3}
@@ -177,10 +168,8 @@ round(cor(Term2), digits=3)
 ```
 
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.1B" href="javascript:toggleDet('toggleOver3.1B','displayOver3.1B');"><i><strong>Show Overhead B Details. Scatterplot matrix</strong></i></a> </h6>
-<div id="toggleOver3.1B" style="display: none">
+##### Show Overhead B Details. Scatterplot matrix
 
   
 ```{r comment = "", eval = EVALUATE_CHAP3}
@@ -188,10 +177,8 @@ Term3 <- Term1[,c("numhh", "education", "logincome", "logface")]
 pairs(Term3, upper.panel = NULL, gap = 0, cex.labels = 1.25)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.1C" href="javascript:toggleDet('toggleOver3.1C','displayOver3.1C');"><i><strong>Show Overhead C Details. Visualizing a regression plane</strong></i></a> </h6>
-<div id="toggleOver3.1C" style="display: none">
+##### Show Overhead C Details. Visualizing a regression plane
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 education <- seq(3, 16, length = 15)
@@ -221,20 +208,16 @@ rm(education,logincome,logface)
 
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.1D" href="javascript:toggleDet('toggleOver3.1D','displayOver3.1D');"><i><strong>Show Overhead D Details. Method of least squares</strong></i></a> </h6>
-<div id="toggleOver3.1D" style="display: none">
+##### Show Overhead D Details. Method of least squares
 
 -  For observation $\{(y, x_1, \ldots, x_k)\}$,   the height of the regression plane is $$b_0 + b_1 x_1 + \cdots + b_k x_k .$$
 -  Thus, $y - (b_0 + b_1 x_1 + \cdots + b_k x_k)$ represents the deviation.
 - The sum of squared deviations is $$SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2 .$$
 - The *method of least squares* -- determine values of $b_0, \ldots, b_k$ that minimize $SS$.
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.1E" href="javascript:toggleDet('toggleOver3.1E','displayOver3.1E');"><i><strong>Show Overhead E Details. Fit a multiple linear regression model</strong></i></a> </h6>
-<div id="toggleOver3.1E" style="display: none">
+##### Show Overhead E Details. Fit a multiple linear regression model
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
@@ -244,7 +227,6 @@ exp(predict(Term_mlr, newdata))
 
 ```
 
-</div> 
 
 ###Exercise. Least squares and term life data
 
@@ -510,10 +492,9 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_n9542z90&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_1rrbi7qd" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver3.2A" href="javascript:toggleDet('toggleOver3.2A','displayOver3.2A');"><i><strong>Show Overhead A Details. Goodness of fit</strong></i></a> </h6>
-<div id="toggleOver3.2A" style="display: none">
+##### Show Overhead A Details. Goodness of fit
 
 Summarize 
 
@@ -523,10 +504,8 @@ Summarize
 - $R_a^2$
 - ANOVA table
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.2B" href="javascript:toggleDet('toggleOver3.2B','displayOver3.2B');"><i><strong>Show Overhead B Details. Goodness of fit and term life</strong></i></a> </h6>
-<div id="toggleOver3.2B" style="display: none">
+##### Show Overhead B Details. Goodness of fit and term life
 
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
@@ -536,18 +515,14 @@ anova(Term_mlr)
 
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.2C" href="javascript:toggleDet('toggleOver3.2C','displayOver3.2C');"><i><strong>Show Overhead C Details. Statistical inference</strong></i></a> </h6>
-<div id="toggleOver3.2C" style="display: none">
+##### Show Overhead C Details. Statistical inference
 
 - hypothesis testing of a regression coefficient
 - confidence intervals
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.2D" href="javascript:toggleDet('toggleOver3.2D','displayOver3.2D');"><i><strong>Show Overhead D Details. Statistical inference and term life</strong></i></a> </h6>
-<div id="toggleOver3.2D" style="display: none">
+##### Show Overhead D Details. Statistical inference and term life
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
@@ -559,8 +534,7 @@ round(confint(Term_mlr, level = .95), digits = 3)
 round(confint(Term_mlr, level = .95), digits = 3)
 
 ```
-  
-</div> 
+
   
 ###Exercise. Statistical inference and term life
 
@@ -640,10 +614,9 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_jfmz8kg0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qxygjiq2" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver3.3A" href="javascript:toggleDet('toggleOver3.3A','displayOver3.3A');"><i><strong>Show Overhead A Details. Binary variables</strong></i></a> </h6>
-<div id="toggleOver3.3A" style="display: none">
+##### Show Overhead A Details. Binary variables
 
 - We can define a new variable
 $$
@@ -669,15 +642,11 @@ $$
 - The least squares method of calculating the estimators, and the resulting theoretical properties, are the still valid when using
 binary variables.
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.3B" href="javascript:toggleDet('toggleOver3.3B','displayOver3.3B');"><i><strong>Show Overhead B Details. Visualize effect of binary variables</strong></i></a> </h6>
-<div id="toggleOver3.3B" style="display: none">
+##### Show Overhead B Details. Visualize effect of binary variables
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.3C" href="javascript:toggleDet('toggleOver3.3C','displayOver3.3C');"><i><strong>Show Overhead C Details. R script for visualization</strong></i></a> </h6>
-<div id="toggleOver3.3C" style="display: none">
+##### Show Overhead C Details. R script for visualization
 
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
@@ -697,10 +666,8 @@ lines(Term4$logincome, Ey2, col="red")
 
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.3D" href="javascript:toggleDet('toggleOver3.3D','displayOver3.3D');"><i><strong>Show Overhead D Details. Interaction Terms</strong></i></a> </h6>
-<div id="toggleOver3.3D" style="display: none">
+##### Show Overhead D Details. Interaction Terms
 
 - Linear regression models are defined in terms of linear combinations of explanatory varibles but we can expand their scope through nonlinear transformations
    - One type of nonlinear transform is the product of two varibles that is used to create what is known as an *interaction* variable
@@ -717,10 +684,8 @@ $$
 \end{array} \right. .
 $$
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.3E" href="javascript:toggleDet('toggleOver3.3E','displayOver3.3E');"><i><strong>Show Overhead E Details. Visualizing binary variables with interactions terms</strong></i></a> </h6>
-<div id="toggleOver3.3E" style="display: none">
+##### Show Overhead E Details. Visualizing binary variables with interactions terms
 
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
@@ -740,7 +705,6 @@ lines(Term4$logincome, Ey2, col="red")
 
 ```
 
-</div> 
 
 ###Exercise. Binary variables and term life
 
@@ -827,10 +791,9 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_gkywbwai&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_n73q1ka4" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver3.4A" href="javascript:toggleDet('toggleOver3.4A','displayOver3.4A');"><i><strong>Show Overhead A Details. Categorical variables</strong></i></a> </h6>
-<div id="toggleOver3.4A" style="display: none">
+##### Show Overhead A Details. Categorical variables
 
 
 - *Categorical variables* provide labels for observations to denote membership in distinct groups, or categories.
@@ -843,10 +806,8 @@ health insurance.
     - However, for education, we may group individuals from a dataset into 'low', 'intermediate' and 'high' years of education.
 - *Factor* is another term used for a (unordered) categorical explanatory variable.
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.4B" href="javascript:toggleDet('toggleOver3.4B','displayOver3.4B');"><i><strong>Show Overhead B Details. Term life example</strong></i></a> </h6>
-<div id="toggleOver3.4B" style="display: none">
+##### Show Overhead B Details. Term life example
 
 - We studied *y = logface*, the amount that the company will pay in the event
 of the death of the named insured (in logarithmic dollars), focusing on the explanatory variables *logincome*, *education*, and *numhh*.
@@ -855,10 +816,8 @@ of the death of the named insured (in logarithmic dollars), focusing on the expl
     - 2, for living with partner
     - 0, for other (SCF actually breaks this category into separated, divorced, widowed, never married and inapplicable, for persons age 17 or less or no further persons)
     
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.4C" href="javascript:toggleDet('toggleOver3.4C','displayOver3.4C');"><i><strong>Show Overhead C Details. Term life boxplots</strong></i></a> </h6>
-<div id="toggleOver3.4C" style="display: none">
+##### Show Overhead C Details. Term life boxplots
 
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
@@ -878,10 +837,8 @@ table(Term4$marstat)
 
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.4D" href="javascript:toggleDet('toggleOver3.4D','displayOver3.4D');"><i><strong>Show Overhead D Details. Regression with a categorical variable</strong></i></a> </h6>
-<div id="toggleOver3.4D" style="display: none">
+##### Show Overhead D Details. Regression with a categorical variable
 
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
@@ -891,10 +848,8 @@ summary(lm(logface ~ logincome+education+numhh+marstat, data = Term4))
 
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.4E" href="javascript:toggleDet('toggleOver3.4E','displayOver3.4E');"><i><strong>Show Overhead E Details. t-ratios depend on the reference level</strong></i></a> </h6>
-<div id="toggleOver3.4E" style="display: none">
+##### Show Overhead E Details. t-ratios depend on the reference level
 
 $$
 \begin{array}{l|rr|rr|rr}
@@ -913,7 +868,6 @@ numhh     & 0.248 & 3.57 & 0.248 & 3.57 & 0.248 & 3.57 \\\hline
 \end{array}
 $$
 
-</div> 
 
 ###Exercise. Categorical variables and Wisconsin hospital costs
 
@@ -1024,10 +978,9 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_gs9oqymi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_j9btj8ns" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver3.5A" href="javascript:toggleDet('toggleOver3.5A','displayOver3.5A');"><i><strong>Show Overhead A Details. Testing the significance of a categorical variable</strong></i></a> </h6>
-<div id="toggleOver3.5A" style="display: none">
+##### Show Overhead A Details. Testing the significance of a categorical variable
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -1044,10 +997,8 @@ cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr1)$Df[5]))
 
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.5B" href="javascript:toggleDet('toggleOver3.5B','displayOver3.5B');"><i><strong>Show Overhead B Details. Overview of the general linear hypothesis</strong></i></a> </h6>
-<div id="toggleOver3.5B" style="display: none">
+##### Show Overhead B Details. Overview of the general linear hypothesis
 
 - The likelihood ratio is a general statistical test procedure that compares a model to a subset
 - The general linear hypothesis test procedure is similar.
@@ -1056,10 +1007,8 @@ cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr1)$Df[5]))
     - "Subset" is the sense that regression coefficients from the small model are linear combinations of regression coefficients of the large model (e.g., set them to zero)
 - Although the likelihood ratio test is more generally available, the general linear hypothesis test is more accurate for smaller data sets (for normally distributed data)
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.5C" href="javascript:toggleDet('toggleOver3.5C','displayOver3.5C');"><i><strong>Show Overhead C Details.  Procedure for conducting the general linear hypothesis</strong></i></a> </h6>
-<div id="toggleOver3.5C" style="display: none">
+##### Show Overhead C Details.  Procedure for conducting the general linear hypothesis
 
 - Run the full regression and get the error sum of squares and mean square error, which we label as $(Error SS)_{full}$ and $s^2_{full}$, respectively.
 - Run a reduced regression and get the error sum of squares, labelled $(Error SS)_{reduced}$.
@@ -1069,10 +1018,8 @@ F-ratio = \frac{(Error SS)_{reduced}-(Error SS)_{full}}{p s^2_{full}} .
 $$
 - The probability value is $p-value = \Pr(F_{p,df} > F-ratio)$ where $F_{p,df}$ has an *F* distribution with  degrees of freedom *p* and  *df*, respectively. (Here, *df* is the degrees of freedom for the full model.)
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.5D" href="javascript:toggleDet('toggleOver3.5D','displayOver3.5D');"><i><strong>Show Overhead D Details. The general linear hypothesis for a single variable</strong></i></a> </h6>
-<div id="toggleOver3.5D" style="display: none">
+##### Show Overhead D Details. The general linear hypothesis for a single variable
 
 - Suppose that you wish to test the hypothesisthat a regression coefficient equals 0.
     - One could use the general linear hypothsis procedure with $p=1$.
@@ -1082,7 +1029,6 @@ $$
     - The general linear hypothesis is useful because it can be extended to multiple coefficients.
     - The *t-ratio* is useful because it can be used to examine one-sided alternative hypotheses.
 
-</div> 
 
 ###Exercise. Hypothesis testing and term life
 
