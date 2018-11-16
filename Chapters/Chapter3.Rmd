@@ -244,9 +244,9 @@ Suppose that you wish to predict the amount of term life insurance that someone 
 - Using the method of least squares and the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), fit a MLR model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
 - With this fitted model and the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict), predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.
 
-**Hint.** Remember that your prediction is in log dollars so you need to exponentiate it to get the 
-results in the original dollar units
-
+```{r ex="ExerRegMod3.1.2", type="hint", tut=TRUE}
+Remember that your prediction is in log dollars so you need to exponentiate it to get the results in the original dollar units
+```
 
 ```{r ex="ExerRegMod3.1.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -325,6 +325,10 @@ For the term life example, the units of the outcome are in logarithmic dollars. 
 - Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed. For this part of the demonstration, we used their mean values.
 - Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.
 
+```{r ex="ExerRegMod3.1.3", type="hint", tut=TRUE}
+To find the proportional changes, take the 2nd-4th observations of `lsfits` and subtract the 1st-3rd observations, then exponentiate the results. 
+```
+
 ```{r ex="ExerRegMod3.1.3", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -396,6 +400,10 @@ $$
 - Calculate the ratio of proportional changes of fitted values to those for income. Note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
   
 **Hint.** When you calculate the ratio of proportional changes of fitted values to those for income, note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
+
+```{r ex="ExerRegMod3.1.4", type="hint", tut=TRUE}
+When you calculate the ratio of proportional changes of fitted values to those for income, note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
+```
 
 ```{r ex="ExerRegMod3.1.4", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -549,7 +557,11 @@ In later chapters, we will learn how to specify a model using diagnostics techni
 - Create `Term2$face` by exponentiating `logface` and dividing by 1000. For convenience, we are storing this variable in the data set `Term2`. Use the same process to create `Term2$income`.
 - Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
 - Summarize this model and identify the residual standard error ($s$) as well as the coefficient of determination ($R^2$) and the version adjusted for degrees of freedom ($R_a^2$).
-  
+
+```{r ex="ExerRegMod3.2.2", type="hint", tut=TRUE}
+Remember that we can call a `column` from a `dataframe` using `dataframe$column`.
+```
+
 ```{r ex="ExerRegMod3.2.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -722,6 +734,11 @@ In this exercise, we will extend this by incorporating `single` into our larger 
 - Fit a MLR model of `logface` using explanatory variables `numhh`, `education`, `logincome`, and `single`. Examine the residual standard deviation $s$, the coefficient of determination $R^2$, and the adjusted version $R_a^2$. Also note the statistical significance of the coefficient associated with `single`.
 - Repeat the MLR model fit while adding the interaction term  `single*logincome`.
 
+```{r ex="ExerRegMod3.3.2", type="hint", tut=TRUE}
+To get a table of correlations, the `cor()` function can be used.
+After that, a combination of `lm()` and `summary()` can be used to achieve the desired results
+```
+
 ```{r ex="ExerRegMod3.3.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -889,6 +906,9 @@ Some preliminary analysis of the data has already been done. In this exercise, w
 - Fit a MLR model using logarithmic number of discharges to predict logarithmic hospital costs, allowing intercepts and slopes to vary by diagnostic related groups.
 - Superimpose the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs.
 
+```{r ex="ExerRegMod3.4.2", type="hint", tut=TRUE}
+There is currently nothing to change in this tutorial! Simply look over the code and try to understand what each line does.
+```
 
 ```{r ex="ExerRegMod3.4.2", type="pre-exercise-code", tut=TRUE}
 #Hcost <- read.csv("CSVData\\WiscHcosts.csv", header = TRUE)
@@ -954,8 +974,6 @@ fit430 <- coef[1] + coef[4] + (coef[2] + coef[6])*xseq
 lines(xseq,fit430, col="blue")
 
 ```
-
-
 
 ```{r ex="ExerRegMod3.4.2", type="sct", tut=TRUE}
 success_msg("Congratulations! When you superimposed the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs, note how slopes differ dramatically from the slope from the basic linear regression model.")
@@ -1057,6 +1075,14 @@ Fstat12
 cat("p-value is", 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))
 ```
 
+```{r ex="ExerRegMod3.5.2", type="hint", tut=TRUE}
+Here is the code to calculate it by hand
+Fstat12 <- (anova(Term_mlr1)$`Sum Sq`[5] - 
+              anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])
+Fstat12
+cat("p-value is", 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))
+```
+
 ```{r ex="ExerRegMod3.5.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -1132,6 +1158,10 @@ We continue our analysis of the outcome variable  `logcharge`, the logarithm of 
 - Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variables logarithmic number of discharges and the categorical variable diagnostic related group. Identify the *F* statistic and *p* value that test the importance of diagnostic related group. 
 - Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges interacted with diagnostic related group. Identify the *F* statistic and *p* value that test the importance of diagnostic related group interaction with logarithmic number of discharges.
 - Calculate a coefficient of determination, $R^2$, for each of these models as well as for a model using logarithmic number of discharges and categorical variable `hsa` as predictors.
+
+```{r ex="ExerRegMod3.5.3", type="hint", tut=TRUE}
+This entire exercise can be completed using 3 functions:`lm()`, `anova()`, and `summary()`
+```
 
 ```{r ex="ExerRegMod3.5.3", type="pre-exercise-code", tut=TRUE}
 #Hcost <- read.csv("CSVData\\WiscHcosts.csv", header = TRUE)
