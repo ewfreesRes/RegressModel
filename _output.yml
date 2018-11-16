@@ -28,3 +28,10 @@ bookdown::gitbook:
       instapper: no
       vk: no
       all: ['facebook', 'google', 'twitter', 'linkedin', 'weibo', 'instapaper']
+bookdown::html_document2:
+  theme: default
+  toc: yes
+  toc_float:
+    collapsed: true
+    smooth_scroll: false
+

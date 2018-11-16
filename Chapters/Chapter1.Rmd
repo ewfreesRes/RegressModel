@@ -16,7 +16,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 
@@ -24,10 +24,9 @@ In this section, you learn how to:
 
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver1.1A" href="javascript:toggleDet('toggleOver1.1A','displayOver1.1A');"><i><strong>Show Overhead A Details. Description of the data</strong></i></a> </h6>
-<div id="toggleOver1.1A" style="display: none">
+##### Show Overhead A Details. Description of the data
 
 To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton's 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents' height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father's height and rescaled mother's height. Galton was aware that the parents' and the adult child's height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.
 
@@ -41,12 +40,10 @@ abline(0,1,col = "red")
 
 ```
 
-</div>
 
 
 
-<h6 style="text-align: center;"><a id="displayOver1.1B" href="javascript:toggleDet('toggleOver1.1B','displayOver1.1B');"><i><strong>Show Overhead B Details. Read and examine data structure</strong></i></a> </h6>
-<div id="toggleOver1.1B" style="display: none">
+##### Show Overhead B Details. Read and examine data structure
 
 
 The data has already been read into a dataset called `heights`. Examine the *structure* of the data with the function [str()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/) and use the [head()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/) command to looks at the first few records.
@@ -59,12 +56,10 @@ head(heights)
 
 ```
 
-</div>
 
 
 
-<h6 style="text-align: center;"><a id="displayOver1.1C" href="javascript:toggleDet('toggleOver1.1C','displayOver1.1C');"><i><strong>Show Overhead C Details. Summary stats for parents' height</strong></i></a> </h6>
-<div id="toggleOver1.1C" style="display: none">
+##### Show Overhead C Details. Summary stats for parents' height
 
 
 Next, examine the distribution of the child's height and then examine the distribution of the parents height.
@@ -77,11 +72,9 @@ sd(ht_par)
 
 ```
 
-</div>
 
 
-<h6 style="text-align: center;"><a id="displayOver1.1D" href="javascript:toggleDet('toggleOver1.1D','displayOver1.1D');"><i><strong>Show Overhead D. Fit a normal curve to parents' height details</strong></i></a> </h6>
-<div id="toggleOver1.1D" style="display: none">
+##### Show Overhead D. Fit a normal curve to parents' height details
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
@@ -93,11 +86,9 @@ lines(x, dnorm(x, mean = mparent, sd = sdparent), col = "blue")
 
 ```
 
-</div>
 
 
-<h6 style="text-align: center;"><a id="displayOver1.1E" href="javascript:toggleDet('toggleOver1.1E','displayOver1.1E');"><i><strong>Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents</strong></i></a> </h6>
-<div id="toggleOver1.1E" style="display: none">
+##### Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
@@ -109,7 +100,6 @@ pnorm(StdUnitsTallHeight, mean = 0, sd = 1)
 
 ```
 
-</div>
 
 ### Exercise. Fitting Galton's height data
 
@@ -123,8 +113,9 @@ The Galton data has already been read into a dataframe called `heights`. These d
 -  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
 -  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that an adult child's height is less than 72 inches
 
-**Hint.** Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
-
+```{r ex="ExerRegMod1.1.2", type="hint", tut=TRUE}
+Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
+```
 
 ```{r ex="ExerRegMod1.1.2", type="pre-exercise-code", tut=TRUE}
 #heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
@@ -150,7 +141,6 @@ pr=___(72, mean=mchild, sd=sdchild)
 
 
 ```{r ex="ExerRegMod1.1.2", type="solution", tut=TRUE}
-# Solution
 ht_child <- heights$child_ht
 mchild <- mean(ht_child)
 sdchild <- sd(ht_child)
@@ -160,9 +150,9 @@ pr=pnorm(72, mean = mchild, sd = sdchild)
 
 ```{r ex="ExerRegMod1.1.2", type="sct", tut=TRUE}
 ex() %>% check_object("ht_child",undefined_msg="Make sure you assign the children's hight to ht_child") %>% check_equal(incorrect_msg="Remember that in order to call a specific column from a dataframe, use the $ operator")
-ex() %>% check_object("mchild")  %>% check_equal()
-ex() %>% check_object("sdchild") %>% check_equal()
-ex() %>% check_object("pr") %>% check_equal()
+ex() %>% check_object("mchild",undefined_msg="Make sure to assign the mean of the children's heights to `mchild`.")  %>% check_equal()
+ex() %>% check_object("sdchild",undefined_msg="Make sure to assign the standard deviation of the children's heights to `sdchild`.") %>% check_equal()
+ex() %>% check_object("pr",undefined_msg="Make sure to assign the probability of a child being less than 72 inches to `pr`.") %>% check_equal()
 success_msg("Excellent! With this procedure, you can now calculate probabilities for any distribution using a normal curve approximation.")
 ```
 
@@ -180,11 +170,11 @@ As in the prior exercise, from the Galton dataset `heights`, the heights of 928 
 -  Use the function [seq()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/seq) to determine a sequence that can be used for plotting. Then, with the function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/),  superimpose a normal curve on the histogram
 -  Determine the probability that a child's height is greater than 72 inches
 
-**Hint 1.** Use the function [dnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) to calculate the normal density, similar to the cumulative probabilites that you calculated using [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)
+```{r ex="ExerRegMod1.1.3", type="hint", tut=TRUE}
+Use the function [dnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) to calculate the normal density, similar to the cumulative probabilites that you calculated using [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)
 
-**Hint 2.** To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability
-
-**Pre-exercise code**
+To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability
+```
 
 ```{r ex="ExerRegMod1.1.3", type="pre-exercise-code", tut=TRUE}
 #heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
@@ -217,8 +207,14 @@ prob
 
 
 ```{r ex="ExerRegMod1.1.3", type="sct", tut=TRUE}
-ex() %>% check_function("hist",not_called_msg="Use the hist command to create a histogram of the children's heights.") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create a histogram of the children's heights.")
-ex() %>% check_function("lines",not_called_msg="Please use the lines function to overlay a normal curve on your histogram")
+ex() %>% check_function("hist",not_called_msg="Use the hist command to create a histogram of the children's heights.") %>% {
+  check_arg(., "x",arg_not_specified_msg="Have you specified what data to make a histogram from?") %>% check_equal(incorrect_msg="Make sure to create a histogram of the children's heights.")
+  check_arg(., "freq",arg_not_specified_msg="Have you specified that you would like a density histogram?") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
+}
+ex() %>% check_function("lines",not_called_msg="Please use the lines function to overlay a normal curve on your histogram") %>% {
+  check_arg(., "x",arg_not_specified_msg="Have you specified the independant variable correctly?") %>% check_equal(incorrect_msg="Remeber that we are interested in how probability changes as our value of x changes!")
+  check_arg(., "y",arg_not_specified_msg="Have you specified the dependant variable correctly?") %>% check_equal(incorrect_msg="Remeber that we are interested in how probability changes as our value of x changes!")
+}
 ex() %>% check_object("prob", undefined_msg="Make sure to assign the probability of a child's height being greater than 72 inches to prob.") %>% check_equal(incorrect_msg="Make sure to find the probability of a child's height being GREATER than 72 inches.")
 success_msg("Excellent! Visualizing a distribution, especially with reference to a normal, is important for communicating results of your analysis.")
 ```
@@ -242,10 +238,9 @@ In this section, you learn how to:
 
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver1.2" href="javascript:toggleDet('toggleOver1.2','displayOver1.2');"><i><strong>Show Overhead Details. Data description</strong></i></a> </h6>
-<div id="toggleOver1.2" style="display: none">
+##### Show Overhead Details. Data description
 
 ***
 
@@ -265,10 +260,8 @@ injury3 <- injury2[c("claims","logclaims")]
 #write.csv(injury3,"CSVData\\MassBI.csv",row.names = FALSE)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.2A" href="javascript:toggleDet('toggleOver1.2A','displayOver1.2A');"><i><strong>Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims</strong></i></a> </h6>
-<div id="toggleOver1.2A" style="display: none">
+##### Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
@@ -283,10 +276,8 @@ hist(claims)
 hist(logclaims)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.2B" href="javascript:toggleDet('toggleOver1.2B','displayOver1.2B');"><i><strong>Show Overhead B Details. Show how to get a finer grid for histograms</strong></i></a> </h6>
-<div id="toggleOver1.2B" style="display: none">
+##### Show Overhead B Details. Show how to get a finer grid for histograms
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
@@ -295,10 +286,8 @@ hist(logclaims)
 hist(logclaims,breaks = 15)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.2C" href="javascript:toggleDet('toggleOver1.2C','displayOver1.2C');"><i><strong>Show Overhead C Details. Introduce the density plot</strong></i></a> </h6>
-<div id="toggleOver1.2C" style="display: none">
+##### Show Overhead C Details. Introduce the density plot
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1, warning = FALSE}
@@ -309,7 +298,6 @@ lines(density(logclaims))
 
 ```
 
-</div> 
 
 
 ###Exercise. Visualizing bodily injury claims with density plots
@@ -325,6 +313,11 @@ In the prior video, you learned about the Massachusetts bodily injury dataset. T
 -  Create a density plot of logarithmic claims using the functions [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot/) and [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/).
 -  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `. 
 
+```{r ex="ExerRegMod1.2.1", type="hint", tut=TRUE}
+Remember that you can nest functions to create a desired outcome! In this example, it is useful to nest `density()` inside of `plot()` to create  density plot!
+  
+bandwidth or `bw` is an argument of `density()`, so in order to change the default value, you must specify it inside of your `density()` call.
+```
 
 ```{r ex="ExerRegMod1.2.1", type="pre-exercise-code", tut=TRUE}
 #injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
@@ -358,13 +351,16 @@ plot(density(logclaims, bw = 0.03))
 ```
 
 ```{r ex="ExerRegMod1.2.1", type="sct", tut=TRUE}
-ex() %>% check_object("logclaims") %>% check_equal(incorrect_msg = "You made an error in the definition of the logarithmic claims. Check out the definition of the log() function.")
+ex() %>% check_object("logclaims",undefined_msg="Make sure to assign the log of the claims data to `logclaims`.") %>% check_equal(incorrect_msg = "You made an error in the definition of the logarithmic claims. Check out the definition of the log() function.")
 ex() %>% check_function("hist",not_called_msg="Make sure to use `hist` to create a histogram.") %>% {
-  check_arg(., "x") %>% check_equal(incorrect_msg="Please create a histogram of logclaims.")
-  check_arg(., "freq") %>% check_equal(incorrect_msg="Please create a density histogram instead of a frequency histogram.")
+  check_arg(., "x",arg_not_specified_msg="Did you assign x to be the log of our claims data?") %>% check_equal(incorrect_msg="Please create a histogram of logclaims.")
+  check_arg(., "freq",arg_not_specified_msg="Did you specify that we would like a density histogram?") %>% check_equal(incorrect_msg="Please create a density histogram instead of a frequency histogram.")
+  check_arg(., "breaks",arg_not_specified_msg="Did you specify the number of breaks we would like in our histogram?") %>% check_equal(incorrect_msg="Make sure to set breaks equal to 40!")
 }
-ex() %>% check_function("plot",index=1) %>% check_arg("x") %>% check_equal(incorrect_msg="Use the density function to plot the density of logclaims.")
-ex() %>% check_function("plot",index=2,not_called_msg="Create another plot using `plot` that displays the density of logarithmic claims with a binwidtch of 0.03.") %>% check_arg("x") %>% check_equal()
+ex() %>% check_function("box",not_called_msg="Make sure to call `box` in order to create a decorative box around our histogram!")
+ex() %>% check_function("plot",index=1,not_called_msg="Have you plotted the density of the log of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified the data we should use to create the plot?") %>% check_equal(incorrect_msg="Use the density function to plot the density of logclaims.")
+ex() %>% check_function("plot",index=2,not_called_msg="Create another plot using `plot` that displays the density of logarithmic claims with a binwidtch of 0.03.") %>%
+  check_arg(., "x",arg_not_specified_msg="Have you specified the data we should use to create the plot?") %>% check_equal(incorrect_msg="Use the density function to plot the density of logclaims. Also remember that `bw` is an argument of density, not plot.")
 success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
 
 ```
@@ -387,10 +383,9 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_4yk0k2m4&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_n2n42jwy" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver1.3A" href="javascript:toggleDet('toggleOver1.3A','displayOver1.3A');"><i><strong>Show Overhead A Details. Summary statistics</strong></i></a> </h6>
-<div id="toggleOver1.3A" style="display: none">
+##### Show Overhead A Details. Summary statistics
 
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
 injury <- read.csv("CSVData\\MassBI.csv",header = TRUE)
@@ -403,10 +398,8 @@ sd(claims);sd(logclaims)
 length(claims)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.3B" href="javascript:toggleDet('toggleOver1.3B','displayOver1.3B');"><i><strong>Show Overhead B Details. Boxplot</strong></i></a> </h6>
-<div id="toggleOver1.3B" style="display: none">
+##### Show Overhead B Details. Boxplot
 
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
 # BASIC BOXPLOT
@@ -423,10 +416,8 @@ text(1.1,  4.4, "outliers", cex = 0.7)
 text(1.1, 10.9, "outlier",  cex = 0.7)
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.3C" href="javascript:toggleDet('toggleOver1.3C','displayOver1.3C');"><i><strong>Show Overhead C Details. QQ Plot</strong></i></a> </h6>
-<div id="toggleOver1.3C" style="display: none">
+##### Show Overhead C Details. QQ Plot
 
 
 ```{r comment = "",message = FALSE, eval = EVALUATE_CHAP1}
@@ -444,7 +435,6 @@ qqnorm(logclaims)
 qqline(logclaims)   
 ```
 
-</div> 
 
 ### Exercise. Summarizing bodily injury claims with box and qq plots
 
@@ -461,7 +451,9 @@ So this assignment is based on claims, not the logarithmic version. You will use
 -  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
 -  Produce a normal qq plot for claims using the function [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
-**Hint.** Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
+```{r ex="ExerRegMod1.3.2", type="hint", tut=TRUE}
+Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
+```
 
 ```{r ex="ExerRegMod1.3.2", type="pre-exercise-code", tut=TRUE}
 #injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
@@ -499,12 +491,15 @@ qqline(claims)
 ```
 
 ```{r ex="ExerRegMod1.3.2", type="sct", tut=TRUE}
-ex() %>% check_function("boxplot") %>% check_arg("x") %>% check_equal(incorrect_msg="Please create a boxplot of `claims`.")
-ex() %>% check_function("quantile") %>% check_arg("probs") %>% check_equal(incorrect_msg="If we want to find the Yth percentile, make sure to set probs equal to Y in decimal format.")
-ex() %>% check_object("q25",undefined_msg="Make sure to assign the 25th quantile to `q25") %>% check_equal()
-ex() %>% check_object("qn25",undefined_msg="Make sure to assign the normal value associated with the 25th percentile to qn25") %>% check_equal()
-ex() %>% check_function("qqnorm") %>% check_arg("y") %>% check_equal(incorrect_msg="Make sure that you are creating a qq-plot for `claims`.")
-ex() %>% check_function("qqline") %>% check_arg("y") %>% check_equal(incorrect_msg="Make sure that you are adding a qq-line for `claims`.")
+ex() %>% check_function("boxplot",not_called_msg="Make sure to use `boxplot` to create a visual representation of the data.") %>% check_arg(., "x", arg_not_specified_msg="Have you specified the data R should use to create the boxplot?") %>% check_equal(incorrect_msg="Please create a boxplot of `claims`.")
+ex() %>% check_function("quantile",not_called_msg="Have you called `quantile` to find the empirical percentile?") %>% {
+  check_arg(., "probs",arg_not_specified_msg="Have you specified what empirical percentile we would like to find?") %>% check_equal(incorrect_msg="If we want to find the Yth percentile, make sure to set probs equal to Y in decimal format.")
+  check_arg(., "x",arg_not_specified_msg="Have you specified which data R should use to find the 25th empirical percentile?") %>% check_equal(incorrect_msg="Make sure to find the 25th empirical percentile of `claims`.")
+}
+ex() %>% check_object("q25",undefined_msg="Make sure to assign the 25th quantile to `q25") %>% check_equal(incorrect_msg="Make sure to find the 25th quantile of claims.")
+ex() %>% check_object("qn25",undefined_msg="Make sure to assign the normal value associated with the 25th percentile to qn25") %>% check_equal(incorrect_msg="We can use a normal approximation to solve for qn25 using `qnorm`.")
+ex() %>% check_function("qqnorm",not_called_msg="Have you called `qqnorm` to create a normal qq plot?") %>% check_arg(., "y",arg_not_specified_msg="Have you specified which data R should use to create the qq plot?") %>% check_equal(incorrect_msg="Make sure that you are creating a qq-plot for `claims`.")
+ex() %>% check_function("qqline",not_called_msg="Have you called `qqline` to overlay a normal line on your qq plot?") %>% check_arg(., "y",arg_not_specified_msg="Have you specified which data R should use to create and plot the line?") %>% check_equal(incorrect_msg="Make sure that you are adding a qq-line for `claims`.")
 success_msg("Congratulations on learning about box and qq plots. Although you are unlikely to show these plots to consumers of your analysis, you will find them useful tools as we explore multivariate aspects of data.")
 ```
 
@@ -524,7 +519,9 @@ In the previous exercise, we learned that the Massachusetts bodily injury `claim
 -  Compare the summary statistics of the omitted claim distribution to the full distribution
 -  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
 
-**Hint.** For this data set, the [subset()] argument `claims < 25000` will keep all but the largest claim
+```{r ex="ExerRegMod1.3.3", type="hint", tut=TRUE}
+For this data set, the [subset()] argument `claims < 25000` will keep all but the largest claim
+```
 
 ```{r ex="ExerRegMod1.3.3", type="pre-exercise-code", tut=TRUE}
 #injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
@@ -562,19 +559,19 @@ hist(injury2$claims, freq = FALSE,  main = "Largest Claim Omitted")
 
 
 ```{r ex="ExerRegMod1.3.3", type="sct", tut=TRUE}
-ex() %>% check_function("tail") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to use tail to see the las 6 entries in `injury`.")
+ex() %>% check_function("tail",not_called_msg="Have you used `tail` to view the last 6 observations of the data?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which dataframe you would like to view?") %>% check_equal(incorrect_msg="Make sure to use tail to see the las 6 entries in `injury`.")
+ex() %>% check_function("subset",not_called_msg="Have you called `subset` to create a subset of our original data?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified the original data you would like to take a subset from?") %>% check_equal(incorrect_msg="Make sure to create a subset of `injury`.")
 ex() %>% check_object("injury2") %>% check_equal(incorrect_msg="Make sure that `injury2` is the same as `injury` but without the largest claim. Try and think of creative ways to remove that observation from the data!")
-ex() %>% check_function("subset")
-ex() %>% check_function("summary",index=1) %>% check_arg("object") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury2`.")
-ex() %>% chec_function("summary",index=2) %>% check_arg("object") %>% check_equal()
-ex() %>% check_function("par") %>% check_arg("mfrow") %>% check_equal(incorrect_msg="Please dont change this part. it should read `par(mfrow=c(2,1))`")
-ex() %>% check_function("hist",index=1) %>% {
-  check_arg("x") %>% check_equal(incorrect_msg="Create the first histogram using all of the observed claims.")
-  check_arg("freq") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
+ex() %>% check_function("summary",index=1,not_called_msg="Have you called `summary` to view basic statistics about the data?") %>% check_arg(., "object",arg_not_specified_msg="Have you specified which data you would like a summary of?") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury`.")
+ex() %>% check_function("summary",index=2,not_called_msg="Have you called `summary` to view basic statistics about the data?") %>% check_arg(., "object",arg_not_specified_msg="Have you specified which data you would like a summary of?") %>% check_equal(incorrect_msg="Make sure to get summary statistics of `injury2`.")
+ex() %>% check_function("par",not_called_msg="Have you called `par` to change the graphical parameters?") %>% check_arg(., "mfrow", arg_not_specified_msg="Have you specified the number of rows/columns for your plot to have?") %>% check_equal(incorrect_msg="Please dont change this part. it should read `par(mfrow=c(2,1))`")
+ex() %>% check_function("hist",index=1,not_called_msg="Have you called `hist` to create a histogram of the data?") %>% {
+  check_arg(., "x",arg_not_specified_msg="Have you specified which data should be used to create a histogram?") %>% check_equal(incorrect_msg="Create the first histogram using all of the observed claims.")
+  check_arg(., "freq",arg_not_specified_msg="Have you specified that we would like a density histogram?") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
 }
-ex() %>% check_function("hist",index=2) %>% {
-  check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the second histogram based on claims with the largest one removed.")
-  check_arg("freq") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
+ex() %>% check_function("hist",index=2,not_called_msg="Have you called `hist` to create another histogram of the data?") %>% {
+  check_arg(., "x",arg_not_specified_msg="Have you specified which data should be used to create a histogram?") %>% check_equal(incorrect_msg="Make sure to create the second histogram based on claims with the largest one removed.")
+  check_arg(., "freq",arg_not_specified_msg="Have you specified that we would like a density histogram?") %>% check_equal(incorrect_msg="Make sure to create a density histogram instead of a frequency histogram.")
 }
 success_msg("Congratulations! The goal of predictive modeling is to discover patterns in the data. However, sometimes seeming 'patterns' are the result of one or two unusual observations. Unusual observations may be due to incorrect data gathering procedures or just due to wild fluctuations in a process of interest but are common in predictive modeling.")
 ```
@@ -597,10 +594,9 @@ In this exercise, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_5yfuwrbc&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_6h3ur8eu" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver1.4A" href="javascript:toggleDet('toggleOver1.4A','displayOver1.4A');"><i><strong>Show Overhead A Details. Simulate a moderately skewed distribution, with transforms</strong></i></a> </h6>
-<div id="toggleOver1.4A" style="display: none">
+##### Show Overhead A Details. Simulate a moderately skewed distribution, with transforms
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
 #  FIGURE 1.7 - SIMULATE CHI-SQUARE, CREATE 3 TRANSFORMATIONS
@@ -612,10 +608,8 @@ X3 <- log(X1)                   # logarithmic transform
 X4 <- -1/X1                     # negative reciprocal transform
 ```
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver1.4B" href="javascript:toggleDet('toggleOver1.4B','displayOver1.4B');"><i><strong>Show Overhead B Details. Visualize the distributions</strong></i></a> </h6>
-<div id="toggleOver1.4B" style="display: none">
+##### Show Overhead B Details. Visualize the distributions
 
 
 ```{r comment = "", eval = EVALUATE_CHAP1}
@@ -644,8 +638,6 @@ mtext("Density", side = 2, at = 110, las = 1, cex = .75)
 mtext("Negative reciprocal of y", side = 1, cex = .75, line = 2)
 ```
 
-</div> 
-
 ###Exercise. Distribution of transformed bodily injury claims
 
 **Assignment Text**
@@ -663,7 +655,9 @@ Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matri
 -  logarithmic claims
 -  negative reciprocal of claims
 
-**Hint.** For negative reciprocal claims, use `plot(density(-claims^(-1)))`
+```{r ex="ExerRegMod1.4.2", type="hint", tut=TRUE}
+For negative reciprocal claims, use `plot(density(-claims^(-1)))`
+```
 
 ```{r ex="ExerRegMod1.4.2", type="pre-exercise-code", tut=TRUE}
 #injury <- read.csv("CSVData\\MassBI.csv", header = TRUE)
@@ -696,17 +690,22 @@ plot(density(-claims^(-1)))
 ```
 
 ```{r ex="ExerRegMod1.4.2", type="sct", tut=TRUE}
-ex() %>% check_function("par") %>% check_arg("mfrow") %>% check_equal("Please do not change this part of the code. It should read `par(mfrow=c(2,2))`")
-ex() %>% check_function("plot",index=1,not_called_msg="Did you plot the density of claims?") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the first histogram using `claims`")
+ex() %>% check_function("par",not_called_msg="Have you called `par` to change the graphical parameters?") %>% check_arg(., "mfrow", arg_not_specified_msg="Have you specified the number of rows/columns for your plot to have?") %>% check_equal(incorrect_msg="Please dont change this part. it should read `par(mfrow=c(2,2))`")
+
+ex() %>% check_function("plot",index=1,not_called_msg="Did you plot the density of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the first histogram using `claims`")
+
 ex() %>% check_or(
-check_function(.,"plot") %>% check_arg(., "x") %>% check_equal(),
-  override_solution(.,"plot(density(sqrt(claims)))") %>% check_function("plot") %>% check_arg(., "x") %>% check_equal()
+check_function(.,"plot",index=2,not_called_msg="did you plot the square root of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the second histogram based on the square root of `claims`."),
+  override_solution(.,'par(mfrow = c(2, 2))
+plot(density(claims))    
+plot(density(claims^(0.5)))  
+plot(density(log(claims)))  
+plot(density(-claims^(-1)))') %>% check_function("plot",index=2,not_called_msg="did you plot the square root of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the second histogram based on the square root of `claims`.")
 )
-ex() %>% check_function("plot",index=3,not_called_msg="Did you plot the density of logarithmic claims?") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the third histogram based on the natural log of `claims`.")
-ex() %>% check_function("plot",index=4,not_called_msg="Did you plot the density of the negative reciprocal of claims?") %>% check_arg("x") %>% check_equal(incorrect_msg="Make sure to create the fourth histogram based on the negative reciprocal () of `claims`.")
+
+ex() %>% check_function("plot",index=3,not_called_msg="Did you plot the density of logarithmic claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the third histogram based on the natural log of `claims`.")
+
+ex() %>% check_function("plot",index=4,not_called_msg="Did you plot the density of the negative reciprocal of claims?") %>% check_arg(., "x",arg_not_specified_msg="Have you specified which data should be plotted?") %>% check_equal(incorrect_msg="Make sure to create the fourth histogram based on the negative reciprocal () of `claims`.")
+
 success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
 ```
-
-
-
-

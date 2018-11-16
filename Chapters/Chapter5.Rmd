@@ -42,10 +42,9 @@ summary(meps2)
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_itjvn841&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_i3ynk1nx" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver5.1A" href="javascript:toggleDet('toggleOver5.1A','displayOver5.1A');"><i><strong>Show Overhead A Details. MEPS health expenditures</strong></i></a> </h6>
-<div id="toggleOver5.1A" style="display: none">
+##### Show Overhead A Details. MEPS health expenditures
 
 
 This exercise considers data from the *Medical Expenditure Panel Survey* (MEPS), conducted by the U.S. Agency of Health Research and Quality. MEPS is a probability survey that provides nationally representative estimates of health care use, expenditures, sources of payment, and insurance coverage for the U.S. civilian population. This survey collects detailed information on individuals of each medical care episode by type of services including physician office visits, hospital emergency room visits, hospital outpatient visits, hospital inpatient stays, all other medical provider visits, and use of prescribed medicines. This detailed information allows one to develop models of health care utilization to predict future expenditures. You can learn more about MEPS at http://www.meps.ahrq.gov/mepsweb/.
@@ -54,10 +53,8 @@ We consider MEPS data from the panels 7 and 8 of 2003 that consists of 18,735 in
 
 Our dependent variable is the amount of expenditures for outpatient visits, `expendop`. For MEPS, outpatient events include hospital outpatient department visits, office-based provider visits and emergency room visits excluding dental services. (Dental services, compared to other types of health care services, are more predictable and occur in a more regular basis.) Hospital stays with the same date of admission and discharge, known as "zero-night stays," were included in outpatient counts and expenditures. (Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures. Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.)
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.1B" href="javascript:toggleDet('toggleOver5.1B','displayOver5.1B');"><i><strong>Show Overhead B Details. Overhead MEPS health expenditures</strong></i></a> </h6>
-<div id="toggleOver5.1B" style="display: none">
+##### Show Overhead B Details. Overhead MEPS health expenditures
 
 
 Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Agency of Health Research and Quality (AHRQ).
@@ -73,10 +70,8 @@ Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Age
 - This detailed information allows one to develop models of health care utilization to predict future expenditures.
 - We consider MEPS data from the first panel of 2003 and take a random sample of *n* = 2, 000 individuals between ages 18 and 65.
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.1C" href="javascript:toggleDet('toggleOver5.1C','displayOver5.1C');"><i><strong>Show Overhead C Details. Outcome variable</strong></i></a> </h6>
-<div id="toggleOver5.1C" style="display: none">
+##### Show Overhead C Details. Outcome variable
 
 
 Our dependent variable is expenditures for outpatient admissions.
@@ -87,10 +82,8 @@ Our dependent variable is expenditures for outpatient admissions.
     - Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures.
     - Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.1D" href="javascript:toggleDet('toggleOver5.1D','displayOver5.1D');"><i><strong>Show Overhead D Details. Explanatory variables</strong></i></a> </h6>
-<div id="toggleOver5.1D" style="display: none">
+##### Show Overhead D Details. Explanatory variables
 
 
 9 variables in the database. Here 13 most relevant.
@@ -114,10 +107,8 @@ managedcare & \text{1 if enrolled in an HMO or gatekeeper plan} \\
 \end{array}}
 $$
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.1E" href="javascript:toggleDet('toggleOver5.1E','displayOver5.1E');"><i><strong>Show Overhead E Details. Case study outline</strong></i></a> </h6>
-<div id="toggleOver5.1E" style="display: none">
+##### Show Overhead E Details. Case study outline
 
 The next series of exercises leads you through an analysis of the steps for understanding a complex data set. Because of the complexity of the data, in each step only a sample of procedures will be executed.
 
@@ -127,7 +118,6 @@ The outline consists of:
 - Splitting the data into training and testing portions with initial model fits
 - Selecting variables to be included in the model
 
-</div> 
 
 ###Exercise. Summarizing data
 
@@ -149,6 +139,10 @@ To examine relationships of the outcome variable visually, we look to scatterplo
 [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/boxplot/) function.
 - Examine the relationship of age versus logarithmic expenditures using a scatter plot. Superimpose a local fitting line using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines) and
 [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess) functions.
+
+```{r ex="ExerRegMod5.1.2", type="hint", tut=TRUE}
+One of the mort important steps in linear regression is understanding your data. Using a combination of `str()` and  `summary()` lets you view quantitative statistics about your data, while `boxplot()` and `hist()` give you a more visual representation of your data.
+```
 
 ```{r ex="ExerRegMod5.1.2", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
@@ -240,6 +234,10 @@ We start by fitting a benchmark model. It is common to use all available explana
 
 **Hint.** A `plot` of a regression object such as plot(mlr) provides four diagnostic plots. These can be organized as a 2 by 2 array using `par(mfrow = c(2, 2))`.
 
+```{r ex="ExerRegMod5.1.3", type="hint", tut=TRUE}
+A `plot` of a regression object such as plot(mlr) provides four diagnostic plots. These can be organized as a 2 by 2 array using `par(mfrow = c(2, 2))`.
+```
+
 ```{r ex="ExerRegMod5.1.3", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
 meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
@@ -320,7 +318,10 @@ From our prior work, the training dataframe `train_meps` has already been loaded
 - As an alternative, use the explanatory variables in the recommended model and add the varibles `phstat`. Summarize the fit and note that statistical significance of the new variable.
 - You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
 
-**Hint**
+```{r ex="ExerRegMod5.1.4", type="hint", tut=TRUE}
+Starting with a model that consists of all your explanatory variables and using `step()` is a good way to create a model that fits the data well. On the other hand, this is simply statistics, which is unable to capture "real" explanations, or follow regulatory rules.  
+```
+
 ```{r ex="ExerRegMod5.1.4", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
 meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
@@ -334,8 +335,6 @@ train_meps    <- shuffled_meps[train_indices, ]
 test_indices  <- (round(0.25 * n) + 1):n
 test_meps     <- shuffled_meps[test_indices, ]
 ```
-
-
 
 ```{r ex="ExerRegMod5.1.4", type="sample-code", tut=TRUE}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
@@ -352,7 +351,6 @@ meps_mlr5 <- lm(logexpend ~ age + phstat + anylimit + insure  + ___, data = trai
 summary(___)
 
 ```
-
 
 ```{r ex="ExerRegMod5.1.4", type="solution", tut=TRUE}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
@@ -381,7 +379,6 @@ summary(meps_mlr5)
 # #boxplot(train_meps$logexpend ~ train_meps$phstat*train_meps$usc)
 
 ```
-
 
 ```{r ex="ExerRegMod5.1.4", type="sct", tut=TRUE}
 ex() %>% check_object("meps_mlr2") %>% check_equal()
@@ -412,7 +409,9 @@ In the sample code, the cross-validation procedure has been summarized into a fu
 
 Note which model is suggested by the cross validation function.
 
-**Hint.** The cross validation function of this is very similar to the one we did earlier. Different number of subsamples, different test/training data and a different outcome variable. Except for these minor changes, it is the same function that we worked with earlier.
+```{r ex="ExerRegMod5.1.5", type="hint", tut=TRUE}
+Performing cross-validation measures on your model allows you to see how well it does when it comes to predicting "out of sample" data points.
+```
 
 ```{r ex="ExerRegMod5.1.5", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
@@ -510,6 +509,10 @@ The comparisons will be based on expenditures in dollars using the held-out vali
 - Use the training sample to fit a benchmark linear model with `expendop` and explanatory variables listed in `explvars4`
 - Predict expenditures for the test data and summarize the fit for the benchmark model using the sum of absolute prediction errors.
 - Compare the predictions of the models graphically.
+
+```{r ex="ExerRegMod5.1.6", type="hint", tut=TRUE}
+There is nothing in this code to change. simply examine the code, play around with it, and figure out what each individual line does, and how they work together.
+```
 
 ```{r ex="ExerRegMod5.1.6", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
@@ -662,10 +665,9 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_j3k2286f&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_zdgkxkik" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver5.2A" href="javascript:toggleDet('toggleOver5.2A','displayOver5.2A');"><i><strong>Show Overhead A Details. Interpreting individual effects</strong></i></a> </h6>
-<div id="toggleOver5.2A" style="display: none">
+##### Show Overhead A Details. Interpreting individual effects
 
 
 - Substantive Effect
@@ -681,10 +683,8 @@ In this section, you learn how to:
 - **Causal Effects**
     - If we change $x$, would $y$ change?
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.2B" href="javascript:toggleDet('toggleOver5.2B','displayOver5.2B');"><i><strong>Show Overhead B Details. Other Interpretations</strong></i></a> </h6>
-<div id="toggleOver5.2B" style="display: none">
+##### Show Overhead B Details. Other Interpretations
 
 
 - Regression function and pricing
@@ -696,7 +696,6 @@ In this section, you learn how to:
 - Prediction
     - A new patient comes in with a given set of characteristics, what can I say about his or her future medical claims?
 
-</div> 
 
 <br>
     
@@ -748,20 +747,17 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_g3ysmpxy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qjxtcbse" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {-}
+#### Video Overhead Details {.tabset}
 
-<h6 style="text-align: center;"><a id="displayOver5.3A" href="javascript:toggleDet('toggleOver5.3A','displayOver5.3A');"><i><strong>Show Overhead A Details. The importance of variable selection</strong></i></a> </h6>
-<div id="toggleOver5.3A" style="display: none">
+##### Show Overhead A Details. The importance of variable selection
 
 - With too many or too few variables, $s$ is too large an estimate of $\sigma$.
     - Prediction intervals are too large
     - Standard errors for the partial slopes are too large
 - With too few or incorrect variables, we produce biased estimates of the slopes $\beta$. Thus, our predictions are biased and hence inaccurate.
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.3B" href="javascript:toggleDet('toggleOver5.3B','displayOver5.3B');"><i><strong>Show Overhead B Details. Example. Regression using one explanatory variable</strong></i></a> </h6>
-<div id="toggleOver5.3B" style="display: none">
+##### Show Overhead B Details. Example. Regression using one explanatory variable
 
 - **Too Many Variables**
     - The "true" model is $y_i = \beta_0+ \varepsilon_i$
@@ -782,10 +778,8 @@ $$
 
 There is a persistent, long-term error in omitting the explanatory variable $x$.
 
-</div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.3C" href="javascript:toggleDet('toggleOver5.3C','displayOver5.3C');"><i><strong>Show Overhead C Details. Principle of parsimony</strong></i></a> </h6>
-<div id="toggleOver5.3C" style="display: none">
+##### Show Overhead C Details. Principle of parsimony
 
 - The principle of parsimony, also known as *Occam's Razor*, states that when there are several possible explanations for a phenomenon, use the simplest.
     - A simpler explanation is easier to interpret.
@@ -795,8 +789,8 @@ There is a persistent, long-term error in omitting the explanatory variable $x$.
     - Omitting important variables can lead to biased results, a potentially serious error.
     - Including extraneous variables decreases the degrees of freedom and increases the estimate of variability, typically of less concern in actuarial applications.
 
-</div>     
-    
+
+#### MC Exercise    
 <br>
 <a style="color:blue">**MC Exercise. Which of the following is true about under- and over-fitting a model?**</a>
 <form >
