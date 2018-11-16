@@ -108,8 +108,9 @@ Like insurance, lotteries are uncertain events and so the skills to work with an
 - Plot `pop_1000` versus `sales_1000`.
 - Calculate the correlation between `pop_1000` versus `sales_1000` using the function [cor()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor). How does this differ between the correlation between population and sales in the original units?
 
-**Hint.** Use the dataframe to refer to pop and sales as `Lot$pop` and `Lot$sales`, respectively
-
+```{r ex="ExerRegMod2.1.2", type="hint", tut=TRUE}
+Use the dataframe to refer to pop and sales as `Lot$pop` and `Lot$sales`, respectively
+```
 
 ```{r ex="ExerRegMod2.1.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
@@ -234,6 +235,9 @@ The prior video analyzed the effect that a zip code's population has on lottery 
 - Using the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), regress `medhome`, the explanatory variable, on `sales`, the outcome variable. Display the regression coefficients to four significant digits.
 - Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) and the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).
 
+```{r ex="ExerRegMod2.2.2", type="hint", tut=TRUE}
+Creating a Linear model using `lm()` creates an object with a large ammount of information, which can be used with the `predict()` function in addition with a dataframe with the same columns as your model to examine out of sample data.
+```
 
 ```{r ex="ExerRegMod2.2.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
@@ -369,8 +373,9 @@ How reliable is the regression line? In this excercise, you will compute some of
 - Determine the size of the typical residual, $s$.
 - Determine the coefficient of determination, $R^2$.  
 
-**Hint.** Learn more about possibilities through the `Rdocumentation` site. If you have not done so already, check out the function [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/anova)
-
+```{r ex="ExerRegMod2.3.2", type="hint", tut=TRUE}
+Learn more about possibilities through the `Rdocumentation` site. If you have not done so already, check out the function [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/anova)
+```
 
 ```{r ex="ExerRegMod2.3.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
@@ -428,13 +433,16 @@ Let us see how rescaling, a linear transformation, affects our measures of uncer
 
 **Hint.** The residual standard error is also available as `summary(model_blr1)$sigma`. The coefficient of determination is also available as `summary(model_blr1)$r.squared`.
 
+```{r ex="ExerRegMod2.3.3", type="hint", tut=TRUE}
+The residual standard error is also available as `summary(model_blr1)$sigma`. The coefficient of determination is also available as `summary(model_blr1)$r.squared`.
+```
+
 ```{r ex="ExerRegMod2.3.3", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
 Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 Lot$pop_1000 <- Lot$pop/1000
 Lot$sales_1000 <- Lot$sales/1000
 ```
-
 
 ```{r ex="ExerRegMod2.3.3", type="sample-code", tut=TRUE}
 # Run a regression of `pop` on `sales_1000` and summarize this in an ANOVA table.
@@ -583,7 +591,9 @@ This exercise allows you to practice the standard inferential tasks: hypothesis 
 - Use the function [confint()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/confint) to provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
 - Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) to provide a point prediction and a 95\% prediction interval for sales.
 
-**Hint.** Taking a [summary()] of a regression object produces a new objeect. You can use the [str()] structure command to learn more about the new object. Try out a command such as `str(summary(model_blr))`
+```{r ex="ExerRegMod2.4.2", type="hint", tut=TRUE}
+Taking a [summary()] of a regression object produces a new objeect. You can use the [str()] structure command to learn more about the new object. Try out a command such as `str(summary(model_blr))`
+```
 
 ```{r ex="ExerRegMod2.4.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
@@ -773,7 +783,9 @@ This exercise summarizes the regression fit both with and without this zip code 
 - Plot these two least squares fitted lines superimposed on the full data set.
 - What is the effect on the distribution  of residuals by removing this point? Calculate a normal qq plot with and without Kenosha.
 
-**Hint.** You can extract the residuals from a regression object with the function [residuals()].
+```{r ex="ExerRegMod2.5.2", type="hint", tut=TRUE}
+You can extract the residuals from a regression object with the function [residuals()].
+```
 
 ```{r ex="ExerRegMod2.5.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
