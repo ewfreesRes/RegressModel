@@ -1,5 +1,5 @@
 --- 
-title: "Online Tutorial on Regression Modeling with Actuarial and Financial Applications"
+title: "Online Tutorial on `Regression Modeling with Actuarial and Financial Applications`"
 author: "Edward W. (Jed) Frees, University of Wisconsin-Madison"
 site: bookdown::bookdown_site
 output:
@@ -72,7 +72,7 @@ In this video, you learn how to:
 ***
 
 
-#### Video {-}
+#### Video Overhead {-}
 
 <center>
 
@@ -81,9 +81,8 @@ In this video, you learn how to:
 </center>
 
 
-##### Video Overhead {.tabset}
-
-###### Show Overhead A. Galton's 1885 Regression Data
+<h5 style="text-align: center;"><a id="displayOverWelcomeA" href="javascript:toggleDet('toggleOverWelcomeA','displayOverWelcomeA');"><i><strong>Show Overhead A. Galton's 1885 Regression Data</strong></i></a> </h5>
+<div id="toggleOverWelcomeA" style="display: none">
 
 
 
@@ -115,8 +114,10 @@ $$
 \end{array}}
 $$
 
+</div>
 
-###### Show Overhead B. Supporting R Code
+<h5 style="text-align: center;"><a id="displayOverWelcomeB" href="javascript:toggleDet('toggleOverWelcomeB','displayOverWelcomeB');"><i><strong>Show Overhead B. Supporting R Code</strong></i></a> </h5>
+<div id="toggleOverWelcomeB" style="display: none">
 
 
 
@@ -141,3 +142,5 @@ abline(0,1,col = "red", lty=2)
 summary(lm(heights$child_ht~heights$parent_ht))
 
 ```
+
+</div>
