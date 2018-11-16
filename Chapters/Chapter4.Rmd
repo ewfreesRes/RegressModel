@@ -261,6 +261,10 @@ As part of the code set-up, we have *n* = 100 observations generated of the outc
 
 **Hint.** The code shows stepwise regression using BIC, a criterion that results in simpler models than AIC. For AIC, use the option `k=2` in the [step()] function (the default)
 
+```{r ex="ExerRegMod4.2.2", type="hint", tut=TRUE}
+The `step()` function automatically selects which explanatory variables are significant enough to belong in the model given a goodness of fit criterion. Having k=log(nrow(x)) specifies using BIC.
+```
+
 ```{r ex="ExerRegMod4.2.2", type="pre-exercise-code", tut=TRUE}
 set.seed(1237)
 X <- as.data.frame(matrix(rnorm(100*50, mean = 0, sd = 1), ncol = 50))
@@ -382,13 +386,16 @@ A measure of risk management cost effectiveness, `logcost`, is the outcome varia
 
 **Hint.** You can access model residuals using `mlr.survey1$residuals` or `mlr.survey1($residuals)`
 
+```{r ex="ExerRegMod4.3.2", type="hint", tut=TRUE}
+The best way to utilize the residuals from a linear model is `model.name$residuals`.
+```
+
 ```{r ex="ExerRegMod4.3.2", type="pre-exercise-code", tut=TRUE}
 #survey <- read.csv("CSVData\\Risk_survey.csv", header=TRUE)
 survey <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/dc1c5bce43ef076aa77169a242118e2e58d01f82/Risk_survey.csv", header=TRUE)
 survey$logcost <- log(survey$firmcost)
 #str(survey)
 ```
-
 
 ```{r ex="ExerRegMod4.3.2", type="sample-code", tut=TRUE}
 # Regress `logcost` on `logsize` and `indcost` 
@@ -594,6 +601,10 @@ In chapter 2, we consider a fictitious data set of 19 "base" points plus three d
 - Use the function [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the leverages from the model fitted and summarize them. 
 - Plot the standardized residuals versus the leverages to see the relationship between these two measures that calibrate how unusual an observation is.
 
+```{r ex="ExerRegMod4.4.2", type="hint", tut=TRUE}
+There is nothing to change in the sample code. Simply play around with the code to figure out what exactly it does.
+```
+
 ```{r ex="ExerRegMod4.4.2", type="pre-exercise-code", tut=TRUE}
 #outlr <- read.csv("CSVData\\Outlier.csv", header = TRUE)
 outlr <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7a38912e544c31fc6f5fca12b9a2eb645f2bcd32/Outlier.csv", header = TRUE)
@@ -619,8 +630,6 @@ plot(hii,ri)
 
 ```
 
-
-
 ```{r ex="ExerRegMod4.4.2", type="solution", tut=TRUE}
 plot(outlrC)
 model_outlrC <- lm(y ~ x, data = outlrC)
@@ -631,7 +640,6 @@ summary(hii)
 plot(hii,ri)
 
 ```
-
 
 ```{r ex="ExerRegMod4.4.2", type="sct", tut=TRUE}
 ex() %>% check_function("plot",index=1) %>% check_arg(., "x") %>% check_equal()
@@ -659,6 +667,10 @@ In a prior exercise, we fit a regression model of `logcost` on `logsize`, `indco
 - Use the `R` functions [rstandard()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) and [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the standardized residuals and leverages from the model fitted. Summarize the distributions graphically.
 - You will see that there are two observations where the leverages are high, numbers 10 and 16. On looking at the dataset, these turn out to be observations in a high risk industry. Create a histogram of the variable `indcost` to corroborate this.
 - Re-run the regression omitting observations 10 and 16. Summarize this regression and the regression in the object  `mlr_survey2`, noting differences in the coefficients.
+
+```{r ex="ExerRegMod4.4.3", type="hint", tut=TRUE}
+`rstandard()` and `hatvalues()` can be used to extract teh standardized residuals and leverages from a fitted model.
+```
 
 ```{r ex="ExerRegMod4.4.3", type="pre-exercise-code", tut=TRUE}
 #survey <- read.csv("CSVData\\Risk_survey.csv", header=TRUE)
@@ -805,6 +817,14 @@ This exercise returns to our term life data set `Term1` (preloaded) and demonstr
 `1/(1-summary(lm(education ~ numhh + logincome, data = Term1))$r.squared)`
 
 gives the `education` vif.
+
+```{r ex="ExerRegMod4.5.2", type="hint", tut=TRUE}
+If the `car` package is not available to you, then you could calculate vifs using the [lm()] function, treating each variable separately. For example
+
+`1/(1-summary(lm(education ~ numhh + logincome, data = Term1))$r.squared)`
+
+gives the `education` vif.
+```
 
 ```{r ex="ExerRegMod4.5.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -981,7 +1001,9 @@ crossvalfct(explvars)
 
 The best model has the lowest cross-validation statistic.
 
-**Hint.** The function [sample()] is for taking random samples. We use it without replacement so it results in a re-ordering of data.
+```{r ex="ExerRegMod4.6.2", type="hint", tut=TRUE}
+The function [sample()] is for taking random samples. We use it without replacement so it results in a re-ordering of data.
+```
 
 ```{r ex="ExerRegMod4.6.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
