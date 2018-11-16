@@ -40,9 +40,10 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_53yv68dd&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_yxfgvaql" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Iterative approach
+<h6 style="text-align: center;"><a id="displayOver4.1A" href="javascript:toggleDet('toggleOver4.1A','displayOver4.1A');"><i><strong>Show Overhead A Details. Iterative approach</strong></i></a> </h6>
+<div id="toggleOver4.1A" style="display: none">
 
 -  Model formulation stage
 -  Fitting
@@ -90,8 +91,10 @@ arrows(5,-3.0,5,-2,code=2,lwd=2,angle=25,length=0.10)
 
 ```
 
+</div> 
 
-##### Show Overhead B Details. Many possible models
+<h6 style="text-align: center;"><a id="displayOver4.1B" href="javascript:toggleDet('toggleOver4.1B','displayOver4.1B');"><i><strong>Show Overhead B Details. Many possible models</strong></i></a> </h6>
+<div id="toggleOver4.1B" style="display: none">
 
 
 $$
@@ -109,8 +112,10 @@ $$
 - With *k* explanatory variables, there are $2^k$ possible linear models
 - There are infinitely many nonlinear ones!!
 
+</div> 
 
-##### Show Overhead C Details. Model validation
+<h6 style="text-align: center;"><a id="displayOver4.1C" href="javascript:toggleDet('toggleOver4.1C','displayOver4.1C');"><i><strong>Show Overhead C Details. Model validation</strong></i></a> </h6>
+<div id="toggleOver4.1C" style="display: none">
 
 
 - Model validation is the process of confirming our proposed model.
@@ -149,6 +154,7 @@ arrows(7.4,-0.9,3.5,-3.8,code=2,lwd=2,angle=15,length=0.2)
 
 ```
 
+</div> 
 
 ###MC Exercise. An iterative approach to data modeling
 
@@ -178,9 +184,10 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_94bk7tyn&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_vq3apay6" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Classic stepwise regression algorithm
+<h6 style="text-align: center;"><a id="displayOver4.2A" href="javascript:toggleDet('toggleOver4.2A','displayOver4.2A');"><i><strong>Show Overhead A Details. Classic stepwise regression algorithm</strong></i></a> </h6>
+<div id="toggleOver4.2A" style="display: none">
 
 Suppose that the analyst has identified one variable as the outcome, $y$, and $k$ potential explanatory variables, $x_1, x_2, \ldots, x_k$.
 
@@ -189,16 +196,20 @@ Suppose that the analyst has identified one variable as the outcome, $y$, and $k
 - (iii). Delete a variable to the model from the previous step. Delete the variable with the small *t*-statistic if the statistic is less than, e.g., 2 in absolute value.
 - (iv). Repeat steps (ii) and (iii) until all possible additions and deletions are performed.
 
+</div> 
 
-##### Show Overhead B Details. Drawbacks of stepwise regression
+<h6 style="text-align: center;"><a id="displayOver4.2B" href="javascript:toggleDet('toggleOver4.2B','displayOver4.2B');"><i><strong>Show Overhead B Details. Drawbacks of stepwise regression</strong></i></a> </h6>
+<div id="toggleOver4.2B" style="display: none">
 
 - The procedure "snoops" through a large number of models and may fit the data "too well."
 - There is no guarantee that the selected model is the best. 
     - The algorithm does not consider models that are based on nonlinear combinations of explanatory variables. 
     - It ignores the presence of outliers and high leverage points.
 
+</div> 
 
-##### Show Overhead C Details. Data-snooping in stepwise regression
+<h6 style="text-align: center;"><a id="displayOver4.2C" href="javascript:toggleDet('toggleOver4.2C','displayOver4.2C');"><i><strong>Show Overhead C Details. Data-snooping in stepwise regression</strong></i></a> </h6>
+<div id="toggleOver4.2C" style="display: none">
 
 - Generate $y$ and $x_1 - x_{50}$ using a random number generator
 - By design, there is no relation between $y$ and $x_1 - x_{50}$.
@@ -221,8 +232,10 @@ Multiple R-squared:  0.1401,    Adjusted R-squared:  0.1132
 F-statistic: 5.212 on 3 and 96 DF,  p-value: 0.002233
 ```
 
+</div> 
 
-##### Show Overhead D Details. Variants of stepwise regression
+<h6 style="text-align: center;"><a id="displayOver4.2D" href="javascript:toggleDet('toggleOver4.2D','displayOver4.2D');"><i><strong>Show Overhead D Details. Variants of stepwise regression</strong></i></a> </h6>
+<div id="toggleOver4.2D" style="display: none">
 
 This uses the `R` function [step()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/step)
 
@@ -231,8 +244,10 @@ This uses the `R` function [step()](https://www.rdocumentation.org/packages/stat
     - Backwards selection. Start with the full model and delete one variable at a time without trying to add variables. 
 - The option `scope` can be used to specify which variables must be included
 
+</div> 
 
-##### Show Overhead E Details. Automatic variable selection procedures
+<h6 style="text-align: center;"><a id="displayOver4.2E" href="javascript:toggleDet('toggleOver4.2E','displayOver4.2E');"><i><strong>Show Overhead E Details. Automatic variable selection procedures</strong></i></a> </h6>
+<div id="toggleOver4.2E" style="display: none">
 
 
 - Stepwise regression is a type of automatic variable selection procedure.
@@ -241,6 +256,7 @@ This uses the `R` function [step()](https://www.rdocumentation.org/packages/stat
 - They can miss certain patterns (nonlinearities, unusual points)
 - A model suggested by automatic variable selection procedures should be subject to the same careful diagnostic checking procedures as a model arrived at by any other means
 
+</div>
 
 ###Exercise. Data-snooping in stepwise regression
 
@@ -260,10 +276,6 @@ As part of the code set-up, we have *n* = 100 observations generated of the outc
 - Use the `step` function to find the best model starting with the fitted model containing all fifty explanatory variables and summarize the fit. 
 
 **Hint.** The code shows stepwise regression using BIC, a criterion that results in simpler models than AIC. For AIC, use the option `k=2` in the [step()] function (the default)
-
-```{r ex="ExerRegMod4.2.2", type="hint", tut=TRUE}
-The `step()` function automatically selects which explanatory variables are significant enough to belong in the model given a goodness of fit criterion. Having k=log(nrow(x)) specifies using BIC.
-```
 
 ```{r ex="ExerRegMod4.2.2", type="pre-exercise-code", tut=TRUE}
 set.seed(1237)
@@ -340,32 +352,37 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_bwhmsm8k&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_zvacn361" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
 
-##### Show Overhead A Details. Residual analysis
+<h6 style="text-align: center;"><a id="displayOver4.3A" href="javascript:toggleDet('toggleOver4.3A','displayOver4.3A');"><i><strong>Show Overhead A Details. Residual analysis</strong></i></a> </h6>
+<div id="toggleOver4.3A" style="display: none">
 
 - Use $e_i = y_i - \hat{y}_i$ as the *i*th residual.
 - Later, I will discuss rescaling by, for example, $s$, to get a standardized residual.
 - *Role of residuals*: If the model formulation is correct, then residuals should be approximately equal to random errors or "white noise."
 - *Method of attack*: Look for patterns in the residuals. Use this information to improve the model specification.
 
+</div> 
 
-##### Show Overhead B Details. Using residuals to select explanatory variables
+<h6 style="text-align: center;"><a id="displayOver4.3B" href="javascript:toggleDet('toggleOver4.3B','displayOver4.3B');"><i><strong>Show Overhead B Details. Using residuals to select explanatory variables</strong></i></a> </h6>
+<div id="toggleOver4.3B" style="display: none">
 
 - Residual analysis can help identify additional explanatory variables that may be used to improve the formulation of the model.
 - If the model is correct, then residuals should resemble random errors and contain no discernible patterns.
 - Thus, when comparing residuals to explanatory variables, we do not expect any relationships.
 - If we do detect a relationship, then this suggests the need to control for this additional variable.
 
+</div> 
 
-##### Show Overhead C Details. Detecting relationships between residuals and explanatory variables
+<h6 style="text-align: center;"><a id="displayOver4.3C" href="javascript:toggleDet('toggleOver4.3C','displayOver4.3C');"><i><strong>Show Overhead C Details. Detecting relationships between residuals and explanatory variables</strong></i></a> </h6>
 <div id="toggleOver4.3C" style="display: none">
 
 - Calculate summary statistics and display the distribution of  residuals to identify outliers.
 - Calculate the correlation between the residuals and additional explanatory variables to search for linear relationships.
 - Create scatter plots between the residuals and additional explanatory variables to search for nonlinear relationships.
 
+</div> 
 
 
 ###Exercise. Residual analysis and risk manager survey
@@ -386,16 +403,13 @@ A measure of risk management cost effectiveness, `logcost`, is the outcome varia
 
 **Hint.** You can access model residuals using `mlr.survey1$residuals` or `mlr.survey1($residuals)`
 
-```{r ex="ExerRegMod4.3.2", type="hint", tut=TRUE}
-The best way to utilize the residuals from a linear model is `model.name$residuals`.
-```
-
 ```{r ex="ExerRegMod4.3.2", type="pre-exercise-code", tut=TRUE}
 #survey <- read.csv("CSVData\\Risk_survey.csv", header=TRUE)
 survey <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/dc1c5bce43ef076aa77169a242118e2e58d01f82/Risk_survey.csv", header=TRUE)
 survey$logcost <- log(survey$firmcost)
 #str(survey)
 ```
+
 
 ```{r ex="ExerRegMod4.3.2", type="sample-code", tut=TRUE}
 # Regress `logcost` on `logsize` and `indcost` 
@@ -515,9 +529,10 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_rhh81ftg&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_58daiyn0" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Unusual observationsUnusual observations
+<h6 style="text-align: center;"><a id="displayOver4.4A" href="javascript:toggleDet('toggleOver4.4A','displayOver4.4A');"><i><strong>Show Overhead A Details. Unusual observationsUnusual observations</strong></i></a> </h6>
+<div id="toggleOver4.4A" style="display: none">
 
 - Regression coefficients can be expressed as (matrix) weighted averages of outcomes
     - Averages, even weighted averages can be strongly influenced by unusual observations
@@ -525,9 +540,11 @@ In this section, you learn how to:
 - For unusual in the *y* direction, we use a residual $e = y - \hat{y}$
     - By subtracting the fitted value $\hat{y}$, we look to the *y* distance from the regression plane
     - In this way, we "control" for values of explanatory variables
+    
+</div> 
 
-
-##### Show Overhead B Details. Standardized residuals
+<h6 style="text-align: center;"><a id="displayOver4.4B" href="javascript:toggleDet('toggleOver4.4B','displayOver4.4B');"><i><strong>Show Overhead B Details. Standardized residuals</strong></i></a> </h6>
+<div id="toggleOver4.4B" style="display: none">
 
 We standardize residuals so that we can focus on relationships of interest and achieve carry-over of experience from one data set to another.
 
@@ -542,8 +559,10 @@ $$
 - Second choice, from theory, $\mathrm{Var}(e_i)=\sigma ^{2}(1-h_{ii}).$ Here, $h_{ii}$ is the $i$th *leverage* (defined later).
 - Third choice is termed "studentized residuals". Idea: numerator is independent of the denominator.
 
+</div> 
 
-##### Show Overhead C Details. Outlier - an unusal standardized residual
+<h6 style="text-align: center;"><a id="displayOver4.4C" href="javascript:toggleDet('toggleOver4.4C','displayOver4.4C');"><i><strong>Show Overhead C Details. Outlier - an unusal standardized residual</strong></i></a> </h6>
+<div id="toggleOver4.4C" style="display: none">
 
 - An *outlier* is an observation that is not well fit by the model; these are observations where the residual is unusually large.
 - Unusual means what?  Many packages mark a point if the |standardized residual| > 2.
@@ -552,15 +571,19 @@ $$
     - Delete them from the data set (but be sure to discuss their effects).
     - Create a binary variable to indicator their presence. (This will increase your $R^2$!)
 
+</div> 
 
-##### Show Overhead D Details. High leverage points
+<h6 style="text-align: center;"><a id="displayOver4.4D" href="javascript:toggleDet('toggleOver4.4D','displayOver4.4D');"><i><strong>Show Overhead D Details. High leverage points</strong></i></a> </h6>
+<div id="toggleOver4.4D" style="display: none">
 
 - A high leverage point is an observation that is "far away" in the $x$-space from others.
 - One can get a feel for high leverage observations by looking a summary statistics (mins, maxs) for each explanatory variable.
 - Options for dealing with high leverage points are comparable to outliers, we can ignore their effects, delete them, or mark them with a binary indicator variable.
 
+</div> 
 
-##### Show Overhead E Details. High leverage point graph
+<h6 style="text-align: center;"><a id="displayOver4.4E" href="javascript:toggleDet('toggleOver4.4E','displayOver4.4E');"><i><strong>Show Overhead E Details. High leverage point graph</strong></i></a> </h6>
+<div id="toggleOver4.4E" style="display: none">
 
 ```{r comment = "", warning = FALSE, eval = EVALUATE_CHAP4}
 library(cluster)
@@ -575,8 +598,10 @@ xyloc<-matrix(c(0, 0),nrow=1,ncol=2)
 polygon(ellipsoidPoints(xycov, d2 = 2, loc=xyloc),col="black")
 ```
 
+</div> 
 
-##### Show Overhead F Details. Leverage
+<h6 style="text-align: center;"><a id="displayOver4.4F" href="javascript:toggleDet('toggleOver4.4F','displayOver4.4F');"><i><strong>Show Overhead F Details. Leverage</strong></i></a> </h6>
+<div id="toggleOver4.4F" style="display: none">
 
 - Using matrix algebra, one can express the *i*th fitted value as a linear combination of observations
 
@@ -588,7 +613,8 @@ $$
     - The larger the value of $h_{ii}$, the greater the effect of the *i*th observation $y_i$ on the *i*th fitted value $\hat{y}_i$.
     - Statistical routines have values of the leverage coded, so computing this quantity. The key thing to know is that  $h_{ii}$ is based solely on the explanatory variables. If you change the $y$ values, the leverage does not change.
     - As a commonly used rule of thumb, a leverage is deemed to be "unusual" if its value exceeds three times the average (= number of regression coefficients divided by the number of observations.)
-
+    
+</div> 
 
 ###Exercise. Outlier example
 
@@ -600,10 +626,6 @@ In chapter 2, we consider a fictitious data set of 19 "base" points plus three d
 - Use the function [rstandard()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the standardized residuals from the fitted regression model object and summarize them. 
 - Use the function [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the leverages from the model fitted and summarize them. 
 - Plot the standardized residuals versus the leverages to see the relationship between these two measures that calibrate how unusual an observation is.
-
-```{r ex="ExerRegMod4.4.2", type="hint", tut=TRUE}
-There is nothing to change in the sample code. Simply play around with the code to figure out what exactly it does.
-```
 
 ```{r ex="ExerRegMod4.4.2", type="pre-exercise-code", tut=TRUE}
 #outlr <- read.csv("CSVData\\Outlier.csv", header = TRUE)
@@ -630,6 +652,8 @@ plot(hii,ri)
 
 ```
 
+
+
 ```{r ex="ExerRegMod4.4.2", type="solution", tut=TRUE}
 plot(outlrC)
 model_outlrC <- lm(y ~ x, data = outlrC)
@@ -640,6 +664,7 @@ summary(hii)
 plot(hii,ri)
 
 ```
+
 
 ```{r ex="ExerRegMod4.4.2", type="sct", tut=TRUE}
 ex() %>% check_function("plot",index=1) %>% check_arg(., "x") %>% check_equal()
@@ -667,10 +692,6 @@ In a prior exercise, we fit a regression model of `logcost` on `logsize`, `indco
 - Use the `R` functions [rstandard()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) and [hatvalues()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/influence.measures) to extract the standardized residuals and leverages from the model fitted. Summarize the distributions graphically.
 - You will see that there are two observations where the leverages are high, numbers 10 and 16. On looking at the dataset, these turn out to be observations in a high risk industry. Create a histogram of the variable `indcost` to corroborate this.
 - Re-run the regression omitting observations 10 and 16. Summarize this regression and the regression in the object  `mlr_survey2`, noting differences in the coefficients.
-
-```{r ex="ExerRegMod4.4.3", type="hint", tut=TRUE}
-`rstandard()` and `hatvalues()` can be used to extract teh standardized residuals and leverages from a fitted model.
-```
 
 ```{r ex="ExerRegMod4.4.3", type="pre-exercise-code", tut=TRUE}
 #survey <- read.csv("CSVData\\Risk_survey.csv", header=TRUE)
@@ -757,9 +778,10 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_30hrfg77&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_khmh83je" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Collinearity
+<h6 style="text-align: center;"><a id="displayOver4.5A" href="javascript:toggleDet('toggleOver4.5A','displayOver4.5A');"><i><strong>Show Overhead A Details. Collinearity</strong></i></a> </h6>
+<div id="toggleOver4.5A" style="display: none">
 
 - *Collinearity*, or *multicollinearity*, occurs when one explanatory variable is, or nearly is, a linear combination of the other explanatory variables.
     - Useful to think of the explanatory variables as being highly correlated with one another.
@@ -772,8 +794,10 @@ regression coefficients can be large.
     - Because a large standard error means that the corresponding
 *t*-ratio is small, it is difficult to detect the importance of a variable.
 
+</div> 
 
-##### Show Overhead B Details. Quantifying collinearity
+<h6 style="text-align: center;"><a id="displayOver4.5B" href="javascript:toggleDet('toggleOver4.5B','displayOver4.5B');"><i><strong>Show Overhead B Details. Quantifying collinearity</strong></i></a> </h6>
+<div id="toggleOver4.5B" style="display: none">
 
 A common way to quantify collinearity is through the *variance inflation factor (VIF)*.
 
@@ -786,8 +810,10 @@ $$
 VIF_{j}=\frac{1}{1-R_{j}^{2}},\ \ \ \text{ for } j = 1,2,\ldots, k.
 $$
 
+</div> 
 
-##### Show Overhead C Details. Options for handling collinearity
+<h6 style="text-align: center;"><a id="displayOver4.5C" href="javascript:toggleDet('toggleOver4.5C','displayOver4.5C');"><i><strong>Show Overhead C Details. Options for handling collinearity</strong></i></a> </h6>
+<div id="toggleOver4.5C" style="display: none">
 
 
 - Rule of thumb: When $VIF_{j}$ exceeds 10 (which is equivalent to $R_{j}^{2}>90\%$), we say that severe collinearity exists. This may signal is a need for action.
@@ -798,6 +824,7 @@ $$
     - Use interpretation.  Which variable(s) do you feel most comfortable with?
     - Use automatic variable selection procedures to suggest a model.
 
+</div>
 
 ###Exercise. Collinearity and term life
 
@@ -817,14 +844,6 @@ This exercise returns to our term life data set `Term1` (preloaded) and demonstr
 `1/(1-summary(lm(education ~ numhh + logincome, data = Term1))$r.squared)`
 
 gives the `education` vif.
-
-```{r ex="ExerRegMod4.5.2", type="hint", tut=TRUE}
-If the `car` package is not available to you, then you could calculate vifs using the [lm()] function, treating each variable separately. For example
-
-`1/(1-summary(lm(education ~ numhh + logincome, data = Term1))$r.squared)`
-
-gives the `education` vif.
-```
 
 ```{r ex="ExerRegMod4.5.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -884,9 +903,10 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_i5dlmsna&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_kvkokgm2" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Goodness of fit
+<h6 style="text-align: center;"><a id="displayOver4.6A" href="javascript:toggleDet('toggleOver4.6A','displayOver4.6A');"><i><strong>Show Overhead A Details. Goodness of fit</strong></i></a> </h6>
+<div id="toggleOver4.6A" style="display: none">
 
 - Criteria that measure the proximity of the fitted model and realized data are known as
 *goodness of fit* statistics.
@@ -896,8 +916,10 @@ In this section, you learn how to:
     - the size of the typical error $(s)$, and 
     - $t$-ratios for each regression coefficient.
     
+</div> 
 
-##### Show Overhead B Details. Goodness of fit and information criteria
+<h6 style="text-align: center;"><a id="displayOver4.6B" href="javascript:toggleDet('toggleOver4.6B','displayOver4.6B');"><i><strong>Show Overhead B Details. Goodness of fit and information criteria</strong></i></a> </h6>
+<div id="toggleOver4.6B" style="display: none">
 
 
 A general measure is *Akaike's Information Criterion*, defined as
@@ -917,15 +939,19 @@ $$
 
 - So, selecting a model to minimize $s$ or $s^2$ is equivalent to model selection based on minimizing $AIC$ (same *k*).
 
+</div> 
 
-##### Show Overhead C Details. Out of sample validation
+<h6 style="text-align: center;"><a id="displayOver4.6C" href="javascript:toggleDet('toggleOver4.6C','displayOver4.6C');"><i><strong>Show Overhead C Details. Out of sample validation</strong></i></a> </h6>
+<div id="toggleOver4.6C" style="display: none">
 
 - When you choose a model to minimize $s$ or $AIC$, it is based on how well the model fits the data at hand, or the *model development*, or *training*, data
 - As we have seen, this approach is susceptible to overfitting.
 - A better approach is to validate the model on a *model validation*, or *test* data set, held out for this purpose.
 
+</div> 
 
-##### Show Overhead D Details. Out of sample validation procedure
+<h6 style="text-align: center;"><a id="displayOver4.6D" href="javascript:toggleDet('toggleOver4.6D','displayOver4.6D');"><i><strong>Show Overhead D Details. Out of sample validation procedure</strong></i></a> </h6>
+<div id="toggleOver4.6D" style="display: none">
 
 - (i) Using the model development subsample, fit a candidate model.
 - (ii) Using the  Step (ii) model and the explanatory variables from the validation subsample, "predict" the dependent variables in the validation subsample, $\hat{y}_i$, where $i=n_{1}+1,...,n_{1}+n_{2}$.
@@ -935,8 +961,10 @@ $$SAPE=\sum_{i=n_{1}+1}^{n_{1}+n_{2}} |y_{i}-\hat{y}_{i}| . $$
 
 Repeat Steps (i) through (iii) for each candidate model. Choose the model with the smallest *SAPE*.
 
+</div> 
 
-##### Show Overhead E Details. Cross - validation
+<h6 style="text-align: center;"><a id="displayOver4.6E" href="javascript:toggleDet('toggleOver4.6E','displayOver4.6E');"><i><strong>Show Overhead E Details. Cross - validation</strong></i></a> </h6>
+<div id="toggleOver4.6E" style="display: none">
 
 - With out-of-sample validation, the statistic depends on a random split between in-sample and out-of-sample data (a problem for data sets that are not large)
 - Alternatively, one may use *cross-validation*
@@ -946,6 +974,7 @@ Repeat Steps (i) through (iii) for each candidate model. Choose the model with t
 -  Repeat these steps for several candidate models. 
     - Choose the model with the lowest cumulative *SAE* statistic.
 
+</div> 
 
 ###Exercise. Cross-validation and term life
 
@@ -1001,9 +1030,7 @@ crossvalfct(explvars)
 
 The best model has the lowest cross-validation statistic.
 
-```{r ex="ExerRegMod4.6.2", type="hint", tut=TRUE}
-The function [sample()] is for taking random samples. We use it without replacement so it results in a re-ordering of data.
-```
+**Hint.** The function [sample()] is for taking random samples. We use it without replacement so it results in a re-ordering of data.
 
 ```{r ex="ExerRegMod4.6.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)

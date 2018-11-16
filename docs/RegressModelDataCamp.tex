@@ -116,8 +116,8 @@
 }
 
 \setlength{\droptitle}{-2em}
-  \title{Online Tutorial on Regression Modeling with Actuarial and Financial
-Applications}
+  \title{Online Tutorial on
+\texttt{Regression\ Modeling\ with\ Actuarial\ and\ Financial\ Applications}}
   \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
   \author{Edward W. (Jed) Frees, University of Wisconsin-Madison}
@@ -153,7 +153,7 @@ Applications}
 \chapter*{Preface}\label{preface}
 \addcontentsline{toc}{chapter}{Preface}
 
-\emph{Date: 05 November 2018}
+\emph{Date: 03 November 2018}
 
 \subsection*{About Regression Modeling}\label{about-regression-modeling}
 \addcontentsline{toc}{subsection}{About Regression Modeling}
@@ -261,14 +261,12 @@ In this video, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsubsection*{Video}\label{video}
-\addcontentsline{toc}{subsubsection}{Video}
+\subsubsection*{Video Overhead}\label{video-overhead}
+\addcontentsline{toc}{subsubsection}{Video Overhead}
 
-\paragraph{Video Overhead}\label{video-overhead}
+Show Overhead A. Galton's 1885 Regression Data
 
-\subparagraph{Show Overhead A. Galton's 1885 Regression
-Data}\label{show-overhead-a.-galtons-1885-regression-data}
-
+\hypertarget{toggleOverWelcomeA}{}
 \[
 \small{\begin{array}{l|ccccccccccc|c}
 \hline
@@ -296,9 +294,9 @@ Data}\label{show-overhead-a.-galtons-1885-regression-data}
 \end{array}}
 \]
 
-\subparagraph{Show Overhead B. Supporting R
-Code}\label{show-overhead-b.-supporting-r-code}
+Show Overhead B. Supporting R Code
 
+\hypertarget{toggleOverWelcomeB}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Reformat Data Set}
@@ -381,13 +379,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-1}
+\subsection{Video}\label{video}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Description of the
-data}\label{show-overhead-a-details.-description-of-the-data}
+Show Overhead A Details. Description of the data
 
+\hypertarget{toggleOver1.1A}{}
 To illustrate a data set that can be analyzed using regression methods,
 we consider some data included in Galton's 1885 paper. These data
 include the heights of 928 adult children (child\_ht), together with an
@@ -411,9 +410,9 @@ provided a single model for the joint distribution of heights.
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-4-1.pdf}
 
-\paragraph{Show Overhead B Details. Read and examine data
-structure}\label{show-overhead-b-details.-read-and-examine-data-structure}
+Show Overhead B Details. Read and examine data structure
 
+\hypertarget{toggleOver1.1B}{}
 The data has already been read into a dataset called \texttt{heights}.
 Examine the \emph{structure} of the data with the function
 \href{https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/}{str()}
@@ -443,9 +442,9 @@ command to looks at the first few records.
 6     69.2      73.5
 \end{verbatim}
 
-\paragraph{Show Overhead C Details. Summary stats for parents'
-height}\label{show-overhead-c-details.-summary-stats-for-parents-height}
+Show Overhead C Details. Summary stats for parents' height
 
+\hypertarget{toggleOver1.1C}{}
 Next, examine the distribution of the child's height and then examine
 the distribution of the parents height.
 
@@ -470,9 +469,9 @@ the distribution of the parents height.
 [1] 1.912274
 \end{verbatim}
 
-\paragraph{Show Overhead D. Fit a normal curve to parents' height
-details}\label{show-overhead-d.-fit-a-normal-curve-to-parents-height-details}
+Show Overhead D. Fit a normal curve to parents' height details
 
+\hypertarget{toggleOver1.1D}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{(mparent <-}\StringTok{ }\KeywordTok{mean}\NormalTok{(ht_par))}
@@ -490,10 +489,10 @@ details}\label{show-overhead-d.-fit-a-normal-curve-to-parents-height-details}
 [1] 1.912274
 \end{verbatim}
 
-\paragraph{Show Overhead E Details. Use the normal approximation to
-determine the probability of the height of tall
-parents}\label{show-overhead-e-details.-use-the-normal-approximation-to-determine-the-probability-of-the-height-of-tall-parents}
+Show Overhead E Details. Use the normal approximation to determine the
+probability of the height of tall parents
 
+\hypertarget{toggleOver1.1E}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{TallHeight <-}\StringTok{ }\DecValTok{72}
@@ -610,13 +609,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-2}
+\subsection{Video}\label{video-1}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-1}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-1}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead Details. Data
-description}\label{show-overhead-details.-data-description}
+Show Overhead Details. Data description
 
+\hypertarget{toggleOver1.2}{}
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 For our first look at an insurance data set, we consider data from
@@ -647,9 +647,9 @@ potentially fraudulent ones.
 \end{Highlighting}
 \end{Shaded}
 
-\paragraph{Show Overhead A Details. Bring in Data, Introduce Logarithmic
-Claims}\label{show-overhead-a-details.-bring-in-data-introduce-logarithmic-claims}
+Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims
 
+\hypertarget{toggleOver1.2A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{injury <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{,}\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
@@ -679,9 +679,9 @@ Claims}\label{show-overhead-a-details.-bring-in-data-introduce-logarithmic-claim
 6     92  4.521789
 \end{verbatim}
 
-\paragraph{Show Overhead B Details. Show how to get a finer grid for
-histograms}\label{show-overhead-b-details.-show-how-to-get-a-finer-grid-for-histograms}
+Show Overhead B Details. Show how to get a finer grid for histograms
 
+\hypertarget{toggleOver1.2B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
@@ -692,9 +692,9 @@ histograms}\label{show-overhead-b-details.-show-how-to-get-a-finer-grid-for-hist
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-19-1.pdf}
 
-\paragraph{Show Overhead C Details. Introduce the density
-plot}\label{show-overhead-c-details.-introduce-the-density-plot}
+Show Overhead C Details. Introduce the density plot
 
+\hypertarget{toggleOver1.2C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
@@ -764,13 +764,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-3}
+\subsection{Video}\label{video-2}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-2}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-2}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Summary
-statistics}\label{show-overhead-a-details.-summary-statistics}
+Show Overhead A Details. Summary statistics
 
+\hypertarget{toggleOver1.3A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{injury <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{MassBI.csv"}\NormalTok{,}\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
@@ -797,9 +798,9 @@ statistics}\label{show-overhead-a-details.-summary-statistics}
 [1] 272
 \end{verbatim}
 
-\paragraph{Show Overhead B Details.
-Boxplot}\label{show-overhead-b-details.-boxplot}
+Show Overhead B Details. Boxplot
 
+\hypertarget{toggleOver1.3B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# BASIC BOXPLOT}
@@ -831,9 +832,9 @@ Boxplot}\label{show-overhead-b-details.-boxplot}
 8.075579 
 \end{verbatim}
 
-\paragraph{Show Overhead C Details. QQ
-Plot}\label{show-overhead-c-details.-qq-plot}
+Show Overhead C Details. QQ Plot
 
+\hypertarget{toggleOver1.3C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{summary}\NormalTok{(injury)}
@@ -983,14 +984,15 @@ In this exercise, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-4}
+\subsection{Video}\label{video-3}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-3}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-3}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Simulate a moderately skewed
-distribution, with
-transforms}\label{show-overhead-a-details.-simulate-a-moderately-skewed-distribution-with-transforms}
+Show Overhead A Details. Simulate a moderately skewed distribution, with
+transforms
 
+\hypertarget{toggleOver1.4A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#  FIGURE 1.7 - SIMULATE CHI-SQUARE, CREATE 3 TRANSFORMATIONS}
@@ -1003,9 +1005,9 @@ transforms}\label{show-overhead-a-details.-simulate-a-moderately-skewed-distribu
 \end{Highlighting}
 \end{Shaded}
 
-\paragraph{Show Overhead B Details. Visualize the
-distributions}\label{show-overhead-b-details.-visualize-the-distributions}
+Show Overhead B Details. Visualize the distributions
 
+\hypertarget{toggleOver1.4B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DataTypeTok{cex =}\NormalTok{ .}\DecValTok{75}\NormalTok{, }\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\FloatTok{1.5}\NormalTok{,}\DecValTok{0}\NormalTok{))}
@@ -1103,13 +1105,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-5}
+\subsection{Video}\label{video-4}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-4}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-4}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Wisconsin lottery data
-description}\label{show-overhead-a-details.-wisconsin-lottery-data-description}
+Show Overhead A Details. Wisconsin lottery data description
 
+\hypertarget{toggleOver2.1A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Lot <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Wisc_lottery.csv"}\NormalTok{)}
@@ -1125,9 +1128,9 @@ description}\label{show-overhead-a-details.-wisconsin-lottery-data-description}
  $ medhome: num  71.3 98 58.7 65.7 96.7 66.4 91 61 91.5 68.8 ...
 \end{verbatim}
 
-\paragraph{Show Overhead B Details. Summary
-statistics}\label{show-overhead-b-details.-summary-statistics}
+Show Overhead B Details. Summary statistics
 
+\hypertarget{toggleOver2.1B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#options(scipen = 100, digits = 4)}
@@ -1144,9 +1147,9 @@ sales   50 6494.829  8103.01250 2426.406 189.0 33181.4
 medhome 50   57.092    18.37312   53.900  34.5   120.0
 \end{verbatim}
 
-\paragraph{Show Overhead C Details. Visualizing skewed
-distributions}\label{show-overhead-c-details.-visualizing-skewed-distributions}
+Show Overhead C Details. Visualizing skewed distributions
 
+\hypertarget{toggleOver2.1C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
@@ -1157,10 +1160,9 @@ distributions}\label{show-overhead-c-details.-visualizing-skewed-distributions}
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-45-1.pdf}
 
-\paragraph{Show Overhead D Details. Visualizing relationships with a
-scatter
-plot}\label{show-overhead-d-details.-visualizing-relationships-with-a-scatter-plot}
+Show Overhead D Details. Visualizing relationships with a scatter plot
 
+\hypertarget{toggleOver2.1D}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(Lot}\OperatorTok{$}\NormalTok{pop, Lot}\OperatorTok{$}\NormalTok{sales, }\DataTypeTok{xlab =} \StringTok{"population"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"sales"}\NormalTok{)}
@@ -1169,9 +1171,9 @@ plot}\label{show-overhead-d-details.-visualizing-relationships-with-a-scatter-pl
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-46-1.pdf}
 
-\paragraph{Show Overhead E Details. Correlation
-coefficient}\label{show-overhead-e-details.-correlation-coefficient}
+Show Overhead E Details. Correlation coefficient
 
+\hypertarget{toggleOver2.1E}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{cor}\NormalTok{(Lot}\OperatorTok{$}\NormalTok{pop, Lot}\OperatorTok{$}\NormalTok{sales)}
@@ -1239,13 +1241,13 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-6}
+\subsection{Video}\label{video-5}
 
 \subsubsection{Video Overheads}\label{video-overheads}
 
-\paragraph{Show Overhead A Details. Where to fit the
-line?}\label{show-overhead-a-details.-where-to-fit-the-line}
+Show Overhead A Details. Where to fit the line?
 
+\hypertarget{toggleOver2.2A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{model_blr <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(sales }\OperatorTok{~}\StringTok{ }\NormalTok{pop, }\DataTypeTok{data =}\NormalTok{ Lot)}
@@ -1257,9 +1259,9 @@ line?}\label{show-overhead-a-details.-where-to-fit-the-line}
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-52-1.pdf}
 
-\paragraph{Show Overhead B Details. Method of least
-squares}\label{show-overhead-b-details.-method-of-least-squares}
+Show Overhead B Details. Method of least squares
 
+\hypertarget{toggleOver2.2B}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1275,9 +1277,9 @@ squares}\label{show-overhead-b-details.-method-of-least-squares}
   that minimize \(SS\).
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Regression
-coefficients}\label{show-overhead-c-details.-regression-coefficients}
+Show Overhead C Details. Regression coefficients
 
+\hypertarget{toggleOver2.2C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{model_blr <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(sales }\OperatorTok{~}\StringTok{ }\NormalTok{pop, }\DataTypeTok{data =}\NormalTok{ Lot)}
@@ -1294,9 +1296,9 @@ coefficients}\label{show-overhead-c-details.-regression-coefficients}
    469.7036      0.6471 
 \end{verbatim}
 
-\paragraph{Show Overhead D Details.
-Prediction}\label{show-overhead-d-details.-prediction}
+Show Overhead D Details. Prediction
 
+\hypertarget{toggleOver2.2D}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{round}\NormalTok{(}\KeywordTok{coefficients}\NormalTok{(model_blr), }\DataTypeTok{digits=}\DecValTok{6}\NormalTok{)}
@@ -1379,14 +1381,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-7}
+\subsection{Video}\label{video-6}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-5}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-5}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show OverheadS A and B Details. Visualizing the uncertainty
-about a
-line}\label{show-overheads-a-and-b-details.-visualizing-the-uncertainty-about-a-line}
+Show OverheadS A and B Details. Visualizing the uncertainty about a line
 
+\hypertarget{toggleOver2.3A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mar=}\KeywordTok{c}\NormalTok{(}\FloatTok{2.2}\NormalTok{,}\FloatTok{2.1}\NormalTok{,.}\DecValTok{2}\NormalTok{,.}\DecValTok{2}\NormalTok{),}\DataTypeTok{cex=}\FloatTok{1.2}\NormalTok{)}
@@ -1417,9 +1419,9 @@ line}\label{show-overheads-a-and-b-details.-visualizing-the-uncertainty-about-a-
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-59-1.pdf}
 
-\paragraph{Show Overheads C, D and E Details. ANOVA
-Table}\label{show-overheads-c-d-and-e-details.-anova-table}
+Show Overheads C, D and E Details. ANOVA Table
 
+\hypertarget{toggleOver2.3C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{model_blr <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(sales }\OperatorTok{~}\StringTok{ }\NormalTok{pop, }\DataTypeTok{data =}\NormalTok{ Lot)}
@@ -1534,13 +1536,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-8}
+\subsection{Video}\label{video-7}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-6}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-6}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Summary of basic linear regression
-model}\label{show-overhead-a-details.-summary-of-basic-linear-regression-model}
+Show Overhead A Details. Summary of basic linear regression model
 
+\hypertarget{toggleOver2.4A}{}
 Introduce the output in the \emph{summary} of the basic linear
 regression model.
 
@@ -1575,9 +1578,9 @@ Multiple R-squared:  0.7855,    Adjusted R-squared:  0.781
 F-statistic: 175.8 on 1 and 48 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
-\paragraph{Show Overhead B Details. Hypothesis
-testing}\label{show-overhead-b-details.-hypothesis-testing}
+Show Overhead B Details. Hypothesis testing
 
+\hypertarget{toggleOver2.4B}{}
 \begin{verbatim}
 > summary(model_blr)$coefficients
             Estimate Std. Error t value  Pr(>|t|)
@@ -1585,9 +1588,9 @@ testing}\label{show-overhead-b-details.-hypothesis-testing}
 pop           0.6471    0.04881 13.2579 1.158e-17
 \end{verbatim}
 
-\paragraph{Show Overhead C Details. Confidence
-intervals}\label{show-overhead-c-details.-confidence-intervals}
+Show Overhead C Details. Confidence intervals
 
+\hypertarget{toggleOver2.4C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{confint}\NormalTok{(model_blr, }\DataTypeTok{level =}\NormalTok{ .}\DecValTok{90}\NormalTok{)}
@@ -1604,9 +1607,9 @@ pop            0.5652327    0.7289569
 pop            0.5489596    0.74523
 \end{verbatim}
 
-\paragraph{Show Overhead D Details. Confidence intervals
-check}\label{show-overhead-d-details.-confidence-intervals-check}
+Show Overhead D Details. Confidence intervals check
 
+\hypertarget{toggleOver2.4D}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Just for checking}
@@ -1635,9 +1638,9 @@ pop            0.5489596    0.74523
 pop            0.5489596    0.74523
 \end{verbatim}
 
-\paragraph{Show Overhead E Details. Prediction
-intervals}\label{show-overhead-e-details.-prediction-intervals}
+Show Overhead E Details. Prediction intervals
 
+\hypertarget{toggleOver2.4E}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{NewData <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{pop =} \DecValTok{10000}\NormalTok{)}
@@ -1713,13 +1716,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-9}
+\subsection{Video}\label{video-8}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-7}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-7}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Unusual observations in
-regression}\label{show-overhead-a-details.-unusual-observations-in-regression}
+Show Overhead A Details. Unusual observations in regression
 
+\hypertarget{toggleOver2.5A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1741,9 +1745,9 @@ regression}\label{show-overhead-a-details.-unusual-observations-in-regression}
   point}.
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Example. Outliers and High Leverage
-Points}\label{show-overhead-b-details.-example.-outliers-and-high-leverage-points}
+Show Overhead B Details. Example. Outliers and High Leverage Points
 
+\hypertarget{toggleOver2.5B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{outlr <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"CSVData}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{Outlier.csv"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{)}
@@ -1758,9 +1762,9 @@ Points}\label{show-overhead-b-details.-example.-outliers-and-high-leverage-point
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-77-1.pdf}
 
-\paragraph{Show Overhead C Details. Regression fit with 19 base
-observations}\label{show-overhead-c-details.-regression-fit-with-19-base-observations}
+Show Overhead C Details. Regression fit with 19 base observations
 
+\hypertarget{toggleOver2.5C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{model_outlr0 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(y }\OperatorTok{~}\StringTok{ }\NormalTok{x, }\DataTypeTok{data =}\NormalTok{ outlr, }\DataTypeTok{subset =} \OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{21}\NormalTok{,}\DecValTok{22}\NormalTok{))}
@@ -1793,10 +1797,9 @@ Multiple R-squared:  0.8896,    Adjusted R-squared:  0.8831
 F-statistic:   137 on 1 and 17 DF,  p-value: 1.471e-09
 \end{verbatim}
 
-\paragraph{Show Overhead D Details. Regression fit with 19 base
-observations plus
-C}\label{show-overhead-d-details.-regression-fit-with-19-base-observations-plus-c}
+Show Overhead D Details. Regression fit with 19 base observations plus C
 
+\hypertarget{toggleOver2.5D}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{model_outlrC <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(y }\OperatorTok{~}\StringTok{ }\NormalTok{x, }\DataTypeTok{data =}\NormalTok{ outlr, }\DataTypeTok{subset =} \OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{21}\NormalTok{))}
@@ -1830,9 +1833,9 @@ Multiple R-squared:  0.1031,    Adjusted R-squared:  0.0533
 F-statistic:  2.07 on 1 and 18 DF,  p-value: 0.1674
 \end{verbatim}
 
-\paragraph{Show Overhead E Details. R
-code}\label{show-overhead-e-details.-r-code}
+Show Overhead E Details. R code
 
+\hypertarget{toggleOver2.5E}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{model_outlr0 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(y }\OperatorTok{~}\StringTok{ }\NormalTok{x, }\DataTypeTok{data =}\NormalTok{ outlr, }\DataTypeTok{subset =} \OperatorTok{-}\KeywordTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{21}\NormalTok{,}\DecValTok{22}\NormalTok{))}
@@ -1924,9 +1927,9 @@ Multiple R-squared:  0.1031,    Adjusted R-squared:  0.0533
 F-statistic:  2.07 on 1 and 18 DF,  p-value: 0.1674
 \end{verbatim}
 
-\paragraph{Show Overhead F Details. Visualizing four regression
-fits}\label{show-overhead-f-details.-visualizing-four-regression-fits}
+Show Overhead F Details. Visualizing four regression fits
 
+\hypertarget{toggleOver2.5F}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(outlr}\OperatorTok{$}\NormalTok{x, outlr}\OperatorTok{$}\NormalTok{y, }\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{9}\NormalTok{), }\DataTypeTok{xlab =} \StringTok{"x"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"y"}\NormalTok{)}
@@ -1942,9 +1945,9 @@ fits}\label{show-overhead-f-details.-visualizing-four-regression-fits}
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-81-1.pdf}
 
-\paragraph{Show Overhead G Details. Results from four regression
-models}\label{show-overhead-g-details.-results-from-four-regression-models}
+Show Overhead G Details. Results from four regression models
 
+\hypertarget{toggleOver2.5G}{}
 \[\begin{matrix}
 \begin{array}{c}
 \text{Results from Four Regressions}
@@ -2005,11 +2008,12 @@ applications.
 \section*{Term Life Data}\label{term-life-data}
 \addcontentsline{toc}{section}{Term Life Data}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-8}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-8}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Demand for term life
-insurance}\label{show-overhead-a-details.-demand-for-term-life-insurance}
+Show Overhead A Details. Demand for term life insurance
 
+\hypertarget{toggleOver3.0A}{}
 ``Who buys insurance and how much do they buy?''
 
 \begin{itemize}
@@ -2036,9 +2040,9 @@ To understand demand, consider the Survey of Consumer Finances
   insurance
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Term life insurance summary
-statistics}\label{show-overhead-b-details.-term-life-insurance-summary-statistics}
+Show Overhead B Details. Term life insurance summary statistics
 
+\hypertarget{toggleOver3.0B}{}
 We study \emph{y = face}, the amount that the company will pay in the
 event of the death of the named insured.
 
@@ -2049,9 +2053,9 @@ the number of household members, \emph{numhh}.
 The data suggest that \emph{income} and \emph{face} are skewed so we
 also introduce logarithmic versions.
 
-\paragraph{Show Overhead C Details. Summary
-statistics}\label{show-overhead-c-details.-summary-statistics}
+Show Overhead C Details. Summary statistics
 
+\hypertarget{toggleOver3.0C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#Term <- read.csv("CSVData\textbackslash{}\textbackslash{}term_life.csv", header = TRUE)}
@@ -2101,10 +2105,10 @@ logincome     11.15       1.30   5.56     11.08 1.612e+01 275
 numhh          2.96       1.49   1.00      3.00 9.000e+00 275
 \end{verbatim}
 
-\paragraph{Show Overhead D Details. Scatter plots of income versus face
-in original and logarithmic
-units}\label{show-overhead-d-details.-scatter-plots-of-income-versus-face-in-original-and-logarithmic-units}
+Show Overhead D Details. Scatter plots of income versus face in original
+and logarithmic units
 
+\hypertarget{toggleOver3.0D}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
@@ -2133,13 +2137,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-10}
+\subsection{Video}\label{video-9}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-9}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-9}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Correlation
-table}\label{show-overhead-a-details.-correlation-table}
+Show Overhead A Details. Correlation table
 
+\hypertarget{toggleOver3.1A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(Term2), }\DataTypeTok{digits=}\DecValTok{3}\NormalTok{)}
@@ -2156,9 +2161,9 @@ logincome     0.343 0.323  0.518   0.482     1.000  0.179
 numhh        -0.064 0.107  0.142   0.288     0.179  1.000
 \end{verbatim}
 
-\paragraph{Show Overhead B Details. Scatterplot
-matrix}\label{show-overhead-b-details.-scatterplot-matrix}
+Show Overhead B Details. Scatterplot matrix
 
+\hypertarget{toggleOver3.1B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Term3 <-}\StringTok{ }\NormalTok{Term1[,}\KeywordTok{c}\NormalTok{(}\StringTok{"numhh"}\NormalTok{, }\StringTok{"education"}\NormalTok{, }\StringTok{"logincome"}\NormalTok{, }\StringTok{"logface"}\NormalTok{)]}
@@ -2168,9 +2173,9 @@ matrix}\label{show-overhead-b-details.-scatterplot-matrix}
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-93-1.pdf}
 
-\paragraph{Show Overhead C Details. Visualizing a regression
-plane}\label{show-overhead-c-details.-visualizing-a-regression-plane}
+Show Overhead C Details. Visualizing a regression plane
 
+\hypertarget{toggleOver3.1C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{education <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{16}\NormalTok{, }\DataTypeTok{length =} \DecValTok{15}\NormalTok{)}
@@ -2214,9 +2219,9 @@ plane}\label{show-overhead-c-details.-visualizing-a-regression-plane}
 \end{Highlighting}
 \end{Shaded}
 
-\paragraph{Show Overhead D Details. Method of least
-squares}\label{show-overhead-d-details.-method-of-least-squares}
+Show Overhead D Details. Method of least squares
 
+\hypertarget{toggleOver3.1D}{}
 \begin{itemize}
 \tightlist
 \item
@@ -2233,9 +2238,9 @@ squares}\label{show-overhead-d-details.-method-of-least-squares}
   \(b_0, \ldots, b_k\) that minimize \(SS\).
 \end{itemize}
 
-\paragraph{Show Overhead E Details. Fit a multiple linear regression
-model}\label{show-overhead-e-details.-fit-a-multiple-linear-regression-model}
+Show Overhead E Details. Fit a multiple linear regression model
 
+\hypertarget{toggleOver3.1E}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Term_mlr <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(logface }\OperatorTok{~}\StringTok{ }\NormalTok{education }\OperatorTok{+}\StringTok{ }\NormalTok{numhh }\OperatorTok{+}\StringTok{ }\NormalTok{logincome, }\DataTypeTok{data =}\NormalTok{ Term2)}
@@ -2415,13 +2420,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-11}
+\subsection{Video}\label{video-10}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-10}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-10}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Goodness of
-fit}\label{show-overhead-a-details.-goodness-of-fit}
+Show Overhead A Details. Goodness of fit
 
+\hypertarget{toggleOver3.2A}{}
 Summarize
 
 \begin{itemize}
@@ -2438,9 +2444,9 @@ Summarize
   ANOVA table
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Goodness of fit and term
-life}\label{show-overhead-b-details.-goodness-of-fit-and-term-life}
+Show Overhead B Details. Goodness of fit and term life
 
+\hypertarget{toggleOver3.2B}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Term_mlr <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(logface }\OperatorTok{~}\StringTok{ }\NormalTok{education }\OperatorTok{+}\StringTok{ }\NormalTok{numhh }\OperatorTok{+}\StringTok{ }\NormalTok{logincome, }\DataTypeTok{data =}\NormalTok{ Term2)}
@@ -2483,9 +2489,9 @@ Residuals 271 630.43   2.326
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{verbatim}
 
-\paragraph{Show Overhead C Details. Statistical
-inference}\label{show-overhead-c-details.-statistical-inference}
+Show Overhead C Details. Statistical inference
 
+\hypertarget{toggleOver3.2C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -2494,9 +2500,9 @@ inference}\label{show-overhead-c-details.-statistical-inference}
   confidence intervals
 \end{itemize}
 
-\paragraph{Show Overhead D Details. Statistical inference and term
-life}\label{show-overhead-d-details.-statistical-inference-and-term-life}
+Show Overhead D Details. Statistical inference and term life
 
+\hypertarget{toggleOver3.2D}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Term_mlr <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(logface }\OperatorTok{~}\StringTok{ }\NormalTok{education }\OperatorTok{+}\StringTok{ }\NormalTok{numhh }\OperatorTok{+}\StringTok{ }\NormalTok{logincome, }\DataTypeTok{data =}\NormalTok{ Term2)}
@@ -2581,13 +2587,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-12}
+\subsection{Video}\label{video-11}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-11}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-11}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Binary
-variables}\label{show-overhead-a-details.-binary-variables}
+Show Overhead A Details. Binary variables
 
+\hypertarget{toggleOver3.3A}{}
 \begin{itemize}
 \item
   We can define a new variable \[
@@ -2614,12 +2621,13 @@ variables}\label{show-overhead-a-details.-binary-variables}
 resulting theoretical properties, are the still valid when using binary
 variables.
 
-\paragraph{Show Overhead B Details. Visualize effect of binary
-variables}\label{show-overhead-b-details.-visualize-effect-of-binary-variables}
+Show Overhead B Details. Visualize effect of binary variables
 
-\paragraph{Show Overhead C Details. R script for
-visualization}\label{show-overhead-c-details.-r-script-for-visualization}
+\hypertarget{toggleOver3.3B}{}
 
+Show Overhead C Details. R script for visualization
+
+\hypertarget{toggleOver3.3C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Term4 <-}\StringTok{ }\NormalTok{Term1[,}\KeywordTok{c}\NormalTok{(}\StringTok{"numhh"}\NormalTok{, }\StringTok{"education"}\NormalTok{, }\StringTok{"logincome"}\NormalTok{, }\StringTok{"logface"}\NormalTok{, }\StringTok{"marstat"}\NormalTok{)]}
@@ -2665,9 +2673,9 @@ Multiple R-squared:  0.2605,    Adjusted R-squared:  0.255
 F-statistic:  47.9 on 2 and 272 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
-\paragraph{Show Overhead D Details. Interaction
-Terms}\label{show-overhead-d-details.-interaction-terms}
+Show Overhead D Details. Interaction Terms
 
+\hypertarget{toggleOver3.3D}{}
 \begin{itemize}
 \tightlist
 \item
@@ -2690,10 +2698,10 @@ Terms}\label{show-overhead-d-details.-interaction-terms}
 \end{array} \right. .
 \]
 
-\paragraph{Show Overhead E Details. Visualizing binary variables with
-interactions
-terms}\label{show-overhead-e-details.-visualizing-binary-variables-with-interactions-terms}
+Show Overhead E Details. Visualizing binary variables with interactions
+terms
 
+\hypertarget{toggleOver3.3E}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Term4 <-}\StringTok{ }\NormalTok{Term1[,}\KeywordTok{c}\NormalTok{(}\StringTok{"numhh"}\NormalTok{, }\StringTok{"education"}\NormalTok{, }\StringTok{"logincome"}\NormalTok{, }\StringTok{"logface"}\NormalTok{, }\StringTok{"marstat"}\NormalTok{)]}
@@ -2800,13 +2808,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-13}
+\subsection{Video}\label{video-12}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-12}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-12}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Categorical
-variables}\label{show-overhead-a-details.-categorical-variables}
+Show Overhead A Details. Categorical variables
 
+\hypertarget{toggleOver3.4A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -2844,9 +2853,9 @@ variables}\label{show-overhead-a-details.-categorical-variables}
   explanatory variable.
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Term life
-example}\label{show-overhead-b-details.-term-life-example}
+Show Overhead B Details. Term life example
 
+\hypertarget{toggleOver3.4B}{}
 \begin{itemize}
 \tightlist
 \item
@@ -2872,9 +2881,9 @@ example}\label{show-overhead-b-details.-term-life-example}
   \end{itemize}
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Term life
-boxplots}\label{show-overhead-c-details.-term-life-boxplots}
+Show Overhead C Details. Term life boxplots
 
+\hypertarget{toggleOver3.4C}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# Pre-exercise code}
@@ -2906,9 +2915,9 @@ boxplots}\label{show-overhead-c-details.-term-life-boxplots}
  57 208  10 
 \end{verbatim}
 
-\paragraph{Show Overhead D Details. Regression with a categorical
-variable}\label{show-overhead-d-details.-regression-with-a-categorical-variable}
+Show Overhead D Details. Regression with a categorical variable
 
+\hypertarget{toggleOver3.4D}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{Term4}\OperatorTok{$}\NormalTok{marstat <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(Term4}\OperatorTok{$}\NormalTok{marstat)}
@@ -2943,9 +2952,9 @@ Multiple R-squared:  0.358, Adjusted R-squared:  0.3461
 F-statistic:    30 on 5 and 269 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
-\paragraph{Show Overhead E Details. t-ratios depend on the reference
-level}\label{show-overhead-e-details.-t-ratios-depend-on-the-reference-level}
+Show Overhead E Details. t-ratios depend on the reference level
 
+\hypertarget{toggleOver3.4E}{}
 \[
 \begin{array}{l|rr|rr|rr}
  \hline
@@ -3035,14 +3044,15 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-14}
+\subsection{Video}\label{video-13}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-13}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-13}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Testing the significance of a
-categorical
-variable}\label{show-overhead-a-details.-testing-the-significance-of-a-categorical-variable}
+Show Overhead A Details. Testing the significance of a categorical
+variable
 
+\hypertarget{toggleOver3.5A}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#Term <- read.csv("CSVData\textbackslash{}\textbackslash{}term_life.csv", header = TRUE)}
@@ -3075,9 +3085,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 p-value is 0.04085475
 \end{verbatim}
 
-\paragraph{Show Overhead B Details. Overview of the general linear
-hypothesis}\label{show-overhead-b-details.-overview-of-the-general-linear-hypothesis}
+Show Overhead B Details. Overview of the general linear hypothesis
 
+\hypertarget{toggleOver3.5B}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3104,10 +3114,10 @@ hypothesis}\label{show-overhead-b-details.-overview-of-the-general-linear-hypoth
   (for normally distributed data)
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Procedure for conducting the general
-linear
-hypothesis}\label{show-overhead-c-details.-procedure-for-conducting-the-general-linear-hypothesis}
+Show Overhead C Details. Procedure for conducting the general linear
+hypothesis
 
+\hypertarget{toggleOver3.5C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3128,10 +3138,10 @@ hypothesis}\label{show-overhead-c-details.-procedure-for-conducting-the-general-
   of freedom for the full model.)
 \end{itemize}
 
-\paragraph{Show Overhead D Details. The general linear hypothesis for a
-single
-variable}\label{show-overhead-d-details.-the-general-linear-hypothesis-for-a-single-variable}
+Show Overhead D Details. The general linear hypothesis for a single
+variable
 
+\hypertarget{toggleOver3.5D}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3519,13 +3529,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-15}
+\subsection{Video}\label{video-14}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-14}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-14}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Iterative
-approach}\label{show-overhead-a-details.-iterative-approach}
+Show Overhead A Details. Iterative approach
 
+\hypertarget{toggleOver4.1A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3582,9 +3593,9 @@ approach}\label{show-overhead-a-details.-iterative-approach}
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-138-1.pdf}
 
-\paragraph{Show Overhead B Details. Many possible
-models}\label{show-overhead-b-details.-many-possible-models}
+Show Overhead B Details. Many possible models
 
+\hypertarget{toggleOver4.1B}{}
 \[
 \begin{array}{l|r}
 \hline
@@ -3606,9 +3617,9 @@ models}\label{show-overhead-b-details.-many-possible-models}
   There are infinitely many nonlinear ones!!
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Model
-validation}\label{show-overhead-c-details.-model-validation}
+Show Overhead C Details. Model validation
 
+\hypertarget{toggleOver4.1C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3703,13 +3714,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-16}
+\subsection{Video}\label{video-15}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-15}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-15}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Classic stepwise regression
-algorithm}\label{show-overhead-a-details.-classic-stepwise-regression-algorithm}
+Show Overhead A Details. Classic stepwise regression algorithm
 
+\hypertarget{toggleOver4.2A}{}
 Suppose that the analyst has identified one variable as the outcome,
 \(y\), and \(k\) potential explanatory variables,
 \(x_1, x_2, \ldots, x_k\).
@@ -3731,9 +3743,9 @@ Suppose that the analyst has identified one variable as the outcome,
   deletions are performed.
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Drawbacks of stepwise
-regression}\label{show-overhead-b-details.-drawbacks-of-stepwise-regression}
+Show Overhead B Details. Drawbacks of stepwise regression
 
+\hypertarget{toggleOver4.2B}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3752,9 +3764,9 @@ regression}\label{show-overhead-b-details.-drawbacks-of-stepwise-regression}
   \end{itemize}
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Data-snooping in stepwise
-regression}\label{show-overhead-c-details.-data-snooping-in-stepwise-regression}
+Show Overhead C Details. Data-snooping in stepwise regression
 
+\hypertarget{toggleOver4.2C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3783,9 +3795,9 @@ Multiple R-squared:  0.1401,    Adjusted R-squared:  0.1132
 F-statistic: 5.212 on 3 and 96 DF,  p-value: 0.002233
 \end{verbatim}
 
-\paragraph{Show Overhead D Details. Variants of stepwise
-regression}\label{show-overhead-d-details.-variants-of-stepwise-regression}
+Show Overhead D Details. Variants of stepwise regression
 
+\hypertarget{toggleOver4.2D}{}
 This uses the \texttt{R} function
 \href{https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/step}{step()}
 
@@ -3809,9 +3821,9 @@ This uses the \texttt{R} function
   be included
 \end{itemize}
 
-\paragraph{Show Overhead E Details. Automatic variable selection
-procedures}\label{show-overhead-e-details.-automatic-variable-selection-procedures}
+Show Overhead E Details. Automatic variable selection procedures
 
+\hypertarget{toggleOver4.2E}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3897,13 +3909,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-17}
+\subsection{Video}\label{video-16}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-16}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-16}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Residual
-analysis}\label{show-overhead-a-details.-residual-analysis}
+Show Overhead A Details. Residual analysis
 
+\hypertarget{toggleOver4.3A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3920,10 +3933,9 @@ analysis}\label{show-overhead-a-details.-residual-analysis}
   information to improve the model specification.
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Using residuals to select
-explanatory
-variables}\label{show-overhead-b-details.-using-residuals-to-select-explanatory-variables}
+Show Overhead B Details. Using residuals to select explanatory variables
 
+\hypertarget{toggleOver4.3B}{}
 \begin{itemize}
 \tightlist
 \item
@@ -3940,10 +3952,10 @@ variables}\label{show-overhead-b-details.-using-residuals-to-select-explanatory-
   for this additional variable.
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Detecting relationships between
-residuals and explanatory
-variables}\label{show-overhead-c-details.-detecting-relationships-between-residuals-and-explanatory-variables}
+Show Overhead C Details. Detecting relationships between residuals and
+explanatory variables
 
+\hypertarget{toggleOver4.3C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4153,13 +4165,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-18}
+\subsection{Video}\label{video-17}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-17}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-17}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Unusual observationsUnusual
-observations}\label{show-overhead-a-details.-unusual-observationsunusual-observations}
+Show Overhead A Details. Unusual observationsUnusual observations
 
+\hypertarget{toggleOver4.4A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4189,9 +4202,9 @@ observations}\label{show-overhead-a-details.-unusual-observationsunusual-observa
   \end{itemize}
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Standardized
-residuals}\label{show-overhead-b-details.-standardized-residuals}
+Show Overhead B Details. Standardized residuals
 
+\hypertarget{toggleOver4.4B}{}
 We standardize residuals so that we can focus on relationships of
 interest and achieve carry-over of experience from one data set to
 another.
@@ -4216,9 +4229,9 @@ Three commonly used definitions of standardize residuals are:
   independent of the denominator.
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Outlier - an unusal standardized
-residual}\label{show-overhead-c-details.-outlier---an-unusal-standardized-residual}
+Show Overhead C Details. Outlier - an unusal standardized residual
 
+\hypertarget{toggleOver4.4C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4243,9 +4256,9 @@ residual}\label{show-overhead-c-details.-outlier---an-unusal-standardized-residu
   \end{itemize}
 \end{itemize}
 
-\paragraph{Show Overhead D Details. High leverage
-points}\label{show-overhead-d-details.-high-leverage-points}
+Show Overhead D Details. High leverage points
 
+\hypertarget{toggleOver4.4D}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4260,9 +4273,9 @@ points}\label{show-overhead-d-details.-high-leverage-points}
   a binary indicator variable.
 \end{itemize}
 
-\paragraph{Show Overhead E Details. High leverage point
-graph}\label{show-overhead-e-details.-high-leverage-point-graph}
+Show Overhead E Details. High leverage point graph
 
+\hypertarget{toggleOver4.4E}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(cluster)}
@@ -4280,9 +4293,9 @@ graph}\label{show-overhead-e-details.-high-leverage-point-graph}
 
 \includegraphics{RegressModelDataCamp_files/figure-latex/unnamed-chunk-149-1.pdf}
 
-\paragraph{Show Overhead F Details.
-Leverage}\label{show-overhead-f-details.-leverage}
+Show Overhead F Details. Leverage
 
+\hypertarget{toggleOver4.4F}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4408,13 +4421,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-19}
+\subsection{Video}\label{video-18}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-18}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-18}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details.
-Collinearity}\label{show-overhead-a-details.-collinearity}
+Show Overhead A Details. Collinearity
 
+\hypertarget{toggleOver4.5A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4454,9 +4468,9 @@ Collinearity}\label{show-overhead-a-details.-collinearity}
   \end{itemize}
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Quantifying
-collinearity}\label{show-overhead-b-details.-quantifying-collinearity}
+Show Overhead B Details. Quantifying collinearity
 
+\hypertarget{toggleOver4.5B}{}
 A common way to quantify collinearity is through the \emph{variance
 inflation factor (VIF)}.
 
@@ -4479,9 +4493,9 @@ inflation factor (VIF)}.
 VIF_{j}=\frac{1}{1-R_{j}^{2}},\ \ \ \text{ for } j = 1,2,\ldots, k.
 \]
 
-\paragraph{Show Overhead C Details. Options for handling
-collinearity}\label{show-overhead-c-details.-options-for-handling-collinearity}
+Show Overhead C Details. Options for handling collinearity
 
+\hypertarget{toggleOver4.5C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4572,13 +4586,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-20}
+\subsection{Video}\label{video-19}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-19}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-19}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Goodness of
-fit}\label{show-overhead-a-details.-goodness-of-fit-1}
+Show Overhead A Details. Goodness of fit
 
+\hypertarget{toggleOver4.6A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4600,9 +4615,9 @@ fit}\label{show-overhead-a-details.-goodness-of-fit-1}
   \end{itemize}
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Goodness of fit and information
-criteria}\label{show-overhead-b-details.-goodness-of-fit-and-information-criteria}
+Show Overhead B Details. Goodness of fit and information criteria
 
+\hypertarget{toggleOver4.6B}{}
 A general measure is \emph{Akaike's Information Criterion}, defined as
 
 \[
@@ -4632,9 +4647,9 @@ AIC = n \ln (s^2) + n \ln (2 \pi) +n +k + 3 .
   model selection based on minimizing \(AIC\) (same \emph{k}).
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Out of sample
-validation}\label{show-overhead-c-details.-out-of-sample-validation}
+Show Overhead C Details. Out of sample validation
 
+\hypertarget{toggleOver4.6C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4648,9 +4663,9 @@ validation}\label{show-overhead-c-details.-out-of-sample-validation}
   validation}, or \emph{test} data set, held out for this purpose.
 \end{itemize}
 
-\paragraph{Show Overhead D Details. Out of sample validation
-procedure}\label{show-overhead-d-details.-out-of-sample-validation-procedure}
+Show Overhead D Details. Out of sample validation procedure
 
+\hypertarget{toggleOver4.6D}{}
 \begin{itemize}
 \item
   \begin{enumerate}
@@ -4685,9 +4700,9 @@ procedure}\label{show-overhead-d-details.-out-of-sample-validation-procedure}
 Repeat Steps (i) through (iii) for each candidate model. Choose the
 model with the smallest \emph{SAPE}.
 
-\paragraph{Show Overhead E Details. Cross -
-validation}\label{show-overhead-e-details.-cross---validation}
+Show Overhead E Details. Cross - validation
 
+\hypertarget{toggleOver4.6E}{}
 \begin{itemize}
 \tightlist
 \item
@@ -4805,13 +4820,14 @@ variable selection.
 \section{Case study: MEPS health
 expenditures}\label{case-study-meps-health-expenditures}
 
-\subsection{Video}\label{video-21}
+\subsection{Video}\label{video-20}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-20}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-20}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. MEPS health
-expenditures}\label{show-overhead-a-details.-meps-health-expenditures}
+Show Overhead A Details. MEPS health expenditures
 
+\hypertarget{toggleOver5.1A}{}
 This exercise considers data from the \emph{Medical Expenditure Panel
 Survey} (MEPS), conducted by the U.S. Agency of Health Research and
 Quality. MEPS is a probability survey that provides nationally
@@ -4844,9 +4860,9 @@ inpatient expenditures. Prescribed medicines that can be linked to
 hospital admissions were included in inpatient expenditures, not in
 outpatient utilization.)
 
-\paragraph{Show Overhead B Details. Overhead MEPS health
-expenditures}\label{show-overhead-b-details.-overhead-meps-health-expenditures}
+Show Overhead B Details. Overhead MEPS health expenditures
 
+\hypertarget{toggleOver5.1B}{}
 Data from the Medical Expenditure Panel Survey (MEPS), conducted by the
 U.S. Agency of Health Research and Quality (AHRQ).
 
@@ -4883,9 +4899,9 @@ U.S. Agency of Health Research and Quality (AHRQ).
   sample of \emph{n} = 2, 000 individuals between ages 18 and 65.
 \end{itemize}
 
-\paragraph{Show Overhead C Details. Outcome
-variable}\label{show-overhead-c-details.-outcome-variable}
+Show Overhead C Details. Outcome variable
 
+\hypertarget{toggleOver5.1C}{}
 Our dependent variable is expenditures for outpatient admissions.
 
 \begin{itemize}
@@ -4914,9 +4930,9 @@ Our dependent variable is expenditures for outpatient admissions.
   \end{itemize}
 \end{itemize}
 
-\paragraph{Show Overhead D Details. Explanatory
-variables}\label{show-overhead-d-details.-explanatory-variables}
+Show Overhead D Details. Explanatory variables
 
+\hypertarget{toggleOver5.1D}{}
 9 variables in the database. Here 13 most relevant.
 
 \[
@@ -4938,9 +4954,9 @@ managedcare & \text{1 if enrolled in an HMO or gatekeeper plan} \\
 \end{array}}
 \]
 
-\paragraph{Show Overhead E Details. Case study
-outline}\label{show-overhead-e-details.-case-study-outline}
+Show Overhead E Details. Case study outline
 
+\hypertarget{toggleOver5.1E}{}
 The next series of exercises leads you through an analysis of the steps
 for understanding a complex data set. Because of the complexity of the
 data, in each step only a sample of procedures will be executed.
@@ -5216,13 +5232,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-22}
+\subsection{Video}\label{video-21}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-21}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-21}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. Interpreting individual
-effects}\label{show-overhead-a-details.-interpreting-individual-effects}
+Show Overhead A Details. Interpreting individual effects
 
+\hypertarget{toggleOver5.2A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -5271,9 +5288,9 @@ effects}\label{show-overhead-a-details.-interpreting-individual-effects}
   \end{itemize}
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Other
-Interpretations}\label{show-overhead-b-details.-other-interpretations}
+Show Overhead B Details. Other Interpretations
 
+\hypertarget{toggleOver5.2B}{}
 \begin{itemize}
 \tightlist
 \item
@@ -5355,13 +5372,14 @@ In this section, you learn how to:
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\subsection{Video}\label{video-23}
+\subsection{Video}\label{video-22}
 
-\subsubsection{Video Overhead Details}\label{video-overhead-details-22}
+\subsubsection*{Video Overhead Details}\label{video-overhead-details-22}
+\addcontentsline{toc}{subsubsection}{Video Overhead Details}
 
-\paragraph{Show Overhead A Details. The importance of variable
-selection}\label{show-overhead-a-details.-the-importance-of-variable-selection}
+Show Overhead A Details. The importance of variable selection
 
+\hypertarget{toggleOver5.3A}{}
 \begin{itemize}
 \tightlist
 \item
@@ -5381,10 +5399,10 @@ selection}\label{show-overhead-a-details.-the-importance-of-variable-selection}
   inaccurate.
 \end{itemize}
 
-\paragraph{Show Overhead B Details. Example. Regression using one
-explanatory
-variable}\label{show-overhead-b-details.-example.-regression-using-one-explanatory-variable}
+Show Overhead B Details. Example. Regression using one explanatory
+variable
 
+\hypertarget{toggleOver5.3B}{}
 \begin{itemize}
 \tightlist
 \item
@@ -5428,9 +5446,9 @@ Bias  = \text{E }\bar{y} - \text{E }(\beta_0 + \beta_1 x + \varepsilon) \\
 There is a persistent, long-term error in omitting the explanatory
 variable \(x\).
 
-\paragraph{Show Overhead C Details. Principle of
-parsimony}\label{show-overhead-c-details.-principle-of-parsimony}
+Show Overhead C Details. Principle of parsimony
 
+\hypertarget{toggleOver5.3C}{}
 \begin{itemize}
 \tightlist
 \item
@@ -5464,8 +5482,6 @@ parsimony}\label{show-overhead-c-details.-principle-of-parsimony}
     actuarial applications.
   \end{itemize}
 \end{itemize}
-
-\subsubsection{MC Exercise}\label{mc-exercise}
 
  \textbf{MC Exercise. Which of the following is true about under- and
 over-fitting a model?}
