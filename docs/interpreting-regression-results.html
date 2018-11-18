@@ -47,6 +47,25 @@
 
 
 <script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script language="javascript">
 function toggle(id1,id2) {
 	var ele = document.getElementById(id1); var text = document.getElementById(id2);
 	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
@@ -350,16 +369,42 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_itjvn841&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_i3ynk1nx" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-20" class="section level4 tabset">
-<h4><span class="header-section-number">5.1.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-meps-health-expenditures" class="section level5">
-<h5><span class="header-section-number">5.1.1.1.1</span> Show Overhead A Details. MEPS health expenditures</h5>
+<div id="video-overhead-details-20" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over5.1A')">
+A Details. MEPS health expenditures
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over5.1B')">
+B Details. Overhead MEPS health expenditures
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over5.1C')">
+C Details. Outcome variable
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over5.1D')">
+D Details. Explanatory variables
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over5.1E')">
+E Details. Case study outline
+</button>
+</div>
+<div id="Over5.1A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. MEPS health expenditures
+</h3>
+<p>
 <p>This exercise considers data from the <em>Medical Expenditure Panel Survey</em> (MEPS), conducted by the U.S. Agency of Health Research and Quality. MEPS is a probability survey that provides nationally representative estimates of health care use, expenditures, sources of payment, and insurance coverage for the U.S. civilian population. This survey collects detailed information on individuals of each medical care episode by type of services including physician office visits, hospital emergency room visits, hospital outpatient visits, hospital inpatient stays, all other medical provider visits, and use of prescribed medicines. This detailed information allows one to develop models of health care utilization to predict future expenditures. You can learn more about MEPS at <a href="http://www.meps.ahrq.gov/mepsweb/" class="uri">http://www.meps.ahrq.gov/mepsweb/</a>.</p>
 <p>We consider MEPS data from the panels 7 and 8 of 2003 that consists of 18,735 individuals between ages 18 and 65. From this sample, we took a random sample of 2,000 individuals that appear in the file <code>HealthExpend</code>. From this sample, there are 1,352 that had positive outpatient expenditures.</p>
 <p>Our dependent variable is the amount of expenditures for outpatient visits, <code>expendop</code>. For MEPS, outpatient events include hospital outpatient department visits, office-based provider visits and emergency room visits excluding dental services. (Dental services, compared to other types of health care services, are more predictable and occur in a more regular basis.) Hospital stays with the same date of admission and discharge, known as “zero-night stays,” were included in outpatient counts and expenditures. (Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures. Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.)</p>
+</p>
 </div>
-<div id="show-overhead-b-details.-overhead-meps-health-expenditures" class="section level5">
-<h5><span class="header-section-number">5.1.1.1.2</span> Show Overhead B Details. Overhead MEPS health expenditures</h5>
+<div id="Over5.1B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Overhead MEPS health expenditures
+</h3>
+<p>
 <p>Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Agency of Health Research and Quality (AHRQ).</p>
 <ul>
 <li>A probability survey that provides nationally representative estimates of health care use, expenditures, sources of payment, and insurance coverage for the U.S. civilian population.</li>
@@ -375,9 +420,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>This detailed information allows one to develop models of health care utilization to predict future expenditures.</li>
 <li>We consider MEPS data from the first panel of 2003 and take a random sample of <em>n</em> = 2, 000 individuals between ages 18 and 65.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-c-details.-outcome-variable" class="section level5">
-<h5><span class="header-section-number">5.1.1.1.3</span> Show Overhead C Details. Outcome variable</h5>
+<div id="Over5.1C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Outcome variable
+</h3>
+<p>
 <p>Our dependent variable is expenditures for outpatient admissions.</p>
 <ul>
 <li>For MEPS, inpatient admissions include persons who were admitted to a hospital and stayed overnight.</li>
@@ -388,9 +438,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.</li>
 </ul></li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-d-details.-explanatory-variables" class="section level5">
-<h5><span class="header-section-number">5.1.1.1.4</span> Show Overhead D Details. Explanatory variables</h5>
+<div id="Over5.1D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Explanatory variables
+</h3>
+<p>
 <p>9 variables in the database. Here 13 most relevant.</p>
 <p><span class="math display">\[
 {\small \begin{array}{ll}
@@ -410,9 +465,14 @@ unemploy    &amp; \text{Employment status of patients} \\
 managedcare &amp; \text{1 if enrolled in an HMO or gatekeeper plan} \\
 \end{array}}
 \]</span></p>
+</p>
 </div>
-<div id="show-overhead-e-details.-case-study-outline" class="section level5">
-<h5><span class="header-section-number">5.1.1.1.5</span> Show Overhead E Details. Case study outline</h5>
+<div id="Over5.1E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Case study outline
+</h3>
+<p>
 <p>The next series of exercises leads you through an analysis of the steps for understanding a complex data set. Because of the complexity of the data, in each step only a sample of procedures will be executed.</p>
 <p>The outline consists of:</p>
 <ul>
@@ -420,6 +480,7 @@ managedcare &amp; \text{1 if enrolled in an HMO or gatekeeper plan} \\
 <li>Splitting the data into training and testing portions with initial model fits</li>
 <li>Selecting variables to be included in the model</li>
 </ul>
+</p>
 </div>
 </div>
 </div>
@@ -528,10 +589,22 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNtZXBzIDwtIHJlYWQuY3N2KFwiQ1NW
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_j3k2286f&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_zdgkxkik" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-21" class="section level4 tabset">
-<h4><span class="header-section-number">5.2.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-interpreting-individual-effects" class="section level5">
-<h5><span class="header-section-number">5.2.1.1.1</span> Show Overhead A Details. Interpreting individual effects</h5>
+<div id="video-overhead-details-21" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over5.2A')">
+A Details. Interpreting individual effects
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over5.2B')">
+B Details. Other Interpretations
+</button>
+</div>
+<div id="Over5.2A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Interpreting individual effects
+</h3>
+<p>
 <ul>
 <li>Substantive Effect
 <ul>
@@ -554,9 +627,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNtZXBzIDwtIHJlYWQuY3N2KFwiQ1NW
 <li>If we change <span class="math inline">\(x\)</span>, would <span class="math inline">\(y\)</span> change?</li>
 </ul></li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-b-details.-other-interpretations" class="section level5">
-<h5><span class="header-section-number">5.2.1.1.2</span> Show Overhead B Details. Other Interpretations</h5>
+<div id="Over5.2B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Other Interpretations
+</h3>
+<p>
 <ul>
 <li>Regression function and pricing
 <ul>
@@ -573,6 +651,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNtZXBzIDwtIHJlYWQuY3N2KFwiQ1NW
 <li>A new patient comes in with a given set of characteristics, what can I say about his or her future medical claims?</li>
 </ul></li>
 </ul>
+</p>
+</div>
 <p><br></p>
 <a style="color:blue"><strong>MC Exercise. Which of the following are not important when interpreting the effects of individual variables?</strong></a>
 <form>
@@ -600,7 +680,6 @@ Submit Answer
 </div>
 </div>
 </div>
-</div>
 <div id="the-importance-of-variable-selection" class="section level2">
 <h2><span class="header-section-number">5.3</span> The importance of variable selection</h2>
 <hr />
@@ -616,10 +695,23 @@ Submit Answer
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_g3ysmpxy&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_qjxtcbse" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-22" class="section level4 tabset">
-<h4><span class="header-section-number">5.3.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-the-importance-of-variable-selection" class="section level5">
-<h5><span class="header-section-number">5.3.1.1.1</span> Show Overhead A Details. The importance of variable selection</h5>
+<div id="video-overhead-details-22" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over5.3A')">
+A Details. The importance of variable selection
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over5.3B')">
+B Details. Example. Regression using one explanatory variable
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over5.3C')"C Details. Principle of parsimony</button>
+</div>
+<div id="Over5.3A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. The importance of variable selection
+</h3>
+<p>
 <ul>
 <li>With too many or too few variables, <span class="math inline">\(s\)</span> is too large an estimate of <span class="math inline">\(\sigma\)</span>.
 <ul>
@@ -628,9 +720,14 @@ Submit Answer
 </ul></li>
 <li>With too few or incorrect variables, we produce biased estimates of the slopes <span class="math inline">\(\beta\)</span>. Thus, our predictions are biased and hence inaccurate.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-b-details.-example.-regression-using-one-explanatory-variable" class="section level5">
-<h5><span class="header-section-number">5.3.1.1.2</span> Show Overhead B Details. Example. Regression using one explanatory variable</h5>
+<div id="Over5.3B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Example. Regression using one explanatory variable
+</h3>
+<p>
 <ul>
 <li><strong>Too Many Variables</strong>
 <ul>
@@ -652,9 +749,14 @@ Bias  = \text{E }\bar{y} - \text{E }(\beta_0 + \beta_1 x + \varepsilon) \\
 = \text{E }(\beta_0 + \beta_1 \bar{x}+\bar{\varepsilon})-(\beta_0+\beta_1 x)=\beta_1 (\bar{x}-x).
 \]</span></p>
 <p>There is a persistent, long-term error in omitting the explanatory variable <span class="math inline">\(x\)</span>.</p>
+</p>
 </div>
-<div id="show-overhead-c-details.-principle-of-parsimony" class="section level5">
-<h5><span class="header-section-number">5.3.1.1.3</span> Show Overhead C Details. Principle of parsimony</h5>
+<div id="Over5.3C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Principle of parsimony
+</h3>
+<p>
 <ul>
 <li>The principle of parsimony, also known as <em>Occam’s Razor</em>, states that when there are several possible explanations for a phenomenon, use the simplest.
 <ul>
@@ -668,10 +770,8 @@ Bias  = \text{E }\bar{y} - \text{E }(\beta_0 + \beta_1 x + \varepsilon) \\
 <li>Including extraneous variables decreases the degrees of freedom and increases the estimate of variability, typically of less concern in actuarial applications.</li>
 </ul></li>
 </ul>
+</p>
 </div>
-</div>
-<div id="mc-exercise" class="section level4">
-<h4><span class="header-section-number">5.3.1.2</span> MC Exercise</h4>
 <br> <a style="color:blue"><strong>MC Exercise. Which of the following is true about under- and over-fitting a model?</strong></a>
 <form>
 <input type="radio" name="choice" value="Incorrect"> When we over-fit a model, estimates of regression coefficients are over-biased as is <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>.<br> <input type="radio" name="choice" value="Correct"> When we over-fit a model, estimates of regression coefficients remain unbiased whereas <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>, is over-biased.<br> <input type="radio" name="choice" value="Incorrect"> When we over-fit a model, estimates of regression coefficients remain under-biased as is <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>.<br> <input type="radio" name="choice" value="Incorrect"> When we under-fit a model, estimates of regression coefficients remain unbiased whereas <span class="math inline">\(s^2\)</span>, the estimate of model variance <span class="math inline">\(\sigma^2\)</span>, is over-biased.<br>
@@ -735,7 +835,7 @@ gitbook.start({
 },
 "download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

@@ -42,10 +42,21 @@ summary(meps2)
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_itjvn841&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_i3ynk1nx" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. MEPS health expenditures
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over5.1A')">A Details. MEPS health expenditures</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.1B')">B Details. Overhead MEPS health expenditures</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.1C')">C Details. Outcome variable</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.1D')">D Details. Explanatory variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.1E')">E Details. Case study outline</button>
+</div>
 
+
+<div id="Over5.1A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. MEPS health expenditures</h3>
+  <p>
 
 This exercise considers data from the *Medical Expenditure Panel Survey* (MEPS), conducted by the U.S. Agency of Health Research and Quality. MEPS is a probability survey that provides nationally representative estimates of health care use, expenditures, sources of payment, and insurance coverage for the U.S. civilian population. This survey collects detailed information on individuals of each medical care episode by type of services including physician office visits, hospital emergency room visits, hospital outpatient visits, hospital inpatient stays, all other medical provider visits, and use of prescribed medicines. This detailed information allows one to develop models of health care utilization to predict future expenditures. You can learn more about MEPS at http://www.meps.ahrq.gov/mepsweb/.
 
@@ -53,9 +64,13 @@ We consider MEPS data from the panels 7 and 8 of 2003 that consists of 18,735 in
 
 Our dependent variable is the amount of expenditures for outpatient visits, `expendop`. For MEPS, outpatient events include hospital outpatient department visits, office-based provider visits and emergency room visits excluding dental services. (Dental services, compared to other types of health care services, are more predictable and occur in a more regular basis.) Hospital stays with the same date of admission and discharge, known as "zero-night stays," were included in outpatient counts and expenditures. (Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures. Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.)
 
+</p>
+</div> 
 
-##### Show Overhead B Details. Overhead MEPS health expenditures
-
+<div id="Over5.1B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Overhead MEPS health expenditures</h3>
+  <p>
 
 Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Agency of Health Research and Quality (AHRQ).
 
@@ -70,9 +85,13 @@ Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Age
 - This detailed information allows one to develop models of health care utilization to predict future expenditures.
 - We consider MEPS data from the first panel of 2003 and take a random sample of *n* = 2, 000 individuals between ages 18 and 65.
 
+</p>
+</div> 
 
-##### Show Overhead C Details. Outcome variable
-
+<div id="Over5.1C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Outcome variable</h3>
+  <p>
 
 Our dependent variable is expenditures for outpatient admissions.
 
@@ -82,9 +101,13 @@ Our dependent variable is expenditures for outpatient admissions.
     - Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures.
     - Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.
 
+</p>
+</div> 
 
-##### Show Overhead D Details. Explanatory variables
-
+<div id="Over5.1D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Explanatory variables</h3>
+  <p>
 
 9 variables in the database. Here 13 most relevant.
 
@@ -107,8 +130,13 @@ managedcare & \text{1 if enrolled in an HMO or gatekeeper plan} \\
 \end{array}}
 $$
 
+</p>
+</div> 
 
-##### Show Overhead E Details. Case study outline
+<div id="Over5.1E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Case study outline</h3>
+  <p>
 
 The next series of exercises leads you through an analysis of the steps for understanding a complex data set. Because of the complexity of the data, in each step only a sample of procedures will be executed.
 
@@ -118,6 +146,8 @@ The outline consists of:
 - Splitting the data into training and testing portions with initial model fits
 - Selecting variables to be included in the model
 
+</p>
+</div> 
 
 ###Exercise. Summarizing data
 
@@ -652,10 +682,18 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_j3k2286f&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_zdgkxkik" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Interpreting individual effects
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over5.2A')">A Details. Interpreting individual effects</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.2B')">B Details. Other Interpretations</button>
+</div>
 
+
+<div id="Over5.2A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Interpreting individual effects</h3>
+  <p>
 
 - Substantive Effect
     - Does a 1 unit change in $x$ imply an economically meaningful change in $y$?
@@ -670,9 +708,13 @@ In this section, you learn how to:
 - **Causal Effects**
     - If we change $x$, would $y$ change?
 
+</p>
+</div> 
 
-##### Show Overhead B Details. Other Interpretations
-
+<div id="Over5.2B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Other Interpretations</h3>
+  <p>
 
 - Regression function and pricing
     - The regression function is $\mathrm{E~}y = \beta_0 + \beta_1 x_1 + \cdots +\beta _k x_k$.
@@ -683,6 +725,8 @@ In this section, you learn how to:
 - Prediction
     - A new patient comes in with a given set of characteristics, what can I say about his or her future medical claims?
 
+</p>
+</div> 
 
 <br>
     
@@ -734,17 +778,32 @@ In this section, you learn how to:
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_g3ysmpxy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qjxtcbse" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. The importance of variable selection
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over5.3A')">A Details. The importance of variable selection</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.3B')">B Details. Example. Regression using one explanatory variable</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.3C')"C Details. Principle of parsimony</button>
+</div>
+
+
+<div id="Over5.3A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. The importance of variable selection</h3>
+  <p>
 
 - With too many or too few variables, $s$ is too large an estimate of $\sigma$.
     - Prediction intervals are too large
     - Standard errors for the partial slopes are too large
 - With too few or incorrect variables, we produce biased estimates of the slopes $\beta$. Thus, our predictions are biased and hence inaccurate.
 
+</p>
+</div> 
 
-##### Show Overhead B Details. Example. Regression using one explanatory variable
+<div id="Over5.3B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Example. Regression using one explanatory variable</h3>
+  <p>
 
 - **Too Many Variables**
     - The "true" model is $y_i = \beta_0+ \varepsilon_i$
@@ -765,8 +824,13 @@ $$
 
 There is a persistent, long-term error in omitting the explanatory variable $x$.
 
+</p>
+</div> 
 
-##### Show Overhead C Details. Principle of parsimony
+<div id="Over5.3C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Principle of parsimony</h3>
+  <p>
 
 - The principle of parsimony, also known as *Occam's Razor*, states that when there are several possible explanations for a phenomenon, use the simplest.
     - A simpler explanation is easier to interpret.
@@ -776,8 +840,9 @@ There is a persistent, long-term error in omitting the explanatory variable $x$.
     - Omitting important variables can lead to biased results, a potentially serious error.
     - Including extraneous variables decreases the degrees of freedom and increases the estimate of variability, typically of less concern in actuarial applications.
 
-
-#### MC Exercise    
+</p>
+</div>     
+    
 <br>
 <a style="color:blue">**MC Exercise. Which of the following is true about under- and over-fitting a model?**</a>
 <form >

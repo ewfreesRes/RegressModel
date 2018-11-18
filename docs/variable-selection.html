@@ -47,6 +47,25 @@
 
 
 <script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script language="javascript">
 function toggle(id1,id2) {
 	var ele = document.getElementById(id1); var text = document.getElementById(id2);
 	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
@@ -356,10 +375,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_53yv68dd&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_yxfgvaql" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-14" class="section level4 tabset">
-<h4><span class="header-section-number">4.1.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-iterative-approach" class="section level5">
-<h5><span class="header-section-number">4.1.1.1.1</span> Show Overhead A Details. Iterative approach</h5>
+<div id="video-overhead-details-14" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over4.1A')">
+A Details. Iterative approach
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.1B')">
+B Details. Many possible models
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.1C')">
+C Details. Model validation
+</button>
+</div>
+<div id="Over4.1A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Iterative approach
+</h3>
+<p>
 <ul>
 <li>Model formulation stage</li>
 <li>Fitting</li>
@@ -404,9 +438,14 @@ y1&lt;-<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</s
 <span class="kw">arrows</span>(<span class="dv">12</span>,<span class="op">-</span><span class="fl">3.0</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)
 <span class="kw">arrows</span>(<span class="dv">5</span>,<span class="op">-</span><span class="fl">3.0</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">25</span>,<span class="dt">length=</span><span class="fl">0.10</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-b-details.-many-possible-models" class="section level5">
-<h5><span class="header-section-number">4.1.1.1.2</span> Show Overhead B Details. Many possible models</h5>
+<div id="Over4.1B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Many possible models
+</h3>
+<p>
 <p><span class="math display">\[
 \begin{array}{l|r}
 \hline
@@ -422,9 +461,14 @@ y1&lt;-<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">0</s
 <li>With <em>k</em> explanatory variables, there are <span class="math inline">\(2^k\)</span> possible linear models</li>
 <li>There are infinitely many nonlinear ones!!</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-c-details.-model-validation" class="section level5">
-<h5><span class="header-section-number">4.1.1.1.3</span> Show Overhead C Details. Model validation</h5>
+<div id="Over4.1C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Model validation
+</h3>
+<p>
 <ul>
 <li>Model validation is the process of confirming our proposed model.</li>
 <li>Concern: <em>data-snooping</em> - fitting many models to a single set of data.
@@ -461,6 +505,7 @@ y1&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">3<
 <span class="kw">arrows</span>(<span class="fl">5.9</span>,<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">3.1</span>,<span class="op">-</span><span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)
 <span class="kw">arrows</span>(<span class="fl">7.4</span>,<span class="op">-</span><span class="fl">0.9</span>,<span class="fl">3.5</span>,<span class="op">-</span><span class="fl">3.8</span>,<span class="dt">code=</span><span class="dv">2</span>,<span class="dt">lwd=</span><span class="dv">2</span>,<span class="dt">angle=</span><span class="dv">15</span>,<span class="dt">length=</span><span class="fl">0.2</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+</p>
 </div>
 </div>
 </div>
@@ -491,10 +536,31 @@ y1&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">3<
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_94bk7tyn&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_vq3apay6" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-15" class="section level4 tabset">
-<h4><span class="header-section-number">4.2.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-classic-stepwise-regression-algorithm" class="section level5">
-<h5><span class="header-section-number">4.2.1.1.1</span> Show Overhead A Details. Classic stepwise regression algorithm</h5>
+<div id="video-overhead-details-15" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over4.2A')">
+A Details. Classic stepwise regression algorithm
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.2B')">
+B Details. Drawbacks of stepwise regression
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.2C')">
+C Details. Data-snooping in stepwise regression
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.2D')">
+D Details. Variants of stepwise regression
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.2E')">
+E Details. Automatic variable selection procedures
+</button>
+</div>
+<div id="Over4.2A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Classic stepwise regression algorithm
+</h3>
+<p>
 <p>Suppose that the analyst has identified one variable as the outcome, <span class="math inline">\(y\)</span>, and <span class="math inline">\(k\)</span> potential explanatory variables, <span class="math inline">\(x_1, x_2, \ldots, x_k\)</span>.</p>
 <ul>
 <li>(i). Consider all possible regressions using one explanatory variable. Choose the one with the highest <em>t</em>-statistic.</li>
@@ -502,9 +568,14 @@ y1&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">3<
 <li>(iii). Delete a variable to the model from the previous step. Delete the variable with the small <em>t</em>-statistic if the statistic is less than, e.g., 2 in absolute value.</li>
 <li>(iv). Repeat steps (ii) and (iii) until all possible additions and deletions are performed.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-b-details.-drawbacks-of-stepwise-regression" class="section level5">
-<h5><span class="header-section-number">4.2.1.1.2</span> Show Overhead B Details. Drawbacks of stepwise regression</h5>
+<div id="Over4.2B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Drawbacks of stepwise regression
+</h3>
+<p>
 <ul>
 <li>The procedure “snoops” through a large number of models and may fit the data “too well.”</li>
 <li>There is no guarantee that the selected model is the best.
@@ -513,9 +584,14 @@ y1&lt;-<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">3<
 <li>It ignores the presence of outliers and high leverage points.</li>
 </ul></li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-c-details.-data-snooping-in-stepwise-regression" class="section level5">
-<h5><span class="header-section-number">4.2.1.1.3</span> Show Overhead C Details. Data-snooping in stepwise regression</h5>
+<div id="Over4.2C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Data-snooping in stepwise regression
+</h3>
+<p>
 <ul>
 <li>Generate <span class="math inline">\(y\)</span> and <span class="math inline">\(x_1 - x_{50}\)</span> using a random number generator</li>
 <li>By design, there is no relation between <span class="math inline">\(y\)</span> and <span class="math inline">\(x_1 - x_{50}\)</span>.</li>
@@ -535,9 +611,14 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 0.9171 on 96 degrees of freedom
 Multiple R-squared:  0.1401,    Adjusted R-squared:  0.1132 
 F-statistic: 5.212 on 3 and 96 DF,  p-value: 0.002233</code></pre>
+</p>
 </div>
-<div id="show-overhead-d-details.-variants-of-stepwise-regression" class="section level5">
-<h5><span class="header-section-number">4.2.1.1.4</span> Show Overhead D Details. Variants of stepwise regression</h5>
+<div id="Over4.2D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Variants of stepwise regression
+</h3>
+<p>
 <p>This uses the <code>R</code> function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/step">step()</a></p>
 <ul>
 <li>The option <code>direction</code> can be used to change how variables enter
@@ -547,9 +628,14 @@ F-statistic: 5.212 on 3 and 96 DF,  p-value: 0.002233</code></pre>
 </ul></li>
 <li>The option <code>scope</code> can be used to specify which variables must be included</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-e-details.-automatic-variable-selection-procedures" class="section level5">
-<h5><span class="header-section-number">4.2.1.1.5</span> Show Overhead E Details. Automatic variable selection procedures</h5>
+<div id="Over4.2E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Automatic variable selection procedures
+</h3>
+<p>
 <ul>
 <li>Stepwise regression is a type of automatic variable selection procedure.</li>
 <li>These procedures are useful because they can quickly search through several candidate models. They mechanize certain routine tasks and are excellent at discovering patterns in data.</li>
@@ -558,6 +644,7 @@ F-statistic: 5.212 on 3 and 96 DF,  p-value: 0.002233</code></pre>
 <li>They can miss certain patterns (nonlinearities, unusual points)</li>
 <li>A model suggested by automatic variable selection procedures should be subject to the same careful diagnostic checking procedures as a model arrived at by any other means</li>
 </ul>
+</p>
 </div>
 </div>
 </div>
@@ -594,35 +681,59 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InNldC5zZWVkKDEyMzcpXG5YIDwtIGFz
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_bwhmsm8k&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_zvacn361" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-16" class="section level4 tabset">
-<h4><span class="header-section-number">4.3.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-residual-analysis" class="section level5">
-<h5><span class="header-section-number">4.3.1.1.1</span> Show Overhead A Details. Residual analysis</h5>
+<div id="video-overhead-details-16" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over4.3A')">
+A Details. Residual analysis
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.3B')">
+B Details. Using residuals to select explanatory variables
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.3C')">
+C Details. Detecting relationships between residuals and explanatory variables
+</button>
+</div>
+<div id="Over4.3A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Residual analysis
+</h3>
+<p>
 <ul>
 <li>Use <span class="math inline">\(e_i = y_i - \hat{y}_i\)</span> as the <em>i</em>th residual.</li>
 <li>Later, I will discuss rescaling by, for example, <span class="math inline">\(s\)</span>, to get a standardized residual.</li>
 <li><em>Role of residuals</em>: If the model formulation is correct, then residuals should be approximately equal to random errors or “white noise.”</li>
 <li><em>Method of attack</em>: Look for patterns in the residuals. Use this information to improve the model specification.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-b-details.-using-residuals-to-select-explanatory-variables" class="section level5">
-<h5><span class="header-section-number">4.3.1.1.2</span> Show Overhead B Details. Using residuals to select explanatory variables</h5>
+<div id="Over4.3B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Using residuals to select explanatory variables
+</h3>
+<p>
 <ul>
 <li>Residual analysis can help identify additional explanatory variables that may be used to improve the formulation of the model.</li>
 <li>If the model is correct, then residuals should resemble random errors and contain no discernible patterns.</li>
 <li>Thus, when comparing residuals to explanatory variables, we do not expect any relationships.</li>
 <li>If we do detect a relationship, then this suggests the need to control for this additional variable.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-c-details.-detecting-relationships-between-residuals-and-explanatory-variables" class="section level5">
-<h5><span class="header-section-number">4.3.1.1.3</span> Show Overhead C Details. Detecting relationships between residuals and explanatory variables</h5>
-<div id="toggleOver4.3C" style="display: none">
-
+<div id="Over4.3C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Detecting relationships between residuals and explanatory variables
+</h3>
+<p>
 <ul>
 <li>Calculate summary statistics and display the distribution of residuals to identify outliers.</li>
 <li>Calculate the correlation between the residuals and additional explanatory variables to search for linear relationships.</li>
 <li>Create scatter plots between the residuals and additional explanatory variables to search for nonlinear relationships.</li>
 </ul>
+</p>
 </div>
 </div>
 </div>
@@ -751,10 +862,34 @@ F-statistic: 25.86 on 4 and 32 DF,  p-value: 1.247e-09</code></pre>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_rhh81ftg&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_58daiyn0" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-17" class="section level4 tabset">
-<h4><span class="header-section-number">4.4.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-unusual-observationsunusual-observations" class="section level5">
-<h5><span class="header-section-number">4.4.1.1.1</span> Show Overhead A Details. Unusual observationsUnusual observations</h5>
+<div id="video-overhead-details-17" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over4.4A')">
+A Details. Unusual observations
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.4B')">
+B Details. Standardized residuals
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.4C')">
+C Details. Outlier - an unusal standardized residual
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.4D')">
+D Details. High leverage points
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.4E')">
+E Details. High leverage point graph
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.4F')">
+F Details. Leverage
+</button>
+</div>
+<div id="Over4.4A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Unusual observations
+</h3>
+<p>
 <ul>
 <li>Regression coefficients can be expressed as (matrix) weighted averages of outcomes
 <ul>
@@ -767,9 +902,14 @@ F-statistic: 25.86 on 4 and 32 DF,  p-value: 1.247e-09</code></pre>
 <li>In this way, we “control” for values of explanatory variables</li>
 </ul></li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-b-details.-standardized-residuals" class="section level5">
-<h5><span class="header-section-number">4.4.1.1.2</span> Show Overhead B Details. Standardized residuals</h5>
+<div id="Over4.4B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Standardized residuals
+</h3>
+<p>
 <p>We standardize residuals so that we can focus on relationships of interest and achieve carry-over of experience from one data set to another.</p>
 <p>Three commonly used definitions of standardize residuals are:</p>
 <p><span class="math display">\[
@@ -781,9 +921,14 @@ F-statistic: 25.86 on 4 and 32 DF,  p-value: 1.247e-09</code></pre>
 <li>Second choice, from theory, <span class="math inline">\(\mathrm{Var}(e_i)=\sigma ^{2}(1-h_{ii}).\)</span> Here, <span class="math inline">\(h_{ii}\)</span> is the <span class="math inline">\(i\)</span>th <em>leverage</em> (defined later).</li>
 <li>Third choice is termed “studentized residuals”. Idea: numerator is independent of the denominator.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-c-details.-outlier---an-unusal-standardized-residual" class="section level5">
-<h5><span class="header-section-number">4.4.1.1.3</span> Show Overhead C Details. Outlier - an unusal standardized residual</h5>
+<div id="Over4.4C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Outlier - an unusal standardized residual
+</h3>
+<p>
 <ul>
 <li>An <em>outlier</em> is an observation that is not well fit by the model; these are observations where the residual is unusually large.</li>
 <li>Unusual means what? Many packages mark a point if the |standardized residual| &gt; 2.</li>
@@ -794,17 +939,27 @@ F-statistic: 25.86 on 4 and 32 DF,  p-value: 1.247e-09</code></pre>
 <li>Create a binary variable to indicator their presence. (This will increase your <span class="math inline">\(R^2\)</span>!)</li>
 </ul></li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-d-details.-high-leverage-points" class="section level5">
-<h5><span class="header-section-number">4.4.1.1.4</span> Show Overhead D Details. High leverage points</h5>
+<div id="Over4.4D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. High leverage points
+</h3>
+<p>
 <ul>
 <li>A high leverage point is an observation that is “far away” in the <span class="math inline">\(x\)</span>-space from others.</li>
 <li>One can get a feel for high leverage observations by looking a summary statistics (mins, maxs) for each explanatory variable.</li>
 <li>Options for dealing with high leverage points are comparable to outliers, we can ignore their effects, delete them, or mark them with a binary indicator variable.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-e-details.-high-leverage-point-graph" class="section level5">
-<h5><span class="header-section-number">4.4.1.1.5</span> Show Overhead E Details. High leverage point graph</h5>
+<div id="Over4.4E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. High leverage point graph
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(cluster)
 <span class="co">#library(MASS)</span>
 <span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="fl">3.2</span>,<span class="fl">5.4</span>,.<span class="dv">2</span>,.<span class="dv">2</span>))
@@ -816,9 +971,14 @@ xycov&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="
 xyloc&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),<span class="dt">nrow=</span><span class="dv">1</span>,<span class="dt">ncol=</span><span class="dv">2</span>)
 <span class="kw">polygon</span>(<span class="kw">ellipsoidPoints</span>(xycov, <span class="dt">d2 =</span> <span class="dv">2</span>, <span class="dt">loc=</span>xyloc),<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-f-details.-leverage" class="section level5">
-<h5><span class="header-section-number">4.4.1.1.6</span> Show Overhead F Details. Leverage</h5>
+<div id="Over4.4F" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+F Details. Leverage
+</h3>
+<p>
 <ul>
 <li>Using matrix algebra, one can express the <em>i</em>th fitted value as a linear combination of observations</li>
 </ul>
@@ -833,6 +993,7 @@ xyloc&lt;-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="
 <li>As a commonly used rule of thumb, a leverage is deemed to be “unusual” if its value exceeds three times the average (= number of regression coefficients divided by the number of observations.)</li>
 </ul></li>
 </ul>
+</p>
 </div>
 </div>
 </div>
@@ -882,10 +1043,25 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNzdXJ2ZXkgPC0gcmVhZC5jc3YoXCJD
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_30hrfg77&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_khmh83je" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-18" class="section level4 tabset">
-<h4><span class="header-section-number">4.5.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-collinearity" class="section level5">
-<h5><span class="header-section-number">4.5.1.1.1</span> Show Overhead A Details. Collinearity</h5>
+<div id="video-overhead-details-18" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over4.5A')">
+A Details. Collinearity
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.5B')">
+B Details. Quantifying collinearity
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.5C')">
+C Details. Options for handling collinearity
+</button>
+</div>
+<div id="Over4.5A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Collinearity
+</h3>
+<p>
 <ul>
 <li><em>Collinearity</em>, or <em>multicollinearity</em>, occurs when one explanatory variable is, or nearly is, a linear combination of the other explanatory variables.
 <ul>
@@ -901,9 +1077,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNzdXJ2ZXkgPC0gcmVhZC5jc3YoXCJD
 <li>Because a large standard error means that the corresponding <em>t</em>-ratio is small, it is difficult to detect the importance of a variable.</li>
 </ul></li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-b-details.-quantifying-collinearity" class="section level5">
-<h5><span class="header-section-number">4.5.1.1.2</span> Show Overhead B Details. Quantifying collinearity</h5>
+<div id="Over4.5B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Quantifying collinearity
+</h3>
+<p>
 <p>A common way to quantify collinearity is through the <em>variance inflation factor (VIF)</em>.</p>
 <ul>
 <li>Suppose that the set of explanatory variables is labeled <span class="math inline">\(x_{1},x_{2},\dots,x_{k}\)</span>.</li>
@@ -914,9 +1095,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNzdXJ2ZXkgPC0gcmVhZC5jc3YoXCJD
 <p><span class="math display">\[
 VIF_{j}=\frac{1}{1-R_{j}^{2}},\ \ \ \text{ for } j = 1,2,\ldots, k.
 \]</span></p>
+</p>
 </div>
-<div id="show-overhead-c-details.-options-for-handling-collinearity" class="section level5">
-<h5><span class="header-section-number">4.5.1.1.3</span> Show Overhead C Details. Options for handling collinearity</h5>
+<div id="Over4.5C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Options for handling collinearity
+</h3>
+<p>
 <ul>
 <li>Rule of thumb: When <span class="math inline">\(VIF_{j}\)</span> exceeds 10 (which is equivalent to <span class="math inline">\(R_{j}^{2}&gt;90\%\)</span>), we say that severe collinearity exists. This may signal is a need for action.</li>
 <li>Recode the variables by “centering” - that is, subtract the mean and divide by the standard deviation.</li>
@@ -928,6 +1114,7 @@ VIF_{j}=\frac{1}{1-R_{j}^{2}},\ \ \ \text{ for } j = 1,2,\ldots, k.
 <li>Use automatic variable selection procedures to suggest a model.</li>
 </ul></li>
 </ul>
+</p>
 </div>
 </div>
 </div>
@@ -965,10 +1152,31 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_i5dlmsna&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_kvkokgm2" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-19" class="section level4 tabset">
-<h4><span class="header-section-number">4.6.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-goodness-of-fit-1" class="section level5">
-<h5><span class="header-section-number">4.6.1.1.1</span> Show Overhead A Details. Goodness of fit</h5>
+<div id="video-overhead-details-19" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over4.6A')">
+A Details. Goodness of fit
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.6B')">
+B Details. Goodness of fit and information criteria
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.6C')">
+C Details. Out of sample validation
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.6D')">
+D Details. Out of sample validation procedure
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over4.6E')">
+E Details. Cross - validation
+</button>
+</div>
+<div id="Over4.6A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Goodness of fit
+</h3>
+<p>
 <ul>
 <li>Criteria that measure the proximity of the fitted model and realized data are known as <em>goodness of fit</em> statistics.</li>
 <li>Basic examples include:
@@ -979,9 +1187,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <li><span class="math inline">\(t\)</span>-ratios for each regression coefficient.</li>
 </ul></li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-b-details.-goodness-of-fit-and-information-criteria" class="section level5">
-<h5><span class="header-section-number">4.6.1.1.2</span> Show Overhead B Details. Goodness of fit and information criteria</h5>
+<div id="Over4.6B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Goodness of fit
+</h3>
+<p>
 <p>A general measure is <em>Akaike’s Information Criterion</em>, defined as</p>
 <p><span class="math display">\[
 AIC = -2 \times (fitted~log~likelihood) + 2 \times
@@ -998,17 +1211,27 @@ AIC = n \ln (s^2) + n \ln (2 \pi) +n +k + 3 .
 <ul>
 <li>So, selecting a model to minimize <span class="math inline">\(s\)</span> or <span class="math inline">\(s^2\)</span> is equivalent to model selection based on minimizing <span class="math inline">\(AIC\)</span> (same <em>k</em>).</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-c-details.-out-of-sample-validation" class="section level5">
-<h5><span class="header-section-number">4.6.1.1.3</span> Show Overhead C Details. Out of sample validation</h5>
+<div id="Over4.6C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Out of sample validation
+</h3>
+<p>
 <ul>
 <li>When you choose a model to minimize <span class="math inline">\(s\)</span> or <span class="math inline">\(AIC\)</span>, it is based on how well the model fits the data at hand, or the <em>model development</em>, or <em>training</em>, data</li>
 <li>As we have seen, this approach is susceptible to overfitting.</li>
 <li>A better approach is to validate the model on a <em>model validation</em>, or <em>test</em> data set, held out for this purpose.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-d-details.-out-of-sample-validation-procedure" class="section level5">
-<h5><span class="header-section-number">4.6.1.1.4</span> Show Overhead D Details. Out of sample validation procedure</h5>
+<div id="Over4.6D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Out of sample validation procedure
+</h3>
+<p>
 <ul>
 <li><ol style="list-style-type: lower-roman">
 <li>Using the model development subsample, fit a candidate model.</li>
@@ -1022,9 +1245,14 @@ AIC = n \ln (s^2) + n \ln (2 \pi) +n +k + 3 .
 </ul>
 <p><span class="math display">\[SAPE=\sum_{i=n_{1}+1}^{n_{1}+n_{2}} |y_{i}-\hat{y}_{i}| . \]</span></p>
 <p>Repeat Steps (i) through (iii) for each candidate model. Choose the model with the smallest <em>SAPE</em>.</p>
+</p>
 </div>
-<div id="show-overhead-e-details.-cross---validation" class="section level5">
-<h5><span class="header-section-number">4.6.1.1.5</span> Show Overhead E Details. Cross - validation</h5>
+<div id="Over4.6E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Cross - validation
+</h3>
+<p>
 <ul>
 <li>With out-of-sample validation, the statistic depends on a random split between in-sample and out-of-sample data (a problem for data sets that are not large)</li>
 <li>Alternatively, one may use <em>cross-validation</em>
@@ -1038,6 +1266,7 @@ AIC = n \ln (s^2) + n \ln (2 \pi) +n +k + 3 .
 <li>Choose the model with the lowest cumulative <em>SAE</em> statistic.</li>
 </ul></li>
 </ul>
+</p>
 </div>
 </div>
 </div>
@@ -1135,7 +1364,7 @@ gitbook.start({
 },
 "download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

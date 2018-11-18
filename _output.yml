@@ -10,9 +10,10 @@ bookdown::epub_book: default
 bookdown::gitbook:
   css: style.css
   includes:
-    in_header: ShowHide.js
+    in_header: tab.js
   config:
     toc:
+      collapse: section
       before: |
         <li><a href="./">Regression Modeling Online Tutorial</a></li>
       after: |

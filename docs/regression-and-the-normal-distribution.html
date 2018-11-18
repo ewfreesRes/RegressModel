@@ -47,6 +47,25 @@
 
 
 <script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script language="javascript">
 function toggle(id1,id2) {
 	var ele = document.getElementById(id1); var text = document.getElementById(id2);
 	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
@@ -358,10 +377,31 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_e885sczm&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_tnia11ze" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details" class="section level4 tabset">
-<h4><span class="header-section-number">1.1.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-description-of-the-data" class="section level5">
-<h5><span class="header-section-number">1.1.1.1.1</span> Show Overhead A Details. Description of the data</h5>
+<div id="video-overhead-details" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over1.1A')">
+A Details. Description of the data
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.1B')">
+B Details. Read and examine data structure
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.1C')">
+C Details. Summary stats for parents’ height
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.1D')">
+D. Fit a normal curve to parents’ height details
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.1E')">
+E Details. Use the normal approximation to determine the probability of the height of tall parents
+</button>
+</div>
+<div id="Over1.1A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Description of the data
+</h3>
+<p>
 <p>To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton’s 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents’ height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father’s height and rescaled mother’s height. Galton was aware that the parents’ and the adult child’s height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="co">#heights &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;, header = TRUE)</span>
@@ -370,9 +410,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">abline</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))
 <span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-b-details.-read-and-examine-data-structure" class="section level5">
-<h5><span class="header-section-number">1.1.1.1.2</span> Show Overhead B Details. Read and examine data structure</h5>
+<div id="Over1.1B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Read and examine data structure
+</h3>
+<p>
 <p>The data has already been read into a dataset called <code>heights</code>. Examine the <em>structure</em> of the data with the function <a href="https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/">str()</a> and use the <a href="https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/">head()</a> command to looks at the first few records.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">galton_height.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="co">#heights &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;, header = TRUE)</span>
@@ -388,9 +433,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 4     73.2      74.5
 5     68.2      73.5
 6     69.2      73.5</code></pre>
+</p>
 </div>
-<div id="show-overhead-c-details.-summary-stats-for-parents-height" class="section level5">
-<h5><span class="header-section-number">1.1.1.1.3</span> Show Overhead C Details. Summary stats for parents’ height</h5>
+<div id="Over1.1C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Summary stats for parents’ height
+</h3>
+<p>
 <p>Next, examine the distribution of the child’s height and then examine the distribution of the parents height.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ht_par &lt;-<span class="st"> </span>heights<span class="op">$</span>parent_ht
 <span class="kw">hist</span>(ht_par)</code></pre></div>
@@ -399,9 +449,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="kw">sd</span>(ht_par)</code></pre></div>
 <pre><code>[1] 69.26293
 [1] 1.912274</code></pre>
+</p>
 </div>
-<div id="show-overhead-d.-fit-a-normal-curve-to-parents-height-details" class="section level5">
-<h5><span class="header-section-number">1.1.1.1.4</span> Show Overhead D. Fit a normal curve to parents’ height details</h5>
+<div id="Over1.1D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D. Fit a normal curve to parents’ height details
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(mparent &lt;-<span class="st"> </span><span class="kw">mean</span>(ht_par))
 (sdparent &lt;-<span class="st"> </span><span class="kw">sd</span>(ht_par))
 x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60</span>, <span class="dv">80</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)
@@ -410,9 +465,14 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60<
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre><code>[1] 69.26293
 [1] 1.912274</code></pre>
+</p>
 </div>
-<div id="show-overhead-e-details.-use-the-normal-approximation-to-determine-the-probability-of-the-height-of-tall-parents" class="section level5">
-<h5><span class="header-section-number">1.1.1.1.5</span> Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents</h5>
+<div id="Over1.1E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Use the normal approximation to determine the probability of the height of tall parents
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TallHeight &lt;-<span class="st"> </span><span class="dv">72</span>
 <span class="kw">pnorm</span>(TallHeight, <span class="dt">mean =</span> mparent, <span class="dt">sd =</span> sdparent)
 <span class="kw">pnorm</span>(<span class="dv">72</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(ht_par), <span class="dt">sd =</span> <span class="kw">sd</span>(ht_par))
@@ -422,6 +482,7 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60<
 [1] 0.9238302
 [1] 1.431317
 [1] 0.9238302</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -473,10 +534,28 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwi
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_p7gt98qk&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_04w1xjbe" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-1" class="section level4 tabset">
-<h4><span class="header-section-number">1.2.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-details.-data-description" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.1</span> Show Overhead Details. Data description</h5>
+<div id="video-overhead-details-1" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over1.2')">
+Details. Data description
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.2A')">
+A Details. Bring in Data, Introduce Logarithmic Claims
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.2B')">
+B Details. Show how to get a finer grid for histograms
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.2C')">
+C Details. Introduce the density plot
+</button>
+</div>
+<div id="Over1.2" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+Details. Data descriptions
+</h3>
+<p>
 <hr />
 <p>For our first look at an insurance data set, we consider data from Rempala and Derrig (2005). They considered claims arising from automobile bodily injury insurance coverages. These are amounts incurred for outpatient medical treatments that arise from automobile accidents, typically sprains, broken collarbones and the like. The data consists of a sample of 272 claims from Massachusetts that were closed in 2001 (by “closed,” we mean that the claim is settled and no additional liabilities can arise from the same accident). Rempala and Derrig were interested in developing procedures for handling mixtures of “typical” claims and others from providers who reported claims fraudulently. For this sample, we consider only those typical claims, ignoring the potentially fraudulent ones.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reformat Data Set</span>
@@ -489,9 +568,14 @@ injury2<span class="op">$</span>claims &lt;-<span class="st"> </span><span class
 injury2<span class="op">$</span>logclaims &lt;-<span class="st"> </span><span class="kw">log</span>(injury2<span class="op">$</span>claims)
 injury3 &lt;-<span class="st"> </span>injury2[<span class="kw">c</span>(<span class="st">&quot;claims&quot;</span>,<span class="st">&quot;logclaims&quot;</span>)]
 <span class="co">#write.csv(injury3,&quot;CSVData\\MassBI.csv&quot;,row.names = FALSE)</span></code></pre></div>
+</p>
 </div>
-<div id="show-overhead-a-details.-bring-in-data-introduce-logarithmic-claims" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.2</span> Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims</h5>
+<div id="Over1.2A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Bring in Data, Introduce Logarithmic Claims
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">injury &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">MassBI.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="co">#  CHECK THE NAMES, DIMENSION IN THE FILE AND LIST THE FIRST 8 OBSERVATIONS  ;</span>
 <span class="kw">str</span>(injury)
@@ -512,21 +596,32 @@ claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
 4     75  4.317488
 5     77  4.343805
 6     92  4.521789</code></pre>
+</p>
 </div>
-<div id="show-overhead-b-details.-show-how-to-get-a-finer-grid-for-histograms" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.3</span> Show Overhead B Details. Show how to get a finer grid for histograms</h5>
+<div id="Over1.2B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Show how to get a finer grid for histograms
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">hist</span>(logclaims)
 <span class="kw">hist</span>(logclaims,<span class="dt">breaks =</span> <span class="dv">15</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-c-details.-introduce-the-density-plot" class="section level5">
-<h5><span class="header-section-number">1.2.1.1.4</span> Show Overhead C Details. Introduce the density plot</h5>
+<div id="Over1.2C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Introduce the density plot
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">plot</span>(<span class="kw">density</span>(logclaims))
 <span class="kw">hist</span>(logclaims, <span class="dt">breaks =</span> <span class="dv">15</span>,<span class="dt">freq =</span> <span class="ot">FALSE</span>)
 <span class="kw">lines</span>(<span class="kw">density</span>(logclaims))</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</p>
 </div>
 </div>
 </div>
@@ -562,10 +657,25 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_4yk0k2m4&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_n2n42jwy" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-2" class="section level4 tabset">
-<h4><span class="header-section-number">1.3.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-summary-statistics" class="section level5">
-<h5><span class="header-section-number">1.3.1.1.1</span> Show Overhead A Details. Summary statistics</h5>
+<div id="video-overhead-details-2" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over1.3A')">
+A Details. Summary statistics
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.3B')">
+B Details. Boxplot
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.3C')">
+C Details. QQ Plot
+</button>
+</div>
+<div id="Over1.3A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Summary statistics
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">injury &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">MassBI.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="co">#injury &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv&quot;, header = TRUE)</span>
 <span class="kw">attach</span>(injury)
@@ -584,9 +694,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 [1] 3944.445
 [1] 1.10093
 [1] 272</code></pre>
+</p>
 </div>
-<div id="show-overhead-b-details.-boxplot" class="section level5">
-<h5><span class="header-section-number">1.3.1.1.2</span> Show Overhead B Details. Boxplot</h5>
+<div id="Over1.3B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Boxplot
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># BASIC BOXPLOT</span>
 <span class="kw">boxplot</span>(logclaims)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
@@ -603,9 +718,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-26-2.png" width="672" /></p>
 <pre><code>     75% 
 8.075579 </code></pre>
+</p>
 </div>
-<div id="show-overhead-c-details.-qq-plot" class="section level5">
-<h5><span class="header-section-number">1.3.1.1.3</span> Show Overhead C Details. QQ Plot</h5>
+<div id="Over1.3C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. QQ Plot
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(injury)
 <span class="kw">quantile</span>(claims, <span class="dt">probs =</span> <span class="fl">0.75</span>)
 <span class="kw">quantile</span>(logclaims, <span class="dt">probs =</span> <span class="fl">0.75</span>)
@@ -635,6 +755,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 [1] 8.131056
 [1] 0.6744898
 [1] 0.6744898</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -687,10 +808,22 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_5yfuwrbc&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_6h3ur8eu" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-3" class="section level4 tabset">
-<h4><span class="header-section-number">1.4.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-simulate-a-moderately-skewed-distribution-with-transforms" class="section level5">
-<h5><span class="header-section-number">1.4.1.1.1</span> Show Overhead A Details. Simulate a moderately skewed distribution, with transforms</h5>
+<div id="video-overhead-details-3" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over1.4A')">
+A Details. Simulate a moderately skewed distribution, with transforms
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.4B')">
+B Details. Visualize the distributions
+</button>
+</div>
+<div id="Over1.4A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Simulate a moderately skewed distribution, with transforms
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  FIGURE 1.7 - SIMULATE CHI-SQUARE, CREATE 3 TRANSFORMATIONS</span>
 <span class="kw">set.seed</span>(<span class="dv">1237</span>)                  <span class="co"># set the seed of the random number generator</span>
                                 <span class="co"># allows us to replicate results</span>
@@ -698,9 +831,14 @@ X1 &lt;-<span class="st"> </span><span class="dv">10000</span><span class="op">*
 X2 &lt;-<span class="st"> </span>X1<span class="op">^</span>(<span class="fl">0.5</span>)                  <span class="co"># square root transform, could also use sqrt(X1)</span>
 X3 &lt;-<span class="st"> </span><span class="kw">log</span>(X1)                   <span class="co"># logarithmic transform</span>
 X4 &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</span><span class="op">/</span>X1                     <span class="co"># negative reciprocal transform</span></code></pre></div>
+</p>
 </div>
-<div id="show-overhead-b-details.-visualize-the-distributions" class="section level5">
-<h5><span class="header-section-number">1.4.1.1.2</span> Show Overhead B Details. Visualize the distributions</h5>
+<div id="Over1.4B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Visualize the distributions
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">cex =</span> .<span class="dv">75</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="fl">1.5</span>,<span class="dv">0</span>))
 <span class="kw">hist</span>(X1, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, 
       <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">yaxt =</span> <span class="st">&quot;n&quot;</span>,<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">200000</span>),<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">00005</span>))
@@ -725,6 +863,7 @@ X4 &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</sp
 <span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="dv">110</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>)
 <span class="kw">mtext</span>(<span class="st">&quot;Negative reciprocal of y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>, <span class="dt">line =</span> <span class="dv">2</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+</p>
 </div>
 </div>
 </div>
@@ -790,7 +929,7 @@ gitbook.start({
 },
 "download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

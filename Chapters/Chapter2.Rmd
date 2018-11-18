@@ -38,16 +38,27 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_qlpe86qi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_w18zht77" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Wisconsin lottery data description
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over2.1A')">A Details. Wisconsin lottery data description</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.1B')">B Details. Summary statistics</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.1C')">C Details. Visualizing skewed distributions</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.1D')">D Details. Visualizing relationships with a scatter plot</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.1E')">E Details. Correlation coefficient</button>
+</div>
 
+
+<div id="Over2.1A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Wisconsin lottery data description</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
 Lot <- read.csv("CSVData\\Wisc_lottery.csv")
@@ -55,9 +66,13 @@ Lot <- read.csv("CSVData\\Wisc_lottery.csv")
 str(Lot)
 ```
 
+</p>
+</div>
 
-##### Show Overhead B Details. Summary statistics
-
+<div id="Over2.1B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Summary statistics</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
 #options(scipen = 100, digits = 4)
@@ -66,9 +81,13 @@ str(Lot)
 #Rcmdr::numSummary(Lot[,c("pop", "sales")], statistics = c("mean", "sd", "quantiles"), quantiles = c(0,.5,1))
 ```
 
+</p>
+</div>
 
-##### Show Overhead C Details. Visualizing skewed distributions
-
+<div id="Over2.1C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Visualizing skewed distributions</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
 par(mfrow = c(1, 2))
@@ -76,21 +95,32 @@ hist(Lot$pop, main = "", xlab = "population")
 hist(Lot$sales, main = "", xlab = "sales")
 ```
 
+</p>
+</div>
 
-##### Show Overhead D Details. Visualizing relationships with a scatter plot
-
+<div id="Over2.1D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Visualizing relationships with a scatter plot</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
 plot(Lot$pop, Lot$sales, xlab = "population", ylab = "sales")
 ```
 
+</p>
+</div>
 
-##### Show Overhead E Details. Correlation coefficient
+<div id="Over2.1E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Correlation coefficient</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
 cor(Lot$pop, Lot$sales)
 ```
 
+</p>
+</div>
 
 
 ###Exercise. Correlations and the Wisconsin lottery
@@ -169,7 +199,7 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 
@@ -178,10 +208,19 @@ In this section, you learn how to:
 </center>
 
 
-#### Video Overheads {.tabset}
+#### Video Overheads
 
-##### Show Overhead A Details. Where to fit the line?
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over2.2A')">A Details. Where to fit the line?</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.2B')">B Details. Method of least squares</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.2C')">C Details. Regression coefficients</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.2D')">D Details. Prediction</button>
+</div>
 
+<div id="Over2.2A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Where to fit the line?</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 model_blr <- lm(sales ~ pop, data = Lot)
@@ -190,16 +229,26 @@ abline(model_blr, col="blue")
 abline(0,1, col="red")
 ```
 
+</p>
+</div>
 
-##### Show Overhead B Details. Method of least squares
+<div id="Over2.2B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Method of least squares</h3>
+  <p>
 
 - For observation $\{(y, x)\}$, the height of the regression line is $$b_0 + b_1 x.$$
 - Thus, $y - (b_0 + b_1 x)$ represents the deviation.
 - The sum of squared deviations is $$SS(b_0, b_1) = \sum (y - (b_0 + b_1 x))^2 .$$
 - The *method of least squares* -- determine values of $b_0, b_1$ that minimize $SS$.
 
+</p>
+</div>
 
-##### Show Overhead C Details. Regression coefficients
+<div id="Over2.2C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Regression coefficients</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 model_blr <- lm(sales ~ pop, data = Lot)
@@ -208,8 +257,13 @@ plot(Lot$pop, Lot$sales,xlab = "population", ylab = "sales")
 abline(model_blr, col="blue")
 ```
 
+</p>
+</div>
 
-##### Show Overhead D Details. Prediction
+<div id="Over2.2D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Prediction</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 round(coefficients(model_blr), digits=6)
@@ -219,6 +273,8 @@ newdata <- data.frame(pop = 30000)
 predict(model_blr, newdata)
 ```
 
+</p>
+</div>
 
 
 ###Exercise. Least squares fit using housing prices
@@ -306,15 +362,25 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_a6j1eyc0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_x5oq2i5k" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show OverheadS A and B Details. Visualizing the uncertainty about a line
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over2.3A')">A and B Details. Visualizing the uncertainty about a line</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.3C')">C, D and E Details. ANOVA Table</button>
+</div>
+
+
+<div id="Over2.3A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A and B Details. Visualizing the uncertainty about a line</h3>
+  <p>
 
 ```{r comment = ""}
 par(mar=c(2.2,2.1,.2,.2),cex=1.2)
@@ -342,9 +408,13 @@ text(0, -1.3, expression( x-bar(x)), cex=0.8  )
 text(3.5, 2.7, expression( hat(y)== b[0]+ b[1]*x), cex=0.8  )
 ```
 
+</p>
+</div>
 
-##### Show Overheads C, D and E Details. ANOVA Table
-
+<div id="Over2.3C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C, D and E Details. ANOVA Table</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 model_blr <- lm(sales ~ pop, data = Lot)
@@ -354,6 +424,8 @@ summary(model_blr)$r.squared
 
 ```
 
+</p>
+</div>
 
 ###Exercise. Summarizing measures of uncertainty 
 
@@ -499,15 +571,27 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_s9a4jr3s&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_quj4d5r0" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Summary of basic linear regression model
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over2.4A')">A Details. Summary of basic linear regression model</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.4B')">B Details. Hypothesis testing</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.4C')">C Details. Confidence intervals</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.4D')">D Details. Confidence intervals check</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.4E')">E Details. Prediction intervals</button>
+</div>
+
+
+<div id="Over2.4A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Summary of basic linear regression model</h3>
+  <p>
 
 Introduce the output in the *summary* of the basic linear regression model.
 
@@ -520,9 +604,14 @@ summary(model_blr)
 
 ```
 
+</p>
+</div>
 
-##### Show Overhead B Details. Hypothesis testing
 
+<div id="Over2.4B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Hypothesis testing</h3>
+  <p>
 
 ```
 > summary(model_blr)$coefficients
@@ -531,8 +620,13 @@ summary(model_blr)
 pop           0.6471    0.04881 13.2579 1.158e-17
 ```
 
+</p>
+</div>
 
-##### Show Overhead C Details. Confidence intervals
+<div id="Over2.4C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Confidence intervals</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 confint(model_blr, level = .90)
@@ -540,9 +634,13 @@ confint(model_blr, level = .95)
 
 ```
 
+</p>
+</div>
 
-##### Show Overhead D Details. Confidence intervals check
-
+<div id="Over2.4D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Confidence intervals check</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 # Just for checking
@@ -558,8 +656,14 @@ confint(model_blr, level = .95)
 
 ```
 
+</p>
+</div>
 
-##### Show Overhead E Details. Prediction intervals
+
+<div id="Over2.4E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Prediction intervals</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 NewData <- data.frame(pop = 10000)
@@ -568,6 +672,8 @@ predict(model_blr, NewData, interval = "prediction", level = .99)
 
 ```
 
+</p>
+</div>
 
 ###Exercise. Statistical inference and Wisconsin lottery
 
@@ -658,7 +764,7 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 
@@ -666,9 +772,23 @@ In this section, you learn how to:
 
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Unusual observations in regression
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over2.5A')">A Details. Unusual observations in regression</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.5B')">B Details. Example. Outliers and High Leverage Points</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.5C')">C Details. Regression fit with 19 base observations</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.5D')">D Details. Regression fit with 19 base observations plus C</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.5E')">E Details. R code</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.5F')">F Details. Visualizing four regression fits</button>
+  <button class="tablinks" onclick="openTab(event, 'Over2.5G')">G Details. Results from four regression models</button>  
+</div>
+
+
+<div id="Over2.5A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Unusual observations in regression</h3>
+  <p>
 
 - We have defined regression estimates as minimizers of a least squares objective function.
 - An appealing intuitive feature of linear regressions is that regression estimates can be expressed as weighted averages of outcomes.
@@ -676,10 +796,15 @@ In this section, you learn how to:
 - "Unusual" observations are far from the majority of the data set:
    - Unusual in the vertical direction is called an *outlier*. 
    - Unusual in the horizontal directional is called a *high leverage point*. 
+   
+</p>
+</div>
 
 
-##### Show Overhead B Details. Example. Outliers and High Leverage Points  
-
+<div id="Over2.5B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Example. Outliers and High Leverage Points</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 outlr <- read.csv("CSVData\\Outlier.csv", header = TRUE)
@@ -691,9 +816,13 @@ text(9.8, 8.0, "B")
 text(9.8, 2.5, "C")
 ```
 
+</p>
+</div>
 
-##### Show Overhead C Details. Regression fit with 19 base observations
-
+<div id="Over2.5C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Regression fit with 19 base observations</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 model_outlr0 <- lm(y ~ x, data = outlr, subset = -c(20,21,22))
@@ -703,9 +832,13 @@ abline(model_outlr0)
 
 ```
 
+</p>
+</div>
 
-##### Show Overhead D Details. Regression fit with 19 base observations plus C
-
+<div id="Over2.5D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Regression fit with 19 base observations plus C</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 model_outlrC <- lm(y ~ x, data = outlr, subset = -c(20,21))
@@ -716,9 +849,13 @@ abline(model_outlrC)
 
 ```
 
+</p>
+</div>
 
-##### Show Overhead E Details. R code
-
+<div id="Over2.5E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. R code</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 model_outlr0 <- lm(y ~ x, data = outlr, subset = -c(20,21,22))
@@ -731,9 +868,13 @@ model_outlrC <- lm(y ~ x, data = outlr, subset = -c(20,21))
 summary(model_outlrC)
 ```
 
+</p>
+</div>
 
-##### Show Overhead F Details. Visualizing four regression fits
-
+<div id="Over2.5F" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>F Details. Visualizing four regression fits</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 plot(outlr$x, outlr$y, xlim = c(0, 10), ylim = c(2, 9), xlab = "x", ylab = "y")
@@ -747,9 +888,13 @@ abline(model_outlrC, col = "blue")
 
 ```
 
+</p>
+</div>
 
-##### Show Overhead G Details. Results from four regression models
-
+<div id="Over2.5G" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>G Details. Results from four regression models</h3>
+  <p>
 
 $$\begin{matrix}
 \begin{array}{c}
@@ -758,6 +903,8 @@ $$\begin{matrix}
 \begin{array}{l|rrrrr} \hline \text{Data} & b_0 & b_1 & s & R^2(\%) & t(b_1) \\ \hline \text{19 Base Points} & 1.869 & 0.611 & 0.288 & 89.0 & 11.71 \\ \text{19 Base Points} ~+~ A & 1.750 & 0.693 & 0.846 & 53.7 & 4.57 \\ \text{19 Base Points} ~+~ B & 1.775 & 0.640 & 0.285 & 94.7 & 18.01 \\ \text{19 Base Points} ~+~ C & 3.356 & 0.155 & 0.865 & 10.3 & 1.44 \\ \hline \end{array} 
 \end{matrix}$$
 
+</p>
+</div>
 
 ###Exercise. Assessing outliers in lottery sales
 
