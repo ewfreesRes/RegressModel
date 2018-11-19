@@ -1,5 +1,5 @@
 --- 
-title: "Online Tutorial on Regression Modeling with Actuarial and Financial Applications"
+title: "Online Tutorial on `Regression Modeling with Actuarial and Financial Applications`"
 author: "Edward W. (Jed) Frees, University of Wisconsin-Madison"
 site: bookdown::bookdown_site
 output:
@@ -72,7 +72,7 @@ In this video, you learn how to:
 ***
 
 
-#### Video {-}
+#### Video Overhead {-}
 
 <center>
 
@@ -80,14 +80,16 @@ In this video, you learn how to:
 
 </center>
 
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'OverWelcomeA')">A. Galton's 1885 Regression Data</button>
+  <button class="tablinks" onclick="openTab(event, 'OverWelcomeB')">B. Supporting R Code</button>
+</div>
 
-##### Video Overhead {.tabset}
-
-###### Show Overhead A. Galton's 1885 Regression Data
-
-
-
-
+<div id="OverWelcomeA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A. Galton's 1885 Regression Data</h3>
+  <p>
+  
 $$
 \small{\begin{array}{l|ccccccccccc|c}
 \hline
@@ -114,12 +116,14 @@ $$
 \hline
 \end{array}}
 $$
+</p>
+</div>
 
-
-###### Show Overhead B. Supporting R Code
-
-
-
+<div id="OverWelcomeB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B. Supporting R Code</h3>
+  <p>
+  
 ```{r comment = "", eval = FALSE, warning = FALSE}
 # Reformat Data Set
 #heights <- read.csv("CSVData\\GaltonFamily.csv",header = TRUE)
@@ -141,3 +145,6 @@ abline(0,1,col = "red", lty=2)
 summary(lm(heights$child_ht~heights$parent_ht))
 
 ```
+
+</p>
+</div>

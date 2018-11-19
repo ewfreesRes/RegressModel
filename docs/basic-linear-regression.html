@@ -47,6 +47,25 @@
 
 
 <script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script language="javascript">
 function toggle(id1,id2) {
 	var ele = document.getElementById(id1); var text = document.getElementById(id2);
 	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
@@ -206,69 +225,69 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>1</b> Regression and the Normal Distribution</a><ul>
 <li class="chapter" data-level="1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#fitting-a-normal-distribution"><i class="fa fa-check"></i><b>1.1</b> Fitting a normal distribution</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-1"><i class="fa fa-check"></i><b>1.1.1</b> Video</a></li>
+<li class="chapter" data-level="1.1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video"><i class="fa fa-check"></i><b>1.1.1</b> Video</a></li>
 <li class="chapter" data-level="1.1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-fitting-galtons-height-data"><i class="fa fa-check"></i><b>1.1.2</b> Exercise. Fitting Galton’s height data</a></li>
 <li class="chapter" data-level="1.1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-childs-height-distribution"><i class="fa fa-check"></i><b>1.1.3</b> Exercise. Visualizing child’s height distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#visualizing-distributions"><i class="fa fa-check"></i><b>1.2</b> Visualizing distributions</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-2"><i class="fa fa-check"></i><b>1.2.1</b> Video</a></li>
+<li class="chapter" data-level="1.2.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-1"><i class="fa fa-check"></i><b>1.2.1</b> Video</a></li>
 <li class="chapter" data-level="1.2.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-bodily-injury-claims-with-density-plots"><i class="fa fa-check"></i><b>1.2.2</b> Exercise. Visualizing bodily injury claims with density plots</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#summarizing-distributions"><i class="fa fa-check"></i><b>1.3</b> Summarizing distributions</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
+<li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-2"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
 <li class="chapter" data-level="1.3.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots"><i class="fa fa-check"></i><b>1.3.2</b> Exercise. Summarizing bodily injury claims with box and qq plots</a></li>
 <li class="chapter" data-level="1.3.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-effects-on-distributions-of-removing-the-largest-claim"><i class="fa fa-check"></i><b>1.3.3</b> Exercise. Effects on distributions of removing the largest claim</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#transformations"><i class="fa fa-check"></i><b>1.4</b> Transformations</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-4"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
+<li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
 <li class="chapter" data-level="1.4.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-distribution-of-transformed-bodily-injury-claims"><i class="fa fa-check"></i><b>1.4.2</b> Exercise. Distribution of transformed bodily injury claims</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Basic Linear Regression</a><ul>
 <li class="chapter" data-level="2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#correlation"><i class="fa fa-check"></i><b>2.1</b> Correlation</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-5"><i class="fa fa-check"></i><b>2.1.1</b> Video</a></li>
+<li class="chapter" data-level="2.1.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-4"><i class="fa fa-check"></i><b>2.1.1</b> Video</a></li>
 <li class="chapter" data-level="2.1.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-correlations-and-the-wisconsin-lottery"><i class="fa fa-check"></i><b>2.1.2</b> Exercise. Correlations and the Wisconsin lottery</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#method-of-least-squares"><i class="fa fa-check"></i><b>2.2</b> Method of least squares</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-6"><i class="fa fa-check"></i><b>2.2.1</b> Video</a></li>
+<li class="chapter" data-level="2.2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-5"><i class="fa fa-check"></i><b>2.2.1</b> Video</a></li>
 <li class="chapter" data-level="2.2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-least-squares-fit-using-housing-prices"><i class="fa fa-check"></i><b>2.2.2</b> Exercise. Least squares fit using housing prices</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#understanding-variability"><i class="fa fa-check"></i><b>2.3</b> Understanding variability</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-7"><i class="fa fa-check"></i><b>2.3.1</b> Video</a></li>
+<li class="chapter" data-level="2.3.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-6"><i class="fa fa-check"></i><b>2.3.1</b> Video</a></li>
 <li class="chapter" data-level="2.3.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-summarizing-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.2</b> Exercise. Summarizing measures of uncertainty</a></li>
 <li class="chapter" data-level="2.3.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-effects-of-linear-transforms-on-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.3</b> Exercise. Effects of linear transforms on measures of uncertainty</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#statistical-inference"><i class="fa fa-check"></i><b>2.4</b> Statistical inference</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-8"><i class="fa fa-check"></i><b>2.4.1</b> Video</a></li>
+<li class="chapter" data-level="2.4.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-7"><i class="fa fa-check"></i><b>2.4.1</b> Video</a></li>
 <li class="chapter" data-level="2.4.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-statistical-inference-and-wisconsin-lottery"><i class="fa fa-check"></i><b>2.4.2</b> Exercise. Statistical inference and Wisconsin lottery</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#diagnostics"><i class="fa fa-check"></i><b>2.5</b> Diagnostics</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-9"><i class="fa fa-check"></i><b>2.5.1</b> Video</a></li>
+<li class="chapter" data-level="2.5.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-8"><i class="fa fa-check"></i><b>2.5.1</b> Video</a></li>
 <li class="chapter" data-level="2.5.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-assessing-outliers-in-lottery-sales"><i class="fa fa-check"></i><b>2.5.2</b> Exercise. Assessing outliers in lottery sales</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>3</b> Multiple Linear Regression</a><ul>
 <li class="chapter" data-level="" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#term-life-data"><i class="fa fa-check"></i>Term Life Data</a></li>
 <li class="chapter" data-level="3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1</b> Method of least squares</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-10"><i class="fa fa-check"></i><b>3.1.1</b> Video</a></li>
+<li class="chapter" data-level="3.1.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-9"><i class="fa fa-check"></i><b>3.1.1</b> Video</a></li>
 <li class="chapter" data-level="3.1.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-least-squares-and-term-life-data"><i class="fa fa-check"></i><b>3.1.2</b> Exercise. Least squares and term life data</a></li>
 <li class="chapter" data-level="3.1.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-interpreting-coefficients-as-proportional-changes"><i class="fa fa-check"></i><b>3.1.3</b> Exercise. Interpreting coefficients as proportional changes</a></li>
 <li class="chapter" data-level="3.1.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-interpreting-coefficients-as-elasticities"><i class="fa fa-check"></i><b>3.1.4</b> Exercise. Interpreting coefficients as elasticities</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#statistical-inference-and-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.2</b> Statistical inference and multiple linear regresson</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-11"><i class="fa fa-check"></i><b>3.2.1</b> Video</a></li>
+<li class="chapter" data-level="3.2.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-10"><i class="fa fa-check"></i><b>3.2.1</b> Video</a></li>
 <li class="chapter" data-level="3.2.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-statistical-inference-and-term-life"><i class="fa fa-check"></i><b>3.2.2</b> Exercise. Statistical inference and term life</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#binary-variables"><i class="fa fa-check"></i><b>3.3</b> Binary variables</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-12"><i class="fa fa-check"></i><b>3.3.1</b> Video</a></li>
+<li class="chapter" data-level="3.3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-11"><i class="fa fa-check"></i><b>3.3.1</b> Video</a></li>
 <li class="chapter" data-level="3.3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-binary-variables-and-term-life"><i class="fa fa-check"></i><b>3.3.2</b> Exercise. Binary variables and term life</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#categorical-variables"><i class="fa fa-check"></i><b>3.4</b> Categorical variables</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-13"><i class="fa fa-check"></i><b>3.4.1</b> Video</a></li>
+<li class="chapter" data-level="3.4.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-12"><i class="fa fa-check"></i><b>3.4.1</b> Video</a></li>
 <li class="chapter" data-level="3.4.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-categorical-variables-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.4.2</b> Exercise. Categorical variables and Wisconsin hospital costs</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#general-linear-hypothesis"><i class="fa fa-check"></i><b>3.5</b> General linear hypothesis</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-14"><i class="fa fa-check"></i><b>3.5.1</b> Video</a></li>
+<li class="chapter" data-level="3.5.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-13"><i class="fa fa-check"></i><b>3.5.1</b> Video</a></li>
 <li class="chapter" data-level="3.5.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-term-life"><i class="fa fa-check"></i><b>3.5.2</b> Exercise. Hypothesis testing and term life</a></li>
 <li class="chapter" data-level="3.5.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.5.3</b> Exercise. Hypothesis testing and Wisconsin hospital costs</a></li>
 <li class="chapter" data-level="3.5.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-auto-claims"><i class="fa fa-check"></i><b>3.5.4</b> Exercise. Hypothesis testing and auto claims</a></li>
@@ -276,35 +295,35 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4" data-path="variable-selection.html"><a href="variable-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Selection</a><ul>
 <li class="chapter" data-level="4.1" data-path="variable-selection.html"><a href="variable-selection.html#an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1</b> An iterative approach to data analysis and modeling</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="variable-selection.html"><a href="variable-selection.html#video-15"><i class="fa fa-check"></i><b>4.1.1</b> Video</a></li>
+<li class="chapter" data-level="4.1.1" data-path="variable-selection.html"><a href="variable-selection.html#video-14"><i class="fa fa-check"></i><b>4.1.1</b> Video</a></li>
 <li class="chapter" data-level="4.1.2" data-path="variable-selection.html"><a href="variable-selection.html#mc-exercise.-an-iterative-approach-to-data-modeling"><i class="fa fa-check"></i><b>4.1.2</b> MC Exercise. An iterative approach to data modeling</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="variable-selection.html"><a href="variable-selection.html#automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2</b> Automatic variable selection procedures</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="variable-selection.html"><a href="variable-selection.html#video-16"><i class="fa fa-check"></i><b>4.2.1</b> Video</a></li>
+<li class="chapter" data-level="4.2.1" data-path="variable-selection.html"><a href="variable-selection.html#video-15"><i class="fa fa-check"></i><b>4.2.1</b> Video</a></li>
 <li class="chapter" data-level="4.2.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-data-snooping-in-stepwise-regression"><i class="fa fa-check"></i><b>4.2.2</b> Exercise. Data-snooping in stepwise regression</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="variable-selection.html"><a href="variable-selection.html#residual-analysis"><i class="fa fa-check"></i><b>4.3</b> Residual analysis</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="variable-selection.html"><a href="variable-selection.html#video-17"><i class="fa fa-check"></i><b>4.3.1</b> Video</a></li>
+<li class="chapter" data-level="4.3.1" data-path="variable-selection.html"><a href="variable-selection.html#video-16"><i class="fa fa-check"></i><b>4.3.1</b> Video</a></li>
 <li class="chapter" data-level="4.3.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-residual-analysis-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.3.2</b> Exercise. Residual analysis and risk manager survey</a></li>
 <li class="chapter" data-level="4.3.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-added-variable-plot-and-refrigerator-prices"><i class="fa fa-check"></i><b>4.3.3</b> Exercise. Added variable plot and refrigerator prices</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="variable-selection.html"><a href="variable-selection.html#unusual-observations"><i class="fa fa-check"></i><b>4.4</b> Unusual observations</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="variable-selection.html"><a href="variable-selection.html#video-18"><i class="fa fa-check"></i><b>4.4.1</b> Video</a></li>
+<li class="chapter" data-level="4.4.1" data-path="variable-selection.html"><a href="variable-selection.html#video-17"><i class="fa fa-check"></i><b>4.4.1</b> Video</a></li>
 <li class="chapter" data-level="4.4.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-outlier-example"><i class="fa fa-check"></i><b>4.4.2</b> Exercise. Outlier example</a></li>
 <li class="chapter" data-level="4.4.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-high-leverage-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.4.3</b> Exercise. High leverage and risk manager survey</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="variable-selection.html"><a href="variable-selection.html#collinearity"><i class="fa fa-check"></i><b>4.5</b> Collinearity</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="variable-selection.html"><a href="variable-selection.html#video-19"><i class="fa fa-check"></i><b>4.5.1</b> Video</a></li>
+<li class="chapter" data-level="4.5.1" data-path="variable-selection.html"><a href="variable-selection.html#video-18"><i class="fa fa-check"></i><b>4.5.1</b> Video</a></li>
 <li class="chapter" data-level="4.5.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-collinearity-and-term-life"><i class="fa fa-check"></i><b>4.5.2</b> Exercise. Collinearity and term life</a></li>
 </ul></li>
 <li class="chapter" data-level="4.6" data-path="variable-selection.html"><a href="variable-selection.html#selection-criteria"><i class="fa fa-check"></i><b>4.6</b> Selection criteria</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="variable-selection.html"><a href="variable-selection.html#video-20"><i class="fa fa-check"></i><b>4.6.1</b> Video</a></li>
+<li class="chapter" data-level="4.6.1" data-path="variable-selection.html"><a href="variable-selection.html#video-19"><i class="fa fa-check"></i><b>4.6.1</b> Video</a></li>
 <li class="chapter" data-level="4.6.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-cross-validation-and-term-life"><i class="fa fa-check"></i><b>4.6.2</b> Exercise. Cross-validation and term life</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html"><i class="fa fa-check"></i><b>5</b> Interpreting Regression Results</a><ul>
 <li class="chapter" data-level="5.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1</b> Case study: MEPS health expenditures</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.1.1</b> Video</a></li>
+<li class="chapter" data-level="5.1.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-20"><i class="fa fa-check"></i><b>5.1.1</b> Video</a></li>
 <li class="chapter" data-level="5.1.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-summarizing-data"><i class="fa fa-check"></i><b>5.1.2</b> Exercise. Summarizing data</a></li>
 <li class="chapter" data-level="5.1.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-fit-a-benchmark-multiple-linear-regression-model"><i class="fa fa-check"></i><b>5.1.3</b> Exercise. Fit a benchmark multiple linear regression model</a></li>
 <li class="chapter" data-level="5.1.4" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-variable-selection"><i class="fa fa-check"></i><b>5.1.4</b> Exercise. Variable selection</a></li>
@@ -312,10 +331,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1.6" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-out-of-sample-validation"><i class="fa fa-check"></i><b>5.1.6</b> Exercise. Out of sample validation</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
+<li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-23"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
+<li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -330,7 +349,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Online Tutorial on Regression Modeling with Actuarial and Financial Applications</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Online Tutorial on <code>Regression Modeling with Actuarial and Financial Applications</code></a>
           </h1>
         </div>
 
@@ -351,16 +370,37 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Interpret correlation coefficients by visualizing scatter plots</li>
 </ul>
 <hr />
-<div id="video-5" class="section level3">
+<div id="video-4" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Video</h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_qlpe86qi&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_w18zht77" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-4" class="section level4 tabset">
-<h4><span class="header-section-number">2.1.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-wisconsin-lottery-data-description" class="section level5">
-<h5><span class="header-section-number">2.1.1.1.1</span> Show Overhead A Details. Wisconsin lottery data description</h5>
+<div id="video-overhead-details-4" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over2.1A')">
+A Details. Wisconsin lottery data description
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.1B')">
+B Details. Summary statistics
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.1C')">
+C Details. Visualizing skewed distributions
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.1D')">
+D Details. Visualizing relationships with a scatter plot
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.1E')">
+E Details. Correlation coefficient
+</button>
+</div>
+<div id="Over2.1A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Wisconsin lottery data description
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>)
 <span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span>
 <span class="kw">str</span>(Lot)</code></pre></div>
@@ -368,9 +408,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
  $ pop    : int  435 4823 2469 2051 13337 17004 38283 9859 4464 20958 ...
  $ sales  : num  1285 3571 2407 1224 15046 ...
  $ medhome: num  71.3 98 58.7 65.7 96.7 66.4 91 61 91.5 68.8 ...</code></pre>
+</p>
 </div>
-<div id="show-overhead-b-details.-summary-statistics" class="section level5">
-<h5><span class="header-section-number">2.1.1.1.2</span> Show Overhead B Details. Summary statistics</h5>
+<div id="Over2.1B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Summary statistics
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#options(scipen = 100, digits = 4)</span>
 <span class="co">#numSummary(Lot[,c(&quot;pop&quot;, &quot;sales&quot;)], statistics = c(&quot;mean&quot;, &quot;sd&quot;, &quot;quantiles&quot;), quantiles = c(0,.5,1))</span>
 (<span class="kw">as.data.frame</span>(psych<span class="op">::</span><span class="kw">describe</span>(Lot)))[,<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>)]
@@ -379,23 +424,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 pop     50 9311.040 11098.15695 4405.500 280.0 39098.0
 sales   50 6494.829  8103.01250 2426.406 189.0 33181.4
 medhome 50   57.092    18.37312   53.900  34.5   120.0</code></pre>
+</p>
 </div>
-<div id="show-overhead-c-details.-visualizing-skewed-distributions" class="section level5">
-<h5><span class="header-section-number">2.1.1.1.3</span> Show Overhead C Details. Visualizing skewed distributions</h5>
+<div id="Over2.1C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Visualizing skewed distributions
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">hist</span>(Lot<span class="op">$</span>pop, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>)
 <span class="kw">hist</span>(Lot<span class="op">$</span>sales, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;sales&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-d-details.-visualizing-relationships-with-a-scatter-plot" class="section level5">
-<h5><span class="header-section-number">2.1.1.1.4</span> Show Overhead D Details. Visualizing relationships with a scatter plot</h5>
+<div id="Over2.1D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Visualizing relationships with a scatter plot
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales, <span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;sales&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-e-details.-correlation-coefficient" class="section level5">
-<h5><span class="header-section-number">2.1.1.1.5</span> Show Overhead E Details. Correlation coefficient</h5>
+<div id="Over2.1E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Correlation coefficient
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales)</code></pre></div>
 <pre><code>[1] 0.8862827</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -426,33 +487,61 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNMb3QgPC0gcmVhZC5jc3YoXCJDU1ZE
 <li>Predict an observation using a least squares fitted line</li>
 </ul>
 <hr />
-<div id="video-6" class="section level3">
+<div id="video-5" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Video</h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_6finvcp7&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_5pgz5f8p" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overheads" class="section level4 tabset">
+<div id="video-overheads" class="section level4">
 <h4><span class="header-section-number">2.2.1.1</span> Video Overheads</h4>
-<div id="show-overhead-a-details.-where-to-fit-the-line" class="section level5">
-<h5><span class="header-section-number">2.2.1.1.1</span> Show Overhead A Details. Where to fit the line?</h5>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over2.2A')">
+A Details. Where to fit the line?
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.2B')">
+B Details. Method of least squares
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.2C')">
+C Details. Regression coefficients
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.2D')">
+D Details. Prediction
+</button>
+</div>
+<div id="Over2.2A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Where to fit the line?
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
 <span class="kw">plot</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales,<span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;sales&quot;</span>)
 <span class="kw">abline</span>(model_blr, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)
 <span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-b-details.-method-of-least-squares" class="section level5">
-<h5><span class="header-section-number">2.2.1.1.2</span> Show Overhead B Details. Method of least squares</h5>
+<div id="Over2.2B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Method of least squares
+</h3>
+<p>
 <ul>
 <li>For observation <span class="math inline">\(\{(y, x)\}\)</span>, the height of the regression line is <span class="math display">\[b_0 + b_1 x.\]</span></li>
 <li>Thus, <span class="math inline">\(y - (b_0 + b_1 x)\)</span> represents the deviation.</li>
 <li>The sum of squared deviations is <span class="math display">\[SS(b_0, b_1) = \sum (y - (b_0 + b_1 x))^2 .\]</span></li>
 <li>The <em>method of least squares</em> – determine values of <span class="math inline">\(b_0, b_1\)</span> that minimize <span class="math inline">\(SS\)</span>.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-c-details.-regression-coefficients" class="section level5">
-<h5><span class="header-section-number">2.2.1.1.3</span> Show Overhead C Details. Regression coefficients</h5>
+<div id="Over2.2C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Regression coefficients
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
 <span class="kw">round</span>(<span class="kw">coefficients</span>(model_blr), <span class="dt">digits=</span><span class="dv">4</span>)
 <span class="kw">plot</span>(Lot<span class="op">$</span>pop, Lot<span class="op">$</span>sales,<span class="dt">xlab =</span> <span class="st">&quot;population&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;sales&quot;</span>)
@@ -460,9 +549,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNMb3QgPC0gcmVhZC5jc3YoXCJDU1ZE
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <pre><code>(Intercept)         pop 
    469.7036      0.6471 </code></pre>
+</p>
 </div>
-<div id="show-overhead-d-details.-prediction" class="section level5">
-<h5><span class="header-section-number">2.2.1.1.4</span> Show Overhead D Details. Prediction</h5>
+<div id="Over2.2D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Prediction
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">coefficients</span>(model_blr), <span class="dt">digits=</span><span class="dv">6</span>)
 <span class="kw">coefficients</span>(model_blr)[<span class="dv">1</span>] <span class="op">+</span><span class="st"> </span><span class="kw">coefficients</span>(model_blr)[<span class="dv">2</span>]<span class="op">*</span><span class="dv">30000</span>
 
@@ -474,6 +568,7 @@ newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
    19882.55 
        1 
 19882.55 </code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -504,16 +599,28 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNMb3QgPC0gcmVhZC5jc3YoXCJDU1ZE
 <li>Explain the components of the ANOVA table</li>
 </ul>
 <hr />
-<div id="video-7" class="section level3">
+<div id="video-6" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Video</h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=1_a6j1eyc0&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_x5oq2i5k" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-5" class="section level4 tabset">
-<h4><span class="header-section-number">2.3.1.1</span> Video Overhead Details</h4>
-<div id="show-overheads-a-and-b-details.-visualizing-the-uncertainty-about-a-line" class="section level5">
-<h5><span class="header-section-number">2.3.1.1.1</span> Show OverheadS A and B Details. Visualizing the uncertainty about a line</h5>
+<div id="video-overhead-details-5" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over2.3A')">
+A and B Details. Visualizing the uncertainty about a line
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.3C')">
+C, D and E Details. ANOVA Table
+</button>
+</div>
+<div id="Over2.3A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A and B Details. Visualizing the uncertainty about a line
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="fl">2.2</span>,<span class="fl">2.1</span>,.<span class="dv">2</span>,.<span class="dv">2</span>),<span class="dt">cex=</span><span class="fl">1.2</span>)
 x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dt">len=</span><span class="dv">101</span>)
 y &lt;-<span class="st"> </span>x
@@ -538,9 +645,14 @@ y &lt;-<span class="st"> </span>x
 <span class="kw">text</span>(<span class="dv">0</span>, <span class="op">-</span><span class="fl">1.3</span>, <span class="kw">expression</span>( x<span class="op">-</span><span class="kw">bar</span>(x)), <span class="dt">cex=</span><span class="fl">0.8</span>  )
 <span class="kw">text</span>(<span class="fl">3.5</span>, <span class="fl">2.7</span>, <span class="kw">expression</span>( <span class="kw">hat</span>(y)<span class="op">==</span><span class="st"> </span>b[<span class="dv">0</span>]<span class="op">+</span><span class="st"> </span>b[<span class="dv">1</span>]<span class="op">*</span>x), <span class="dt">cex=</span><span class="fl">0.8</span>  )</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overheads-c-d-and-e-details.-anova-table" class="section level5">
-<h5><span class="header-section-number">2.3.1.1.2</span> Show Overheads C, D and E Details. ANOVA Table</h5>
+<div id="Over2.3C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C, D and E Details. ANOVA Table
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_blr &lt;-<span class="st"> </span><span class="kw">lm</span>(sales <span class="op">~</span><span class="st"> </span>pop, <span class="dt">data =</span> Lot)
 <span class="kw">anova</span>(model_blr)
 <span class="kw">sqrt</span>(<span class="kw">anova</span>(model_blr)<span class="op">$</span>Mean[<span class="dv">2</span>])
@@ -555,6 +667,7 @@ Residuals 48  690116755   14377432
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 [1] 3791.758
 [1] 0.7854969</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -602,16 +715,37 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNMb3QgPC0gcmVhZC5jc3YoXCJDU1ZE
 <li>Calculate and interpret a prediction interval at a specific value of a predictor variable</li>
 </ul>
 <hr />
-<div id="video-8" class="section level3">
+<div id="video-7" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Video</h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_s9a4jr3s&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_quj4d5r0" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-6" class="section level4 tabset">
-<h4><span class="header-section-number">2.4.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-summary-of-basic-linear-regression-model" class="section level5">
-<h5><span class="header-section-number">2.4.1.1.1</span> Show Overhead A Details. Summary of basic linear regression model</h5>
+<div id="video-overhead-details-6" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over2.4A')">
+A Details. Summary of basic linear regression model
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.4B')">
+B Details. Hypothesis testing
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.4C')">
+C Details. Confidence intervals
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.4D')">
+D Details. Confidence intervals check
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.4E')">
+E Details. Prediction intervals
+</button>
+</div>
+<div id="Over2.4A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Summary of basic linear regression model
+</h3>
+<p>
 <p>Introduce the output in the <em>summary</em> of the basic linear regression model.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Lot &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Wisc_lottery.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="co">#Lot &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv&quot;, header = TRUE)</span>
@@ -636,16 +770,26 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 3792 on 48 degrees of freedom
 Multiple R-squared:  0.7855,    Adjusted R-squared:  0.781 
 F-statistic: 175.8 on 1 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
+</p>
 </div>
-<div id="show-overhead-b-details.-hypothesis-testing" class="section level5">
-<h5><span class="header-section-number">2.4.1.1.2</span> Show Overhead B Details. Hypothesis testing</h5>
+<div id="Over2.4B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Hypothesis testing
+</h3>
+<p>
 <pre><code>&gt; summary(model_blr)$coefficients
             Estimate Std. Error t value  Pr(&gt;|t|)
 (Intercept) 469.7036  702.90619  0.6682 5.072e-01
 pop           0.6471    0.04881 13.2579 1.158e-17</code></pre>
+</p>
 </div>
-<div id="show-overhead-c-details.-confidence-intervals" class="section level5">
-<h5><span class="header-section-number">2.4.1.1.3</span> Show Overhead C Details. Confidence intervals</h5>
+<div id="Over2.4C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Confidence intervals
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">confint</span>(model_blr, <span class="dt">level =</span> .<span class="dv">90</span>)
 <span class="kw">confint</span>(model_blr, <span class="dt">level =</span> .<span class="dv">95</span>)</code></pre></div>
 <pre><code>                     5 %         95 %
@@ -654,9 +798,14 @@ pop            0.5652327    0.7289569
                    2.5 %     97.5 %
 (Intercept) -943.5840183 1882.99121
 pop            0.5489596    0.74523</code></pre>
+</p>
 </div>
-<div id="show-overhead-d-details.-confidence-intervals-check" class="section level5">
-<h5><span class="header-section-number">2.4.1.1.4</span> Show Overhead D Details. Confidence intervals check</h5>
+<div id="Over2.4D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Confidence intervals check
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Just for checking</span>
 <span class="kw">summary</span>(model_blr)<span class="op">$</span>coefficients[<span class="dv">2</span>,<span class="dv">1</span>]
 <span class="kw">summary</span>(model_blr)<span class="op">$</span>coefficients[<span class="dv">2</span>,<span class="dv">2</span>]
@@ -677,9 +826,14 @@ pop            0.5489596    0.74523
                    2.5 %     97.5 %
 (Intercept) -943.5840183 1882.99121
 pop            0.5489596    0.74523</code></pre>
+</p>
 </div>
-<div id="show-overhead-e-details.-prediction-intervals" class="section level5">
-<h5><span class="header-section-number">2.4.1.1.5</span> Show Overhead E Details. Prediction intervals</h5>
+<div id="Over2.4E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Prediction intervals
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">NewData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pop =</span> <span class="dv">10000</span>)
 <span class="kw">predict</span>(model_blr, NewData, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="dt">level =</span> .<span class="dv">90</span>)
 <span class="kw">predict</span>(model_blr, NewData, <span class="dt">interval =</span> <span class="st">&quot;prediction&quot;</span>, <span class="dt">level =</span> .<span class="dv">99</span>)</code></pre></div>
@@ -687,6 +841,7 @@ pop            0.5489596    0.74523</code></pre>
 1 6940.651 517.4933 13363.81
        fit       lwr      upr
 1 6940.651 -3331.214 17212.52</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -716,16 +871,43 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNMb3QgPC0gcmVhZC5jc3YoXCJDU1ZE
 <li>Describe several model misspecifications commonly encountered in a regression analysis</li>
 </ul>
 <hr />
-<div id="video-9" class="section level3">
+<div id="video-8" class="section level3">
 <h3><span class="header-section-number">2.5.1</span> Video</h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_c6l4p07j&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_4rvf8rp1" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-7" class="section level4 tabset">
-<h4><span class="header-section-number">2.5.1.1</span> Video Overhead Details</h4>
-<div id="show-overhead-a-details.-unusual-observations-in-regression" class="section level5">
-<h5><span class="header-section-number">2.5.1.1.1</span> Show Overhead A Details. Unusual observations in regression</h5>
+<div id="video-overhead-details-7" class="section level4 unnumbered">
+<h4>Video Overhead Details</h4>
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over2.5A')">
+A Details. Unusual observations in regression
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.5B')">
+B Details. Example. Outliers and High Leverage Points
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.5C')">
+C Details. Regression fit with 19 base observations
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.5D')">
+D Details. Regression fit with 19 base observations plus C
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.5E')">
+E Details. R code
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.5F')">
+F Details. Visualizing four regression fits
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over2.5G')">
+G Details. Results from four regression models
+</button>
+</div>
+<div id="Over2.5A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Unusual observations in regression
+</h3>
+<p>
 <ul>
 <li>We have defined regression estimates as minimizers of a least squares objective function.</li>
 <li>An appealing intuitive feature of linear regressions is that regression estimates can be expressed as weighted averages of outcomes.</li>
@@ -734,9 +916,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNMb3QgPC0gcmVhZC5jc3YoXCJDU1ZE
 <li>Unusual in the vertical direction is called an <em>outlier</em>.</li>
 <li>Unusual in the horizontal directional is called a <em>high leverage point</em>.</li>
 </ul>
+</p>
 </div>
-<div id="show-overhead-b-details.-example.-outliers-and-high-leverage-points" class="section level5">
-<h5><span class="header-section-number">2.5.1.1.2</span> Show Overhead B Details. Example. Outliers and High Leverage Points</h5>
+<div id="Over2.5B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Example. Outliers and High Leverage Points
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">outlr &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">Outlier.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
 
 <span class="co">#  FIGURE 2.7</span>
@@ -745,9 +932,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNMb3QgPC0gcmVhZC5jc3YoXCJDU1ZE
 <span class="kw">text</span>(<span class="fl">9.8</span>, <span class="fl">8.0</span>, <span class="st">&quot;B&quot;</span>)
 <span class="kw">text</span>(<span class="fl">9.8</span>, <span class="fl">2.5</span>, <span class="st">&quot;C&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-c-details.-regression-fit-with-19-base-observations" class="section level5">
-<h5><span class="header-section-number">2.5.1.1.3</span> Show Overhead C Details. Regression fit with 19 base observations</h5>
+<div id="Over2.5C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Regression fit with 19 base observations
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_outlr0 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">22</span>))
 <span class="kw">summary</span>(model_outlr0)
 <span class="kw">plot</span>(outlr<span class="op">$</span>x[<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>], outlr<span class="op">$</span>y[<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>], <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">9</span>))
@@ -771,9 +963,14 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 0.2883 on 17 degrees of freedom
 Multiple R-squared:  0.8896,    Adjusted R-squared:  0.8831 
 F-statistic:   137 on 1 and 17 DF,  p-value: 1.471e-09</code></pre>
+</p>
 </div>
-<div id="show-overhead-d-details.-regression-fit-with-19-base-observations-plus-c" class="section level5">
-<h5><span class="header-section-number">2.5.1.1.4</span> Show Overhead D Details. Regression fit with 19 base observations plus C</h5>
+<div id="Over2.5D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Regression fit with 19 base observations plus C
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_outlrC &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>))
 <span class="kw">summary</span>(model_outlrC)
 <span class="kw">plot</span>(outlr<span class="op">$</span>x[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>,<span class="dv">22</span>)], outlr<span class="op">$</span>y[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">19</span>,<span class="dv">22</span>)], <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">9</span>))
@@ -798,9 +995,14 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 0.8648 on 18 degrees of freedom
 Multiple R-squared:  0.1031,    Adjusted R-squared:  0.0533 
 F-statistic:  2.07 on 1 and 18 DF,  p-value: 0.1674</code></pre>
+</p>
 </div>
-<div id="show-overhead-e-details.-r-code" class="section level5">
-<h5><span class="header-section-number">2.5.1.1.5</span> Show Overhead E Details. R code</h5>
+<div id="Over2.5E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. R code
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">model_outlr0 &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">22</span>))
 <span class="kw">summary</span>(model_outlr0)
 model_outlrA &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> outlr, <span class="dt">subset =</span> <span class="op">-</span><span class="kw">c</span>(<span class="dv">21</span>,<span class="dv">22</span>))
@@ -884,9 +1086,14 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 0.8648 on 18 degrees of freedom
 Multiple R-squared:  0.1031,    Adjusted R-squared:  0.0533 
 F-statistic:  2.07 on 1 and 18 DF,  p-value: 0.1674</code></pre>
+</p>
 </div>
-<div id="show-overhead-f-details.-visualizing-four-regression-fits" class="section level5">
-<h5><span class="header-section-number">2.5.1.1.6</span> Show Overhead F Details. Visualizing four regression fits</h5>
+<div id="Over2.5F" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+F Details. Visualizing four regression fits
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(outlr<span class="op">$</span>x, outlr<span class="op">$</span>y, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">9</span>), <span class="dt">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;y&quot;</span>)
 <span class="kw">text</span>(<span class="fl">4.5</span>, <span class="fl">8.0</span>, <span class="st">&quot;A&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)
 <span class="kw">text</span>(<span class="fl">9.8</span>, <span class="fl">8.0</span>, <span class="st">&quot;B&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>)
@@ -896,15 +1103,21 @@ F-statistic:  2.07 on 1 and 18 DF,  p-value: 0.1674</code></pre>
 <span class="kw">abline</span>(model_outlrB, <span class="dt">col =</span> <span class="st">&quot;green&quot;</span>)
 <span class="kw">abline</span>(model_outlrC, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+</p>
 </div>
-<div id="show-overhead-g-details.-results-from-four-regression-models" class="section level5">
-<h5><span class="header-section-number">2.5.1.1.7</span> Show Overhead G Details. Results from four regression models</h5>
+<div id="Over2.5G" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+G Details. Results from four regression models
+</h3>
+<p>
 <p><span class="math display">\[\begin{matrix}
 \begin{array}{c}
 \text{Results from Four Regressions}
 \end{array}\\\scriptsize
 \begin{array}{l|rrrrr} \hline \text{Data} &amp; b_0 &amp; b_1 &amp; s &amp; R^2(\%) &amp; t(b_1) \\ \hline \text{19 Base Points} &amp; 1.869 &amp; 0.611 &amp; 0.288 &amp; 89.0 &amp; 11.71 \\ \text{19 Base Points} ~+~ A &amp; 1.750 &amp; 0.693 &amp; 0.846 &amp; 53.7 &amp; 4.57 \\ \text{19 Base Points} ~+~ B &amp; 1.775 &amp; 0.640 &amp; 0.285 &amp; 94.7 &amp; 18.01 \\ \text{19 Base Points} ~+~ C &amp; 3.356 &amp; 0.155 &amp; 0.865 &amp; 10.3 &amp; 1.44 \\ \hline \end{array} 
 \end{matrix}\]</span></p>
+</p>
 </div>
 </div>
 </div>
@@ -968,7 +1181,7 @@ gitbook.start({
 },
 "download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });
