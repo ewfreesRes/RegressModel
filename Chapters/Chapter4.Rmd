@@ -364,14 +364,15 @@ summary(model_stepwise)
 ```
 
 ```{r ex="ExerRegMod4.2.2", type="sct", tut=TRUE}
-ex() %>% check_object("model_step1") %>% check_equal()
-ex() %>% check_object("model_step10") %>% check_equal()
-ex() %>% check_function("anova",index=1) %>% check_result() %>% check_equal()
-ex() %>% check_object("model_step50") %>% check_equal()
-ex() %>% check_function("anova",index=2) %>% check_result() %>% check_equal()
-ex() %>% check_object("model_stepwise") %>% check_equal()
-ex() %>% check_function("summary") %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_object("model_step1", undefined_msg="Please use `lm` to create a linear model, and name it `model_step1`.") %>% check_equal(incorrect_msg="Make sure to model `y` using `xvar1` from the dataframe `x`.")
+ex() %>% check_object("model_step10", undefined_msg="Please use `lm` to create a linear model, and name it `model_step10`.") %>% check_equal(incorrect_msg="Make sure to model `y` using `xvar` from 1 to 10 in the dataframe `x`.")
+ex() %>% check_function("anova",index=1, not_called_msg="Use `anova` to compare the two linear models we have just created. ") %>% check_result() %>% check_equal(incorrect_msg="Make sure to compare `model_Step1` to `model_step10`.")
+ex() %>% check_object("model_step50", undefined_msg="Please use `lm` to create a linear model, and name it `model_step50`.") %>% check_equal(incorrect_msg="Make sure to model `y` using all 50 `xvar`s from the dataframe `x`.")
+ex() %>% check_function("anova",index=2, not_called_msg="Use `anova` to compare the two most recent linear models. ") %>% check_result() %>% check_equal(incorrect_msg="Make sure to compare `model_step10` with `model_step50`.")
+ex() %>% check_object("model_stepwise", undefined_msg="Make sure to use the `step` functions to transform `model_step50` into a more useful model, named `model_stepwise’. ") %>% check_equal(incorrect_msg="Make sure to specify that we want to edit `model_step50`, using the data found in `x` in `both` directions, a trace value of `0` and k set to the log of the number of rows in `x`.")
+ex() %>% check_function("summary", not_called_msg="Use `summary` to take a look at `model_stepwise`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to call `summary` on `model_stepwise`.")
 success_msg("Excellent! The step procedure repeatedly fits many models to a data set. We summarize each fit with hypothesis testing statistics like t-statistics and p-values. But, remember that hypothesis tests are designed to falsely detect a relationship a fraction of the time (typically 5%). For example, if you run a t-test 50 times (for each explanatory variable), you can expect to get two or three statistically significant explanatory variables even for unrelated variables (because 50 times 0.05 = 2.5).")
+
 ```
 
 
@@ -505,29 +506,30 @@ lines(lowess(survey$indcost,mlr.survey2$residuals))
 ```
 
 ```{r ex="ExerRegMod4.3.2", type="sct", tut=TRUE}
-ex() %>% check_object("mlr.survey1") %>% check_equal()
-ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("plot",index=1) %>%{
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
+ex() %>% check_object("mlr.survey1", undefined_msg="Use `lm` to create a linear model named `mlr.survey1`.") %>% check_equal(incorrect_msg="make sure to model `logcost` using `logsize` and `indcost` from the dataframe `survey`.")
+ex() %>% check_function("summary",index=1, not_called_msg="Use the `summary` function to view the summary stats of `mlr.survey1`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like the summary stats of `mlr.survey1`.")
+ex() %>% check_function("plot",index=1, not_called_msg="please create a plot the shows `indcosts` and `mlr.survey1`’s residuals. ") %>%{
+  check_arg(., "x") %>% check_equal(incorrect_msg="The independent variable should be `indcosts`.")
+  check_arg(., "y") %>% check_equal(incorrect_msg="The dependent variable should be the residuals of `mlr.survey1`.")
 }
-ex() %>% check_function("lines",index=1)
-ex() %>% check_function("lowess",index=1) %>%{
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
+ex() %>% check_function("lines",index=1, not_called_msg="Please use the `lines` function to add a line to the plot. ")
+ex() %>% check_function("lowess",index=1, not_called_msg="Please use the `lowess` function to add a smoothed effect on our line. ") %>%{
+  check_arg(., "x") %>% check_equal(incorrect_msg="The first argument should be `indcosts`.")
+  check_arg(., "y") %>% check_equal(incorrect_msg="The second argument should be the residuals from `mlr.survey1`.")
 }
-ex() %>% check_object("mlr.survey2") %>% check_equal()
-ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("plot",index=2) %>%{
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
+ex() %>% check_object("mlr.survey2", undefined_msg="Use `lm` to create a linear model that is stored under the name `mlr.survey2`.") %>% check_equal(incorrect_msg="Make sure to model `logcost` using `logsize` and `indcost` squared, which can be found using `poly(indcost,2)`. ")
+ex() %>% check_function("summary",index=2, not_called_msg="Use `summary` to take a look at `mlr.survey2`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `mlr.survey2`.")
+ex() %>% check_function("plot",index=2, not_called_msg="Now make a plot that shows the `indcost` based on the residuals of `mlr.survey2`.") %>%{
+  check_arg(., "x") %>% check_equal(incorrect_msg="The independent variable should be `indcost`.")
+  check_arg(., "y") %>% check_equal(incorrect_msg="The dependent variable should be the residuals of `mlr.survey2`.")
 }
-ex() %>% check_function("lines",index=2)
-ex() %>% check_function("lowess",index=2) %>%{
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
+ex() %>% check_function("lines",index=2, not_called_msg="Make sure to add a line to this new graph using `lines`.")
+ex() %>% check_function("lowess",index=2, not_called_msg="make sure to use the `lowess` function to add a smoothed effect to the line. ") %>%{
+  check_arg(., "x") %>% check_equal(incorrect_msg="The first argument should be `indcost`.")
+  check_arg(., "y") %>% check_equal(incorrect_msg="The second argument should be the residuals of `mlr.survey2`.")
 }
 success_msg("Excellent! In this exercise, you examined residuals from a preliminary model fit and detected a mild quadratic pattern in a variable. This suggested entering the squared term of that variable into the model specification. The refit of this new model suggests that the squared term has important explanatory information. The squared term is a nonlinear alternative that is not available in many automatic variable selection procedures.")
+
 ```
 
 
@@ -753,17 +755,18 @@ plot(hii,ri)
 ```
 
 ```{r ex="ExerRegMod4.4.2", type="sct", tut=TRUE}
-ex() %>% check_function("plot",index=1) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_object("model_outlrC") %>% check_equal()
-ex() %>% check_object("ri") %>% check_equal()
-ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_object("hii") %>% check_equal()
-ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("plot",index=2) %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
+ex() %>% check_function("plot",index=1, not_called_msg="Please use `plot` to create a plot of the data in `outlrC`.") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to specify that we want to plot the data found in `outlrC`.")
+ex() %>% check_object("model_outlrC", undefined_msg="Make sure to create a linear model and store it under the name `model_outlrC`.") %>% check_equal(incorrect_msg="This linear model should explain `y` based on `x` which is found in the dataframe `outlrC`.")
+ex() %>% check_object("ri", undefined_msg="Make sure to extract the residuals to the variable `ri`.") %>% check_equal(incorrect_msg="You can extract the standardized residuals by using `rstandard` on `model_outlrC`.")
+ex() %>% check_function("summary",index=1, not_called_msg="Use the `summary` function to view the summary of `ri`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want to look at the summary of `ri`.")
+ex() %>% check_object("hii", undefined_msg="Make sure to extract the leverage values to a variable named `hii`.") %>% check_equal(incorrect_msg="You can extract the leverage values by using the `hatvalues` function on `model_outlrC`.")
+ex() %>% check_function("summary",index=2, not_called_msg="Use the `summary` function to view the summary of `hii`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure the specify that we want to look at the summary of `hii`. ")
+ex() %>% check_function("plot",index=2, not_called_msg="Please use `plot` to create a plot of the standardized residuals versus the leverages. ") %>% {
+  check_arg(., "x") %>% check_equal(incorrect_msg="We would like the leverages to be on the horizontal axis. ")
+  check_arg(., "y") %>% check_equal(incorrect_msg="We would like the standardized residuals to be on the vertical axis. ")
 }
 success_msg("Excellent! With only two variables, we could argue graphically that observations were unusual. In this exercise, we showed how statistics could also be used to identify usual observations. Although not really necessary in basic linear regression, the main advantage of the statistics is that they work readily in a multivariate setting.")
+
 ```
 
 ###Exercise. High leverage and risk manager survey
@@ -827,26 +830,27 @@ summary(mlr.survey3)
 ```
 
 ```{r ex="ExerRegMod4.4.3", type="sct", tut=TRUE}
-ex() %>% check_object("ri") %>% check_equal()
-ex() %>% check_object("hii") %>% check_equal()
-ex() %>% check_function("par",index=1) %>% check_arg(., "mfrow") %>% check_equal()
-ex() %>% check_function("hist",index=1) %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "nclass") %>% check_equal()
+ex() %>% check_object("ri", undefined_msg="Please extract the standardized residuals from `mlr.survey1` into `ri`.") %>% check_equal(incorrect_msg="You can extract the standardized residuals from a linear model by using `rstandard()`.")
+ex() %>% check_object("hii", undefined_msg="Please extract the leverage values from `mlr.survey1` into `hii`.") %>% check_equal(incorrect_msg="You can extract the leverage values from a linear model by using `hatvalues()`.")
+ex() %>% check_function("par",index=1,not_called_msg="use the `par` command to alter your plot window. ") %>% check_arg(., "mfrow") %>% check_equal(incorrect_msg="to create, 2 side-by-side graphs, set mfrow to be c(1,2). ")
+ex() %>% check_function("hist",index=1, not_called_msg="use `hist` to create a histogram of the standardized residuals. ") %>% {
+  check_arg(., "x") %>% check_equal(incorrect_msg="Please create a histogram using the standardized residuals. ")
+  check_arg(., "nclass") %>% check_equal(incorrect_msg="Please set the number of classes to be 16. ")
 }
-ex() %>% check_function("hist",index=2) %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "nclass") %>% check_equal()
+ex() %>% check_function("hist",index=2, not_called_msg="Use `hist` to create a histogram of the leverage values.") %>% {
+  check_arg(., "x") %>% check_equal(incorrect_msg="Please create a histogram using the leverage values. ")
+  check_arg(., "nclass") %>% check_equal(incorrect_msg="Please set the number of classes to be 16. ")
 }
-ex() %>% check_function("par",index=2) %>% check_arg(., "mfrow") %>% check_equal()
-ex() %>% check_function("hist",index=3) %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "nclass") %>% check_equal()
+ex() %>% check_function("par",index=2, not_called_msg="Please reset the plot to contain a single plot. ") %>% check_arg(., "mfrow") %>% check_equal(incorrect_msg="To change back to a single plot, set mfrow to be c(1,1). ")
+ex() %>% check_function("hist",index=3, not_called_msg="Use `hist` to create a histogram of `indcost`.") %>% {
+  check_arg(., "x") %>% check_equal(incorrect_msg="Please create a histogram of `indcost`.")
+  check_arg(., "nclass") %>% check_equal(incorrect_msg="Please set the number of classes to be 16. ")
 }
-ex() %>% check_object("mlr.survey3") %>% check_euqal()
-ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
+ex() %>% check_object("mlr.survey3",undefined_msg="Please create a linear model where we excluded observations 10 and 16 named `mlr.survey3`.") %>% check_equal(incorrect_msg="Model `logcost` as a function of `logsize` and `indcost` squared. You can exclude the two values by using the subset argument in `lm`.")
+ex() %>% check_function("summary",index=1,not_called_msg="Please use `summary` to view a summary of `mlr.survey2`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `mlr.survey2`.")
+ex() %>% check_function("summary",index=2,not_called_msg="Please use `summary` to view a summary of `mlr.survey3`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `mlr.survey3`.")
 success_msg("Excellent! You will have noted that after removing these two influential observations from a high risk industry, the variable associated with the `indcost` squared became less statistically significant. This illustrates a general phenomena; sometimes, the 'signicance' of a variable may actually due to a few unusual observations, not the entire variable.")
+
 ```
 
 ## Collinearity
@@ -991,12 +995,13 @@ car::vif(Term_mlr1)
 ```
 
 ```{r ex="ExerRegMod4.5.2", type="sct", tut=TRUE}
-ex() %>% check_object("Term_mlr") %>% check_equal()
-ex() %>% check_function("vif",index=1) %>% check_arg(., "mod") %>% check_equal()
-ex() %>% check_object("Term_mlr1") %>% check_equal()
-ex() %>% check_function("summary") %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("vif",index=2) %>% check_arg(., "mod") %>% check_equal()
+ex() %>% check_object("Term_mlr", undefined_msg="Please create a linear model named `Term_mlr`.") %>% check_equal(incorrect_msg="Utilize `lm` to create a linear model that models `logface` using `education`, `numhh`, and `logincome` from the dataset `Term1`.")
+ex() %>% check_function("vif",index=1, not_called_msg="Utilize `vif` to calculate the variance inflation factors. ") %>% check_arg(., "mod") %>% check_equal(incorrect_msg="Using `vif` on our model will allow us to get the variance inflation factors. ")
+ex() %>% check_object("Term_mlr1", undefined_msg="Please create a linear model named `Term_mlr1`.") %>% check_equal(incorrect_msg="Using `lm`, create a linear model that estimates `logincome` using `education`, as well as the product of `numhh` and `logincome`.")
+ex() %>% check_function("summary", not_called_msg="Utilize `summary` to view a summary of `Term_mlr1`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `Term_mlr1`.")
+ex() %>% check_function("vif",index=2, not_called_msg="Utilize `vif` to calculate the variance inflation factors for `Term_mlr`.") %>% check_arg(., "mod") %>% check_equal(incorrect_msg="Make sure to specify that we would like the variance inflation factors of `Term_mlr1`.")
 success_msg("Excellent! This exercise underscores that colinearity among explanatory variables can be induced when introducing higher order terms such as interactions. Note that in the interaction model the variable 'numhh' does not appear to be statistically signficant effect. This is one of the big dangers of collinearity - it can mask important effects.")
+
 ```
 
 ## Selection criteria
@@ -1206,15 +1211,15 @@ set.seed(12347)
 shuffled_Term1 <- Term1[sample(n), ]
 
 # Calculate the cross-validation statistic using only logarithmic income, `logincome`.
-explvars <- c("logincome")
+explvars.1 <- c("logincome")
 crossvalfct(explvars)
 
 # Calculate the cross-validation statistic using `logincome`, `education` and `numhh`.
-explvars <- c("education", "numhh", "logincome")
+explvars.2 <- c("education", "numhh", "logincome")
 crossvalfct(___)
 
 # Calculate the cross-validation statistic using `logincome`, `education`, `numhh` and `marstat`.
-explvars <- c(___)
+explvars.3 <- c(___)
 crossvalfct(explvars)
 ```
 
@@ -1235,12 +1240,12 @@ crossvalfct(explvars.3)
 
 
 ```{r ex="ExerRegMod4.6.2", type="sct", tut=TRUE}
-ex() %>% check_object("explvars.1") %>% check_equal()
-ex() %>% check_function("crossvalfct",index=1) %>% check_arg(., "explvars") %>% check_equal()
-ex() %>% check_object("explvars.2") %>% check_equal()
-ex() %>% check_function("crossvalfct",index=2) %>% check_arg(., "explvars") %>% check_equal()
-ex() %>% check_object("explvars.3") %>% check_equal()
-ex() %>% check_function("crossvalfct",index=3) %>% check_arg(., "explvars") %>% check_equal()
+ex() %>% check_object("explvars.1",undefined_msg="Create an object named `explvars.1` that is equal to `logincome`.") %>% check_equal(incorrect_msg="Make sure to set `explvars.1` to be the character string `logincome` as opposed to the values in `logincome`.")
+ex() %>% check_function("crossvalfct",index=1,not_called_msg="Utilize the custom build function `crossvalfct` to calculate the cross-validation statistic for `explvars.1`.") %>% check_arg(., "explvars") %>% check_equal(incorrect_msg="The only argument that you need to set in `crossvalfct` is `explvars` which should be set equal to `explvars.1`.")
+ex() %>% check_object("explvars.2",undefined_msg="Create an object named `explvars.2` that is equal to `logincome`, `numhh`, and `logincome`.") %>% check_equal(incorrect_msg="Make sure to set `explvars.2` to be the character strings `logincome`, `numhh`, and `logincome` as opposed to the values inside of those vectors. ")
+ex() %>% check_function("crossvalfct",index=2,not_called_msg="Utilize the custom build function `crossvalfct` to calculate the cross-validation statistic for `explvars.2`.") %>% check_arg(., "explvars") %>% check_equal(incorrect_msg="The only argument that you need to set in `crossvalfct` is `explvars` which should be set equal to `explvars.2`.")
+ex() %>% check_object("explvars.3",undefined_msg="Create an object named `explvars.3` that is equal to `logincome`, `numhh`, `logincome`, and `marstat`.") %>% check_equal(incorrect_msg="Make sure to set `explvars.3` to be the character strings `logincome`, `numhh`, `logincome`, and `marstat` as opposed to the values inside of those vectors. ")
+ex() %>% check_function("crossvalfct",index=3,not_called_msg="Utilize the custom build function `crossvalfct` to calculate the cross-validation statistic for `explvars.3`.") %>% check_arg(., "explvars") %>% check_equal(incorrect_msg="The only argument that you need to set in `crossvalfct` is `explvars` which should be set equal to `explvars.3`.")
 success_msg("Excellent! This exercises demonstrates the use of cross-validation, a very important technique in model selection. The exercise builds the procedure from the ground up so that you can see all the steps involved. Further, it illustrates how you can develop your own functions to automate procedures and save steps.")
 ```
 
