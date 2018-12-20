@@ -344,27 +344,28 @@ exp(predict(Term_mlr2, newdata))
 ```
 
 ```{r ex="ExerRegMod3.1.2", type="sct", tut=TRUE}
-ex() %>% check_object("Term2") %>% check_column("education1") %>% check_equal()
-ex() %>% check_function("summary") %>% {
-  check_arg(., "object") %>% check_equal()
+ex() %>% check_object("Term2") %>% check_column("education1") %>% check_equal(incorrect_msg="Make sure to assign the modified education variable to `education1` using `pmin`.")
+ex() %>% check_function("summary", not_called_msg="Make use of `summary` to find summary stats of `Term2`.") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to run summary on `Term2`.")
   check_result() %>% check_equal()
 }
-ex() %>% check_function("round") %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "digits") %>% check_equal()
+ex() %>% check_function("round", not_called_msg="Use `round` to round the correlations to 3 digits. " ) %>% {
+  check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to call `round` on the correlations of all variables in `Term2`.")
+  check_arg(., "digits") %>% check_equal(incorrect_msg="Please round these correlations to 3 digits. ")
 }
-ex() %>% check_object("Term_mlr2") %>% check_equal()
+ex() %>% check_object("Term_mlr2", not_defined_msg="Make sure to assign your linear model to `Term_mlr2`.") %>% check_equal(incorrect_msg="Make sure to model `logface` based on `education1`, `numhh`, and `logincome`.")
 ex() %>% check_function("lm") %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
+  check_arg(., "formula") %>% check_equal(incorrect_msg="Make sure to model `logface` based on `education1`, `numhh`, and `logincome`.")
+  check_arg(., "data") %>% check_equal(incorrect_msg="Make sure to specify our data comes from `Term2`.")
 }
-ex() %>% check_object("newdata") %>% check_equal()
-ex() %>% check_function("exp") %>% check_result() %>% check_equal()
-ex() %>% check_function("predict") %>% {
-  check_arg(., "object") %>% check_equal()
-  check_arg(., "newdata") %>% check_equal()
+ex() %>% check_object("newdata", undefined_msg="Make sure to assign our new data to `newdata`.") %>% check_equal(incorrect_msg="make sure to assign each column of the dataframe to its stated value. ")
+ex() %>% check_function("exp", not_called_msg="Make sure to take the exponential of your prediction! ") %>% check_result() %>% check_equal(incorrect_msg="The argument in `exp` should be called on the prediction. ")
+ex() %>% check_function("predict", not_called_msg="Utilize `predict` to create predictions using this model. ") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want to create predictions based off of `Term2_mlr2`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="Make sure to specify we want to make predictions for the data we entered in `newdata`.")
 }
 success_msg("Congratulations! You now have experience fitting a regression plane and using this plane for predictions. Prediction is one of the key tasks of 'predictive modeling.' Well done!")
+
 ```
 
 ###Exercise. Interpreting coefficients as proportional changes
@@ -424,17 +425,17 @@ pchange_fits1
 ```
 
 ```{r ex="ExerRegMod3.1.3", type="sct", tut=TRUE}
-ex() %>% check_object("educ_predict") %>% check_equal()
-ex() %>% check_object("newdata1") %>% check_equal()
-ex() %>% check_function("predict") %>% {
-  check_arg(., "object") %>% check_equal()
-  check_arg(., "newdata") %>% check_equal()
+ex() %>% check_object("educ_predict", undefined_msg="Make sure to assign the values of `education` to `educ_predict`.") %>% check_equal(incorrect_msg="These numbers should be the values from 14 to 14.3 by .1 increments. ")
+ex() %>% check_object("newdata1",undefined_msg="Make sure to create a dataframe named `newdata1` for predicting. ") %>% check_equal(incorrect_msg="Set log income to be the mean of the logincome of our data, education equal to `educ_predict`, and numhh equal to the mean of numhh. ")
+ex() %>% check_function("predict",not_called_msg="Use `predict` to make predictions given our model and data. ") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want to make predictions based on `Term_mlr`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="Make sure to specify that we would like to use the values in `newdata1` as the data for our predictions. ")
 }
-ex() %>% check_object("lsfits1") %>% check_equal()
-ex() %>% check_operator("-",index=1) %>% check_result() %>% check_equal()
-ex() %>% check_object("pchange_fits1") %>% check_equal()
+ex() %>% check_object("lsfits1", undefined_msg="Make sure to assign the predicted values to `lsfits1`.") %>% check_equal(incorrect_msg=" Use `predict` to make predictions given our model and data. ")
+ex() %>% check_object("pchange_fits1", undefined_msg="Make sure to assign exponential of the differences between the fit values to `pchange_fits1`.") %>% check_equal(incorrect_msg="this should be equal to the exponential of lsfits1[i] – lsfits1[i-1]. ")
 ex() %>% check_function("exp") %>% check_arg("x") %>% check_equal()
 success_msg("Congratulations! From calculus, small changes in logarithmic values can be interpreted as proportional changes. This is the reason for using natural logarithms.")
+
 ```
 
 ###Exercise. Interpreting coefficients as elasticities
@@ -506,17 +507,17 @@ pchange_fits2/pchange_income
 
 
 ```{r ex="ExerRegMod3.1.4", type="sct", tut=TRUE}
-ex() %>% check_object("logincome_pred") %>% check_equal()
-ex() %>% check_object("pchange_income") %>% check_equal()
-ex() %>% check_object("newdata2") %>% check_equal()
-ex() %>% check_object("lsfits2") %>% chec_equal()
-ex() %>% check_function("predict") %>% {
-  check_arg(., "object") %>% check_equal()
-  check_arg(., "newdata") %>% check_equal()
+ex() %>% check_object("logincome_pred", undefined_msg="Assign the string of values to `logincome_pred`.") %>% check_equal(incorrect_msg="The values should be `11`, `11.1`, `11.2`, and `11.3`.")
+ex() %>% check_object("pchange_income", undefiened_msg="assign the values of the percentage change in income. ") %>% check_equal(incorrect_msg="it should be equal to the following: `100*(exp(logincome_pred[2:4])/exp(logincome_pred[1:3])-1`.")
+ex() %>% check_object("newdata2", undefined_msg="create some new data, and name it to `newdata2`.") %>% check_equal(incorrect_msg="This new data should have `logincome` equal to `logincome_pred`, `education` equal to the mean of `education`, and `numhh` equal to the mean of `numhh`.")
+ex() %>% check_object("lsfits2", undefined_msg="Set the predicted values to be stored in `lsfits2`.") %>% check_equal(incorrect_msg="you should run predict on `Term_mlr` and `newdata2`.)
+ex() %>% check_function("predict", not_called_msg="Use `predict` to create the predicted values. ") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="The model that we want to use is `Term_mlr`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="The data we want to use to create predictions is found in `newdata2`.")
 }
-ex() %>% check_object("pchange_fits2") %>% check_equal()
-ex() %>% check_expression("/",index=3) %>% check_result() %>% check_equal()
+ex() %>% check_object("pchange_fits2", undefined_msg="now find the percentage change in each of the fits, and store them in `pchange_fits2`.") %>% check_equal(incorrect_msg="Do the exact same thing you did for `pchange_income`, except use the fits instead of the predictions. ")
 success_msg("Congratulations! When both $x_1$ and $y$ are in logarithmic units, then we can interpret $b_1$ to be ratio of two percentage changes, known as an *elasticity* in economics.")
+
 ```
 
 
@@ -679,17 +680,14 @@ summary(Term_mlr1)
 
   
 ```{r ex="ExerRegMod3.2.2", type="sct", tut=TRUE}
-ex() %>% check_object("Term2") %>% {
-  check_column(., "face") %>% check_equal()
-  check_column(., "income") %>% check_equal()
+ex() %>% check_object("Term2", undefined_msg="You should have a dataframe named `Term2`.") %>% {
+  check_column(., "face", col_missing_msg="You should make a new column named `face`.") %>% check_equal(incorrect_msg="to create the data, take the exponential of the data in `logface` and divide by 1000. ")
+  check_column(., "income", col_missing_msg="You should make a new column named `income`.") %>% check_equal(incorrect_msg="To create the data, take the exponential of the data in `logincome` and divide by 1000. ")
  }
-ex() %>% check_object("Term_mlr1") %>% check_equal()
-ex() %>% check_function("lm") %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
-}
-ex() %>% check_function("summary") %>% check_result() %>% check_equal()
+ex() %>% check_object("Term_mlr1", undefined_msg="Use `lm` to create a linear model, and store it in `Term_mlr1`.") %>% check_equal(incorrect_msg="When you create your model, make sure to model `face` based on `education`, `numhh`, and `income` from the data set `Term2`.")
+ex() %>% check_function("summary", not_called_msg="Use `summary` to view a summary of our linear model. ") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `Term_mlr1`.")
 success_msg("Congratulations! Compare these goodness of fit measures to those where income and face are in logarithmic units. Although not the only indicators, you will see that the proportion of variability explained (R square) and the statistical significance of coefficients are strikingly higher in the model with variables in logged units.")
+
 ```
 
 
@@ -890,20 +888,13 @@ summary(Term_mlr4)
 
 
 ```{r ex="ExerRegMod3.3.2", type="sct", tut=TRUE}
-ex() %>% check_function("round") %>% check_result() %>% check_equal()
-ex() %>% check_object("Term_mlr3") %>% check_equal()
-ex() %>% check_function("lm",index=1) %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
-}
-ex() %>% check_function("summary",index=1) %>% check_result() %>% check_equal()
-ex() %>% check_object("Term_mlr4") %>% check_equal()
-ex() %>% check_function("lm",index=2) %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
-}
-ex() %>% check_function("summary",index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function("round", not_called_msg="Use `round` on the correlation coefficients found using `cor` to 3 digits.") %>% check_result() %>% check_equal(incorrect_msg="Use `cor` to find the correlations, and then round them to 3 digits. ")
+ex() %>% check_object("Term_mlr3", undefined_msg="Use `lm` to create a linear model named `Term_mlr3`.") %>% check_equal(incorrect_msg="You linear model should model `logface` based on `education`, `numhh`, `logincome`, and `single` from the data in `Term4`.")
+ex() %>% check_function("summary",index=1,not_called_msg="Use `summary` to view a summary of `Term_mlr3`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `Term_mlr3`.")
+ ex() %>% check_object("Term_mlr4", undefined_msg="Use `lm` to create a linear model named `Term_mlr4`.") %>% check_equal(incorrect_msg="You linear model should model `logface` based on `education`, `numhh`, `logincome`, and the product of `single` and `logincome` from the data in `Term4`.")
+ex() %>% check_function("summary",index=2,not_called_msg="Use `summary` to view a summary of `Term_mlr4`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `Term_mlr4`.")
 success_msg("Congratulations! From a correlation table, you saw that there are relationships with among explanatory variables and so it is not clear whether adding `single` to the model would be helpful. You explored this by first fitting a model by just adding the binary variable single, examined summary statistics, and checked the significance of the variable. Then, you explored the utility of the interaction of `single` with logarithmic income. Well done!")
+
 ```
 
 ##  Categorical variables
@@ -1301,13 +1292,14 @@ anova(Term_mlr3,Term_mlr4)
 
 
 ```{r ex="ExerRegMod3.5.2", type="sct", tut=TRUE}
-ex() %>% check_object("Term_mlr1") %>% check_equal()
-ex() %>% check_object("Term_mlr2") %>% check_equal()
-ex() %>% check_function("anova",index=1) %>% check_result() %>% check_equal()
-ex() %>% check_object("Term_mlr3") %>% check_equal()
-ex() %>% check_object("Term_mlr4") %>% check_equal()
-ex() %>% check_function("anova",index=2) %>% check_result() %>% check_equal()
-success_msg("Congratulations! Hypothesis testing is a primary tool for  'inferring' about the real world {in contrast to mathematical 'deduction'.} Moreover, as we will see in the next chapter, it can also be used to develop a model.")
+ex() %>% check_object("Term_mlr1" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr1`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and `single` from the data set `Term4`.")
+ex() %>% check_object("Term_mlr2" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr2`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and `marstat` from the data set `Term4`.")
+ex() %>% check_function("anova",index=1, not_called_msg="Run an anova test to compare the two models we just created. ") %>% check_result() %>% check_equal(incorrect_msg="You should run the `anova` test on `Term_mlr1` and `Term_mlr2`.")
+ex() %>% check_object("Term_mlr3" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr3`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and the product of `single` and `logincome` from the data set `Term4`.")
+ex() %>% check_object("Term_mlr4" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr4`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and the product of `marstat` and `logincome` from the data set `Term4`.")
+ex() %>% check_function("anova",index=2, not_called_msg="Run an anova test to compare the two new models we just created. ") %>% check_result() %>% check_equal(incorrect_msg="You should run the `anova` test on `Term_mlr3` and `Term_mlr4`.")
+success_msg("Congratulations! Hypothesis testing is a primary tool for  'inferring' about the real world {in contrast to mathematical 'deduction'.} Moreover, as we will see in the next chapter, it can also be used to develop a model.")  
+
 ```
 
 ###Exercise. Hypothesis testing and Wisconsin hospital costs
