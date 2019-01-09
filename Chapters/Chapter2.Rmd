@@ -551,20 +551,19 @@ summary(model_blr2)$r.squared
 
 
 ```{r ex="ExerRegMod2.3.3", type="sct", tut=TRUE}
-ex() %>% check_object("model_blr1",undefined_msg="Please name the first regression model `model_blr1`.") %>% check_equal(incorrect_msg="please don’t change this step, it should read: ` model_blr1 <- lm(sales_1000  ~ pop, data = Lot)`.")
-ex() %>% check_function("anova",index=1,not_called_msg="Use `anova` to summarize the fit of `model_blr1`." ) %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want to run `anova` on `model_blr1`.")
-ex() %>% check_function("sqrt",index=1,not_called_msg="Make sure to take the square root in order to find `s`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure that you are taking the square root of the second argument of the mean found using `anova`.")
-ex() %>% check_function("anova",index=2,not_called_msg="make sure to run `anova` on `model_blr1`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we would like to run `anova` on `model_blr1`.")
-ex() %>% check_function("summary",index=1,not_called_msg="Use `summary` to find the summary stats on `model_blr1`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify we want the r-squared value from our model.")
-ex() %>% check_object("model_blr2", "undefined_msg=”Please name the first regression model `model_blr2`.") %>% check_equal(incorrect_msg="Make sure to create `model_blr2` such that `sales_1000` is based on `pop_1000`.")
-ex() %>% check_function("lm",index=2,not_called_msg="make sure to use `lm` to create a regression model.") %>% {
+ex() %>% check_object("model_blr1", undefined_msg="Please name the first regression model `model_blr1`.") %>% check_equal(incorrect_msg="Please do not change this step, it should read `model_blr1 <- lm(sales_1000 ~ pop, data = Lot)`.")
+ex() %>% check_function("anova", index=1, not_called_msg="Use `anova` to summarize the fit of `model_blr1`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want to run `anova` on `model_blr1`.")
+ex() %>% check_function("sqrt", index=1, not_called_msg="Make sure to take the square root in order to find `s`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure you are taking the square root of the second argument of the mean found using `anova`.")
+ex() %>% check_function("summary", index=1, not_called_msg="Use `summary` to find the summary statistics of `model_blr1`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want the r-squared value from our model.")
+ex() %>% check_object("model_blr2", undefined_msg="Please name the first regression model `model_blr2`.") %>% check_equal(incorrect_msg="Make sure to create `model_blr2` such that `sales_1000` is based on `pop_1000`.")
+ex() %>% check_function("lm", index=2, not_called_msg="make sure to use `lm` to create a regression model.") %>% {
   check_arg(., "formula") %>% check_equal(incorrect_msg="make sure to specify we would like `sales_1000` to be based on `pop_1000`.")
   check_arg(., "data") %>% check_equal(incorrect_msg="make sure to specify that our data is from the dataframe `Lot`.")
 }
 ex() %>% check_function("anova",index=3,not_called_msg="Use `anova` to summarize the fit of `model_blr2`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want to run `anova` on `model_blr2`.")
 ex() %>% check_function("sqrt",index=2,not_called_msg="Make sure to take the square root in order to find `s`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure that you are taking the square root of the second argument of the mean found using `anova`.")
 ex() %>% check_function("anova",index=4, not_called_msg="make sure to run `anova` on `model_blr2`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we would like to run `anova` on `model_blr2`.")
-ex() %>% check_function("summary",index=2, not_called_msg="Use `summary` to find the summary stats on `model_blr2`.”" %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify we want the r-squared value from our model.")
+ex() %>% check_function("summary", index=2, not_called_msg="Use `summary` to find the summary stats on `model_blr2`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify we want the r-squared value from our model.")
 success_msg("Congratulations! In this exercise, you have seen that rescaling does not affect our measures of goodness of fit in any meaningful way. For example, coeffcient of determinations are completely unaffected. This is helpful because we will rescale variables extensively in our search for patterns in the data.")
 
 ```
@@ -985,33 +984,30 @@ qqline(residuals(model_Kenosha))
 
 
 ```{r ex="ExerRegMod2.5.2", type="sct", tut=TRUE}
-ex() %>% check_object("model_blr",undefined_msg="Make sure to name the first regression model `model_blr`.") %>% check_equal(incorrect_msg="This has already been done for you, please don’t change it. ")
-ex() %>% check_function("lm",index=1,not_called_msg="Use `lm` to create the linear model for `model_blr`.") %>% {
+ex() %>% check_object("model_blr", undefined_msg="Make sure to name the first regression model `model_blr`.") %>% check_equal(incorrect_msg="This has already been bone for you, please do not change it.")
+ex() %>% check_function("lm", index=1, not_called_msg="Use `lm` to create the linear model for `model_blr`.") %>% {
   check_arg(., "formula") %>% check_equal(incorrect_msg="Make sure to model `sales` based on `pop`.")
   check_arg(., "data") %>% check_equal(incorrect_msg="Make sure to specify the dataframe we are using, `Lot`.")
 }
-ex() %>% check_function("summary", index=1,not_called_msg="run `summary` on `model_blr`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want the summary of `model_blr`.")
-ex() %>% check_function("summary", index=1) %>% check_result() %>% check_equal()
-ex() %>% check_object("model_Kenosha", undefined_msg="Name the result of a `lm` excluding Kenosha `model_Kenosha`.") %>% check_equal(incorrect_msg="Make sure to exclude observation 9. ")
-ex() %>% check_function("lm", index=2,not_called_msg="Create a linear model excluding the Kenosha observation. ") %>% {
+ex() %>% check_function("summary", index=1, not_called_msg="run `summary` on `model_blr`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want the summary of `model_blr`.")
+ex() %>% check_object("model_Kenosha", undefined_msg="Name the result of a `lm` excluding Kenosha `model_Kenosha`.") %>% check_equal(incorrect_msg="Make sure to exclude observation 9.")
+ex() %>% check_function("lm", index=2, not_called_msg="Create a linear model excluding the Kenosha observation.") %>% {
   check_arg(., "formula") %>% check_equal(incorrect_msg="Make sure to specify that we want to base `sales` on `pop`.")
   check_arg(., "data") %>% check_equal(incorrect_msg="Make sure to specify that our data is from the dataframe `Lot`.")
-  check_arg(., "subset") %>% check_equal(incorrect_msg="Make sure to remove the Kenosha observation from the data. Kenosha is observation 9. ")
+  check_arg(., "subset") %>% check_equal(incorrect_msg="Make sure to remove the Kenosha observation from the data. Kenosha is observation 9.")
 }
-ex() %>% check_function("summary", index=2,not_called_msg="Look at the summary stats of `model_Kenosha` using `summary`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify we want summary stats of `model_Kenosha`." )
-ex() %>% check_function("summary", index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function("summary", index=2, not_called_msg="Look at the summary stats of `model_Kenosha` using `summary`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify we want summary stats of `model_Kenosha`." )
 ex() %>% check_function("plot", not_called_msg="Create a plot of population vs sales from the full data. ") %>% {
   check_arg(., "x") %>% check_equal(incorrect_msg="The x variable should be all of the population observations. ")
-  check_arg(., "y") %>% check_equal(incorrect_msg="They y variable should be all of the sales observations. ")
+  check_arg(., "y") %>% check_equal(incorrect_msg="The y variable should be all of the sales observations. ")
 }
-ex() %>% check_function("abline",index=1,not_called_msg="plot the regression of `model_blr` using `abline`.") %>% check_arg(., "reg") %>% check_equal(incorrect_msg="The first line should be for `model_blr`.")
-ex() %>% check_function("abline",index=2,not_called_msg="plot the regression of `model_Kenosha` using `abline`.") %>% check_arg(., "reg") %>% check_equal(incorrect_msg="The second line should be for `model_Kenosha`.")
-ex() %>% check_function("par",not_called_msg= incorrect_msg="Set up the plotting window so it has 2 graphs using `par`.") %>% check_arg(., "mfrow") %>% check_equal(incorrect_msg="Make sure to create 2 side-by-side graphs! ")
-ex() %>% check_function("qqnorm",index=1,not_called_msg="Create a qq-plot for `model_blr` using `qqnorm`.") %>% check_arg(., "y") %>% check_equal(incorrect_msg="The first graph should be for `model_blr`.")
-ex() %>% check_function("qqline",index=1,not_called_msg="Add a qq-line to the graph for `model_blr`.") %>% check_arg(., "y") %>% check_equal(incorrect_msg="The first line should be for `model_blr`.")
-ex() %>% check_function("qqnorm",index=2,not_called_msg="Create a qq-plot for `model_Kenosha` using `qqnorm`.") %>% check_arg(., "y") %>% check_equal(incorrect_msg="The second graph should be for `model_Kenosha`.")
-ex() %>% check_function("qqline",index=2, not_called_msg="Add a qq-line to the graph for `model_Kenosha`.") %>% check_arg(., "y") %>% check_equal(incorrect_msg="The second line should be for `model_Kenosha`.")
+ex() %>% check_function("abline", index=1, not_called_msg="plot the regression of `model_blr` using `abline`.") %>% check_arg(., "a") %>% check_equal(incorrect_msg="The first line should be for `model_blr`.")
+ex() %>% check_function("abline", index=2, not_called_msg="plot the regression of `model_Kenosha` using `abline`.") %>% check_arg(., "a") %>% check_equal(incorrect_msg="The second line should be for `model_Kenosha`.")
+ex() %>% check_function("par", not_called_msg="Set up the plotting window so it has 2 graphs using `par`.") %>% check_arg(., "mfrow") %>% check_equal(incorrect_msg="Make sure to create 2 side-by-side graphs! ")
+ex() %>% check_function("qqnorm", index=1, not_called_msg="Create a qq-plot for `model_blr` using `qqnorm`.") %>% check_arg(., "y") %>% check_equal(incorrect_msg="The first graph should be for `model_blr`.")
+ex() %>% check_function("qqline", index=1, not_called_msg="Add a qq-line to the graph for `model_blr`.") %>% check_arg(., "y") %>% check_equal(incorrect_msg="The first line should be for `model_blr`.")
+ex() %>% check_function("qqnorm", index=2, not_called_msg="Create a qq-plot for `model_Kenosha` using `qqnorm`.") %>% check_arg(.,"y") %>% check_equal(incorrect_msg="The second graph should be for `model_Kenosha`.")
+ex() %>% check_function("qqline", index=2, not_called_msg="Add a qq-line to the graph for `model_Kenosha`.") %>% check_arg(., "y") %>% check_equal(incorrect_msg="The second line should be for `model_Kenosha`.")
 success_msg("Congratulations! Just because an observation is unusual does not make it bad or noninformative. Kenosha is close to the Illinois border; residents from Illinois probably participate in the Wisconsin lottery thus effectively increasing the potential pool of sales in Kenosha. Although unusual, there is interesting information to be learned from this observation.")
-
 ```
 
