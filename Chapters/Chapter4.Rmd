@@ -366,10 +366,10 @@ summary(model_stepwise)
 ```{r ex="ExerRegMod4.2.2", type="sct", tut=TRUE}
 ex() %>% check_object("model_step1", undefined_msg="Please use `lm` to create a linear model, and name it `model_step1`.") %>% check_equal(incorrect_msg="Make sure to model `y` using `xvar1` from the dataframe `x`.")
 ex() %>% check_object("model_step10", undefined_msg="Please use `lm` to create a linear model, and name it `model_step10`.") %>% check_equal(incorrect_msg="Make sure to model `y` using `xvar` from 1 to 10 in the dataframe `x`.")
-ex() %>% check_function("anova",index=1, not_called_msg="Use `anova` to compare the two linear models we have just created. ") %>% check_result() %>% check_equal(incorrect_msg="Make sure to compare `model_Step1` to `model_step10`.")
+ex() %>% check_function("anova", index=1, not_called_msg="Use `anova` to compare the two linear models we have just created.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to compare `model_Step1` to `model_step10`.")
 ex() %>% check_object("model_step50", undefined_msg="Please use `lm` to create a linear model, and name it `model_step50`.") %>% check_equal(incorrect_msg="Make sure to model `y` using all 50 `xvar`s from the dataframe `x`.")
-ex() %>% check_function("anova",index=2, not_called_msg="Use `anova` to compare the two most recent linear models. ") %>% check_result() %>% check_equal(incorrect_msg="Make sure to compare `model_step10` with `model_step50`.")
-ex() %>% check_object("model_stepwise", undefined_msg="Make sure to use the `step` functions to transform `model_step50` into a more useful model, named `model_stepwise’. ") %>% check_equal(incorrect_msg="Make sure to specify that we want to edit `model_step50`, using the data found in `x` in `both` directions, a trace value of `0` and k set to the log of the number of rows in `x`.")
+ex() %>% check_function("anova", index=2, not_called_msg="Use `anova` to compare the two most recent linear models.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to compare `model_step10` with `model_step50`.")
+ex() %>% check_object("model_stepwise", undefined_msg="Make sure to use the `step` function to transform `model_step50` into a more useful model, named `model_stepwise`.") %>% check_equal(incorrect_msg="Make sure to specify that we want to edit `model_step50`, using the data found in `x` in `both` directions, a trace value of `0` and k set to the log of the number of rows in `x`.")
 ex() %>% check_function("summary", not_called_msg="Use `summary` to take a look at `model_stepwise`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to call `summary` on `model_stepwise`.")
 success_msg("Excellent! The step procedure repeatedly fits many models to a data set. We summarize each fit with hypothesis testing statistics like t-statistics and p-values. But, remember that hypothesis tests are designed to falsely detect a relationship a fraction of the time (typically 5%). For example, if you run a t-test 50 times (for each explanatory variable), you can expect to get two or three statistically significant explanatory variables even for unrelated variables (because 50 times 0.05 = 2.5).")
 
@@ -508,23 +508,24 @@ lines(lowess(survey$indcost,mlr.survey2$residuals))
 ```{r ex="ExerRegMod4.3.2", type="sct", tut=TRUE}
 ex() %>% check_object("mlr.survey1", undefined_msg="Use `lm` to create a linear model named `mlr.survey1`.") %>% check_equal(incorrect_msg="make sure to model `logcost` using `logsize` and `indcost` from the dataframe `survey`.")
 ex() %>% check_function("summary",index=1, not_called_msg="Use the `summary` function to view the summary stats of `mlr.survey1`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like the summary stats of `mlr.survey1`.")
-ex() %>% check_function("plot",index=1, not_called_msg="please create a plot the shows `indcosts` and `mlr.survey1`’s residuals. ") %>%{
+ex() %>% check_function("plot", index=1, not_called_msg="please create a plot that shows the residuals of `indcosts` and `mlr.survey1`") %>%{
   check_arg(., "x") %>% check_equal(incorrect_msg="The independent variable should be `indcosts`.")
   check_arg(., "y") %>% check_equal(incorrect_msg="The dependent variable should be the residuals of `mlr.survey1`.")
 }
-ex() %>% check_function("lines",index=1, not_called_msg="Please use the `lines` function to add a line to the plot. ")
-ex() %>% check_function("lowess",index=1, not_called_msg="Please use the `lowess` function to add a smoothed effect on our line. ") %>%{
+ex() %>% check_function("lines", index=1, not_called_msg="Please use the `lines` function to add a line to the plot. ")
+ex() %>% check_function("lowess", index=1, not_called_msg="Please use the `lowess` function to add a smoothed effect on our line.") %>%{
   check_arg(., "x") %>% check_equal(incorrect_msg="The first argument should be `indcosts`.")
   check_arg(., "y") %>% check_equal(incorrect_msg="The second argument should be the residuals from `mlr.survey1`.")
 }
-ex() %>% check_object("mlr.survey2", undefined_msg="Use `lm` to create a linear model that is stored under the name `mlr.survey2`.") %>% check_equal(incorrect_msg="Make sure to model `logcost` using `logsize` and `indcost` squared, which can be found using `poly(indcost,2)`. ")
-ex() %>% check_function("summary",index=2, not_called_msg="Use `summary` to take a look at `mlr.survey2`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `mlr.survey2`.")
-ex() %>% check_function("plot",index=2, not_called_msg="Now make a plot that shows the `indcost` based on the residuals of `mlr.survey2`.") %>%{
+ex() %>% check_object("mlr.survey2", undefined_msg="Use `lm` to create a linear model that is stored under the name `mlr.survey2`.") %>% check_equal(incorrect_msg="Make sure to model `logcost` using `logsize` and `indcost` squared, which can be found using `poly(indcost,2)`.")
+ex() %>% check_function("summary", index=2, not_called_msg="Use `summary` to take a look at `mlr.survey2`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `mlr.survey2`.")
+ex() %>% check_function("plot", index=2, not_called_msg="Now make a plot that shows the `indcost` based on the residuals of `mlr.survey2`.") %>%{
   check_arg(., "x") %>% check_equal(incorrect_msg="The independent variable should be `indcost`.")
   check_arg(., "y") %>% check_equal(incorrect_msg="The dependent variable should be the residuals of `mlr.survey2`.")
 }
-ex() %>% check_function("lines",index=2, not_called_msg="Make sure to add a line to this new graph using `lines`.")
-ex() %>% check_function("lowess",index=2, not_called_msg="make sure to use the `lowess` function to add a smoothed effect to the line. ") %>%{
+ex() %>% check_function("lines", index=2, not_called_msg="Make sure to add a line to this new graph using `lines`.")
+
+ex() %>% check_function("lowess", index=2, not_called_msg="make sure to use the `lowess` function to add a smoothed effect to the line. ") %>%{
   check_arg(., "x") %>% check_equal(incorrect_msg="The first argument should be `indcost`.")
   check_arg(., "y") %>% check_equal(incorrect_msg="The second argument should be the residuals of `mlr.survey2`.")
 }
