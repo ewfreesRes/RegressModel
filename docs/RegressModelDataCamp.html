@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
-  <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <title>Datacamp Course on Regression Modeling with Actuarial and Financial Applications</title>
+  <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  <meta property="og:title" content="Datacamp Course on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
-  <meta name="github-repo" content="<a href="https://github.com/ewfreesRes/RegressModel" class="uri">https://github.com/ewfreesRes/RegressModel</a>" />
+  <meta property="og:description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  <meta name="github-repo" content="<a href="https://github.com/openacttexts/Loss-Data-Analytics" class="uri">https://github.com/openacttexts/Loss-Data-Analytics</a>" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  <meta name="twitter:title" content="Datacamp Course on Regression Modeling with Actuarial and Financial Applications" />
   
-  <meta name="twitter:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
+  <meta name="twitter:description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
   
 
 <meta name="author" content="Edward W. (Jed) Frees, University of Wisconsin-Madison">
@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="regression-and-the-normal-distribution.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -73,65 +73,17 @@ function toggleTheory(id1,id2) {
 </script>
 
 <script language="javascript">
-function toggleDet(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
-</script>
-
-<script language="javascript">
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 
 
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-
 <script>
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover(); 
 });
 </script>
-
-<style>
-/* Rearrange console label */
-.datacamp-exercise ol li, .datacamp-exercise ul li {
-  margin-bottom: 0em !important;
-}
-
-/* Remove bullet marker */
-.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
-  content: '' !important;
-}
-</style>
-
-
-<script language="javascript">
-var submitAnswer = function() {
-
-  var radios = document.getElementsByName('choice');
-  var val= "";
-  for (var i = 0, length = radios.length; i < length; i++) {
-      if (radios[i].checked) {
-         val = radios[i].value; 
-         break;
-       }
-  }
-  
-  if (val == "" ) {
-    alert('please select choice answer');
-  } else if ( val == "Correct" ) {
-    alert('Answer is correct !');
-  } else {
-    alert('Answer is wrong');
-  }
-};
-</script>
-
-
-
-
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
@@ -144,43 +96,6 @@ var submitAnswer = function() {
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -194,134 +109,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     <div class="book-summary">
       <nav role="navigation">
 
-<ul class="summary">
-<li><a href="./">Regression Modeling Online Tutorial</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-regression-modeling"><i class="fa fa-check"></i>About Regression Modeling</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i>Resources</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#tutorial-description"><i class="fa fa-check"></i>Tutorial Description</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#welcome-to-the-tutorial-video"><i class="fa fa-check"></i>Welcome to the Tutorial Video</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>1</b> Regression and the Normal Distribution</a><ul>
-<li class="chapter" data-level="1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#fitting-a-normal-distribution"><i class="fa fa-check"></i><b>1.1</b> Fitting a normal distribution</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-1"><i class="fa fa-check"></i><b>1.1.1</b> Video</a></li>
-<li class="chapter" data-level="1.1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-fitting-galtons-height-data"><i class="fa fa-check"></i><b>1.1.2</b> Exercise. Fitting Galton’s height data</a></li>
-<li class="chapter" data-level="1.1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-childs-height-distribution"><i class="fa fa-check"></i><b>1.1.3</b> Exercise. Visualizing child’s height distribution</a></li>
-</ul></li>
-<li class="chapter" data-level="1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#visualizing-distributions"><i class="fa fa-check"></i><b>1.2</b> Visualizing distributions</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-2"><i class="fa fa-check"></i><b>1.2.1</b> Video</a></li>
-<li class="chapter" data-level="1.2.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-bodily-injury-claims-with-density-plots"><i class="fa fa-check"></i><b>1.2.2</b> Exercise. Visualizing bodily injury claims with density plots</a></li>
-</ul></li>
-<li class="chapter" data-level="1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#summarizing-distributions"><i class="fa fa-check"></i><b>1.3</b> Summarizing distributions</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
-<li class="chapter" data-level="1.3.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots"><i class="fa fa-check"></i><b>1.3.2</b> Exercise. Summarizing bodily injury claims with box and qq plots</a></li>
-<li class="chapter" data-level="1.3.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-effects-on-distributions-of-removing-the-largest-claim"><i class="fa fa-check"></i><b>1.3.3</b> Exercise. Effects on distributions of removing the largest claim</a></li>
-</ul></li>
-<li class="chapter" data-level="1.4" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#transformations"><i class="fa fa-check"></i><b>1.4</b> Transformations</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-4"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
-<li class="chapter" data-level="1.4.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-distribution-of-transformed-bodily-injury-claims"><i class="fa fa-check"></i><b>1.4.2</b> Exercise. Distribution of transformed bodily injury claims</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Basic Linear Regression</a><ul>
-<li class="chapter" data-level="2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#correlation"><i class="fa fa-check"></i><b>2.1</b> Correlation</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-5"><i class="fa fa-check"></i><b>2.1.1</b> Video</a></li>
-<li class="chapter" data-level="2.1.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-correlations-and-the-wisconsin-lottery"><i class="fa fa-check"></i><b>2.1.2</b> Exercise. Correlations and the Wisconsin lottery</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#method-of-least-squares"><i class="fa fa-check"></i><b>2.2</b> Method of least squares</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-6"><i class="fa fa-check"></i><b>2.2.1</b> Video</a></li>
-<li class="chapter" data-level="2.2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-least-squares-fit-using-housing-prices"><i class="fa fa-check"></i><b>2.2.2</b> Exercise. Least squares fit using housing prices</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#understanding-variability"><i class="fa fa-check"></i><b>2.3</b> Understanding variability</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-7"><i class="fa fa-check"></i><b>2.3.1</b> Video</a></li>
-<li class="chapter" data-level="2.3.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-summarizing-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.2</b> Exercise. Summarizing measures of uncertainty</a></li>
-<li class="chapter" data-level="2.3.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-effects-of-linear-transforms-on-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.3</b> Exercise. Effects of linear transforms on measures of uncertainty</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#statistical-inference"><i class="fa fa-check"></i><b>2.4</b> Statistical inference</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-8"><i class="fa fa-check"></i><b>2.4.1</b> Video</a></li>
-<li class="chapter" data-level="2.4.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-statistical-inference-and-wisconsin-lottery"><i class="fa fa-check"></i><b>2.4.2</b> Exercise. Statistical inference and Wisconsin lottery</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#diagnostics"><i class="fa fa-check"></i><b>2.5</b> Diagnostics</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-9"><i class="fa fa-check"></i><b>2.5.1</b> Video</a></li>
-<li class="chapter" data-level="2.5.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-assessing-outliers-in-lottery-sales"><i class="fa fa-check"></i><b>2.5.2</b> Exercise. Assessing outliers in lottery sales</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>3</b> Multiple Linear Regression</a><ul>
-<li class="chapter" data-level="" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#term-life-data"><i class="fa fa-check"></i>Term Life Data</a></li>
-<li class="chapter" data-level="3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1</b> Method of least squares</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-10"><i class="fa fa-check"></i><b>3.1.1</b> Video</a></li>
-<li class="chapter" data-level="3.1.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-least-squares-and-term-life-data"><i class="fa fa-check"></i><b>3.1.2</b> Exercise. Least squares and term life data</a></li>
-<li class="chapter" data-level="3.1.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-interpreting-coefficients-as-proportional-changes"><i class="fa fa-check"></i><b>3.1.3</b> Exercise. Interpreting coefficients as proportional changes</a></li>
-<li class="chapter" data-level="3.1.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-interpreting-coefficients-as-elasticities"><i class="fa fa-check"></i><b>3.1.4</b> Exercise. Interpreting coefficients as elasticities</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#statistical-inference-and-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.2</b> Statistical inference and multiple linear regresson</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-11"><i class="fa fa-check"></i><b>3.2.1</b> Video</a></li>
-<li class="chapter" data-level="3.2.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-statistical-inference-and-term-life"><i class="fa fa-check"></i><b>3.2.2</b> Exercise. Statistical inference and term life</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#binary-variables"><i class="fa fa-check"></i><b>3.3</b> Binary variables</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-12"><i class="fa fa-check"></i><b>3.3.1</b> Video</a></li>
-<li class="chapter" data-level="3.3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-binary-variables-and-term-life"><i class="fa fa-check"></i><b>3.3.2</b> Exercise. Binary variables and term life</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#categorical-variables"><i class="fa fa-check"></i><b>3.4</b> Categorical variables</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-13"><i class="fa fa-check"></i><b>3.4.1</b> Video</a></li>
-<li class="chapter" data-level="3.4.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-categorical-variables-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.4.2</b> Exercise. Categorical variables and Wisconsin hospital costs</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#general-linear-hypothesis"><i class="fa fa-check"></i><b>3.5</b> General linear hypothesis</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-14"><i class="fa fa-check"></i><b>3.5.1</b> Video</a></li>
-<li class="chapter" data-level="3.5.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-term-life"><i class="fa fa-check"></i><b>3.5.2</b> Exercise. Hypothesis testing and term life</a></li>
-<li class="chapter" data-level="3.5.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.5.3</b> Exercise. Hypothesis testing and Wisconsin hospital costs</a></li>
-<li class="chapter" data-level="3.5.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-auto-claims"><i class="fa fa-check"></i><b>3.5.4</b> Exercise. Hypothesis testing and auto claims</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="variable-selection.html"><a href="variable-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Selection</a><ul>
-<li class="chapter" data-level="4.1" data-path="variable-selection.html"><a href="variable-selection.html#an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1</b> An iterative approach to data analysis and modeling</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="variable-selection.html"><a href="variable-selection.html#video-15"><i class="fa fa-check"></i><b>4.1.1</b> Video</a></li>
-<li class="chapter" data-level="4.1.2" data-path="variable-selection.html"><a href="variable-selection.html#mc-exercise.-an-iterative-approach-to-data-modeling"><i class="fa fa-check"></i><b>4.1.2</b> MC Exercise. An iterative approach to data modeling</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="variable-selection.html"><a href="variable-selection.html#automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2</b> Automatic variable selection procedures</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="variable-selection.html"><a href="variable-selection.html#video-16"><i class="fa fa-check"></i><b>4.2.1</b> Video</a></li>
-<li class="chapter" data-level="4.2.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-data-snooping-in-stepwise-regression"><i class="fa fa-check"></i><b>4.2.2</b> Exercise. Data-snooping in stepwise regression</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="variable-selection.html"><a href="variable-selection.html#residual-analysis"><i class="fa fa-check"></i><b>4.3</b> Residual analysis</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="variable-selection.html"><a href="variable-selection.html#video-17"><i class="fa fa-check"></i><b>4.3.1</b> Video</a></li>
-<li class="chapter" data-level="4.3.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-residual-analysis-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.3.2</b> Exercise. Residual analysis and risk manager survey</a></li>
-<li class="chapter" data-level="4.3.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-added-variable-plot-and-refrigerator-prices"><i class="fa fa-check"></i><b>4.3.3</b> Exercise. Added variable plot and refrigerator prices</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="variable-selection.html"><a href="variable-selection.html#unusual-observations"><i class="fa fa-check"></i><b>4.4</b> Unusual observations</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="variable-selection.html"><a href="variable-selection.html#video-18"><i class="fa fa-check"></i><b>4.4.1</b> Video</a></li>
-<li class="chapter" data-level="4.4.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-outlier-example"><i class="fa fa-check"></i><b>4.4.2</b> Exercise. Outlier example</a></li>
-<li class="chapter" data-level="4.4.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-high-leverage-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.4.3</b> Exercise. High leverage and risk manager survey</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="variable-selection.html"><a href="variable-selection.html#collinearity"><i class="fa fa-check"></i><b>4.5</b> Collinearity</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="variable-selection.html"><a href="variable-selection.html#video-19"><i class="fa fa-check"></i><b>4.5.1</b> Video</a></li>
-<li class="chapter" data-level="4.5.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-collinearity-and-term-life"><i class="fa fa-check"></i><b>4.5.2</b> Exercise. Collinearity and term life</a></li>
-</ul></li>
-<li class="chapter" data-level="4.6" data-path="variable-selection.html"><a href="variable-selection.html#selection-criteria"><i class="fa fa-check"></i><b>4.6</b> Selection criteria</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="variable-selection.html"><a href="variable-selection.html#video-20"><i class="fa fa-check"></i><b>4.6.1</b> Video</a></li>
-<li class="chapter" data-level="4.6.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-cross-validation-and-term-life"><i class="fa fa-check"></i><b>4.6.2</b> Exercise. Cross-validation and term life</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html"><i class="fa fa-check"></i><b>5</b> Interpreting Regression Results</a><ul>
-<li class="chapter" data-level="5.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1</b> Case study: MEPS health expenditures</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.1.1</b> Video</a></li>
-<li class="chapter" data-level="5.1.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-summarizing-data"><i class="fa fa-check"></i><b>5.1.2</b> Exercise. Summarizing data</a></li>
-<li class="chapter" data-level="5.1.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-fit-a-benchmark-multiple-linear-regression-model"><i class="fa fa-check"></i><b>5.1.3</b> Exercise. Fit a benchmark multiple linear regression model</a></li>
-<li class="chapter" data-level="5.1.4" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-variable-selection"><i class="fa fa-check"></i><b>5.1.4</b> Exercise. Variable selection</a></li>
-<li class="chapter" data-level="5.1.5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-model-comparisons-using-cross-validation"><i class="fa fa-check"></i><b>5.1.5</b> Exercise. Model comparisons using cross-validation</a></li>
-<li class="chapter" data-level="5.1.6" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-out-of-sample-validation"><i class="fa fa-check"></i><b>5.1.6</b> Exercise. Out of sample validation</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-23"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
-</ul></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/ewfreesRes/RegressModel" target="blank">Regression Modeling Tutorial on GitHub</a></li>
-
-</ul>
 
       </nav>
     </div>
@@ -330,7 +117,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Online Tutorial on Regression Modeling with Actuarial and Financial Applications</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Datacamp Course on <code>Regression Modeling with Actuarial and Financial Applications</code></a>
           </h1>
         </div>
 
@@ -339,137 +126,420 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Online Tutorial on Regression Modeling with Actuarial and Financial Applications</h1>
+<h1 class="title">Datacamp Course on <code>Regression Modeling with Actuarial and Financial Applications</code></h1>
 <h4 class="author"><em>Edward W. (Jed) Frees, University of Wisconsin-Madison</em></h4>
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<script language="javascript" src="//cdn.datacamp.com/dcl-react.js.gz>
+</script>
+
+
+
+
+# Preface {-}
+
 <p style="text-align:right;">
-<em>Date: 05 November 2018</em>
-</p>
-<div id="about-regression-modeling" class="section level3 unnumbered">
-<h3>About Regression Modeling</h3>
-<p>Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This book and online tutorial provides budding analysts with a foundation in multiple reression. Viewers will learn about these statistical techniques using data on the demand for insurance, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.</p>
-</div>
-<div id="resources" class="section level3 unnumbered">
-<h3>Resources</h3>
-<ul>
-<li>This tutorial is based on the book <a href="http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/regression-modeling-actuarial-and-financial-applications?format=PB">Regression Modeling with Actuarial and Financial Applications</a>.
-<ul>
-<li>For resources associated with the book, please visit the <a href="http://research.bus.wisc.edu/RegActuaries">Regression Modeling book web site</a>.</li>
-</ul></li>
-<li>For advanced regression applications in insurance, you may be interested in the series, <a href="http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/predictive-modeling-applications-actuarial-science-volume-1">Predictive Modeling Applications in Actuarial Science</a>.
-<ul>
-<li>Sample code and data for the series are available at <a href="http://instruction.bus.wisc.edu/jfrees/jfreesbooks/PredictiveModelingVol1/index.htm">series website</a>.</li>
-</ul></li>
-<li>An earlier version of this tutorial, a <a href="https://www.datacamp.com/courses/8743">Short Course</a> constructed for Indonesian actuaries, uses the <a href="https://www.datacamp.com/">Datacamp</a> learning platform.</li>
-</ul>
-</div>
-<div id="tutorial-description" class="section level3 unnumbered">
-<h3>Tutorial Description</h3>
-<ul>
-<li>This online tutorial is designed to guide you through the foundations of regession with applications in actuarial science.</li>
-<li>Anticipated completion time is approximately six hours.</li>
-<li>The tutorial assumes that you are familiar with the foundations in the statistical software <code>R</code>, such as Datacamp’s <a href="https://www.datacamp.com/courses/free-introduction-to-r%20">Introduction to R</a>.</li>
-</ul>
-<p><strong>General Layout.</strong> There are five chapters in this tutorial that summarize the foundations of multiple linear regression. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 4-8 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying <code>R</code> code for the analysis presented in the video.</p>
-<p><strong>Role of Exercises.</strong> Following each video, there are one or two exercises that allow you to practice skills to make sure that you fully grasp the learning outcomes. The exercises are implented using an online learning platfor provided by <a href="https://www.datacamp.com/">Datacamp</a> so that you need not install <code>R</code>. Feedback is programmed into the exercises so that you will learn a lot by making mistakes! You will be pacing yourself, so always feel free to reveal the answers by hitting the <code>Solution</code> tab. Remember, going through quickly is not equivalent to learning deeply. Use this tool to enhance your understanding of one of the foundations of data science, regression analysis.</p>
-</div>
-<div id="welcome-to-the-tutorial-video" class="section level3 unnumbered">
-<h3>Welcome to the Tutorial Video</h3>
-<hr />
-<p>In this video, you learn how to:</p>
-<ul>
-<li>Describe regression briefly, i.e., in a nutshell</li>
-<li>Explain Galton’s height example as a regression application</li>
-</ul>
-<hr />
-<div id="video" class="section level4 unnumbered">
-<h4>Video</h4>
-<center>
-<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_bj34urmj&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_tp96kyab" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
-</iframe>
-</center>
-<div id="video-overhead" class="section level5 tabset">
-<h5><span class="header-section-number">0.0.0.0.1</span> Video Overhead</h5>
-<div id="show-overhead-a.-galtons-1885-regression-data" class="section level6">
-<h6><span class="header-section-number">0.0.0.0.1.1</span> Show Overhead A. Galton’s 1885 Regression Data</h6>
-<p><span class="math display">\[
-\small{\begin{array}{l|ccccccccccc|c}
-\hline
-\text{Height of }&amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  \\
-\text{adult child }&amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  \\
-\text{in inches }&amp; &lt;64.0 &amp; 64.5 &amp; 65.5 &amp; 66.5 &amp; 67.5 &amp; 68.5 &amp;
-69.5 &amp; 70.5 &amp; 71.5 &amp; 72.5 &amp; &gt;73.0 &amp; \text{Totals} \\
-\hline
-&gt;73.7 &amp; - &amp; - &amp; - &amp; - &amp; - &amp; - &amp; 5 &amp; 3 &amp; 2 &amp; 4 &amp; - &amp; 14 \\
-73.2 &amp; - &amp; - &amp; - &amp; - &amp; - &amp; 3 &amp; 4 &amp; 3 &amp; 2 &amp; 2 &amp; 3 &amp; 17 \\
-72.2 &amp; - &amp; - &amp; 1 &amp; - &amp; 4 &amp; 4 &amp; 11 &amp; 4 &amp; 9 &amp; 7 &amp; 1 &amp; 41 \\
-71.2 &amp; - &amp; - &amp; 2 &amp; - &amp; 11 &amp; 18 &amp; 20 &amp; 7 &amp; 4 &amp; 2 &amp; - &amp; 64 \\
-70.2 &amp; - &amp; - &amp; 5 &amp; 4 &amp; 19 &amp; 21 &amp; 25 &amp; 14 &amp; 10 &amp; 1 &amp; - &amp; 99 \\
-69.2 &amp; 1 &amp; 2 &amp; 7 &amp; 13 &amp; 38 &amp; 48 &amp; 33 &amp; 18 &amp; 5 &amp; 2 &amp; - &amp; 167 \\
-68.2 &amp; 1 &amp; - &amp; 7 &amp; 14 &amp; 28 &amp; 34 &amp; 20 &amp; 12 &amp; 3 &amp; 1 &amp; - &amp; 120 \\
-67.2 &amp; 2 &amp; 5 &amp; 11 &amp; 17 &amp; 38 &amp; 31 &amp; 27 &amp; 3 &amp; 4 &amp; - &amp; - &amp; 138 \\
-66.2 &amp; 2 &amp; 5 &amp; 11 &amp; 17 &amp; 36 &amp; 25 &amp; 17 &amp; 1 &amp; 3 &amp; - &amp; - &amp; 117 \\
-65.2 &amp; 1 &amp; 1 &amp; 7 &amp; 2 &amp; 15 &amp; 16 &amp; 4 &amp; 1 &amp; 1 &amp; - &amp; - &amp; 48 \\
-64.2 &amp; 4 &amp; 4 &amp; 5 &amp; 5 &amp; 14 &amp; 11 &amp; 16 &amp; - &amp; - &amp; - &amp; - &amp; 59 \\
-63.2 &amp; 2 &amp; 4 &amp; 9 &amp; 3 &amp; 5 &amp; 7 &amp; 1 &amp; 1 &amp; - &amp; - &amp; - &amp; 32 \\
-62.2 &amp; - &amp; 1 &amp; - &amp; 3 &amp; 3 &amp; - &amp; - &amp; - &amp; - &amp; - &amp; - &amp; 7 \\
-&lt;61.2 &amp; 1 &amp; 1 &amp; 1 &amp; - &amp; - &amp; 1 &amp; - &amp; 1 &amp; - &amp; - &amp; - &amp; 5 \\ \hline
-\text{Totals }&amp; 14 &amp; 23 &amp; 66 &amp; 78 &amp; 211 &amp; 219 &amp; 183 &amp; 68 &amp; 43 &amp; 19 &amp; 4 &amp; 928 \\
-\hline
-\end{array}}
-\]</span></p>
-</div>
-<div id="show-overhead-b.-supporting-r-code" class="section level6">
-<h6><span class="header-section-number">0.0.0.0.1.2</span> Show Overhead B. Supporting R Code</h6>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reformat Data Set</span>
-<span class="co">#heights &lt;- read.csv(&quot;CSVData\\GaltonFamily.csv&quot;,header = TRUE)</span>
-heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
-<span class="kw">str</span>(heights)
-<span class="kw">head</span>(heights)
-heights<span class="op">$</span>child_ht &lt;-<span class="st"> </span>heights<span class="op">$</span>CHILDC
-heights<span class="op">$</span>parent_ht &lt;-<span class="st"> </span>heights<span class="op">$</span>PARENTC
-heights2 &lt;-<span class="st"> </span>heights[<span class="kw">c</span>(<span class="st">&quot;child_ht&quot;</span>,<span class="st">&quot;parent_ht&quot;</span>)]</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#heights &lt;- read.csv(&quot;CSVData\\galton_height.csv&quot;,header = TRUE)</span>
-heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
-<span class="kw">plot</span>(<span class="kw">jitter</span>(heights<span class="op">$</span>parent_ht),<span class="kw">jitter</span>(heights<span class="op">$</span>child_ht), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>),
-     <span class="dt">ylab =</span> <span class="st">&quot;height of child&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;height of parents&quot;</span>)
-<span class="kw">abline</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))
-<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</code></pre></div>
-<pre><code>
-Call:
-lm(formula = heights$child_ht ~ heights$parent_ht)
+*Date: 15 October 2018*</p>
 
-Residuals:
-    Min      1Q  Median      3Q     Max 
--8.2577 -1.4280  0.1323  1.5720  5.7918 
 
-Coefficients:
-                  Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)       25.84856    2.69009   9.609   &lt;2e-16 ***
-heights$parent_ht  0.60992    0.03882  15.710   &lt;2e-16 ***
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Acknowledgements {-}
 
-Residual standard error: 2.26 on 926 degrees of freedom
-Multiple R-squared:  0.2104,    Adjusted R-squared:  0.2096 
-F-statistic: 246.8 on 1 and 926 DF,  p-value: &lt; 2.2e-16</code></pre>
+Edward Frees acknowledges the John and Anne Oros Distinguished Chair for Inspired Learning in Business which provided seed money to support the project. Frees and his Wisconsin colleagues also acknowledge a Society of Actuaries Center of Excellence Grant that provided funding to support work in dependence modeling and health initiatives.
 
-</div>
-</div>
-</div>
-</div>
-</div>
+We thank Rob Hyndman, Monash University, for allowing us to use his excellent style files to produce the online version of the book.
+
+We thank Yihui Xie and his colleagues at [Rstudio](https://www.rstudio.com/) for the [R bookdown](https://bookdown.org/yihui/bookdown/) package that allows us to produce this book.
+
+
+
+#  Regression and the Normal Distribution
+
+**Chapter description**
+
+Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter introduces the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships.
+
+## Fitting a normal distribution
+
+###Video (Exercise). Fitting a normal distribution
+
+#### Learning Objectives
+
+In this exercise, you learn how to:
+
+-    Calculate and interpret two basic summary statistics
+-    Fit a data set to a normal curve
+-    Calculate probabilities under a standard normal curve
+
+#### Video Overheads
+
+**Overhead A. Description of the data**
+
+To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton's 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents' height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father's height and rescaled mother's height. Galton was aware that the parents' and the adult child's height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.
+
+
+```r
+heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
+#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+plot(jitter(heights$parent_ht),jitter(heights$child_ht), ylim = c(60,80), xlim = c(60,80),
+     ylab = "height of child", xlab = "height of parents")
+abline(lm(heights$child_ht~heights$parent_ht))
+abline(0,1,col = "red")
+```
+
+<img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
+
+**Overhead B. Read and examine data structure**
+
+The data has already been read into a dataset called `heights`. Examine the *structure* of the data with the function [str()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/) and use the [head()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/) command to looks at the first few records.
+
+
+```r
+heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
+#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+str(heights)
+head(heights)
+```
+
+**Overhead C. Summary stats for parents' height**
+
+Next, examine the distribution of the child's height and then examine the distribution of the parents height.
+
+
+```r
+ht_par <- heights$parent_ht
+hist(ht_par)
+mean(ht_par)
+sd(ht_par)
+```
+
+**Overhead D. Fit a normal curve to parents' height**
+
+
+```r
+(mparent <- mean(ht_par))
+(sdparent <- sd(ht_par))
+x <- seq(60, 80,by = 0.1)
+hist(ht_par, freq = FALSE)
+lines(x, dnorm(x, mean = mparent, sd = sdparent), col = "blue")
+```
+
+**Overhead E. Use the normal approximation to determine the probability of the height of tall parents**
+
+
+```r
+TallHeight <- 72
+pnorm(TallHeight, mean = mparent, sd = sdparent)
+pnorm(72, mean = mean(ht_par), sd = sd(ht_par))
+(StdUnitsTallHeight <- (TallHeight - mparent)/sdparent)
+pnorm(StdUnitsTallHeight, mean = 0, sd = 1)
+```
+
+### Exercise. Fitting Galton's height data
+
+**Assignment Text**
+
+The Galton data has already been read into a dataframe called `heights`. These data include the heights of 928 adult children `child_ht`, together with an index of their parents' height `parent_ht`.  The video explored the distribution of the parents' height; in this assignment, we investigate the distribution of the heights of the adult children.
+
+**Instructions**
+
+-  Define the height of an adult child as a global variable
+-  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
+-  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that an adult child's height is less than 72 inches
+
+**Hint**
+
+Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
+
+
+
+
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiMgUHJlLWV4ZXJjaXNlIGNvZGVcbiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKSIsInNhbXBsZSI6IiNEZWZpbmUgdGhlIGdsb2JhbCB2YXJpYWJsZVxuI2h0X2NoaWxkIDwtIFxuXG4jQ2FsY3VsYXRlIHRoZSBtZWFuIGhlaWdodFxuI21jaGlsZCA8LSBcbiNtY2hpbGRcblxuI0NhbGN1bGF0ZSB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGhlaWdodHNcbiNzZGNoaWxkIDwtIFxuI3NkY2hpbGRcblxuI0RldGVybWluZSB0aGUgcHJvYmFiaWxpdHkgdGhhdCB0aGUgaGVpZ2h0IGlzIGxlc3MgdGhhbiA3MlxuIyg3MiwgbWVhbj1tY2hpbGQsIHNkPXNkY2hpbGQpIiwic29sdXRpb24iOiIjIFNvbHV0aW9uXG5odF9jaGlsZCA8LSBoZWlnaHRzJGNoaWxkX2h0XG5tY2hpbGQgPC0gbWVhbihodF9jaGlsZClcbnNkY2hpbGQgPC0gc2QoaHRfY2hpbGQpXG5tY2hpbGRcbnNkY2hpbGRcbnBub3JtKDcyLCBtZWFuID0gbWNoaWxkLCBzZCA9IHNkY2hpbGQpIiwic2N0IjoiIyB0ZXN0X2Vycm9yKClcbiMgdGVzdF9vYmplY3QoXCJodF9jaGlsZFwiLCBpbmNvcnJlY3RfbXNnID0gXCJUaGUgY2hpbGQncyBoZWlnaHQgdmFyaWFibGUgd2FzIGRlZmluZWQgaW4gdGhlIHdyb25nIHdheS4gKFlvdSBtaWdodCBjaGVjayB0aGUgaGludC4pXCIpXG4jIHRlc3Rfb2JqZWN0KFwibWNoaWxkXCIsIGluY29ycmVjdF9tc2cgPSBcIlRoZSBtZWFuIGNoaWxkJ3MgaGVpZ2h0IGlzIGNhbGN1bGF0ZWQgaW5jb3JyZWN0bHkuIENoZWNrIG91dCB0aGUgbWVhbigpIGZ1bmN0aW9uLlwiKVxuIyB0ZXN0X29iamVjdChcInNkY2hpbGRcIiwgaW5jb3JyZWN0X21zZyA9IFwiVGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvZiBjaGlsZCdzIGhlaWdodCBpcyBjYWxjdWxhdGVkIGluY29ycmVjdGx5LiBDaGVjayBvdXQgdGhlIHNkKCkgZnVuY3Rpb24uXCIpXG4jdHV0b3JpYWw6OnN1Y2Nlc3NfbXNnKFwiRXhjZWxsZW50ISBXaXRoIHRoaXMgcHJvY2VkdXJlLCB5b3UgY2FuIG5vdyBjYWxjdWxhdGUgcHJvYmFiaWxpdGllcyBmb3IgYW55IGRpc3RyaWJ1dGlvbiB1c2luZyBhIG5vcm1hbCBjdXJ2ZSBhcHByb3hpbWF0aW9uLlwiKSJ9</div>
+
+
+
+
+
+
+
+
+
+
+
+###  Exercise. Visualizing child's height distribution
+
+**Assignment Text**
+
+As in the prior exercise, from the Galton dataset `heights`, the heights of 928 adult children have been used to create a global variable called `ht_child`. We also have basic summary statistics, the mean height `mchild` and the standard deviation of heights in `sdchild`. In this exercise, we explore the fit of the normal curve to this distribution.
+
+**Instructions**
+
+-  To visualize the distribution, use the function [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) to calculate the histogram. Use the `freq = FALSE` option to give a histogram with proportions instead of counts.
+-  Use the function [seq()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/seq) to determine a sequence that can be used for plotting. Then, with the function [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/),  superimpose a normal curve on the histogram
+-  Determine the probability that a child's height is greater than 72 inches
+
+**Hint**
+- Use the function [dnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) to calculate the normal density, similar to the cumulative probabilites that you calculated using [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)
+-  To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG4jaGVpZ2h0cyA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzL2M4NWVkZTZjMjA1ZDIyMDQ5ZTc2NmJkMDg5NTZiMjI1YzU3NjI1NWIvZ2FsdG9uX2hlaWdodC5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmh0X2NoaWxkIDwtIGhlaWdodHMkY2hpbGRfaHRcbm1jaGlsZCA8LSBtZWFuKGh0X2NoaWxkKVxuc2RjaGlsZCA8LSBzZChodF9jaGlsZCkifQ==</div>
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgQHNhbXBsZV9jb2RlYFxuI1Zpc3VhbGl6ZSB0aGUgRGlzdHJpYnV0aW9uXG5fX18oX19fLCBmcmVxID0gRkFMU0UpXG5cbiNEZXRlcm1pbmUgYSBzZXF1ZW5jZS4gVGhlbiwgZ3JhcGggYSBoaXN0b2dyYW0gd2l0aCBhIG5vcm1hbCBjdXJ2ZSBzdXBlcmltcG9zZWRcbnggPC0gc2VxKDYwLCA4MCxieSA9IDAuMSlcbl9fXyh4LCBkbm9ybSh4LG1lYW4gPSBtY2hpbGQsIHNkID0gc2RjaGlsZCksIGNvbCA9IFwiYmx1ZVwiKVxuXG4jIERldGVybWluZSB0aGUgcHJvYmFiaWxpdHkgdGhhdCBhIGNoaWxkJ3MgaGVpZ2h0IGlzIGdyZWF0ZXIgdGhhbiA3MlxucHJvYiA8LSAxIC0gXG5wcm9iIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG5oaXN0KGh0X2NoaWxkLCBmcmVxID0gRkFMU0UpXG54IDwtIHNlcSg2MCwgODAsYnkgPSAwLjEpXG5saW5lcyh4LCBkbm9ybSh4LCBtZWFuID0gbWNoaWxkLCBzZCA9IHNkY2hpbGQpLCBjb2wgPSBcImJsdWVcIilcbnByb2IgPC0gMSAtIHBub3JtKDcyLCBtZWFuID0gbWNoaWxkICwgc2QgPSBzZGNoaWxkKVxucHJvYiJ9</div>
+
+
+**Submission Correctness Tests (SCT)**
+test_error()
+test_object("prob", incorrect_msg = "The probability of being greater than 72 was calculated incorrectly. (You might check the hint.)")
+success_msg("Excellent! Visualizing a distribution, especially with reference to a normal, is important for communicating results of your analysis.")
+
+
+## Visualizing distributions
+
+###Video (Exercise). Visualizing distributions
+
+#### Learning Objectives
+
+In this section, you learn how to:
+
+-    Calculate and interpret distributions using histograms
+-    Calculate and interpret distributions using density plots
+
+#### Video Data Description
+
+For our first look at an insurance data set, we consider data from Rempala and Derrig (2005). They considered claims arising from automobile bodily injury insurance coverages. These are amounts incurred for outpatient medical treatments that arise from automobile accidents, typically sprains, broken collarbones and the like. The data consists of a sample of 272 claims from Massachusetts that were closed in 2001 (by "closed," we mean that the claim is settled and no additional liabilities can arise from the same accident). Rempala and Derrig were interested in developing procedures for handling mixtures of "typical" claims and others from providers who reported claims fraudulently. For this sample, we consider only those typical claims, ignoring the potentially fraudulent ones.
+
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFJlZm9ybWF0IERhdGEgU2V0XG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCb2RpbHlJbmp1cnkuY3N2XCIsaGVhZGVyID0gVFJVRSlcbnN0cihpbmp1cnkpXG5oZWFkKGluanVyeSlcbiMgIFBJQ0sgVEhFIFNVQlNFVCBPRiBUSEUgREFUQSBDT1JSRVNQT05ESU5HIFRPIFBST1ZJREVSIEFcbmluanVyeTIgPC0gc3Vic2V0KGluanVyeSwgcHJvdmlkZXJBICEgPSAwIClcbmluanVyeTIkY2xhaW1zIDwtIDEwMDAqaW5qdXJ5MiRjbGFpbXNcbmluanVyeTIkbG9nY2xhaW1zIDwtIGxvZyhpbmp1cnkyJGNsYWltcylcbmluanVyeTMgPC0gaW5qdXJ5MltjKFwiY2xhaW1zXCIsXCJsb2djbGFpbXNcIildXG53cml0ZS5jc3YoaW5qdXJ5MyxcIkNTVkRhdGFcXFxcTWFzc0JJLmNzdlwiLHJvdy5uYW1lcyA9IEZBTFNFKSJ9</div>
+
+####Video
+
+**Overhead A. Bring in Data, Introduce Logarithmic Claims**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuIyAgQ0hFQ0sgVEhFIE5BTUVTLCBESU1FTlNJT04gSU4gVEhFIEZJTEUgQU5EIExJU1QgVEhFIEZJUlNUIDggT0JTRVJWQVRJT05TICA7XG5zdHIoaW5qdXJ5KVxuaGVhZChpbmp1cnkpXG5hdHRhY2goaW5qdXJ5KVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXNcbnBhcihtZnJvdyA9IGMoMSwgMikpXG5oaXN0KGNsYWltcylcbmhpc3QobG9nY2xhaW1zKSJ9</div>
+
+**Overhead B. Show how to get a finer grid for histograms**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJwYXIobWZyb3cgPSBjKDEsIDIpKVxuaGlzdChsb2djbGFpbXMpXG5oaXN0KGxvZ2NsYWltcyxicmVha3MgPSAxNSkifQ==</div>
+
+**Overhead C.  Introduce the density plot**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJwYXIobWZyb3cgPSBjKDEsIDIpKVxucGxvdChkZW5zaXR5KGxvZ2NsYWltcykpXG5oaXN0KGxvZ2NsYWltcywgYnJlYWtzID0gMTUsZnJlcSA9IEZBTFNFKVxubGluZXMoZGVuc2l0eShsb2djbGFpbXMpKSJ9</div>
+
+###Exercise. Visualizing bodily injury claims with density plots
+
+**Assignment Text**
+
+In the prior video, you learned about the Massachusetts bodily injury dataset. This dataframe, `injury`, has been read in and the global variable `claims` has been created. This assignment reviews the  [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function for visualizing distributions and allows you to explore density plotting, a smoothed version of the histogram.
+
+**Instructions**
+
+-  Use the function [log()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/log/) to create the logarithmic version of the claims variable
+-  Calculate a histogram of logarithmic with 40 bins using an option in the [hist()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/hist/) function,  `breaks = `.
+-  Create a density plot of logarithmic claims using the functions [plot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/plot/) and [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/).
+-  Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the  [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/) function, `bw = `. 
+
+**Hint**
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuI2luanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMifQ==</div>
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgU2FtcGxlQ29kZWBcbiNDcmVhdGUgdGhlIGxvZ2FyaXRobWljIGNsYWltcyB2YXJpYWJsZVxubG9nY2xhaW1zIDwtIF9fX1xuXG4jQ3JlYXRlIGEgaGlzdG9ncmFtIHVzaW5zIDQwIGJpbnNcbl9fXyhsb2djbGFpbXMsIGJyZWFrcyA9IDQwLGZyZXEgPSBGQUxTRSlcbmJveCgpXG5cbiMgQ3JlYXRlIGEgZGVuc2l0eSBwbG90IG9mIGxvZ2FyaXRobWljIGNsYWltc1xucGxvdChfX18obG9nY2xhaW1zKSlcblxuIyBDcmVhdGUgYSBkZW5zaXR5IHBsb3Qgb2YgbG9nYXJpdGhtaWMgY2xhaW1zIHdpdGggYSBzbWFsbGVyIGJhbmR3aWR0aFxuX19fIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG5sb2djbGFpbXMgPC0gbG9nKGNsYWltcylcbmhpc3QobG9nY2xhaW1zICwgYnJlYWtzID0gNDAsZnJlcSA9IEZBTFNFKVxuYm94KClcbnBsb3QoZGVuc2l0eShsb2djbGFpbXMpKVxucGxvdChkZW5zaXR5KGxvZ2NsYWltcywgYncgPSAwLjAzKSkifQ==</div>
+
+**Submission Correctness Tests (SCT)**
+
+success_msg("Excellent! Visualizing the distribution is important and smoothing techniques allow viewers to see important patterns without being distracted by random fluctations.")
+
+## Summarizing distributions
+
+###Video (Exercise). Summarizing distributions
+
+#### Learning Objectives
+
+In this section, you learn how to:
+
+-    Calculate and interpret basic summary statistics
+-    Calculate and interpret distributions using boxplots
+-    Calculate and interpret distributions using qq plots
+
+####Video Overheads
+
+**Overhead A. Summary Statistics**
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuI2luanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuYXR0YWNoKGluanVyeSlcblxuIyBTVU1NQVJZIFNUQVRJU1RJQ1NcbnN1bW1hcnkoaW5qdXJ5KVxuc2QoY2xhaW1zKTtzZChsb2djbGFpbXMpXG5sZW5ndGgoY2xhaW1zKSJ9</div>
+
+**Overhead B. Boxplot**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEJBU0lDIEJPWFBMT1RcbmJveHBsb3QobG9nY2xhaW1zKVxucXVhbnRpbGUobG9nY2xhaW1zLCBwcm9icyA9IDAuNzUpXG5cbiMgQk9YUExPVCBXSVRIIEFOTk9UQVRJT05cbmJveHBsb3QobG9nY2xhaW1zLCBtYWluID0gXCJCb3hwbG90IG9mIGxvZ2NsYWltc1wiKVxudGV4dCgxLCAgNy42LCAgXCJtZWRpYW5cIiwgY2V4ID0gMC43KVxudGV4dCgxLCAgNi41NSwgXCIyNXRoIHBlcmNlbnRpbGVcIiwgY2V4ID0gMC43KVxudGV4dCgxLCAgNy45NSwgXCI3NXRoIHBlcmNlbnRpbGVcIiwgY2V4ID0gMC43KVxuYXJyb3dzKDEuMDUsIDQuOSwgMS4wNSwgMy42LCBjb2wgPSBcImJsdWVcIiwgY29kZSA9IDMsIGFuZ2xlID0gMjAsIGxlbmd0aCA9IDAuMSlcbnRleHQoMS4xLCAgNC40LCBcIm91dGxpZXJzXCIsIGNleCA9IDAuNylcbnRleHQoMS4xLCAxMC45LCBcIm91dGxpZXJcIiwgIGNleCA9IDAuNykifQ==</div>
+
+
+**Overhead C. QQ Plot**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJzdW1tYXJ5KGluanVyeSlcbnF1YW50aWxlKGNsYWltcywgcHJvYnMgPSAwLjc1KVxucXVhbnRpbGUobG9nY2xhaW1zLCBwcm9icyA9IDAuNzUpXG5sb2cocXVhbnRpbGUoY2xhaW1zLCBwcm9icyA9IDAuNzUpKVxucW5vcm0ocCA9IDAuNzUsIG1lYW4gPSBtZWFuKGxvZ2NsYWltcyksIHNkID0gc2QobG9nY2xhaW1zKSlcbihxbm9ybShwID0gMC43NSwgbWVhbiA9IG1lYW4obG9nY2xhaW1zKSwgc2QgPSBzZChsb2djbGFpbXMpKSAtbWVhbihsb2djbGFpbXMpKSAvXG4gICAgICAgc2QobG9nY2xhaW1zKVxucW5vcm0ocCA9IDAuNzUsIG1lYW4gPSAwLCBzZCA9IDEpXG5cbiMgIFFVQU5USUxFIC0gUVVBTlRJTEUgUExPVFxucXFub3JtKGxvZ2NsYWltcylcbnFxbGluZShsb2djbGFpbXMpICAgIn0=</div>
+
+### Exercise. Summarizing bodily injury claims with box and qq plots
+
+**Assignment Text**
+
+The Massachusetts bodily injury data has already been read and used to create the global variable `claims` representing bodily injury claims. The previous video showed how to present the distribution of logarithmic claims which appeared to be approximately normally distributed. However, users are not really interested in log dollars but want to know about a unit of measurement that is more intuitive, such as dollars. 
+
+So this assignment is based on claims, not the logarithmic version. You will use the  functions [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/boxplot/) and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) to visualize the distribution through boxplots and quantile-quantile, or qq-, plots. But, because we are working with such a skewed distribution, do not be surprised that it is difficult to interpret these results readily.
+
+**Instructions**
+
+-  Produce a box plot for claims
+-  Determine the 25th empirical percentile for claims using the  [quantile()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/quantile/) function.
+-  Determine the 25th percentile for claims based on a normal distribution using the  [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) function.
+-  Produce a normal qq plot for claims using the function [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
+
+**Hint**
+
+Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJodHRwczovL2Fzc2V0cy5kYXRhY2FtcC5jb20vcHJvZHVjdGlvbi9yZXBvc2l0b3JpZXMvMjYxMC9kYXRhc2V0cy84Y2NhMTlkMDUwM2ZjZjZlOWQzMGQ5Y2I5MTJkZTViYTk1ZWNiOWMxL01hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmNsYWltcyA8LSBpbmp1cnkkY2xhaW1zIn0=</div>
+
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgU2FtcGxlQ29kZWBcbiNQcm9kdWNlIGEgYm94IHBsb3QgZm9yIGNsYWltc1xuX19fKGNsYWltcylcblxuI0RldGVybWluZSB0aGUgMjV0aCBlbXBpcmljYWwgcGVyY2VudGlsZSBmb3IgY2xhaW1zXG5xMjUgPC0gX19fKGNsYWltcywgcHJvYnMgPSBfX18pXG5xMjVcblxuI0RldGVybWluZSB0aGUgMjV0aCBwZXJjZW50aWxlIGZvciBjbGFpbXMgYmFzZWQgb24gYSBub3JtYWwgZGlzdHJpYnV0aW9uXG5xbjI1IDwtIF9fXyhwID0gX19fLCBtZWFuID0gbWVhbihjbGFpbXMpLCBzZCA9IHNkKGNsYWltcykpXG5xbjI1XG5cbiNQcm9kdWNlIGEgbm9ybWFsIHFxIHBsb3QgZm9yIGNsYWltc1xuX19fKGNsYWltcylcbl9fXyhjbGFpbXMpIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG5ib3hwbG90KGNsYWltcylcbnEyNSA8LSBxdWFudGlsZShjbGFpbXMsIHByb2JzID0gMC4yNSlcbnEyNVxucW4yNSA8LSBxbm9ybShwID0gMC4yNSwgbWVhbiA9IG1lYW4oY2xhaW1zKSwgc2QgPSBzZChjbGFpbXMpKVxucW4yNVxucXFub3JtKGNsYWltcylcbnFxbGluZShjbGFpbXMpICAgIn0=</div>
+
+**Submission Correctness Tests (SCT)**
+
+test_error()
+test_object("q25", incorrect_msg = "You calculated the 25th quantile incorrectly. Check out the quantile() function.")
+test_object("qn25", incorrect_msg = "You calculated the 25th quantile incorrectly. Check out the qnorm() function.")
+success_msg("Congratulations on learning about box and qq plots. Although you are unlikely to show these plots to consumers of your analysis, you will find them useful tools for exploring multivariate aspects of data.")
+
+
+###Exercise. Effects on distributions of removing the largest claim
+
+**Assignment Text**
+
+The Massachusetts bodily injury dataframe `injury` has been read in; our focus is on the `claims` variable in that dataset. 
+
+In the previous exercise, we learned that the Massachusetts bodily injury `claims` distribution was not even close to approximately normal (as evidenced by the box and qq- plots). Non-normality may be induced by skewness (that we will handle via transformations in the next section). But, seeming non-normality can also be induced by one or two very large observations (called an *outlier* later in the course). So, this exercise examines the effects on the distribution of removing the largest claims.
+
+
+**Instructions**
+
+-  Use the function [tail()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head) to examine the `injury` dataset and identify the largest claim
+-  Use the function  [subset()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/subset) to create a subset omitting the largest claim
+-  Compare the summary statistics of the omitted claim distribution to the full distribution
+-  Compare the two distributions visually via histograms plotted next to another. `par(mfrow = c(1, 2))` is used to organize the plots you create. Do not alter this code.
+
+**Hint**
+
+For this data set, the [subset()] argument `claims < 25000` will keep all but the largest claim
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJodHRwczovL2Fzc2V0cy5kYXRhY2FtcC5jb20vcHJvZHVjdGlvbi9yZXBvc2l0b3JpZXMvMjYxMC9kYXRhc2V0cy84Y2NhMTlkMDUwM2ZjZjZlOWQzMGQ5Y2I5MTJkZTViYTk1ZWNiOWMxL01hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmNsYWltcyA8LSBpbmp1cnkkY2xhaW1zIn0=</div>
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgU2FtcGxlQ29kZWBcbiMgRXhhbWluZSB0aGUgdGFpbCBvZiB0aGUgYGluanVyeWAgZGF0YXNldFxudGFpbChfX18pXG5cbiMgQ3JlYXRlIGEgc3Vic2V0IG9taXR0aW5nIHRoZSBsYXJnZXN0IGNsYWltXG5pbmp1cnkyIDwtIHN1YnNldChpbmp1cnksIF9fXylcblxuIyBDb21wYXJlIHRoZSBzdW1tYXJ5IHN0YXRpc3RpY3Mgb2YgdGhlIG9taXR0ZWQgY2xhaW0gZGlzdHJpYnV0aW9uIHRvIHRoZSBmdWxsIGRpc3RyaWJ1dGlvblxuc3VtbWFyeShfX18pXG5zdW1tYXJ5KGluanVyeTIpXG5cbiMgQ29tcGFyZSB0aGUgdHdvIGRpc3RyaWJ1dGlvbnMgdmlzdWFsbHkgdmlhIGhpc3RvZ3JhbXMgcGxvdHRlZCBuZXh0IHRvIGFub3RoZXJcbnBhcihtZnJvdyA9IGMoMSwgMikpXG5oaXN0KF9fXywgZnJlcSA9IEZBTFNFLCAgbWFpbiA9IFwiRnVsbCBEYXRhXCIpXG5oaXN0KF9fXywgZnJlcSA9IEZBTFNFLCAgbWFpbiA9IFwiTGFyZ2VzdCBDbGFpbSBPbWl0dGVkXCIpIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG50YWlsKGluanVyeSlcbmluanVyeTIgPC0gc3Vic2V0KGluanVyeSwgY2xhaW1zIDwgMjUwMDAgKVxuc3VtbWFyeShpbmp1cnkpXG5zdW1tYXJ5KGluanVyeTIpXG5cbnBhcihtZnJvdyA9IGMoMSwgMikpXG5oaXN0KGNsYWltcywgZnJlcSA9IEZBTFNFLCAgbWFpbiA9IFwiRnVsbCBEYXRhXCIpXG5oaXN0KGluanVyeTIkY2xhaW1zLCBmcmVxID0gRkFMU0UsICBtYWluID0gXCJMYXJnZXN0IENsYWltIE9taXR0ZWRcIikifQ==</div>
+
+**Submission Correctness Tests (SCT)**
+
+test_error()
+test_object("injury2", incorrect_msg = "You defined the `injury` dataframe incorrectly. Check out the subset function (and maybe look over the hint).")
+success_msg("Congratulations! The goal of predictive modeling is to discover patterns in the data. However, sometimes seeming 'patterns' are the result of one or two unusual observations. Unusual observations may be due to incorrect data gathering procedures or just due to wild fluctuations in a process of interest but are common in predictive modeling.")
+
+## Transformations
+
+###Video (Exercise). Transformations
+
+#### Learning Objectives
+
+In this exercise, you learn how to:
+
+-    Symmetrize a skewed distribution using a logarithmic transformation
+
+####Video Overheads
+
+**Overhead A. Simulate a moderately skewed distribution, with transforms**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjICBGSUdVUkUgMS43IC0gU0lNVUxBVEUgQ0hJLVNRVUFSRSwgQ1JFQVRFIDMgVFJBTlNGT1JNQVRJT05TXG5zZXQuc2VlZCgxMjM3KSAgICAgICAgICAgICAgICAgICMgc2V0IHRoZSBzZWVkIG9mIHRoZSByYW5kb20gbnVtYmVyIGdlbmVyYXRvclxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjIGFsbG93cyB1cyB0byByZXBsaWNhdGUgcmVzdWx0c1xuWDEgPC0gMTAwMDAqcmNoaXNxKDUwMCwgZGYgPSAyKSAjIGdlbmVyYXRlIHZhcmlhYmxlcyByYW5kb21seSBmcm9tIGEgc2tld2VkIGRpc3RyaWJ1dGlvblxuWDIgPC0gWDFeKDAuNSkgICAgICAgICAgICAgICAgICAjIHNxdWFyZSByb290IHRyYW5zZm9ybSwgY291bGQgYWxzbyB1c2Ugc3FydChYMSlcblgzIDwtIGxvZyhYMSkgICAgICAgICAgICAgICAgICAgIyBsb2dhcml0aG1pYyB0cmFuc2Zvcm1cblg0IDwtIC0xL1gxICAgICAgICAgICAgICAgICAgICAgIyBuZWdhdGl2ZSByZWNpcHJvY2FsIHRyYW5zZm9ybSJ9</div>
+
+
+**Overhead B. Visualize the distributions**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJwYXIobWZyb3cgPSBjKDIsIDIpLCBjZXggPSAuNzUsIG1hciA9IGMoMyw1LDEuNSwwKSlcbmhpc3QoWDEsIGZyZXEgPSBGQUxTRSwgIG5jbGFzcyA9IDE2LCBtYWluID0gXCJcIiwgeGxhYiA9IFwiXCIsIHlsYWIgPSBcIlwiLCBcbiAgICAgIGxhcyA9IDEsIHlheHQgPSBcIm5cIix4bGltID0gYygwLDIwMDAwMCkseWxpbSA9IGMoMCwuMDAwMDUpKVxuYXhpcygyLCBhdCA9IHNlcSgwLC4wMDAwNSwuMDAwMDEpLGxhcyA9IDEsIGNleCA9IC4zLCBcbiAgbGFiZWxzID0gYyhcIjBcIiwgXCIwLjAwMDAxXCIsIFwiMC4wMDAwMlwiLFwiMC4wMDAwM1wiLCBcIjAuMDAwMDRcIiwgXCIwLjAwMDA1XCIpKVxubXRleHQoXCJEZW5zaXR5XCIsIHNpZGUgPSAyLCBhdCA9IC4wMDAwNTUsIGxhcyA9IDEsIGNleCA9IC43NSlcbm10ZXh0KFwieVwiLCBzaWRlID0gMSwgY2V4ID0gLjc1LCBsaW5lID0gMilcblxucGFyKG1hciA9IGMoMyw0LDEuNSwwLjIpKVxuaGlzdChYMiwgZnJlcSA9IEZBTFNFLCAgbmNsYXNzID0gMTYsIG1haW4gPSBcIlwiLCB4bGFiID0gXCJcIiwgeWxhYiA9IFwiXCIsIFxuICAgICAgbGFzID0gMSx4bGltID0gYygwLDQwMCksIHlsaW0gPSBjKDAsLjAwOCkpXG5tdGV4dChcIkRlbnNpdHlcIiwgc2lkZSA9IDIsIGF0ID0gLjAwODgsIGxhcyA9IDEsIGNleCA9IC43NSlcbm10ZXh0KFwiU3F1YXJlIHJvb3Qgb2YgeVwiLCBzaWRlID0gMSwgY2V4ID0gLjc1LCBsaW5lID0gMilcblxucGFyKG1hciA9IGMoMy4yLDUsMSwwKSlcbmhpc3QoWDMsICBmcmVxID0gRkFMU0UsICBuY2xhc3MgPSAxNiwgbWFpbiA9IFwiXCIsIHhsYWIgPSBcIlwiLCB5bGFiID0gXCJcIiwgbGFzID0gMSwgeWxpbSA9IGMoMCwuNCkpXG5tdGV4dChcIkRlbnNpdHlcIiwgc2lkZSA9IDIsIGF0ID0gLjQ0LCBsYXMgPSAxLCBjZXggPSAuNzUpXG5tdGV4dChcIkxvZ2FyaXRobWljIHlcIiwgc2lkZSA9IDEsIGNleCA9IC43NSwgbGluZSA9IDIpXG5cbnBhcihtYXIgPSBjKDMuMiw0LDEsMC4yKSlcbmhpc3QoWDQsIGZyZXEgPSBGQUxTRSwgIG5jbGFzcyA9IDE2LCBtYWluID0gXCJcIix4bGFiID0gXCJcIiwgeWxhYiA9IFwiXCIsIGxhcyA9IDEsIHlsaW0gPSBjKDAsMTAwKSlcbm10ZXh0KFwiRGVuc2l0eVwiLCBzaWRlID0gMiwgYXQgPSAxMTAsIGxhcyA9IDEsIGNleCA9IC43NSlcbm10ZXh0KFwiTmVnYXRpdmUgcmVjaXByb2NhbCBvZiB5XCIsIHNpZGUgPSAxLCBjZXggPSAuNzUsIGxpbmUgPSAyKSJ9</div>
+
+###Exercise. Distribution of transformed bodily injury claims
+
+**Assignment Text**
+
+We have now examined the distributions of bodily injury claims and its logarithmic version. Grudgingly, we have concluded that to fit a normal curve the logarithmic version of claims is a better choice (again, we really do not like log dollars but you'll get used to it in this course). But, why logarithmic and not some other transformations?
+
+A partial response to this question will appear in later chapters when we describe interpretation of regression coefficients. Another partial response is that the log transform seems to work well with skewed insurance data sets, as we demonstrate visually in this exercise.
+
+**Instructions**
+
+Use the code `par(mfrow = c(2, 2))` so that four graphs appear in a 2 by 2 matrix format for easy comparisons. Plot the [density()](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/density) of
+
+-  claims
+-  square root of claims
+-  logarithmic claims
+-  negative reciprocal of claims
+
+**Hint**
+
+For negative reciprocal claims, use `plot(density(-claims^(-1)))`
+
+**Pre-exercise code**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFByZS1leGVyY2lzZSBjb2RlXG5pbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJodHRwczovL2Fzc2V0cy5kYXRhY2FtcC5jb20vcHJvZHVjdGlvbi9yZXBvc2l0b3JpZXMvMjYxMC9kYXRhc2V0cy84Y2NhMTlkMDUwM2ZjZjZlOWQzMGQ5Y2I5MTJkZTViYTk1ZWNiOWMxL01hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmNsYWltcyA8LSBpbmp1cnkkY2xhaW1zIn0=</div>
+
+**SampleCode**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJgU2FtcGxlQ29kZWBcbiNUaGlzIGNvZGUgaGVscHMgdG8gb3JnYW5pemUgdGhlIGZvdXIgZ3JhcGhzIGludG8gYSAyIGJ5IDIgZm9ybWF0XG5wYXIobWZyb3cgPSBjKDIsIDIpKVxuI1Bsb3QgdGhlIGRlbnNpdHkgb2YgY2xhaW1zXG5wbG90KGRlbnNpdHkoX19fKSlcblxuI1Bsb3QgdGhlIGRlbnNpdHkgb2Ygc3F1YXJlIHJvb3Qgb2YgY2xhaW1zXG5wbG90KGRlbnNpdHkoX19fKSkgXG5cbiNQbG90IHRoZSBkZW5zaXR5IG9mIGxvZ2FyaXRobWljIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpXG5cbiNQbG90IHRoZSBkZW5zaXR5IG9mIHRoZSBuZWdhdGl2ZSByZWNpcHJvY2FsIG9mIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpIn0=</div>
+
+**Solution**
+
+<div data-datacamp-exercise data-height="300" data-encoded="true">eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFNvbHV0aW9uXG5wYXIobWZyb3cgPSBjKDIsIDIpKVxucGxvdChkZW5zaXR5KGNsYWltcykpICAgIFxucGxvdChkZW5zaXR5KGNsYWltc14oMC41KSkpICBcbnBsb3QoZGVuc2l0eShsb2coY2xhaW1zKSkpICBcbnBsb3QoZGVuc2l0eSgtY2xhaW1zXigtMSkpKSAgIn0=</div>
+
+**Submission Correctness Tests (SCT)**
+
+success_msg("Excellent! Transformations of data is a tool that incredibly expands potential applicability of (linear) regression techniques.")
+
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<script language="javascript" src="//cdn.datacamp.com/dcl-react.js.gz&gt;">
+</script>
+
             </section>
 
           </div>
         </div>
       </div>
 
-<a href="regression-and-the-normal-distribution.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -487,11 +557,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"linkedin": false
 },
 "fontsettings": {
 "theme": "white",
@@ -499,7 +569,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
 "text": "Edit"
 },
 "download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
@@ -510,19 +580,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

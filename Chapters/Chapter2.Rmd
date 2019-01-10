@@ -38,15 +38,16 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_qlpe86qi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_w18zht77" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Wisconsin lottery data description
+<h6 style="text-align: center;"><a id="displayOver2.1A" href="javascript:toggleDet('toggleOver2.1A','displayOver2.1A');"><i><strong>Show Overhead A Details. Wisconsin lottery data description</strong></i></a> </h6>
+<div id="toggleOver2.1A" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
@@ -55,8 +56,10 @@ Lot <- read.csv("CSVData\\Wisc_lottery.csv")
 str(Lot)
 ```
 
+</div>
 
-##### Show Overhead B Details. Summary statistics
+<h6 style="text-align: center;"><a id="displayOver2.1B" href="javascript:toggleDet('toggleOver2.1B','displayOver2.1B');"><i><strong>Show Overhead B Details. Summary statistics</strong></i></a> </h6>
+<div id="toggleOver2.1B" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
@@ -66,8 +69,10 @@ str(Lot)
 #Rcmdr::numSummary(Lot[,c("pop", "sales")], statistics = c("mean", "sd", "quantiles"), quantiles = c(0,.5,1))
 ```
 
+</div>
 
-##### Show Overhead C Details. Visualizing skewed distributions
+<h6 style="text-align: center;"><a id="displayOver2.1C" href="javascript:toggleDet('toggleOver2.1C','displayOver2.1C');"><i><strong>Show Overhead C Details. Visualizing skewed distributions</strong></i></a> </h6>
+<div id="toggleOver2.1C" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
@@ -76,21 +81,26 @@ hist(Lot$pop, main = "", xlab = "population")
 hist(Lot$sales, main = "", xlab = "sales")
 ```
 
+</div>
 
-##### Show Overhead D Details. Visualizing relationships with a scatter plot
+<h6 style="text-align: center;"><a id="displayOver2.1D" href="javascript:toggleDet('toggleOver2.1D','displayOver2.1D');"><i><strong>Show Overhead D Details. Visualizing relationships with a scatter plot</strong></i></a> </h6>
+<div id="toggleOver2.1D" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
 plot(Lot$pop, Lot$sales, xlab = "population", ylab = "sales")
 ```
 
+</div>
 
-##### Show Overhead E Details. Correlation coefficient
+<h6 style="text-align: center;"><a id="displayOver2.1E" href="javascript:toggleDet('toggleOver2.1E','displayOver2.1E');"><i><strong>Show Overhead E Details. Correlation coefficient</strong></i></a> </h6>
+<div id="toggleOver2.1E" style="display: none">
 
 ```{r comment = "", eval = EVALUATE_CHAP2, warning = FALSE, message = FALSE}
 cor(Lot$pop, Lot$sales)
 ```
 
+</div>
 
 
 ###Exercise. Correlations and the Wisconsin lottery
@@ -108,9 +118,8 @@ Like insurance, lotteries are uncertain events and so the skills to work with an
 - Plot `pop_1000` versus `sales_1000`.
 - Calculate the correlation between `pop_1000` versus `sales_1000` using the function [cor()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/cor). How does this differ between the correlation between population and sales in the original units?
 
-```{r ex="ExerRegMod2.1.2", type="hint", tut=TRUE}
-Use the dataframe to refer to pop and sales as `Lot$pop` and `Lot$sales`, respectively
-```
+**Hint.** Use the dataframe to refer to pop and sales as `Lot$pop` and `Lot$sales`, respectively
+
 
 ```{r ex="ExerRegMod2.1.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
@@ -170,7 +179,7 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 
@@ -179,9 +188,10 @@ In this section, you learn how to:
 </center>
 
 
-#### Video Overheads {.tabset}
+#### Video Overheads
 
-##### Show Overhead A Details. Where to fit the line?
+<h6 style="text-align: center;"><a id="displayOver2.2A" href="javascript:toggleDet('toggleOver2.2A','displayOver2.2A');"><i><strong>Show Overhead A Details. Where to fit the line?</strong></i></a> </h6>
+<div id="toggleOver2.2A" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
@@ -191,16 +201,20 @@ abline(model_blr, col="blue")
 abline(0,1, col="red")
 ```
 
+</div>
 
-##### Show Overhead B Details. Method of least squares
+<h6 style="text-align: center;"><a id="displayOver2.2B" href="javascript:toggleDet('toggleOver2.2B','displayOver2.2B');"><i><strong>Show Overhead B Details. Method of least squares</strong></i></a> </h6>
+<div id="toggleOver2.2B" style="display: none">
 
 - For observation $\{(y, x)\}$, the height of the regression line is $$b_0 + b_1 x.$$
 - Thus, $y - (b_0 + b_1 x)$ represents the deviation.
 - The sum of squared deviations is $$SS(b_0, b_1) = \sum (y - (b_0 + b_1 x))^2 .$$
 - The *method of least squares* -- determine values of $b_0, b_1$ that minimize $SS$.
 
+</div>
 
-##### Show Overhead C Details. Regression coefficients
+<h6 style="text-align: center;"><a id="displayOver2.2C" href="javascript:toggleDet('toggleOver2.2C','displayOver2.2C');"><i><strong>Show Overhead C Details. Regression coefficients</strong></i></a> </h6>
+<div id="toggleOver2.2C" style="display: none">
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 model_blr <- lm(sales ~ pop, data = Lot)
@@ -209,8 +223,10 @@ plot(Lot$pop, Lot$sales,xlab = "population", ylab = "sales")
 abline(model_blr, col="blue")
 ```
 
+</div>
 
-##### Show Overhead D Details. Prediction
+<h6 style="text-align: center;"><a id="displayOver2.2D" href="javascript:toggleDet('toggleOver2.2D','displayOver2.2D');"><i><strong>Show Overhead D Details. Prediction</strong></i></a> </h6>
+<div id="toggleOver2.2D" style="display: none">
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 round(coefficients(model_blr), digits=6)
@@ -220,6 +236,7 @@ newdata <- data.frame(pop = 30000)
 predict(model_blr, newdata)
 ```
 
+</div>
 
 
 ###Exercise. Least squares fit using housing prices
@@ -235,9 +252,6 @@ The prior video analyzed the effect that a zip code's population has on lottery 
 - Using the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), regress `medhome`, the explanatory variable, on `sales`, the outcome variable. Display the regression coefficients to four significant digits.
 - Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) and the fitted regression model to predict sales assuming that the median house price for a zip code is 50 (in thousands of dollars).
 
-```{r ex="ExerRegMod2.2.2", type="hint", tut=TRUE}
-Creating a Linear model using `lm()` creates an object with a large ammount of information, which can be used with the `predict()` function in addition with a dataframe with the same columns as your model to examine out of sample data.
-```
 
 ```{r ex="ExerRegMod2.2.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
@@ -310,15 +324,16 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_a6j1eyc0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_x5oq2i5k" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show OverheadS A and B Details. Visualizing the uncertainty about a line
+<h6 style="text-align: center;"><a id="displayOver2.3A" href="javascript:toggleDet('toggleOver2.3A','displayOver2.3A');"><i><strong>Show OverheadS A and B Details. Visualizing the uncertainty about a line</strong></i></a> </h6>
+<div id="toggleOver2.3A" style="display: none">
 
 ```{r comment = ""}
 par(mar=c(2.2,2.1,.2,.2),cex=1.2)
@@ -346,8 +361,10 @@ text(0, -1.3, expression( x-bar(x)), cex=0.8  )
 text(3.5, 2.7, expression( hat(y)== b[0]+ b[1]*x), cex=0.8  )
 ```
 
+</div>
 
-##### Show Overheads C, D and E Details. ANOVA Table
+<h6 style="text-align: center;"><a id="displayOver2.3C" href="javascript:toggleDet('toggleOver2.3C','displayOver2.3C');"><i><strong>Show Overheads C, D and E Details. ANOVA Table</strong></i></a> </h6>
+<div id="toggleOver2.3C" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
@@ -358,6 +375,7 @@ summary(model_blr)$r.squared
 
 ```
 
+</div>
 
 ###Exercise. Summarizing measures of uncertainty 
 
@@ -373,9 +391,8 @@ How reliable is the regression line? In this excercise, you will compute some of
 - Determine the size of the typical residual, $s$.
 - Determine the coefficient of determination, $R^2$.  
 
-```{r ex="ExerRegMod2.3.2", type="hint", tut=TRUE}
-Learn more about possibilities through the `Rdocumentation` site. If you have not done so already, check out the function [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/anova)
-```
+**Hint.** Learn more about possibilities through the `Rdocumentation` site. If you have not done so already, check out the function [anova()](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/anova)
+
 
 ```{r ex="ExerRegMod2.3.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
@@ -433,16 +450,13 @@ Let us see how rescaling, a linear transformation, affects our measures of uncer
 
 **Hint.** The residual standard error is also available as `summary(model_blr1)$sigma`. The coefficient of determination is also available as `summary(model_blr1)$r.squared`.
 
-```{r ex="ExerRegMod2.3.3", type="hint", tut=TRUE}
-The residual standard error is also available as `summary(model_blr1)$sigma`. The coefficient of determination is also available as `summary(model_blr1)$r.squared`.
-```
-
 ```{r ex="ExerRegMod2.3.3", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
 Lot <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/a792b30fb32b0896dd6894501cbab32b5d48df51/Wisc_lottery.csv", header = TRUE)
 Lot$pop_1000 <- Lot$pop/1000
 Lot$sales_1000 <- Lot$sales/1000
 ```
+
 
 ```{r ex="ExerRegMod2.3.3", type="sample-code", tut=TRUE}
 # Run a regression of `pop` on `sales_1000` and summarize this in an ANOVA table.
@@ -507,15 +521,16 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_s9a4jr3s&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_quj4d5r0" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Summary of basic linear regression model
+<h6 style="text-align: center;"><a id="displayOver2.4A" href="javascript:toggleDet('toggleOver2.4A','displayOver2.4A');"><i><strong>Show Overhead A Details. Summary of basic linear regression model</strong></i></a> </h6>
+<div id="toggleOver2.4A" style="display: none">
 
 Introduce the output in the *summary* of the basic linear regression model.
 
@@ -528,8 +543,10 @@ summary(model_blr)
 
 ```
 
+</div>
 
-##### Show Overhead B Details. Hypothesis testing
+<h6 style="text-align: center;"><a id="displayOver2.4B" href="javascript:toggleDet('toggleOver2.4B','displayOver2.4B');"><i><strong>Show Overhead B Details. Hypothesis testing</strong></i></a> </h6>
+<div id="toggleOver2.4B" style="display: none">
 
 
 ```
@@ -539,8 +556,10 @@ summary(model_blr)
 pop           0.6471    0.04881 13.2579 1.158e-17
 ```
 
+</div>
 
-##### Show Overhead C Details. Confidence intervals
+<h6 style="text-align: center;"><a id="displayOver2.4C" href="javascript:toggleDet('toggleOver2.4C','displayOver2.4C');"><i><strong>Show Overhead C Details. Confidence intervals</strong></i></a> </h6>
+<div id="toggleOver2.4C" style="display: none">
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 confint(model_blr, level = .90)
@@ -548,8 +567,10 @@ confint(model_blr, level = .95)
 
 ```
 
+</div>
 
-##### Show Overhead D Details. Confidence intervals check
+<h6 style="text-align: center;"><a id="displayOver2.4D" href="javascript:toggleDet('toggleOver2.4D','displayOver2.4D');"><i><strong>Show Overhead D Details. Confidence intervals check</strong></i></a> </h6>
+<div id="toggleOver2.4D" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
@@ -565,9 +586,10 @@ confint(model_blr, level = .95)
 confint(model_blr, level = .95)
 
 ```
+</div>
 
-
-##### Show Overhead E Details. Prediction intervals
+<h6 style="text-align: center;"><a id="displayOver2.4E" href="javascript:toggleDet('toggleOver2.4E','displayOver2.4E');"><i><strong>Show Overhead E Details. Prediction intervals</strong></i></a> </h6>
+<div id="toggleOver2.4E" style="display: none">
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
 NewData <- data.frame(pop = 10000)
@@ -576,6 +598,7 @@ predict(model_blr, NewData, interval = "prediction", level = .99)
 
 ```
 
+</div>
 
 ###Exercise. Statistical inference and Wisconsin lottery
 
@@ -591,9 +614,7 @@ This exercise allows you to practice the standard inferential tasks: hypothesis 
 - Use the function [confint()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/confint) to provide a 95\% confidence interval for the regression coefficient associated with `medhome`.
 - Consider a zip code with a median housing price equal to 50 (in thousands of dollars). Use the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict) to provide a point prediction and a 95\% prediction interval for sales.
 
-```{r ex="ExerRegMod2.4.2", type="hint", tut=TRUE}
-Taking a [summary()] of a regression object produces a new objeect. You can use the [str()] structure command to learn more about the new object. Try out a command such as `str(summary(model_blr))`
-```
+**Hint.** Taking a [summary()] of a regression object produces a new objeect. You can use the [str()] structure command to learn more about the new object. Try out a command such as `str(summary(model_blr))`
 
 ```{r ex="ExerRegMod2.4.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)
@@ -668,7 +689,7 @@ In this section, you learn how to:
 
 ***
 
-### Video 
+###Video 
 
 <center>
 
@@ -676,9 +697,10 @@ In this section, you learn how to:
 
 </center>
 
-#### Video Overhead Details {.tabset}
+#### Video Overhead Details {-}
 
-##### Show Overhead A Details. Unusual observations in regression
+<h6 style="text-align: center;"><a id="displayOver2.5A" href="javascript:toggleDet('toggleOver2.5A','displayOver2.5A');"><i><strong>Show Overhead A Details. Unusual observations in regression</strong></i></a> </h6>
+<div id="toggleOver2.5A" style="display: none">
 
 - We have defined regression estimates as minimizers of a least squares objective function.
 - An appealing intuitive feature of linear regressions is that regression estimates can be expressed as weighted averages of outcomes.
@@ -686,9 +708,11 @@ In this section, you learn how to:
 - "Unusual" observations are far from the majority of the data set:
    - Unusual in the vertical direction is called an *outlier*. 
    - Unusual in the horizontal directional is called a *high leverage point*. 
+   
+</div>
 
-
-##### Show Overhead B Details. Example. Outliers and High Leverage Points  
+<h6 style="text-align: center;"><a id="displayOver2.5B" href="javascript:toggleDet('toggleOver2.5B','displayOver2.5B');"><i><strong>Show Overhead B Details. Example. Outliers and High Leverage Points</strong></i></a> </h6>
+<div id="toggleOver2.5B" style="display: none">   
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
@@ -701,8 +725,10 @@ text(9.8, 8.0, "B")
 text(9.8, 2.5, "C")
 ```
 
+</div>
 
-##### Show Overhead C Details. Regression fit with 19 base observations
+<h6 style="text-align: center;"><a id="displayOver2.5C" href="javascript:toggleDet('toggleOver2.5C','displayOver2.5C');"><i><strong>Show Overhead C Details. Regression fit with 19 base observations</strong></i></a> </h6>
+<div id="toggleOver2.5C" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
@@ -713,8 +739,10 @@ abline(model_outlr0)
 
 ```
 
+</div>
 
-##### Show Overhead D Details. Regression fit with 19 base observations plus C
+<h6 style="text-align: center;"><a id="displayOver2.5D" href="javascript:toggleDet('toggleOver2.5D','displayOver2.5D');"><i><strong>Show Overhead D Details. Regression fit with 19 base observations plus C</strong></i></a> </h6>
+<div id="toggleOver2.5D" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
@@ -726,8 +754,10 @@ abline(model_outlrC)
 
 ```
 
+</div>
 
-##### Show Overhead E Details. R code
+<h6 style="text-align: center;"><a id="displayOver2.5E" href="javascript:toggleDet('toggleOver2.5E','displayOver2.5E');"><i><strong>Show Overhead E Details. R code</strong></i></a> </h6>
+<div id="toggleOver2.5E" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
@@ -741,8 +771,10 @@ model_outlrC <- lm(y ~ x, data = outlr, subset = -c(20,21))
 summary(model_outlrC)
 ```
 
+</div>
 
-##### Show Overhead F Details. Visualizing four regression fits
+<h6 style="text-align: center;"><a id="displayOver2.5F" href="javascript:toggleDet('toggleOver2.5F','displayOver2.5F');"><i><strong>Show Overhead F Details. Visualizing four regression fits</strong></i></a> </h6>
+<div id="toggleOver2.5F" style="display: none">
 
 
 ```{r comment = "", eval = EVALUATE_CHAP2}
@@ -757,8 +789,10 @@ abline(model_outlrC, col = "blue")
 
 ```
 
+</div>
 
-##### Show Overhead G Details. Results from four regression models
+<h6 style="text-align: center;"><a id="displayOver2.5G" href="javascript:toggleDet('toggleOver2.5G','displayOver2.5G');"><i><strong>Show Overhead G Details. Results from four regression models</strong></i></a> </h6>
+<div id="toggleOver2.5G" style="display: none">
 
 
 $$\begin{matrix}
@@ -768,6 +802,7 @@ $$\begin{matrix}
 \begin{array}{l|rrrrr} \hline \text{Data} & b_0 & b_1 & s & R^2(\%) & t(b_1) \\ \hline \text{19 Base Points} & 1.869 & 0.611 & 0.288 & 89.0 & 11.71 \\ \text{19 Base Points} ~+~ A & 1.750 & 0.693 & 0.846 & 53.7 & 4.57 \\ \text{19 Base Points} ~+~ B & 1.775 & 0.640 & 0.285 & 94.7 & 18.01 \\ \text{19 Base Points} ~+~ C & 3.356 & 0.155 & 0.865 & 10.3 & 1.44 \\ \hline \end{array} 
 \end{matrix}$$
 
+</div>
 
 ###Exercise. Assessing outliers in lottery sales
 
@@ -783,9 +818,7 @@ This exercise summarizes the regression fit both with and without this zip code 
 - Plot these two least squares fitted lines superimposed on the full data set.
 - What is the effect on the distribution  of residuals by removing this point? Calculate a normal qq plot with and without Kenosha.
 
-```{r ex="ExerRegMod2.5.2", type="hint", tut=TRUE}
-You can extract the residuals from a regression object with the function [residuals()].
-```
+**Hint.** You can extract the residuals from a regression object with the function [residuals()].
 
 ```{r ex="ExerRegMod2.5.2", type="pre-exercise-code", tut=TRUE}
 #Lot <- read.csv("CSVData\\Wisc_lottery.csv", header = TRUE)

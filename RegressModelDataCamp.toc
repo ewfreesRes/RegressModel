@@ -3,217 +3,114 @@
 \contentsline {subsection}{Resources}{5}{section*.4}
 \contentsline {subsection}{Tutorial Description}{5}{section*.5}
 \contentsline {subsection}{Welcome to the Tutorial Video}{6}{section*.6}
-\contentsline {subsubsection}{Video}{6}{section*.7}
-\contentsline {paragraph}{Video Overhead}{6}{section*.8}
-\contentsline {subparagraph}{Show Overhead A. Galton's 1885 Regression Data}{6}{section*.9}
-\contentsline {subparagraph}{Show Overhead B. Supporting R Code}{6}{section*.10}
+\contentsline {subsubsection}{Video Overhead}{6}{section*.7}
 \contentsline {chapter}{\numberline {1}Regression and the Normal Distribution}{9}{chapter.1}
 \contentsline {section}{\numberline {1.1}Fitting a normal distribution}{9}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Video}{9}{subsection.1.1.1}
-\contentsline {subsubsection}{Video Overhead Details}{9}{section*.11}
-\contentsline {paragraph}{Show Overhead A Details. Description of the data}{9}{section*.12}
-\contentsline {paragraph}{Show Overhead B Details. Read and examine data structure}{10}{section*.13}
-\contentsline {paragraph}{Show Overhead C Details. Summary stats for parents' height}{10}{section*.14}
-\contentsline {paragraph}{Show Overhead D. Fit a normal curve to parents' height details}{11}{section*.15}
-\contentsline {paragraph}{Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents}{12}{section*.16}
+\contentsline {subsubsection}{Video Overhead Details}{9}{section*.8}
 \contentsline {subsection}{\numberline {1.1.2}Exercise. Fitting Galton's height data}{12}{subsection.1.1.2}
 \contentsline {subsection}{\numberline {1.1.3}Exercise. Visualizing child's height distribution}{13}{subsection.1.1.3}
 \contentsline {section}{\numberline {1.2}Visualizing distributions}{13}{section.1.2}
 \contentsline {subsection}{\numberline {1.2.1}Video}{13}{subsection.1.2.1}
-\contentsline {subsubsection}{Video Overhead Details}{13}{section*.17}
-\contentsline {paragraph}{Show Overhead Details. Data description}{13}{section*.18}
-\contentsline {paragraph}{Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims}{14}{section*.19}
-\contentsline {paragraph}{Show Overhead B Details. Show how to get a finer grid for histograms}{15}{section*.20}
-\contentsline {paragraph}{Show Overhead C Details. Introduce the density plot}{16}{section*.21}
-\contentsline {subsection}{\numberline {1.2.2}Exercise. Visualizing bodily injury claims with density plots}{17}{subsection.1.2.2}
-\contentsline {section}{\numberline {1.3}Summarizing distributions}{17}{section.1.3}
-\contentsline {subsection}{\numberline {1.3.1}Video}{18}{subsection.1.3.1}
-\contentsline {subsubsection}{Video Overhead Details}{18}{section*.22}
-\contentsline {paragraph}{Show Overhead A Details. Summary statistics}{18}{section*.23}
-\contentsline {paragraph}{Show Overhead B Details. Boxplot}{18}{section*.24}
-\contentsline {paragraph}{Show Overhead C Details. QQ Plot}{20}{section*.25}
-\contentsline {subsection}{\numberline {1.3.2}Exercise. Summarizing bodily injury claims with box and qq plots}{21}{subsection.1.3.2}
-\contentsline {subsection}{\numberline {1.3.3}Exercise. Effects on distributions of removing the largest claim}{22}{subsection.1.3.3}
-\contentsline {section}{\numberline {1.4}Transformations}{22}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}Video}{22}{subsection.1.4.1}
-\contentsline {subsubsection}{Video Overhead Details}{22}{section*.26}
-\contentsline {paragraph}{Show Overhead A Details. Simulate a moderately skewed distribution, with transforms}{22}{section*.27}
-\contentsline {paragraph}{Show Overhead B Details. Visualize the distributions}{23}{section*.28}
-\contentsline {subsection}{\numberline {1.4.2}Exercise. Distribution of transformed bodily injury claims}{24}{subsection.1.4.2}
+\contentsline {subsubsection}{Video Overhead Details}{13}{section*.9}
+\contentsline {subsection}{\numberline {1.2.2}Exercise. Visualizing bodily injury claims with density plots}{16}{subsection.1.2.2}
+\contentsline {section}{\numberline {1.3}Summarizing distributions}{16}{section.1.3}
+\contentsline {subsection}{\numberline {1.3.1}Video}{17}{subsection.1.3.1}
+\contentsline {subsubsection}{Video Overhead Details}{17}{section*.10}
+\contentsline {subsection}{\numberline {1.3.2}Exercise. Summarizing bodily injury claims with box and qq plots}{20}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.3}Exercise. Effects on distributions of removing the largest claim}{21}{subsection.1.3.3}
+\contentsline {section}{\numberline {1.4}Transformations}{21}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Video}{21}{subsection.1.4.1}
+\contentsline {subsubsection}{Video Overhead Details}{21}{section*.11}
+\contentsline {subsection}{\numberline {1.4.2}Exercise. Distribution of transformed bodily injury claims}{23}{subsection.1.4.2}
 \contentsline {chapter}{\numberline {2}Basic Linear Regression}{25}{chapter.2}
 \contentsline {section}{\numberline {2.1}Correlation}{25}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Video}{25}{subsection.2.1.1}
-\contentsline {subsubsection}{Video Overhead Details}{25}{section*.29}
-\contentsline {paragraph}{Show Overhead A Details. Wisconsin lottery data description}{25}{section*.30}
-\contentsline {paragraph}{Show Overhead B Details. Summary statistics}{25}{section*.31}
-\contentsline {paragraph}{Show Overhead C Details. Visualizing skewed distributions}{26}{section*.32}
-\contentsline {paragraph}{Show Overhead D Details. Visualizing relationships with a scatter plot}{26}{section*.33}
-\contentsline {paragraph}{Show Overhead E Details. Correlation coefficient}{27}{section*.34}
+\contentsline {subsubsection}{Video Overhead Details}{25}{section*.12}
 \contentsline {subsection}{\numberline {2.1.2}Exercise. Correlations and the Wisconsin lottery}{27}{subsection.2.1.2}
 \contentsline {section}{\numberline {2.2}Method of least squares}{28}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Video}{28}{subsection.2.2.1}
-\contentsline {subsubsection}{Video Overheads}{28}{section*.35}
-\contentsline {paragraph}{Show Overhead A Details. Where to fit the line?}{28}{section*.36}
-\contentsline {paragraph}{Show Overhead B Details. Method of least squares}{28}{section*.37}
-\contentsline {paragraph}{Show Overhead C Details. Regression coefficients}{29}{section*.38}
-\contentsline {paragraph}{Show Overhead D Details. Prediction}{29}{section*.39}
+\contentsline {subsubsection}{Video Overheads}{28}{section*.13}
 \contentsline {subsection}{\numberline {2.2.2}Exercise. Least squares fit using housing prices}{30}{subsection.2.2.2}
 \contentsline {section}{\numberline {2.3}Understanding variability}{30}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Video}{30}{subsection.2.3.1}
-\contentsline {subsubsection}{Video Overhead Details}{30}{section*.40}
-\contentsline {paragraph}{Show OverheadS A and B Details. Visualizing the uncertainty about a line}{30}{section*.41}
-\contentsline {paragraph}{Show Overheads C, D and E Details. ANOVA Table}{31}{section*.42}
+\contentsline {subsubsection}{Video Overhead Details}{30}{section*.14}
 \contentsline {subsection}{\numberline {2.3.2}Exercise. Summarizing measures of uncertainty}{32}{subsection.2.3.2}
 \contentsline {subsection}{\numberline {2.3.3}Exercise. Effects of linear transforms on measures of uncertainty}{32}{subsection.2.3.3}
 \contentsline {section}{\numberline {2.4}Statistical inference}{32}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Video}{33}{subsection.2.4.1}
-\contentsline {subsubsection}{Video Overhead Details}{33}{section*.43}
-\contentsline {paragraph}{Show Overhead A Details. Summary of basic linear regression model}{33}{section*.44}
-\contentsline {paragraph}{Show Overhead B Details. Hypothesis testing}{33}{section*.45}
-\contentsline {paragraph}{Show Overhead C Details. Confidence intervals}{33}{section*.46}
-\contentsline {paragraph}{Show Overhead D Details. Confidence intervals check}{34}{section*.47}
-\contentsline {paragraph}{Show Overhead E Details. Prediction intervals}{34}{section*.48}
+\contentsline {subsubsection}{Video Overhead Details}{33}{section*.15}
 \contentsline {subsection}{\numberline {2.4.2}Exercise. Statistical inference and Wisconsin lottery}{34}{subsection.2.4.2}
 \contentsline {section}{\numberline {2.5}Diagnostics}{35}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}Video}{35}{subsection.2.5.1}
-\contentsline {subsubsection}{Video Overhead Details}{35}{section*.49}
-\contentsline {paragraph}{Show Overhead A Details. Unusual observations in regression}{35}{section*.50}
-\contentsline {paragraph}{Show Overhead B Details. Example. Outliers and High Leverage Points}{35}{section*.51}
-\contentsline {paragraph}{Show Overhead C Details. Regression fit with 19 base observations}{36}{section*.52}
-\contentsline {paragraph}{Show Overhead D Details. Regression fit with 19 base observations plus C}{37}{section*.53}
-\contentsline {paragraph}{Show Overhead E Details. R code}{38}{section*.54}
-\contentsline {paragraph}{Show Overhead F Details. Visualizing four regression fits}{40}{section*.55}
-\contentsline {paragraph}{Show Overhead G Details. Results from four regression models}{41}{section*.56}
+\contentsline {subsubsection}{Video Overhead Details}{35}{section*.16}
 \contentsline {subsection}{\numberline {2.5.2}Exercise. Assessing outliers in lottery sales}{41}{subsection.2.5.2}
 \contentsline {chapter}{\numberline {3}Multiple Linear Regression}{43}{chapter.3}
-\contentsline {section}{Term Life Data}{43}{section*.57}
-\contentsline {subsubsection}{Video Overhead Details}{43}{section*.58}
-\contentsline {paragraph}{Show Overhead A Details. Demand for term life insurance}{43}{section*.59}
-\contentsline {paragraph}{Show Overhead B Details. Term life insurance summary statistics}{43}{section*.60}
-\contentsline {paragraph}{Show Overhead C Details. Summary statistics}{44}{section*.61}
-\contentsline {paragraph}{Show Overhead D Details. Scatter plots of income versus face in original and logarithmic units}{44}{section*.62}
+\contentsline {section}{Term Life Data}{43}{section*.17}
+\contentsline {subsubsection}{Video Overhead Details}{43}{section*.18}
 \contentsline {section}{\numberline {3.1}Method of least squares}{45}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Video}{45}{subsection.3.1.1}
-\contentsline {subsubsection}{Video Overhead Details}{45}{section*.63}
-\contentsline {paragraph}{Show Overhead A Details. Correlation table}{45}{section*.64}
-\contentsline {paragraph}{Show Overhead B Details. Scatterplot matrix}{46}{section*.65}
-\contentsline {paragraph}{Show Overhead C Details. Visualizing a regression plane}{46}{section*.66}
-\contentsline {paragraph}{Show Overhead D Details. Method of least squares}{48}{section*.67}
-\contentsline {paragraph}{Show Overhead E Details. Fit a multiple linear regression model}{48}{section*.68}
+\contentsline {subsubsection}{Video Overhead Details}{45}{section*.19}
 \contentsline {subsection}{\numberline {3.1.2}Exercise. Least squares and term life data}{49}{subsection.3.1.2}
 \contentsline {subsection}{\numberline {3.1.3}Exercise. Interpreting coefficients as proportional changes}{49}{subsection.3.1.3}
 \contentsline {subsection}{\numberline {3.1.4}Exercise. Interpreting coefficients as elasticities}{49}{subsection.3.1.4}
 \contentsline {section}{\numberline {3.2}Statistical inference and multiple linear regresson}{50}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Video}{50}{subsection.3.2.1}
-\contentsline {subsubsection}{Video Overhead Details}{50}{section*.69}
-\contentsline {paragraph}{Show Overhead A Details. Goodness of fit}{50}{section*.70}
-\contentsline {paragraph}{Show Overhead B Details. Goodness of fit and term life}{51}{section*.71}
-\contentsline {paragraph}{Show Overhead C Details. Statistical inference}{51}{section*.72}
-\contentsline {paragraph}{Show Overhead D Details. Statistical inference and term life}{51}{section*.73}
+\contentsline {subsubsection}{Video Overhead Details}{50}{section*.20}
 \contentsline {subsection}{\numberline {3.2.2}Exercise. Statistical inference and term life}{52}{subsection.3.2.2}
 \contentsline {section}{\numberline {3.3}Binary variables}{52}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Video}{52}{subsection.3.3.1}
-\contentsline {subsubsection}{Video Overhead Details}{52}{section*.74}
-\contentsline {paragraph}{Show Overhead A Details. Binary variables}{52}{section*.75}
-\contentsline {paragraph}{Show Overhead B Details. Visualize effect of binary variables}{53}{section*.76}
-\contentsline {paragraph}{Show Overhead C Details. R script for visualization}{53}{section*.77}
-\contentsline {paragraph}{Show Overhead D Details. Interaction Terms}{54}{section*.78}
-\contentsline {paragraph}{Show Overhead E Details. Visualizing binary variables with interactions terms}{55}{section*.79}
+\contentsline {subsubsection}{Video Overhead Details}{52}{section*.21}
 \contentsline {subsection}{\numberline {3.3.2}Exercise. Binary variables and term life}{56}{subsection.3.3.2}
 \contentsline {section}{\numberline {3.4}Categorical variables}{56}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}Video}{57}{subsection.3.4.1}
-\contentsline {subsubsection}{Video Overhead Details}{57}{section*.80}
-\contentsline {paragraph}{Show Overhead A Details. Categorical variables}{57}{section*.81}
-\contentsline {paragraph}{Show Overhead B Details. Term life example}{57}{section*.82}
-\contentsline {paragraph}{Show Overhead C Details. Term life boxplots}{57}{section*.83}
-\contentsline {paragraph}{Show Overhead D Details. Regression with a categorical variable}{58}{section*.84}
-\contentsline {paragraph}{Show Overhead E Details. t-ratios depend on the reference level}{59}{section*.85}
+\contentsline {subsubsection}{Video Overhead Details}{57}{section*.22}
 \contentsline {subsection}{\numberline {3.4.2}Exercise. Categorical variables and Wisconsin hospital costs}{59}{subsection.3.4.2}
 \contentsline {section}{\numberline {3.5}General linear hypothesis}{60}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Video}{60}{subsection.3.5.1}
-\contentsline {subsubsection}{Video Overhead Details}{60}{section*.86}
-\contentsline {paragraph}{Show Overhead A Details. Testing the significance of a categorical variable}{60}{section*.87}
-\contentsline {paragraph}{Show Overhead B Details. Overview of the general linear hypothesis}{60}{section*.88}
-\contentsline {paragraph}{Show Overhead C Details. Procedure for conducting the general linear hypothesis}{61}{section*.89}
-\contentsline {paragraph}{Show Overhead D Details. The general linear hypothesis for a single variable}{61}{section*.90}
+\contentsline {subsubsection}{Video Overhead Details}{60}{section*.23}
 \contentsline {subsection}{\numberline {3.5.2}Exercise. Hypothesis testing and term life}{61}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Exercise. Hypothesis testing and Wisconsin hospital costs}{62}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.3}Exercise. Hypothesis testing and Wisconsin hospital costs}{61}{subsection.3.5.3}
 \contentsline {subsection}{\numberline {3.5.4}Exercise. Hypothesis testing and auto claims}{62}{subsection.3.5.4}
 \contentsline {chapter}{\numberline {4}Variable Selection}{69}{chapter.4}
 \contentsline {section}{\numberline {4.1}An iterative approach to data analysis and modeling}{69}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Video}{69}{subsection.4.1.1}
-\contentsline {subsubsection}{Video Overhead Details}{69}{section*.91}
-\contentsline {paragraph}{Show Overhead A Details. Iterative approach}{69}{section*.92}
-\contentsline {paragraph}{Show Overhead B Details. Many possible models}{71}{section*.93}
-\contentsline {paragraph}{Show Overhead C Details. Model validation}{71}{section*.94}
+\contentsline {subsubsection}{Video Overhead Details}{69}{section*.24}
 \contentsline {subsection}{\numberline {4.1.2}MC Exercise. An iterative approach to data modeling}{72}{subsection.4.1.2}
 \contentsline {section}{\numberline {4.2}Automatic variable selection procedures}{73}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Video}{73}{subsection.4.2.1}
-\contentsline {subsubsection}{Video Overhead Details}{73}{section*.95}
-\contentsline {paragraph}{Show Overhead A Details. Classic stepwise regression algorithm}{73}{section*.96}
-\contentsline {paragraph}{Show Overhead B Details. Drawbacks of stepwise regression}{73}{section*.97}
-\contentsline {paragraph}{Show Overhead C Details. Data-snooping in stepwise regression}{73}{section*.98}
-\contentsline {paragraph}{Show Overhead D Details. Variants of stepwise regression}{74}{section*.99}
-\contentsline {paragraph}{Show Overhead E Details. Automatic variable selection procedures}{74}{section*.100}
+\contentsline {subsubsection}{Video Overhead Details}{73}{section*.25}
 \contentsline {subsection}{\numberline {4.2.2}Exercise. Data-snooping in stepwise regression}{74}{subsection.4.2.2}
 \contentsline {section}{\numberline {4.3}Residual analysis}{75}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Video}{75}{subsection.4.3.1}
-\contentsline {subsubsection}{Video Overhead Details}{75}{section*.101}
-\contentsline {paragraph}{Show Overhead A Details. Residual analysis}{75}{section*.102}
-\contentsline {paragraph}{Show Overhead B Details. Using residuals to select explanatory variables}{75}{section*.103}
-\contentsline {paragraph}{Show Overhead C Details. Detecting relationships between residuals and explanatory variables}{75}{section*.104}
+\contentsline {subsubsection}{Video Overhead Details}{75}{section*.26}
 \contentsline {subsection}{\numberline {4.3.2}Exercise. Residual analysis and risk manager survey}{75}{subsection.4.3.2}
 \contentsline {subsection}{\numberline {4.3.3}Exercise. Added variable plot and refrigerator prices}{76}{subsection.4.3.3}
 \contentsline {section}{\numberline {4.4}Unusual observations}{78}{section.4.4}
 \contentsline {subsection}{\numberline {4.4.1}Video}{79}{subsection.4.4.1}
-\contentsline {subsubsection}{Video Overhead Details}{79}{section*.105}
-\contentsline {paragraph}{Show Overhead A Details. Unusual observationsUnusual observations}{79}{section*.106}
-\contentsline {paragraph}{Show Overhead B Details. Standardized residuals}{79}{section*.107}
-\contentsline {paragraph}{Show Overhead C Details. Outlier - an unusal standardized residual}{79}{section*.108}
-\contentsline {paragraph}{Show Overhead D Details. High leverage points}{79}{section*.109}
-\contentsline {paragraph}{Show Overhead E Details. High leverage point graph}{79}{section*.110}
-\contentsline {paragraph}{Show Overhead F Details. Leverage}{80}{section*.111}
-\contentsline {subsection}{\numberline {4.4.2}Exercise. Outlier example}{81}{subsection.4.4.2}
+\contentsline {subsubsection}{Video Overhead Details}{79}{section*.27}
+\contentsline {subsection}{\numberline {4.4.2}Exercise. Outlier example}{80}{subsection.4.4.2}
 \contentsline {subsection}{\numberline {4.4.3}Exercise. High leverage and risk manager survey}{81}{subsection.4.4.3}
 \contentsline {section}{\numberline {4.5}Collinearity}{81}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Video}{82}{subsection.4.5.1}
-\contentsline {subsubsection}{Video Overhead Details}{82}{section*.112}
-\contentsline {paragraph}{Show Overhead A Details. Collinearity}{82}{section*.113}
-\contentsline {paragraph}{Show Overhead B Details. Quantifying collinearity}{82}{section*.114}
-\contentsline {paragraph}{Show Overhead C Details. Options for handling collinearity}{82}{section*.115}
+\contentsline {subsection}{\numberline {4.5.1}Video}{81}{subsection.4.5.1}
+\contentsline {subsubsection}{Video Overhead Details}{81}{section*.28}
 \contentsline {subsection}{\numberline {4.5.2}Exercise. Collinearity and term life}{82}{subsection.4.5.2}
 \contentsline {section}{\numberline {4.6}Selection criteria}{83}{section.4.6}
 \contentsline {subsection}{\numberline {4.6.1}Video}{83}{subsection.4.6.1}
-\contentsline {subsubsection}{Video Overhead Details}{83}{section*.116}
-\contentsline {paragraph}{Show Overhead A Details. Goodness of fit}{83}{section*.117}
-\contentsline {paragraph}{Show Overhead B Details. Goodness of fit and information criteria}{83}{section*.118}
-\contentsline {paragraph}{Show Overhead C Details. Out of sample validation}{84}{section*.119}
-\contentsline {paragraph}{Show Overhead D Details. Out of sample validation procedure}{84}{section*.120}
-\contentsline {paragraph}{Show Overhead E Details. Cross - validation}{84}{section*.121}
+\contentsline {subsubsection}{Video Overhead Details}{83}{section*.29}
 \contentsline {subsection}{\numberline {4.6.2}Exercise. Cross-validation and term life}{84}{subsection.4.6.2}
 \contentsline {chapter}{\numberline {5}Interpreting Regression Results}{87}{chapter.5}
 \contentsline {section}{\numberline {5.1}Case study: MEPS health expenditures}{87}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Video}{87}{subsection.5.1.1}
-\contentsline {subsubsection}{Video Overhead Details}{87}{section*.122}
-\contentsline {paragraph}{Show Overhead A Details. MEPS health expenditures}{87}{section*.123}
-\contentsline {paragraph}{Show Overhead B Details. Overhead MEPS health expenditures}{88}{section*.124}
-\contentsline {paragraph}{Show Overhead C Details. Outcome variable}{88}{section*.125}
-\contentsline {paragraph}{Show Overhead D Details. Explanatory variables}{88}{section*.126}
-\contentsline {paragraph}{Show Overhead E Details. Case study outline}{88}{section*.127}
+\contentsline {subsubsection}{Video Overhead Details}{87}{section*.30}
 \contentsline {subsection}{\numberline {5.1.2}Exercise. Summarizing data}{89}{subsection.5.1.2}
 \contentsline {subsection}{\numberline {5.1.3}Exercise. Fit a benchmark multiple linear regression model}{89}{subsection.5.1.3}
 \contentsline {subsection}{\numberline {5.1.4}Exercise. Variable selection}{90}{subsection.5.1.4}
 \contentsline {subsection}{\numberline {5.1.5}Exercise. Model comparisons using cross-validation}{90}{subsection.5.1.5}
 \contentsline {subsection}{\numberline {5.1.6}Exercise. Out of sample validation}{91}{subsection.5.1.6}
 \contentsline {section}{\numberline {5.2}What the modeling procedure tells us}{91}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Video}{92}{subsection.5.2.1}
-\contentsline {subsubsection}{Video Overhead Details}{92}{section*.128}
-\contentsline {paragraph}{Show Overhead A Details. Interpreting individual effects}{92}{section*.129}
-\contentsline {paragraph}{Show Overhead B Details. Other Interpretations}{92}{section*.130}
-\contentsline {section}{\numberline {5.3}The importance of variable selection}{93}{section.5.3}
+\contentsline {subsection}{\numberline {5.2.1}Video}{91}{subsection.5.2.1}
+\contentsline {subsubsection}{Video Overhead Details}{91}{section*.31}
+\contentsline {section}{\numberline {5.3}The importance of variable selection}{92}{section.5.3}
 \contentsline {subsection}{\numberline {5.3.1}Video}{93}{subsection.5.3.1}
-\contentsline {subsubsection}{Video Overhead Details}{93}{section*.131}
-\contentsline {paragraph}{Show Overhead A Details. The importance of variable selection}{93}{section*.132}
-\contentsline {paragraph}{Show Overhead B Details. Example. Regression using one explanatory variable}{93}{section*.133}
-\contentsline {paragraph}{Show Overhead C Details. Principle of parsimony}{93}{section*.134}
-\contentsline {subsubsection}{MC Exercise}{94}{section*.135}
+\contentsline {subsubsection}{Video Overhead Details}{93}{section*.32}
