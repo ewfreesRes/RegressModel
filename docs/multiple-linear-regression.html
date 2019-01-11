@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
@@ -45,6 +45,25 @@
 
 
 
+
+<script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
 
 <script language="javascript">
 function toggle(id1,id2) {
@@ -350,10 +369,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </center>
 <div id="video-overhead-details-8" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver3.0A" href="javascript:toggleDet('toggleOver3.0A','displayOver3.0A');"><i><strong>Show Overhead A Details. Demand for term life insurance</strong></i></a>
-</h6>
-<div id="toggleOver3.0A" style="display: none">
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over3.0A')">
+A Details. Demand for term life insurance
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.0B')">
+B Details. Term life insurance summary statistics
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.0C')">
+C Details. Summary statistics
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.0D')">
+D Details. Scatter plots of income versus face in original and logarithmic units
+</button>
+</div>
+<div id="Over3.0A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Demand for term life insurance
+</h3>
+<p>
 <p>“Who buys insurance and how much do they buy?”</p>
 <ul>
 <li>Companies have data on current customers</li>
@@ -365,19 +400,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>We study a random sample of 500 of the 4,519 households with positive income that were interviewed in the 2004 survey.</li>
 <li>We now focus on <em>n</em> = 275 households that purchased term life insurance</li>
 </ul>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.0B" href="javascript:toggleDet('toggleOver3.0B','displayOver3.0B');"><i><strong>Show Overhead B Details. Term life insurance summary statistics</strong></i></a>
-</h6>
-<div id="toggleOver3.0B" style="display: none">
+<div id="Over3.0B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Term life insurance summary statistics
+</h3>
+<p>
 <p>We study <em>y = face</em>, the amount that the company will pay in the event of the death of the named insured.</p>
 <p>We focus on <em>k</em> = 3 explanatory variables - annual <em>income</em>, - the number of years of <em>education</em> of the survey respondent and - the number of household members, <em>numhh</em>.</p>
 <p>The data suggest that <em>income</em> and <em>face</em> are skewed so we also introduce logarithmic versions.</p>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.0C" href="javascript:toggleDet('toggleOver3.0C','displayOver3.0C');"><i><strong>Show Overhead C Details. Summary statistics</strong></i></a>
-</h6>
-<div id="toggleOver3.0C" style="display: none">
+<div id="Over3.0C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Summary statistics
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span>
 Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="co">#  PICK THE SUBSET OF THE DATA CORRESPONDING TO TERM PURCHASE</span>
@@ -419,15 +460,19 @@ income    208974.62  824009.77 260.00  65000.00 1.000e+07 275
 logface       11.99       1.87   6.68     11.92 1.645e+01 275
 logincome     11.15       1.30   5.56     11.08 1.612e+01 275
 numhh          2.96       1.49   1.00      3.00 9.000e+00 275</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.0D" href="javascript:toggleDet('toggleOver3.0D','displayOver3.0D');"><i><strong>Show Overhead D Details. Scatter plots of income versus face in original and logarithmic units</strong></i></a>
-</h6>
-<div id="toggleOver3.0D" style="display: none">
+<div id="Over3.0D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Scatter plots of income versus face in original and logarithmic units
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">plot</span>(Term2<span class="op">$</span>income, Term2<span class="op">$</span>face, <span class="dt">xlab =</span> <span class="st">&quot;income&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;face&quot;</span>)
 <span class="kw">plot</span>(Term2<span class="op">$</span>logincome, Term2<span class="op">$</span>logface, <span class="dt">xlab =</span> <span class="st">&quot;log&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log face&quot;</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+</p>
 </div>
 </div>
 </div>
@@ -449,10 +494,29 @@ numhh          2.96       1.49   1.00      3.00 9.000e+00 275</code></pre>
 </center>
 <div id="video-overhead-details-9" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver3.1A" href="javascript:toggleDet('toggleOver3.1A','displayOver3.1A');"><i><strong>Show Overhead A Details. Correlation table</strong></i></a>
-</h6>
-<div id="toggleOver3.1A" style="display: none">
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over3.1A')">
+A Details. Correlation table
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.1B')">
+B Details. Scatterplot matrix
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.1C')">
+C Details. Visualizing a regression plane
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.1D')">
+D Details. Method of least squares
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.1E')">
+E Details. Fit a multiple linear regression model
+</button>
+</div>
+<div id="Over3.1A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Correlation table
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="kw">cor</span>(Term2), <span class="dt">digits=</span><span class="dv">3</span>)</code></pre></div>
 <pre><code>          education  face income logface logincome  numhh
 education     1.000 0.244  0.163   0.383     0.343 -0.064
@@ -461,19 +525,25 @@ income        0.163 0.217  1.000   0.251     0.518  0.142
 logface       0.383 0.656  0.251   1.000     0.482  0.288
 logincome     0.343 0.323  0.518   0.482     1.000  0.179
 numhh        -0.064 0.107  0.142   0.288     0.179  1.000</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.1B" href="javascript:toggleDet('toggleOver3.1B','displayOver3.1B');"><i><strong>Show Overhead B Details. Scatterplot matrix</strong></i></a>
-</h6>
-<div id="toggleOver3.1B" style="display: none">
+<div id="Over3.1B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Scatterplot matrix
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term3 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>)]
 <span class="kw">pairs</span>(Term3, <span class="dt">upper.panel =</span> <span class="ot">NULL</span>, <span class="dt">gap =</span> <span class="dv">0</span>, <span class="dt">cex.labels =</span> <span class="fl">1.25</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.1C" href="javascript:toggleDet('toggleOver3.1C','displayOver3.1C');"><i><strong>Show Overhead C Details. Visualizing a regression plane</strong></i></a>
-</h6>
-<div id="toggleOver3.1C" style="display: none">
+<div id="Over3.1C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Visualizing a regression plane
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">education &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="dt">length =</span> <span class="dv">15</span>)
 logincome &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dt">length =</span> <span class="dv">15</span>)
 f &lt;-<span class="st"> </span><span class="cf">function</span>(education,logincome){ 
@@ -495,22 +565,28 @@ logface &lt;-<span class="st"> </span><span class="kw">outer</span>(education, l
       <span class="dt">xlab =</span> <span class="st">&quot;x1&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;x2&quot;</span>,<span class="dt">zlab=</span><span class="st">&quot;y&quot;</span>, <span class="dt">nticks =</span> <span class="dv">1</span>)</code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(education,logincome,logface)</code></pre></div>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.1D" href="javascript:toggleDet('toggleOver3.1D','displayOver3.1D');"><i><strong>Show Overhead D Details. Method of least squares</strong></i></a>
-</h6>
-<div id="toggleOver3.1D" style="display: none">
+<div id="Over3.1D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Method of least squares
+</h3>
+<p>
 <ul>
 <li>For observation <span class="math inline">\(\{(y, x_1, \ldots, x_k)\}\)</span>, the height of the regression plane is <span class="math display">\[b_0 + b_1 x_1 + \cdots + b_k x_k .\]</span></li>
 <li>Thus, <span class="math inline">\(y - (b_0 + b_1 x_1 + \cdots + b_k x_k)\)</span> represents the deviation.</li>
 <li>The sum of squared deviations is <span class="math display">\[SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2 .\]</span></li>
 <li>The <em>method of least squares</em> – determine values of <span class="math inline">\(b_0, \ldots, b_k\)</span> that minimize <span class="math inline">\(SS\)</span>.</li>
 </ul>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.1E" href="javascript:toggleDet('toggleOver3.1E','displayOver3.1E');"><i><strong>Show Overhead E Details. Fit a multiple linear regression model</strong></i></a>
-</h6>
-<div id="toggleOver3.1E" style="display: none">
+<div id="Over3.1E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Fit a multiple linear regression model
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
 <span class="kw">round</span>(<span class="kw">coefficients</span>(Term_mlr), <span class="dt">digits=</span><span class="dv">4</span>)
 newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> <span class="kw">log</span>(<span class="dv">60000</span>), <span class="dt">education =</span> <span class="dv">12</span>, <span class="dt">numhh =</span> <span class="dv">3</span>)
@@ -519,6 +595,7 @@ newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
      2.5841      0.2064      0.3060      0.4935 
        1 
 90135.86 </code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -536,7 +613,7 @@ newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span c
 <li>With this fitted model and the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict">predict()</a>, predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.</li>
 </ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXSIsInNhbXBsZSI6IiMgQ3JlYXRlIHRoZSBgZWR1Y2F0aW9uMWAgdmFyaWFibGUgYXMgcGFydCBvZiB0aGUgYFRlcm0yYCBkYXRhZnJhbWUuXG5UZXJtMiRlZHVjYXRpb24xIDwtIHBtaW4oMTIsIFRlcm0yJGVkdWNhdGlvbilcblxuIyBDaGVjayB5b3VyIHdvcmsgYnkgZXhhbWluaW5nIHN1bW1hcnkgc3RhdGlzdGljcyBmb3IgdGhlIHJldmlzZWQgYFRlcm0yYCBkYXRhZnJhbWUuXG5zdW1tYXJ5KF9fXylcblxuIyBFeGFtaW5lIGNvcnJlbGF0aW9ucyBmb3IgdGhlIHJldmlzZWQgZGF0YWZyYW1lLlxucm91bmQoY29yKF9fXyksIGRpZ2l0cz0zKVxuXG4jIEZpdCBhIE1MUiBtb2RlbCB1c2luZyBgbG9nZmFjZWAgYXMgdGhlIGRlcGVuZGVudCB2YXJpYWJsZXMgYW5kIHVzaW5nIGBlZHVjYXRpb25gLCBgbnVtaGhgLCBhbmQgYGxvZ2luY29tZWAgYXMgZXhwbGFuYXRvcnkgdmFyaWFibGVzLlxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBfX18gKyBudW1oaCArIGxvZ2luY29tZSwgZGF0YSA9IFRlcm0yKVxuXG4jIFByZWRpY3QgdGhlIGZhY2UgYW1vdW50IG9mIGluc3VyYW5jZSB0aGF0IHNvbWVvbmUgd2l0aCBpbmNvbWUgb2YgNDAsMDAwLCAxMSB5ZWFycyBvZiBlZHVjYXRpb24sIGFuZCA0IHBlb3BsZSBpbiB0aGUgaG91c2Vob2xkIHdvdWxkIHB1cmNoYXNlLlxubmV3ZGF0YSA8LSBkYXRhLmZyYW1lKGxvZ2luY29tZSA9IGxvZyg0MDAwMCksIGVkdWNhdGlvbjEgPSAxMSwgbnVtaGggPSA0KVxuZXhwKHByZWRpY3QoX19fLCBuZXdkYXRhKSkiLCJzb2x1dGlvbiI6IlRlcm0yJGVkdWNhdGlvbjEgPC0gcG1pbigxMiwgVGVybTIkZWR1Y2F0aW9uKVxuc3VtbWFyeShUZXJtMilcbnJvdW5kKGNvcihUZXJtMiksIGRpZ2l0cz0zKVxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBlZHVjYXRpb24xICsgbnVtaGggKyBsb2dpbmNvbWUsIGRhdGEgPSBUZXJtMilcbm5ld2RhdGEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBsb2coNDAwMDApLCBlZHVjYXRpb24xID0gMTEsIG51bWhoID0gNClcbmV4cChwcmVkaWN0KFRlcm1fbWxyMiwgbmV3ZGF0YSkpIiwic2N0IjoiZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwiVGVybTJcIikgJT4lIGNoZWNrX2NvbHVtbihcImVkdWNhdGlvbjFcIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwic3VtbWFyeVwiKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJvYmplY3RcIikgJT4lIGNoZWNrX2VxdWFsKClcbiAgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKClcbn1cbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicm91bmRcIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwieFwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuICBjaGVja19hcmcoLiwgXCJkaWdpdHNcIikgJT4lIGNoZWNrX2VxdWFsKClcbn1cbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm1fbWxyMlwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJsbVwiKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJmb3JtdWxhXCIpICU+JSBjaGVja19lcXVhbCgpXG4gIGNoZWNrX2FyZyguLCBcImRhdGFcIikgJT4lIGNoZWNrX2VxdWFsKClcbn1cbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIm5ld2RhdGFcIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiZXhwXCIpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwcmVkaWN0XCIpICU+JSB7XG4gIGNoZWNrX2FyZyguLCBcIm9iamVjdFwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuICBjaGVja19hcmcoLiwgXCJuZXdkYXRhXCIpICU+JSBjaGVja19lcXVhbCgpXG59XG5zdWNjZXNzX21zZyhcIkNvbmdyYXR1bGF0aW9ucyEgWW91IG5vdyBoYXZlIGV4cGVyaWVuY2UgZml0dGluZyBhIHJlZ3Jlc3Npb24gcGxhbmUgYW5kIHVzaW5nIHRoaXMgcGxhbmUgZm9yIHByZWRpY3Rpb25zLiBQcmVkaWN0aW9uIGlzIG9uZSBvZiB0aGUga2V5IHRhc2tzIG9mICdwcmVkaWN0aXZlIG1vZGVsaW5nLicgV2VsbCBkb25lIVwiKSIsImhpbnQiOiJSZW1lbWJlciB0aGF0IHlvdXIgcHJlZGljdGlvbiBpcyBpbiBsb2cgZG9sbGFycyBzbyB5b3UgbmVlZCB0byBleHBvbmVudGlhdGUgaXQgdG8gZ2V0IHRoZSByZXN1bHRzIGluIHRoZSBvcmlnaW5hbCBkb2xsYXIgdW5pdHMifQ==
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXSIsInNhbXBsZSI6IiMgQ3JlYXRlIHRoZSBgZWR1Y2F0aW9uMWAgdmFyaWFibGUgYXMgcGFydCBvZiB0aGUgYFRlcm0yYCBkYXRhZnJhbWUuXG5UZXJtMiRlZHVjYXRpb24xIDwtIHBtaW4oMTIsIFRlcm0yJGVkdWNhdGlvbilcblxuIyBDaGVjayB5b3VyIHdvcmsgYnkgZXhhbWluaW5nIHN1bW1hcnkgc3RhdGlzdGljcyBmb3IgdGhlIHJldmlzZWQgYFRlcm0yYCBkYXRhZnJhbWUuXG5zdW1tYXJ5KF9fXylcblxuIyBFeGFtaW5lIGNvcnJlbGF0aW9ucyBmb3IgdGhlIHJldmlzZWQgZGF0YWZyYW1lLlxucm91bmQoY29yKF9fXyksIGRpZ2l0cz0zKVxuXG4jIEZpdCBhIE1MUiBtb2RlbCB1c2luZyBgbG9nZmFjZWAgYXMgdGhlIGRlcGVuZGVudCB2YXJpYWJsZXMgYW5kIHVzaW5nIGBlZHVjYXRpb25gLCBgbnVtaGhgLCBhbmQgYGxvZ2luY29tZWAgYXMgZXhwbGFuYXRvcnkgdmFyaWFibGVzLlxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBfX18gKyBudW1oaCArIGxvZ2luY29tZSwgZGF0YSA9IFRlcm0yKVxuXG4jIFByZWRpY3QgdGhlIGZhY2UgYW1vdW50IG9mIGluc3VyYW5jZSB0aGF0IHNvbWVvbmUgd2l0aCBpbmNvbWUgb2YgNDAsMDAwLCAxMSB5ZWFycyBvZiBlZHVjYXRpb24sIGFuZCA0IHBlb3BsZSBpbiB0aGUgaG91c2Vob2xkIHdvdWxkIHB1cmNoYXNlLlxubmV3ZGF0YSA8LSBkYXRhLmZyYW1lKGxvZ2luY29tZSA9IGxvZyg0MDAwMCksIGVkdWNhdGlvbjEgPSAxMSwgbnVtaGggPSA0KVxuZXhwKHByZWRpY3QoX19fLCBuZXdkYXRhKSkiLCJzb2x1dGlvbiI6IlRlcm0yJGVkdWNhdGlvbjEgPC0gcG1pbigxMiwgVGVybTIkZWR1Y2F0aW9uKVxuc3VtbWFyeShUZXJtMilcbnJvdW5kKGNvcihUZXJtMiksIGRpZ2l0cz0zKVxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBlZHVjYXRpb24xICsgbnVtaGggKyBsb2dpbmNvbWUsIGRhdGEgPSBUZXJtMilcbm5ld2RhdGEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBsb2coNDAwMDApLCBlZHVjYXRpb24xID0gMTEsIG51bWhoID0gNClcbmV4cChwcmVkaWN0KFRlcm1fbWxyMiwgbmV3ZGF0YSkpIiwic2N0IjoiZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwiVGVybTJcIikgJT4lIGNoZWNrX2NvbHVtbihcImVkdWNhdGlvbjFcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gYXNzaWduIHRoZSBtb2RpZmllZCBlZHVjYXRpb24gdmFyaWFibGUgdG8gYGVkdWNhdGlvbjFgIHVzaW5nIGBwbWluYC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwic3VtbWFyeVwiLCBub3RfY2FsbGVkX21zZz1cIk1ha2UgdXNlIG9mIGBzdW1tYXJ5YCB0byBmaW5kIHN1bW1hcnkgc3RhdHMgb2YgYFRlcm0yYC5cIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwib2JqZWN0XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIHJ1biBzdW1tYXJ5IG9uIGBUZXJtMmAuXCIpXG4gIGNoZWNrX3Jlc3VsdCgpICU+JSBjaGVja19lcXVhbCgpXG59XG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInJvdW5kXCIsIG5vdF9jYWxsZWRfbXNnPVwiVXNlIGByb3VuZGAgdG8gcm91bmQgdGhlIGNvcnJlbGF0aW9ucyB0byAzIGRpZ2l0cy4gXCIgKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJ4XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGNhbGwgYHJvdW5kYCBvbiB0aGUgY29ycmVsYXRpb25zIG9mIGFsbCB2YXJpYWJsZXMgaW4gYFRlcm0yYC5cIilcbiAgY2hlY2tfYXJnKC4sIFwiZGlnaXRzXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUGxlYXNlIHJvdW5kIHRoZXNlIGNvcnJlbGF0aW9ucyB0byAzIGRpZ2l0cy4gXCIpXG59XG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjJcIiwgbm90X2RlZmluZWRfbXNnPVwiTWFrZSBzdXJlIHRvIGFzc2lnbiB5b3VyIGxpbmVhciBtb2RlbCB0byBgVGVybV9tbHIyYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gbW9kZWwgYGxvZ2ZhY2VgIGJhc2VkIG9uIGBlZHVjYXRpb24xYCwgYG51bWhoYCwgYW5kIGBsb2dpbmNvbWVgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJsbVwiKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJmb3JtdWxhXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIG1vZGVsIGBsb2dmYWNlYCBiYXNlZCBvbiBgZWR1Y2F0aW9uMWAsIGBudW1oaGAsIGFuZCBgbG9naW5jb21lYC5cIilcbiAgY2hlY2tfYXJnKC4sIFwiZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IG91ciBkYXRhIGNvbWVzIGZyb20gYFRlcm0yYC5cIilcbn1cbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIm5ld2RhdGFcIiwgdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gb3VyIG5ldyBkYXRhIHRvIGBuZXdkYXRhYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJtYWtlIHN1cmUgdG8gYXNzaWduIGVhY2ggY29sdW1uIG9mIHRoZSBkYXRhZnJhbWUgdG8gaXRzIHN0YXRlZCB2YWx1ZS4gXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcImV4cFwiLCBub3RfY2FsbGVkX21zZz1cIk1ha2Ugc3VyZSB0byB0YWtlIHRoZSBleHBvbmVudGlhbCBvZiB5b3VyIHByZWRpY3Rpb24hIFwiKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJUaGUgYXJndW1lbnQgaW4gYGV4cGAgc2hvdWxkIGJlIGNhbGxlZCBvbiB0aGUgcHJlZGljdGlvbi4gXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInByZWRpY3RcIiwgbm90X2NhbGxlZF9tc2c9XCJVdGlsaXplIGBwcmVkaWN0YCB0byBjcmVhdGUgcHJlZGljdGlvbnMgdXNpbmcgdGhpcyBtb2RlbC4gXCIpICU+JSB7XG4gIGNoZWNrX2FyZyguLCBcIm9iamVjdFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IHRoYXQgd2Ugd2FudCB0byBjcmVhdGUgcHJlZGljdGlvbnMgYmFzZWQgb2ZmIG9mIGBUZXJtMl9tbHIyYC5cIilcbiAgY2hlY2tfYXJnKC4sIFwibmV3ZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IHdlIHdhbnQgdG8gbWFrZSBwcmVkaWN0aW9ucyBmb3IgdGhlIGRhdGEgd2UgZW50ZXJlZCBpbiBgbmV3ZGF0YWAuXCIpXG59XG5zdWNjZXNzX21zZyhcIkNvbmdyYXR1bGF0aW9ucyEgWW91IG5vdyBoYXZlIGV4cGVyaWVuY2UgZml0dGluZyBhIHJlZ3Jlc3Npb24gcGxhbmUgYW5kIHVzaW5nIHRoaXMgcGxhbmUgZm9yIHByZWRpY3Rpb25zLiBQcmVkaWN0aW9uIGlzIG9uZSBvZiB0aGUga2V5IHRhc2tzIG9mICdwcmVkaWN0aXZlIG1vZGVsaW5nLicgV2VsbCBkb25lIVwiKSIsImhpbnQiOiJSZW1lbWJlciB0aGF0IHlvdXIgcHJlZGljdGlvbiBpcyBpbiBsb2cgZG9sbGFycyBzbyB5b3UgbmVlZCB0byBleHBvbmVudGlhdGUgaXQgdG8gZ2V0IHRoZSByZXN1bHRzIGluIHRoZSBvcmlnaW5hbCBkb2xsYXIgdW5pdHMifQ==
 </div>
 </div>
 <div id="exercise.-interpreting-coefficients-as-proportional-changes" class="section level3">
@@ -551,7 +628,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <li>Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for <code>education</code> equal to 0.2064.</li>
 </ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXVxuVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpIiwic2FtcGxlIjoiVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpXG5zdW1tYXJ5KFRlcm1fbWxyKSRjb2VmZmljaWVudHNbLDFdXG5cbiMgRGV0ZXJtaW5lIGxlYXN0IHNxdWFyZSBmaXR0ZWQgdmFsdWVzIGZvciBzZXZlcmFsIHNlbGVjdGVkIHZhbHVlcyBvZiBgZWR1Y2F0aW9uYCwgaG9sZGluZyBvdGhlciBleHBsYW50b3J5IHZhcmlhYmxlcyBmaXhlZC5cbmVkdWNfcHJlZGljdCA8LSBjKDE0LDE0LjEsMTQuMiwxNC4zKVxubmV3ZGF0YTEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBtZWFuKFRlcm0yJGxvZ2luY29tZSksIGVkdWNhdGlvbiA9IGVkdWNfcHJlZGljdCwgbnVtaGggPSBtZWFuKFRlcm0yJG51bWhoKSlcbmxzZml0czEgPC0gcHJlZGljdChUZXJtX21sciwgbmV3ZGF0YTEpXG5sc2ZpdHMxXG5cbiMgRGV0ZXJtaW5lIHRoZSBwcm9wb3J0aW9uYWwgY2hhbmdlcy4gTm90ZSB0aGUgcmVsYXRpb24gYmV0d2VlbiB0aGVzZSB2YWx1ZXMgZnJvbSBhIGRpc2NyZXRlIGNoYW5nZSBhcHByb3hpbWF0aW9uIHRvIHRoZSByZWdyZXNzaW9uIGNvZWZmaWNpZW50IGZvciBgZWR1Y2F0aW9uYCBlcXVhbCB0byAwLjIwNjQuXG5sc2ZpdHMxWzI6NF0gLSBsc2ZpdHMxWzE6M11cbnBjaGFuZ2VfZml0czEgPC0gZXhwKGxzZml0czFbMjo0XSAtIGxzZml0czFbMTozXSlcbnBjaGFuZ2VfZml0czEiLCJzb2x1dGlvbiI6ImVkdWNfcHJlZGljdCA8LSBjKDE0LDE0LjEsMTQuMiwxNC4zKVxubmV3ZGF0YTEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBtZWFuKFRlcm0yJGxvZ2luY29tZSksIGVkdWNhdGlvbiA9IGVkdWNfcHJlZGljdCwgbnVtaGggPSBtZWFuKFRlcm0yJG51bWhoKSlcbmxzZml0czEgPC0gcHJlZGljdChUZXJtX21sciwgbmV3ZGF0YTEpXG5sc2ZpdHMxXG5sc2ZpdHMxWzI6NF0gLSBsc2ZpdHMxWzE6M11cbnBjaGFuZ2VfZml0czEgPC0gZXhwKGxzZml0czFbMjo0XSAtIGxzZml0czFbMTozXSlcbnBjaGFuZ2VfZml0czEiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJlZHVjX3ByZWRpY3RcIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIm5ld2RhdGExXCIpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInByZWRpY3RcIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwib2JqZWN0XCIpICU+JSBjaGVja19lcXVhbCgpXG4gIGNoZWNrX2FyZyguLCBcIm5ld2RhdGFcIikgJT4lIGNoZWNrX2VxdWFsKClcbn1cbmV4KCkgJT4lIGNoZWNrX29iamVjdChcImxzZml0czFcIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX29wZXJhdG9yKFwiLVwiLGluZGV4PTEpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwicGNoYW5nZV9maXRzMVwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJleHBcIikgJT4lIGNoZWNrX2FyZyhcInhcIikgJT4lIGNoZWNrX2VxdWFsKClcbnN1Y2Nlc3NfbXNnKFwiQ29uZ3JhdHVsYXRpb25zISBGcm9tIGNhbGN1bHVzLCBzbWFsbCBjaGFuZ2VzIGluIGxvZ2FyaXRobWljIHZhbHVlcyBjYW4gYmUgaW50ZXJwcmV0ZWQgYXMgcHJvcG9ydGlvbmFsIGNoYW5nZXMuIFRoaXMgaXMgdGhlIHJlYXNvbiBmb3IgdXNpbmcgbmF0dXJhbCBsb2dhcml0aG1zLlwiKSIsImhpbnQiOiJUbyBmaW5kIHRoZSBwcm9wb3J0aW9uYWwgY2hhbmdlcywgdGFrZSB0aGUgMm5kLTR0aCBvYnNlcnZhdGlvbnMgb2YgPGNvZGU+bHNmaXRzPC9jb2RlPiBhbmQgc3VidHJhY3QgdGhlIDFzdC0zcmQgb2JzZXJ2YXRpb25zLCB0aGVuIGV4cG9uZW50aWF0ZSB0aGUgcmVzdWx0cy4ifQ==
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXVxuVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpIiwic2FtcGxlIjoiVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpXG5zdW1tYXJ5KFRlcm1fbWxyKSRjb2VmZmljaWVudHNbLDFdXG5cbiMgRGV0ZXJtaW5lIGxlYXN0IHNxdWFyZSBmaXR0ZWQgdmFsdWVzIGZvciBzZXZlcmFsIHNlbGVjdGVkIHZhbHVlcyBvZiBgZWR1Y2F0aW9uYCwgaG9sZGluZyBvdGhlciBleHBsYW50b3J5IHZhcmlhYmxlcyBmaXhlZC5cbmVkdWNfcHJlZGljdCA8LSBjKDE0LDE0LjEsMTQuMiwxNC4zKVxubmV3ZGF0YTEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBtZWFuKFRlcm0yJGxvZ2luY29tZSksIGVkdWNhdGlvbiA9IGVkdWNfcHJlZGljdCwgbnVtaGggPSBtZWFuKFRlcm0yJG51bWhoKSlcbmxzZml0czEgPC0gcHJlZGljdChUZXJtX21sciwgbmV3ZGF0YTEpXG5sc2ZpdHMxXG5cbiMgRGV0ZXJtaW5lIHRoZSBwcm9wb3J0aW9uYWwgY2hhbmdlcy4gTm90ZSB0aGUgcmVsYXRpb24gYmV0d2VlbiB0aGVzZSB2YWx1ZXMgZnJvbSBhIGRpc2NyZXRlIGNoYW5nZSBhcHByb3hpbWF0aW9uIHRvIHRoZSByZWdyZXNzaW9uIGNvZWZmaWNpZW50IGZvciBgZWR1Y2F0aW9uYCBlcXVhbCB0byAwLjIwNjQuXG5sc2ZpdHMxWzI6NF0gLSBsc2ZpdHMxWzE6M11cbnBjaGFuZ2VfZml0czEgPC0gZXhwKGxzZml0czFbMjo0XSAtIGxzZml0czFbMTozXSlcbnBjaGFuZ2VfZml0czEiLCJzb2x1dGlvbiI6ImVkdWNfcHJlZGljdCA8LSBjKDE0LDE0LjEsMTQuMiwxNC4zKVxubmV3ZGF0YTEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBtZWFuKFRlcm0yJGxvZ2luY29tZSksIGVkdWNhdGlvbiA9IGVkdWNfcHJlZGljdCwgbnVtaGggPSBtZWFuKFRlcm0yJG51bWhoKSlcbmxzZml0czEgPC0gcHJlZGljdChUZXJtX21sciwgbmV3ZGF0YTEpXG5sc2ZpdHMxXG5sc2ZpdHMxWzI6NF0gLSBsc2ZpdHMxWzE6M11cbnBjaGFuZ2VfZml0czEgPC0gZXhwKGxzZml0czFbMjo0XSAtIGxzZml0czFbMTozXSlcbnBjaGFuZ2VfZml0czEiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJlZHVjX3ByZWRpY3RcIiwgdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIHZhbHVlcyBvZiBgZWR1Y2F0aW9uYCB0byBgZWR1Y19wcmVkaWN0YC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJUaGVzZSBudW1iZXJzIHNob3VsZCBiZSB0aGUgdmFsdWVzIGZyb20gMTQgdG8gMTQuMyBieSAuMSBpbmNyZW1lbnRzLiBcIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIm5ld2RhdGExXCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBjcmVhdGUgYSBkYXRhZnJhbWUgbmFtZWQgYG5ld2RhdGExYCBmb3IgcHJlZGljdGluZy4gXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiU2V0IGxvZyBpbmNvbWUgdG8gYmUgdGhlIG1lYW4gb2YgdGhlIGxvZ2luY29tZSBvZiBvdXIgZGF0YSwgZWR1Y2F0aW9uIGVxdWFsIHRvIGBlZHVjX3ByZWRpY3RgLCBhbmQgbnVtaGggZXF1YWwgdG8gdGhlIG1lYW4gb2YgbnVtaGguIFwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwcmVkaWN0XCIsIG5vdF9jYWxsZWRfbXNnPVwiVXNlIGBwcmVkaWN0YCB0byBtYWtlIHByZWRpY3Rpb25zIGdpdmVuIG91ciBtb2RlbCBhbmQgZGF0YS5cIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwib2JqZWN0XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIHNwZWNpZnkgdGhhdCB3ZSB3YW50IHRvIG1ha2UgcHJlZGljdGlvbnMgYmFzZWQgb24gYFRlcm1fbWxyYC5cIilcbiAgY2hlY2tfYXJnKC4sIFwibmV3ZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IHRoYXQgd2Ugd291bGQgbGlrZSB0byB1c2UgdGhlIHZhbHVlcyBpbiBgbmV3ZGF0YTFgIGFzIHRoZSBkYXRhIGZvciBvdXIgcHJlZGljdGlvbnMuIFwiKVxufVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwibHNmaXRzMVwiLCB1bmRlZmluZWRfbXNnPVwiTWFrZSBzdXJlIHRvIGFzc2lnbiB0aGUgcHJlZGljdGVkIHZhbHVlcyB0byBgbHNmaXRzMWAuXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiVXNlIGBwcmVkaWN0YCB0byBtYWtlIHByZWRpY3Rpb25zIGdpdmVuIG91ciBtb2RlbCBhbmQgZGF0YS5cIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcInBjaGFuZ2VfZml0czFcIiwgdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gZXhwb25lbnRpYWwgb2YgdGhlIGRpZmZlcmVuY2VzIGJldHdlZW4gdGhlIGZpdCB2YWx1ZXMgdG8gYHBjaGFuZ2VfZml0czFgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlRoaXMgc2hvdWxkIGJlIGVxdWFsIHRvIHRoZSBleHBvbmVudGlhbCBvZiBlYWNoIGBsc2ZpdHMxYCBtaW51cyB0aGUgYGxzZml0czFgIHRoYXQgY2FtZSBkaXJlY3RseSBiZWZvcmUgaXQuXCIpXG5cbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiZXhwXCIpICU+JSBjaGVja19hcmcoLiwgXCJ4XCIpICU+JSBjaGVja19lcXVhbCgpXG5cblxuc3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIEZyb20gY2FsY3VsdXMsIHNtYWxsIGNoYW5nZXMgaW4gbG9nYXJpdGhtaWMgdmFsdWVzIGNhbiBiZSBpbnRlcnByZXRlZCBhcyBwcm9wb3J0aW9uYWwgY2hhbmdlcy4gVGhpcyBpcyB0aGUgcmVhc29uIGZvciB1c2luZyBuYXR1cmFsIGxvZ2FyaXRobXMuXCIpIiwiaGludCI6IlRvIGZpbmQgdGhlIHByb3BvcnRpb25hbCBjaGFuZ2VzLCB0YWtlIHRoZSAybmQtNHRoIG9ic2VydmF0aW9ucyBvZiA8Y29kZT5sc2ZpdHM8L2NvZGU+IGFuZCBzdWJ0cmFjdCB0aGUgMXN0LTNyZCBvYnNlcnZhdGlvbnMsIHRoZW4gZXhwb25lbnRpYXRlIHRoZSByZXN1bHRzLiJ9
 </div>
 </div>
 <div id="exercise.-interpreting-coefficients-as-elasticities" class="section level3">
@@ -570,7 +647,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 </ul>
 <p><strong>Hint.</strong> When you calculate the ratio of proportional changes of fitted values to those for income, note the relation between these values (from a discrete change approximation) to the regression coefficient for <code>logincome</code> equal to 0.4935.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXVxuVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpIiwic2FtcGxlIjoiVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpXG5zdW1tYXJ5KFRlcm1fbWxyKSRjb2VmZmljaWVudHNbLDFdXG4jIEZvciBzZXZlcmFsIHNlbGVjdGVkIHZhbHVlcyBvZiBgbG9naW5jb21lYCwgZGV0ZXJtaW5lIHRoZSBjb3JyZXNwb25kaW5nIHByb3BvcnRpb25hbCBjaGFuZ2VzLlxubG9naW5jb21lX3ByZWQgPC0gYygxMSwxMS4xLDExLjIsMTEuMylcbnBjaGFuZ2VfaW5jb21lIDwtIDEwMCooZXhwKGxvZ2luY29tZV9wcmVkWzI6NF0pL2V4cChsb2dpbmNvbWVfcHJlZFsxOjNdKS0xKVxucGNoYW5nZV9pbmNvbWVcblxuIyBEZXRlcm1pbmUgbGVhc3Qgc3F1YXJlIGZpdHRlZCB2YWx1ZXMgZm9yIHNldmVyYWwgc2VsZWN0ZWQgdmFsdWVzIG9mIGBsb2dpbmNvbWVgLCBob2xkaW5nIG90aGVyIGV4cGxhbnRvcnkgdmFyaWFibGVzIGZpeGVkLlxubmV3ZGF0YTIgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBsb2dpbmNvbWVfcHJlZCwgZWR1Y2F0aW9uID0gbWVhbihUZXJtMiRlZHVjYXRpb24pLCBudW1oaCA9IG1lYW4oVGVybTIkbnVtaGgpKVxubHNmaXRzMiA8LSBwcmVkaWN0KFRlcm1fbWxyLCBuZXdkYXRhMilcblxuIyBEZXRlcm1pbmUgdGhlIGNvcnJlc3BvbmRpbmcgcHJvcG9ydGlvbmFsIGNoYW5nZXMgZm9yIHRoZSBmaXR0ZWQgdmFsdWVzLiBcbnBjaGFuZ2VfZml0czIgPC0gMTAwKihleHAobHNmaXRzMlsyOjRdKS9leHAobHNmaXRzMlsxOjNdKS0xKVxucGNoYW5nZV9maXRzMlxuXG4jIENhbGN1bGF0ZSB0aGUgcmF0aW8gb2YgcHJvcG9ydGlvbmFsIGNoYW5nZXMgb2YgZml0dGVkIHZhbHVlcyB0byB0aG9zZSBmb3IgaW5jb21lLlxucGNoYW5nZV9maXRzMi9wY2hhbmdlX2luY29tZSIsInNvbHV0aW9uIjoibG9naW5jb21lX3ByZWQgPC0gYygxMSwxMS4xLDExLjIsMTEuMylcbnBjaGFuZ2VfaW5jb21lIDwtIDEwMCooZXhwKGxvZ2luY29tZV9wcmVkWzI6NF0pL2V4cChsb2dpbmNvbWVfcHJlZFsxOjNdKS0xKVxucGNoYW5nZV9pbmNvbWVcbm5ld2RhdGEyIDwtIGRhdGEuZnJhbWUobG9naW5jb21lID0gbG9naW5jb21lX3ByZWQsIGVkdWNhdGlvbiA9IG1lYW4oVGVybTIkZWR1Y2F0aW9uKSwgbnVtaGggPSBtZWFuKFRlcm0yJG51bWhoKSlcbmxzZml0czIgPC0gcHJlZGljdChUZXJtX21sciwgbmV3ZGF0YTIpXG5wY2hhbmdlX2ZpdHMyIDwtIDEwMCooZXhwKGxzZml0czJbMjo0XSkvZXhwKGxzZml0czJbMTozXSktMSlcbnBjaGFuZ2VfZml0czJcbnBjaGFuZ2VfZml0czIvcGNoYW5nZV9pbmNvbWUiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJsb2dpbmNvbWVfcHJlZFwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwicGNoYW5nZV9pbmNvbWVcIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIm5ld2RhdGEyXCIpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJsc2ZpdHMyXCIpICU+JSBjaGVjX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicHJlZGljdFwiKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJvYmplY3RcIikgJT4lIGNoZWNrX2VxdWFsKClcbiAgY2hlY2tfYXJnKC4sIFwibmV3ZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoKVxufVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwicGNoYW5nZV9maXRzMlwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfZXhwcmVzc2lvbihcIi9cIixpbmRleD0zKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKClcbnN1Y2Nlc3NfbXNnKFwiQ29uZ3JhdHVsYXRpb25zISBXaGVuIGJvdGggJHhfMSQgYW5kICR5JCBhcmUgaW4gbG9nYXJpdGhtaWMgdW5pdHMsIHRoZW4gd2UgY2FuIGludGVycHJldCAkYl8xJCB0byBiZSByYXRpbyBvZiB0d28gcGVyY2VudGFnZSBjaGFuZ2VzLCBrbm93biBhcyBhbiAqZWxhc3RpY2l0eSogaW4gZWNvbm9taWNzLlwiKSIsImhpbnQiOiJXaGVuIHlvdSBjYWxjdWxhdGUgdGhlIHJhdGlvIG9mIHByb3BvcnRpb25hbCBjaGFuZ2VzIG9mIGZpdHRlZCB2YWx1ZXMgdG8gdGhvc2UgZm9yIGluY29tZSwgbm90ZSB0aGUgcmVsYXRpb24gYmV0d2VlbiB0aGVzZSB2YWx1ZXMgKGZyb20gYSBkaXNjcmV0ZSBjaGFuZ2UgYXBwcm94aW1hdGlvbikgdG8gdGhlIHJlZ3Jlc3Npb24gY29lZmZpY2llbnQgZm9yIDxjb2RlPmxvZ2luY29tZTwvY29kZT4gZXF1YWwgdG8gMC40OTM1LiJ9
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXVxuVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpIiwic2FtcGxlIjoiVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpXG5zdW1tYXJ5KFRlcm1fbWxyKSRjb2VmZmljaWVudHNbLDFdXG4jIEZvciBzZXZlcmFsIHNlbGVjdGVkIHZhbHVlcyBvZiBgbG9naW5jb21lYCwgZGV0ZXJtaW5lIHRoZSBjb3JyZXNwb25kaW5nIHByb3BvcnRpb25hbCBjaGFuZ2VzLlxubG9naW5jb21lX3ByZWQgPC0gYygxMSwxMS4xLDExLjIsMTEuMylcbnBjaGFuZ2VfaW5jb21lIDwtIDEwMCooZXhwKGxvZ2luY29tZV9wcmVkWzI6NF0pL2V4cChsb2dpbmNvbWVfcHJlZFsxOjNdKS0xKVxucGNoYW5nZV9pbmNvbWVcblxuIyBEZXRlcm1pbmUgbGVhc3Qgc3F1YXJlIGZpdHRlZCB2YWx1ZXMgZm9yIHNldmVyYWwgc2VsZWN0ZWQgdmFsdWVzIG9mIGBsb2dpbmNvbWVgLCBob2xkaW5nIG90aGVyIGV4cGxhbnRvcnkgdmFyaWFibGVzIGZpeGVkLlxubmV3ZGF0YTIgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBsb2dpbmNvbWVfcHJlZCwgZWR1Y2F0aW9uID0gbWVhbihUZXJtMiRlZHVjYXRpb24pLCBudW1oaCA9IG1lYW4oVGVybTIkbnVtaGgpKVxubHNmaXRzMiA8LSBwcmVkaWN0KFRlcm1fbWxyLCBuZXdkYXRhMilcblxuIyBEZXRlcm1pbmUgdGhlIGNvcnJlc3BvbmRpbmcgcHJvcG9ydGlvbmFsIGNoYW5nZXMgZm9yIHRoZSBmaXR0ZWQgdmFsdWVzLiBcbnBjaGFuZ2VfZml0czIgPC0gMTAwKihleHAobHNmaXRzMlsyOjRdKS9leHAobHNmaXRzMlsxOjNdKS0xKVxucGNoYW5nZV9maXRzMlxuXG4jIENhbGN1bGF0ZSB0aGUgcmF0aW8gb2YgcHJvcG9ydGlvbmFsIGNoYW5nZXMgb2YgZml0dGVkIHZhbHVlcyB0byB0aG9zZSBmb3IgaW5jb21lLlxucGNoYW5nZV9maXRzMi9wY2hhbmdlX2luY29tZSIsInNvbHV0aW9uIjoibG9naW5jb21lX3ByZWQgPC0gYygxMSwxMS4xLDExLjIsMTEuMylcbnBjaGFuZ2VfaW5jb21lIDwtIDEwMCooZXhwKGxvZ2luY29tZV9wcmVkWzI6NF0pL2V4cChsb2dpbmNvbWVfcHJlZFsxOjNdKS0xKVxucGNoYW5nZV9pbmNvbWVcbm5ld2RhdGEyIDwtIGRhdGEuZnJhbWUobG9naW5jb21lID0gbG9naW5jb21lX3ByZWQsIGVkdWNhdGlvbiA9IG1lYW4oVGVybTIkZWR1Y2F0aW9uKSwgbnVtaGggPSBtZWFuKFRlcm0yJG51bWhoKSlcbmxzZml0czIgPC0gcHJlZGljdChUZXJtX21sciwgbmV3ZGF0YTIpXG5wY2hhbmdlX2ZpdHMyIDwtIDEwMCooZXhwKGxzZml0czJbMjo0XSkvZXhwKGxzZml0czJbMTozXSktMSlcbnBjaGFuZ2VfZml0czJcbnBjaGFuZ2VfZml0czIvcGNoYW5nZV9pbmNvbWUiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJsb2dpbmNvbWVfcHJlZFwiLCB1bmRlZmluZWRfbXNnPVwiQXNzaWduIHRoZSBzdHJpbmcgb2YgdmFsdWVzIHRvIGBsb2dpbmNvbWVfcHJlZGAuXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiVGhlIHZhbHVlcyBzaG91bGQgYmUgYDExYCwgYDExLjFgLCBgMTEuMmAsIGFuZCBgMTEuM2AuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJwY2hhbmdlX2luY29tZVwiLCB1bmRlZmllbmVkX21zZz1cImFzc2lnbiB0aGUgdmFsdWVzIG9mIHRoZSBwZXJjZW50YWdlIGNoYW5nZSBpbiBpbmNvbWUuIFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIml0IHNob3VsZCBiZSBlcXVhbCB0byB0aGUgZm9sbG93aW5nOiBgMTAwKihleHAobG9naW5jb21lX3ByZWRbMjo0XSkvZXhwKGxvZ2luY29tZV9wcmVkWzE6M10pLTFgLlwiKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwibmV3ZGF0YTJcIiwgdW5kZWZpbmVkX21zZz1cImNyZWF0ZSBzb21lIG5ldyBkYXRhLCBhbmQgbmFtZSBpdCB0byBgbmV3ZGF0YTJgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlRoaXMgbmV3IGRhdGEgc2hvdWxkIGhhdmUgYGxvZ2luY29tZWAgZXF1YWwgdG8gYGxvZ2luY29tZV9wcmVkYCwgYGVkdWNhdGlvbmAgZXF1YWwgdG8gdGhlIG1lYW4gb2YgYGVkdWNhdGlvbmAsIGFuZCBgbnVtaGhgIGVxdWFsIHRvIHRoZSBtZWFuIG9mIGBudW1oaGAuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJsc2ZpdHMyXCIsIHVuZGVmaW5lZF9tc2c9XCJTZXQgdGhlIHByZWRpY3RlZCB2YWx1ZXMgdG8gYmUgc3RvcmVkIGluIGBsc2ZpdHMyYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJ5b3Ugc2hvdWxkIHJ1biBwcmVkaWN0IG9uIGBUZXJtX21scmAgYW5kIGBuZXdkYXRhMmAuXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInByZWRpY3RcIiwgbm90X2NhbGxlZF9tc2c9XCJVc2UgYHByZWRpY3RgIHRvIGNyZWF0ZSB0aGUgcHJlZGljdGVkIHZhbHVlcy4gXCIpICU+JSB7XG4gIGNoZWNrX2FyZyguLCBcIm9iamVjdFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlRoZSBtb2RlbCB0aGF0IHdlIHdhbnQgdG8gdXNlIGlzIGBUZXJtX21scmAuXCIpXG4gIGNoZWNrX2FyZyguLCBcIm5ld2RhdGFcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJUaGUgZGF0YSB3ZSB3YW50IHRvIHVzZSB0byBjcmVhdGUgcHJlZGljdGlvbnMgaXMgZm91bmQgaW4gYG5ld2RhdGEyYC5cIilcbn1cbmV4KCkgJT4lIGNoZWNrX29iamVjdChcInBjaGFuZ2VfZml0czJcIiwgdW5kZWZpbmVkX21zZz1cIm5vdyBmaW5kIHRoZSBwZXJjZW50YWdlIGNoYW5nZSBpbiBlYWNoIG9mIHRoZSBmaXRzLCBhbmQgc3RvcmUgdGhlbSBpbiBgcGNoYW5nZV9maXRzMmAuXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiRG8gdGhlIGV4YWN0IHNhbWUgdGhpbmcgeW91IGRpZCBmb3IgYHBjaGFuZ2VfaW5jb21lYCwgZXhjZXB0IHVzZSB0aGUgZml0cyBpbnN0ZWFkIG9mIHRoZSBwcmVkaWN0aW9ucy4gXCIpXG5zdWNjZXNzX21zZyhcIkNvbmdyYXR1bGF0aW9ucyEgV2hlbiBib3RoICR4XzEkIGFuZCAkeSQgYXJlIGluIGxvZ2FyaXRobWljIHVuaXRzLCB0aGVuIHdlIGNhbiBpbnRlcnByZXQgJGJfMSQgdG8gYmUgcmF0aW8gb2YgdHdvIHBlcmNlbnRhZ2UgY2hhbmdlcywga25vd24gYXMgYW4gKmVsYXN0aWNpdHkqIGluIGVjb25vbWljcy5cIikiLCJoaW50IjoiV2hlbiB5b3UgY2FsY3VsYXRlIHRoZSByYXRpbyBvZiBwcm9wb3J0aW9uYWwgY2hhbmdlcyBvZiBmaXR0ZWQgdmFsdWVzIHRvIHRob3NlIGZvciBpbmNvbWUsIG5vdGUgdGhlIHJlbGF0aW9uIGJldHdlZW4gdGhlc2UgdmFsdWVzIChmcm9tIGEgZGlzY3JldGUgY2hhbmdlIGFwcHJveGltYXRpb24pIHRvIHRoZSByZWdyZXNzaW9uIGNvZWZmaWNpZW50IGZvciA8Y29kZT5sb2dpbmNvbWU8L2NvZGU+IGVxdWFsIHRvIDAuNDkzNS4ifQ==
 </div>
 <!-- ## Foundations of multiple linear regresson -->
 <!-- *** -->
@@ -602,10 +679,26 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 </center>
 <div id="video-overhead-details-10" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver3.2A" href="javascript:toggleDet('toggleOver3.2A','displayOver3.2A');"><i><strong>Show Overhead A Details. Goodness of fit</strong></i></a>
-</h6>
-<div id="toggleOver3.2A" style="display: none">
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over3.2A')">
+A Details. Goodness of fit
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.2B')">
+B Details. Goodness of fit and term life
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.2C')">
+C Details. Statistical inference
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.2D')">
+D Details. Statistical inference and term life
+</button>
+</div>
+<div id="Over3.2A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Goodness of fit
+</h3>
+<p>
 <p>Summarize</p>
 <ul>
 <li>deviations</li>
@@ -614,11 +707,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <li><span class="math inline">\(R_a^2\)</span></li>
 <li>ANOVA table</li>
 </ul>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.2B" href="javascript:toggleDet('toggleOver3.2B','displayOver3.2B');"><i><strong>Show Overhead B Details. Goodness of fit and term life</strong></i></a>
-</h6>
-<div id="toggleOver3.2B" style="display: none">
+<div id="Over3.2B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Goodness of fit and term life
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
 <span class="kw">summary</span>(Term_mlr)
 <span class="kw">anova</span>(Term_mlr)</code></pre></div>
@@ -653,20 +749,26 @@ logincome   1  94.24  94.238  40.510 8.316e-10 ***
 Residuals 271 630.43   2.326                      
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.2C" href="javascript:toggleDet('toggleOver3.2C','displayOver3.2C');"><i><strong>Show Overhead C Details. Statistical inference</strong></i></a>
-</h6>
-<div id="toggleOver3.2C" style="display: none">
+<div id="Over3.2C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Statistical inference
+</h3>
+<p>
 <ul>
 <li>hypothesis testing of a regression coefficient</li>
 <li>confidence intervals</li>
 </ul>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.2D" href="javascript:toggleDet('toggleOver3.2D','displayOver3.2D');"><i><strong>Show Overhead D Details. Statistical inference and term life</strong></i></a>
-</h6>
-<div id="toggleOver3.2D" style="display: none">
+<div id="Over3.2D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Statistical inference and term life
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)
 model_sum &lt;-<span class="st"> </span><span class="kw">summary</span>(Term_mlr)
 model_sum<span class="op">$</span>coefficients
@@ -689,6 +791,7 @@ logincome   0.341  0.646
 education   0.130  0.283
 numhh       0.181  0.431
 logincome   0.341  0.646</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -703,7 +806,7 @@ logincome   0.341  0.646</code></pre>
 <li>Summarize this model and identify the residual standard error (<span class="math inline">\(s\)</span>) as well as the coefficient of determination (<span class="math inline">\(R^2\)</span>) and the version adjusted for degrees of freedom (<span class="math inline">\(R_a^2\)</span>).</li>
 </ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXSIsInNhbXBsZSI6IiMgQ3JlYXRlIGBUZXJtMiRmYWNlYCBhbmQgIGBUZXJtMiRpbmNvbWVgXG5UZXJtMiRmYWNlIDwtIGV4cChfX18pL19fX1xuVGVybTIkaW5jb21lIDwtIGV4cChfX18pL19fX1xuXG4jIFJ1biBhIHJlZ3Jlc3Npb24gdXNpbmcgYGZhY2VgIGFzIHRoZSBvdXRjb21lIHZhcmlhYmxlIGFuZCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBpbmNvbWVgIGFzIGV4cGxhbmF0b3J5IHZhcmlhYmxlcy5cblRlcm1fbWxyMSA8LSBsbShmYWNlIH4gX19fLCBkYXRhID0gVGVybTIpXG5cbiMgU3VtbWFyaXplIHRoaXMgbW9kZWxcbnN1bW1hcnkoVGVybV9tbHIxKSIsInNvbHV0aW9uIjoiVGVybTIkZmFjZSA8LSBleHAoVGVybTIkbG9nZmFjZSkvMTAwMFxuVGVybTIkaW5jb21lIDwtIGV4cChUZXJtMiRsb2dpbmNvbWUpLzEwMDBcblRlcm1fbWxyMSA8LSBsbShmYWNlIH4gZWR1Y2F0aW9uICsgbnVtaGggKyBpbmNvbWUsIGRhdGEgPSBUZXJtMilcbnN1bW1hcnkoVGVybV9tbHIxKSIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm0yXCIpICU+JSB7XG4gIGNoZWNrX2NvbHVtbiguLCBcImZhY2VcIikgJT4lIGNoZWNrX2VxdWFsKClcbiAgY2hlY2tfY29sdW1uKC4sIFwiaW5jb21lXCIpICU+JSBjaGVja19lcXVhbCgpXG4gfVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwiVGVybV9tbHIxXCIpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcImxtXCIpICU+JSB7XG4gIGNoZWNrX2FyZyguLCBcImZvcm11bGFcIikgJT4lIGNoZWNrX2VxdWFsKClcbiAgY2hlY2tfYXJnKC4sIFwiZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoKVxufVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJzdW1tYXJ5XCIpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoKVxuc3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIENvbXBhcmUgdGhlc2UgZ29vZG5lc3Mgb2YgZml0IG1lYXN1cmVzIHRvIHRob3NlIHdoZXJlIGluY29tZSBhbmQgZmFjZSBhcmUgaW4gbG9nYXJpdGhtaWMgdW5pdHMuIEFsdGhvdWdoIG5vdCB0aGUgb25seSBpbmRpY2F0b3JzLCB5b3Ugd2lsbCBzZWUgdGhhdCB0aGUgcHJvcG9ydGlvbiBvZiB2YXJpYWJpbGl0eSBleHBsYWluZWQgKFIgc3F1YXJlKSBhbmQgdGhlIHN0YXRpc3RpY2FsIHNpZ25pZmljYW5jZSBvZiBjb2VmZmljaWVudHMgYXJlIHN0cmlraW5nbHkgaGlnaGVyIGluIHRoZSBtb2RlbCB3aXRoIHZhcmlhYmxlcyBpbiBsb2dnZWQgdW5pdHMuXCIpIiwiaGludCI6IlJlbWVtYmVyIHRoYXQgd2UgY2FuIGNhbGwgYSA8Y29kZT5jb2x1bW48L2NvZGU+IGZyb20gYSA8Y29kZT5kYXRhZnJhbWU8L2NvZGU+IHVzaW5nIDxjb2RlPmRhdGFmcmFtZSRjb2x1bW48L2NvZGU+LiJ9
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXSIsInNhbXBsZSI6IiMgQ3JlYXRlIGBUZXJtMiRmYWNlYCBhbmQgIGBUZXJtMiRpbmNvbWVgXG5UZXJtMiRmYWNlIDwtIGV4cChfX18pL19fX1xuVGVybTIkaW5jb21lIDwtIGV4cChfX18pL19fX1xuXG4jIFJ1biBhIHJlZ3Jlc3Npb24gdXNpbmcgYGZhY2VgIGFzIHRoZSBvdXRjb21lIHZhcmlhYmxlIGFuZCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBpbmNvbWVgIGFzIGV4cGxhbmF0b3J5IHZhcmlhYmxlcy5cblRlcm1fbWxyMSA8LSBsbShmYWNlIH4gX19fLCBkYXRhID0gVGVybTIpXG5cbiMgU3VtbWFyaXplIHRoaXMgbW9kZWxcbnN1bW1hcnkoVGVybV9tbHIxKSIsInNvbHV0aW9uIjoiVGVybTIkZmFjZSA8LSBleHAoVGVybTIkbG9nZmFjZSkvMTAwMFxuVGVybTIkaW5jb21lIDwtIGV4cChUZXJtMiRsb2dpbmNvbWUpLzEwMDBcblRlcm1fbWxyMSA8LSBsbShmYWNlIH4gZWR1Y2F0aW9uICsgbnVtaGggKyBpbmNvbWUsIGRhdGEgPSBUZXJtMilcbnN1bW1hcnkoVGVybV9tbHIxKSIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm0yXCIsIHVuZGVmaW5lZF9tc2c9XCJZb3Ugc2hvdWxkIGhhdmUgYSBkYXRhZnJhbWUgbmFtZWQgYFRlcm0yYC5cIikgJT4lIHtcbiAgY2hlY2tfY29sdW1uKC4sIFwiZmFjZVwiLCBjb2xfbWlzc2luZ19tc2c9XCJZb3Ugc2hvdWxkIG1ha2UgYSBuZXcgY29sdW1uIG5hbWVkIGBmYWNlYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJ0byBjcmVhdGUgdGhlIGRhdGEsIHRha2UgdGhlIGV4cG9uZW50aWFsIG9mIHRoZSBkYXRhIGluIGBsb2dmYWNlYCBhbmQgZGl2aWRlIGJ5IDEwMDAuIFwiKVxuICBjaGVja19jb2x1bW4oLiwgXCJpbmNvbWVcIiwgY29sX21pc3NpbmdfbXNnPVwiWW91IHNob3VsZCBtYWtlIGEgbmV3IGNvbHVtbiBuYW1lZCBgaW5jb21lYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJUbyBjcmVhdGUgdGhlIGRhdGEsIHRha2UgdGhlIGV4cG9uZW50aWFsIG9mIHRoZSBkYXRhIGluIGBsb2dpbmNvbWVgIGFuZCBkaXZpZGUgYnkgMTAwMC4gXCIpXG4gfVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwiVGVybV9tbHIxXCIsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwsIGFuZCBzdG9yZSBpdCBpbiBgVGVybV9tbHIxYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJXaGVuIHlvdSBjcmVhdGUgeW91ciBtb2RlbCwgbWFrZSBzdXJlIHRvIG1vZGVsIGBmYWNlYCBiYXNlZCBvbiBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBpbmNvbWVgIGZyb20gdGhlIGRhdGEgc2V0IGBUZXJtMmAuXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInN1bW1hcnlcIiwgbm90X2NhbGxlZF9tc2c9XCJVc2UgYHN1bW1hcnlgIHRvIHZpZXcgYSBzdW1tYXJ5IG9mIG91ciBsaW5lYXIgbW9kZWwuIFwiKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gc3BlY2lmeSB0aGF0IHdlIHdvdWxkIGxpa2UgYSBzdW1tYXJ5IG9mIGBUZXJtX21scjFgLlwiKVxuc3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIENvbXBhcmUgdGhlc2UgZ29vZG5lc3Mgb2YgZml0IG1lYXN1cmVzIHRvIHRob3NlIHdoZXJlIGluY29tZSBhbmQgZmFjZSBhcmUgaW4gbG9nYXJpdGhtaWMgdW5pdHMuIEFsdGhvdWdoIG5vdCB0aGUgb25seSBpbmRpY2F0b3JzLCB5b3Ugd2lsbCBzZWUgdGhhdCB0aGUgcHJvcG9ydGlvbiBvZiB2YXJpYWJpbGl0eSBleHBsYWluZWQgKFIgc3F1YXJlKSBhbmQgdGhlIHN0YXRpc3RpY2FsIHNpZ25pZmljYW5jZSBvZiBjb2VmZmljaWVudHMgYXJlIHN0cmlraW5nbHkgaGlnaGVyIGluIHRoZSBtb2RlbCB3aXRoIHZhcmlhYmxlcyBpbiBsb2dnZWQgdW5pdHMuXCIpIiwiaGludCI6IlJlbWVtYmVyIHRoYXQgd2UgY2FuIGNhbGwgYSA8Y29kZT5jb2x1bW48L2NvZGU+IGZyb20gYSA8Y29kZT5kYXRhZnJhbWU8L2NvZGU+IHVzaW5nIDxjb2RlPmRhdGFmcmFtZSRjb2x1bW48L2NvZGU+LiJ9
 </div>
 </div>
 </div>
@@ -724,10 +827,29 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 </center>
 <div id="video-overhead-details-11" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver3.3A" href="javascript:toggleDet('toggleOver3.3A','displayOver3.3A');"><i><strong>Show Overhead A Details. Binary variables</strong></i></a>
-</h6>
-<div id="toggleOver3.3A" style="display: none">
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over3.3A')">
+A Details. Binary variables
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.3B')">
+B Details. Visualize effect of binary variables
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.3C')">
+C Details. R script for visualization
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.3D')">
+D Details. Interaction Terms
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.3E')">
+E Details. Visualizing binary variables with interactions terms
+</button>
+</div>
+<div id="Over3.3A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Binary variables
+</h3>
+<p>
 <ul>
 <li><p>We can define a new variable <span class="math display">\[
 single= \left\{ \begin{array}{ll}
@@ -746,17 +868,22 @@ single= \left\{ \begin{array}{ll}
         \beta_0 + \beta_2 + \beta_1  logincome &amp; \textrm{for single respondents}
 \end{array} \right. .
 \]</span> - The least squares method of calculating the estimators, and the resulting theoretical properties, are the still valid when using binary variables.</p>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.3B" href="javascript:toggleDet('toggleOver3.3B','displayOver3.3B');"><i><strong>Show Overhead B Details. Visualize effect of binary variables</strong></i></a>
-</h6>
-<div id="toggleOver3.3B" style="display: none">
-
+<div id="Over3.3B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Visualize effect of binary variables
+</h3>
+<p>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.3C" href="javascript:toggleDet('toggleOver3.3C','displayOver3.3C');"><i><strong>Show Overhead C Details. R script for visualization</strong></i></a>
-</h6>
-<div id="toggleOver3.3C" style="display: none">
+<div id="Over3.3C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. R script for visualization
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;marstat&quot;</span>)]
 Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
 <span class="kw">table</span>(Term4<span class="op">$</span>marstat)
@@ -793,29 +920,35 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 1.615 on 272 degrees of freedom
 Multiple R-squared:  0.2605,    Adjusted R-squared:  0.255 
 F-statistic:  47.9 on 2 and 272 DF,  p-value: &lt; 2.2e-16</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.3D" href="javascript:toggleDet('toggleOver3.3D','displayOver3.3D');"><i><strong>Show Overhead D Details. Interaction Terms</strong></i></a>
-</h6>
-<div id="toggleOver3.3D" style="display: none">
+<div id="Over3.3D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Interaction Terms
+</h3>
+<p>
 <ul>
 <li>Linear regression models are defined in terms of linear combinations of explanatory varibles but we can expand their scope through nonlinear transformations</li>
 <li>One type of nonlinear transform is the product of two varibles that is used to create what is known as an <em>interaction</em> variable</li>
 <li>To interpret coefficients, we now consider the regression function</li>
 </ul>
-<p><span class="math display">\[
+<span class="math display">\[
 \text{E }logface = \beta_0 + \beta_1 logincome + \beta_2 single + \beta_3 single*logincome
 \]</span> - This can be expressed as two lines with different slopes <span class="math display">\[
 \text{E }logface = \left\{ \begin{array}{ll}
         \beta_0 + \beta_1   logincome           &amp; \textrm{for other respondents} \\
         \beta_0 + \beta_2 + (\beta_1  + \beta_3) logincome &amp; \textrm{for single respondents}
 \end{array} \right. .
-\]</span></p>
+\]</span>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.3E" href="javascript:toggleDet('toggleOver3.3E','displayOver3.3E');"><i><strong>Show Overhead E Details. Visualizing binary variables with interactions terms</strong></i></a>
-</h6>
-<div id="toggleOver3.3E" style="display: none">
+<div id="Over3.3E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Visualizing binary variables with interactions terms
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;marstat&quot;</span>)]
 Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
 <span class="kw">table</span>(Term4<span class="op">$</span>marstat)
@@ -854,6 +987,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 1.601 on 271 degrees of freedom
 Multiple R-squared:  0.2756,    Adjusted R-squared:  0.2676 
 F-statistic: 34.36 on 3 and 271 DF,  p-value: &lt; 2.2e-16</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -869,7 +1003,7 @@ F-statistic: 34.36 on 3 and 271 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Repeat the MLR model fit while adding the interaction term <code>single*logincome</code>.</li>
 </ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtNCA8LSBUZXJtMVssYyhcIm51bWhoXCIsIFwiZWR1Y2F0aW9uXCIsIFwibG9naW5jb21lXCIsIFwibWFyc3RhdFwiLCBcImxvZ2ZhY2VcIildXG5UZXJtNCRzaW5nbGUgPC0gMSooVGVybTQkbWFyc3RhdCA9PSAwKSIsInNhbXBsZSI6IiMgQ2FsY3VsYXRlIGEgdGFibGUgb2YgY29ycmVsYXRpb24gY29lZmZpY2llbnRzXG5yb3VuZChfX18oVGVybTRbLGMoXCJudW1oaFwiLCBcImVkdWNhdGlvblwiLCBcImxvZ2luY29tZVwiLCBcInNpbmdsZVwiLCBcImxvZ2ZhY2VcIildKSwgZGlnaXRzID0gMylcblxuIyBGaXQgYSBNTFIgbW9kZWwgb2YgYGxvZ2ZhY2VgIHVzaW5nIGV4cGxhbmF0b3J5IHZhcmlhYmxlcyBgbnVtaGhgLCBgZWR1Y2F0aW9uYCwgYGxvZ2luY29tZWAsIGFuZCBgc2luZ2xlYC5cblRlcm1fbWxyMyA8LSBsbShsb2dmYWNlIH4gZWR1Y2F0aW9uICsgbnVtaGggKyBsb2dpbmNvbWUgKyBzaW5nbGUsIGRhdGEgPSBUZXJtNClcbnN1bW1hcnkoVGVybV9tbHIzKVxuXG4jIFJlcGVhdCB0aGUgTUxSIG1vZGVsIGZpdCB3aGlsZSBhZGRpbmcgdGhlIGludGVyYWN0aW9uIHRlcm0gIGBzaW5nbGUqbG9naW5jb21lYC5cblRlcm1fbWxyNCA8LSBsbShsb2dmYWNlIH4gZWR1Y2F0aW9uICsgbnVtaGggKyBsb2dpbmNvbWUgKyBzaW5nbGUgKyBzaW5nbGUqbG9naW5jb21lLCBkYXRhID0gVGVybTQpXG5zdW1tYXJ5KFRlcm1fbWxyNCkiLCJzb2x1dGlvbiI6InJvdW5kKGNvcihUZXJtNFssYyhcIm51bWhoXCIsIFwiZWR1Y2F0aW9uXCIsIFwibG9naW5jb21lXCIsIFwic2luZ2xlXCIsIFwibG9nZmFjZVwiKV0pLCBkaWdpdHMgPSAzKVxuVGVybV9tbHIzIDwtIGxtKGxvZ2ZhY2UgfiBlZHVjYXRpb24gKyBudW1oaCArIGxvZ2luY29tZSArIHNpbmdsZSwgZGF0YSA9IFRlcm00KVxuc3VtbWFyeShUZXJtX21scjMpXG5UZXJtX21scjQgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lICsgc2luZ2xlICsgc2luZ2xlKmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuc3VtbWFyeShUZXJtX21scjQpIiwic2N0IjoiZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJyb3VuZFwiKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm1fbWxyM1wiKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJsbVwiLGluZGV4PTEpICU+JSB7XG4gIGNoZWNrX2FyZyguLCBcImZvcm11bGFcIikgJT4lIGNoZWNrX2VxdWFsKClcbiAgY2hlY2tfYXJnKC4sIFwiZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoKVxufVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJzdW1tYXJ5XCIsaW5kZXg9MSkgJT4lIGNoZWNrX3Jlc3VsdCgpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjRcIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwibG1cIixpbmRleD0yKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJmb3JtdWxhXCIpICU+JSBjaGVja19lcXVhbCgpXG4gIGNoZWNrX2FyZyguLCBcImRhdGFcIikgJT4lIGNoZWNrX2VxdWFsKClcbn1cbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwic3VtbWFyeVwiLGluZGV4PTIpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoKVxuc3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIEZyb20gYSBjb3JyZWxhdGlvbiB0YWJsZSwgeW91IHNhdyB0aGF0IHRoZXJlIGFyZSByZWxhdGlvbnNoaXBzIHdpdGggYW1vbmcgZXhwbGFuYXRvcnkgdmFyaWFibGVzIGFuZCBzbyBpdCBpcyBub3QgY2xlYXIgd2hldGhlciBhZGRpbmcgYHNpbmdsZWAgdG8gdGhlIG1vZGVsIHdvdWxkIGJlIGhlbHBmdWwuIFlvdSBleHBsb3JlZCB0aGlzIGJ5IGZpcnN0IGZpdHRpbmcgYSBtb2RlbCBieSBqdXN0IGFkZGluZyB0aGUgYmluYXJ5IHZhcmlhYmxlIHNpbmdsZSwgZXhhbWluZWQgc3VtbWFyeSBzdGF0aXN0aWNzLCBhbmQgY2hlY2tlZCB0aGUgc2lnbmlmaWNhbmNlIG9mIHRoZSB2YXJpYWJsZS4gVGhlbiwgeW91IGV4cGxvcmVkIHRoZSB1dGlsaXR5IG9mIHRoZSBpbnRlcmFjdGlvbiBvZiBgc2luZ2xlYCB3aXRoIGxvZ2FyaXRobWljIGluY29tZS4gV2VsbCBkb25lIVwiKSIsImhpbnQiOiJUbyBnZXQgYSB0YWJsZSBvZiBjb3JyZWxhdGlvbnMsIHRoZSA8Y29kZT5jb3IoKTwvY29kZT4gZnVuY3Rpb24gY2FuIGJlIHVzZWQuXG5BZnRlciB0aGF0LCBhIGNvbWJpbmF0aW9uIG9mIDxjb2RlPmxtKCk8L2NvZGU+IGFuZCA8Y29kZT5zdW1tYXJ5KCk8L2NvZGU+IGNhbiBiZSB1c2VkIHRvIGFjaGlldmUgdGhlIGRlc2lyZWQgcmVzdWx0cyJ9
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtNCA8LSBUZXJtMVssYyhcIm51bWhoXCIsIFwiZWR1Y2F0aW9uXCIsIFwibG9naW5jb21lXCIsIFwibWFyc3RhdFwiLCBcImxvZ2ZhY2VcIildXG5UZXJtNCRzaW5nbGUgPC0gMSooVGVybTQkbWFyc3RhdCA9PSAwKSIsInNhbXBsZSI6IiMgQ2FsY3VsYXRlIGEgdGFibGUgb2YgY29ycmVsYXRpb24gY29lZmZpY2llbnRzXG5yb3VuZChfX18oVGVybTRbLGMoXCJudW1oaFwiLCBcImVkdWNhdGlvblwiLCBcImxvZ2luY29tZVwiLCBcInNpbmdsZVwiLCBcImxvZ2ZhY2VcIildKSwgZGlnaXRzID0gMylcblxuIyBGaXQgYSBNTFIgbW9kZWwgb2YgYGxvZ2ZhY2VgIHVzaW5nIGV4cGxhbmF0b3J5IHZhcmlhYmxlcyBgbnVtaGhgLCBgZWR1Y2F0aW9uYCwgYGxvZ2luY29tZWAsIGFuZCBgc2luZ2xlYC5cblRlcm1fbWxyMyA8LSBsbShsb2dmYWNlIH4gZWR1Y2F0aW9uICsgbnVtaGggKyBsb2dpbmNvbWUgKyBzaW5nbGUsIGRhdGEgPSBUZXJtNClcbnN1bW1hcnkoVGVybV9tbHIzKVxuXG4jIFJlcGVhdCB0aGUgTUxSIG1vZGVsIGZpdCB3aGlsZSBhZGRpbmcgdGhlIGludGVyYWN0aW9uIHRlcm0gIGBzaW5nbGUqbG9naW5jb21lYC5cblRlcm1fbWxyNCA8LSBsbShsb2dmYWNlIH4gZWR1Y2F0aW9uICsgbnVtaGggKyBsb2dpbmNvbWUgKyBzaW5nbGUgKyBzaW5nbGUqbG9naW5jb21lLCBkYXRhID0gVGVybTQpXG5zdW1tYXJ5KFRlcm1fbWxyNCkiLCJzb2x1dGlvbiI6InJvdW5kKGNvcihUZXJtNFssYyhcIm51bWhoXCIsIFwiZWR1Y2F0aW9uXCIsIFwibG9naW5jb21lXCIsIFwic2luZ2xlXCIsIFwibG9nZmFjZVwiKV0pLCBkaWdpdHMgPSAzKVxuVGVybV9tbHIzIDwtIGxtKGxvZ2ZhY2UgfiBlZHVjYXRpb24gKyBudW1oaCArIGxvZ2luY29tZSArIHNpbmdsZSwgZGF0YSA9IFRlcm00KVxuc3VtbWFyeShUZXJtX21scjMpXG5UZXJtX21scjQgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lICsgc2luZ2xlICsgc2luZ2xlKmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuc3VtbWFyeShUZXJtX21scjQpIiwic2N0IjoiZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJyb3VuZFwiLCBub3RfY2FsbGVkX21zZz1cIlVzZSBgcm91bmRgIG9uIHRoZSBjb3JyZWxhdGlvbiBjb2VmZmljaWVudHMgZm91bmQgdXNpbmcgYGNvcmAgdG8gMyBkaWdpdHMuXCIpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlVzZSBgY29yYCB0byBmaW5kIHRoZSBjb3JyZWxhdGlvbnMsIGFuZCB0aGVuIHJvdW5kIHRoZW0gdG8gMyBkaWdpdHMuIFwiKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwiVGVybV9tbHIzXCIsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgbmFtZWQgYFRlcm1fbWxyM2AuXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiWW91IGxpbmVhciBtb2RlbCBzaG91bGQgbW9kZWwgYGxvZ2ZhY2VgIGJhc2VkIG9uIGBlZHVjYXRpb25gLCBgbnVtaGhgLCBgbG9naW5jb21lYCwgYW5kIGBzaW5nbGVgIGZyb20gdGhlIGRhdGEgaW4gYFRlcm00YC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwic3VtbWFyeVwiLGluZGV4PTEsbm90X2NhbGxlZF9tc2c9XCJVc2UgYHN1bW1hcnlgIHRvIHZpZXcgYSBzdW1tYXJ5IG9mIGBUZXJtX21scjNgLlwiKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gc3BlY2lmeSB0aGF0IHdlIHdhbnQgYSBzdW1tYXJ5IG9mIGBUZXJtX21scjNgLlwiKVxuIGV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm1fbWxyNFwiLCB1bmRlZmluZWRfbXNnPVwiVXNlIGBsbWAgdG8gY3JlYXRlIGEgbGluZWFyIG1vZGVsIG5hbWVkIGBUZXJtX21scjRgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdSBsaW5lYXIgbW9kZWwgc2hvdWxkIG1vZGVsIGBsb2dmYWNlYCBiYXNlZCBvbiBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYGxvZ2luY29tZWAsIGFuZCB0aGUgcHJvZHVjdCBvZiBgc2luZ2xlYCBhbmQgYGxvZ2luY29tZWAgZnJvbSB0aGUgZGF0YSBpbiBgVGVybTRgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJzdW1tYXJ5XCIsaW5kZXg9Mixub3RfY2FsbGVkX21zZz1cIlVzZSBgc3VtbWFyeWAgdG8gdmlldyBhIHN1bW1hcnkgb2YgYFRlcm1fbWxyNGAuXCIpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IHRoYXQgd2Ugd2FudCBhIHN1bW1hcnkgb2YgYFRlcm1fbWxyNGAuXCIpXG5zdWNjZXNzX21zZyhcIkNvbmdyYXR1bGF0aW9ucyEgRnJvbSBhIGNvcnJlbGF0aW9uIHRhYmxlLCB5b3Ugc2F3IHRoYXQgdGhlcmUgYXJlIHJlbGF0aW9uc2hpcHMgd2l0aCBhbW9uZyBleHBsYW5hdG9yeSB2YXJpYWJsZXMgYW5kIHNvIGl0IGlzIG5vdCBjbGVhciB3aGV0aGVyIGFkZGluZyBgc2luZ2xlYCB0byB0aGUgbW9kZWwgd291bGQgYmUgaGVscGZ1bC4gWW91IGV4cGxvcmVkIHRoaXMgYnkgZmlyc3QgZml0dGluZyBhIG1vZGVsIGJ5IGp1c3QgYWRkaW5nIHRoZSBiaW5hcnkgdmFyaWFibGUgc2luZ2xlLCBleGFtaW5lZCBzdW1tYXJ5IHN0YXRpc3RpY3MsIGFuZCBjaGVja2VkIHRoZSBzaWduaWZpY2FuY2Ugb2YgdGhlIHZhcmlhYmxlLiBUaGVuLCB5b3UgZXhwbG9yZWQgdGhlIHV0aWxpdHkgb2YgdGhlIGludGVyYWN0aW9uIG9mIGBzaW5nbGVgIHdpdGggbG9nYXJpdGhtaWMgaW5jb21lLiBXZWxsIGRvbmUhXCIpIiwiaGludCI6IlRvIGdldCBhIHRhYmxlIG9mIGNvcnJlbGF0aW9ucywgdGhlIDxjb2RlPmNvcigpPC9jb2RlPiBmdW5jdGlvbiBjYW4gYmUgdXNlZC5cbkFmdGVyIHRoYXQsIGEgY29tYmluYXRpb24gb2YgPGNvZGU+bG0oKTwvY29kZT4gYW5kIDxjb2RlPnN1bW1hcnkoKTwvY29kZT4gY2FuIGJlIHVzZWQgdG8gYWNoaWV2ZSB0aGUgZGVzaXJlZCByZXN1bHRzIn0=
 </div>
 </div>
 </div>
@@ -891,10 +1025,29 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 </center>
 <div id="video-overhead-details-12" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver3.4A" href="javascript:toggleDet('toggleOver3.4A','displayOver3.4A');"><i><strong>Show Overhead A Details. Categorical variables</strong></i></a>
-</h6>
-<div id="toggleOver3.4A" style="display: none">
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over3.4A')">
+A Details. Categorical variables
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.4B')">
+B Details. Term life example
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.4C')">
+C Details. Term life boxplots
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.4D')">
+D Details. Regression with a categorical variable
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.4E')">
+E Details. t-ratios depend on the reference level
+</button>
+</div>
+<div id="Over3.4A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Categorical variables
+</h3>
+<p>
 <ul>
 <li><em>Categorical variables</em> provide labels for observations to denote membership in distinct groups, or categories.</li>
 <li>A <em>binary variable</em> is a special case of a categorical variable.
@@ -909,11 +1062,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 </ul></li>
 <li><em>Factor</em> is another term used for a (unordered) categorical explanatory variable.</li>
 </ul>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.4B" href="javascript:toggleDet('toggleOver3.4B','displayOver3.4B');"><i><strong>Show Overhead B Details. Term life example</strong></i></a>
-</h6>
-<div id="toggleOver3.4B" style="display: none">
+<div id="Over3.4B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Term life example
+</h3>
+<p>
 <ul>
 <li>We studied <em>y = logface</em>, the amount that the company will pay in the event of the death of the named insured (in logarithmic dollars), focusing on the explanatory variables <em>logincome</em>, <em>education</em>, and <em>numhh</em>.</li>
 <li>We now supplement this by including the categorical variable, <em>marstat</em>, that is the marital status of the survey respondent. This may be:
@@ -923,11 +1079,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <li>0, for other (SCF actually breaks this category into separated, divorced, widowed, never married and inapplicable, for persons age 17 or less or no further persons)</li>
 </ul></li>
 </ul>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.4C" href="javascript:toggleDet('toggleOver3.4C','displayOver3.4C');"><i><strong>Show Overhead C Details. Term life boxplots</strong></i></a>
-</h6>
-<div id="toggleOver3.4C" style="display: none">
+<div id="Over3.4C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Term life boxplots
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Pre-exercise code</span>
 <span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span>
 Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
@@ -945,11 +1104,14 @@ Term4<span class="op">$</span>marstat&lt;-<span class="st"> </span><span class="
 <pre><code>
   0   1   2 
  57 208  10 </code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.4D" href="javascript:toggleDet('toggleOver3.4D','displayOver3.4D');"><i><strong>Show Overhead D Details. Regression with a categorical variable</strong></i></a>
-</h6>
-<div id="toggleOver3.4D" style="display: none">
+<div id="Over3.4D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. Regression with a categorical variable
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)
 Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">relevel</span>(Term4<span class="op">$</span>marstat, <span class="dt">ref =</span> <span class="st">&quot;2&quot;</span>)
 <span class="kw">summary</span>(<span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome<span class="op">+</span>education<span class="op">+</span>numhh<span class="op">+</span>marstat, <span class="dt">data =</span> Term4))</code></pre></div>
@@ -976,12 +1138,15 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 1.513 on 269 degrees of freedom
 Multiple R-squared:  0.358, Adjusted R-squared:  0.3461 
 F-statistic:    30 on 5 and 269 DF,  p-value: &lt; 2.2e-16</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.4E" href="javascript:toggleDet('toggleOver3.4E','displayOver3.4E');"><i><strong>Show Overhead E Details. t-ratios depend on the reference level</strong></i></a>
-</h6>
-<div id="toggleOver3.4E" style="display: none">
-<p><span class="math display">\[
+<div id="Over3.4E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. t-ratios depend on the reference level
+</h3>
+<p>
+<span class="math display">\[
 \begin{array}{l|rr|rr|rr}
  \hline
  &amp; \text{Model 1}&amp;&amp; \text{Model 2}&amp;&amp; \text{Model 3}&amp;\\
@@ -996,7 +1161,8 @@ numhh     &amp; 0.248 &amp; 3.57 &amp; 0.248 &amp; 3.57 &amp; 0.248 &amp; 3.57 \
 \text{mar=2}&amp; -0.789 &amp; -1.59 &amp; &amp; &amp; -0.232 &amp; -0.44\\
 \hline
 \end{array}
-\]</span></p>
+\]</span>
+</p>
 </div>
 </div>
 </div>
@@ -1039,10 +1205,26 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNIY29zdCA8LSByZWFkLmNzdihcIkNT
 </center>
 <div id="video-overhead-details-13" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver3.5A" href="javascript:toggleDet('toggleOver3.5A','displayOver3.5A');"><i><strong>Show Overhead A Details. Testing the significance of a categorical variable</strong></i></a>
-</h6>
-<div id="toggleOver3.5A" style="display: none">
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Over3.5A')">
+A Details. Testing the significance of a categorical variable
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.5B')">
+B Details. Overview of the general linear hypothesis
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.5C')">
+C Details. Procedure for conducting the general linear hypothesis
+</button>
+<button class="tablinks" onclick="openTab(event, 'Over3.5D')">
+D Details. The general linear hypothesis for a single variable
+</button>
+</div>
+<div id="Over3.5A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Testing the significance of a categorical variable
+</h3>
+<p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span>
 Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
 Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)
@@ -1067,11 +1249,14 @@ Residuals                269 615.62   2.289
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 [1] 3.236048
 p-value is 0.04085475</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.5B" href="javascript:toggleDet('toggleOver3.5B','displayOver3.5B');"><i><strong>Show Overhead B Details. Overview of the general linear hypothesis</strong></i></a>
-</h6>
-<div id="toggleOver3.5B" style="display: none">
+<div id="Over3.5B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Overview of the general linear hypothesis
+</h3>
+<p>
 <ul>
 <li>The likelihood ratio is a general statistical test procedure that compares a model to a subset</li>
 <li>The general linear hypothesis test procedure is similar.
@@ -1082,11 +1267,14 @@ p-value is 0.04085475</code></pre>
 </ul></li>
 <li>Although the likelihood ratio test is more generally available, the general linear hypothesis test is more accurate for smaller data sets (for normally distributed data)</li>
 </ul>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.5C" href="javascript:toggleDet('toggleOver3.5C','displayOver3.5C');"><i><strong>Show Overhead C Details. Procedure for conducting the general linear hypothesis</strong></i></a>
-</h6>
-<div id="toggleOver3.5C" style="display: none">
+<div id="Over3.5C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Procedure for conducting the general linear hypothesis
+</h3>
+<p>
 <ul>
 <li>Run the full regression and get the error sum of squares and mean square error, which we label as <span class="math inline">\((Error SS)_{full}\)</span> and <span class="math inline">\(s^2_{full}\)</span>, respectively.</li>
 <li>Run a reduced regression and get the error sum of squares, labelled <span class="math inline">\((Error SS)_{reduced}\)</span>.</li>
@@ -1095,11 +1283,14 @@ F-ratio = \frac{(Error SS)_{reduced}-(Error SS)_{full}}{p s^2_{full}} .
 \]</span></li>
 <li>The probability value is <span class="math inline">\(p-value = \Pr(F_{p,df} &gt; F-ratio)\)</span> where <span class="math inline">\(F_{p,df}\)</span> has an <em>F</em> distribution with degrees of freedom <em>p</em> and <em>df</em>, respectively. (Here, <em>df</em> is the degrees of freedom for the full model.)</li>
 </ul>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver3.5D" href="javascript:toggleDet('toggleOver3.5D','displayOver3.5D');"><i><strong>Show Overhead D Details. The general linear hypothesis for a single variable</strong></i></a>
-</h6>
-<div id="toggleOver3.5D" style="display: none">
+<div id="Over3.5D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D Details. The general linear hypothesis for a single variable
+</h3>
+<p>
 <ul>
 <li>Suppose that you wish to test the hypothesisthat a regression coefficient equals 0.
 <ul>
@@ -1113,6 +1304,7 @@ F-ratio = \frac{(Error SS)_{reduced}-(Error SS)_{full}}{p s^2_{full}} .
 <li>The <em>t-ratio</em> is useful because it can be used to examine one-sided alternative hypotheses.</li>
 </ul></li>
 </ul>
+</p>
 </div>
 </div>
 </div>
@@ -1135,7 +1327,7 @@ Fstat12 &lt;- (anova(Term_mlr1)$`Sum Sq`[5] -
 Fstat12
 cat(&quot;p-value is&quot;, 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))</code></pre>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtNCA8LSBUZXJtMVssYyhcIm51bWhoXCIsIFwiZWR1Y2F0aW9uXCIsIFwibG9naW5jb21lXCIsIFwibWFyc3RhdFwiLCBcImxvZ2ZhY2VcIildXG5UZXJtNCRzaW5nbGUgPC0gMSooVGVybTQkbWFyc3RhdCA9PSAwKVxuVGVybTQkbWFyc3RhdCA8LSBhcy5mYWN0b3IoVGVybTQkbWFyc3RhdClcblRlcm1fbWxyIDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCAsIGRhdGEgPSBUZXJtNClcbmFub3ZhKFRlcm1fbWxyKSIsInNhbXBsZSI6IiMgRml0IGEgTUxSIG1vZGVsIHVzaW5nIHRoZSBiYXNlIGV4cGxhbmF0b3J5IHZhcmlhYmxlcyBwbHVzIGBzaW5nbGVgIGFuZCBhbm90aGVyIG1vZGVsIHVzaW5nIHRoZSBiYXNlIHZhcmlhYmxlcyBwbHVzIGBtYXJzdGF0YC5cblRlcm1fbWxyMSA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggK3NpbmdsZSwgZGF0YSA9IFRlcm00KVxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCArbWFyc3RhdCwgZGF0YSA9IFRlcm00KVxuXG4jIFVzZSB0aGUgRiB0ZXN0IHRvIGRlY2lkZSB3aGV0aGVyIHRoZSBhZGRpdGlvbmFsIGNvbXBsZXhpdHkgYG1hcnN0YXRgIGlzIHdhcnJhbnRlZCBieSBjYWxjdWxhdGluZyB0aGUgcC12YWx1ZSBhc3NvY2lhdGVkIHdpdGggdGhpcyB0ZXN0LlxuYW5vdmEoVGVybV9tbHIxLFRlcm1fbWxyMilcblxuIyBGaXQgYSBNTFIgbW9kZWwgdXNpbmcgdGhlIGJhc2UgZXhwbGFuYXRvcnkgdmFyaWFibGVzIHBsdXMgYHNpbmdsZWAgaW50ZXJhY3RlZCB3aXRoIGBsb2dpbmNvbWVgIGFuZCBhbm90aGVyIG1vZGVsIHVzaW5nIHRoZSBiYXNlIHZhcmlhYmxlcyBwbHVzIGBtYXJzdGF0YCBpbnRlcmFjdGVkIHdpdGggYGxvZ2luY29tZWAuXG5UZXJtX21scjMgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICsgc2luZ2xlKmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuVGVybV9tbHI0IDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCArbWFyc3RhdCpsb2dpbmNvbWUsIGRhdGEgPSBUZXJtNClcblxuIyBVc2UgdGhlIEYgdGVzdCB0byBkZWNpZGUgd2hldGhlciB0aGUgYWRkaXRpb25hbCBjb21wbGV4aXR5IGBtYXJzdGF0YCBpcyB3YXJyYW50ZWQgYnkgY2FsY3VsYXRpbmcgdGhlIHAtdmFsdWUgYXNzb2NpYXRlZCB3aXRoIHRoaXMgdGVzdC5cbmFub3ZhKFRlcm1fbWxyMyxUZXJtX21scjQpIiwic29sdXRpb24iOiJUZXJtX21scjEgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICtzaW5nbGUsIGRhdGEgPSBUZXJtNClcblRlcm1fbWxyMiA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggK21hcnN0YXQsIGRhdGEgPSBUZXJtNClcbmFub3ZhKFRlcm1fbWxyMSxUZXJtX21scjIpXG4jRnN0YXQxMiA8LSAoYW5vdmEoVGVybV9tbHIxKSRgU3VtIFNxYFs1XSAtIFxuIyAgICAgICAgICAgICAgYW5vdmEoVGVybV9tbHIyKSRgU3VtIFNxYFs1XSkvKDEqYW5vdmEoVGVybV9tbHIyKSRgTWVhbiBTcWBbNV0pXG4jRnN0YXQxMlxuI2NhdChcInAtdmFsdWUgaXNcIiwgMSAtIHBmKEZzdGF0MTIsIGRmMSA9IDEgLCBkZjIgPSBhbm92YShUZXJtX21scjIpJERmWzVdKSlcblRlcm1fbWxyMyA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggKyBzaW5nbGUqbG9naW5jb21lLCBkYXRhID0gVGVybTQpXG5UZXJtX21scjQgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICttYXJzdGF0KmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuYW5vdmEoVGVybV9tbHIzLFRlcm1fbWxyNCkiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjFcIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm1fbWxyMlwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJhbm92YVwiLGluZGV4PTEpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwiVGVybV9tbHIzXCIpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjRcIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiYW5vdmFcIixpbmRleD0yKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKClcbnN1Y2Nlc3NfbXNnKFwiQ29uZ3JhdHVsYXRpb25zISBIeXBvdGhlc2lzIHRlc3RpbmcgaXMgYSBwcmltYXJ5IHRvb2wgZm9yICAnaW5mZXJyaW5nJyBhYm91dCB0aGUgcmVhbCB3b3JsZCB7aW4gY29udHJhc3QgdG8gbWF0aGVtYXRpY2FsICdkZWR1Y3Rpb24nLn0gTW9yZW92ZXIsIGFzIHdlIHdpbGwgc2VlIGluIHRoZSBuZXh0IGNoYXB0ZXIsIGl0IGNhbiBhbHNvIGJlIHVzZWQgdG8gZGV2ZWxvcCBhIG1vZGVsLlwiKSIsImhpbnQiOiJIZXJlIGlzIHRoZSBjb2RlIHRvIGNhbGN1bGF0ZSBpdCBieSBoYW5kXG5Gc3RhdDEyICZsdDstIChhbm92YShUZXJtX21scjEpJDxjb2RlPlN1bSBTcTwvY29kZT5bNV0gLSBcbiAgICAgICAgICAgICAgYW5vdmEoVGVybV9tbHIyKSQ8Y29kZT5TdW0gU3E8L2NvZGU+WzVdKS8oMSphbm92YShUZXJtX21scjIpJDxjb2RlPk1lYW4gU3E8L2NvZGU+WzVdKVxuRnN0YXQxMlxuY2F0KCZsZHF1bztwLXZhbHVlIGlzJnJkcXVvOywgMSAtIHBmKEZzdGF0MTIsIGRmMSA9IDEgLCBkZjIgPSBhbm92YShUZXJtX21scjIpJERmWzVdKSkifQ==
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtNCA8LSBUZXJtMVssYyhcIm51bWhoXCIsIFwiZWR1Y2F0aW9uXCIsIFwibG9naW5jb21lXCIsIFwibWFyc3RhdFwiLCBcImxvZ2ZhY2VcIildXG5UZXJtNCRzaW5nbGUgPC0gMSooVGVybTQkbWFyc3RhdCA9PSAwKVxuVGVybTQkbWFyc3RhdCA8LSBhcy5mYWN0b3IoVGVybTQkbWFyc3RhdClcblRlcm1fbWxyIDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCAsIGRhdGEgPSBUZXJtNClcbmFub3ZhKFRlcm1fbWxyKSIsInNhbXBsZSI6IiMgRml0IGEgTUxSIG1vZGVsIHVzaW5nIHRoZSBiYXNlIGV4cGxhbmF0b3J5IHZhcmlhYmxlcyBwbHVzIGBzaW5nbGVgIGFuZCBhbm90aGVyIG1vZGVsIHVzaW5nIHRoZSBiYXNlIHZhcmlhYmxlcyBwbHVzIGBtYXJzdGF0YC5cblRlcm1fbWxyMSA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggK3NpbmdsZSwgZGF0YSA9IFRlcm00KVxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCArbWFyc3RhdCwgZGF0YSA9IFRlcm00KVxuXG4jIFVzZSB0aGUgRiB0ZXN0IHRvIGRlY2lkZSB3aGV0aGVyIHRoZSBhZGRpdGlvbmFsIGNvbXBsZXhpdHkgYG1hcnN0YXRgIGlzIHdhcnJhbnRlZCBieSBjYWxjdWxhdGluZyB0aGUgcC12YWx1ZSBhc3NvY2lhdGVkIHdpdGggdGhpcyB0ZXN0LlxuYW5vdmEoVGVybV9tbHIxLFRlcm1fbWxyMilcblxuIyBGaXQgYSBNTFIgbW9kZWwgdXNpbmcgdGhlIGJhc2UgZXhwbGFuYXRvcnkgdmFyaWFibGVzIHBsdXMgYHNpbmdsZWAgaW50ZXJhY3RlZCB3aXRoIGBsb2dpbmNvbWVgIGFuZCBhbm90aGVyIG1vZGVsIHVzaW5nIHRoZSBiYXNlIHZhcmlhYmxlcyBwbHVzIGBtYXJzdGF0YCBpbnRlcmFjdGVkIHdpdGggYGxvZ2luY29tZWAuXG5UZXJtX21scjMgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICsgc2luZ2xlKmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuVGVybV9tbHI0IDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCArbWFyc3RhdCpsb2dpbmNvbWUsIGRhdGEgPSBUZXJtNClcblxuIyBVc2UgdGhlIEYgdGVzdCB0byBkZWNpZGUgd2hldGhlciB0aGUgYWRkaXRpb25hbCBjb21wbGV4aXR5IGBtYXJzdGF0YCBpcyB3YXJyYW50ZWQgYnkgY2FsY3VsYXRpbmcgdGhlIHAtdmFsdWUgYXNzb2NpYXRlZCB3aXRoIHRoaXMgdGVzdC5cbmFub3ZhKFRlcm1fbWxyMyxUZXJtX21scjQpIiwic29sdXRpb24iOiJUZXJtX21scjEgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICtzaW5nbGUsIGRhdGEgPSBUZXJtNClcblRlcm1fbWxyMiA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggK21hcnN0YXQsIGRhdGEgPSBUZXJtNClcbmFub3ZhKFRlcm1fbWxyMSxUZXJtX21scjIpXG4jRnN0YXQxMiA8LSAoYW5vdmEoVGVybV9tbHIxKSRgU3VtIFNxYFs1XSAtIFxuIyAgICAgICAgICAgICAgYW5vdmEoVGVybV9tbHIyKSRgU3VtIFNxYFs1XSkvKDEqYW5vdmEoVGVybV9tbHIyKSRgTWVhbiBTcWBbNV0pXG4jRnN0YXQxMlxuI2NhdChcInAtdmFsdWUgaXNcIiwgMSAtIHBmKEZzdGF0MTIsIGRmMSA9IDEgLCBkZjIgPSBhbm92YShUZXJtX21scjIpJERmWzVdKSlcblRlcm1fbWxyMyA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggKyBzaW5nbGUqbG9naW5jb21lLCBkYXRhID0gVGVybTQpXG5UZXJtX21scjQgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICttYXJzdGF0KmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuYW5vdmEoVGVybV9tbHIzLFRlcm1fbWxyNCkiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjFcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjFgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBzaW5nbGVgIGZyb20gdGhlIGRhdGEgc2V0IGBUZXJtNGAuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjJcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjJgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBtYXJzdGF0YCBmcm9tIHRoZSBkYXRhIHNldCBgVGVybTRgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJhbm92YVwiLGluZGV4PTEsIG5vdF9jYWxsZWRfbXNnPVwiUnVuIGFuIGFub3ZhIHRlc3QgdG8gY29tcGFyZSB0aGUgdHdvIG1vZGVscyB3ZSBqdXN0IGNyZWF0ZWQuIFwiKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJZb3Ugc2hvdWxkIHJ1biB0aGUgYGFub3ZhYCB0ZXN0IG9uIGBUZXJtX21scjFgIGFuZCBgVGVybV9tbHIyYC5cIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm1fbWxyM1wiICwgdW5kZWZpbmVkX21zZz1cIlVzZSBgbG1gIHRvIGNyZWF0ZSBhIGxpbmVhciBtb2RlbCBhbmQgc3RvcmUgaXQgdW5kZXIgdGhlIG5hbWUgYFRlcm1fbWxyM2AuXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiWW91ciBtb2RlbCBzaG91bGQgZXhwbGFpbiBgbG9nZmFjZWAgYmFzZWQgb24gYGxvZ2luY29tZWAsIGBlZHVjYXRpb25gLCBgbnVtaGhgLCBhbmQgdGhlIHByb2R1Y3Qgb2YgYHNpbmdsZWAgYW5kIGBsb2dpbmNvbWVgIGZyb20gdGhlIGRhdGEgc2V0IGBUZXJtNGAuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjRcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjRgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIHRoZSBwcm9kdWN0IG9mIGBtYXJzdGF0YCBhbmQgYGxvZ2luY29tZWAgZnJvbSB0aGUgZGF0YSBzZXQgYFRlcm00YC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiYW5vdmFcIixpbmRleD0yLCBub3RfY2FsbGVkX21zZz1cIlJ1biBhbiBhbm92YSB0ZXN0IHRvIGNvbXBhcmUgdGhlIHR3byBuZXcgbW9kZWxzIHdlIGp1c3QgY3JlYXRlZC4gXCIpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdSBzaG91bGQgcnVuIHRoZSBgYW5vdmFgIHRlc3Qgb24gYFRlcm1fbWxyM2AgYW5kIGBUZXJtX21scjRgLlwiKVxuc3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIEh5cG90aGVzaXMgdGVzdGluZyBpcyBhIHByaW1hcnkgdG9vbCBmb3IgICdpbmZlcnJpbmcnIGFib3V0IHRoZSByZWFsIHdvcmxkIHtpbiBjb250cmFzdCB0byBtYXRoZW1hdGljYWwgJ2RlZHVjdGlvbicufSBNb3Jlb3ZlciwgYXMgd2Ugd2lsbCBzZWUgaW4gdGhlIG5leHQgY2hhcHRlciwgaXQgY2FuIGFsc28gYmUgdXNlZCB0byBkZXZlbG9wIGEgbW9kZWwuXCIpICAiLCJoaW50IjoiSGVyZSBpcyB0aGUgY29kZSB0byBjYWxjdWxhdGUgaXQgYnkgaGFuZFxuRnN0YXQxMiAmbHQ7LSAoYW5vdmEoVGVybV9tbHIxKSQ8Y29kZT5TdW0gU3E8L2NvZGU+WzVdIC0gXG4gICAgICAgICAgICAgIGFub3ZhKFRlcm1fbWxyMikkPGNvZGU+U3VtIFNxPC9jb2RlPls1XSkvKDEqYW5vdmEoVGVybV9tbHIyKSQ8Y29kZT5NZWFuIFNxPC9jb2RlPls1XSlcbkZzdGF0MTJcbmNhdCgmbGRxdW87cC12YWx1ZSBpcyZyZHF1bzssIDEgLSBwZihGc3RhdDEyLCBkZjEgPSAxICwgZGYyID0gYW5vdmEoVGVybV9tbHIyKSREZls1XSkpIn0=
 </div>
 </div>
 <div id="exercise.-hypothesis-testing-and-wisconsin-hospital-costs" class="section level3">
@@ -1318,8 +1510,6 @@ gender       1    2.4  2.3823  2.0958  0.147747
 Residuals 6741 7662.2  1.1367                      
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p><strong>Submission Correctness Tests (SCT)</strong></p>
-<p>success_msg(“Congratulations!”)</p>
 
 </div>
 </div>
@@ -1348,11 +1538,11 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": true,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
-"linkedin": false
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -1376,9 +1566,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
