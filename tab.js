@@ -110,6 +110,8 @@ var submitAnswer = function() {
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-131253904-1');
+
 </script>
+=======
+
