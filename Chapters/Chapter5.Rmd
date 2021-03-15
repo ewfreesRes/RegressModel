@@ -36,7 +36,7 @@ summary(meps2)
 ## Case study: MEPS health expenditures
 
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_itjvn841&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_i3ynk1nx" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -149,7 +149,7 @@ The outline consists of:
 </p>
 </div> 
 
-###Exercise. Summarizing data
+### Exercise. Summarizing data
 
 **Assignment Text**
 
@@ -246,7 +246,7 @@ success_msg("Excellent! Summarizing data, without reference to a model, is proba
 
 ```
 
-###Exercise. Fit a benchmark multiple linear regression model
+### Exercise. Fit a benchmark multiple linear regression model
 
 **Assignment Text**
 
@@ -334,7 +334,7 @@ success_msg("Excellent! You may have compared the four diagnostic graphs from th
 
 ```
 
-###Exercise. Variable selection
+### Exercise. Variable selection
 
 **Assignment Text**
 
@@ -426,7 +426,7 @@ success_msg("Excellent! Sometimes variables may have good predictive power but a
 
 ```
 
-###Exercise. Model comparisons using cross-validation
+### Exercise. Model comparisons using cross-validation
 
 **Assignment Text**
 
@@ -519,7 +519,7 @@ success_msg("Excellent! Cross-validation has become an essential piece of the da
 ```
 
 
-###Exercise. Out of sample validation 
+### Exercise. Out of sample validation 
 
 **Assignment Text**
 
@@ -692,7 +692,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_j3k2286f&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_zdgkxkik" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -788,7 +788,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_g3ysmpxy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qjxtcbse" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>

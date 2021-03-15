@@ -34,7 +34,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_53yv68dd&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_yxfgvaql" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -191,7 +191,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_94bk7tyn&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_vq3apay6" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -294,7 +294,7 @@ This uses the `R` function [step()](https://www.rdocumentation.org/packages/stat
 </p>
 </div>
 
-###Exercise. Data-snooping in stepwise regression
+### Exercise. Data-snooping in stepwise regression
 
 **Assignment Text**
 
@@ -387,7 +387,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_bwhmsm8k&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_zvacn361" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -441,7 +441,7 @@ In this section, you learn how to:
 </div> 
 
 
-###Exercise. Residual analysis and risk manager survey
+### Exercise. Residual analysis and risk manager survey
 
 **Assignment Text**
 
@@ -534,7 +534,7 @@ success_msg("Excellent! In this exercise, you examined residuals from a prelimin
 ```
 
 
-###Exercise. Added variable plot and refrigerator prices
+### Exercise. Added variable plot and refrigerator prices
 
 **Assignment Text**
 
@@ -584,7 +584,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_rhh81ftg&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_58daiyn0" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -704,7 +704,7 @@ $$
 </p>    
 </div> 
 
-###Exercise. Outlier example
+### Exercise. Outlier example
 
 In chapter 2, we consider a fictitious data set of 19 "base" points plus three different types of unusual points. In this exercise, we consider the effect of one unusal point, "C", this both an outlier (unusual in the "y" direction) and a high leverage point (usual in the x-space). The data have been pre-loaded in the dataframe `outlrC`.
 
@@ -770,7 +770,7 @@ success_msg("Excellent! With only two variables, we could argue graphically that
 
 ```
 
-###Exercise. High leverage and risk manager survey
+### Exercise. High leverage and risk manager survey
 
 
 **Assignment Text**
@@ -867,7 +867,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_30hrfg77&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_khmh83je" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -937,7 +937,7 @@ $$
 </p>
 </div>
 
-###Exercise. Collinearity and term life
+### Exercise. Collinearity and term life
 
 **Assignment Text**
 We have seen that adding an explanatory variable $x^2$ to a model is sometimes helpful even though it is perfectly related to $x$ (such as through the function $f(x)=x^2$). But, for some data sets, higher order polynomials and interactions can be approximately linearly related (depending on the range of the data). 
@@ -1017,7 +1017,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_i5dlmsna&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_kvkokgm2" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -1120,7 +1120,7 @@ Repeat Steps (i) through (iii) for each candidate model. Choose the model with t
 </p>
 </div> 
 
-###Exercise. Cross-validation and term life
+### Exercise. Cross-validation and term life
 
 
 **Assignment Text**

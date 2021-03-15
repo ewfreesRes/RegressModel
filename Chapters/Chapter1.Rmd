@@ -1,4 +1,4 @@
-#  Regression and the Normal Distribution
+# Regression and the Normal Distribution
 
 **Chapter description**
 
@@ -16,7 +16,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 
@@ -258,7 +258,7 @@ In this section, you learn how to:
 ***
 
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_p7gt98qk&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_04w1xjbe" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -351,7 +351,7 @@ lines(density(logclaims))
 </div> 
 
 
-###Exercise. Visualizing bodily injury claims with density plots
+### Exercise. Visualizing bodily injury claims with density plots
 
 **Assignment Text**
 
@@ -428,7 +428,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_4yk0k2m4&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_n2n42jwy" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -574,7 +574,7 @@ ex() %>% check_function("qqline",not_called_msg="Have you called `qqline` to ove
 success_msg("Congratulations on learning about box and qq plots. Although you are unlikely to show these plots to consumers of your analysis, you will find them useful tools as we explore multivariate aspects of data.")
 ```
 
-###Exercise. Effects on distributions of removing the largest claim
+### Exercise. Effects on distributions of removing the largest claim
 
 **Assignment Text**
 
@@ -658,7 +658,7 @@ In this exercise, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 
 <center>
@@ -725,7 +725,7 @@ mtext("Negative reciprocal of y", side = 1, cex = .75, line = 2)
 </p>
 </div> 
 
-###Exercise. Distribution of transformed bodily injury claims
+### Exercise. Distribution of transformed bodily injury claims
 
 **Assignment Text**
 

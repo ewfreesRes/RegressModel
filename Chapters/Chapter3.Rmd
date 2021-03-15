@@ -177,7 +177,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_9zszyh42&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_0xy78e1p" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -285,7 +285,7 @@ exp(predict(Term_mlr, newdata))
 </p>
 </div> 
 
-###Exercise. Least squares and term life data
+### Exercise. Least squares and term life data
 
 **Assignment Text**
 
@@ -368,7 +368,7 @@ success_msg("Congratulations! You now have experience fitting a regression plane
 
 ```
 
-###Exercise. Interpreting coefficients as proportional changes
+### Exercise. Interpreting coefficients as proportional changes
 
 **Assignment Text**
 
@@ -441,7 +441,7 @@ success_msg("Congratulations! From calculus, small changes in logarithmic values
 
 ```
 
-###Exercise. Interpreting coefficients as elasticities
+### Exercise. Interpreting coefficients as elasticities
 
 **Assignment Text**
 
@@ -555,7 +555,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_n9542z90&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_1rrbi7qd" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -632,7 +632,7 @@ round(confint(Term_mlr, level = .95), digits = 3)
 </p>  
 </div> 
   
-###Exercise. Statistical inference and term life
+### Exercise. Statistical inference and term life
 
 
 **Assignment Text**
@@ -705,7 +705,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_jfmz8kg0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qxygjiq2" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -835,7 +835,7 @@ lines(Term4$logincome, Ey2, col="red")
 </p>
 </div> 
 
-###Exercise. Binary variables and term life
+### Exercise. Binary variables and term life
 
 
 **Assignment Text**
@@ -912,7 +912,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_gkywbwai&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_n73q1ka4" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -1026,7 +1026,7 @@ $$
 </p>
 </div> 
 
-###Exercise. Categorical variables and Wisconsin hospital costs
+### Exercise. Categorical variables and Wisconsin hospital costs
 
 **Assignment Text**
 
@@ -1130,7 +1130,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_gs9oqymi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_j9btj8ns" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -1214,7 +1214,7 @@ $$
 </p>
 </div> 
 
-###Exercise. Hypothesis testing and term life
+### Exercise. Hypothesis testing and term life
 
 
 **Assignment Text**
@@ -1305,7 +1305,7 @@ success_msg("Congratulations! Hypothesis testing is a primary tool for  'inferri
 
 ```
 
-###Exercise. Hypothesis testing and Wisconsin hospital costs
+### Exercise. Hypothesis testing and Wisconsin hospital costs
 
 
 **Assignment Text**
@@ -1381,7 +1381,7 @@ summary(hosp_mlr3)$r.squared
 success_msg("Congratulations! By examining the coefficients of determination, $R^2$, for each of these models, you see that this provides one piece of evidence that the `hsa` is a far poorer predictor of costs than `drg`.")
 ```
 
-###Exercise. Hypothesis testing and auto claims
+### Exercise. Hypothesis testing and auto claims
 
 
 **Assignment Text**
