@@ -371,7 +371,7 @@ test_meps     <- shuffled_meps[test_indices, ]
 ```{r ex="ExerRegMod5.1.4", type="sample-code", tut=TRUE}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 # Use the step() to drop unnecessary variables from the full fitted model summarized in the object `meps_mlr2` and summarize this recommended model.
-model_stepwise <- step(meps_mlr2, data = ___, direction= "both", k = log(nrow(X)), trace = 0) 
+model_stepwise <- step(___, direction= "both", k = log(nrow(train_meps)), trace = 0)
 summary(model_stepwise)
 
 # As an alternative, use the explanatory variables in the recommended model and add the varibles `mpoor`. Summarize the fit  and note that statistical significance of the new variable.
@@ -388,7 +388,7 @@ summary(___)
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
 #library(Rcmdr)
 #temp <- stepwise(meps_mlr2, direction = 'backward/forward')
-model_stepwise <- step(meps_mlr2, data = X, direction= "both", k = log(nrow(X)), trace = 0) 
+model_stepwise <- step(meps_mlr2, direction= "both", k = log(nrow(train_meps)), trace = 0) 
 summary(model_stepwise)
 meps_mlr3 <- lm(logexpend ~ gender + age + phstat + anylimit + insure , data = train_meps)
 summary(meps_mlr3)

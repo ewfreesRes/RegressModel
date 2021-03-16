@@ -49,6 +49,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script language="javascript">
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -168,9 +169,9 @@ var submitAnswer = function() {
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -179,14 +180,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -195,9 +198,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -392,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
 <p style="text-align:right;">
-<em>Date: 15 March 2021</em>
+<em>Date: 16 March 2021</em>
 </p>
 <div id="about-regression-modeling" class="section level3 unnumbered">
 <h3>About Regression Modeling</h3>
@@ -481,22 +484,22 @@ A. Galton’s 1885 Regression Data
 B. Supporting R Code
 </h3>
 <p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># Reformat Data Set</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co">#heights &lt;- read.csv(&quot;CSVData\\GaltonFamily.csv&quot;,header = TRUE)</span></a>
-<a class="sourceLine" id="cb1-3" title="3">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="kw">str</span>(heights)</a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="kw">head</span>(heights)</a>
-<a class="sourceLine" id="cb1-6" title="6">heights<span class="op">$</span>child_ht &lt;-<span class="st"> </span>heights<span class="op">$</span>CHILDC</a>
-<a class="sourceLine" id="cb1-7" title="7">heights<span class="op">$</span>parent_ht &lt;-<span class="st"> </span>heights<span class="op">$</span>PARENTC</a>
-<a class="sourceLine" id="cb1-8" title="8">heights2 &lt;-<span class="st"> </span>heights[<span class="kw">c</span>(<span class="st">&quot;child_ht&quot;</span>,<span class="st">&quot;parent_ht&quot;</span>)]</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co">#heights &lt;- read.csv(&quot;CSVData\\galton_height.csv&quot;,header = TRUE)</span></a>
-<a class="sourceLine" id="cb2-2" title="2">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="kw">plot</span>(<span class="kw">jitter</span>(heights<span class="op">$</span>parent_ht),<span class="kw">jitter</span>(heights<span class="op">$</span>child_ht), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>),</a>
-<a class="sourceLine" id="cb2-4" title="4">     <span class="dt">ylab =</span> <span class="st">&quot;height of child&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;height of parents&quot;</span>)</a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="kw">abline</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="co"># Reformat Data Set</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2"></a><span class="co">#heights &lt;- read.csv(&quot;CSVData\\GaltonFamily.csv&quot;,header = TRUE)</span></span>
+<span id="cb1-3"><a href="index.html#cb1-3"></a>heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb1-4"><a href="index.html#cb1-4"></a><span class="kw">str</span>(heights)</span>
+<span id="cb1-5"><a href="index.html#cb1-5"></a><span class="kw">head</span>(heights)</span>
+<span id="cb1-6"><a href="index.html#cb1-6"></a>heights<span class="op">$</span>child_ht &lt;-<span class="st"> </span>heights<span class="op">$</span>CHILDC</span>
+<span id="cb1-7"><a href="index.html#cb1-7"></a>heights<span class="op">$</span>parent_ht &lt;-<span class="st"> </span>heights<span class="op">$</span>PARENTC</span>
+<span id="cb1-8"><a href="index.html#cb1-8"></a>heights2 &lt;-<span class="st"> </span>heights[<span class="kw">c</span>(<span class="st">&quot;child_ht&quot;</span>,<span class="st">&quot;parent_ht&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1"></a><span class="co">#heights &lt;- read.csv(&quot;CSVData\\galton_height.csv&quot;,header = TRUE)</span></span>
+<span id="cb2-2"><a href="index.html#cb2-2"></a>heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb2-3"><a href="index.html#cb2-3"></a><span class="kw">plot</span>(<span class="kw">jitter</span>(heights<span class="op">$</span>parent_ht),<span class="kw">jitter</span>(heights<span class="op">$</span>child_ht), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>),</span>
+<span id="cb2-4"><a href="index.html#cb2-4"></a>     <span class="dt">ylab =</span> <span class="st">&quot;height of child&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;height of parents&quot;</span>)</span>
+<span id="cb2-5"><a href="index.html#cb2-5"></a><span class="kw">abline</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</span>
+<span id="cb2-6"><a href="index.html#cb2-6"></a><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">summary</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1"></a><span class="kw">summary</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</span></code></pre></div>
 <pre><code>
 Call:
 lm(formula = heights$child_ht ~ heights$parent_ht)
