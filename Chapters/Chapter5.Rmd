@@ -36,7 +36,7 @@ summary(meps2)
 ## Case study: MEPS health expenditures
 
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_itjvn841&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_i3ynk1nx" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -44,9 +44,19 @@ summary(meps2)
 
 #### Video Overhead Details {-}
 
-<h6 style="text-align: center;"><a id="displayOver5.1A" href="javascript:toggleDet('toggleOver5.1A','displayOver5.1A');"><i><strong>Show Overhead A Details. MEPS health expenditures</strong></i></a> </h6>
-<div id="toggleOver5.1A" style="display: none">
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over5.1A')">A Details. MEPS health expenditures</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.1B')">B Details. Overhead MEPS health expenditures</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.1C')">C Details. Outcome variable</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.1D')">D Details. Explanatory variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.1E')">E Details. Case study outline</button>
+</div>
 
+
+<div id="Over5.1A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. MEPS health expenditures</h3>
+  <p>
 
 This exercise considers data from the *Medical Expenditure Panel Survey* (MEPS), conducted by the U.S. Agency of Health Research and Quality. MEPS is a probability survey that provides nationally representative estimates of health care use, expenditures, sources of payment, and insurance coverage for the U.S. civilian population. This survey collects detailed information on individuals of each medical care episode by type of services including physician office visits, hospital emergency room visits, hospital outpatient visits, hospital inpatient stays, all other medical provider visits, and use of prescribed medicines. This detailed information allows one to develop models of health care utilization to predict future expenditures. You can learn more about MEPS at http://www.meps.ahrq.gov/mepsweb/.
 
@@ -54,11 +64,13 @@ We consider MEPS data from the panels 7 and 8 of 2003 that consists of 18,735 in
 
 Our dependent variable is the amount of expenditures for outpatient visits, `expendop`. For MEPS, outpatient events include hospital outpatient department visits, office-based provider visits and emergency room visits excluding dental services. (Dental services, compared to other types of health care services, are more predictable and occur in a more regular basis.) Hospital stays with the same date of admission and discharge, known as "zero-night stays," were included in outpatient counts and expenditures. (Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures. Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.)
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.1B" href="javascript:toggleDet('toggleOver5.1B','displayOver5.1B');"><i><strong>Show Overhead B Details. Overhead MEPS health expenditures</strong></i></a> </h6>
-<div id="toggleOver5.1B" style="display: none">
-
+<div id="Over5.1B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Overhead MEPS health expenditures</h3>
+  <p>
 
 Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Agency of Health Research and Quality (AHRQ).
 
@@ -73,11 +85,13 @@ Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Age
 - This detailed information allows one to develop models of health care utilization to predict future expenditures.
 - We consider MEPS data from the first panel of 2003 and take a random sample of *n* = 2, 000 individuals between ages 18 and 65.
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.1C" href="javascript:toggleDet('toggleOver5.1C','displayOver5.1C');"><i><strong>Show Overhead C Details. Outcome variable</strong></i></a> </h6>
-<div id="toggleOver5.1C" style="display: none">
-
+<div id="Over5.1C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Outcome variable</h3>
+  <p>
 
 Our dependent variable is expenditures for outpatient admissions.
 
@@ -87,11 +101,13 @@ Our dependent variable is expenditures for outpatient admissions.
     - Payments associated with emergency room visits that immediately preceded an inpatient stay were included in the inpatient expenditures.
     - Prescribed medicines that can be linked to hospital admissions were included in inpatient expenditures, not in outpatient utilization.
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.1D" href="javascript:toggleDet('toggleOver5.1D','displayOver5.1D');"><i><strong>Show Overhead D Details. Explanatory variables</strong></i></a> </h6>
-<div id="toggleOver5.1D" style="display: none">
-
+<div id="Over5.1D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Explanatory variables</h3>
+  <p>
 
 9 variables in the database. Here 13 most relevant.
 
@@ -114,10 +130,13 @@ managedcare & \text{1 if enrolled in an HMO or gatekeeper plan} \\
 \end{array}}
 $$
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.1E" href="javascript:toggleDet('toggleOver5.1E','displayOver5.1E');"><i><strong>Show Overhead E Details. Case study outline</strong></i></a> </h6>
-<div id="toggleOver5.1E" style="display: none">
+<div id="Over5.1E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Case study outline</h3>
+  <p>
 
 The next series of exercises leads you through an analysis of the steps for understanding a complex data set. Because of the complexity of the data, in each step only a sample of procedures will be executed.
 
@@ -127,9 +146,10 @@ The outline consists of:
 - Splitting the data into training and testing portions with initial model fits
 - Selecting variables to be included in the model
 
+</p>
 </div> 
 
-###Exercise. Summarizing data
+### Exercise. Summarizing data
 
 **Assignment Text**
 
@@ -149,6 +169,10 @@ To examine relationships of the outcome variable visually, we look to scatterplo
 [boxplot()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/boxplot/) function.
 - Examine the relationship of age versus logarithmic expenditures using a scatter plot. Superimpose a local fitting line using the [lines()](https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines) and
 [lowess()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lowess) functions.
+
+```{r ex="ExerRegMod5.1.2", type="hint", tut=TRUE}
+One of the most important steps in linear regression is understanding your data. Using a combination of `str()` and  `summary()` lets you view quantitative statistics about your data, while `boxplot()` and `hist()` give you a more visual representation of your data.
+```
 
 ```{r ex="ExerRegMod5.1.2", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
@@ -197,31 +221,32 @@ lines(lowess(meps$age, meps$logexpend), col="red")
 
 
 ```{r ex="ExerRegMod5.1.2", type="sct", tut=TRUE}
-ex() %>% check_function("str") %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("summary") %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("table") %>% check_result() %>% check_equal()
-ex() %>% check_function("par",index=1) %>% check_arg(., "mfrow") %>% check_equal()
-ex() %>% check_function("hist",index=1) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_function("hist",index=2) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_function("par",index=2) %>% check_arg(., "mfrow") %>% check_equal()
-ex() %>% check_object("meps") %>% check_column("logexpend") %>% check_equal()
-ex() %>% check_function("boxplot") %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
-}
-ex() %>% check_function("plot") %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
-}
-ex() %>% check_function("lines") 
-ex() %>% check_function("lowess") %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
-}
+# ex() %>% check_function("str", not_called_msg="Use the `str` command to view the structure of the data. ") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like the structure of the data `meps`.")
+# ex() %>% check_function("summary", not_called_msg="Use the `summary` function to view a summary of the data. ") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like to view a summary of `meps`.")
+# ex() %>% check_function("table", not_called_msg="Use the `table` function to find the number of observations of each race. ") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we would like to create a table from `meps` that separates based on `race`.")
+# ex() %>% check_function("par",index=1,not_called_msg="Use the `par` function to alter the plotting device to have 2 side-by-side graphs. ") %>% check_arg(., "mfrow") %>% check_equal(incorrect_msg="To create two side-by-side graphs, set `mfrow` equal to `c(2,1)`. ")
+# ex() %>% check_function("hist",index=1, not_called_msg="Use the `hist` function to create a histogram of `expendop`.") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to specify that we want the first histogram to be made using the data found in `expendop`, which is a column in `meps`.")
+# ex() %>% check_function("hist",index=2 not_called_msg="Use the `hist` function to create a histogram of the log of `expendop`.") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to specify that we want the second histogram to be made using the log of the data found in `expendop`, which is a column in `meps`.")
+# ex() %>% check_function("par",index=2, not_called_msg="Use `par` to reset the plotting device to hold a single graph. ") %>% check_arg(., "mfrow") %>% check_equal(incorrect_msg="to reset the plotting device, set `mfrow` to be equal to `c(1,1). ")
+# ex() %>% check_object("meps") %>% check_column("logexpend", col_missing_msg="Make sure to create a new column in `meps` named `logexpend`.") %>% check_equal(incorrect_msg="The values in `logexpend` should be equal to the log of the values in `meps$expendop`.")
+# ex() %>% check_function("boxplot", not_called_msg="Use the `boxplot` function to create a boxplot showing `logexpend` based on `phstat`.") %>% {
+#   check_arg(., "formula") %>% check_equal(incorrect_msg="Make sure to specify that we want boxplots that show `logexpend` for each value of `phstat`.")
+#   check_arg(., "data") %>% check_equal(incorrect_msg="Make sure to specify that our data comes from the dataframe `meps`.")
+# }
+# ex() %>% check_function("plot", not_called_msg="Use `plot` to create a plot that shows `logexpend` based on `age`.") %>% {
+#   check_arg(., "x") %>% check_equal(incorrect_msg="The independent variable should be `age`.")
+#   check_arg(., "y") %>% check_equal(incorrect_msg="The dependent variable should be `logexpend`.")
+# }
+# ex() %>% check_function("lines", not_called_msg="Use the `lines` function to add a line to our plot. ") 
+# ex() %>% check_function("lowess", not_called_msg="Use the `lowess` function to add a smoothing effect to our line. ") %>% {
+#   check_arg(., "x") %>% check_equal(incorrect_msg="The first argument in `lowess` should be our `x` variable, which is `age`.")
+#   check_arg(., "y") %>% check_equal(incorrect_msg="The second argument in `lowess` should be our `y` variable, which is `logexpend`.")
+# }
 success_msg("Excellent! Summarizing data, without reference to a model, is probably the most time-consuming part of any predictive modeling exercise. Summary statistics are also a key part of any report as they illustrate features of the data that are accessible to a broad audience.")
+
 ```
 
-###Exercise. Fit a benchmark multiple linear regression model
+### Exercise. Fit a benchmark multiple linear regression model
 
 **Assignment Text**
 
@@ -239,6 +264,10 @@ We start by fitting a benchmark model. It is common to use all available explana
 - Fit a full model using `logexpend` as the outcome and all explanatory variables and summarize the fit. Use the [plot()]() function for evidence that this variable is more suited for linear regression methods than expenditures on the original scale.
 
 **Hint.** A `plot` of a regression object such as plot(mlr) provides four diagnostic plots. These can be organized as a 2 by 2 array using `par(mfrow = c(2, 2))`.
+
+```{r ex="ExerRegMod5.1.3", type="hint", tut=TRUE}
+A `plot` of a regression object such as plot(mlr) provides four diagnostic plots. These can be organized as a 2 by 2 array using `par(mfrow = c(2, 2))`.
+```
 
 ```{r ex="ExerRegMod5.1.3", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
@@ -294,17 +323,18 @@ plot(meps_mlr2)
 ```
 
 ```{r ex="ExerRegMod5.1.3", type="sct", tut=TRUE}
-ex() %>% check_object(meps_mlr1) %>% check_equal()
-ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("par") %>% check_arg(., "mfrow") %>% check_equal()
-ex() %>% check_function("plot",index=1) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_object("meps_mlr2") %>% check_equal()
-ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_function("plot",index=2) %>% check_arg(., "x") %>% check_equal()
+# ex() %>% check_object("meps_mlr1", undefined_msg="Use `lm` to create a linear model named `meps_mlr1`".) %>% check_equal(incorrect_msg="Make sure to create this model so that `expendop` is based on `gender`, `age`, `race`, `region`, `educ`, `phstat`, `mpoor`, `anylimit`, `income`, `insure`, `usc`, `unemploy`, and `managedcare` from the dataframe `meps`.")
+# ex() %>% check_function("summary",index=1,not_called_msg="Use the `summary` function to view a summary of our linear model. ") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `meps_mlr1`.")
+# ex() %>% check_function("par", not_called_msg="Use the `par` function to alter the plotting device to show a 2 by 2 grid of graphs. ") %>% check_arg(., "mfrow") %>% check_equal(incorrect_msg="To create a 2 by 2 grid of graphs, set `mfrow` equal to `c(2,2)`. ")
+# ex() %>% check_function("plot",index=1, not_called_msg="Use `plot` to create the 4 plots associated with a linear model. ") %>% check_arg(., "x") %>% check_equal(incorrect_msg="If you set the parameter `x` to be equal to a linear model, in this case `meps_mlr1`, you will get 4 useful graphs!")
+# ex() %>% check_object("meps_mlr2", undefined_msg="Use `lm` to create a linear model named `meps_mlr2`.") %>% check_equal(incorrect_msg="Make sure to create this model so that `logexpend` is based on `gender`, `age`, `race`, `region`, `educ`, `phstat`, `mpoor`, `anylimit`, `income`, `insure`, `usc`, `unemploy`, and `managedcare` from the dataframe `meps`.")
+# ex() %>% check_function("summary",index=2, not_called_msg="Use the `summary` function to view a summary of our new linear model, `meps_mlr2`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `meps_mlr2`.")
+# ex() %>% check_function("plot",index=2, not_called_msg="Use the `plot` function to create the 4 plots associated with a linear model. ") %>% check_arg(., "x") %>% check_equal(incorrect_msg="If you set the parameter `x` to be equal to a linear model, in this case `meps_mlr2`, you will get 4 useful graphs!")
 success_msg("Excellent! You may have compared the four diagnostic graphs from the MLR model fit of 'expend' to those created using the same procedure but with logarithmic expenditures as the outcome. This provides another piece of evidence that log expenditures are more suitable for regression modeling. Using logarithmic outcomes is a common feature of actuarial applications but can be difficult to diagnose and interpret without practice.")
+
 ```
 
-###Exercise. Variable selection
+### Exercise. Variable selection
 
 **Assignment Text**
 
@@ -320,7 +350,10 @@ From our prior work, the training dataframe `train_meps` has already been loaded
 - As an alternative, use the explanatory variables in the recommended model and add the varibles `phstat`. Summarize the fit and note that statistical significance of the new variable.
 - You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
 
-**Hint**
+```{r ex="ExerRegMod5.1.4", type="hint", tut=TRUE}
+Starting with a model that consists of all your explanatory variables and using `step()` is a good way to create a model that fits the data well. On the other hand, this is simply statistics, which is unable to capture "real" explanations, or follow regulatory rules.  
+```
+
 ```{r ex="ExerRegMod5.1.4", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
 meps <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/7b7dab6d0c528e4cd2f8d0e0fc7824a254429bf8/HealthMeps.csv", header = TRUE)
@@ -334,8 +367,6 @@ train_meps    <- shuffled_meps[train_indices, ]
 test_indices  <- (round(0.25 * n) + 1):n
 test_meps     <- shuffled_meps[test_indices, ]
 ```
-
-
 
 ```{r ex="ExerRegMod5.1.4", type="sample-code", tut=TRUE}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
@@ -352,7 +383,6 @@ meps_mlr5 <- lm(logexpend ~ age + phstat + anylimit + insure  + ___, data = trai
 summary(___)
 
 ```
-
 
 ```{r ex="ExerRegMod5.1.4", type="solution", tut=TRUE}
 meps_mlr2 <- lm(logexpend ~ gender + age + race + region + educ + phstat + mpoor + anylimit + income + insure + usc + unemploy + managedcare, data = train_meps)
@@ -382,21 +412,21 @@ summary(meps_mlr5)
 
 ```
 
-
 ```{r ex="ExerRegMod5.1.4", type="sct", tut=TRUE}
-ex() %>% check_object("meps_mlr2") %>% check_equal()
-ex() %>% check_object("model_stepwise") %>% check_equal()
-ex() %>% check_function("summary",index=1) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_object("meps_mlr3") %>% check_equal()
-ex() %>% check_function("summary",index=2) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_object("meps_mlr4") %>% check_equal()
-ex() %>% check_function("summary",index=3) %>% check_arg(., "object") %>% check_equal()
-ex() %>% check_object("meps_mlr5") %>% check_equal()
-ex() %>% check_function("summary",index=4) %>% check_arg(., "object") %>% check_equal()
+# ex() %>% check_object("meps_mlr2", undefined_msg="Use `lm` to create a linear model named `meps_mlr2`.") %>% check_equal(incorrect_msg="Make sure to create the linear model so that `logexpend` is based on `gender`, `age`, `race`, `region`, `educ`, `phstat`, `mpoor`, `anylimit`, `income`, `insure`, `usc`, `unemploy`, and `managedcare` from the data set `train_meps`.")
+# ex() %>% check_object("model_stepwise", undefined_msg="Utilize the `step` function to create a simplified model named `model_stepwise`.") %>% check_equal(incorrect_msg="Make sure to run `step` on `meps_mlr2` in both directions, and with k set to be the BIC estimate. ")
+# ex() %>% check_function("summary",index=1, not_called_msg="Use `summary` to create and view a summary of `model_stepwise`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `model_stepwise`.")
+# ex() %>% check_object("meps_mlr3", undefined_msg="Create a new linear model off a small number of explanatory variables named `meps_mlr3`.") %>% check_equal(incorrect_msg="When you create your linear model, make sure to model `logexpend` based on `gender`, `age`, `phstat`, `anylimit`, and `insure` from the dataframe `train_meps`.")
+# ex() %>% check_function("summary",index=2, not_called_msg="Use the `summary` function to create and view a summary of `meps_mlr3`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `meps_mlr3`.")
+# ex() %>% check_object("meps_mlr4", undefined_msg="Create a new linear model off a small number of explanatory variables named `meps_mlr4`.") %>% check_equal(incorrect_msg="When you create your linear model, make sure to model `logexpend` based on `gender`, `age`, `phstat`, `anylimit`, `insure`, and `mpoor` from the dataframe `train_meps`.")
+# ex() %>% check_function("summary",index=3, not_called_msg="Use the `summary` function to create and view a summary of `meps_mlr4`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `meps_mlr4`.")
+# ex() %>% check_object("meps_mlr5", undefined_msg="Create a new linear model off a small number of explanatory variables named `meps_mlr5`.") %>% check_equal(incorrect_msg="When you create your linear model, make sure to model `logexpend` based on `age`, `phstat`, `anylimit`, and `insure` from the dataframe `train_meps`.")
+# ex() %>% check_function("summary",index=4, not_called_msg="Use the `summary` function to create and view a summary of `meps_mlr5`.") %>% check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `meps_mlr5`.")
 success_msg("Excellent! Sometimes variables may have good predictive power but are unacceptable for policy purposes - in insurance, ethnicity and sometimes sex are good examples. This implies that model interpretation can be just as important as the ability to predict.")
+
 ```
 
-###Exercise. Model comparisons using cross-validation
+### Exercise. Model comparisons using cross-validation
 
 **Assignment Text**
 
@@ -412,7 +442,9 @@ In the sample code, the cross-validation procedure has been summarized into a fu
 
 Note which model is suggested by the cross validation function.
 
-**Hint.** The cross validation function of this is very similar to the one we did earlier. Different number of subsamples, different test/training data and a different outcome variable. Except for these minor changes, it is the same function that we worked with earlier.
+```{r ex="ExerRegMod5.1.5", type="hint", tut=TRUE}
+Performing cross-validation measures on your model allows you to see how well it does when it comes to predicting "out of sample" data points.
+```
 
 ```{r ex="ExerRegMod5.1.5", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
@@ -476,17 +508,18 @@ crossvalfct(explvars.3)
 
 
 ```{r ex="ExerRegMod5.1.5", type="sct", tut=TRUE}
-ex() %>% check_object("explvars.1") %>% check_equal()
-ex() %>% check_function("crossvalfct",index=1) %>% check_arg(., "explvars") %>% check_equal()
-ex() %>% check_object("explvars.2") %>% check_equal()
-ex() %>% check_function("crossvalfct",index=2) %>% check_arg(., "explvars") %>% check_equal()
-ex() %>% check_object("explvars.3") %>% check_equal()
-ex() %>% check_function("crossvalfct",index=3) %>% check_arg(., "explvars") %>% check_equal()
+# ex() %>% check_object("explvars.1", undefined_msg="Create a variable named `explvars.1` that contains the following as character strings: `gender`, `age`, `phstat`, `anylimit`, and `insure`.") %>% check_equal(incorrect_msg="Make sure to specify that the following are expressed as character strings, and not as numbers: : `gender`, `age`, `phstat`, `anylimit`, and `insure`.")
+# ex() %>% check_function("crossvalfct",index=1, not_called_msg="Utilize the custom built function `crossvalfct` to find the cross-validation statistic for `explvars.1`.") %>% check_arg(., "explvars") %>% check_equal(incorrect_msg="Make sure to specify that we want the cross-validation statistic for `explvasr.1`.")
+# ex() %>% check_object("explvars.2", undefined_msg="Create a variable named `explvars.2` that contains the following as character strings: `gender`, `age`, `phstat`, `anylimit`, `insure`, and `mpoor`.") %>% check_equal(incorrect_msg="Make sure to specify that the following are expressed as character strings, and not as numbers: : `gender`, `age`, `phstat`, `anylimit`, `insure`, and `mpoor`.")
+# ex() %>% check_function("crossvalfct",index=2, not_called_msg="Utilize the custom built function `crossvalfct` to find the cross-validation statistic for `explvars.2`.") %>% check_arg(., "explvars") %>% check_equal(incorrect_msg="Make sure to specify that we want the cross-validation statistic for `explvasr.2`.")
+# ex() %>% check_object("explvars.3", undefined_msg="Create a variable named `explvars.3` that contains the following as character strings: `age`, `phstat`, `anylimit`, `insure`, and `mpoor`.") %>% check_equal(incorrect_msg="Make sure to specify that the following are expressed as character strings, and not as numbers: :`age`, `phstat`, `anylimit`, `insure`, and `mpoor`.")
+# ex() %>% check_function("crossvalfct",index=3, not_called_msg="Utilize the custom built function `crossvalfct` to find the cross-validation statistic for `explvars.3`.") %>% check_arg(., "explvars") %>% check_equal(incorrect_msg="Make sure to specify that we want the cross-validation statistic for `explvasr.3`.")
 success_msg("Excellent! Cross-validation has become an essential piece of the data analysts toolkit. Good that you now have additional experience with it.")
+
 ```
 
 
-###Exercise. Out of sample validation 
+### Exercise. Out of sample validation 
 
 **Assignment Text**
 
@@ -510,6 +543,10 @@ The comparisons will be based on expenditures in dollars using the held-out vali
 - Use the training sample to fit a benchmark linear model with `expendop` and explanatory variables listed in `explvars4`
 - Predict expenditures for the test data and summarize the fit for the benchmark model using the sum of absolute prediction errors.
 - Compare the predictions of the models graphically.
+
+```{r ex="ExerRegMod5.1.6", type="hint", tut=TRUE}
+There is nothing in this code to change. simply examine the code, play around with it, and figure out what each individual line does, and how they work together.
+```
 
 ```{r ex="ExerRegMod5.1.6", type="pre-exercise-code", tut=TRUE}
 #meps <- read.csv("CSVData\\HealthMeps.csv", header = TRUE)
@@ -585,44 +622,43 @@ plot(predict_mlr3, test_meps$expendop, xlab = "MLR Predicts", ylab = "Held Out E
 
 
 ```{r ex="ExerRegMod5.1.6", type="sct", tut=TRUE}
-ex() %>% check_object("meps_mlr3") %>% check_equal()
-ex() %>% check_object("explvars3") %>% check_equal()
-ex() %>% check_object("predict_meps3") %>% check_equal()
-ex() %>% check_function("exp",index=1) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_function("predict",index=1) %>% {
-  check_arg(., "object") %>% check_equal()
-  check_arg(., "newdata") %>% check_equal()
-}
-ex() %>% check_object("predict_mlr3") %>% check_equal()
-ex() %>% check_object("predict_err_mlr3")
-ex() %>% check_function("abs",index=1) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_function("sum",index=1) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_object(sape3) %>% check_equal()
-
-ex() %>% check_object("meps_mlr4") %>% check_equal()
-ex() %>% check_object("explvars4") %>% check_equal()
-ex() %>% check_object("predict_meps4") %>% check_equal()
-ex() %>% check_function("exp",index=2) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_function("predict",index=2) %>% {
-  check_arg(., "object") %>% check_equal()
-  check_arg(., "newdata") %>% check_equal()
-}
-ex() %>% check_object("predict_mlr4") %>% check_equal()
-ex() %>% check_object("predict_err_mlr4")
-ex() %>% check_function("abs",index=2) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_function("sum",index=2) %>% check_arg(., "x") %>% check_equal()
-ex() %>% check_object(sape4) %>% check_equal()
-
-ex() %>% check_function("par") %>% check_arg(., "mfrow") %>% check_equal()
-ex() %>% check_function("plot",index=1) %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
-}
-ex() %>% check_function("plot",index=2) %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "y") %>% check_equal()
-}
+# ex() %>% check_object("meps_mlr3", undefined_msg="Use `lm` to create a linear model named `meps_mlr3`.") %>% check_equal(incorrect_msg="Make sure to create your model so that `logexpend` is based on `gender`, `age`, `phstat`, `anylimit`, `insure`, and `mpoor` from the data in `train_meps`.")
+# ex() %>% check_object("explvars3", undefined_msg="Create a variable named `explvars3` that has `gender`, `age`, `phstat`, `anylimit`, `insure`, and `mpoor` as character strings. ") %>% check_equal(incorrect_msg="Make sure to have the following as a character string instead of the values contained in each: `gender`, `age`, `phstat`, `anylimit`, `insure`, and `mpoor`.")
+# ex() %>% check_object("predict_meps3", undefined_msg="Make a new dataframe named `predict_meps3` that a subset of the data not used to create the model. ") %>% check_equal(incorrect_msg="The subset of data not used is stored in `test_meps`, and the columns we want are now stored in `explvars3`.")
+# ex() %>% check_function("exp",index=1,not_called_msg="Make sure to take the exponential of the predicted values to remove the log effect. ") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to run `exp` on the values you get from your `predict` call. ")
+# ex() %>% check_function("predict",index=1, not_called_msg="Run `predict` on the data you did not use to create the model. ") %>% {
+#   check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that the model we are using to make predictions is `meps_mlr3`.")
+#   check_arg(., "newdata") %>% check_equal(incorrect_msg="Make sure to specify that we would like predictions for the values found in `predict_meps3`.")
+# }
+# ex() %>% check_object("predict_mlr3", undefined_msg="Make sure to save the exponential of the predicted values to `predict_mlr3`.") %>% check_equal(incorrect_msg="Make sure to take the exponential of the values found using `predict`.")
+# ex() %>% check_object("predict_err_mlr3", undefined_msg="Save the prediction errors to a variable named `predict_err_mlr3`) %>% check_equal(incorrect_msg="To find the prediction errors, subtract the predicted values in `predict_mlr3` from the actual values found in `test_meps$expendop`.")
+# ex() %>% check_function("abs",index=1, undefined_msg="Make sure to take the absolute value of the prediction errors. ") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to take the absolute value of the prediction errors, which can be found in `predict_err_mlr3`.")
+# ex() %>% check_function("sum",index=1, not_called_msg="Take the sum of the absolute value of the prediction errors. ") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to specify that we would like the sum of the absolute value of the prediction errors. ")
+# ex() %>% check_object("sape3", undefined_msg="Make sure to set the sum of the absolute value of the prediction errors divided by 1000 equal to `sape3`.") %>% check_equal(incorrect_msg="Make sure that you have taken the sum of the absolute value of the prediction errors, and divided that number by 1000. ")
+# ex() %>% check_object("meps_mlr4", undefined_msg="Use `lm` to create a linear model named `meps_mlr4`.") %>% check_equal(incorrect_msg="Make sure to create your model so that `expendop` is based on `gender`,` age`, `race`, `region`, `educ`, `phstat`, `mpoor`, `anylimit`, `income`, `usc`, `unemploy`, and `managedcare` from the data in `train_meps`.")
+# ex() %>% check_object("explvars4", undefined_msg="Create a variable named `explvars4` that has `gender`,` age`, `race`, `region`, `educ`, `phstat`, `mpoor`, `anylimit`, `income`, `usc`, `unemploy`, and `managedcare` as character strings. ") %>% check_equal(incorrect_msg="Make sure to have the following as a character string instead of the values contained in each: `gender`,` age`, `race`, `region`, `educ`, `phstat`, `mpoor`, `anylimit`, `income`, `usc`, `unemploy`, and `managedcare`.")
+# ex() %>% check_object("predict_meps4", undefined_msg="Make a new dataframe named `predict_meps4` that a subset of the data not used to create the model. ") %>% check_equal(incorrect_msg="The subset of data not used is stored in `test_meps`, and the columns we want are now stored in `explvars4`.")
+# ex() %>% check_function("exp",index=2,not_called_msg="Make sure to take the exponential of the predicted values to remove the log effect. ") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to run `exp` on the values you get from your `predict` call. ")
+# ex() %>% check_function("predict",index=2, not_called_msg="Run `predict` on the data you did not use to create the model. ") %>% {
+#   check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that the model we are using to make predictions is `meps_mlr4`.")
+#   check_arg(., "newdata") %>% check_equal(incorrect_msg="Make sure to specify that we would like predictions for the values found in `predict_meps4`.")
+# }
+# ex() %>% check_object("predict_mlr4", undefined_msg="Make sure to save the exponential of the predicted values to `predict_mlr4`.") %>% check_equal(incorrect_msg="Make sure to take the exponential of the values found using `predict`.")
+# ex() %>% check_object("predict_err_mlr4", undefined_msg="Save the prediction errors to a variable named `predict_err_mlr4`) %>% check_equal(incorrect_msg="To find the prediction errors, subtract the predicted values in `predict_mlr4` from the actual values found in `test_meps$expendop`.")
+# ex() %>% check_function("abs",index=2, undefined_msg="Make sure to take the absolute value of the prediction errors. ") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to take the absolute value of the prediction errors, which can be found in `predict_err_mlr4`.")
+# ex() %>% check_function("sum",index=2, not_called_msg="Take the sum of the absolute value of the prediction errors. ") %>% check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to specify that we would like the sum of the absolute value of the prediction errors. ")
+# ex() %>% check_object("sape4", undefined_msg="Make sure to set the sum of the absolute value of the prediction errors divided by 1000 equal to `sape4`.") %>% check_equal(incorrect_msg="Make sure that you have taken the sum of the absolute value of the prediction errors, and divided that number by 1000. ")
+# ex() %>% check_function("par",not_called_msg="Use `par` to alter the graphing device to have 2 side by side graphs. ") %>% check_arg(., "mfrow") %>% check_equal(incorrect_msg="To do this, set `mfrow` equal to `c(2,1)`. ")
+# ex() %>% check_function("plot",index=1, not_called_msg="Create a plot of the two prediction errors as the first graph. ") %>% {
+#   check_arg(., "x") %>% check_equal(incorrect_msg="The x axis should have the prediction errors from `predict_err_mlr4`.")
+#   check_arg(., "y") %>% check_equal(incorrect_msg="The y axis should have the prediction errors from `predict_err_mlr3`.")
+# }
+# ex() %>% check_function("plot",index=2, not_called_msg="The second graph should plot the predictions from mlr3 against the actual values of expenditures. ") %>% {
+#   check_arg(., "x") %>% check_equal(incorrect_msg="The X axis should have the predictions, found in `predict_mlr3`.")
+#   check_arg(., "y") %>% check_equal(incorrect_msg="The Y axis should have the actual expenditure values, found in `test_meps$expendop`.")
+# }
 success_msg("Excellent! We found that the model of log expenditures outperforms the benchmark that models expenditures, even when the out of sample criterion was in the original 'dollar' units. It is comoforting to know that a search for a good model does well when using different out of sample criteria.")
+
 ```
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = FALSE, echo = FALSE}
@@ -656,7 +692,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_j3k2286f&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_zdgkxkik" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -664,9 +700,16 @@ In this section, you learn how to:
 
 #### Video Overhead Details {-}
 
-<h6 style="text-align: center;"><a id="displayOver5.2A" href="javascript:toggleDet('toggleOver5.2A','displayOver5.2A');"><i><strong>Show Overhead A Details. Interpreting individual effects</strong></i></a> </h6>
-<div id="toggleOver5.2A" style="display: none">
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over5.2A')">A Details. Interpreting individual effects</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.2B')">B Details. Other Interpretations</button>
+</div>
 
+
+<div id="Over5.2A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Interpreting individual effects</h3>
+  <p>
 
 - Substantive Effect
     - Does a 1 unit change in $x$ imply an economically meaningful change in $y$?
@@ -681,11 +724,13 @@ In this section, you learn how to:
 - **Causal Effects**
     - If we change $x$, would $y$ change?
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.2B" href="javascript:toggleDet('toggleOver5.2B','displayOver5.2B');"><i><strong>Show Overhead B Details. Other Interpretations</strong></i></a> </h6>
-<div id="toggleOver5.2B" style="display: none">
-
+<div id="Over5.2B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Other Interpretations</h3>
+  <p>
 
 - Regression function and pricing
     - The regression function is $\mathrm{E~}y = \beta_0 + \beta_1 x_1 + \cdots +\beta _k x_k$.
@@ -696,6 +741,7 @@ In this section, you learn how to:
 - Prediction
     - A new patient comes in with a given set of characteristics, what can I say about his or her future medical claims?
 
+</p>
 </div> 
 
 <br>
@@ -742,7 +788,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_g3ysmpxy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qjxtcbse" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -750,18 +796,30 @@ In this section, you learn how to:
 
 #### Video Overhead Details {-}
 
-<h6 style="text-align: center;"><a id="displayOver5.3A" href="javascript:toggleDet('toggleOver5.3A','displayOver5.3A');"><i><strong>Show Overhead A Details. The importance of variable selection</strong></i></a> </h6>
-<div id="toggleOver5.3A" style="display: none">
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over5.3A')">A Details. The importance of variable selection</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.3B')">B Details. Example. Regression using one explanatory variable</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.3C')"C Details. Principle of parsimony</button>
+</div>
+
+
+<div id="Over5.3A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. The importance of variable selection</h3>
+  <p>
 
 - With too many or too few variables, $s$ is too large an estimate of $\sigma$.
     - Prediction intervals are too large
     - Standard errors for the partial slopes are too large
 - With too few or incorrect variables, we produce biased estimates of the slopes $\beta$. Thus, our predictions are biased and hence inaccurate.
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.3B" href="javascript:toggleDet('toggleOver5.3B','displayOver5.3B');"><i><strong>Show Overhead B Details. Example. Regression using one explanatory variable</strong></i></a> </h6>
-<div id="toggleOver5.3B" style="display: none">
+<div id="Over5.3B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Example. Regression using one explanatory variable</h3>
+  <p>
 
 - **Too Many Variables**
     - The "true" model is $y_i = \beta_0+ \varepsilon_i$
@@ -782,10 +840,13 @@ $$
 
 There is a persistent, long-term error in omitting the explanatory variable $x$.
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver5.3C" href="javascript:toggleDet('toggleOver5.3C','displayOver5.3C');"><i><strong>Show Overhead C Details. Principle of parsimony</strong></i></a> </h6>
-<div id="toggleOver5.3C" style="display: none">
+<div id="Over5.3C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Principle of parsimony</h3>
+  <p>
 
 - The principle of parsimony, also known as *Occam's Razor*, states that when there are several possible explanations for a phenomenon, use the simplest.
     - A simpler explanation is easier to interpret.
@@ -795,6 +856,7 @@ There is a persistent, long-term error in omitting the explanatory variable $x$.
     - Omitting important variables can lead to biased results, a potentially serious error.
     - Including extraneous variables decreases the degrees of freedom and increases the estimate of variability, typically of less concern in actuarial applications.
 
+</p>
 </div>     
     
 <br>

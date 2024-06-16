@@ -1,50 +1,72 @@
 <!DOCTYPE html>
-<html >
-
+<html lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
-  <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Regression and the Normal Distribution | Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
+  <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  <meta property="og:title" content="Chapter 1 Regression and the Normal Distribution | Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
   
   
   <meta property="og:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
-  <meta name="github-repo" content="<a href="https://github.com/ewfreesRes/RegressModel" class="uri">https://github.com/ewfreesRes/RegressModel</a>" />
+  <meta name="github-repo" content="https://github.com/ewfreesRes/RegressModel" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
+  <meta name="twitter:title" content="Chapter 1 Regression and the Normal Distribution | Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   
   <meta name="twitter:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
   
 
-<meta name="author" content="Edward W. (Jed) Frees, University of Wisconsin-Madison">
+<meta name="author" content="Edward W. (Jed) Frees, University of Wisconsin-Madison" />
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="basic-linear-regression.html">
+<link rel="prev" href="index.html"/>
+<link rel="next" href="basic-linear-regression.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
 
 
 
+
+
+
+<script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
 
 <script language="javascript">
 function toggle(id1,id2) {
@@ -134,52 +156,78 @@ var submitAnswer = function() {
 
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125587869-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131253904-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  gtag('config', 'UA-131253904-1');
 
-  gtag('config', 'UA-125587869-1');
 </script>
+=======
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -277,7 +325,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4" data-path="variable-selection.html"><a href="variable-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Selection</a><ul>
 <li class="chapter" data-level="4.1" data-path="variable-selection.html"><a href="variable-selection.html#an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1</b> An iterative approach to data analysis and modeling</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="variable-selection.html"><a href="variable-selection.html#video-14"><i class="fa fa-check"></i><b>4.1.1</b> Video</a></li>
-<li class="chapter" data-level="4.1.2" data-path="variable-selection.html"><a href="variable-selection.html#mc-exercise.-an-iterative-approach-to-data-modeling"><i class="fa fa-check"></i><b>4.1.2</b> MC Exercise. An iterative approach to data modeling</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="variable-selection.html"><a href="variable-selection.html#automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2</b> Automatic variable selection procedures</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="variable-selection.html"><a href="variable-selection.html#video-15"><i class="fa fa-check"></i><b>4.2.1</b> Video</a></li>
@@ -360,28 +407,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </center>
 <div id="video-overhead-details" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver1.1A" href="javascript:toggleDet('toggleOver1.1A','displayOver1.1A');"><i><strong>Show Overhead A Details. Description of the data</strong></i></a>
-</h6>
-<div id="toggleOver1.1A" style="display: none">
-<p>To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton’s 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents’ height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father’s height and rescaled mother’s height. Galton was aware that the parents’ and the adult child’s height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
-<span class="co">#heights &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;, header = TRUE)</span>
-<span class="kw">plot</span>(<span class="kw">jitter</span>(heights<span class="op">$</span>parent_ht),<span class="kw">jitter</span>(heights<span class="op">$</span>child_ht), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>),
-     <span class="dt">ylab =</span> <span class="st">&quot;height of child&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;height of parents&quot;</span>)
-<span class="kw">abline</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))
-<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="tab">
+<p><button class="tablinks" onclick="openTab(event, 'Over1.1A')">A Details. Description of the data</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.1B')">B Details. Read and examine data structure</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.1C')">C Details. Summary stats for parents’ height</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.1D')">D. Fit a normal curve to parents’ height details</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.1E')">E Details. Use the normal approximation to determine the probability of the height of tall parents</button></p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.1B" href="javascript:toggleDet('toggleOver1.1B','displayOver1.1B');"><i><strong>Show Overhead B Details. Read and examine data structure</strong></i></a>
-</h6>
-<div id="toggleOver1.1B" style="display: none">
+<div id="Over1.1A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Description of the data
+</h3>
+<p>
+<p>To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton’s 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents’ height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father’s height and rescaled mother’s height. Galton was aware that the parents’ and the adult child’s height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">galton_height.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co">#heights &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;, header = TRUE)</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="kw">plot</span>(<span class="kw">jitter</span>(heights<span class="op">$</span>parent_ht),<span class="kw">jitter</span>(heights<span class="op">$</span>child_ht), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">80</span>),</a>
+<a class="sourceLine" id="cb5-4" title="4">     <span class="dt">ylab =</span> <span class="st">&quot;height of child&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;height of parents&quot;</span>)</a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">abline</span>(<span class="kw">lm</span>(heights<span class="op">$</span>child_ht<span class="op">~</span>heights<span class="op">$</span>parent_ht))</a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</p>
+</div>
+<div id="Over1.1B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Read and examine data structure
+</h3>
+<p>
 <p>The data has already been read into a dataset called <code>heights</code>. Examine the <em>structure</em> of the data with the function <a href="https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/">str()</a> and use the <a href="https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/">head()</a> command to looks at the first few records.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">galton_height.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)
-<span class="co">#heights &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;, header = TRUE)</span>
-<span class="kw">str</span>(heights)
-<span class="kw">head</span>(heights)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">heights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">galton_height.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="co">#heights &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv&quot;, header = TRUE)</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="kw">str</span>(heights)</a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="kw">head</span>(heights)</a></code></pre></div>
 <pre><code>&#39;data.frame&#39;:   928 obs. of  2 variables:
  $ child_ht : num  72.2 73.2 73.2 73.2 68.2 ...
  $ parent_ht: num  74.5 74.5 74.5 74.5 73.5 73.5 73.5 73.5 73.5 73.5 ...
@@ -392,46 +451,56 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 4     73.2      74.5
 5     68.2      73.5
 6     69.2      73.5</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.1C" href="javascript:toggleDet('toggleOver1.1C','displayOver1.1C');"><i><strong>Show Overhead C Details. Summary stats for parents’ height</strong></i></a>
-</h6>
-<div id="toggleOver1.1C" style="display: none">
+<div id="Over1.1C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Summary stats for parents’ height
+</h3>
+<p>
 <p>Next, examine the distribution of the child’s height and then examine the distribution of the parents height.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ht_par &lt;-<span class="st"> </span>heights<span class="op">$</span>parent_ht
-<span class="kw">hist</span>(ht_par)</code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">ht_par &lt;-<span class="st"> </span>heights<span class="op">$</span>parent_ht</a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw">hist</span>(ht_par)</a></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(ht_par)
-<span class="kw">sd</span>(ht_par)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">mean</span>(ht_par)</a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="kw">sd</span>(ht_par)</a></code></pre></div>
 <pre><code>[1] 69.26293
 [1] 1.912274</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.1D" href="javascript:toggleDet('toggleOver1.1D','displayOver1.1D');"><i><strong>Show Overhead D. Fit a normal curve to parents’ height details</strong></i></a>
-</h6>
-<div id="toggleOver1.1D" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(mparent &lt;-<span class="st"> </span><span class="kw">mean</span>(ht_par))
-(sdparent &lt;-<span class="st"> </span><span class="kw">sd</span>(ht_par))
-x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60</span>, <span class="dv">80</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)
-<span class="kw">hist</span>(ht_par, <span class="dt">freq =</span> <span class="ot">FALSE</span>)
-<span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="dt">mean =</span> mparent, <span class="dt">sd =</span> sdparent), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<div id="Over1.1D" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+D. Fit a normal curve to parents’ height details
+</h3>
+<p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">(mparent &lt;-<span class="st"> </span><span class="kw">mean</span>(ht_par))</a>
+<a class="sourceLine" id="cb11-2" title="2">(sdparent &lt;-<span class="st"> </span><span class="kw">sd</span>(ht_par))</a>
+<a class="sourceLine" id="cb11-3" title="3">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60</span>, <span class="dv">80</span>,<span class="dt">by =</span> <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="kw">hist</span>(ht_par, <span class="dt">freq =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="kw">lines</span>(x, <span class="kw">dnorm</span>(x, <span class="dt">mean =</span> mparent, <span class="dt">sd =</span> sdparent), <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre><code>[1] 69.26293
 [1] 1.912274</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.1E" href="javascript:toggleDet('toggleOver1.1E','displayOver1.1E');"><i><strong>Show Overhead E Details. Use the normal approximation to determine the probability of the height of tall parents</strong></i></a>
-</h6>
-<div id="toggleOver1.1E" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">TallHeight &lt;-<span class="st"> </span><span class="dv">72</span>
-<span class="kw">pnorm</span>(TallHeight, <span class="dt">mean =</span> mparent, <span class="dt">sd =</span> sdparent)
-<span class="kw">pnorm</span>(<span class="dv">72</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(ht_par), <span class="dt">sd =</span> <span class="kw">sd</span>(ht_par))
-(StdUnitsTallHeight &lt;-<span class="st"> </span>(TallHeight <span class="op">-</span><span class="st"> </span>mparent)<span class="op">/</span>sdparent)
-<span class="kw">pnorm</span>(StdUnitsTallHeight, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</code></pre></div>
+<div id="Over1.1E" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+E Details. Use the normal approximation to determine the probability of the height of tall parents
+</h3>
+<p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">TallHeight &lt;-<span class="st"> </span><span class="dv">72</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="kw">pnorm</span>(TallHeight, <span class="dt">mean =</span> mparent, <span class="dt">sd =</span> sdparent)</a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="kw">pnorm</span>(<span class="dv">72</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(ht_par), <span class="dt">sd =</span> <span class="kw">sd</span>(ht_par))</a>
+<a class="sourceLine" id="cb13-4" title="4">(StdUnitsTallHeight &lt;-<span class="st"> </span>(TallHeight <span class="op">-</span><span class="st"> </span>mparent)<span class="op">/</span>sdparent)</a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="kw">pnorm</span>(StdUnitsTallHeight, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>[1] 0.9238302
 [1] 0.9238302
 [1] 1.431317
 [1] 0.9238302</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -445,9 +514,8 @@ x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">60<
 <li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/">mean()</a> to calculate the mean and the function <a href="https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/">sd()</a> to calculate the standard deviation</li>
 <li>Use the normal approximation and the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/">pnorm()</a> determine the probability that an adult child’s height is less than 72 inches</li>
 </ul>
-<p><strong>Hint.</strong> Remember that we can reference a variable, say <code>var</code>, from a data set such as <code>heights</code>, as <code>heights$var</code>.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKSIsInNhbXBsZSI6IiNEZWZpbmUgdGhlIGdsb2JhbCB2YXJpYWJsZVxuaHRfY2hpbGQgPC0gX19fXG5cbiNDYWxjdWxhdGUgdGhlIG1lYW4gaGVpZ2h0XG5tY2hpbGQgPC0gX19fXG5tY2hpbGRcblxuI0NhbGN1bGF0ZSB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGhlaWdodHNcbnNkY2hpbGQgPC0gX19fXG5zZGNoaWxkXG5cbiNEZXRlcm1pbmUgdGhlIHByb2JhYmlsaXR5IHRoYXQgdGhlIGhlaWdodCBpcyBsZXNzIHRoYW4gNzJcbnByPV9fXyg3MiwgbWVhbj1tY2hpbGQsIHNkPXNkY2hpbGQpIiwic29sdXRpb24iOiIjIFNvbHV0aW9uXG5odF9jaGlsZCA8LSBoZWlnaHRzJGNoaWxkX2h0XG5tY2hpbGQgPC0gbWVhbihodF9jaGlsZClcbnNkY2hpbGQgPC0gc2QoaHRfY2hpbGQpXG5wcj1wbm9ybSg3MiwgbWVhbiA9IG1jaGlsZCwgc2QgPSBzZGNoaWxkKSIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX29iamVjdChcImh0X2NoaWxkXCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB5b3UgYXNzaWduIHRoZSBjaGlsZHJlbidzIGhpZ2h0IHRvIGh0X2NoaWxkXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUmVtZW1iZXIgdGhhdCBpbiBvcmRlciB0byBjYWxsIGEgc3BlY2lmaWMgY29sdW1uIGZyb20gYSBkYXRhZnJhbWUsIHVzZSB0aGUgJCBvcGVyYXRvclwiKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwibWNoaWxkXCIpICAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwic2RjaGlsZFwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwicHJcIikgJT4lIGNoZWNrX2VxdWFsKClcbnN1Y2Nlc3NfbXNnKFwiRXhjZWxsZW50ISBXaXRoIHRoaXMgcHJvY2VkdXJlLCB5b3UgY2FuIG5vdyBjYWxjdWxhdGUgcHJvYmFiaWxpdGllcyBmb3IgYW55IGRpc3RyaWJ1dGlvbiB1c2luZyBhIG5vcm1hbCBjdXJ2ZSBhcHByb3hpbWF0aW9uLlwiKSJ9
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKSIsInNhbXBsZSI6IiNEZWZpbmUgdGhlIGdsb2JhbCB2YXJpYWJsZVxuaHRfY2hpbGQgPC0gX19fXG5cbiNDYWxjdWxhdGUgdGhlIG1lYW4gaGVpZ2h0XG5tY2hpbGQgPC0gX19fXG5tY2hpbGRcblxuI0NhbGN1bGF0ZSB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIGhlaWdodHNcbnNkY2hpbGQgPC0gX19fXG5zZGNoaWxkXG5cbiNEZXRlcm1pbmUgdGhlIHByb2JhYmlsaXR5IHRoYXQgdGhlIGhlaWdodCBpcyBsZXNzIHRoYW4gNzJcbnByPV9fXyg3MiwgbWVhbj1tY2hpbGQsIHNkPXNkY2hpbGQpIiwic29sdXRpb24iOiJodF9jaGlsZCA8LSBoZWlnaHRzJGNoaWxkX2h0XG5tY2hpbGQgPC0gbWVhbihodF9jaGlsZClcbnNkY2hpbGQgPC0gc2QoaHRfY2hpbGQpXG5wcj1wbm9ybSg3MiwgbWVhbiA9IG1jaGlsZCwgc2QgPSBzZGNoaWxkKSIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX29iamVjdChcImh0X2NoaWxkXCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB5b3UgYXNzaWduIHRoZSBjaGlsZHJlbidzIGhpZ2h0IHRvIGh0X2NoaWxkXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUmVtZW1iZXIgdGhhdCBpbiBvcmRlciB0byBjYWxsIGEgc3BlY2lmaWMgY29sdW1uIGZyb20gYSBkYXRhZnJhbWUsIHVzZSB0aGUgJCBvcGVyYXRvclwiKVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwibWNoaWxkXCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIG1lYW4gb2YgdGhlIGNoaWxkcmVuJ3MgaGVpZ2h0cyB0byBgbWNoaWxkYC5cIikgICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJzZGNoaWxkXCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIHN0YW5kYXJkIGRldmlhdGlvbiBvZiB0aGUgY2hpbGRyZW4ncyBoZWlnaHRzIHRvIGBzZGNoaWxkYC5cIikgJT4lIGNoZWNrX2VxdWFsKClcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcInByXCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIHByb2JhYmlsaXR5IG9mIGEgY2hpbGQgYmVpbmcgbGVzcyB0aGFuIDcyIGluY2hlcyB0byBgcHJgLlwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuc3VjY2Vzc19tc2coXCJFeGNlbGxlbnQhIFdpdGggdGhpcyBwcm9jZWR1cmUsIHlvdSBjYW4gbm93IGNhbGN1bGF0ZSBwcm9iYWJpbGl0aWVzIGZvciBhbnkgZGlzdHJpYnV0aW9uIHVzaW5nIGEgbm9ybWFsIGN1cnZlIGFwcHJveGltYXRpb24uXCIpIiwiaGludCI6IlJlbWVtYmVyIHRoYXQgd2UgY2FuIHJlZmVyZW5jZSBhIHZhcmlhYmxlLCBzYXkgPGNvZGU+dmFyPC9jb2RlPiwgZnJvbSBhIGRhdGEgc2V0IHN1Y2ggYXMgPGNvZGU+aGVpZ2h0czwvY29kZT4sIGFzIDxjb2RlPmhlaWdodHMkdmFyPC9jb2RlPi4ifQ==
 </div>
 </div>
 <div id="exercise.-visualizing-childs-height-distribution" class="section level3">
@@ -460,11 +528,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwi
 <li>Use the function <a href="https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/seq">seq()</a> to determine a sequence that can be used for plotting. Then, with the function <a href="https://www.rdocumentation.org/packages/graphics/versions/3.5.0/topics/lines/">lines()</a>, superimpose a normal curve on the histogram</li>
 <li>Determine the probability that a child’s height is greater than 72 inches</li>
 </ul>
-<p><strong>Hint 1.</strong> Use the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/">dnorm()</a> to calculate the normal density, similar to the cumulative probabilites that you calculated using <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/">pnorm()</a></p>
-<p><strong>Hint 2.</strong> To calculate probabilities greater that an amount, simply use 1 minus the cumulative probability</p>
-<p><strong>Pre-exercise code</strong></p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuaHRfY2hpbGQgPC0gaGVpZ2h0cyRjaGlsZF9odFxubWNoaWxkIDwtIG1lYW4oaHRfY2hpbGQpXG5zZGNoaWxkIDwtIHNkKGh0X2NoaWxkKSIsInNhbXBsZSI6IiNWaXN1YWxpemUgdGhlIERpc3RyaWJ1dGlvblxuX19fKF9fXywgZnJlcSA9IEZBTFNFKVxuXG4jRGV0ZXJtaW5lIGEgc2VxdWVuY2UuIFRoZW4sIGdyYXBoIGEgaGlzdG9ncmFtIHdpdGggYSBub3JtYWwgY3VydmUgc3VwZXJpbXBvc2VkXG54IDwtIHNlcSg2MCwgODAsYnkgPSAwLjEpXG5fX18oeCwgZG5vcm0oeCxtZWFuID0gbWNoaWxkLCBzZCA9IHNkY2hpbGQpLCBjb2wgPSBcImJsdWVcIilcblxuIyBEZXRlcm1pbmUgdGhlIHByb2JhYmlsaXR5IHRoYXQgYSBjaGlsZCdzIGhlaWdodCBpcyBncmVhdGVyIHRoYW4gNzJcbnByb2IgPC0gMSAtIFxucHJvYiIsInNvbHV0aW9uIjoiaGlzdChodF9jaGlsZCwgZnJlcSA9IEZBTFNFKVxueCA8LSBzZXEoNjAsIDgwLGJ5ID0gMC4xKVxubGluZXMoeCwgZG5vcm0oeCwgbWVhbiA9IG1jaGlsZCwgc2QgPSBzZGNoaWxkKSwgY29sID0gXCJibHVlXCIpXG5wcm9iIDwtIDEgLSBwbm9ybSg3MiwgbWVhbiA9IG1jaGlsZCAsIHNkID0gc2RjaGlsZClcbnByb2IiLCJzY3QiOiJleCgpICU+JSBjaGVja19mdW5jdGlvbihcImhpc3RcIixub3RfY2FsbGVkX21zZz1cIlVzZSB0aGUgaGlzdCBjb21tYW5kIHRvIGNyZWF0ZSBhIGhpc3RvZ3JhbSBvZiB0aGUgY2hpbGRyZW4ncyBoZWlnaHRzLlwiKSAlPiUgY2hlY2tfYXJnKFwieFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBjcmVhdGUgYSBoaXN0b2dyYW0gb2YgdGhlIGNoaWxkcmVuJ3MgaGVpZ2h0cy5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwibGluZXNcIixub3RfY2FsbGVkX21zZz1cIlBsZWFzZSB1c2UgdGhlIGxpbmVzIGZ1bmN0aW9uIHRvIG92ZXJsYXkgYSBub3JtYWwgY3VydmUgb24geW91ciBoaXN0b2dyYW1cIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcInByb2JcIiwgdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIHByb2JhYmlsaXR5IG9mIGEgY2hpbGQncyBoZWlnaHQgYmVpbmcgZ3JlYXRlciB0aGFuIDcyIGluY2hlcyB0byBwcm9iLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBmaW5kIHRoZSBwcm9iYWJpbGl0eSBvZiBhIGNoaWxkJ3MgaGVpZ2h0IGJlaW5nIEdSRUFURVIgdGhhbiA3MiBpbmNoZXMuXCIpXG5zdWNjZXNzX21zZyhcIkV4Y2VsbGVudCEgVmlzdWFsaXppbmcgYSBkaXN0cmlidXRpb24sIGVzcGVjaWFsbHkgd2l0aCByZWZlcmVuY2UgdG8gYSBub3JtYWwsIGlzIGltcG9ydGFudCBmb3IgY29tbXVuaWNhdGluZyByZXN1bHRzIG9mIHlvdXIgYW5hbHlzaXMuXCIpIn0=
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFxnYWx0b25faGVpZ2h0LmNzdlwiLGhlYWRlciA9IFRSVUUpXG5oZWlnaHRzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvYzg1ZWRlNmMyMDVkMjIwNDllNzY2YmQwODk1NmIyMjVjNTc2MjU1Yi9nYWx0b25faGVpZ2h0LmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuaHRfY2hpbGQgPC0gaGVpZ2h0cyRjaGlsZF9odFxubWNoaWxkIDwtIG1lYW4oaHRfY2hpbGQpXG5zZGNoaWxkIDwtIHNkKGh0X2NoaWxkKSIsInNhbXBsZSI6IiNWaXN1YWxpemUgdGhlIERpc3RyaWJ1dGlvblxuX19fKF9fXywgZnJlcSA9IEZBTFNFKVxuXG4jRGV0ZXJtaW5lIGEgc2VxdWVuY2UuIFRoZW4sIGdyYXBoIGEgaGlzdG9ncmFtIHdpdGggYSBub3JtYWwgY3VydmUgc3VwZXJpbXBvc2VkXG54IDwtIHNlcSg2MCwgODAsYnkgPSAwLjEpXG5fX18oeCwgZG5vcm0oeCxtZWFuID0gbWNoaWxkLCBzZCA9IHNkY2hpbGQpLCBjb2wgPSBcImJsdWVcIilcblxuIyBEZXRlcm1pbmUgdGhlIHByb2JhYmlsaXR5IHRoYXQgYSBjaGlsZCdzIGhlaWdodCBpcyBncmVhdGVyIHRoYW4gNzJcbnByb2IgPC0gMSAtIFxucHJvYiIsInNvbHV0aW9uIjoiaGlzdChodF9jaGlsZCwgZnJlcSA9IEZBTFNFKVxueCA8LSBzZXEoNjAsIDgwLGJ5ID0gMC4xKVxubGluZXMoeCwgZG5vcm0oeCwgbWVhbiA9IG1jaGlsZCwgc2QgPSBzZGNoaWxkKSwgY29sID0gXCJibHVlXCIpXG5wcm9iIDwtIDEgLSBwbm9ybSg3MiwgbWVhbiA9IG1jaGlsZCAsIHNkID0gc2RjaGlsZClcbnByb2IiLCJzY3QiOiJleCgpICU+JSBjaGVja19mdW5jdGlvbihcImhpc3RcIixub3RfY2FsbGVkX21zZz1cIlVzZSB0aGUgaGlzdCBjb21tYW5kIHRvIGNyZWF0ZSBhIGhpc3RvZ3JhbSBvZiB0aGUgY2hpbGRyZW4ncyBoZWlnaHRzLlwiKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJ4XCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHdoYXQgZGF0YSB0byBtYWtlIGEgaGlzdG9ncmFtIGZyb20/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGNyZWF0ZSBhIGhpc3RvZ3JhbSBvZiB0aGUgY2hpbGRyZW4ncyBoZWlnaHRzLlwiKVxuICBjaGVja19hcmcoLiwgXCJmcmVxXCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHRoYXQgeW91IHdvdWxkIGxpa2UgYSBkZW5zaXR5IGhpc3RvZ3JhbT9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gY3JlYXRlIGEgZGVuc2l0eSBoaXN0b2dyYW0gaW5zdGVhZCBvZiBhIGZyZXF1ZW5jeSBoaXN0b2dyYW0uXCIpXG59XG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcImxpbmVzXCIsbm90X2NhbGxlZF9tc2c9XCJQbGVhc2UgdXNlIHRoZSBsaW5lcyBmdW5jdGlvbiB0byBvdmVybGF5IGEgbm9ybWFsIGN1cnZlIG9uIHlvdXIgaGlzdG9ncmFtXCIpICU+JSB7XG4gIGNoZWNrX2FyZyguLCBcInhcIixhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJIYXZlIHlvdSBzcGVjaWZpZWQgdGhlIGluZGVwZW5kYW50IHZhcmlhYmxlIGNvcnJlY3RseT9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJSZW1lYmVyIHRoYXQgd2UgYXJlIGludGVyZXN0ZWQgaW4gaG93IHByb2JhYmlsaXR5IGNoYW5nZXMgYXMgb3VyIHZhbHVlIG9mIHggY2hhbmdlcyFcIilcbiAgY2hlY2tfYXJnKC4sIFwieVwiLGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkhhdmUgeW91IHNwZWNpZmllZCB0aGUgZGVwZW5kYW50IHZhcmlhYmxlIGNvcnJlY3RseT9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJSZW1lYmVyIHRoYXQgd2UgYXJlIGludGVyZXN0ZWQgaW4gaG93IHByb2JhYmlsaXR5IGNoYW5nZXMgYXMgb3VyIHZhbHVlIG9mIHggY2hhbmdlcyFcIilcbn1cbmV4KCkgJT4lIGNoZWNrX29iamVjdChcInByb2JcIiwgdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIHByb2JhYmlsaXR5IG9mIGEgY2hpbGQncyBoZWlnaHQgYmVpbmcgZ3JlYXRlciB0aGFuIDcyIGluY2hlcyB0byBwcm9iLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBmaW5kIHRoZSBwcm9iYWJpbGl0eSBvZiBhIGNoaWxkJ3MgaGVpZ2h0IGJlaW5nIEdSRUFURVIgdGhhbiA3MiBpbmNoZXMuXCIpXG5zdWNjZXNzX21zZyhcIkV4Y2VsbGVudCEgVmlzdWFsaXppbmcgYSBkaXN0cmlidXRpb24sIGVzcGVjaWFsbHkgd2l0aCByZWZlcmVuY2UgdG8gYSBub3JtYWwsIGlzIGltcG9ydGFudCBmb3IgY29tbXVuaWNhdGluZyByZXN1bHRzIG9mIHlvdXIgYW5hbHlzaXMuXCIpIiwiaGludCI6IlVzZSB0aGUgZnVuY3Rpb24gPGEgaHJlZj1cImh0dHBzOi8vd3d3LnJkb2N1bWVudGF0aW9uLm9yZy9wYWNrYWdlcy9zdGF0cy92ZXJzaW9ucy8zLjUuMC90b3BpY3MvTm9ybWFsL1wiPmRub3JtKCk8L2E+IHRvIGNhbGN1bGF0ZSB0aGUgbm9ybWFsIGRlbnNpdHksIHNpbWlsYXIgdG8gdGhlIGN1bXVsYXRpdmUgcHJvYmFiaWxpdGVzIHRoYXQgeW91IGNhbGN1bGF0ZWQgdXNpbmcgPGEgaHJlZj1cImh0dHBzOi8vd3d3LnJkb2N1bWVudGF0aW9uLm9yZy9wYWNrYWdlcy9zdGF0cy92ZXJzaW9ucy8zLjUuMC90b3BpY3MvTm9ybWFsL1wiPnBub3JtKCk8L2E+PC9wPlxuXG48cD5UbyBjYWxjdWxhdGUgcHJvYmFiaWxpdGllcyBncmVhdGVyIHRoYXQgYW4gYW1vdW50LCBzaW1wbHkgdXNlIDEgbWludXMgdGhlIGN1bXVsYXRpdmUgcHJvYmFiaWxpdHkifQ==
 </div>
 </div>
 </div>
@@ -485,49 +550,48 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNoZWlnaHRzIDwtIHJlYWQuY3N2KFwi
 </center>
 <div id="video-overhead-details-1" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver1.2" href="javascript:toggleDet('toggleOver1.2','displayOver1.2');"><i><strong>Show Overhead Details. Data description</strong></i></a>
-</h6>
-<div id="toggleOver1.2" style="display: none">
+<div class="tab">
+<p><button class="tablinks" onclick="openTab(event, 'Over1.2')">Details. Data description</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.2A')">A Details. Bring in Data, Introduce Logarithmic Claims</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.2B')">B Details. Show how to get a finer grid for histograms</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.2C')">C Details. Introduce the density plot</button></p>
+</div>
+<div id="Over1.2" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+Details. Data descriptions
+</h3>
+<p>
 <hr />
 <p>For our first look at an insurance data set, we consider data from Rempala and Derrig (2005). They considered claims arising from automobile bodily injury insurance coverages. These are amounts incurred for outpatient medical treatments that arise from automobile accidents, typically sprains, broken collarbones and the like. The data consists of a sample of 272 claims from Massachusetts that were closed in 2001 (by “closed,” we mean that the claim is settled and no additional liabilities can arise from the same accident). Rempala and Derrig were interested in developing procedures for handling mixtures of “typical” claims and others from providers who reported claims fraudulently. For this sample, we consider only those typical claims, ignoring the potentially fraudulent ones.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reformat Data Set</span>
-injury &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">MassBodilyInjury.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)
-<span class="kw">str</span>(injury)
-<span class="kw">head</span>(injury)
-<span class="co">#  PICK THE SUBSET OF THE DATA CORRESPONDING TO PROVIDER A</span>
-injury2 &lt;-<span class="st"> </span><span class="kw">subset</span>(injury, providerA <span class="op">!</span><span class="st"> </span><span class="er">=</span><span class="st"> </span><span class="dv">0</span> )
-injury2<span class="op">$</span>claims &lt;-<span class="st"> </span><span class="dv">1000</span><span class="op">*</span>injury2<span class="op">$</span>claims
-injury2<span class="op">$</span>logclaims &lt;-<span class="st"> </span><span class="kw">log</span>(injury2<span class="op">$</span>claims)
-injury3 &lt;-<span class="st"> </span>injury2[<span class="kw">c</span>(<span class="st">&quot;claims&quot;</span>,<span class="st">&quot;logclaims&quot;</span>)]
-<span class="co">#write.csv(injury3,&quot;CSVData\\MassBI.csv&quot;,row.names = FALSE)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co"># Reformat Data Set</span></a>
+<a class="sourceLine" id="cb15-2" title="2">injury &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">MassBodilyInjury.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="kw">str</span>(injury)</a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="kw">head</span>(injury)</a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="co">#  PICK THE SUBSET OF THE DATA CORRESPONDING TO PROVIDER A</span></a>
+<a class="sourceLine" id="cb15-6" title="6">injury2 &lt;-<span class="st"> </span><span class="kw">subset</span>(injury, providerA <span class="op">!</span><span class="st"> </span><span class="er">=</span><span class="st"> </span><span class="dv">0</span> )</a>
+<a class="sourceLine" id="cb15-7" title="7">injury2<span class="op">$</span>claims &lt;-<span class="st"> </span><span class="dv">1000</span><span class="op">*</span>injury2<span class="op">$</span>claims</a>
+<a class="sourceLine" id="cb15-8" title="8">injury2<span class="op">$</span>logclaims &lt;-<span class="st"> </span><span class="kw">log</span>(injury2<span class="op">$</span>claims)</a>
+<a class="sourceLine" id="cb15-9" title="9">injury3 &lt;-<span class="st"> </span>injury2[<span class="kw">c</span>(<span class="st">&quot;claims&quot;</span>,<span class="st">&quot;logclaims&quot;</span>)]</a>
+<a class="sourceLine" id="cb15-10" title="10"><span class="co">#write.csv(injury3,&quot;CSVData\\MassBI.csv&quot;,row.names = FALSE)</span></a></code></pre></div>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.2A" href="javascript:toggleDet('toggleOver1.2A','displayOver1.2A');"><i><strong>Show Overhead A Details. Bring in Data, Introduce Logarithmic Claims</strong></i></a>
-</h6>
-<div id="toggleOver1.2A" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">injury &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">MassBI.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)
-<span class="co">#  CHECK THE NAMES, DIMENSION IN THE FILE AND LIST THE FIRST 8 OBSERVATIONS  ;</span>
-<span class="kw">str</span>(injury)
-<span class="kw">head</span>(injury)
-<span class="kw">attach</span>(injury)</code></pre></div>
-<pre><code>The following objects are masked from injury (pos = 3):
-
-    claims, logclaims</code></pre>
-<pre><code>The following objects are masked from injury (pos = 4):
-
-    claims, logclaims</code></pre>
-<pre><code>The following objects are masked from injury (pos = 7):
-
-    claims, logclaims</code></pre>
-<pre><code>The following objects are masked from injury (pos = 8):
-
-    claims, logclaims</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims
-<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
-<span class="kw">hist</span>(claims)
-<span class="kw">hist</span>(logclaims)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div id="Over1.2A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Bring in Data, Introduce Logarithmic Claims
+</h3>
+<p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">injury &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">MassBI.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="co">#  CHECK THE NAMES, DIMENSION IN THE FILE AND LIST THE FIRST 8 OBSERVATIONS  ;</span></a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="kw">str</span>(injury)</a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="kw">head</span>(injury)</a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="kw">attach</span>(injury)</a>
+<a class="sourceLine" id="cb16-6" title="6">claims &lt;-<span class="st"> </span>injury<span class="op">$</span>claims</a>
+<a class="sourceLine" id="cb16-7" title="7"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb16-8" title="8"><span class="kw">hist</span>(claims)</a>
+<a class="sourceLine" id="cb16-9" title="9"><span class="kw">hist</span>(logclaims)</a></code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <pre><code>&#39;data.frame&#39;:   272 obs. of  2 variables:
  $ claims   : int  45 47 70 75 77 92 117 117 140 145 ...
  $ logclaims: num  3.81 3.85 4.25 4.32 4.34 ...
@@ -538,25 +602,32 @@ injury3 &lt;-<span class="st"> </span>injury2[<span class="kw">c</span>(<span cl
 4     75  4.317488
 5     77  4.343805
 6     92  4.521789</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.2B" href="javascript:toggleDet('toggleOver1.2B','displayOver1.2B');"><i><strong>Show Overhead B Details. Show how to get a finer grid for histograms</strong></i></a>
-</h6>
-<div id="toggleOver1.2B" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
-<span class="kw">hist</span>(logclaims)
-<span class="kw">hist</span>(logclaims,<span class="dt">breaks =</span> <span class="dv">15</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div id="Over1.2B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Show how to get a finer grid for histograms
+</h3>
+<p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb18-2" title="2"><span class="kw">hist</span>(logclaims)</a>
+<a class="sourceLine" id="cb18-3" title="3"><span class="kw">hist</span>(logclaims,<span class="dt">breaks =</span> <span class="dv">15</span>)</a></code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.2C" href="javascript:toggleDet('toggleOver1.2C','displayOver1.2C');"><i><strong>Show Overhead C Details. Introduce the density plot</strong></i></a>
-</h6>
-<div id="toggleOver1.2C" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
-<span class="kw">plot</span>(<span class="kw">density</span>(logclaims))
-<span class="kw">hist</span>(logclaims, <span class="dt">breaks =</span> <span class="dv">15</span>,<span class="dt">freq =</span> <span class="ot">FALSE</span>)
-<span class="kw">lines</span>(<span class="kw">density</span>(logclaims))</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div id="Over1.2C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. Introduce the density plot
+</h3>
+<p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb19-2" title="2"><span class="kw">plot</span>(<span class="kw">density</span>(logclaims))</a>
+<a class="sourceLine" id="cb19-3" title="3"><span class="kw">hist</span>(logclaims, <span class="dt">breaks =</span> <span class="dv">15</span>,<span class="dt">freq =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb19-4" title="4"><span class="kw">lines</span>(<span class="kw">density</span>(logclaims))</a></code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+</p>
 </div>
 </div>
 </div>
@@ -572,7 +643,7 @@ injury3 &lt;-<span class="st"> </span>injury2[<span class="kw">c</span>(<span cl
 <li>Repeat the density plot, this time using a more refined bandwidth equal to 0.03. Use an option in the <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/density/">density()</a> function, <code>bw =</code>.</li>
 </ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuaW5qdXJ5IDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvOGNjYTE5ZDA1MDNmY2Y2ZTlkMzBkOWNiOTEyZGU1YmE5NWVjYjljMS9NYXNzQkkuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5jbGFpbXMgPC0gaW5qdXJ5JGNsYWltcyIsInNhbXBsZSI6IiNDcmVhdGUgdGhlIGxvZ2FyaXRobWljIGNsYWltcyB2YXJpYWJsZVxubG9nY2xhaW1zIDwtIF9fX1xuXG4jQ3JlYXRlIGEgaGlzdG9ncmFtIHVzaW5zIDQwIGJpbnNcbl9fXyhsb2djbGFpbXMsIGJyZWFrcyA9IDQwLGZyZXEgPSBGQUxTRSlcbmJveCgpXG5cbiMgQ3JlYXRlIGEgZGVuc2l0eSBwbG90IG9mIGxvZ2FyaXRobWljIGNsYWltc1xucGxvdChfX18obG9nY2xhaW1zKSlcblxuIyBDcmVhdGUgYSBkZW5zaXR5IHBsb3Qgb2YgbG9nYXJpdGhtaWMgY2xhaW1zIHdpdGggYSBiYW5kd2lkdGggb2YgMC4wM1xuX19fIiwic29sdXRpb24iOiJsb2djbGFpbXMgPC0gbG9nKGNsYWltcylcbmhpc3QobG9nY2xhaW1zICwgYnJlYWtzID0gNDAsZnJlcSA9IEZBTFNFKVxuYm94KClcbnBsb3QoZGVuc2l0eShsb2djbGFpbXMpKVxucGxvdChkZW5zaXR5KGxvZ2NsYWltcywgYncgPSAwLjAzKSkiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJsb2djbGFpbXNcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2cgPSBcIllvdSBtYWRlIGFuIGVycm9yIGluIHRoZSBkZWZpbml0aW9uIG9mIHRoZSBsb2dhcml0aG1pYyBjbGFpbXMuIENoZWNrIG91dCB0aGUgZGVmaW5pdGlvbiBvZiB0aGUgbG9nKCkgZnVuY3Rpb24uXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcImhpc3RcIixub3RfY2FsbGVkX21zZz1cIk1ha2Ugc3VyZSB0byB1c2UgYGhpc3RgIHRvIGNyZWF0ZSBhIGhpc3RvZ3JhbS5cIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwieFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlBsZWFzZSBjcmVhdGUgYSBoaXN0b2dyYW0gb2YgbG9nY2xhaW1zLlwiKVxuICBjaGVja19hcmcoLiwgXCJmcmVxXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUGxlYXNlIGNyZWF0ZSBhIGRlbnNpdHkgaGlzdG9ncmFtIGluc3RlYWQgb2YgYSBmcmVxdWVuY3kgaGlzdG9ncmFtLlwiKVxufVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwbG90XCIsaW5kZXg9MSkgJT4lIGNoZWNrX2FyZyhcInhcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJVc2UgdGhlIGRlbnNpdHkgZnVuY3Rpb24gdG8gcGxvdCB0aGUgZGVuc2l0eSBvZiBsb2djbGFpbXMuXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInBsb3RcIixpbmRleD0yLG5vdF9jYWxsZWRfbXNnPVwiQ3JlYXRlIGFub3RoZXIgcGxvdCB1c2luZyBgcGxvdGAgdGhhdCBkaXNwbGF5cyB0aGUgZGVuc2l0eSBvZiBsb2dhcml0aG1pYyBjbGFpbXMgd2l0aCBhIGJpbndpZHRjaCBvZiAwLjAzLlwiKSAlPiUgY2hlY2tfYXJnKFwieFwiKSAlPiUgY2hlY2tfZXF1YWwoKVxuc3VjY2Vzc19tc2coXCJFeGNlbGxlbnQhIFZpc3VhbGl6aW5nIHRoZSBkaXN0cmlidXRpb24gaXMgaW1wb3J0YW50IGFuZCBzbW9vdGhpbmcgdGVjaG5pcXVlcyBhbGxvdyB2aWV3ZXJzIHRvIHNlZSBpbXBvcnRhbnQgcGF0dGVybnMgd2l0aG91dCBiZWluZyBkaXN0cmFjdGVkIGJ5IHJhbmRvbSBmbHVjdGF0aW9ucy5cIikifQ==
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIixoZWFkZXIgPSBUUlVFKVxuaW5qdXJ5IDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvOGNjYTE5ZDA1MDNmY2Y2ZTlkMzBkOWNiOTEyZGU1YmE5NWVjYjljMS9NYXNzQkkuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5jbGFpbXMgPC0gaW5qdXJ5JGNsYWltcyIsInNhbXBsZSI6IiNDcmVhdGUgdGhlIGxvZ2FyaXRobWljIGNsYWltcyB2YXJpYWJsZVxubG9nY2xhaW1zIDwtIF9fX1xuXG4jQ3JlYXRlIGEgaGlzdG9ncmFtIHVzaW5zIDQwIGJpbnNcbl9fXyhsb2djbGFpbXMsIGJyZWFrcyA9IDQwLGZyZXEgPSBGQUxTRSlcbmJveCgpXG5cbiMgQ3JlYXRlIGEgZGVuc2l0eSBwbG90IG9mIGxvZ2FyaXRobWljIGNsYWltc1xucGxvdChfX18obG9nY2xhaW1zKSlcblxuIyBDcmVhdGUgYSBkZW5zaXR5IHBsb3Qgb2YgbG9nYXJpdGhtaWMgY2xhaW1zIHdpdGggYSBiYW5kd2lkdGggb2YgMC4wM1xuX19fIiwic29sdXRpb24iOiJsb2djbGFpbXMgPC0gbG9nKGNsYWltcylcbmhpc3QobG9nY2xhaW1zICwgYnJlYWtzID0gNDAsZnJlcSA9IEZBTFNFKVxuYm94KClcbnBsb3QoZGVuc2l0eShsb2djbGFpbXMpKVxucGxvdChkZW5zaXR5KGxvZ2NsYWltcywgYncgPSAwLjAzKSkiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJsb2djbGFpbXNcIix1bmRlZmluZWRfbXNnPVwiTWFrZSBzdXJlIHRvIGFzc2lnbiB0aGUgbG9nIG9mIHRoZSBjbGFpbXMgZGF0YSB0byBgbG9nY2xhaW1zYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2cgPSBcIllvdSBtYWRlIGFuIGVycm9yIGluIHRoZSBkZWZpbml0aW9uIG9mIHRoZSBsb2dhcml0aG1pYyBjbGFpbXMuIENoZWNrIG91dCB0aGUgZGVmaW5pdGlvbiBvZiB0aGUgbG9nKCkgZnVuY3Rpb24uXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcImhpc3RcIixub3RfY2FsbGVkX21zZz1cIk1ha2Ugc3VyZSB0byB1c2UgYGhpc3RgIHRvIGNyZWF0ZSBhIGhpc3RvZ3JhbS5cIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwieFwiLGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkRpZCB5b3UgYXNzaWduIHggdG8gYmUgdGhlIGxvZyBvZiBvdXIgY2xhaW1zIGRhdGE/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUGxlYXNlIGNyZWF0ZSBhIGhpc3RvZ3JhbSBvZiBsb2djbGFpbXMuXCIpXG4gIGNoZWNrX2FyZyguLCBcImZyZXFcIixhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJEaWQgeW91IHNwZWNpZnkgdGhhdCB3ZSB3b3VsZCBsaWtlIGEgZGVuc2l0eSBoaXN0b2dyYW0/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUGxlYXNlIGNyZWF0ZSBhIGRlbnNpdHkgaGlzdG9ncmFtIGluc3RlYWQgb2YgYSBmcmVxdWVuY3kgaGlzdG9ncmFtLlwiKVxuICBjaGVja19hcmcoLiwgXCJicmVha3NcIixhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJEaWQgeW91IHNwZWNpZnkgdGhlIG51bWJlciBvZiBicmVha3Mgd2Ugd291bGQgbGlrZSBpbiBvdXIgaGlzdG9ncmFtP1wiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzZXQgYnJlYWtzIGVxdWFsIHRvIDQwIVwiKVxufVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJib3hcIixub3RfY2FsbGVkX21zZz1cIk1ha2Ugc3VyZSB0byBjYWxsIGBib3hgIGluIG9yZGVyIHRvIGNyZWF0ZSBhIGRlY29yYXRpdmUgYm94IGFyb3VuZCBvdXIgaGlzdG9ncmFtIVwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwbG90XCIsaW5kZXg9MSxub3RfY2FsbGVkX21zZz1cIkhhdmUgeW91IHBsb3R0ZWQgdGhlIGRlbnNpdHkgb2YgdGhlIGxvZyBvZiBjbGFpbXM/XCIpICU+JSBjaGVja19hcmcoLiwgXCJ4XCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHRoZSBkYXRhIHdlIHNob3VsZCB1c2UgdG8gY3JlYXRlIHRoZSBwbG90P1wiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlVzZSB0aGUgZGVuc2l0eSBmdW5jdGlvbiB0byBwbG90IHRoZSBkZW5zaXR5IG9mIGxvZ2NsYWltcy5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicGxvdFwiLGluZGV4PTIsbm90X2NhbGxlZF9tc2c9XCJDcmVhdGUgYW5vdGhlciBwbG90IHVzaW5nIGBwbG90YCB0aGF0IGRpc3BsYXlzIHRoZSBkZW5zaXR5IG9mIGxvZ2FyaXRobWljIGNsYWltcyB3aXRoIGEgYmlud2lkdGNoIG9mIDAuMDMuXCIpICU+JVxuICBjaGVja19hcmcoLiwgXCJ4XCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHRoZSBkYXRhIHdlIHNob3VsZCB1c2UgdG8gY3JlYXRlIHRoZSBwbG90P1wiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlVzZSB0aGUgZGVuc2l0eSBmdW5jdGlvbiB0byBwbG90IHRoZSBkZW5zaXR5IG9mIGxvZ2NsYWltcy4gQWxzbyByZW1lbWJlciB0aGF0IGBid2AgaXMgYW4gYXJndW1lbnQgb2YgZGVuc2l0eSwgbm90IHBsb3QuXCIpXG5zdWNjZXNzX21zZyhcIkV4Y2VsbGVudCEgVmlzdWFsaXppbmcgdGhlIGRpc3RyaWJ1dGlvbiBpcyBpbXBvcnRhbnQgYW5kIHNtb290aGluZyB0ZWNobmlxdWVzIGFsbG93IHZpZXdlcnMgdG8gc2VlIGltcG9ydGFudCBwYXR0ZXJucyB3aXRob3V0IGJlaW5nIGRpc3RyYWN0ZWQgYnkgcmFuZG9tIGZsdWN0YXRpb25zLlwiKSIsImhpbnQiOiJSZW1lbWJlciB0aGF0IHlvdSBjYW4gbmVzdCBmdW5jdGlvbnMgdG8gY3JlYXRlIGEgZGVzaXJlZCBvdXRjb21lISBJbiB0aGlzIGV4YW1wbGUsIGl0IGlzIHVzZWZ1bCB0byBuZXN0IDxjb2RlPmRlbnNpdHkoKTwvY29kZT4gaW5zaWRlIG9mIDxjb2RlPnBsb3QoKTwvY29kZT4gdG8gY3JlYXRlICBkZW5zaXR5IHBsb3QhPC9wPlxuXG48cD5iYW5kd2lkdGggb3IgPGNvZGU+Ync8L2NvZGU+IGlzIGFuIGFyZ3VtZW50IG9mIDxjb2RlPmRlbnNpdHkoKTwvY29kZT4sIHNvIGluIG9yZGVyIHRvIGNoYW5nZSB0aGUgZGVmYXVsdCB2YWx1ZSwgeW91IG11c3Qgc3BlY2lmeSBpdCBpbnNpZGUgb2YgeW91ciA8Y29kZT5kZW5zaXR5KCk8L2NvZGU+IGNhbGwuIn0=
 </div>
 </div>
 </div>
@@ -594,18 +665,25 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 </center>
 <div id="video-overhead-details-2" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver1.3A" href="javascript:toggleDet('toggleOver1.3A','displayOver1.3A');"><i><strong>Show Overhead A Details. Summary statistics</strong></i></a>
-</h6>
-<div id="toggleOver1.3A" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">injury &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">MassBI.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)
-<span class="co">#injury &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv&quot;, header = TRUE)</span>
-<span class="kw">attach</span>(injury)
-
-<span class="co"># SUMMARY STATISTICS</span>
-<span class="kw">summary</span>(injury)
-<span class="kw">sd</span>(claims);<span class="kw">sd</span>(logclaims)
-<span class="kw">length</span>(claims)</code></pre></div>
+<div class="tab">
+<p><button class="tablinks" onclick="openTab(event, 'Over1.3A')">A Details. Summary statistics</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.3B')">B Details. Boxplot</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.3C')">C Details. QQ Plot</button></p>
+</div>
+<div id="Over1.3A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Summary statistics
+</h3>
+<p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">injury &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;CSVData</span><span class="ch">\\</span><span class="st">MassBI.csv&quot;</span>,<span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="co">#injury &lt;- read.csv(&quot;https://assets.datacamp.com/production/repositories/2610/datasets/8cca19d0503fcf6e9d30d9cb912de5ba95ecb9c1/MassBI.csv&quot;, header = TRUE)</span></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="kw">attach</span>(injury)</a>
+<a class="sourceLine" id="cb20-4" title="4"></a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="co"># SUMMARY STATISTICS</span></a>
+<a class="sourceLine" id="cb20-6" title="6"><span class="kw">summary</span>(injury)</a>
+<a class="sourceLine" id="cb20-7" title="7"><span class="kw">sd</span>(claims);<span class="kw">sd</span>(logclaims)</a>
+<a class="sourceLine" id="cb20-8" title="8"><span class="kw">length</span>(claims)</a></code></pre></div>
 <pre><code>     claims          logclaims     
  Min.   :   45.0   Min.   : 3.807  
  1st Qu.:  892.5   1st Qu.: 6.794  
@@ -616,45 +694,51 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 [1] 3944.445
 [1] 1.10093
 [1] 272</code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.3B" href="javascript:toggleDet('toggleOver1.3B','displayOver1.3B');"><i><strong>Show Overhead B Details. Boxplot</strong></i></a>
-</h6>
-<div id="toggleOver1.3B" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># BASIC BOXPLOT</span>
-<span class="kw">boxplot</span>(logclaims)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(logclaims, <span class="dt">probs =</span> <span class="fl">0.75</span>)
-
-<span class="co"># BOXPLOT WITH ANNOTATION</span>
-<span class="kw">boxplot</span>(logclaims, <span class="dt">main =</span> <span class="st">&quot;Boxplot of logclaims&quot;</span>)
-<span class="kw">text</span>(<span class="dv">1</span>,  <span class="fl">7.6</span>,  <span class="st">&quot;median&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)
-<span class="kw">text</span>(<span class="dv">1</span>,  <span class="fl">6.55</span>, <span class="st">&quot;25th percentile&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)
-<span class="kw">text</span>(<span class="dv">1</span>,  <span class="fl">7.95</span>, <span class="st">&quot;75th percentile&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)
-<span class="kw">arrows</span>(<span class="fl">1.05</span>, <span class="fl">4.9</span>, <span class="fl">1.05</span>, <span class="fl">3.6</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">angle =</span> <span class="dv">20</span>, <span class="dt">length =</span> <span class="fl">0.1</span>)
-<span class="kw">text</span>(<span class="fl">1.1</span>,  <span class="fl">4.4</span>, <span class="st">&quot;outliers&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)
-<span class="kw">text</span>(<span class="fl">1.1</span>, <span class="fl">10.9</span>, <span class="st">&quot;outlier&quot;</span>,  <span class="dt">cex =</span> <span class="fl">0.7</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-26-2.png" width="672" /></p>
+<div id="Over1.3B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Boxplot
+</h3>
+<p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="co"># BASIC BOXPLOT</span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="kw">boxplot</span>(logclaims)</a></code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">quantile</span>(logclaims, <span class="dt">probs =</span> <span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb23-2" title="2"></a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="co"># BOXPLOT WITH ANNOTATION</span></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="kw">boxplot</span>(logclaims, <span class="dt">main =</span> <span class="st">&quot;Boxplot of logclaims&quot;</span>)</a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="kw">text</span>(<span class="dv">1</span>,  <span class="fl">7.6</span>,  <span class="st">&quot;median&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)</a>
+<a class="sourceLine" id="cb23-6" title="6"><span class="kw">text</span>(<span class="dv">1</span>,  <span class="fl">6.55</span>, <span class="st">&quot;25th percentile&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)</a>
+<a class="sourceLine" id="cb23-7" title="7"><span class="kw">text</span>(<span class="dv">1</span>,  <span class="fl">7.95</span>, <span class="st">&quot;75th percentile&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)</a>
+<a class="sourceLine" id="cb23-8" title="8"><span class="kw">arrows</span>(<span class="fl">1.05</span>, <span class="fl">4.9</span>, <span class="fl">1.05</span>, <span class="fl">3.6</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">code =</span> <span class="dv">3</span>, <span class="dt">angle =</span> <span class="dv">20</span>, <span class="dt">length =</span> <span class="fl">0.1</span>)</a>
+<a class="sourceLine" id="cb23-9" title="9"><span class="kw">text</span>(<span class="fl">1.1</span>,  <span class="fl">4.4</span>, <span class="st">&quot;outliers&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.7</span>)</a>
+<a class="sourceLine" id="cb23-10" title="10"><span class="kw">text</span>(<span class="fl">1.1</span>, <span class="fl">10.9</span>, <span class="st">&quot;outlier&quot;</span>,  <span class="dt">cex =</span> <span class="fl">0.7</span>)</a></code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-29-2.png" width="672" /></p>
 <pre><code>     75% 
 8.075579 </code></pre>
+</p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.3C" href="javascript:toggleDet('toggleOver1.3C','displayOver1.3C');"><i><strong>Show Overhead C Details. QQ Plot</strong></i></a>
-</h6>
-<div id="toggleOver1.3C" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(injury)
-<span class="kw">quantile</span>(claims, <span class="dt">probs =</span> <span class="fl">0.75</span>)
-<span class="kw">quantile</span>(logclaims, <span class="dt">probs =</span> <span class="fl">0.75</span>)
-<span class="kw">log</span>(<span class="kw">quantile</span>(claims, <span class="dt">probs =</span> <span class="fl">0.75</span>))
-<span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(logclaims), <span class="dt">sd =</span> <span class="kw">sd</span>(logclaims))
-(<span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(logclaims), <span class="dt">sd =</span> <span class="kw">sd</span>(logclaims)) <span class="op">-</span><span class="kw">mean</span>(logclaims)) <span class="op">/</span>
-<span class="st">       </span><span class="kw">sd</span>(logclaims)
-<span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-
-<span class="co">#  QUANTILE - QUANTILE PLOT</span>
-<span class="kw">qqnorm</span>(logclaims)
-<span class="kw">qqline</span>(logclaims)   </code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div id="Over1.3C" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+C Details. QQ Plot
+</h3>
+<p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">summary</span>(injury)</a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">quantile</span>(claims, <span class="dt">probs =</span> <span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb25-3" title="3"><span class="kw">quantile</span>(logclaims, <span class="dt">probs =</span> <span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb25-4" title="4"><span class="kw">log</span>(<span class="kw">quantile</span>(claims, <span class="dt">probs =</span> <span class="fl">0.75</span>))</a>
+<a class="sourceLine" id="cb25-5" title="5"><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(logclaims), <span class="dt">sd =</span> <span class="kw">sd</span>(logclaims))</a>
+<a class="sourceLine" id="cb25-6" title="6">(<span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">mean =</span> <span class="kw">mean</span>(logclaims), <span class="dt">sd =</span> <span class="kw">sd</span>(logclaims)) <span class="op">-</span><span class="kw">mean</span>(logclaims)) <span class="op">/</span></a>
+<a class="sourceLine" id="cb25-7" title="7"><span class="st">       </span><span class="kw">sd</span>(logclaims)</a>
+<a class="sourceLine" id="cb25-8" title="8"><span class="kw">qnorm</span>(<span class="dt">p =</span> <span class="fl">0.75</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb25-9" title="9"></a>
+<a class="sourceLine" id="cb25-10" title="10"><span class="co">#  QUANTILE - QUANTILE PLOT</span></a>
+<a class="sourceLine" id="cb25-11" title="11"><span class="kw">qqnorm</span>(logclaims)</a>
+<a class="sourceLine" id="cb25-12" title="12"><span class="kw">qqline</span>(logclaims)   </a></code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <pre><code>     claims          logclaims     
  Min.   :   45.0   Min.   : 3.807  
  1st Qu.:  892.5   1st Qu.: 6.794  
@@ -671,6 +755,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 [1] 8.131056
 [1] 0.6744898
 [1] 0.6744898</code></pre>
+</p>
 </div>
 </div>
 </div>
@@ -686,9 +771,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 <li>Determine the 25th percentile for claims based on a normal distribution using the <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/">qnorm()</a> function.</li>
 <li>Produce a normal qq plot for claims using the function <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/">qqnorm()</a>. The <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/">qqline()</a> function is handy for producing a reference line.</li>
 </ul>
-<p><strong>Hint.</strong> Note that <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/">qnorm()</a> (one <code>q</code>) is for a normal quantile and <a href="https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/">qqnorm()</a>. (two <code>q</code>’s!) is for the normal qq plot</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjUHJvZHVjZSBhIGJveCBwbG90IGZvciBjbGFpbXNcbl9fXyhjbGFpbXMpXG5cbiNEZXRlcm1pbmUgdGhlIDI1dGggZW1waXJpY2FsIHBlcmNlbnRpbGUgZm9yIGNsYWltc1xucTI1IDwtIF9fXyhjbGFpbXMsIHByb2JzID0gX19fKVxucTI1XG5cbiNEZXRlcm1pbmUgdGhlIDI1dGggcGVyY2VudGlsZSBmb3IgY2xhaW1zIGJhc2VkIG9uIGEgbm9ybWFsIGRpc3RyaWJ1dGlvblxucW4yNSA8LSBfX18ocCA9IF9fXywgbWVhbiA9IG1lYW4oY2xhaW1zKSwgc2QgPSBzZChjbGFpbXMpKVxucW4yNVxuXG4jUHJvZHVjZSBhIG5vcm1hbCBxcSBwbG90IGZvciBjbGFpbXNcbl9fXyhjbGFpbXMpXG5fX18oY2xhaW1zKSIsInNvbHV0aW9uIjoiIyBTb2x1dGlvblxuYm94cGxvdChjbGFpbXMpXG5xMjUgPC0gcXVhbnRpbGUoY2xhaW1zLCBwcm9icyA9IDAuMjUpXG5xMjVcbnFuMjUgPC0gcW5vcm0ocCA9IDAuMjUsIG1lYW4gPSBtZWFuKGNsYWltcyksIHNkID0gc2QoY2xhaW1zKSlcbnFuMjVcbnFxbm9ybShjbGFpbXMpXG5xcWxpbmUoY2xhaW1zKSAgICIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiYm94cGxvdFwiKSAlPiUgY2hlY2tfYXJnKFwieFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlBsZWFzZSBjcmVhdGUgYSBib3hwbG90IG9mIGBjbGFpbXNgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJxdWFudGlsZVwiKSAlPiUgY2hlY2tfYXJnKFwicHJvYnNcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJJZiB3ZSB3YW50IHRvIGZpbmQgdGhlIFl0aCBwZXJjZW50aWxlLCBtYWtlIHN1cmUgdG8gc2V0IHByb2JzIGVxdWFsIHRvIFkgaW4gZGVjaW1hbCBmb3JtYXQuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJxMjVcIix1bmRlZmluZWRfbXNnPVwiTWFrZSBzdXJlIHRvIGFzc2lnbiB0aGUgMjV0aCBxdWFudGlsZSB0byBgcTI1XCIpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJxbjI1XCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIG5vcm1hbCB2YWx1ZSBhc3NvY2lhdGVkIHdpdGggdGhlIDI1dGggcGVyY2VudGlsZSB0byBxbjI1XCIpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInFxbm9ybVwiKSAlPiUgY2hlY2tfYXJnKFwieVwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0aGF0IHlvdSBhcmUgY3JlYXRpbmcgYSBxcS1wbG90IGZvciBgY2xhaW1zYC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicXFsaW5lXCIpICU+JSBjaGVja19hcmcoXCJ5XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRoYXQgeW91IGFyZSBhZGRpbmcgYSBxcS1saW5lIGZvciBgY2xhaW1zYC5cIilcbnN1Y2Nlc3NfbXNnKFwiQ29uZ3JhdHVsYXRpb25zIG9uIGxlYXJuaW5nIGFib3V0IGJveCBhbmQgcXEgcGxvdHMuIEFsdGhvdWdoIHlvdSBhcmUgdW5saWtlbHkgdG8gc2hvdyB0aGVzZSBwbG90cyB0byBjb25zdW1lcnMgb2YgeW91ciBhbmFseXNpcywgeW91IHdpbGwgZmluZCB0aGVtIHVzZWZ1bCB0b29scyBhcyB3ZSBleHBsb3JlIG11bHRpdmFyaWF0ZSBhc3BlY3RzIG9mIGRhdGEuXCIpIn0=
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjUHJvZHVjZSBhIGJveCBwbG90IGZvciBjbGFpbXNcbl9fXyhjbGFpbXMpXG5cbiNEZXRlcm1pbmUgdGhlIDI1dGggZW1waXJpY2FsIHBlcmNlbnRpbGUgZm9yIGNsYWltc1xucTI1IDwtIF9fXyhjbGFpbXMsIHByb2JzID0gX19fKVxucTI1XG5cbiNEZXRlcm1pbmUgdGhlIDI1dGggcGVyY2VudGlsZSBmb3IgY2xhaW1zIGJhc2VkIG9uIGEgbm9ybWFsIGRpc3RyaWJ1dGlvblxucW4yNSA8LSBfX18ocCA9IF9fXywgbWVhbiA9IG1lYW4oY2xhaW1zKSwgc2QgPSBzZChjbGFpbXMpKVxucW4yNVxuXG4jUHJvZHVjZSBhIG5vcm1hbCBxcSBwbG90IGZvciBjbGFpbXNcbl9fXyhjbGFpbXMpXG5fX18oY2xhaW1zKSIsInNvbHV0aW9uIjoiIyBTb2x1dGlvblxuYm94cGxvdChjbGFpbXMpXG5xMjUgPC0gcXVhbnRpbGUoY2xhaW1zLCBwcm9icyA9IDAuMjUpXG5xMjVcbnFuMjUgPC0gcW5vcm0ocCA9IDAuMjUsIG1lYW4gPSBtZWFuKGNsYWltcyksIHNkID0gc2QoY2xhaW1zKSlcbnFuMjVcbnFxbm9ybShjbGFpbXMpXG5xcWxpbmUoY2xhaW1zKSAgICIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiYm94cGxvdFwiLG5vdF9jYWxsZWRfbXNnPVwiTWFrZSBzdXJlIHRvIHVzZSBgYm94cGxvdGAgdG8gY3JlYXRlIGEgdmlzdWFsIHJlcHJlc2VudGF0aW9uIG9mIHRoZSBkYXRhLlwiKSAlPiUgY2hlY2tfYXJnKC4sIFwieFwiLCBhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJIYXZlIHlvdSBzcGVjaWZpZWQgdGhlIGRhdGEgUiBzaG91bGQgdXNlIHRvIGNyZWF0ZSB0aGUgYm94cGxvdD9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJQbGVhc2UgY3JlYXRlIGEgYm94cGxvdCBvZiBgY2xhaW1zYC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicXVhbnRpbGVcIixub3RfY2FsbGVkX21zZz1cIkhhdmUgeW91IGNhbGxlZCBgcXVhbnRpbGVgIHRvIGZpbmQgdGhlIGVtcGlyaWNhbCBwZXJjZW50aWxlP1wiKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJwcm9ic1wiLGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkhhdmUgeW91IHNwZWNpZmllZCB3aGF0IGVtcGlyaWNhbCBwZXJjZW50aWxlIHdlIHdvdWxkIGxpa2UgdG8gZmluZD9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJJZiB3ZSB3YW50IHRvIGZpbmQgdGhlIFl0aCBwZXJjZW50aWxlLCBtYWtlIHN1cmUgdG8gc2V0IHByb2JzIGVxdWFsIHRvIFkgaW4gZGVjaW1hbCBmb3JtYXQuXCIpXG4gIGNoZWNrX2FyZyguLCBcInhcIixhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJIYXZlIHlvdSBzcGVjaWZpZWQgd2hpY2ggZGF0YSBSIHNob3VsZCB1c2UgdG8gZmluZCB0aGUgMjV0aCBlbXBpcmljYWwgcGVyY2VudGlsZT9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gZmluZCB0aGUgMjV0aCBlbXBpcmljYWwgcGVyY2VudGlsZSBvZiBgY2xhaW1zYC5cIilcbn1cbmV4KCkgJT4lIGNoZWNrX29iamVjdChcInEyNVwiLHVuZGVmaW5lZF9tc2c9XCJNYWtlIHN1cmUgdG8gYXNzaWduIHRoZSAyNXRoIHF1YW50aWxlIHRvIGBxMjVcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gZmluZCB0aGUgMjV0aCBxdWFudGlsZSBvZiBjbGFpbXMuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJxbjI1XCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIG5vcm1hbCB2YWx1ZSBhc3NvY2lhdGVkIHdpdGggdGhlIDI1dGggcGVyY2VudGlsZSB0byBxbjI1XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiV2UgY2FuIHVzZSBhIG5vcm1hbCBhcHByb3hpbWF0aW9uIHRvIHNvbHZlIGZvciBxbjI1IHVzaW5nIGBxbm9ybWAuXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInFxbm9ybVwiLG5vdF9jYWxsZWRfbXNnPVwiSGF2ZSB5b3UgY2FsbGVkIGBxcW5vcm1gIHRvIGNyZWF0ZSBhIG5vcm1hbCBxcSBwbG90P1wiKSAlPiUgY2hlY2tfYXJnKC4sIFwieVwiLGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkhhdmUgeW91IHNwZWNpZmllZCB3aGljaCBkYXRhIFIgc2hvdWxkIHVzZSB0byBjcmVhdGUgdGhlIHFxIHBsb3Q/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRoYXQgeW91IGFyZSBjcmVhdGluZyBhIHFxLXBsb3QgZm9yIGBjbGFpbXNgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJxcWxpbmVcIixub3RfY2FsbGVkX21zZz1cIkhhdmUgeW91IGNhbGxlZCBgcXFsaW5lYCB0byBvdmVybGF5IGEgbm9ybWFsIGxpbmUgb24geW91ciBxcSBwbG90P1wiKSAlPiUgY2hlY2tfYXJnKC4sIFwieVwiLGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkhhdmUgeW91IHNwZWNpZmllZCB3aGljaCBkYXRhIFIgc2hvdWxkIHVzZSB0byBjcmVhdGUgYW5kIHBsb3QgdGhlIGxpbmU/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRoYXQgeW91IGFyZSBhZGRpbmcgYSBxcS1saW5lIGZvciBgY2xhaW1zYC5cIilcbnN1Y2Nlc3NfbXNnKFwiQ29uZ3JhdHVsYXRpb25zIG9uIGxlYXJuaW5nIGFib3V0IGJveCBhbmQgcXEgcGxvdHMuIEFsdGhvdWdoIHlvdSBhcmUgdW5saWtlbHkgdG8gc2hvdyB0aGVzZSBwbG90cyB0byBjb25zdW1lcnMgb2YgeW91ciBhbmFseXNpcywgeW91IHdpbGwgZmluZCB0aGVtIHVzZWZ1bCB0b29scyBhcyB3ZSBleHBsb3JlIG11bHRpdmFyaWF0ZSBhc3BlY3RzIG9mIGRhdGEuXCIpIiwiaGludCI6Ik5vdGUgdGhhdCA8YSBocmVmPVwiaHR0cHM6Ly93d3cucmRvY3VtZW50YXRpb24ub3JnL3BhY2thZ2VzL3N0YXRzL3ZlcnNpb25zLzMuNS4wL3RvcGljcy9Ob3JtYWwvXCI+cW5vcm0oKTwvYT4gKG9uZSA8Y29kZT5xPC9jb2RlPikgaXMgZm9yIGEgbm9ybWFsIHF1YW50aWxlIGFuZCA8YSBocmVmPVwiaHR0cHM6Ly93d3cucmRvY3VtZW50YXRpb24ub3JnL3BhY2thZ2VzL3N0YXRzL3ZlcnNpb25zLzMuNS4wL3RvcGljcy9xcW5vcm0vXCI+cXFub3JtKCk8L2E+LiAodHdvIDxjb2RlPnE8L2NvZGU+JiMzOTtzISkgaXMgZm9yIHRoZSBub3JtYWwgcXEgcGxvdCJ9
 </div>
 </div>
 <div id="exercise.-effects-on-distributions-of-removing-the-largest-claim" class="section level3">
@@ -703,9 +787,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 <li>Compare the summary statistics of the omitted claim distribution to the full distribution</li>
 <li>Compare the two distributions visually via histograms plotted next to another. <code>par(mfrow = c(1, 2))</code> is used to organize the plots you create. Do not alter this code.</li>
 </ul>
-<p><strong>Hint.</strong> For this data set, the [subset()] argument <code>claims &lt; 25000</code> will keep all but the largest claim</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjIEV4YW1pbmUgdGhlIHRhaWwgb2YgdGhlIGBpbmp1cnlgIGRhdGFzZXRcbnRhaWwoX19fKVxuXG4jIENyZWF0ZSBhIHN1YnNldCBvbWl0dGluZyB0aGUgbGFyZ2VzdCBjbGFpbVxuaW5qdXJ5MiA8LSBzdWJzZXQoaW5qdXJ5LCBfX18pXG5cbiMgQ29tcGFyZSB0aGUgc3VtbWFyeSBzdGF0aXN0aWNzIG9mIHRoZSBvbWl0dGVkIGNsYWltIGRpc3RyaWJ1dGlvbiB0byB0aGUgZnVsbCBkaXN0cmlidXRpb25cbnN1bW1hcnkoX19fKVxuc3VtbWFyeShpbmp1cnkyKVxuXG4jIENvbXBhcmUgdGhlIHR3byBkaXN0cmlidXRpb25zIHZpc3VhbGx5IHZpYSBoaXN0b2dyYW1zIHBsb3R0ZWQgbmV4dCB0byBhbm90aGVyXG5wYXIobWZyb3cgPSBjKDEsIDIpKVxuaGlzdChfX18sIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkZ1bGwgRGF0YVwiKVxuaGlzdChfX18sIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkxhcmdlc3QgQ2xhaW0gT21pdHRlZFwiKSIsInNvbHV0aW9uIjoidGFpbChpbmp1cnkpXG5pbmp1cnkyIDwtIHN1YnNldChpbmp1cnksIGNsYWltcyA8IDI1MDAwIClcbnN1bW1hcnkoaW5qdXJ5KVxuc3VtbWFyeShpbmp1cnkyKVxucGFyKG1mcm93ID0gYygxLCAyKSlcbmhpc3QoY2xhaW1zLCBmcmVxID0gRkFMU0UsICBtYWluID0gXCJGdWxsIERhdGFcIilcbmhpc3QoaW5qdXJ5MiRjbGFpbXMsIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkxhcmdlc3QgQ2xhaW0gT21pdHRlZFwiKSIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwidGFpbFwiKSAlPiUgY2hlY2tfYXJnKFwieFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byB1c2UgdGFpbCB0byBzZWUgdGhlIGxhcyA2IGVudHJpZXMgaW4gYGluanVyeWAuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJpbmp1cnkyXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRoYXQgYGluanVyeTJgIGlzIHRoZSBzYW1lIGFzIGBpbmp1cnlgIGJ1dCB3aXRob3V0IHRoZSBsYXJnZXN0IGNsYWltLiBUcnkgYW5kIHRoaW5rIG9mIGNyZWF0aXZlIHdheXMgdG8gcmVtb3ZlIHRoYXQgb2JzZXJ2YXRpb24gZnJvbSB0aGUgZGF0YSFcIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwic3Vic2V0XCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInN1bW1hcnlcIixpbmRleD0xKSAlPiUgY2hlY2tfYXJnKFwib2JqZWN0XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGdldCBzdW1tYXJ5IHN0YXRpc3RpY3Mgb2YgYGluanVyeTJgLlwiKVxuZXgoKSAlPiUgY2hlY19mdW5jdGlvbihcInN1bW1hcnlcIixpbmRleD0yKSAlPiUgY2hlY2tfYXJnKFwib2JqZWN0XCIpICU+JSBjaGVja19lcXVhbCgpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInBhclwiKSAlPiUgY2hlY2tfYXJnKFwibWZyb3dcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJQbGVhc2UgZG9udCBjaGFuZ2UgdGhpcyBwYXJ0LiBpdCBzaG91bGQgcmVhZCBgcGFyKG1mcm93PWMoMiwxKSlgXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcImhpc3RcIixpbmRleD0xKSAlPiUge1xuICBjaGVja19hcmcoXCJ4XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiQ3JlYXRlIHRoZSBmaXJzdCBoaXN0b2dyYW0gdXNpbmcgYWxsIG9mIHRoZSBvYnNlcnZlZCBjbGFpbXMuXCIpXG4gIGNoZWNrX2FyZyhcImZyZXFcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gY3JlYXRlIGEgZGVuc2l0eSBoaXN0b2dyYW0gaW5zdGVhZCBvZiBhIGZyZXF1ZW5jeSBoaXN0b2dyYW0uXCIpXG59XG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcImhpc3RcIixpbmRleD0yKSAlPiUge1xuICBjaGVja19hcmcoXCJ4XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGNyZWF0ZSB0aGUgc2Vjb25kIGhpc3RvZ3JhbSBiYXNlZCBvbiBjbGFpbXMgd2l0aCB0aGUgbGFyZ2VzdCBvbmUgcmVtb3ZlZC5cIilcbiAgY2hlY2tfYXJnKFwiZnJlcVwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBjcmVhdGUgYSBkZW5zaXR5IGhpc3RvZ3JhbSBpbnN0ZWFkIG9mIGEgZnJlcXVlbmN5IGhpc3RvZ3JhbS5cIilcbn1cbnN1Y2Nlc3NfbXNnKFwiQ29uZ3JhdHVsYXRpb25zISBUaGUgZ29hbCBvZiBwcmVkaWN0aXZlIG1vZGVsaW5nIGlzIHRvIGRpc2NvdmVyIHBhdHRlcm5zIGluIHRoZSBkYXRhLiBIb3dldmVyLCBzb21ldGltZXMgc2VlbWluZyAncGF0dGVybnMnIGFyZSB0aGUgcmVzdWx0IG9mIG9uZSBvciB0d28gdW51c3VhbCBvYnNlcnZhdGlvbnMuIFVudXN1YWwgb2JzZXJ2YXRpb25zIG1heSBiZSBkdWUgdG8gaW5jb3JyZWN0IGRhdGEgZ2F0aGVyaW5nIHByb2NlZHVyZXMgb3IganVzdCBkdWUgdG8gd2lsZCBmbHVjdHVhdGlvbnMgaW4gYSBwcm9jZXNzIG9mIGludGVyZXN0IGJ1dCBhcmUgY29tbW9uIGluIHByZWRpY3RpdmUgbW9kZWxpbmcuXCIpIn0=
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjIEV4YW1pbmUgdGhlIHRhaWwgb2YgdGhlIGBpbmp1cnlgIGRhdGFzZXRcbnRhaWwoX19fKVxuXG4jIENyZWF0ZSBhIHN1YnNldCBvbWl0dGluZyB0aGUgbGFyZ2VzdCBjbGFpbVxuaW5qdXJ5MiA8LSBzdWJzZXQoaW5qdXJ5LCBfX18pXG5cbiMgQ29tcGFyZSB0aGUgc3VtbWFyeSBzdGF0aXN0aWNzIG9mIHRoZSBvbWl0dGVkIGNsYWltIGRpc3RyaWJ1dGlvbiB0byB0aGUgZnVsbCBkaXN0cmlidXRpb25cbnN1bW1hcnkoX19fKVxuc3VtbWFyeShpbmp1cnkyKVxuXG4jIENvbXBhcmUgdGhlIHR3byBkaXN0cmlidXRpb25zIHZpc3VhbGx5IHZpYSBoaXN0b2dyYW1zIHBsb3R0ZWQgbmV4dCB0byBhbm90aGVyXG5wYXIobWZyb3cgPSBjKDEsIDIpKVxuaGlzdChfX18sIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkZ1bGwgRGF0YVwiKVxuaGlzdChfX18sIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkxhcmdlc3QgQ2xhaW0gT21pdHRlZFwiKSIsInNvbHV0aW9uIjoidGFpbChpbmp1cnkpXG5pbmp1cnkyIDwtIHN1YnNldChpbmp1cnksIGNsYWltcyA8IDI1MDAwIClcbnN1bW1hcnkoaW5qdXJ5KVxuc3VtbWFyeShpbmp1cnkyKVxucGFyKG1mcm93ID0gYygxLCAyKSlcbmhpc3QoY2xhaW1zLCBmcmVxID0gRkFMU0UsICBtYWluID0gXCJGdWxsIERhdGFcIilcbmhpc3QoaW5qdXJ5MiRjbGFpbXMsIGZyZXEgPSBGQUxTRSwgIG1haW4gPSBcIkxhcmdlc3QgQ2xhaW0gT21pdHRlZFwiKSIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwidGFpbFwiLG5vdF9jYWxsZWRfbXNnPVwiSGF2ZSB5b3UgdXNlZCBgdGFpbGAgdG8gdmlldyB0aGUgbGFzdCA2IG9ic2VydmF0aW9ucyBvZiB0aGUgZGF0YT9cIikgJT4lIGNoZWNrX2FyZyguLCBcInhcIixhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJIYXZlIHlvdSBzcGVjaWZpZWQgd2hpY2ggZGF0YWZyYW1lIHlvdSB3b3VsZCBsaWtlIHRvIHZpZXc/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIHVzZSB0YWlsIHRvIHNlZSB0aGUgbGFzIDYgZW50cmllcyBpbiBgaW5qdXJ5YC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwic3Vic2V0XCIsbm90X2NhbGxlZF9tc2c9XCJIYXZlIHlvdSBjYWxsZWQgYHN1YnNldGAgdG8gY3JlYXRlIGEgc3Vic2V0IG9mIG91ciBvcmlnaW5hbCBkYXRhP1wiKSAlPiUgY2hlY2tfYXJnKC4sIFwieFwiLGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkhhdmUgeW91IHNwZWNpZmllZCB0aGUgb3JpZ2luYWwgZGF0YSB5b3Ugd291bGQgbGlrZSB0byB0YWtlIGEgc3Vic2V0IGZyb20/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGNyZWF0ZSBhIHN1YnNldCBvZiBgaW5qdXJ5YC5cIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcImluanVyeTJcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdGhhdCBgaW5qdXJ5MmAgaXMgdGhlIHNhbWUgYXMgYGluanVyeWAgYnV0IHdpdGhvdXQgdGhlIGxhcmdlc3QgY2xhaW0uIFRyeSBhbmQgdGhpbmsgb2YgY3JlYXRpdmUgd2F5cyB0byByZW1vdmUgdGhhdCBvYnNlcnZhdGlvbiBmcm9tIHRoZSBkYXRhIVwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJzdW1tYXJ5XCIsaW5kZXg9MSxub3RfY2FsbGVkX21zZz1cIkhhdmUgeW91IGNhbGxlZCBgc3VtbWFyeWAgdG8gdmlldyBiYXNpYyBzdGF0aXN0aWNzIGFib3V0IHRoZSBkYXRhP1wiKSAlPiUgY2hlY2tfYXJnKC4sIFwib2JqZWN0XCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHdoaWNoIGRhdGEgeW91IHdvdWxkIGxpa2UgYSBzdW1tYXJ5IG9mP1wiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBnZXQgc3VtbWFyeSBzdGF0aXN0aWNzIG9mIGBpbmp1cnlgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJzdW1tYXJ5XCIsaW5kZXg9Mixub3RfY2FsbGVkX21zZz1cIkhhdmUgeW91IGNhbGxlZCBgc3VtbWFyeWAgdG8gdmlldyBiYXNpYyBzdGF0aXN0aWNzIGFib3V0IHRoZSBkYXRhP1wiKSAlPiUgY2hlY2tfYXJnKC4sIFwib2JqZWN0XCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHdoaWNoIGRhdGEgeW91IHdvdWxkIGxpa2UgYSBzdW1tYXJ5IG9mP1wiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBnZXQgc3VtbWFyeSBzdGF0aXN0aWNzIG9mIGBpbmp1cnkyYC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicGFyXCIsbm90X2NhbGxlZF9tc2c9XCJIYXZlIHlvdSBjYWxsZWQgYHBhcmAgdG8gY2hhbmdlIHRoZSBncmFwaGljYWwgcGFyYW1ldGVycz9cIikgJT4lIGNoZWNrX2FyZyguLCBcIm1mcm93XCIsIGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkhhdmUgeW91IHNwZWNpZmllZCB0aGUgbnVtYmVyIG9mIHJvd3MvY29sdW1ucyBmb3IgeW91ciBwbG90IHRvIGhhdmU/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUGxlYXNlIGRvbnQgY2hhbmdlIHRoaXMgcGFydC4gaXQgc2hvdWxkIHJlYWQgYHBhcihtZnJvdz1jKDIsMSkpYFwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJoaXN0XCIsaW5kZXg9MSxub3RfY2FsbGVkX21zZz1cIkhhdmUgeW91IGNhbGxlZCBgaGlzdGAgdG8gY3JlYXRlIGEgaGlzdG9ncmFtIG9mIHRoZSBkYXRhP1wiKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJ4XCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHdoaWNoIGRhdGEgc2hvdWxkIGJlIHVzZWQgdG8gY3JlYXRlIGEgaGlzdG9ncmFtP1wiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIkNyZWF0ZSB0aGUgZmlyc3QgaGlzdG9ncmFtIHVzaW5nIGFsbCBvZiB0aGUgb2JzZXJ2ZWQgY2xhaW1zLlwiKVxuICBjaGVja19hcmcoLiwgXCJmcmVxXCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHRoYXQgd2Ugd291bGQgbGlrZSBhIGRlbnNpdHkgaGlzdG9ncmFtP1wiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBjcmVhdGUgYSBkZW5zaXR5IGhpc3RvZ3JhbSBpbnN0ZWFkIG9mIGEgZnJlcXVlbmN5IGhpc3RvZ3JhbS5cIilcbn1cbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiaGlzdFwiLGluZGV4PTIsbm90X2NhbGxlZF9tc2c9XCJIYXZlIHlvdSBjYWxsZWQgYGhpc3RgIHRvIGNyZWF0ZSBhbm90aGVyIGhpc3RvZ3JhbSBvZiB0aGUgZGF0YT9cIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwieFwiLGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkhhdmUgeW91IHNwZWNpZmllZCB3aGljaCBkYXRhIHNob3VsZCBiZSB1c2VkIHRvIGNyZWF0ZSBhIGhpc3RvZ3JhbT9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gY3JlYXRlIHRoZSBzZWNvbmQgaGlzdG9ncmFtIGJhc2VkIG9uIGNsYWltcyB3aXRoIHRoZSBsYXJnZXN0IG9uZSByZW1vdmVkLlwiKVxuICBjaGVja19hcmcoLiwgXCJmcmVxXCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHRoYXQgd2Ugd291bGQgbGlrZSBhIGRlbnNpdHkgaGlzdG9ncmFtP1wiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBjcmVhdGUgYSBkZW5zaXR5IGhpc3RvZ3JhbSBpbnN0ZWFkIG9mIGEgZnJlcXVlbmN5IGhpc3RvZ3JhbS5cIilcbn1cbnN1Y2Nlc3NfbXNnKFwiQ29uZ3JhdHVsYXRpb25zISBUaGUgZ29hbCBvZiBwcmVkaWN0aXZlIG1vZGVsaW5nIGlzIHRvIGRpc2NvdmVyIHBhdHRlcm5zIGluIHRoZSBkYXRhLiBIb3dldmVyLCBzb21ldGltZXMgc2VlbWluZyAncGF0dGVybnMnIGFyZSB0aGUgcmVzdWx0IG9mIG9uZSBvciB0d28gdW51c3VhbCBvYnNlcnZhdGlvbnMuIFVudXN1YWwgb2JzZXJ2YXRpb25zIG1heSBiZSBkdWUgdG8gaW5jb3JyZWN0IGRhdGEgZ2F0aGVyaW5nIHByb2NlZHVyZXMgb3IganVzdCBkdWUgdG8gd2lsZCBmbHVjdHVhdGlvbnMgaW4gYSBwcm9jZXNzIG9mIGludGVyZXN0IGJ1dCBhcmUgY29tbW9uIGluIHByZWRpY3RpdmUgbW9kZWxpbmcuXCIpIiwiaGludCI6IkZvciB0aGlzIGRhdGEgc2V0LCB0aGUgW3N1YnNldCgpXSBhcmd1bWVudCA8Y29kZT5jbGFpbXMgJmx0OyAyNTAwMDwvY29kZT4gd2lsbCBrZWVwIGFsbCBidXQgdGhlIGxhcmdlc3QgY2xhaW0ifQ==
 </div>
 </div>
 </div>
@@ -725,46 +808,56 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
 </center>
 <div id="video-overhead-details-3" class="section level4 unnumbered">
 <h4>Video Overhead Details</h4>
-<h6 style="text-align: center;">
-<a id="displayOver1.4A" href="javascript:toggleDet('toggleOver1.4A','displayOver1.4A');"><i><strong>Show Overhead A Details. Simulate a moderately skewed distribution, with transforms</strong></i></a>
-</h6>
-<div id="toggleOver1.4A" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#  FIGURE 1.7 - SIMULATE CHI-SQUARE, CREATE 3 TRANSFORMATIONS</span>
-<span class="kw">set.seed</span>(<span class="dv">1237</span>)                  <span class="co"># set the seed of the random number generator</span>
-                                <span class="co"># allows us to replicate results</span>
-X1 &lt;-<span class="st"> </span><span class="dv">10000</span><span class="op">*</span><span class="kw">rchisq</span>(<span class="dv">500</span>, <span class="dt">df =</span> <span class="dv">2</span>) <span class="co"># generate variables randomly from a skewed distribution</span>
-X2 &lt;-<span class="st"> </span>X1<span class="op">^</span>(<span class="fl">0.5</span>)                  <span class="co"># square root transform, could also use sqrt(X1)</span>
-X3 &lt;-<span class="st"> </span><span class="kw">log</span>(X1)                   <span class="co"># logarithmic transform</span>
-X4 &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</span><span class="op">/</span>X1                     <span class="co"># negative reciprocal transform</span></code></pre></div>
+<div class="tab">
+<p><button class="tablinks" onclick="openTab(event, 'Over1.4A')">A Details. Simulate a moderately skewed distribution, with transforms</button>
+<button class="tablinks" onclick="openTab(event, 'Over1.4B')">B Details. Visualize the distributions</button></p>
 </div>
-<h6 style="text-align: center;">
-<a id="displayOver1.4B" href="javascript:toggleDet('toggleOver1.4B','displayOver1.4B');"><i><strong>Show Overhead B Details. Visualize the distributions</strong></i></a>
-</h6>
-<div id="toggleOver1.4B" style="display: none">
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">cex =</span> .<span class="dv">75</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="fl">1.5</span>,<span class="dv">0</span>))
-<span class="kw">hist</span>(X1, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, 
-      <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">yaxt =</span> <span class="st">&quot;n&quot;</span>,<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">200000</span>),<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">00005</span>))
-<span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">at =</span> <span class="kw">seq</span>(<span class="dv">0</span>,.<span class="dv">00005</span>,.<span class="dv">00001</span>),<span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">3</span>, 
-  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;0.00001&quot;</span>, <span class="st">&quot;0.00002&quot;</span>,<span class="st">&quot;0.00003&quot;</span>, <span class="st">&quot;0.00004&quot;</span>, <span class="st">&quot;0.00005&quot;</span>))
-<span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> .<span class="dv">000055</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>)
-<span class="kw">mtext</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>, <span class="dt">line =</span> <span class="dv">2</span>)
-
-<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">1.5</span>,<span class="fl">0.2</span>))
-<span class="kw">hist</span>(X2, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, 
-      <span class="dt">las =</span> <span class="dv">1</span>,<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">400</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">008</span>))
-<span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> .<span class="dv">0088</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>)
-<span class="kw">mtext</span>(<span class="st">&quot;Square root of y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>, <span class="dt">line =</span> <span class="dv">2</span>)
-
-<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.2</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">0</span>))
-<span class="kw">hist</span>(X3,  <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">4</span>))
-<span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> .<span class="dv">44</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>)
-<span class="kw">mtext</span>(<span class="st">&quot;Logarithmic y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>, <span class="dt">line =</span> <span class="dv">2</span>)
-
-<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.2</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="fl">0.2</span>))
-<span class="kw">hist</span>(X4, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))
-<span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="dv">110</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>)
-<span class="kw">mtext</span>(<span class="st">&quot;Negative reciprocal of y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> .<span class="dv">75</span>, <span class="dt">line =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div id="Over1.4A" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+A Details. Simulate a moderately skewed distribution, with transforms
+</h3>
+<p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co">#  FIGURE 1.7 - SIMULATE CHI-SQUARE, CREATE 3 TRANSFORMATIONS</span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">set.seed</span>(<span class="dv">1237</span>)                  <span class="co"># set the seed of the random number generator</span></a>
+<a class="sourceLine" id="cb27-3" title="3">                                <span class="co"># allows us to replicate results</span></a>
+<a class="sourceLine" id="cb27-4" title="4">X1 &lt;-<span class="st"> </span><span class="dv">10000</span><span class="op">*</span><span class="kw">rchisq</span>(<span class="dv">500</span>, <span class="dt">df =</span> <span class="dv">2</span>) <span class="co"># generate variables randomly from a skewed distribution</span></a>
+<a class="sourceLine" id="cb27-5" title="5">X2 &lt;-<span class="st"> </span>X1<span class="op">^</span>(<span class="fl">0.5</span>)                  <span class="co"># square root transform, could also use sqrt(X1)</span></a>
+<a class="sourceLine" id="cb27-6" title="6">X3 &lt;-<span class="st"> </span><span class="kw">log</span>(X1)                   <span class="co"># logarithmic transform</span></a>
+<a class="sourceLine" id="cb27-7" title="7">X4 &lt;-<span class="st"> </span><span class="dv">-1</span><span class="op">/</span>X1                     <span class="co"># negative reciprocal transform</span></a></code></pre></div>
+</p>
+</div>
+<div id="Over1.4B" class="tabcontent">
+<span class="topright" onclick="this.parentElement.style.display=&#39;none&#39;">Hide</span>
+<h3>
+B Details. Visualize the distributions
+</h3>
+<p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">cex =</span> <span class="fl">.75</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="fl">1.5</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="kw">hist</span>(X1, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, </a>
+<a class="sourceLine" id="cb28-3" title="3">      <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">yaxt =</span> <span class="st">&quot;n&quot;</span>,<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">200000</span>),<span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">00005</span>))</a>
+<a class="sourceLine" id="cb28-4" title="4"><span class="kw">axis</span>(<span class="dv">2</span>, <span class="dt">at =</span> <span class="kw">seq</span>(<span class="dv">0</span>,.<span class="dv">00005</span>,.<span class="dv">00001</span>),<span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.3</span>, </a>
+<a class="sourceLine" id="cb28-5" title="5">  <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;0.00001&quot;</span>, <span class="st">&quot;0.00002&quot;</span>,<span class="st">&quot;0.00003&quot;</span>, <span class="st">&quot;0.00004&quot;</span>, <span class="st">&quot;0.00005&quot;</span>))</a>
+<a class="sourceLine" id="cb28-6" title="6"><span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="fl">.000055</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>)</a>
+<a class="sourceLine" id="cb28-7" title="7"><span class="kw">mtext</span>(<span class="st">&quot;y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>, <span class="dt">line =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb28-8" title="8"></a>
+<a class="sourceLine" id="cb28-9" title="9"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">1.5</span>,<span class="fl">0.2</span>))</a>
+<a class="sourceLine" id="cb28-10" title="10"><span class="kw">hist</span>(X2, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, </a>
+<a class="sourceLine" id="cb28-11" title="11">      <span class="dt">las =</span> <span class="dv">1</span>,<span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">400</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">008</span>))</a>
+<a class="sourceLine" id="cb28-12" title="12"><span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="fl">.0088</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>)</a>
+<a class="sourceLine" id="cb28-13" title="13"><span class="kw">mtext</span>(<span class="st">&quot;Square root of y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>, <span class="dt">line =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb28-14" title="14"></a>
+<a class="sourceLine" id="cb28-15" title="15"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.2</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb28-16" title="16"><span class="kw">hist</span>(X3,  <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,.<span class="dv">4</span>))</a>
+<a class="sourceLine" id="cb28-17" title="17"><span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="fl">.44</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>)</a>
+<a class="sourceLine" id="cb28-18" title="18"><span class="kw">mtext</span>(<span class="st">&quot;Logarithmic y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>, <span class="dt">line =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb28-19" title="19"></a>
+<a class="sourceLine" id="cb28-20" title="20"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.2</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="fl">0.2</span>))</a>
+<a class="sourceLine" id="cb28-21" title="21"><span class="kw">hist</span>(X4, <span class="dt">freq =</span> <span class="ot">FALSE</span>,  <span class="dt">nclass =</span> <span class="dv">16</span>, <span class="dt">main =</span> <span class="st">&quot;&quot;</span>,<span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</a>
+<a class="sourceLine" id="cb28-22" title="22"><span class="kw">mtext</span>(<span class="st">&quot;Density&quot;</span>, <span class="dt">side =</span> <span class="dv">2</span>, <span class="dt">at =</span> <span class="dv">110</span>, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>)</a>
+<a class="sourceLine" id="cb28-23" title="23"><span class="kw">mtext</span>(<span class="st">&quot;Negative reciprocal of y&quot;</span>, <span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">cex =</span> <span class="fl">.75</span>, <span class="dt">line =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+</p>
 </div>
 </div>
 </div>
@@ -781,9 +874,8 @@ X4 &lt;-<span class="st"> </span><span class="op">-</span><span class="dv">1</sp
 <li>logarithmic claims</li>
 <li>negative reciprocal of claims</li>
 </ul>
-<p><strong>Hint.</strong> For negative reciprocal claims, use <code>plot(density(-claims^(-1)))</code></p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjVGhpcyBjb2RlIGhlbHBzIHRvIG9yZ2FuaXplIHRoZSBmb3VyIGdyYXBocyBpbnRvIGEgMiBieSAyIGZvcm1hdFxucGFyKG1mcm93ID0gYygyLCAyKSlcbiNQbG90IHRoZSBkZW5zaXR5IG9mIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpXG5cbiNQbG90IHRoZSBkZW5zaXR5IG9mIHNxdWFyZSByb290IG9mIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpIFxuXG4jUGxvdCB0aGUgZGVuc2l0eSBvZiBsb2dhcml0aG1pYyBjbGFpbXNcbnBsb3QoZGVuc2l0eShfX18pKVxuXG4jUGxvdCB0aGUgZGVuc2l0eSBvZiB0aGUgbmVnYXRpdmUgcmVjaXByb2NhbCBvZiBjbGFpbXNcbnBsb3QoZGVuc2l0eShfX18pKSIsInNvbHV0aW9uIjoicGFyKG1mcm93ID0gYygyLCAyKSlcbnBsb3QoZGVuc2l0eShjbGFpbXMpKSAgICBcbnBsb3QoZGVuc2l0eShjbGFpbXNeKDAuNSkpKSAgXG5wbG90KGRlbnNpdHkobG9nKGNsYWltcykpKSAgXG5wbG90KGRlbnNpdHkoLWNsYWltc14oLTEpKSkgICIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicGFyXCIpICU+JSBjaGVja19hcmcoXCJtZnJvd1wiKSAlPiUgY2hlY2tfZXF1YWwoXCJQbGVhc2UgZG8gbm90IGNoYW5nZSB0aGlzIHBhcnQgb2YgdGhlIGNvZGUuIEl0IHNob3VsZCByZWFkIGBwYXIobWZyb3c9YygyLDIpKWBcIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicGxvdFwiLGluZGV4PTEsbm90X2NhbGxlZF9tc2c9XCJEaWQgeW91IHBsb3QgdGhlIGRlbnNpdHkgb2YgY2xhaW1zP1wiKSAlPiUgY2hlY2tfYXJnKFwieFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBjcmVhdGUgdGhlIGZpcnN0IGhpc3RvZ3JhbSB1c2luZyBgY2xhaW1zYFwiKVxuZXgoKSAlPiUgY2hlY2tfb3IoXG5jaGVja19mdW5jdGlvbiguLFwicGxvdFwiKSAlPiUgY2hlY2tfYXJnKC4sIFwieFwiKSAlPiUgY2hlY2tfZXF1YWwoKSxcbiAgb3ZlcnJpZGVfc29sdXRpb24oLixcInBsb3QoZGVuc2l0eShzcXJ0KGNsYWltcykpKVwiKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwbG90XCIpICU+JSBjaGVja19hcmcoLiwgXCJ4XCIpICU+JSBjaGVja19lcXVhbCgpXG4pXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInBsb3RcIixpbmRleD0zLG5vdF9jYWxsZWRfbXNnPVwiRGlkIHlvdSBwbG90IHRoZSBkZW5zaXR5IG9mIGxvZ2FyaXRobWljIGNsYWltcz9cIikgJT4lIGNoZWNrX2FyZyhcInhcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gY3JlYXRlIHRoZSB0aGlyZCBoaXN0b2dyYW0gYmFzZWQgb24gdGhlIG5hdHVyYWwgbG9nIG9mIGBjbGFpbXNgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwbG90XCIsaW5kZXg9NCxub3RfY2FsbGVkX21zZz1cIkRpZCB5b3UgcGxvdCB0aGUgZGVuc2l0eSBvZiB0aGUgbmVnYXRpdmUgcmVjaXByb2NhbCBvZiBjbGFpbXM/XCIpICU+JSBjaGVja19hcmcoXCJ4XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGNyZWF0ZSB0aGUgZm91cnRoIGhpc3RvZ3JhbSBiYXNlZCBvbiB0aGUgbmVnYXRpdmUgcmVjaXByb2NhbCAoKSBvZiBgY2xhaW1zYC5cIilcbnN1Y2Nlc3NfbXNnKFwiRXhjZWxsZW50ISBUcmFuc2Zvcm1hdGlvbnMgb2YgZGF0YSBpcyBhIHRvb2wgdGhhdCBpbmNyZWRpYmx5IGV4cGFuZHMgcG90ZW50aWFsIGFwcGxpY2FiaWxpdHkgb2YgKGxpbmVhcikgcmVncmVzc2lvbiB0ZWNobmlxdWVzLlwiKSJ9
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJDU1ZEYXRhXFxcXE1hc3NCSS5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbmluanVyeSA8LSByZWFkLmNzdihcImh0dHBzOi8vYXNzZXRzLmRhdGFjYW1wLmNvbS9wcm9kdWN0aW9uL3JlcG9zaXRvcmllcy8yNjEwL2RhdGFzZXRzLzhjY2ExOWQwNTAzZmNmNmU5ZDMwZDljYjkxMmRlNWJhOTVlY2I5YzEvTWFzc0JJLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuY2xhaW1zIDwtIGluanVyeSRjbGFpbXMiLCJzYW1wbGUiOiIjVGhpcyBjb2RlIGhlbHBzIHRvIG9yZ2FuaXplIHRoZSBmb3VyIGdyYXBocyBpbnRvIGEgMiBieSAyIGZvcm1hdFxucGFyKG1mcm93ID0gYygyLCAyKSlcbiNQbG90IHRoZSBkZW5zaXR5IG9mIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpXG5cbiNQbG90IHRoZSBkZW5zaXR5IG9mIHNxdWFyZSByb290IG9mIGNsYWltc1xucGxvdChkZW5zaXR5KF9fXykpIFxuXG4jUGxvdCB0aGUgZGVuc2l0eSBvZiBsb2dhcml0aG1pYyBjbGFpbXNcbnBsb3QoZGVuc2l0eShfX18pKVxuXG4jUGxvdCB0aGUgZGVuc2l0eSBvZiB0aGUgbmVnYXRpdmUgcmVjaXByb2NhbCBvZiBjbGFpbXNcbnBsb3QoZGVuc2l0eShfX18pKSIsInNvbHV0aW9uIjoicGFyKG1mcm93ID0gYygyLCAyKSlcbnBsb3QoZGVuc2l0eShjbGFpbXMpKSAgICBcbnBsb3QoZGVuc2l0eShjbGFpbXNeKDAuNSkpKSAgXG5wbG90KGRlbnNpdHkobG9nKGNsYWltcykpKSAgXG5wbG90KGRlbnNpdHkoLWNsYWltc14oLTEpKSkgICIsInNjdCI6ImV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicGFyXCIsbm90X2NhbGxlZF9tc2c9XCJIYXZlIHlvdSBjYWxsZWQgYHBhcmAgdG8gY2hhbmdlIHRoZSBncmFwaGljYWwgcGFyYW1ldGVycz9cIikgJT4lIGNoZWNrX2FyZyguLCBcIm1mcm93XCIsIGFyZ19ub3Rfc3BlY2lmaWVkX21zZz1cIkhhdmUgeW91IHNwZWNpZmllZCB0aGUgbnVtYmVyIG9mIHJvd3MvY29sdW1ucyBmb3IgeW91ciBwbG90IHRvIGhhdmU/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUGxlYXNlIGRvbnQgY2hhbmdlIHRoaXMgcGFydC4gaXQgc2hvdWxkIHJlYWQgYHBhcihtZnJvdz1jKDIsMikpYFwiKVxuXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInBsb3RcIixpbmRleD0xLG5vdF9jYWxsZWRfbXNnPVwiRGlkIHlvdSBwbG90IHRoZSBkZW5zaXR5IG9mIGNsYWltcz9cIikgJT4lIGNoZWNrX2FyZyguLCBcInhcIixhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJIYXZlIHlvdSBzcGVjaWZpZWQgd2hpY2ggZGF0YSBzaG91bGQgYmUgcGxvdHRlZD9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gY3JlYXRlIHRoZSBmaXJzdCBoaXN0b2dyYW0gdXNpbmcgYGNsYWltc2BcIilcblxuZXgoKSAlPiUgY2hlY2tfb3IoXG5jaGVja19mdW5jdGlvbiguLFwicGxvdFwiLGluZGV4PTIsbm90X2NhbGxlZF9tc2c9XCJkaWQgeW91IHBsb3QgdGhlIHNxdWFyZSByb290IG9mIGNsYWltcz9cIikgJT4lIGNoZWNrX2FyZyguLCBcInhcIixhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJIYXZlIHlvdSBzcGVjaWZpZWQgd2hpY2ggZGF0YSBzaG91bGQgYmUgcGxvdHRlZD9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gY3JlYXRlIHRoZSBzZWNvbmQgaGlzdG9ncmFtIGJhc2VkIG9uIHRoZSBzcXVhcmUgcm9vdCBvZiBgY2xhaW1zYC5cIiksXG4gIG92ZXJyaWRlX3NvbHV0aW9uKC4sJ3BhcihtZnJvdyA9IGMoMiwgMikpXG5wbG90KGRlbnNpdHkoY2xhaW1zKSkgICAgXG5wbG90KGRlbnNpdHkoY2xhaW1zXigwLjUpKSkgIFxucGxvdChkZW5zaXR5KGxvZyhjbGFpbXMpKSkgIFxucGxvdChkZW5zaXR5KC1jbGFpbXNeKC0xKSkpJykgJT4lIGNoZWNrX2Z1bmN0aW9uKFwicGxvdFwiLGluZGV4PTIsbm90X2NhbGxlZF9tc2c9XCJkaWQgeW91IHBsb3QgdGhlIHNxdWFyZSByb290IG9mIGNsYWltcz9cIikgJT4lIGNoZWNrX2FyZyguLCBcInhcIixhcmdfbm90X3NwZWNpZmllZF9tc2c9XCJIYXZlIHlvdSBzcGVjaWZpZWQgd2hpY2ggZGF0YSBzaG91bGQgYmUgcGxvdHRlZD9cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gY3JlYXRlIHRoZSBzZWNvbmQgaGlzdG9ncmFtIGJhc2VkIG9uIHRoZSBzcXVhcmUgcm9vdCBvZiBgY2xhaW1zYC5cIilcbilcblxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwbG90XCIsaW5kZXg9Myxub3RfY2FsbGVkX21zZz1cIkRpZCB5b3UgcGxvdCB0aGUgZGVuc2l0eSBvZiBsb2dhcml0aG1pYyBjbGFpbXM/XCIpICU+JSBjaGVja19hcmcoLiwgXCJ4XCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHdoaWNoIGRhdGEgc2hvdWxkIGJlIHBsb3R0ZWQ/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGNyZWF0ZSB0aGUgdGhpcmQgaGlzdG9ncmFtIGJhc2VkIG9uIHRoZSBuYXR1cmFsIGxvZyBvZiBgY2xhaW1zYC5cIilcblxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwbG90XCIsaW5kZXg9NCxub3RfY2FsbGVkX21zZz1cIkRpZCB5b3UgcGxvdCB0aGUgZGVuc2l0eSBvZiB0aGUgbmVnYXRpdmUgcmVjaXByb2NhbCBvZiBjbGFpbXM/XCIpICU+JSBjaGVja19hcmcoLiwgXCJ4XCIsYXJnX25vdF9zcGVjaWZpZWRfbXNnPVwiSGF2ZSB5b3Ugc3BlY2lmaWVkIHdoaWNoIGRhdGEgc2hvdWxkIGJlIHBsb3R0ZWQ/XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGNyZWF0ZSB0aGUgZm91cnRoIGhpc3RvZ3JhbSBiYXNlZCBvbiB0aGUgbmVnYXRpdmUgcmVjaXByb2NhbCAoKSBvZiBgY2xhaW1zYC5cIilcblxuc3VjY2Vzc19tc2coXCJFeGNlbGxlbnQhIFRyYW5zZm9ybWF0aW9ucyBvZiBkYXRhIGlzIGEgdG9vbCB0aGF0IGluY3JlZGlibHkgZXhwYW5kcyBwb3RlbnRpYWwgYXBwbGljYWJpbGl0eSBvZiAobGluZWFyKSByZWdyZXNzaW9uIHRlY2huaXF1ZXMuXCIpIiwiaGludCI6IkZvciBuZWdhdGl2ZSByZWNpcHJvY2FsIGNsYWltcywgdXNlIDxjb2RlPnBsb3QoZGVuc2l0eSgtY2xhaW1zXigtMSkpKTwvY29kZT4ifQ==
 </div>
 
 </div>
@@ -800,11 +892,13 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNpbmp1cnkgPC0gcmVhZC5jc3YoXCJD
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -812,12 +906,13 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": false,
-"google": true,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
-"linkedin": false
+"google": true,
+"instapper": false
 },
 "fontsettings": {
 "theme": "white",
@@ -828,7 +923,15 @@ gitbook.start({
 "link": "https://github.com/rstudio/bookdown-demo/edit/master/Chapters/Chapter1.Rmd",
 "text": "Edit"
 },
-"download": ["RegressModelDataCamp.pdf", "RegressModelDataCamp.epub"],
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
 "toc": {
 "collapse": "subsection"
 }
@@ -841,9 +944,12 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

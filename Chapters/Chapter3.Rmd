@@ -84,9 +84,18 @@ summary(Refrig2)
 
 #### Video Overhead Details {-}
 
-<h6 style="text-align: center;"><a id="displayOver3.0A" href="javascript:toggleDet('toggleOver3.0A','displayOver3.0A');"><i><strong>Show Overhead A Details. Demand for term life insurance</strong></i></a> </h6>
-<div id="toggleOver3.0A" style="display: none">
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.0A')">A Details. Demand for term life insurance</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.0B')">B Details. Term life insurance summary statistics</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.0C')">C Details. Summary statistics</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.0D')">D Details. Scatter plots of income versus face in original and logarithmic units</button>
+</div>
 
+
+<div id="Over3.0A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Demand for term life insurance</h3>
+  <p>
 
 "Who buys insurance and how much do they buy?"
 
@@ -99,10 +108,13 @@ To understand demand, consider the Survey of Consumer Finances (*SCF*)
 - We study a random sample of 500 of the 4,519 households with positive income that were interviewed in the 2004 survey.
 - We now focus on *n* = 275 households that purchased term life insurance
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.0B" href="javascript:toggleDet('toggleOver3.0B','displayOver3.0B');"><i><strong>Show Overhead B Details. Term life insurance summary statistics</strong></i></a> </h6>
-<div id="toggleOver3.0B" style="display: none">
+<div id="Over3.0B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Term life insurance summary statistics</h3>
+  <p>
 
 We study *y = face*, the amount that the company will pay in the event of the death of the named insured.
 
@@ -113,11 +125,13 @@ We study *y = face*, the amount that the company will pay in the event of the de
 
 The data suggest that *income* and *face* are skewed so we also introduce logarithmic versions.
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.0C" href="javascript:toggleDet('toggleOver3.0C','displayOver3.0C');"><i><strong>Show Overhead C Details. Summary statistics</strong></i></a> </h6>
-<div id="toggleOver3.0C" style="display: none">
-  
+<div id="Over3.0C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Summary statistics</h3>
+  <p>
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -134,11 +148,13 @@ head(Term2)
 describe(Term2)[,c(3,4,8,5,9,2)]
 ```
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.0D" href="javascript:toggleDet('toggleOver3.0D','displayOver3.0D');"><i><strong>Show Overhead D Details. Scatter plots of income versus face in original and logarithmic units</strong></i></a> </h6>
-<div id="toggleOver3.0D" style="display: none">
-
+<div id="Over3.0D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Scatter plots of income versus face in original and logarithmic units</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 par(mfrow = c(1, 2))
@@ -146,6 +162,7 @@ plot(Term2$income, Term2$face, xlab = "income", ylab = "face")
 plot(Term2$logincome, Term2$logface, xlab = "log", ylab = "log face")
 ```
 
+</p>
 </div> 
 
 ## Method of least squares
@@ -160,7 +177,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_9zszyh42&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_0xy78e1p" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -168,30 +185,44 @@ In this section, you learn how to:
 
 #### Video Overhead Details {-}
 
-<h6 style="text-align: center;"><a id="displayOver3.1A" href="javascript:toggleDet('toggleOver3.1A','displayOver3.1A');"><i><strong>Show Overhead A Details. Correlation table</strong></i></a> </h6>
-<div id="toggleOver3.1A" style="display: none">
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.1A')">A Details. Correlation table</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.1B')">B Details. Scatterplot matrix</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.1C')">C Details. Visualizing a regression plane</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.1D')">D Details. Method of least squares</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.1E')">E Details. Fit a multiple linear regression model</button>
+</div>
 
-  
+
+<div id="Over3.1A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Correlation table</h3>
+  <p>
+
 ```{r comment = "", eval = EVALUATE_CHAP3}
 round(cor(Term2), digits=3)
 ```
 
-
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.1B" href="javascript:toggleDet('toggleOver3.1B','displayOver3.1B');"><i><strong>Show Overhead B Details. Scatterplot matrix</strong></i></a> </h6>
-<div id="toggleOver3.1B" style="display: none">
+<div id="Over3.1B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Scatterplot matrix</h3>
+  <p>
 
-  
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term3 <- Term1[,c("numhh", "education", "logincome", "logface")]
 pairs(Term3, upper.panel = NULL, gap = 0, cex.labels = 1.25)
 ```
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.1C" href="javascript:toggleDet('toggleOver3.1C','displayOver3.1C');"><i><strong>Show Overhead C Details. Visualizing a regression plane</strong></i></a> </h6>
-<div id="toggleOver3.1C" style="display: none">
+<div id="Over3.1C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Visualizing a regression plane</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 education <- seq(3, 16, length = 15)
@@ -221,20 +252,27 @@ rm(education,logincome,logface)
 
 ```
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.1D" href="javascript:toggleDet('toggleOver3.1D','displayOver3.1D');"><i><strong>Show Overhead D Details. Method of least squares</strong></i></a> </h6>
-<div id="toggleOver3.1D" style="display: none">
+
+<div id="Over3.1D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Method of least squares</h3>
+  <p>
 
 -  For observation $\{(y, x_1, \ldots, x_k)\}$,   the height of the regression plane is $$b_0 + b_1 x_1 + \cdots + b_k x_k .$$
 -  Thus, $y - (b_0 + b_1 x_1 + \cdots + b_k x_k)$ represents the deviation.
 - The sum of squared deviations is $$SS(b_0, \ldots, b_k) = \sum (y - (b_0 + b_1 x_1 + \cdots + b_k x_k))^2 .$$
 - The *method of least squares* -- determine values of $b_0, \ldots, b_k$ that minimize $SS$.
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.1E" href="javascript:toggleDet('toggleOver3.1E','displayOver3.1E');"><i><strong>Show Overhead E Details. Fit a multiple linear regression model</strong></i></a> </h6>
-<div id="toggleOver3.1E" style="display: none">
+<div id="Over3.1E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Fit a multiple linear regression model</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
@@ -244,9 +282,10 @@ exp(predict(Term_mlr, newdata))
 
 ```
 
+</p>
 </div> 
 
-###Exercise. Least squares and term life data
+### Exercise. Least squares and term life data
 
 **Assignment Text**
 
@@ -262,9 +301,9 @@ Suppose that you wish to predict the amount of term life insurance that someone 
 - Using the method of least squares and the function [lm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/lm), fit a MLR model using `logface` as the dependent variables and using `education`, `numhh`, and `logincome` as explanatory variables.
 - With this fitted model and the function [predict()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/predict), predict the face amount of insurance that someone with income of 40,000, 11 years of education, and 4 people in the household would purchase.
 
-**Hint.** Remember that your prediction is in log dollars so you need to exponentiate it to get the 
-results in the original dollar units
-
+```{r ex="ExerRegMod3.1.2", type="hint", tut=TRUE}
+Remember that your prediction is in log dollars so you need to exponentiate it to get the results in the original dollar units
+```
 
 ```{r ex="ExerRegMod3.1.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -305,30 +344,31 @@ exp(predict(Term_mlr2, newdata))
 ```
 
 ```{r ex="ExerRegMod3.1.2", type="sct", tut=TRUE}
-ex() %>% check_object("Term2") %>% check_column("education1") %>% check_equal()
-ex() %>% check_function("summary") %>% {
-  check_arg(., "object") %>% check_equal()
+ex() %>% check_object("Term2") %>% check_column("education1") %>% check_equal(incorrect_msg="Make sure to assign the modified education variable to `education1` using `pmin`.")
+ex() %>% check_function("summary", not_called_msg="Make use of `summary` to find summary stats of `Term2`.") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to run summary on `Term2`.")
   check_result() %>% check_equal()
 }
-ex() %>% check_function("round") %>% {
-  check_arg(., "x") %>% check_equal()
-  check_arg(., "digits") %>% check_equal()
+ex() %>% check_function("round", not_called_msg="Use `round` to round the correlations to 3 digits. " ) %>% {
+  check_arg(., "x") %>% check_equal(incorrect_msg="Make sure to call `round` on the correlations of all variables in `Term2`.")
+  check_arg(., "digits") %>% check_equal(incorrect_msg="Please round these correlations to 3 digits. ")
 }
-ex() %>% check_object("Term_mlr2") %>% check_equal()
+ex() %>% check_object("Term_mlr2", not_defined_msg="Make sure to assign your linear model to `Term_mlr2`.") %>% check_equal(incorrect_msg="Make sure to model `logface` based on `education1`, `numhh`, and `logincome`.")
 ex() %>% check_function("lm") %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
+  check_arg(., "formula") %>% check_equal(incorrect_msg="Make sure to model `logface` based on `education1`, `numhh`, and `logincome`.")
+  check_arg(., "data") %>% check_equal(incorrect_msg="Make sure to specify our data comes from `Term2`.")
 }
-ex() %>% check_object("newdata") %>% check_equal()
-ex() %>% check_function("exp") %>% check_result() %>% check_equal()
-ex() %>% check_function("predict") %>% {
-  check_arg(., "object") %>% check_equal()
-  check_arg(., "newdata") %>% check_equal()
+ex() %>% check_object("newdata", undefined_msg="Make sure to assign our new data to `newdata`.") %>% check_equal(incorrect_msg="make sure to assign each column of the dataframe to its stated value. ")
+ex() %>% check_function("exp", not_called_msg="Make sure to take the exponential of your prediction! ") %>% check_result() %>% check_equal(incorrect_msg="The argument in `exp` should be called on the prediction. ")
+ex() %>% check_function("predict", not_called_msg="Utilize `predict` to create predictions using this model. ") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want to create predictions based off of `Term2_mlr2`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="Make sure to specify we want to make predictions for the data we entered in `newdata`.")
 }
 success_msg("Congratulations! You now have experience fitting a regression plane and using this plane for predictions. Prediction is one of the key tasks of 'predictive modeling.' Well done!")
+
 ```
 
-###Exercise. Interpreting coefficients as proportional changes
+### Exercise. Interpreting coefficients as proportional changes
 
 **Assignment Text**
 
@@ -342,6 +382,10 @@ For the term life example, the units of the outcome are in logarithmic dollars. 
 
 - Determine least square fitted values for several selected values of `education`, holding other explantory variables fixed. For this part of the demonstration, we used their mean values.
 - Determine the proportional changes. Note the relation between these values from a discrete change approximation to the regression coefficient for `education` equal to 0.2064.
+
+```{r ex="ExerRegMod3.1.3", type="hint", tut=TRUE}
+To find the proportional changes, take the 2nd-4th observations of `lsfits` and subtract the 1st-3rd observations, then exponentiate the results. 
+```
 
 ```{r ex="ExerRegMod3.1.3", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -381,20 +425,23 @@ pchange_fits1
 ```
 
 ```{r ex="ExerRegMod3.1.3", type="sct", tut=TRUE}
-ex() %>% check_object("educ_predict") %>% check_equal()
-ex() %>% check_object("newdata1") %>% check_equal()
-ex() %>% check_function("predict") %>% {
-  check_arg(., "object") %>% check_equal()
-  check_arg(., "newdata") %>% check_equal()
+ex() %>% check_object("educ_predict", undefined_msg="Make sure to assign the values of `education` to `educ_predict`.") %>% check_equal(incorrect_msg="These numbers should be the values from 14 to 14.3 by .1 increments. ")
+ex() %>% check_object("newdata1",undefined_msg="Make sure to create a dataframe named `newdata1` for predicting. ") %>% check_equal(incorrect_msg="Set log income to be the mean of the logincome of our data, education equal to `educ_predict`, and numhh equal to the mean of numhh. ")
+ex() %>% check_function("predict", not_called_msg="Use `predict` to make predictions given our model and data.") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="Make sure to specify that we want to make predictions based on `Term_mlr`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="Make sure to specify that we would like to use the values in `newdata1` as the data for our predictions. ")
 }
-ex() %>% check_object("lsfits1") %>% check_equal()
-ex() %>% check_operator("-",index=1) %>% check_result() %>% check_equal()
-ex() %>% check_object("pchange_fits1") %>% check_equal()
-ex() %>% check_function("exp") %>% check_arg("x") %>% check_equal()
+ex() %>% check_object("lsfits1", undefined_msg="Make sure to assign the predicted values to `lsfits1`.") %>% check_equal(incorrect_msg="Use `predict` to make predictions given our model and data.")
+ex() %>% check_object("pchange_fits1", undefined_msg="Make sure to assign exponential of the differences between the fit values to `pchange_fits1`.") %>% check_equal(incorrect_msg="This should be equal to the exponential of each `lsfits1` minus the `lsfits1` that came directly before it.")
+
+ex() %>% check_function("exp") %>% check_arg(., "x") %>% check_equal()
+
+
 success_msg("Congratulations! From calculus, small changes in logarithmic values can be interpreted as proportional changes. This is the reason for using natural logarithms.")
+
 ```
 
-###Exercise. Interpreting coefficients as elasticities
+### Exercise. Interpreting coefficients as elasticities
 
 **Assignment Text**
 
@@ -414,6 +461,10 @@ $$
 - Calculate the ratio of proportional changes of fitted values to those for income. Note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
   
 **Hint.** When you calculate the ratio of proportional changes of fitted values to those for income, note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
+
+```{r ex="ExerRegMod3.1.4", type="hint", tut=TRUE}
+When you calculate the ratio of proportional changes of fitted values to those for income, note the relation between these values (from a discrete change approximation) to the regression coefficient for `logincome` equal to 0.4935.
+```
 
 ```{r ex="ExerRegMod3.1.4", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -459,17 +510,17 @@ pchange_fits2/pchange_income
 
 
 ```{r ex="ExerRegMod3.1.4", type="sct", tut=TRUE}
-ex() %>% check_object("logincome_pred") %>% check_equal()
-ex() %>% check_object("pchange_income") %>% check_equal()
-ex() %>% check_object("newdata2") %>% check_equal()
-ex() %>% check_object("lsfits2") %>% chec_equal()
-ex() %>% check_function("predict") %>% {
-  check_arg(., "object") %>% check_equal()
-  check_arg(., "newdata") %>% check_equal()
+ex() %>% check_object("logincome_pred", undefined_msg="Assign the string of values to `logincome_pred`.") %>% check_equal(incorrect_msg="The values should be `11`, `11.1`, `11.2`, and `11.3`.")
+ex() %>% check_object("pchange_income", undefiened_msg="assign the values of the percentage change in income. ") %>% check_equal(incorrect_msg="it should be equal to the following: `100*(exp(logincome_pred[2:4])/exp(logincome_pred[1:3])-1`.")
+ex() %>% check_object("newdata2", undefined_msg="create some new data, and name it to `newdata2`.") %>% check_equal(incorrect_msg="This new data should have `logincome` equal to `logincome_pred`, `education` equal to the mean of `education`, and `numhh` equal to the mean of `numhh`.")
+ex() %>% check_object("lsfits2", undefined_msg="Set the predicted values to be stored in `lsfits2`.") %>% check_equal(incorrect_msg="you should run predict on `Term_mlr` and `newdata2`.")
+ex() %>% check_function("predict", not_called_msg="Use `predict` to create the predicted values. ") %>% {
+  check_arg(., "object") %>% check_equal(incorrect_msg="The model that we want to use is `Term_mlr`.")
+  check_arg(., "newdata") %>% check_equal(incorrect_msg="The data we want to use to create predictions is found in `newdata2`.")
 }
-ex() %>% check_object("pchange_fits2") %>% check_equal()
-ex() %>% check_expression("/",index=3) %>% check_result() %>% check_equal()
+ex() %>% check_object("pchange_fits2", undefined_msg="now find the percentage change in each of the fits, and store them in `pchange_fits2`.") %>% check_equal(incorrect_msg="Do the exact same thing you did for `pchange_income`, except use the fits instead of the predictions. ")
 success_msg("Congratulations! When both $x_1$ and $y$ are in logarithmic units, then we can interpret $b_1$ to be ratio of two percentage changes, known as an *elasticity* in economics.")
+
 ```
 
 
@@ -504,7 +555,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_n9542z90&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_1rrbi7qd" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -512,8 +563,17 @@ In this section, you learn how to:
 
 #### Video Overhead Details {-}
 
-<h6 style="text-align: center;"><a id="displayOver3.2A" href="javascript:toggleDet('toggleOver3.2A','displayOver3.2A');"><i><strong>Show Overhead A Details. Goodness of fit</strong></i></a> </h6>
-<div id="toggleOver3.2A" style="display: none">
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.2A')">A Details. Goodness of fit</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.2B')">B Details. Goodness of fit and term life</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.2C')">C Details. Statistical inference</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.2D')">D Details. Statistical inference and term life</button>
+</div>
+
+<div id="Over3.2A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Goodness of fit</h3>
+  <p>
 
 Summarize 
 
@@ -523,11 +583,14 @@ Summarize
 - $R_a^2$
 - ANOVA table
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.2B" href="javascript:toggleDet('toggleOver3.2B','displayOver3.2B');"><i><strong>Show Overhead B Details. Goodness of fit and term life</strong></i></a> </h6>
-<div id="toggleOver3.2B" style="display: none">
 
+<div id="Over3.2B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Goodness of fit and term life</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
@@ -536,18 +599,24 @@ anova(Term_mlr)
 
 ```
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.2C" href="javascript:toggleDet('toggleOver3.2C','displayOver3.2C');"><i><strong>Show Overhead C Details. Statistical inference</strong></i></a> </h6>
-<div id="toggleOver3.2C" style="display: none">
+<div id="Over3.2C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Statistical inference</h3>
+  <p>
 
 - hypothesis testing of a regression coefficient
 - confidence intervals
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.2D" href="javascript:toggleDet('toggleOver3.2D','displayOver3.2D');"><i><strong>Show Overhead D Details. Statistical inference and term life</strong></i></a> </h6>
-<div id="toggleOver3.2D" style="display: none">
+<div id="Over3.2D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Statistical inference and term life</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term_mlr <- lm(logface ~ education + numhh + logincome, data = Term2)
@@ -560,9 +629,10 @@ round(confint(Term_mlr, level = .95), digits = 3)
 
 ```
   
+</p>  
 </div> 
   
-###Exercise. Statistical inference and term life
+### Exercise. Statistical inference and term life
 
 
 **Assignment Text**
@@ -575,7 +645,11 @@ In later chapters, we will learn how to specify a model using diagnostics techni
 - Create `Term2$face` by exponentiating `logface` and dividing by 1000. For convenience, we are storing this variable in the data set `Term2`. Use the same process to create `Term2$income`.
 - Run a regression using `face` as the outcome variable and `education`, `numhh`, and `income` as explanatory variables.
 - Summarize this model and identify the residual standard error ($s$) as well as the coefficient of determination ($R^2$) and the version adjusted for degrees of freedom ($R_a^2$).
-  
+
+```{r ex="ExerRegMod3.2.2", type="hint", tut=TRUE}
+Remember that we can call a `column` from a `dataframe` using `dataframe$column`.
+```
+
 ```{r ex="ExerRegMod3.2.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
 Term <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv", header = TRUE)
@@ -609,17 +683,14 @@ summary(Term_mlr1)
 
   
 ```{r ex="ExerRegMod3.2.2", type="sct", tut=TRUE}
-ex() %>% check_object("Term2") %>% {
-  check_column(., "face") %>% check_equal()
-  check_column(., "income") %>% check_equal()
+ex() %>% check_object("Term2", undefined_msg="You should have a dataframe named `Term2`.") %>% {
+  check_column(., "face", col_missing_msg="You should make a new column named `face`.") %>% check_equal(incorrect_msg="to create the data, take the exponential of the data in `logface` and divide by 1000. ")
+  check_column(., "income", col_missing_msg="You should make a new column named `income`.") %>% check_equal(incorrect_msg="To create the data, take the exponential of the data in `logincome` and divide by 1000. ")
  }
-ex() %>% check_object("Term_mlr1") %>% check_equal()
-ex() %>% check_function("lm") %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
-}
-ex() %>% check_function("summary") %>% check_result() %>% check_equal()
+ex() %>% check_object("Term_mlr1", undefined_msg="Use `lm` to create a linear model, and store it in `Term_mlr1`.") %>% check_equal(incorrect_msg="When you create your model, make sure to model `face` based on `education`, `numhh`, and `income` from the data set `Term2`.")
+ex() %>% check_function("summary", not_called_msg="Use `summary` to view a summary of our linear model. ") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we would like a summary of `Term_mlr1`.")
 success_msg("Congratulations! Compare these goodness of fit measures to those where income and face are in logarithmic units. Although not the only indicators, you will see that the proportion of variability explained (R square) and the statistical significance of coefficients are strikingly higher in the model with variables in logged units.")
+
 ```
 
 
@@ -634,7 +705,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_jfmz8kg0&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_qxygjiq2" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -642,8 +713,19 @@ In this section, you learn how to:
 
 #### Video Overhead Details {-}
 
-<h6 style="text-align: center;"><a id="displayOver3.3A" href="javascript:toggleDet('toggleOver3.3A','displayOver3.3A');"><i><strong>Show Overhead A Details. Binary variables</strong></i></a> </h6>
-<div id="toggleOver3.3A" style="display: none">
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.3A')">A Details. Binary variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.3B')">B Details. Visualize effect of binary variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.3C')">C Details. R script for visualization</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.3D')">D Details. Interaction Terms</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.3E')">E Details. Visualizing binary variables with interactions terms</button>    
+</div>
+
+
+<div id="Over3.3A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Binary variables</h3>
+  <p>
 
 - We can define a new variable
 $$
@@ -669,16 +751,22 @@ $$
 - The least squares method of calculating the estimators, and the resulting theoretical properties, are the still valid when using
 binary variables.
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.3B" href="javascript:toggleDet('toggleOver3.3B','displayOver3.3B');"><i><strong>Show Overhead B Details. Visualize effect of binary variables</strong></i></a> </h6>
-<div id="toggleOver3.3B" style="display: none">
+<div id="Over3.3B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Visualize effect of binary variables</h3>
+  <p>
 
+
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.3C" href="javascript:toggleDet('toggleOver3.3C','displayOver3.3C');"><i><strong>Show Overhead C Details. R script for visualization</strong></i></a> </h6>
-<div id="toggleOver3.3C" style="display: none">
-
+<div id="Over3.3C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. R script for visualization</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term4 <- Term1[,c("numhh", "education", "logincome", "logface", "marstat")]
@@ -697,10 +785,13 @@ lines(Term4$logincome, Ey2, col="red")
 
 ```
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.3D" href="javascript:toggleDet('toggleOver3.3D','displayOver3.3D');"><i><strong>Show Overhead D Details. Interaction Terms</strong></i></a> </h6>
-<div id="toggleOver3.3D" style="display: none">
+<div id="Over3.3D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Interaction Terms</h3>
+  <p>
 
 - Linear regression models are defined in terms of linear combinations of explanatory varibles but we can expand their scope through nonlinear transformations
    - One type of nonlinear transform is the product of two varibles that is used to create what is known as an *interaction* variable
@@ -716,12 +807,13 @@ $$
         \beta_0 + \beta_2 + (\beta_1  + \beta_3) logincome & \textrm{for single respondents}
 \end{array} \right. .
 $$
-
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.3E" href="javascript:toggleDet('toggleOver3.3E','displayOver3.3E');"><i><strong>Show Overhead E Details. Visualizing binary variables with interactions terms</strong></i></a> </h6>
-<div id="toggleOver3.3E" style="display: none">
-
+<div id="Over3.3E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Visualizing binary variables with interactions terms</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term4 <- Term1[,c("numhh", "education", "logincome", "logface", "marstat")]
@@ -740,9 +832,10 @@ lines(Term4$logincome, Ey2, col="red")
 
 ```
 
+</p>
 </div> 
 
-###Exercise. Binary variables and term life
+### Exercise. Binary variables and term life
 
 
 **Assignment Text**
@@ -757,6 +850,11 @@ In this exercise, we will extend this by incorporating `single` into our larger 
 - Calculate a table of correlation coefficients to examine pairwise linear relationships among the variables `numhh`, `education`, `logincome`, `single`, and  `logface`.
 - Fit a MLR model of `logface` using explanatory variables `numhh`, `education`, `logincome`, and `single`. Examine the residual standard deviation $s$, the coefficient of determination $R^2$, and the adjusted version $R_a^2$. Also note the statistical significance of the coefficient associated with `single`.
 - Repeat the MLR model fit while adding the interaction term  `single*logincome`.
+
+```{r ex="ExerRegMod3.3.2", type="hint", tut=TRUE}
+To get a table of correlations, the `cor()` function can be used.
+After that, a combination of `lm()` and `summary()` can be used to achieve the desired results
+```
 
 ```{r ex="ExerRegMod3.3.2", type="pre-exercise-code", tut=TRUE}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -793,20 +891,13 @@ summary(Term_mlr4)
 
 
 ```{r ex="ExerRegMod3.3.2", type="sct", tut=TRUE}
-ex() %>% check_function("round") %>% check_result() %>% check_equal()
-ex() %>% check_object("Term_mlr3") %>% check_equal()
-ex() %>% check_function("lm",index=1) %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
-}
-ex() %>% check_function("summary",index=1) %>% check_result() %>% check_equal()
-ex() %>% check_object("Term_mlr4") %>% check_equal()
-ex() %>% check_function("lm",index=2) %>% {
-  check_arg(., "formula") %>% check_equal()
-  check_arg(., "data") %>% check_equal()
-}
-ex() %>% check_function("summary",index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function("round", not_called_msg="Use `round` on the correlation coefficients found using `cor` to 3 digits.") %>% check_result() %>% check_equal(incorrect_msg="Use `cor` to find the correlations, and then round them to 3 digits. ")
+ex() %>% check_object("Term_mlr3", undefined_msg="Use `lm` to create a linear model named `Term_mlr3`.") %>% check_equal(incorrect_msg="You linear model should model `logface` based on `education`, `numhh`, `logincome`, and `single` from the data in `Term4`.")
+ex() %>% check_function("summary",index=1,not_called_msg="Use `summary` to view a summary of `Term_mlr3`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `Term_mlr3`.")
+ ex() %>% check_object("Term_mlr4", undefined_msg="Use `lm` to create a linear model named `Term_mlr4`.") %>% check_equal(incorrect_msg="You linear model should model `logface` based on `education`, `numhh`, `logincome`, and the product of `single` and `logincome` from the data in `Term4`.")
+ex() %>% check_function("summary",index=2,not_called_msg="Use `summary` to view a summary of `Term_mlr4`.") %>% check_result() %>% check_equal(incorrect_msg="Make sure to specify that we want a summary of `Term_mlr4`.")
 success_msg("Congratulations! From a correlation table, you saw that there are relationships with among explanatory variables and so it is not clear whether adding `single` to the model would be helpful. You explored this by first fitting a model by just adding the binary variable single, examined summary statistics, and checked the significance of the variable. Then, you explored the utility of the interaction of `single` with logarithmic income. Well done!")
+
 ```
 
 ##  Categorical variables
@@ -821,7 +912,7 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_gkywbwai&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_n73q1ka4" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
@@ -829,9 +920,19 @@ In this section, you learn how to:
 
 #### Video Overhead Details {-}
 
-<h6 style="text-align: center;"><a id="displayOver3.4A" href="javascript:toggleDet('toggleOver3.4A','displayOver3.4A');"><i><strong>Show Overhead A Details. Categorical variables</strong></i></a> </h6>
-<div id="toggleOver3.4A" style="display: none">
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.4A')">A Details. Categorical variables</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.4B')">B Details. Term life example</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.4C')">C Details. Term life boxplots</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.4D')">D Details. Regression with a categorical variable</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.4E')">E Details. t-ratios depend on the reference level</button>
+</div>
 
+
+<div id="Over3.4A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Categorical variables</h3>
+  <p>
 
 - *Categorical variables* provide labels for observations to denote membership in distinct groups, or categories.
 - A *binary variable* is a special case of a categorical variable.
@@ -843,10 +944,13 @@ health insurance.
     - However, for education, we may group individuals from a dataset into 'low', 'intermediate' and 'high' years of education.
 - *Factor* is another term used for a (unordered) categorical explanatory variable.
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.4B" href="javascript:toggleDet('toggleOver3.4B','displayOver3.4B');"><i><strong>Show Overhead B Details. Term life example</strong></i></a> </h6>
-<div id="toggleOver3.4B" style="display: none">
+<div id="Over3.4B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Term life example</h3>
+  <p>
 
 - We studied *y = logface*, the amount that the company will pay in the event
 of the death of the named insured (in logarithmic dollars), focusing on the explanatory variables *logincome*, *education*, and *numhh*.
@@ -854,12 +958,14 @@ of the death of the named insured (in logarithmic dollars), focusing on the expl
     - 1, for married
     - 2, for living with partner
     - 0, for other (SCF actually breaks this category into separated, divorced, widowed, never married and inapplicable, for persons age 17 or less or no further persons)
-    
+ 
+</p>    
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.4C" href="javascript:toggleDet('toggleOver3.4C','displayOver3.4C');"><i><strong>Show Overhead C Details. Term life boxplots</strong></i></a> </h6>
-<div id="toggleOver3.4C" style="display: none">
-
+<div id="Over3.4C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Term life boxplots</h3>
+  <p>
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
 # Pre-exercise code
@@ -878,11 +984,13 @@ table(Term4$marstat)
 
 ```
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.4D" href="javascript:toggleDet('toggleOver3.4D','displayOver3.4D');"><i><strong>Show Overhead D Details. Regression with a categorical variable</strong></i></a> </h6>
-<div id="toggleOver3.4D" style="display: none">
-
+<div id="Over3.4D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. Regression with a categorical variable</h3>
+  <p>
 
 ```{r comment = "", eval = EVALUATE_CHAP3}
 Term4$marstat <- as.factor(Term4$marstat)
@@ -891,10 +999,13 @@ summary(lm(logface ~ logincome+education+numhh+marstat, data = Term4))
 
 ```
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.4E" href="javascript:toggleDet('toggleOver3.4E','displayOver3.4E');"><i><strong>Show Overhead E Details. t-ratios depend on the reference level</strong></i></a> </h6>
-<div id="toggleOver3.4E" style="display: none">
+<div id="Over3.4E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. t-ratios depend on the reference level</h3>
+  <p>
 
 $$
 \begin{array}{l|rr|rr|rr}
@@ -912,10 +1023,10 @@ numhh     & 0.248 & 3.57 & 0.248 & 3.57 & 0.248 & 3.57 \\\hline
 \hline
 \end{array}
 $$
-
+</p>
 </div> 
 
-###Exercise. Categorical variables and Wisconsin hospital costs
+### Exercise. Categorical variables and Wisconsin hospital costs
 
 **Assignment Text**
 
@@ -935,6 +1046,9 @@ Some preliminary analysis of the data has already been done. In this exercise, w
 - Fit a MLR model using logarithmic number of discharges to predict logarithmic hospital costs, allowing intercepts and slopes to vary by diagnostic related groups.
 - Superimpose the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs.
 
+```{r ex="ExerRegMod3.4.2", type="hint", tut=TRUE}
+There is currently nothing to change in this tutorial! Simply look over the code and try to understand what each line does.
+```
 
 ```{r ex="ExerRegMod3.4.2", type="pre-exercise-code", tut=TRUE}
 #Hcost <- read.csv("CSVData\\WiscHcosts.csv", header = TRUE)
@@ -1001,8 +1115,6 @@ lines(xseq,fit430, col="blue")
 
 ```
 
-
-
 ```{r ex="ExerRegMod3.4.2", type="sct", tut=TRUE}
 success_msg("Congratulations! When you superimposed the fits from the MLR model on the scatter plot of logarithmic number of discharges to predict logarithmic hospital costs, note how slopes differ dramatically from the slope from the basic linear regression model.")
 ```
@@ -1018,16 +1130,24 @@ In this section, you learn how to:
 
 ***
 
-###Video 
+### Video 
 
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_gs9oqymi&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_j9btj8ns" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
 </center>
 
 #### Video Overhead Details {-}
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over3.5A')">A Details. Testing the significance of a categorical variable</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.5B')">B Details. Overview of the general linear hypothesis</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.5C')">C Details.  Procedure for conducting the general linear hypothesis</button>
+  <button class="tablinks" onclick="openTab(event, 'Over3.5D')">D Details. The general linear hypothesis for a single variable</button>
+</div>
 
-<h6 style="text-align: center;"><a id="displayOver3.5A" href="javascript:toggleDet('toggleOver3.5A','displayOver3.5A');"><i><strong>Show Overhead A Details. Testing the significance of a categorical variable</strong></i></a> </h6>
-<div id="toggleOver3.5A" style="display: none">
+<div id="Over3.5A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Testing the significance of a categorical variable</h3>
+  <p>
 
 ```{r comment = "", warning = FALSE, message = FALSE, eval = EVALUATE_CHAP3}
 #Term <- read.csv("CSVData\\term_life.csv", header = TRUE)
@@ -1044,10 +1164,13 @@ cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr1)$Df[5]))
 
 ```
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.5B" href="javascript:toggleDet('toggleOver3.5B','displayOver3.5B');"><i><strong>Show Overhead B Details. Overview of the general linear hypothesis</strong></i></a> </h6>
-<div id="toggleOver3.5B" style="display: none">
+<div id="Over3.5B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Overview of the general linear hypothesis</h3>
+  <p>
 
 - The likelihood ratio is a general statistical test procedure that compares a model to a subset
 - The general linear hypothesis test procedure is similar.
@@ -1056,10 +1179,13 @@ cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr1)$Df[5]))
     - "Subset" is the sense that regression coefficients from the small model are linear combinations of regression coefficients of the large model (e.g., set them to zero)
 - Although the likelihood ratio test is more generally available, the general linear hypothesis test is more accurate for smaller data sets (for normally distributed data)
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.5C" href="javascript:toggleDet('toggleOver3.5C','displayOver3.5C');"><i><strong>Show Overhead C Details.  Procedure for conducting the general linear hypothesis</strong></i></a> </h6>
-<div id="toggleOver3.5C" style="display: none">
+<div id="Over3.5C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details.  Procedure for conducting the general linear hypothesis</h3>
+  <p>
 
 - Run the full regression and get the error sum of squares and mean square error, which we label as $(Error SS)_{full}$ and $s^2_{full}$, respectively.
 - Run a reduced regression and get the error sum of squares, labelled $(Error SS)_{reduced}$.
@@ -1069,10 +1195,13 @@ F-ratio = \frac{(Error SS)_{reduced}-(Error SS)_{full}}{p s^2_{full}} .
 $$
 - The probability value is $p-value = \Pr(F_{p,df} > F-ratio)$ where $F_{p,df}$ has an *F* distribution with  degrees of freedom *p* and  *df*, respectively. (Here, *df* is the degrees of freedom for the full model.)
 
+</p>
 </div> 
 
-<h6 style="text-align: center;"><a id="displayOver3.5D" href="javascript:toggleDet('toggleOver3.5D','displayOver3.5D');"><i><strong>Show Overhead D Details. The general linear hypothesis for a single variable</strong></i></a> </h6>
-<div id="toggleOver3.5D" style="display: none">
+<div id="Over3.5D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D Details. The general linear hypothesis for a single variable</h3>
+  <p>
 
 - Suppose that you wish to test the hypothesisthat a regression coefficient equals 0.
     - One could use the general linear hypothsis procedure with $p=1$.
@@ -1082,9 +1211,10 @@ $$
     - The general linear hypothesis is useful because it can be extended to multiple coefficients.
     - The *t-ratio* is useful because it can be used to examine one-sided alternative hypotheses.
 
+</p>
 </div> 
 
-###Exercise. Hypothesis testing and term life
+### Exercise. Hypothesis testing and term life
 
 
 **Assignment Text**
@@ -1104,6 +1234,14 @@ As part of the preparatory work, the dataframe `Term4` is available that include
 **Hint**
 
 ```
+Here is the code to calculate it by hand
+Fstat12 <- (anova(Term_mlr1)$`Sum Sq`[5] - 
+              anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])
+Fstat12
+cat("p-value is", 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))
+```
+
+```{r ex="ExerRegMod3.5.2", type="hint", tut=TRUE}
 Here is the code to calculate it by hand
 Fstat12 <- (anova(Term_mlr1)$`Sum Sq`[5] - 
               anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])
@@ -1157,16 +1295,17 @@ anova(Term_mlr3,Term_mlr4)
 
 
 ```{r ex="ExerRegMod3.5.2", type="sct", tut=TRUE}
-ex() %>% check_object("Term_mlr1") %>% check_equal()
-ex() %>% check_object("Term_mlr2") %>% check_equal()
-ex() %>% check_function("anova",index=1) %>% check_result() %>% check_equal()
-ex() %>% check_object("Term_mlr3") %>% check_equal()
-ex() %>% check_object("Term_mlr4") %>% check_equal()
-ex() %>% check_function("anova",index=2) %>% check_result() %>% check_equal()
-success_msg("Congratulations! Hypothesis testing is a primary tool for  'inferring' about the real world {in contrast to mathematical 'deduction'.} Moreover, as we will see in the next chapter, it can also be used to develop a model.")
+ex() %>% check_object("Term_mlr1" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr1`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and `single` from the data set `Term4`.")
+ex() %>% check_object("Term_mlr2" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr2`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and `marstat` from the data set `Term4`.")
+ex() %>% check_function("anova",index=1, not_called_msg="Run an anova test to compare the two models we just created. ") %>% check_result() %>% check_equal(incorrect_msg="You should run the `anova` test on `Term_mlr1` and `Term_mlr2`.")
+ex() %>% check_object("Term_mlr3" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr3`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and the product of `single` and `logincome` from the data set `Term4`.")
+ex() %>% check_object("Term_mlr4" , undefined_msg="Use `lm` to create a linear model and store it under the name `Term_mlr4`.") %>% check_equal(incorrect_msg="Your model should explain `logface` based on `logincome`, `education`, `numhh`, and the product of `marstat` and `logincome` from the data set `Term4`.")
+ex() %>% check_function("anova",index=2, not_called_msg="Run an anova test to compare the two new models we just created. ") %>% check_result() %>% check_equal(incorrect_msg="You should run the `anova` test on `Term_mlr3` and `Term_mlr4`.")
+success_msg("Congratulations! Hypothesis testing is a primary tool for  'inferring' about the real world {in contrast to mathematical 'deduction'.} Moreover, as we will see in the next chapter, it can also be used to develop a model.")  
+
 ```
 
-###Exercise. Hypothesis testing and Wisconsin hospital costs
+### Exercise. Hypothesis testing and Wisconsin hospital costs
 
 
 **Assignment Text**
@@ -1186,6 +1325,10 @@ We continue our analysis of the outcome variable  `logcharge`, the logarithm of 
 - Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variables logarithmic number of discharges and the categorical variable diagnostic related group. Identify the *F* statistic and *p* value that test the importance of diagnostic related group. 
 - Fit a MLR model using logarithmic hospital costs as the outcome variable and explanatory variable logarithmic number of discharges interacted with diagnostic related group. Identify the *F* statistic and *p* value that test the importance of diagnostic related group interaction with logarithmic number of discharges.
 - Calculate a coefficient of determination, $R^2$, for each of these models as well as for a model using logarithmic number of discharges and categorical variable `hsa` as predictors.
+
+```{r ex="ExerRegMod3.5.3", type="hint", tut=TRUE}
+This entire exercise can be completed using 3 functions:`lm()`, `anova()`, and `summary()`
+```
 
 ```{r ex="ExerRegMod3.5.3", type="pre-exercise-code", tut=TRUE}
 #Hcost <- read.csv("CSVData\\WiscHcosts.csv", header = TRUE)
@@ -1238,7 +1381,7 @@ summary(hosp_mlr3)$r.squared
 success_msg("Congratulations! By examining the coefficients of determination, $R^2$, for each of these models, you see that this provides one piece of evidence that the `hsa` is a far poorer predictor of costs than `drg`.")
 ```
 
-###Exercise. Hypothesis testing and auto claims
+### Exercise. Hypothesis testing and auto claims
 
 
 **Assignment Text**
@@ -1314,10 +1457,6 @@ summary(model3)
 anova(model3)
 
 ```
-
-**Submission Correctness Tests (SCT)**
-
-success_msg("Congratulations! ")
   
 
 
