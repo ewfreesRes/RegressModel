@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Multiple Linear Regression | Online Tutorial on Regression Modeling with Actuarial and Financial Applications</title>
   <meta name="description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Multiple Linear Regression | Online Tutorial on Regression Modeling with Actuarial and Financial Applications" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
   <meta name="github-repo" content="https://github.com/ewfreesRes/RegressModel" />
@@ -21,7 +20,7 @@
   <meta name="twitter:description" content="Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest." />
   
 
-<meta name="author" content="Edward W. (Jed) Frees, University of Wisconsin-Madison" />
+<meta name="author" content="Edward (Jed) Frees, University of Wisconsin-Madison" />
 
 
 
@@ -32,7 +31,8 @@
   
 <link rel="prev" href="basic-linear-regression.html"/>
 <link rel="next" href="variable-selection.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script language="javascript">
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -167,26 +169,29 @@ var submitAnswer = function() {
 =======
 
 
+
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -195,15 +200,15 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -216,7 +221,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -228,6 +233,11 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -246,111 +256,138 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Regression Modeling Online Tutorial</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-regression-modeling"><i class="fa fa-check"></i>About Regression Modeling</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#tutorial-description"><i class="fa fa-check"></i>Tutorial Description</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#welcome-to-the-tutorial-video"><i class="fa fa-check"></i>Welcome to the Tutorial Video</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>1</b> Regression and the Normal Distribution</a><ul>
-<li class="chapter" data-level="1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#fitting-a-normal-distribution"><i class="fa fa-check"></i><b>1.1</b> Fitting a normal distribution</a><ul>
+<li class="chapter" data-level="1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html"><i class="fa fa-check"></i><b>1</b> Regression and the Normal Distribution</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#fitting-a-normal-distribution"><i class="fa fa-check"></i><b>1.1</b> Fitting a normal distribution</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video"><i class="fa fa-check"></i><b>1.1.1</b> Video</a></li>
 <li class="chapter" data-level="1.1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-fitting-galtons-height-data"><i class="fa fa-check"></i><b>1.1.2</b> Exercise. Fitting Galton’s height data</a></li>
 <li class="chapter" data-level="1.1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-childs-height-distribution"><i class="fa fa-check"></i><b>1.1.3</b> Exercise. Visualizing child’s height distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#visualizing-distributions"><i class="fa fa-check"></i><b>1.2</b> Visualizing distributions</a><ul>
+<li class="chapter" data-level="1.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#visualizing-distributions"><i class="fa fa-check"></i><b>1.2</b> Visualizing distributions</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-1"><i class="fa fa-check"></i><b>1.2.1</b> Video</a></li>
 <li class="chapter" data-level="1.2.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-visualizing-bodily-injury-claims-with-density-plots"><i class="fa fa-check"></i><b>1.2.2</b> Exercise. Visualizing bodily injury claims with density plots</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#summarizing-distributions"><i class="fa fa-check"></i><b>1.3</b> Summarizing distributions</a><ul>
+<li class="chapter" data-level="1.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#summarizing-distributions"><i class="fa fa-check"></i><b>1.3</b> Summarizing distributions</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-2"><i class="fa fa-check"></i><b>1.3.1</b> Video</a></li>
 <li class="chapter" data-level="1.3.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots"><i class="fa fa-check"></i><b>1.3.2</b> Exercise. Summarizing bodily injury claims with box and qq plots</a></li>
 <li class="chapter" data-level="1.3.3" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-effects-on-distributions-of-removing-the-largest-claim"><i class="fa fa-check"></i><b>1.3.3</b> Exercise. Effects on distributions of removing the largest claim</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#transformations"><i class="fa fa-check"></i><b>1.4</b> Transformations</a><ul>
+<li class="chapter" data-level="1.4" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#transformations"><i class="fa fa-check"></i><b>1.4</b> Transformations</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#video-3"><i class="fa fa-check"></i><b>1.4.1</b> Video</a></li>
 <li class="chapter" data-level="1.4.2" data-path="regression-and-the-normal-distribution.html"><a href="regression-and-the-normal-distribution.html#exercise.-distribution-of-transformed-bodily-injury-claims"><i class="fa fa-check"></i><b>1.4.2</b> Exercise. Distribution of transformed bodily injury claims</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Basic Linear Regression</a><ul>
-<li class="chapter" data-level="2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#correlation"><i class="fa fa-check"></i><b>2.1</b> Correlation</a><ul>
+<li class="chapter" data-level="2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html"><i class="fa fa-check"></i><b>2</b> Basic Linear Regression</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#correlation"><i class="fa fa-check"></i><b>2.1</b> Correlation</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-4"><i class="fa fa-check"></i><b>2.1.1</b> Video</a></li>
 <li class="chapter" data-level="2.1.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-correlations-and-the-wisconsin-lottery"><i class="fa fa-check"></i><b>2.1.2</b> Exercise. Correlations and the Wisconsin lottery</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#method-of-least-squares"><i class="fa fa-check"></i><b>2.2</b> Method of least squares</a><ul>
+<li class="chapter" data-level="2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#method-of-least-squares"><i class="fa fa-check"></i><b>2.2</b> Method of least squares</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-5"><i class="fa fa-check"></i><b>2.2.1</b> Video</a></li>
 <li class="chapter" data-level="2.2.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-least-squares-fit-using-housing-prices"><i class="fa fa-check"></i><b>2.2.2</b> Exercise. Least squares fit using housing prices</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#understanding-variability"><i class="fa fa-check"></i><b>2.3</b> Understanding variability</a><ul>
+<li class="chapter" data-level="2.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#understanding-variability"><i class="fa fa-check"></i><b>2.3</b> Understanding variability</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-6"><i class="fa fa-check"></i><b>2.3.1</b> Video</a></li>
 <li class="chapter" data-level="2.3.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-summarizing-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.2</b> Exercise. Summarizing measures of uncertainty</a></li>
 <li class="chapter" data-level="2.3.3" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-effects-of-linear-transforms-on-measures-of-uncertainty"><i class="fa fa-check"></i><b>2.3.3</b> Exercise. Effects of linear transforms on measures of uncertainty</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#statistical-inference"><i class="fa fa-check"></i><b>2.4</b> Statistical inference</a><ul>
+<li class="chapter" data-level="2.4" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#statistical-inference"><i class="fa fa-check"></i><b>2.4</b> Statistical inference</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-7"><i class="fa fa-check"></i><b>2.4.1</b> Video</a></li>
 <li class="chapter" data-level="2.4.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-statistical-inference-and-wisconsin-lottery"><i class="fa fa-check"></i><b>2.4.2</b> Exercise. Statistical inference and Wisconsin lottery</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#diagnostics"><i class="fa fa-check"></i><b>2.5</b> Diagnostics</a><ul>
+<li class="chapter" data-level="2.5" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#diagnostics"><i class="fa fa-check"></i><b>2.5</b> Diagnostics</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#video-8"><i class="fa fa-check"></i><b>2.5.1</b> Video</a></li>
 <li class="chapter" data-level="2.5.2" data-path="basic-linear-regression.html"><a href="basic-linear-regression.html#exercise.-assessing-outliers-in-lottery-sales"><i class="fa fa-check"></i><b>2.5.2</b> Exercise. Assessing outliers in lottery sales</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>3</b> Multiple Linear Regression</a><ul>
+<li class="chapter" data-level="3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html"><i class="fa fa-check"></i><b>3</b> Multiple Linear Regression</a>
+<ul>
 <li class="chapter" data-level="" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#term-life-data"><i class="fa fa-check"></i>Term Life Data</a></li>
-<li class="chapter" data-level="3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1</b> Method of least squares</a><ul>
+<li class="chapter" data-level="3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#method-of-least-squares-1"><i class="fa fa-check"></i><b>3.1</b> Method of least squares</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-9"><i class="fa fa-check"></i><b>3.1.1</b> Video</a></li>
 <li class="chapter" data-level="3.1.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-least-squares-and-term-life-data"><i class="fa fa-check"></i><b>3.1.2</b> Exercise. Least squares and term life data</a></li>
 <li class="chapter" data-level="3.1.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-interpreting-coefficients-as-proportional-changes"><i class="fa fa-check"></i><b>3.1.3</b> Exercise. Interpreting coefficients as proportional changes</a></li>
 <li class="chapter" data-level="3.1.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-interpreting-coefficients-as-elasticities"><i class="fa fa-check"></i><b>3.1.4</b> Exercise. Interpreting coefficients as elasticities</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#statistical-inference-and-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.2</b> Statistical inference and multiple linear regresson</a><ul>
+<li class="chapter" data-level="3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#statistical-inference-and-multiple-linear-regresson"><i class="fa fa-check"></i><b>3.2</b> Statistical inference and multiple linear regresson</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-10"><i class="fa fa-check"></i><b>3.2.1</b> Video</a></li>
 <li class="chapter" data-level="3.2.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-statistical-inference-and-term-life"><i class="fa fa-check"></i><b>3.2.2</b> Exercise. Statistical inference and term life</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#binary-variables"><i class="fa fa-check"></i><b>3.3</b> Binary variables</a><ul>
+<li class="chapter" data-level="3.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#binary-variables"><i class="fa fa-check"></i><b>3.3</b> Binary variables</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-11"><i class="fa fa-check"></i><b>3.3.1</b> Video</a></li>
 <li class="chapter" data-level="3.3.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-binary-variables-and-term-life"><i class="fa fa-check"></i><b>3.3.2</b> Exercise. Binary variables and term life</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#categorical-variables"><i class="fa fa-check"></i><b>3.4</b> Categorical variables</a><ul>
+<li class="chapter" data-level="3.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#categorical-variables"><i class="fa fa-check"></i><b>3.4</b> Categorical variables</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-12"><i class="fa fa-check"></i><b>3.4.1</b> Video</a></li>
 <li class="chapter" data-level="3.4.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-categorical-variables-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.4.2</b> Exercise. Categorical variables and Wisconsin hospital costs</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#general-linear-hypothesis"><i class="fa fa-check"></i><b>3.5</b> General linear hypothesis</a><ul>
+<li class="chapter" data-level="3.5" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#general-linear-hypothesis"><i class="fa fa-check"></i><b>3.5</b> General linear hypothesis</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#video-13"><i class="fa fa-check"></i><b>3.5.1</b> Video</a></li>
 <li class="chapter" data-level="3.5.2" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-term-life"><i class="fa fa-check"></i><b>3.5.2</b> Exercise. Hypothesis testing and term life</a></li>
 <li class="chapter" data-level="3.5.3" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-wisconsin-hospital-costs"><i class="fa fa-check"></i><b>3.5.3</b> Exercise. Hypothesis testing and Wisconsin hospital costs</a></li>
 <li class="chapter" data-level="3.5.4" data-path="multiple-linear-regression.html"><a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-auto-claims"><i class="fa fa-check"></i><b>3.5.4</b> Exercise. Hypothesis testing and auto claims</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="variable-selection.html"><a href="variable-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Selection</a><ul>
-<li class="chapter" data-level="4.1" data-path="variable-selection.html"><a href="variable-selection.html#an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1</b> An iterative approach to data analysis and modeling</a><ul>
+<li class="chapter" data-level="4" data-path="variable-selection.html"><a href="variable-selection.html"><i class="fa fa-check"></i><b>4</b> Variable Selection</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="variable-selection.html"><a href="variable-selection.html#an-iterative-approach-to-data-analysis-and-modeling"><i class="fa fa-check"></i><b>4.1</b> An iterative approach to data analysis and modeling</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="variable-selection.html"><a href="variable-selection.html#video-14"><i class="fa fa-check"></i><b>4.1.1</b> Video</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="variable-selection.html"><a href="variable-selection.html#automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2</b> Automatic variable selection procedures</a><ul>
+<li class="chapter" data-level="4.2" data-path="variable-selection.html"><a href="variable-selection.html#automatic-variable-selection-procedures"><i class="fa fa-check"></i><b>4.2</b> Automatic variable selection procedures</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="variable-selection.html"><a href="variable-selection.html#video-15"><i class="fa fa-check"></i><b>4.2.1</b> Video</a></li>
 <li class="chapter" data-level="4.2.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-data-snooping-in-stepwise-regression"><i class="fa fa-check"></i><b>4.2.2</b> Exercise. Data-snooping in stepwise regression</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="variable-selection.html"><a href="variable-selection.html#residual-analysis"><i class="fa fa-check"></i><b>4.3</b> Residual analysis</a><ul>
+<li class="chapter" data-level="4.3" data-path="variable-selection.html"><a href="variable-selection.html#residual-analysis"><i class="fa fa-check"></i><b>4.3</b> Residual analysis</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="variable-selection.html"><a href="variable-selection.html#video-16"><i class="fa fa-check"></i><b>4.3.1</b> Video</a></li>
 <li class="chapter" data-level="4.3.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-residual-analysis-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.3.2</b> Exercise. Residual analysis and risk manager survey</a></li>
 <li class="chapter" data-level="4.3.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-added-variable-plot-and-refrigerator-prices"><i class="fa fa-check"></i><b>4.3.3</b> Exercise. Added variable plot and refrigerator prices</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="variable-selection.html"><a href="variable-selection.html#unusual-observations"><i class="fa fa-check"></i><b>4.4</b> Unusual observations</a><ul>
+<li class="chapter" data-level="4.4" data-path="variable-selection.html"><a href="variable-selection.html#unusual-observations"><i class="fa fa-check"></i><b>4.4</b> Unusual observations</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="variable-selection.html"><a href="variable-selection.html#video-17"><i class="fa fa-check"></i><b>4.4.1</b> Video</a></li>
 <li class="chapter" data-level="4.4.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-outlier-example"><i class="fa fa-check"></i><b>4.4.2</b> Exercise. Outlier example</a></li>
 <li class="chapter" data-level="4.4.3" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-high-leverage-and-risk-manager-survey"><i class="fa fa-check"></i><b>4.4.3</b> Exercise. High leverage and risk manager survey</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="variable-selection.html"><a href="variable-selection.html#collinearity"><i class="fa fa-check"></i><b>4.5</b> Collinearity</a><ul>
+<li class="chapter" data-level="4.5" data-path="variable-selection.html"><a href="variable-selection.html#collinearity"><i class="fa fa-check"></i><b>4.5</b> Collinearity</a>
+<ul>
 <li class="chapter" data-level="4.5.1" data-path="variable-selection.html"><a href="variable-selection.html#video-18"><i class="fa fa-check"></i><b>4.5.1</b> Video</a></li>
 <li class="chapter" data-level="4.5.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-collinearity-and-term-life"><i class="fa fa-check"></i><b>4.5.2</b> Exercise. Collinearity and term life</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="variable-selection.html"><a href="variable-selection.html#selection-criteria"><i class="fa fa-check"></i><b>4.6</b> Selection criteria</a><ul>
+<li class="chapter" data-level="4.6" data-path="variable-selection.html"><a href="variable-selection.html#selection-criteria"><i class="fa fa-check"></i><b>4.6</b> Selection criteria</a>
+<ul>
 <li class="chapter" data-level="4.6.1" data-path="variable-selection.html"><a href="variable-selection.html#video-19"><i class="fa fa-check"></i><b>4.6.1</b> Video</a></li>
 <li class="chapter" data-level="4.6.2" data-path="variable-selection.html"><a href="variable-selection.html#exercise.-cross-validation-and-term-life"><i class="fa fa-check"></i><b>4.6.2</b> Exercise. Cross-validation and term life</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html"><i class="fa fa-check"></i><b>5</b> Interpreting Regression Results</a><ul>
-<li class="chapter" data-level="5.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1</b> Case study: MEPS health expenditures</a><ul>
+<li class="chapter" data-level="5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html"><i class="fa fa-check"></i><b>5</b> Interpreting Regression Results</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#case-study-meps-health-expenditures"><i class="fa fa-check"></i><b>5.1</b> Case study: MEPS health expenditures</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-20"><i class="fa fa-check"></i><b>5.1.1</b> Video</a></li>
 <li class="chapter" data-level="5.1.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-summarizing-data"><i class="fa fa-check"></i><b>5.1.2</b> Exercise. Summarizing data</a></li>
 <li class="chapter" data-level="5.1.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-fit-a-benchmark-multiple-linear-regression-model"><i class="fa fa-check"></i><b>5.1.3</b> Exercise. Fit a benchmark multiple linear regression model</a></li>
@@ -358,10 +395,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.5" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-model-comparisons-using-cross-validation"><i class="fa fa-check"></i><b>5.1.5</b> Exercise. Model comparisons using cross-validation</a></li>
 <li class="chapter" data-level="5.1.6" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#exercise.-out-of-sample-validation"><i class="fa fa-check"></i><b>5.1.6</b> Exercise. Out of sample validation</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a><ul>
+<li class="chapter" data-level="5.2" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#what-the-modeling-procedure-tells-us"><i class="fa fa-check"></i><b>5.2</b> What the modeling procedure tells us</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-21"><i class="fa fa-check"></i><b>5.2.1</b> Video</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a><ul>
+<li class="chapter" data-level="5.3" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#the-importance-of-variable-selection"><i class="fa fa-check"></i><b>5.3</b> The importance of variable selection</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="interpreting-regression-results.html"><a href="interpreting-regression-results.html#video-22"><i class="fa fa-check"></i><b>5.3.1</b> Video</a></li>
 </ul></li>
 </ul></li>
@@ -385,18 +424,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="multiple-linear-regression" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Multiple Linear Regression</h1>
+<div id="multiple-linear-regression" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Multiple Linear Regression<a href="multiple-linear-regression.html#multiple-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><strong>Chapter description</strong></p>
 <p>This chapter introduces linear regression in the case of several explanatory variables, known as multiple linear regression (<strong>MLR</strong>). Many basic linear regression concepts extend directly, including goodness of fit measures such as the coefficient of determination and inference using t-statistics. Multiple linear regression models provide a framework for summarizing highly complex, multivariate data. Because this framework requires only linearity in the parameters, we are able to fit models that are nonlinear functions of the explanatory variables, thus providing a wide scope of potential applications.</p>
-<div id="term-life-data" class="section level2 unnumbered">
-<h2>Term Life Data</h2>
+<div id="term-life-data" class="section level2 unnumbered hasAnchor">
+<h2>Term Life Data<a href="multiple-linear-regression.html#term-life-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_izascs5a&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_cxgam03z" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-8" class="section level4 unnumbered">
-<h4>Video Overhead Details</h4>
+<div id="video-overhead-details-8" class="section level4 unnumbered hasAnchor">
+<h4>Video Overhead Details<a href="multiple-linear-regression.html#video-overhead-details-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'Over3.0A')">A Details. Demand for term life insurance</button>
 <button class="tablinks" onclick="openTab(event, 'Over3.0B')">B Details. Term life insurance summary statistics</button>
@@ -442,18 +481,18 @@ B Details. Term life insurance summary statistics
 C Details. Summary statistics
 </h3>
 <p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span></a>
-<a class="sourceLine" id="cb62-2" title="2">Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb62-3" title="3"><span class="co">#  PICK THE SUBSET OF THE DATA CORRESPONDING TO TERM PURCHASE</span></a>
-<a class="sourceLine" id="cb62-4" title="4">Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb62-5" title="5"><span class="kw">str</span>(Term1)</a>
-<a class="sourceLine" id="cb62-6" title="6"><span class="kw">head</span>(Term1)</a>
-<a class="sourceLine" id="cb62-7" title="7"></a>
-<a class="sourceLine" id="cb62-8" title="8"><span class="kw">library</span>(psych)</a>
-<a class="sourceLine" id="cb62-9" title="9">Term2 &lt;-<span class="st"> </span>Term1[, <span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;face&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;numhh&quot;</span>)]</a>
-<a class="sourceLine" id="cb62-10" title="10"><span class="co">#options(scipen = 100, digits = 4)</span></a>
-<a class="sourceLine" id="cb62-11" title="11"><span class="kw">head</span>(Term2)</a>
-<a class="sourceLine" id="cb62-12" title="12"><span class="kw">describe</span>(Term2)[,<span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">2</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="multiple-linear-regression.html#cb62-1" tabindex="-1"></a><span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span></span>
+<span id="cb62-2"><a href="multiple-linear-regression.html#cb62-2" tabindex="-1"></a>Term <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb62-3"><a href="multiple-linear-regression.html#cb62-3" tabindex="-1"></a><span class="co">#  PICK THE SUBSET OF THE DATA CORRESPONDING TO TERM PURCHASE</span></span>
+<span id="cb62-4"><a href="multiple-linear-regression.html#cb62-4" tabindex="-1"></a>Term1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Term, <span class="at">subset =</span> face <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb62-5"><a href="multiple-linear-regression.html#cb62-5" tabindex="-1"></a><span class="fu">str</span>(Term1)</span>
+<span id="cb62-6"><a href="multiple-linear-regression.html#cb62-6" tabindex="-1"></a><span class="fu">head</span>(Term1)</span>
+<span id="cb62-7"><a href="multiple-linear-regression.html#cb62-7" tabindex="-1"></a></span>
+<span id="cb62-8"><a href="multiple-linear-regression.html#cb62-8" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb62-9"><a href="multiple-linear-regression.html#cb62-9" tabindex="-1"></a>Term2 <span class="ot">&lt;-</span> Term1[, <span class="fu">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;face&quot;</span>, <span class="st">&quot;income&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;numhh&quot;</span>)]</span>
+<span id="cb62-10"><a href="multiple-linear-regression.html#cb62-10" tabindex="-1"></a><span class="co">#options(scipen = 100, digits = 4)</span></span>
+<span id="cb62-11"><a href="multiple-linear-regression.html#cb62-11" tabindex="-1"></a><span class="fu">head</span>(Term2)</span>
+<span id="cb62-12"><a href="multiple-linear-regression.html#cb62-12" tabindex="-1"></a><span class="fu">describe</span>(Term2)[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">2</span>)]</span></code></pre></div>
 <pre><code>&#39;data.frame&#39;:   275 obs. of  7 variables:
  $ education: int  16 9 16 17 11 16 17 16 14 12 ...
  $ face     : int  20000 130000 1500000 50000 220000 600000 100000 2500000 250000 50000 ...
@@ -491,16 +530,16 @@ numhh          2.96       1.49   1.00      3.00 9.000e+00 275</code></pre>
 D Details. Scatter plots of income versus face in original and logarithmic units
 </h3>
 <p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb64-2" title="2"><span class="kw">plot</span>(Term2<span class="op">$</span>income, Term2<span class="op">$</span>face, <span class="dt">xlab =</span> <span class="st">&quot;income&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;face&quot;</span>)</a>
-<a class="sourceLine" id="cb64-3" title="3"><span class="kw">plot</span>(Term2<span class="op">$</span>logincome, Term2<span class="op">$</span>logface, <span class="dt">xlab =</span> <span class="st">&quot;log&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;log face&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="multiple-linear-regression.html#cb64-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb64-2"><a href="multiple-linear-regression.html#cb64-2" tabindex="-1"></a><span class="fu">plot</span>(Term2<span class="sc">$</span>income, Term2<span class="sc">$</span>face, <span class="at">xlab =</span> <span class="st">&quot;income&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;face&quot;</span>)</span>
+<span id="cb64-3"><a href="multiple-linear-regression.html#cb64-3" tabindex="-1"></a><span class="fu">plot</span>(Term2<span class="sc">$</span>logincome, Term2<span class="sc">$</span>logface, <span class="at">xlab =</span> <span class="st">&quot;log&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;log face&quot;</span>)</span></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
 </p>
 </div>
 </div>
 </div>
-<div id="method-of-least-squares-1" class="section level2">
-<h2><span class="header-section-number">3.1</span> Method of least squares</h2>
+<div id="method-of-least-squares-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Method of least squares<a href="multiple-linear-regression.html#method-of-least-squares-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <hr />
 <p>In this section, you learn how to:</p>
 <ul>
@@ -509,14 +548,14 @@ D Details. Scatter plots of income versus face in original and logarithmic units
 <li>Predict an observation using a least squares fitted plane</li>
 </ul>
 <hr />
-<div id="video-9" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> Video</h3>
+<div id="video-9" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Video<a href="multiple-linear-regression.html#video-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_9zszyh42&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_0xy78e1p" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-9" class="section level4 unnumbered">
-<h4>Video Overhead Details</h4>
+<div id="video-overhead-details-9" class="section level4 unnumbered hasAnchor">
+<h4>Video Overhead Details<a href="multiple-linear-regression.html#video-overhead-details-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'Over3.1A')">A Details. Correlation table</button>
 <button class="tablinks" onclick="openTab(event, 'Over3.1B')">B Details. Scatterplot matrix</button>
@@ -530,7 +569,7 @@ D Details. Scatter plots of income versus face in original and logarithmic units
 A Details. Correlation table
 </h3>
 <p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">round</span>(<span class="kw">cor</span>(Term2), <span class="dt">digits=</span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="multiple-linear-regression.html#cb65-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">cor</span>(Term2), <span class="at">digits=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>          education  face income logface logincome  numhh
 education     1.000 0.244  0.163   0.383     0.343 -0.064
 face          0.244 1.000  0.217   0.656     0.323  0.107
@@ -546,8 +585,8 @@ numhh        -0.064 0.107  0.142   0.288     0.179  1.000</code></pre>
 B Details. Scatterplot matrix
 </h3>
 <p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">Term3 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>)]</a>
-<a class="sourceLine" id="cb67-2" title="2"><span class="kw">pairs</span>(Term3, <span class="dt">upper.panel =</span> <span class="ot">NULL</span>, <span class="dt">gap =</span> <span class="dv">0</span>, <span class="dt">cex.labels =</span> <span class="fl">1.25</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="multiple-linear-regression.html#cb67-1" tabindex="-1"></a>Term3 <span class="ot">&lt;-</span> Term1[,<span class="fu">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>)]</span>
+<span id="cb67-2"><a href="multiple-linear-regression.html#cb67-2" tabindex="-1"></a><span class="fu">pairs</span>(Term3, <span class="at">upper.panel =</span> <span class="cn">NULL</span>, <span class="at">gap =</span> <span class="dv">0</span>, <span class="at">cex.labels =</span> <span class="fl">1.25</span>)</span></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 </p>
 </div>
@@ -557,27 +596,27 @@ B Details. Scatterplot matrix
 C Details. Visualizing a regression plane
 </h3>
 <p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">education &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="dt">length =</span> <span class="dv">15</span>)</a>
-<a class="sourceLine" id="cb68-2" title="2">logincome &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dt">length =</span> <span class="dv">15</span>)</a>
-<a class="sourceLine" id="cb68-3" title="3">f &lt;-<span class="st"> </span><span class="cf">function</span>(education,logincome){ </a>
-<a class="sourceLine" id="cb68-4" title="4">  r &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.221</span><span class="op">*</span>education <span class="op">+</span><span class="st"> </span><span class="fl">0.354</span><span class="op">*</span>logincome</a>
-<a class="sourceLine" id="cb68-5" title="5">}</a>
-<a class="sourceLine" id="cb68-6" title="6">logface &lt;-<span class="st"> </span><span class="kw">outer</span>(education, logincome, f)</a>
-<a class="sourceLine" id="cb68-7" title="7"><span class="kw">persp</span>(education, logincome, logface, <span class="dt">theta =</span> <span class="dv">30</span>, </a>
-<a class="sourceLine" id="cb68-8" title="8">      <span class="dt">phi =</span> <span class="dv">30</span>, <span class="dt">expand =</span> <span class="fl">0.5</span>, <span class="dt">ticktype =</span> <span class="st">&quot;detailed&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="multiple-linear-regression.html#cb68-1" tabindex="-1"></a>education <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="at">length =</span> <span class="dv">15</span>)</span>
+<span id="cb68-2"><a href="multiple-linear-regression.html#cb68-2" tabindex="-1"></a>logincome <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="at">length =</span> <span class="dv">15</span>)</span>
+<span id="cb68-3"><a href="multiple-linear-regression.html#cb68-3" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(education,logincome){ </span>
+<span id="cb68-4"><a href="multiple-linear-regression.html#cb68-4" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="fl">0.221</span><span class="sc">*</span>education <span class="sc">+</span> <span class="fl">0.354</span><span class="sc">*</span>logincome</span>
+<span id="cb68-5"><a href="multiple-linear-regression.html#cb68-5" tabindex="-1"></a>}</span>
+<span id="cb68-6"><a href="multiple-linear-regression.html#cb68-6" tabindex="-1"></a>logface <span class="ot">&lt;-</span> <span class="fu">outer</span>(education, logincome, f)</span>
+<span id="cb68-7"><a href="multiple-linear-regression.html#cb68-7" tabindex="-1"></a><span class="fu">persp</span>(education, logincome, logface, <span class="at">theta =</span> <span class="dv">30</span>, </span>
+<span id="cb68-8"><a href="multiple-linear-regression.html#cb68-8" tabindex="-1"></a>      <span class="at">phi =</span> <span class="dv">30</span>, <span class="at">expand =</span> <span class="fl">0.5</span>, <span class="at">ticktype =</span> <span class="st">&quot;detailed&quot;</span>)</span></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">rm</span>(education,logincome,logface)</a></code></pre></div>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">education &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="dt">length =</span> <span class="dv">15</span>)</a>
-<a class="sourceLine" id="cb70-2" title="2">logincome &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="dt">length =</span> <span class="dv">15</span>)</a>
-<a class="sourceLine" id="cb70-3" title="3">f &lt;-<span class="st"> </span><span class="cf">function</span>(education,logincome){ </a>
-<a class="sourceLine" id="cb70-4" title="4">  r &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.221</span><span class="op">*</span>education <span class="op">+</span><span class="st"> </span><span class="fl">0.354</span><span class="op">*</span>logincome</a>
-<a class="sourceLine" id="cb70-5" title="5">}</a>
-<a class="sourceLine" id="cb70-6" title="6">logface &lt;-<span class="st"> </span><span class="kw">outer</span>(education, logincome, f)</a>
-<a class="sourceLine" id="cb70-7" title="7"><span class="kw">persp</span>(education, logincome, logface, <span class="dt">theta =</span> <span class="dv">30</span>, </a>
-<a class="sourceLine" id="cb70-8" title="8">      <span class="dt">phi =</span> <span class="dv">30</span>, <span class="dt">expand =</span> <span class="fl">0.5</span>, <span class="dt">ticktype =</span> <span class="st">&quot;simple&quot;</span>, <span class="co">#ticktype = &quot;detailed&quot;, #</span></a>
-<a class="sourceLine" id="cb70-9" title="9">      <span class="dt">xlab =</span> <span class="st">&quot;x1&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;x2&quot;</span>,<span class="dt">zlab=</span><span class="st">&quot;y&quot;</span>, <span class="dt">nticks =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="multiple-linear-regression.html#cb69-1" tabindex="-1"></a><span class="fu">rm</span>(education,logincome,logface)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="multiple-linear-regression.html#cb70-1" tabindex="-1"></a>education <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="at">length =</span> <span class="dv">15</span>)</span>
+<span id="cb70-2"><a href="multiple-linear-regression.html#cb70-2" tabindex="-1"></a>logincome <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="at">length =</span> <span class="dv">15</span>)</span>
+<span id="cb70-3"><a href="multiple-linear-regression.html#cb70-3" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(education,logincome){ </span>
+<span id="cb70-4"><a href="multiple-linear-regression.html#cb70-4" tabindex="-1"></a>  r <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="fl">0.221</span><span class="sc">*</span>education <span class="sc">+</span> <span class="fl">0.354</span><span class="sc">*</span>logincome</span>
+<span id="cb70-5"><a href="multiple-linear-regression.html#cb70-5" tabindex="-1"></a>}</span>
+<span id="cb70-6"><a href="multiple-linear-regression.html#cb70-6" tabindex="-1"></a>logface <span class="ot">&lt;-</span> <span class="fu">outer</span>(education, logincome, f)</span>
+<span id="cb70-7"><a href="multiple-linear-regression.html#cb70-7" tabindex="-1"></a><span class="fu">persp</span>(education, logincome, logface, <span class="at">theta =</span> <span class="dv">30</span>, </span>
+<span id="cb70-8"><a href="multiple-linear-regression.html#cb70-8" tabindex="-1"></a>      <span class="at">phi =</span> <span class="dv">30</span>, <span class="at">expand =</span> <span class="fl">0.5</span>, <span class="at">ticktype =</span> <span class="st">&quot;simple&quot;</span>, <span class="co">#ticktype = &quot;detailed&quot;, #</span></span>
+<span id="cb70-9"><a href="multiple-linear-regression.html#cb70-9" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&quot;x1&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;x2&quot;</span>,<span class="at">zlab=</span><span class="st">&quot;y&quot;</span>, <span class="at">nticks =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">rm</span>(education,logincome,logface)</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="multiple-linear-regression.html#cb71-1" tabindex="-1"></a><span class="fu">rm</span>(education,logincome,logface)</span></code></pre></div>
 </p>
 </div>
 <div id="Over3.1D" class="tabcontent">
@@ -600,10 +639,10 @@ D Details. Method of least squares
 E Details. Fit a multiple linear regression model
 </h3>
 <p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)</a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="kw">round</span>(<span class="kw">coefficients</span>(Term_mlr), <span class="dt">digits=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb72-3" title="3">newdata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">logincome =</span> <span class="kw">log</span>(<span class="dv">60000</span>), <span class="dt">education =</span> <span class="dv">12</span>, <span class="dt">numhh =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb72-4" title="4"><span class="kw">exp</span>(<span class="kw">predict</span>(Term_mlr, newdata))</a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="multiple-linear-regression.html#cb72-1" tabindex="-1"></a>Term_mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>(logface <span class="sc">~</span> education <span class="sc">+</span> numhh <span class="sc">+</span> logincome, <span class="at">data =</span> Term2)</span>
+<span id="cb72-2"><a href="multiple-linear-regression.html#cb72-2" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">coefficients</span>(Term_mlr), <span class="at">digits=</span><span class="dv">4</span>)</span>
+<span id="cb72-3"><a href="multiple-linear-regression.html#cb72-3" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">logincome =</span> <span class="fu">log</span>(<span class="dv">60000</span>), <span class="at">education =</span> <span class="dv">12</span>, <span class="at">numhh =</span> <span class="dv">3</span>)</span>
+<span id="cb72-4"><a href="multiple-linear-regression.html#cb72-4" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">predict</span>(Term_mlr, newdata))</span></code></pre></div>
 <pre><code>(Intercept)   education       numhh   logincome 
      2.5841      0.2064      0.3060      0.4935 
        1 
@@ -612,8 +651,8 @@ E Details. Fit a multiple linear regression model
 </div>
 </div>
 </div>
-<div id="exercise.-least-squares-and-term-life-data" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Exercise. Least squares and term life data</h3>
+<div id="exercise.-least-squares-and-term-life-data" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Exercise. Least squares and term life data<a href="multiple-linear-regression.html#exercise.-least-squares-and-term-life-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>The prior video introduced the <em>Survey of Consumer Finances</em> (SCF) term life data. A subset consisting of only those who purchased term life insurance, has already been read into a dataframe <code>Term2</code>.</p>
 <p>Suppose that you wish to predict the amount of term life insurance that someone will purchase but are uneasy about the <code>education</code> variable. The SCF <code>education</code> variable is the number of completed years of schooling and so 12 corresponds to completing high school in the US. Your sense is that, for purposes of purchasing life insurance, high school graduates and those that attend college should be treated the same. So, in this exercise, your will create a new variable, <code>education1</code>, that is equal to years of education for those with education less than or equal to 12 and is equal to 12 otherwise.</p>
@@ -629,8 +668,8 @@ E Details. Fit a multiple linear regression model
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXSIsInNhbXBsZSI6IiMgQ3JlYXRlIHRoZSBgZWR1Y2F0aW9uMWAgdmFyaWFibGUgYXMgcGFydCBvZiB0aGUgYFRlcm0yYCBkYXRhZnJhbWUuXG5UZXJtMiRlZHVjYXRpb24xIDwtIHBtaW4oMTIsIFRlcm0yJGVkdWNhdGlvbilcblxuIyBDaGVjayB5b3VyIHdvcmsgYnkgZXhhbWluaW5nIHN1bW1hcnkgc3RhdGlzdGljcyBmb3IgdGhlIHJldmlzZWQgYFRlcm0yYCBkYXRhZnJhbWUuXG5zdW1tYXJ5KF9fXylcblxuIyBFeGFtaW5lIGNvcnJlbGF0aW9ucyBmb3IgdGhlIHJldmlzZWQgZGF0YWZyYW1lLlxucm91bmQoY29yKF9fXyksIGRpZ2l0cz0zKVxuXG4jIEZpdCBhIE1MUiBtb2RlbCB1c2luZyBgbG9nZmFjZWAgYXMgdGhlIGRlcGVuZGVudCB2YXJpYWJsZXMgYW5kIHVzaW5nIGBlZHVjYXRpb25gLCBgbnVtaGhgLCBhbmQgYGxvZ2luY29tZWAgYXMgZXhwbGFuYXRvcnkgdmFyaWFibGVzLlxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBfX18gKyBudW1oaCArIGxvZ2luY29tZSwgZGF0YSA9IFRlcm0yKVxuXG4jIFByZWRpY3QgdGhlIGZhY2UgYW1vdW50IG9mIGluc3VyYW5jZSB0aGF0IHNvbWVvbmUgd2l0aCBpbmNvbWUgb2YgNDAsMDAwLCAxMSB5ZWFycyBvZiBlZHVjYXRpb24sIGFuZCA0IHBlb3BsZSBpbiB0aGUgaG91c2Vob2xkIHdvdWxkIHB1cmNoYXNlLlxubmV3ZGF0YSA8LSBkYXRhLmZyYW1lKGxvZ2luY29tZSA9IGxvZyg0MDAwMCksIGVkdWNhdGlvbjEgPSAxMSwgbnVtaGggPSA0KVxuZXhwKHByZWRpY3QoX19fLCBuZXdkYXRhKSkiLCJzb2x1dGlvbiI6IlRlcm0yJGVkdWNhdGlvbjEgPC0gcG1pbigxMiwgVGVybTIkZWR1Y2F0aW9uKVxuc3VtbWFyeShUZXJtMilcbnJvdW5kKGNvcihUZXJtMiksIGRpZ2l0cz0zKVxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBlZHVjYXRpb24xICsgbnVtaGggKyBsb2dpbmNvbWUsIGRhdGEgPSBUZXJtMilcbm5ld2RhdGEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBsb2coNDAwMDApLCBlZHVjYXRpb24xID0gMTEsIG51bWhoID0gNClcbmV4cChwcmVkaWN0KFRlcm1fbWxyMiwgbmV3ZGF0YSkpIiwic2N0IjoiZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwiVGVybTJcIikgJT4lIGNoZWNrX2NvbHVtbihcImVkdWNhdGlvbjFcIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gYXNzaWduIHRoZSBtb2RpZmllZCBlZHVjYXRpb24gdmFyaWFibGUgdG8gYGVkdWNhdGlvbjFgIHVzaW5nIGBwbWluYC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwic3VtbWFyeVwiLCBub3RfY2FsbGVkX21zZz1cIk1ha2UgdXNlIG9mIGBzdW1tYXJ5YCB0byBmaW5kIHN1bW1hcnkgc3RhdHMgb2YgYFRlcm0yYC5cIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwib2JqZWN0XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIHJ1biBzdW1tYXJ5IG9uIGBUZXJtMmAuXCIpXG4gIGNoZWNrX3Jlc3VsdCgpICU+JSBjaGVja19lcXVhbCgpXG59XG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInJvdW5kXCIsIG5vdF9jYWxsZWRfbXNnPVwiVXNlIGByb3VuZGAgdG8gcm91bmQgdGhlIGNvcnJlbGF0aW9ucyB0byAzIGRpZ2l0cy4gXCIgKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJ4XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIGNhbGwgYHJvdW5kYCBvbiB0aGUgY29ycmVsYXRpb25zIG9mIGFsbCB2YXJpYWJsZXMgaW4gYFRlcm0yYC5cIilcbiAgY2hlY2tfYXJnKC4sIFwiZGlnaXRzXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiUGxlYXNlIHJvdW5kIHRoZXNlIGNvcnJlbGF0aW9ucyB0byAzIGRpZ2l0cy4gXCIpXG59XG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjJcIiwgbm90X2RlZmluZWRfbXNnPVwiTWFrZSBzdXJlIHRvIGFzc2lnbiB5b3VyIGxpbmVhciBtb2RlbCB0byBgVGVybV9tbHIyYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJNYWtlIHN1cmUgdG8gbW9kZWwgYGxvZ2ZhY2VgIGJhc2VkIG9uIGBlZHVjYXRpb24xYCwgYG51bWhoYCwgYW5kIGBsb2dpbmNvbWVgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJsbVwiKSAlPiUge1xuICBjaGVja19hcmcoLiwgXCJmb3JtdWxhXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIG1vZGVsIGBsb2dmYWNlYCBiYXNlZCBvbiBgZWR1Y2F0aW9uMWAsIGBudW1oaGAsIGFuZCBgbG9naW5jb21lYC5cIilcbiAgY2hlY2tfYXJnKC4sIFwiZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IG91ciBkYXRhIGNvbWVzIGZyb20gYFRlcm0yYC5cIilcbn1cbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIm5ld2RhdGFcIiwgdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gb3VyIG5ldyBkYXRhIHRvIGBuZXdkYXRhYC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJtYWtlIHN1cmUgdG8gYXNzaWduIGVhY2ggY29sdW1uIG9mIHRoZSBkYXRhZnJhbWUgdG8gaXRzIHN0YXRlZCB2YWx1ZS4gXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcImV4cFwiLCBub3RfY2FsbGVkX21zZz1cIk1ha2Ugc3VyZSB0byB0YWtlIHRoZSBleHBvbmVudGlhbCBvZiB5b3VyIHByZWRpY3Rpb24hIFwiKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJUaGUgYXJndW1lbnQgaW4gYGV4cGAgc2hvdWxkIGJlIGNhbGxlZCBvbiB0aGUgcHJlZGljdGlvbi4gXCIpXG5leCgpICU+JSBjaGVja19mdW5jdGlvbihcInByZWRpY3RcIiwgbm90X2NhbGxlZF9tc2c9XCJVdGlsaXplIGBwcmVkaWN0YCB0byBjcmVhdGUgcHJlZGljdGlvbnMgdXNpbmcgdGhpcyBtb2RlbC4gXCIpICU+JSB7XG4gIGNoZWNrX2FyZyguLCBcIm9iamVjdFwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IHRoYXQgd2Ugd2FudCB0byBjcmVhdGUgcHJlZGljdGlvbnMgYmFzZWQgb2ZmIG9mIGBUZXJtMl9tbHIyYC5cIilcbiAgY2hlY2tfYXJnKC4sIFwibmV3ZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IHdlIHdhbnQgdG8gbWFrZSBwcmVkaWN0aW9ucyBmb3IgdGhlIGRhdGEgd2UgZW50ZXJlZCBpbiBgbmV3ZGF0YWAuXCIpXG59XG5zdWNjZXNzX21zZyhcIkNvbmdyYXR1bGF0aW9ucyEgWW91IG5vdyBoYXZlIGV4cGVyaWVuY2UgZml0dGluZyBhIHJlZ3Jlc3Npb24gcGxhbmUgYW5kIHVzaW5nIHRoaXMgcGxhbmUgZm9yIHByZWRpY3Rpb25zLiBQcmVkaWN0aW9uIGlzIG9uZSBvZiB0aGUga2V5IHRhc2tzIG9mICdwcmVkaWN0aXZlIG1vZGVsaW5nLicgV2VsbCBkb25lIVwiKSIsImhpbnQiOiJSZW1lbWJlciB0aGF0IHlvdXIgcHJlZGljdGlvbiBpcyBpbiBsb2cgZG9sbGFycyBzbyB5b3UgbmVlZCB0byBleHBvbmVudGlhdGUgaXQgdG8gZ2V0IHRoZSByZXN1bHRzIGluIHRoZSBvcmlnaW5hbCBkb2xsYXIgdW5pdHMifQ==
 </div>
 </div>
-<div id="exercise.-interpreting-coefficients-as-proportional-changes" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> Exercise. Interpreting coefficients as proportional changes</h3>
+<div id="exercise.-interpreting-coefficients-as-proportional-changes" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Exercise. Interpreting coefficients as proportional changes<a href="multiple-linear-regression.html#exercise.-interpreting-coefficients-as-proportional-changes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>In a previous exercise, you fit a MLR model using <code>logface</code> as the outcome variable and using <code>education</code>, <code>numhh</code>, and <code>logincome</code> as explanatory variables; the resulting fit is in the object <code>Term_mlr</code>. For this fit, the coefficient associated with <code>education</code> is 0.2064. We now wish to interpret this regression coefficient.</p>
 <p>The typical interpretation of coefficients in a regression model is as a partial slope. That is, for the coefficient <span class="math inline">\(b_1\)</span> associated with <span class="math inline">\(x_1\)</span>, we interpret <span class="math inline">\(b_1\)</span> to be amount that the expected outcome changes per unit change in <span class="math inline">\(x_1\)</span>, holding the other explanatory variables fixed.</p>
@@ -644,8 +683,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtMiA8LSBUZXJtMVssIGMoXCJlZHVjYXRpb25cIiwgXCJmYWNlXCIsIFwiaW5jb21lXCIsIFwibG9nZmFjZVwiLCBcImxvZ2luY29tZVwiLCBcIm51bWhoXCIpXVxuVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpIiwic2FtcGxlIjoiVGVybV9tbHIgPC0gbG0obG9nZmFjZSB+IGVkdWNhdGlvbiArIG51bWhoICsgbG9naW5jb21lLCBkYXRhID0gVGVybTIpXG5zdW1tYXJ5KFRlcm1fbWxyKSRjb2VmZmljaWVudHNbLDFdXG5cbiMgRGV0ZXJtaW5lIGxlYXN0IHNxdWFyZSBmaXR0ZWQgdmFsdWVzIGZvciBzZXZlcmFsIHNlbGVjdGVkIHZhbHVlcyBvZiBgZWR1Y2F0aW9uYCwgaG9sZGluZyBvdGhlciBleHBsYW50b3J5IHZhcmlhYmxlcyBmaXhlZC5cbmVkdWNfcHJlZGljdCA8LSBjKDE0LDE0LjEsMTQuMiwxNC4zKVxubmV3ZGF0YTEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBtZWFuKFRlcm0yJGxvZ2luY29tZSksIGVkdWNhdGlvbiA9IGVkdWNfcHJlZGljdCwgbnVtaGggPSBtZWFuKFRlcm0yJG51bWhoKSlcbmxzZml0czEgPC0gcHJlZGljdChUZXJtX21sciwgbmV3ZGF0YTEpXG5sc2ZpdHMxXG5cbiMgRGV0ZXJtaW5lIHRoZSBwcm9wb3J0aW9uYWwgY2hhbmdlcy4gTm90ZSB0aGUgcmVsYXRpb24gYmV0d2VlbiB0aGVzZSB2YWx1ZXMgZnJvbSBhIGRpc2NyZXRlIGNoYW5nZSBhcHByb3hpbWF0aW9uIHRvIHRoZSByZWdyZXNzaW9uIGNvZWZmaWNpZW50IGZvciBgZWR1Y2F0aW9uYCBlcXVhbCB0byAwLjIwNjQuXG5sc2ZpdHMxWzI6NF0gLSBsc2ZpdHMxWzE6M11cbnBjaGFuZ2VfZml0czEgPC0gZXhwKGxzZml0czFbMjo0XSAtIGxzZml0czFbMTozXSlcbnBjaGFuZ2VfZml0czEiLCJzb2x1dGlvbiI6ImVkdWNfcHJlZGljdCA8LSBjKDE0LDE0LjEsMTQuMiwxNC4zKVxubmV3ZGF0YTEgPC0gZGF0YS5mcmFtZShsb2dpbmNvbWUgPSBtZWFuKFRlcm0yJGxvZ2luY29tZSksIGVkdWNhdGlvbiA9IGVkdWNfcHJlZGljdCwgbnVtaGggPSBtZWFuKFRlcm0yJG51bWhoKSlcbmxzZml0czEgPC0gcHJlZGljdChUZXJtX21sciwgbmV3ZGF0YTEpXG5sc2ZpdHMxXG5sc2ZpdHMxWzI6NF0gLSBsc2ZpdHMxWzE6M11cbnBjaGFuZ2VfZml0czEgPC0gZXhwKGxzZml0czFbMjo0XSAtIGxzZml0czFbMTozXSlcbnBjaGFuZ2VfZml0czEiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJlZHVjX3ByZWRpY3RcIiwgdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gdGhlIHZhbHVlcyBvZiBgZWR1Y2F0aW9uYCB0byBgZWR1Y19wcmVkaWN0YC5cIikgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJUaGVzZSBudW1iZXJzIHNob3VsZCBiZSB0aGUgdmFsdWVzIGZyb20gMTQgdG8gMTQuMyBieSAuMSBpbmNyZW1lbnRzLiBcIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIm5ld2RhdGExXCIsdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBjcmVhdGUgYSBkYXRhZnJhbWUgbmFtZWQgYG5ld2RhdGExYCBmb3IgcHJlZGljdGluZy4gXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiU2V0IGxvZyBpbmNvbWUgdG8gYmUgdGhlIG1lYW4gb2YgdGhlIGxvZ2luY29tZSBvZiBvdXIgZGF0YSwgZWR1Y2F0aW9uIGVxdWFsIHRvIGBlZHVjX3ByZWRpY3RgLCBhbmQgbnVtaGggZXF1YWwgdG8gdGhlIG1lYW4gb2YgbnVtaGguIFwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJwcmVkaWN0XCIsIG5vdF9jYWxsZWRfbXNnPVwiVXNlIGBwcmVkaWN0YCB0byBtYWtlIHByZWRpY3Rpb25zIGdpdmVuIG91ciBtb2RlbCBhbmQgZGF0YS5cIikgJT4lIHtcbiAgY2hlY2tfYXJnKC4sIFwib2JqZWN0XCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiTWFrZSBzdXJlIHRvIHNwZWNpZnkgdGhhdCB3ZSB3YW50IHRvIG1ha2UgcHJlZGljdGlvbnMgYmFzZWQgb24gYFRlcm1fbWxyYC5cIilcbiAgY2hlY2tfYXJnKC4sIFwibmV3ZGF0YVwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIk1ha2Ugc3VyZSB0byBzcGVjaWZ5IHRoYXQgd2Ugd291bGQgbGlrZSB0byB1c2UgdGhlIHZhbHVlcyBpbiBgbmV3ZGF0YTFgIGFzIHRoZSBkYXRhIGZvciBvdXIgcHJlZGljdGlvbnMuIFwiKVxufVxuZXgoKSAlPiUgY2hlY2tfb2JqZWN0KFwibHNmaXRzMVwiLCB1bmRlZmluZWRfbXNnPVwiTWFrZSBzdXJlIHRvIGFzc2lnbiB0aGUgcHJlZGljdGVkIHZhbHVlcyB0byBgbHNmaXRzMWAuXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiVXNlIGBwcmVkaWN0YCB0byBtYWtlIHByZWRpY3Rpb25zIGdpdmVuIG91ciBtb2RlbCBhbmQgZGF0YS5cIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcInBjaGFuZ2VfZml0czFcIiwgdW5kZWZpbmVkX21zZz1cIk1ha2Ugc3VyZSB0byBhc3NpZ24gZXhwb25lbnRpYWwgb2YgdGhlIGRpZmZlcmVuY2VzIGJldHdlZW4gdGhlIGZpdCB2YWx1ZXMgdG8gYHBjaGFuZ2VfZml0czFgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIlRoaXMgc2hvdWxkIGJlIGVxdWFsIHRvIHRoZSBleHBvbmVudGlhbCBvZiBlYWNoIGBsc2ZpdHMxYCBtaW51cyB0aGUgYGxzZml0czFgIHRoYXQgY2FtZSBkaXJlY3RseSBiZWZvcmUgaXQuXCIpXG5cbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiZXhwXCIpICU+JSBjaGVja19hcmcoLiwgXCJ4XCIpICU+JSBjaGVja19lcXVhbCgpXG5cblxuc3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIEZyb20gY2FsY3VsdXMsIHNtYWxsIGNoYW5nZXMgaW4gbG9nYXJpdGhtaWMgdmFsdWVzIGNhbiBiZSBpbnRlcnByZXRlZCBhcyBwcm9wb3J0aW9uYWwgY2hhbmdlcy4gVGhpcyBpcyB0aGUgcmVhc29uIGZvciB1c2luZyBuYXR1cmFsIGxvZ2FyaXRobXMuXCIpIiwiaGludCI6IlRvIGZpbmQgdGhlIHByb3BvcnRpb25hbCBjaGFuZ2VzLCB0YWtlIHRoZSAybmQtNHRoIG9ic2VydmF0aW9ucyBvZiA8Y29kZT5sc2ZpdHM8L2NvZGU+IGFuZCBzdWJ0cmFjdCB0aGUgMXN0LTNyZCBvYnNlcnZhdGlvbnMsIHRoZW4gZXhwb25lbnRpYXRlIHRoZSByZXN1bHRzLiJ9
 </div>
 </div>
-<div id="exercise.-interpreting-coefficients-as-elasticities" class="section level3">
-<h3><span class="header-section-number">3.1.4</span> Exercise. Interpreting coefficients as elasticities</h3>
+<div id="exercise.-interpreting-coefficients-as-elasticities" class="section level3 hasAnchor" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Exercise. Interpreting coefficients as elasticities<a href="multiple-linear-regression.html#exercise.-interpreting-coefficients-as-elasticities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>In a previous exercise, you fit a MLR model using <code>logface</code> as the outcome variable and using <code>education</code>, <code>numhh</code>, and <code>logincome</code> as explanatory variables; the resulting fit is in the object <code>Term_mlr</code>. From this fit, the coefficient associated with <code>logincome</code> is 0.4935. We now wish to interpret this regression coefficient.</p>
 <p>The typical interpretation of coefficients in a regression model is as a partial slope. When both <span class="math inline">\(x_1\)</span> and <span class="math inline">\(y\)</span> are in logarithmic units, then we can interpret <span class="math inline">\(b_1\)</span> to be ratio of two percentage changes, known as an <em>elasticity</em> in economics. Mathematically, we summarize this as
@@ -673,8 +712,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <!-- BLANK FOR NOW.... -->
 </div>
 </div>
-<div id="statistical-inference-and-multiple-linear-regresson" class="section level2">
-<h2><span class="header-section-number">3.2</span> Statistical inference and multiple linear regresson</h2>
+<div id="statistical-inference-and-multiple-linear-regresson" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Statistical inference and multiple linear regresson<a href="multiple-linear-regression.html#statistical-inference-and-multiple-linear-regresson" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <hr />
 <p>In this section, you learn how to:</p>
 <ul>
@@ -685,14 +724,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <li>Summarize regression coefficients using point and interval estimators</li>
 </ul>
 <hr />
-<div id="video-10" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Video</h3>
+<div id="video-10" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Video<a href="multiple-linear-regression.html#video-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_n9542z90&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=0_1rrbi7qd" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-10" class="section level4 unnumbered">
-<h4>Video Overhead Details</h4>
+<div id="video-overhead-details-10" class="section level4 unnumbered hasAnchor">
+<h4>Video Overhead Details<a href="multiple-linear-regression.html#video-overhead-details-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'Over3.2A')">A Details. Goodness of fit</button>
 <button class="tablinks" onclick="openTab(event, 'Over3.2B')">B Details. Goodness of fit and term life</button>
@@ -721,9 +760,9 @@ A Details. Goodness of fit
 B Details. Goodness of fit and term life
 </h3>
 <p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)</a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="kw">summary</span>(Term_mlr)</a>
-<a class="sourceLine" id="cb74-3" title="3"><span class="kw">anova</span>(Term_mlr)</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="multiple-linear-regression.html#cb74-1" tabindex="-1"></a>Term_mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>(logface <span class="sc">~</span> education <span class="sc">+</span> numhh <span class="sc">+</span> logincome, <span class="at">data =</span> Term2)</span>
+<span id="cb74-2"><a href="multiple-linear-regression.html#cb74-2" tabindex="-1"></a><span class="fu">summary</span>(Term_mlr)</span>
+<span id="cb74-3"><a href="multiple-linear-regression.html#cb74-3" tabindex="-1"></a><span class="fu">anova</span>(Term_mlr)</span></code></pre></div>
 <pre><code>
 Call:
 lm(formula = logface ~ education + numhh + logincome, data = Term2)
@@ -775,13 +814,13 @@ C Details. Statistical inference
 D Details. Statistical inference and term life
 </h3>
 <p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">Term_mlr &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span>logincome, <span class="dt">data =</span> Term2)</a>
-<a class="sourceLine" id="cb76-2" title="2">model_sum &lt;-<span class="st"> </span><span class="kw">summary</span>(Term_mlr)</a>
-<a class="sourceLine" id="cb76-3" title="3">model_sum<span class="op">$</span>coefficients</a>
-<a class="sourceLine" id="cb76-4" title="4"></a>
-<a class="sourceLine" id="cb76-5" title="5"><span class="kw">round</span>(<span class="kw">confint</span>(Term_mlr, <span class="dt">level =</span> <span class="fl">.95</span>), <span class="dt">digits =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb76-6" title="6"></a>
-<a class="sourceLine" id="cb76-7" title="7"><span class="kw">round</span>(<span class="kw">confint</span>(Term_mlr, <span class="dt">level =</span> <span class="fl">.95</span>), <span class="dt">digits =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="multiple-linear-regression.html#cb76-1" tabindex="-1"></a>Term_mlr <span class="ot">&lt;-</span> <span class="fu">lm</span>(logface <span class="sc">~</span> education <span class="sc">+</span> numhh <span class="sc">+</span> logincome, <span class="at">data =</span> Term2)</span>
+<span id="cb76-2"><a href="multiple-linear-regression.html#cb76-2" tabindex="-1"></a>model_sum <span class="ot">&lt;-</span> <span class="fu">summary</span>(Term_mlr)</span>
+<span id="cb76-3"><a href="multiple-linear-regression.html#cb76-3" tabindex="-1"></a>model_sum<span class="sc">$</span>coefficients</span>
+<span id="cb76-4"><a href="multiple-linear-regression.html#cb76-4" tabindex="-1"></a></span>
+<span id="cb76-5"><a href="multiple-linear-regression.html#cb76-5" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">confint</span>(Term_mlr, <span class="at">level =</span> .<span class="dv">95</span>), <span class="at">digits =</span> <span class="dv">3</span>)</span>
+<span id="cb76-6"><a href="multiple-linear-regression.html#cb76-6" tabindex="-1"></a></span>
+<span id="cb76-7"><a href="multiple-linear-regression.html#cb76-7" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">confint</span>(Term_mlr, <span class="at">level =</span> .<span class="dv">95</span>), <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>             Estimate Std. Error  t value     Pr(&gt;|t|)
 (Intercept) 2.5840786 0.84642972 3.052916 2.491588e-03
 education   0.2064139 0.03883186 5.315581 2.223619e-07
@@ -801,8 +840,8 @@ logincome   0.341  0.646</code></pre>
 </div>
 </div>
 </div>
-<div id="exercise.-statistical-inference-and-term-life" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Exercise. Statistical inference and term life</h3>
+<div id="exercise.-statistical-inference-and-term-life" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Exercise. Statistical inference and term life<a href="multiple-linear-regression.html#exercise.-statistical-inference-and-term-life" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>In later chapters, we will learn how to specify a model using diagnostics techniques; these techniques were used to specify face in log dollars for the outcome and similarly income in log dollars as an explanatory variable. Just to see how things work, in this exercise we will create new variables <code>face</code> and <code>income</code> that are in the original units and run a regression with these. We have already seen that rescaling by constants do not affect relationships but can be helpful with interpretations, so we define both <code>face</code> and <code>income</code> to be in thousands of dollars. A prior video introduced the term life dataframe <code>Term2</code>.</p>
 <p><strong>Instructions</strong></p>
@@ -816,8 +855,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 </div>
 </div>
 </div>
-<div id="binary-variables" class="section level2">
-<h2><span class="header-section-number">3.3</span> Binary variables</h2>
+<div id="binary-variables" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Binary variables<a href="multiple-linear-regression.html#binary-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <hr />
 <p>In this section, you learn how to:</p>
 <ul>
@@ -825,14 +864,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <li>Use binary variables and interaction terms to create regression models that are nonlinear in the covariates</li>
 </ul>
 <hr />
-<div id="video-11" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Video</h3>
+<div id="video-11" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Video<a href="multiple-linear-regression.html#video-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_jfmz8kg0&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_qxygjiq2" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-11" class="section level4 unnumbered">
-<h4>Video Overhead Details</h4>
+<div id="video-overhead-details-11" class="section level4 unnumbered hasAnchor">
+<h4>Video Overhead Details<a href="multiple-linear-regression.html#video-overhead-details-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'Over3.3A')">A Details. Binary variables</button>
 <button class="tablinks" onclick="openTab(event, 'Over3.3B')">B Details. Visualize effect of binary variables</button>
@@ -885,19 +924,19 @@ B Details. Visualize effect of binary variables
 C Details. R script for visualization
 </h3>
 <p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;marstat&quot;</span>)]</a>
-<a class="sourceLine" id="cb78-2" title="2">Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)</a>
-<a class="sourceLine" id="cb78-3" title="3"><span class="kw">table</span>(Term4<span class="op">$</span>marstat)</a>
-<a class="sourceLine" id="cb78-4" title="4">Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb78-5" title="5">model_single &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>single, <span class="dt">data =</span> Term4)</a>
-<a class="sourceLine" id="cb78-6" title="6"><span class="kw">summary</span>(model_single)</a>
-<a class="sourceLine" id="cb78-7" title="7"></a>
-<a class="sourceLine" id="cb78-8" title="8"><span class="kw">plot</span>(Term4<span class="op">$</span>logincome,Term4<span class="op">$</span>logface,<span class="dt">xlab=</span><span class="st">&quot;logarithmic income&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;log face&quot;</span>,</a>
-<a class="sourceLine" id="cb78-9" title="9">    <span class="dt">pch=</span> <span class="dv">1</span><span class="op">+</span><span class="dv">16</span><span class="op">*</span>Term4<span class="op">$</span>single, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)[Term4<span class="op">$</span>marstat])</a>
-<a class="sourceLine" id="cb78-10" title="10">Ey1 &lt;-<span class="st"> </span>model_single<span class="op">$</span>coefficients[<span class="dv">1</span>]<span class="op">+</span>model_single<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span>Term4<span class="op">$</span>logincome</a>
-<a class="sourceLine" id="cb78-11" title="11">Ey2 &lt;-<span class="st"> </span>Ey1 <span class="op">+</span><span class="st"> </span>model_single<span class="op">$</span>coefficients[<span class="dv">3</span>]</a>
-<a class="sourceLine" id="cb78-12" title="12"><span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey1)</a>
-<a class="sourceLine" id="cb78-13" title="13"><span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey2, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="multiple-linear-regression.html#cb78-1" tabindex="-1"></a>Term4 <span class="ot">&lt;-</span> Term1[,<span class="fu">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;marstat&quot;</span>)]</span>
+<span id="cb78-2"><a href="multiple-linear-regression.html#cb78-2" tabindex="-1"></a>Term4<span class="sc">$</span>marstat <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(Term4<span class="sc">$</span>marstat)</span>
+<span id="cb78-3"><a href="multiple-linear-regression.html#cb78-3" tabindex="-1"></a><span class="fu">table</span>(Term4<span class="sc">$</span>marstat)</span>
+<span id="cb78-4"><a href="multiple-linear-regression.html#cb78-4" tabindex="-1"></a>Term4<span class="sc">$</span>single <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(Term4<span class="sc">$</span>marstat <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb78-5"><a href="multiple-linear-regression.html#cb78-5" tabindex="-1"></a>model_single <span class="ot">&lt;-</span> <span class="fu">lm</span>(logface <span class="sc">~</span> logincome <span class="sc">+</span> single, <span class="at">data =</span> Term4)</span>
+<span id="cb78-6"><a href="multiple-linear-regression.html#cb78-6" tabindex="-1"></a><span class="fu">summary</span>(model_single)</span>
+<span id="cb78-7"><a href="multiple-linear-regression.html#cb78-7" tabindex="-1"></a></span>
+<span id="cb78-8"><a href="multiple-linear-regression.html#cb78-8" tabindex="-1"></a><span class="fu">plot</span>(Term4<span class="sc">$</span>logincome,Term4<span class="sc">$</span>logface,<span class="at">xlab=</span><span class="st">&quot;logarithmic income&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;log face&quot;</span>,</span>
+<span id="cb78-9"><a href="multiple-linear-regression.html#cb78-9" tabindex="-1"></a>    <span class="at">pch=</span> <span class="dv">1</span><span class="sc">+</span><span class="dv">16</span><span class="sc">*</span>Term4<span class="sc">$</span>single, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)[Term4<span class="sc">$</span>marstat])</span>
+<span id="cb78-10"><a href="multiple-linear-regression.html#cb78-10" tabindex="-1"></a>Ey1 <span class="ot">&lt;-</span> model_single<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>model_single<span class="sc">$</span>coefficients[<span class="dv">2</span>]<span class="sc">*</span>Term4<span class="sc">$</span>logincome</span>
+<span id="cb78-11"><a href="multiple-linear-regression.html#cb78-11" tabindex="-1"></a>Ey2 <span class="ot">&lt;-</span> Ey1 <span class="sc">+</span> model_single<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span>
+<span id="cb78-12"><a href="multiple-linear-regression.html#cb78-12" tabindex="-1"></a><span class="fu">lines</span>(Term4<span class="sc">$</span>logincome, Ey1)</span>
+<span id="cb78-13"><a href="multiple-linear-regression.html#cb78-13" tabindex="-1"></a><span class="fu">lines</span>(Term4<span class="sc">$</span>logincome, Ey2, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 <pre><code>
   0   1   2 
@@ -954,19 +993,19 @@ D Details. Interaction Terms
 E Details. Visualizing binary variables with interactions terms
 </h3>
 <p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;marstat&quot;</span>)]</a>
-<a class="sourceLine" id="cb80-2" title="2">Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)</a>
-<a class="sourceLine" id="cb80-3" title="3"><span class="kw">table</span>(Term4<span class="op">$</span>marstat)</a>
-<a class="sourceLine" id="cb80-4" title="4">Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb80-5" title="5">model_single_inter &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>single <span class="op">+</span><span class="st"> </span>single<span class="op">*</span>logincome, <span class="dt">data =</span> Term4)</a>
-<a class="sourceLine" id="cb80-6" title="6"><span class="kw">summary</span>(model_single_inter)</a>
-<a class="sourceLine" id="cb80-7" title="7"></a>
-<a class="sourceLine" id="cb80-8" title="8"><span class="kw">plot</span>(Term4<span class="op">$</span>logincome,Term4<span class="op">$</span>logface,<span class="dt">xlab=</span><span class="st">&quot;logarithmic income&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;log face&quot;</span>,</a>
-<a class="sourceLine" id="cb80-9" title="9">    <span class="dt">pch=</span> <span class="dv">1</span><span class="op">+</span><span class="dv">16</span><span class="op">*</span>Term4<span class="op">$</span>single, <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)[Term4<span class="op">$</span>marstat])</a>
-<a class="sourceLine" id="cb80-10" title="10">Ey1 &lt;-<span class="st"> </span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">1</span>]<span class="op">+</span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span>Term4<span class="op">$</span>logincome</a>
-<a class="sourceLine" id="cb80-11" title="11">Ey2 &lt;-<span class="st"> </span>Ey1 <span class="op">+</span><span class="st"> </span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">3</span>]<span class="op">+</span>model_single_inter<span class="op">$</span>coefficients[<span class="dv">4</span>]<span class="op">*</span>Term4<span class="op">$</span>logincome</a>
-<a class="sourceLine" id="cb80-12" title="12"><span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey1)</a>
-<a class="sourceLine" id="cb80-13" title="13"><span class="kw">lines</span>(Term4<span class="op">$</span>logincome, Ey2, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="multiple-linear-regression.html#cb80-1" tabindex="-1"></a>Term4 <span class="ot">&lt;-</span> Term1[,<span class="fu">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>, <span class="st">&quot;marstat&quot;</span>)]</span>
+<span id="cb80-2"><a href="multiple-linear-regression.html#cb80-2" tabindex="-1"></a>Term4<span class="sc">$</span>marstat <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(Term4<span class="sc">$</span>marstat)</span>
+<span id="cb80-3"><a href="multiple-linear-regression.html#cb80-3" tabindex="-1"></a><span class="fu">table</span>(Term4<span class="sc">$</span>marstat)</span>
+<span id="cb80-4"><a href="multiple-linear-regression.html#cb80-4" tabindex="-1"></a>Term4<span class="sc">$</span>single <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(Term4<span class="sc">$</span>marstat <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb80-5"><a href="multiple-linear-regression.html#cb80-5" tabindex="-1"></a>model_single_inter <span class="ot">&lt;-</span> <span class="fu">lm</span>(logface <span class="sc">~</span> logincome <span class="sc">+</span> single <span class="sc">+</span> single<span class="sc">*</span>logincome, <span class="at">data =</span> Term4)</span>
+<span id="cb80-6"><a href="multiple-linear-regression.html#cb80-6" tabindex="-1"></a><span class="fu">summary</span>(model_single_inter)</span>
+<span id="cb80-7"><a href="multiple-linear-regression.html#cb80-7" tabindex="-1"></a></span>
+<span id="cb80-8"><a href="multiple-linear-regression.html#cb80-8" tabindex="-1"></a><span class="fu">plot</span>(Term4<span class="sc">$</span>logincome,Term4<span class="sc">$</span>logface,<span class="at">xlab=</span><span class="st">&quot;logarithmic income&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;log face&quot;</span>,</span>
+<span id="cb80-9"><a href="multiple-linear-regression.html#cb80-9" tabindex="-1"></a>    <span class="at">pch=</span> <span class="dv">1</span><span class="sc">+</span><span class="dv">16</span><span class="sc">*</span>Term4<span class="sc">$</span>single, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;black&quot;</span>)[Term4<span class="sc">$</span>marstat])</span>
+<span id="cb80-10"><a href="multiple-linear-regression.html#cb80-10" tabindex="-1"></a>Ey1 <span class="ot">&lt;-</span> model_single_inter<span class="sc">$</span>coefficients[<span class="dv">1</span>]<span class="sc">+</span>model_single_inter<span class="sc">$</span>coefficients[<span class="dv">2</span>]<span class="sc">*</span>Term4<span class="sc">$</span>logincome</span>
+<span id="cb80-11"><a href="multiple-linear-regression.html#cb80-11" tabindex="-1"></a>Ey2 <span class="ot">&lt;-</span> Ey1 <span class="sc">+</span> model_single_inter<span class="sc">$</span>coefficients[<span class="dv">3</span>]<span class="sc">+</span>model_single_inter<span class="sc">$</span>coefficients[<span class="dv">4</span>]<span class="sc">*</span>Term4<span class="sc">$</span>logincome</span>
+<span id="cb80-12"><a href="multiple-linear-regression.html#cb80-12" tabindex="-1"></a><span class="fu">lines</span>(Term4<span class="sc">$</span>logincome, Ey1)</span>
+<span id="cb80-13"><a href="multiple-linear-regression.html#cb80-13" tabindex="-1"></a><span class="fu">lines</span>(Term4<span class="sc">$</span>logincome, Ey2, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 <pre><code>
   0   1   2 
@@ -996,8 +1035,8 @@ F-statistic: 34.36 on 3 and 271 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </div>
-<div id="exercise.-binary-variables-and-term-life" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Exercise. Binary variables and term life</h3>
+<div id="exercise.-binary-variables-and-term-life" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Exercise. Binary variables and term life<a href="multiple-linear-regression.html#exercise.-binary-variables-and-term-life" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>In the prior video, we saw how the variable <code>single</code> can be used with logarithmic income to explain logarithmic face amounts of term life insurance that people purchase. The coefficient associated with this variable turns out to be negative which is intuitively appealing; if an individual is single, then that person may not have the strong need to purchase financial security for others in the event of unexpected death.</p>
 <p>In this exercise, we will extend this by incorporating <code>single</code> into our larger regression model that contains other explanatory varibles, <code>logincome</code>, <code>education</code> and <code>numhh</code>. The data have been pre-loaded into the dataframe <code>Term4</code>.</p>
@@ -1012,8 +1051,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 </div>
 </div>
 </div>
-<div id="categorical-variables" class="section level2">
-<h2><span class="header-section-number">3.4</span> Categorical variables</h2>
+<div id="categorical-variables" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Categorical variables<a href="multiple-linear-regression.html#categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <hr />
 <p>In this section, you learn how to:</p>
 <ul>
@@ -1022,14 +1061,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 <li>Describe the effect of the reference level choice on the model fit</li>
 </ul>
 <hr />
-<div id="video-12" class="section level3">
-<h3><span class="header-section-number">3.4.1</span> Video</h3>
+<div id="video-12" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Video<a href="multiple-linear-regression.html#video-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_gkywbwai&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_n73q1ka4" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-12" class="section level4 unnumbered">
-<h4>Video Overhead Details</h4>
+<div id="video-overhead-details-12" class="section level4 unnumbered hasAnchor">
+<h4>Video Overhead Details<a href="multiple-linear-regression.html#video-overhead-details-12" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'Over3.4A')">A Details. Categorical variables</button>
 <button class="tablinks" onclick="openTab(event, 'Over3.4B')">B Details. Term life example</button>
@@ -1084,20 +1123,20 @@ of the death of the named insured (in logarithmic dollars), focusing on the expl
 C Details. Term life boxplots
 </h3>
 <p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="co"># Pre-exercise code</span></a>
-<a class="sourceLine" id="cb82-2" title="2"><span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span></a>
-<a class="sourceLine" id="cb82-3" title="3">Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb82-4" title="4">Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb82-5" title="5">Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>, <span class="st">&quot;logface&quot;</span>)]</a>
-<a class="sourceLine" id="cb82-6" title="6">Term4<span class="op">$</span>single &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">*</span>(Term4<span class="op">$</span>marstat <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb82-7" title="7">Term4<span class="op">$</span>marstat&lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)</a>
-<a class="sourceLine" id="cb82-8" title="8"><span class="kw">boxplot</span>(logface <span class="op">~</span><span class="st"> </span>marstat, <span class="dt">ylab =</span> <span class="st">&quot;log face&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Marital Status&quot;</span>, <span class="dt">data =</span> Term4)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="multiple-linear-regression.html#cb82-1" tabindex="-1"></a><span class="co"># Pre-exercise code</span></span>
+<span id="cb82-2"><a href="multiple-linear-regression.html#cb82-2" tabindex="-1"></a><span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span></span>
+<span id="cb82-3"><a href="multiple-linear-regression.html#cb82-3" tabindex="-1"></a>Term <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb82-4"><a href="multiple-linear-regression.html#cb82-4" tabindex="-1"></a>Term1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Term, <span class="at">subset =</span> face <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb82-5"><a href="multiple-linear-regression.html#cb82-5" tabindex="-1"></a>Term4 <span class="ot">&lt;-</span> Term1[,<span class="fu">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>, <span class="st">&quot;logface&quot;</span>)]</span>
+<span id="cb82-6"><a href="multiple-linear-regression.html#cb82-6" tabindex="-1"></a>Term4<span class="sc">$</span>single <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(Term4<span class="sc">$</span>marstat <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb82-7"><a href="multiple-linear-regression.html#cb82-7" tabindex="-1"></a>Term4<span class="sc">$</span>marstat<span class="ot">&lt;-</span> <span class="fu">as.factor</span>(Term4<span class="sc">$</span>marstat)</span>
+<span id="cb82-8"><a href="multiple-linear-regression.html#cb82-8" tabindex="-1"></a><span class="fu">boxplot</span>(logface <span class="sc">~</span> marstat, <span class="at">ylab =</span> <span class="st">&quot;log face&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Marital Status&quot;</span>, <span class="at">data =</span> Term4)</span></code></pre></div>
 <p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">table</span>(Term4<span class="op">$</span>marstat)</a>
-<a class="sourceLine" id="cb83-2" title="2"><span class="co">#  SUMMARY BY LEVEL OF MARSTAT</span></a>
-<a class="sourceLine" id="cb83-3" title="3"><span class="co">#library(Rcmdr)</span></a>
-<a class="sourceLine" id="cb83-4" title="4"><span class="co">#numSummary(Term4[, &quot;logface&quot;], groups = Term4$marstat, statistics = c(&quot;mean&quot;, &quot;sd&quot;))</span></a>
-<a class="sourceLine" id="cb83-5" title="5"><span class="co">#numSummary(Term4[, &quot;logface&quot;], statistics = c(&quot;mean&quot;, &quot;sd&quot;))</span></a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="multiple-linear-regression.html#cb83-1" tabindex="-1"></a><span class="fu">table</span>(Term4<span class="sc">$</span>marstat)</span>
+<span id="cb83-2"><a href="multiple-linear-regression.html#cb83-2" tabindex="-1"></a><span class="co">#  SUMMARY BY LEVEL OF MARSTAT</span></span>
+<span id="cb83-3"><a href="multiple-linear-regression.html#cb83-3" tabindex="-1"></a><span class="co">#library(Rcmdr)</span></span>
+<span id="cb83-4"><a href="multiple-linear-regression.html#cb83-4" tabindex="-1"></a><span class="co">#numSummary(Term4[, &quot;logface&quot;], groups = Term4$marstat, statistics = c(&quot;mean&quot;, &quot;sd&quot;))</span></span>
+<span id="cb83-5"><a href="multiple-linear-regression.html#cb83-5" tabindex="-1"></a><span class="co">#numSummary(Term4[, &quot;logface&quot;], statistics = c(&quot;mean&quot;, &quot;sd&quot;))</span></span></code></pre></div>
 <pre><code>
   0   1   2 
  57 208  10 </code></pre>
@@ -1109,9 +1148,9 @@ C Details. Term life boxplots
 D Details. Regression with a categorical variable
 </h3>
 <p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat)</a>
-<a class="sourceLine" id="cb85-2" title="2">Term4<span class="op">$</span>marstat &lt;-<span class="st"> </span><span class="kw">relevel</span>(Term4<span class="op">$</span>marstat, <span class="dt">ref =</span> <span class="st">&quot;2&quot;</span>)</a>
-<a class="sourceLine" id="cb85-3" title="3"><span class="kw">summary</span>(<span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome<span class="op">+</span>education<span class="op">+</span>numhh<span class="op">+</span>marstat, <span class="dt">data =</span> Term4))</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="multiple-linear-regression.html#cb85-1" tabindex="-1"></a>Term4<span class="sc">$</span>marstat <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(Term4<span class="sc">$</span>marstat)</span>
+<span id="cb85-2"><a href="multiple-linear-regression.html#cb85-2" tabindex="-1"></a>Term4<span class="sc">$</span>marstat <span class="ot">&lt;-</span> <span class="fu">relevel</span>(Term4<span class="sc">$</span>marstat, <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb85-3"><a href="multiple-linear-regression.html#cb85-3" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(logface <span class="sc">~</span> logincome<span class="sc">+</span>education<span class="sc">+</span>numhh<span class="sc">+</span>marstat, <span class="at">data =</span> Term4))</span></code></pre></div>
 <pre><code>
 Call:
 lm(formula = logface ~ logincome + education + numhh + marstat, 
@@ -1145,10 +1184,10 @@ E Details. t-ratios depend on the reference level
 <p>
 <span class="math display">\[
 \begin{array}{l|rr|rr|rr}
- \hline
- &amp; \text{Model 1}&amp;&amp; \text{Model 2}&amp;&amp; \text{Model 3}&amp;\\
- \hline
- \text{Var}&amp; \text{Coef} &amp; \text{t-stat} &amp; \text{Coef} &amp; \text{t-stat} &amp;\text{Coef} &amp; \text{t-stat} \\\hline
+\hline
+&amp; \text{Model 1}&amp;&amp; \text{Model 2}&amp;&amp; \text{Model 3}&amp;\\
+\hline
+\text{Var}&amp; \text{Coef} &amp; \text{t-stat} &amp; \text{Coef} &amp; \text{t-stat} &amp;\text{Coef} &amp; \text{t-stat} \\\hline
 logincome &amp; 0.452 &amp; 5.74 &amp; 0.452 &amp; 5.74 &amp; 0.452 &amp; 5.74 \\
 education &amp;0.205 &amp; 5.30 &amp;0.205 &amp; 5.30&amp;0.205 &amp; 5.30 \\
 numhh     &amp; 0.248 &amp; 3.57 &amp; 0.248 &amp; 3.57 &amp; 0.248 &amp; 3.57 \\\hline
@@ -1163,8 +1202,8 @@ numhh     &amp; 0.248 &amp; 3.57 &amp; 0.248 &amp; 3.57 &amp; 0.248 &amp; 3.57 \
 </div>
 </div>
 </div>
-<div id="exercise.-categorical-variables-and-wisconsin-hospital-costs" class="section level3">
-<h3><span class="header-section-number">3.4.2</span> Exercise. Categorical variables and Wisconsin hospital costs</h3>
+<div id="exercise.-categorical-variables-and-wisconsin-hospital-costs" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Exercise. Categorical variables and Wisconsin hospital costs<a href="multiple-linear-regression.html#exercise.-categorical-variables-and-wisconsin-hospital-costs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>This exercise examines the impact of various predictors on hospital charges. Identifying predictors of hospital charges can provide direction for hospitals, government, insurers and consumers in controlling these variables that in turn leads to better control of hospital costs. The data, from 1989, are aggregated by:</p>
 <ul>
@@ -1185,8 +1224,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNIY29zdCA8LSByZWFkLmNzdihcIkNT
 </div>
 </div>
 </div>
-<div id="general-linear-hypothesis" class="section level2">
-<h2><span class="header-section-number">3.5</span> General linear hypothesis</h2>
+<div id="general-linear-hypothesis" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> General linear hypothesis<a href="multiple-linear-regression.html#general-linear-hypothesis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <hr />
 <p>In this section, you learn how to:</p>
 <ul>
@@ -1194,14 +1233,14 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNIY29zdCA8LSByZWFkLmNzdihcIkNT
 <li>Conduct a test of a regression coefficient versus one- or two-side alternatives</li>
 </ul>
 <hr />
-<div id="video-13" class="section level3">
-<h3><span class="header-section-number">3.5.1</span> Video</h3>
+<div id="video-13" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Video<a href="multiple-linear-regression.html#video-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <center>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&amp;playerId=kaltura_player&amp;entry_id=0_gs9oqymi&amp;flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&amp;wid=1_j9btj8ns" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player">
 </iframe>
 </center>
-<div id="video-overhead-details-13" class="section level4 unnumbered">
-<h4>Video Overhead Details</h4>
+<div id="video-overhead-details-13" class="section level4 unnumbered hasAnchor">
+<h4>Video Overhead Details<a href="multiple-linear-regression.html#video-overhead-details-13" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <div class="tab">
 <p><button class="tablinks" onclick="openTab(event, 'Over3.5A')">A Details. Testing the significance of a categorical variable</button>
 <button class="tablinks" onclick="openTab(event, 'Over3.5B')">B Details. Overview of the general linear hypothesis</button>
@@ -1214,17 +1253,17 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNIY29zdCA8LSByZWFkLmNzdihcIkNT
 A Details. Testing the significance of a categorical variable
 </h3>
 <p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span></a>
-<a class="sourceLine" id="cb87-2" title="2">Term &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb87-3" title="3">Term1 &lt;-<span class="st"> </span><span class="kw">subset</span>(Term, <span class="dt">subset =</span> face <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb87-4" title="4">Term4 &lt;-<span class="st"> </span>Term1[,<span class="kw">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>, <span class="st">&quot;logface&quot;</span>)]</a>
-<a class="sourceLine" id="cb87-5" title="5">Term_mlr1 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh <span class="op">+</span><span class="st"> </span><span class="kw">as.factor</span>(Term4<span class="op">$</span>marstat), <span class="dt">data =</span> Term4)</a>
-<a class="sourceLine" id="cb87-6" title="6"><span class="kw">anova</span>(Term_mlr1)</a>
-<a class="sourceLine" id="cb87-7" title="7">Term_mlr2 &lt;-<span class="st"> </span><span class="kw">lm</span>(logface <span class="op">~</span><span class="st"> </span>logincome <span class="op">+</span><span class="st"> </span>education <span class="op">+</span><span class="st"> </span>numhh, <span class="dt">data =</span> Term4)</a>
-<a class="sourceLine" id="cb87-8" title="8"></a>
-<a class="sourceLine" id="cb87-9" title="9">Fstat &lt;-<span class="st"> </span>(<span class="kw">anova</span>(Term_mlr2)<span class="op">$</span><span class="st">`</span><span class="dt">Sum Sq</span><span class="st">`</span>[<span class="dv">4</span>] <span class="op">-</span><span class="st"> </span><span class="kw">anova</span>(Term_mlr1)<span class="op">$</span><span class="st">`</span><span class="dt">Sum Sq</span><span class="st">`</span>[<span class="dv">5</span>])<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span><span class="kw">anova</span>(Term_mlr1)<span class="op">$</span><span class="st">`</span><span class="dt">Mean Sq</span><span class="st">`</span>[<span class="dv">5</span>])</a>
-<a class="sourceLine" id="cb87-10" title="10">Fstat</a>
-<a class="sourceLine" id="cb87-11" title="11"><span class="kw">cat</span>(<span class="st">&quot;p-value is&quot;</span>, <span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pf</span>(Fstat, <span class="dt">df1 =</span> <span class="dv">2</span> , <span class="dt">df2 =</span> <span class="kw">anova</span>(Term_mlr1)<span class="op">$</span>Df[<span class="dv">5</span>]))</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="multiple-linear-regression.html#cb87-1" tabindex="-1"></a><span class="co">#Term &lt;- read.csv(&quot;CSVData\\term_life.csv&quot;, header = TRUE)</span></span>
+<span id="cb87-2"><a href="multiple-linear-regression.html#cb87-2" tabindex="-1"></a>Term <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://assets.datacamp.com/production/repositories/2610/datasets/efc64bc2d78cf6b48ad2c3f5e31800cb773de261/term_life.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb87-3"><a href="multiple-linear-regression.html#cb87-3" tabindex="-1"></a>Term1 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Term, <span class="at">subset =</span> face <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb87-4"><a href="multiple-linear-regression.html#cb87-4" tabindex="-1"></a>Term4 <span class="ot">&lt;-</span> Term1[,<span class="fu">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;marstat&quot;</span>, <span class="st">&quot;logface&quot;</span>)]</span>
+<span id="cb87-5"><a href="multiple-linear-regression.html#cb87-5" tabindex="-1"></a>Term_mlr1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logface <span class="sc">~</span> logincome <span class="sc">+</span> education <span class="sc">+</span> numhh <span class="sc">+</span> <span class="fu">as.factor</span>(Term4<span class="sc">$</span>marstat), <span class="at">data =</span> Term4)</span>
+<span id="cb87-6"><a href="multiple-linear-regression.html#cb87-6" tabindex="-1"></a><span class="fu">anova</span>(Term_mlr1)</span>
+<span id="cb87-7"><a href="multiple-linear-regression.html#cb87-7" tabindex="-1"></a>Term_mlr2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logface <span class="sc">~</span> logincome <span class="sc">+</span> education <span class="sc">+</span> numhh, <span class="at">data =</span> Term4)</span>
+<span id="cb87-8"><a href="multiple-linear-regression.html#cb87-8" tabindex="-1"></a></span>
+<span id="cb87-9"><a href="multiple-linear-regression.html#cb87-9" tabindex="-1"></a>Fstat <span class="ot">&lt;-</span> (<span class="fu">anova</span>(Term_mlr2)<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>[<span class="dv">4</span>] <span class="sc">-</span> <span class="fu">anova</span>(Term_mlr1)<span class="sc">$</span><span class="st">`</span><span class="at">Sum Sq</span><span class="st">`</span>[<span class="dv">5</span>])<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">anova</span>(Term_mlr1)<span class="sc">$</span><span class="st">`</span><span class="at">Mean Sq</span><span class="st">`</span>[<span class="dv">5</span>])</span>
+<span id="cb87-10"><a href="multiple-linear-regression.html#cb87-10" tabindex="-1"></a>Fstat</span>
+<span id="cb87-11"><a href="multiple-linear-regression.html#cb87-11" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;p-value is&quot;</span>, <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pf</span>(Fstat, <span class="at">df1 =</span> <span class="dv">2</span> , <span class="at">df2 =</span> <span class="fu">anova</span>(Term_mlr1)<span class="sc">$</span>Df[<span class="dv">5</span>]))</span></code></pre></div>
 <pre><code>Analysis of Variance Table
 
 Response: logface
@@ -1298,8 +1337,8 @@ D Details. The general linear hypothesis for a single variable
 </div>
 </div>
 </div>
-<div id="exercise.-hypothesis-testing-and-term-life" class="section level3">
-<h3><span class="header-section-number">3.5.2</span> Exercise. Hypothesis testing and term life</h3>
+<div id="exercise.-hypothesis-testing-and-term-life" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Exercise. Hypothesis testing and term life<a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-term-life" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>With our <code>Term life</code> data, let us compare a model based on the binary variable that indicates whether a survey respondent is single versus the more complex marital status, <code>marstat</code>. In principle, more detailed information is better. But, it may be that the additional information in <code>marstat</code>, compared to <code>single</code>, does not help fit the data in a significantly better way.</p>
 <p>As part of the preparatory work, the dataframe <code>Term4</code> is available that includes the binary variable <code>single</code> and the factor <code>marstat</code>. Moreover, the regression object <code>Term_mlr</code> contains information in a multiple linear regression fit of <code>logface</code> on the base explanatory variables ’logincome<code>,</code>education<code>, and</code>numhh`.</p>
@@ -1317,11 +1356,11 @@ Fstat12 &lt;- (anova(Term_mlr1)$`Sum Sq`[5] -
 Fstat12
 cat(&quot;p-value is&quot;, 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))</code></pre>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtNCA8LSBUZXJtMVssYyhcIm51bWhoXCIsIFwiZWR1Y2F0aW9uXCIsIFwibG9naW5jb21lXCIsIFwibWFyc3RhdFwiLCBcImxvZ2ZhY2VcIildXG5UZXJtNCRzaW5nbGUgPC0gMSooVGVybTQkbWFyc3RhdCA9PSAwKVxuVGVybTQkbWFyc3RhdCA8LSBhcy5mYWN0b3IoVGVybTQkbWFyc3RhdClcblRlcm1fbWxyIDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCAsIGRhdGEgPSBUZXJtNClcbmFub3ZhKFRlcm1fbWxyKSIsInNhbXBsZSI6IiMgRml0IGEgTUxSIG1vZGVsIHVzaW5nIHRoZSBiYXNlIGV4cGxhbmF0b3J5IHZhcmlhYmxlcyBwbHVzIGBzaW5nbGVgIGFuZCBhbm90aGVyIG1vZGVsIHVzaW5nIHRoZSBiYXNlIHZhcmlhYmxlcyBwbHVzIGBtYXJzdGF0YC5cblRlcm1fbWxyMSA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggK3NpbmdsZSwgZGF0YSA9IFRlcm00KVxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCArbWFyc3RhdCwgZGF0YSA9IFRlcm00KVxuXG4jIFVzZSB0aGUgRiB0ZXN0IHRvIGRlY2lkZSB3aGV0aGVyIHRoZSBhZGRpdGlvbmFsIGNvbXBsZXhpdHkgYG1hcnN0YXRgIGlzIHdhcnJhbnRlZCBieSBjYWxjdWxhdGluZyB0aGUgcC12YWx1ZSBhc3NvY2lhdGVkIHdpdGggdGhpcyB0ZXN0LlxuYW5vdmEoVGVybV9tbHIxLFRlcm1fbWxyMilcblxuIyBGaXQgYSBNTFIgbW9kZWwgdXNpbmcgdGhlIGJhc2UgZXhwbGFuYXRvcnkgdmFyaWFibGVzIHBsdXMgYHNpbmdsZWAgaW50ZXJhY3RlZCB3aXRoIGBsb2dpbmNvbWVgIGFuZCBhbm90aGVyIG1vZGVsIHVzaW5nIHRoZSBiYXNlIHZhcmlhYmxlcyBwbHVzIGBtYXJzdGF0YCBpbnRlcmFjdGVkIHdpdGggYGxvZ2luY29tZWAuXG5UZXJtX21scjMgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICsgc2luZ2xlKmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuVGVybV9tbHI0IDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCArbWFyc3RhdCpsb2dpbmNvbWUsIGRhdGEgPSBUZXJtNClcblxuIyBVc2UgdGhlIEYgdGVzdCB0byBkZWNpZGUgd2hldGhlciB0aGUgYWRkaXRpb25hbCBjb21wbGV4aXR5IGBtYXJzdGF0YCBpcyB3YXJyYW50ZWQgYnkgY2FsY3VsYXRpbmcgdGhlIHAtdmFsdWUgYXNzb2NpYXRlZCB3aXRoIHRoaXMgdGVzdC5cbmFub3ZhKFRlcm1fbWxyMyxUZXJtX21scjQpIiwic29sdXRpb24iOiJUZXJtX21scjEgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICtzaW5nbGUsIGRhdGEgPSBUZXJtNClcblRlcm1fbWxyMiA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggK21hcnN0YXQsIGRhdGEgPSBUZXJtNClcbmFub3ZhKFRlcm1fbWxyMSxUZXJtX21scjIpXG4jRnN0YXQxMiA8LSAoYW5vdmEoVGVybV9tbHIxKSRgU3VtIFNxYFs1XSAtIFxuIyAgICAgICAgICAgICAgYW5vdmEoVGVybV9tbHIyKSRgU3VtIFNxYFs1XSkvKDEqYW5vdmEoVGVybV9tbHIyKSRgTWVhbiBTcWBbNV0pXG4jRnN0YXQxMlxuI2NhdChcInAtdmFsdWUgaXNcIiwgMSAtIHBmKEZzdGF0MTIsIGRmMSA9IDEgLCBkZjIgPSBhbm92YShUZXJtX21scjIpJERmWzVdKSlcblRlcm1fbWxyMyA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggKyBzaW5nbGUqbG9naW5jb21lLCBkYXRhID0gVGVybTQpXG5UZXJtX21scjQgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICttYXJzdGF0KmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuYW5vdmEoVGVybV9tbHIzLFRlcm1fbWxyNCkiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjFcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjFgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBzaW5nbGVgIGZyb20gdGhlIGRhdGEgc2V0IGBUZXJtNGAuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjJcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjJgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBtYXJzdGF0YCBmcm9tIHRoZSBkYXRhIHNldCBgVGVybTRgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJhbm92YVwiLGluZGV4PTEsIG5vdF9jYWxsZWRfbXNnPVwiUnVuIGFuIGFub3ZhIHRlc3QgdG8gY29tcGFyZSB0aGUgdHdvIG1vZGVscyB3ZSBqdXN0IGNyZWF0ZWQuIFwiKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJZb3Ugc2hvdWxkIHJ1biB0aGUgYGFub3ZhYCB0ZXN0IG9uIGBUZXJtX21scjFgIGFuZCBgVGVybV9tbHIyYC5cIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm1fbWxyM1wiICwgdW5kZWZpbmVkX21zZz1cIlVzZSBgbG1gIHRvIGNyZWF0ZSBhIGxpbmVhciBtb2RlbCBhbmQgc3RvcmUgaXQgdW5kZXIgdGhlIG5hbWUgYFRlcm1fbWxyM2AuXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiWW91ciBtb2RlbCBzaG91bGQgZXhwbGFpbiBgbG9nZmFjZWAgYmFzZWQgb24gYGxvZ2luY29tZWAsIGBlZHVjYXRpb25gLCBgbnVtaGhgLCBhbmQgdGhlIHByb2R1Y3Qgb2YgYHNpbmdsZWAgYW5kIGBsb2dpbmNvbWVgIGZyb20gdGhlIGRhdGEgc2V0IGBUZXJtNGAuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjRcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjRgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIHRoZSBwcm9kdWN0IG9mIGBtYXJzdGF0YCBhbmQgYGxvZ2luY29tZWAgZnJvbSB0aGUgZGF0YSBzZXQgYFRlcm00YC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiYW5vdmFcIixpbmRleD0yLCBub3RfY2FsbGVkX21zZz1cIlJ1biBhbiBhbm92YSB0ZXN0IHRvIGNvbXBhcmUgdGhlIHR3byBuZXcgbW9kZWxzIHdlIGp1c3QgY3JlYXRlZC4gXCIpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdSBzaG91bGQgcnVuIHRoZSBgYW5vdmFgIHRlc3Qgb24gYFRlcm1fbWxyM2AgYW5kIGBUZXJtX21scjRgLlwiKVxuc3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIEh5cG90aGVzaXMgdGVzdGluZyBpcyBhIHByaW1hcnkgdG9vbCBmb3IgICdpbmZlcnJpbmcnIGFib3V0IHRoZSByZWFsIHdvcmxkIHtpbiBjb250cmFzdCB0byBtYXRoZW1hdGljYWwgJ2RlZHVjdGlvbicufSBNb3Jlb3ZlciwgYXMgd2Ugd2lsbCBzZWUgaW4gdGhlIG5leHQgY2hhcHRlciwgaXQgY2FuIGFsc28gYmUgdXNlZCB0byBkZXZlbG9wIGEgbW9kZWwuXCIpICAiLCJoaW50IjoiSGVyZSBpcyB0aGUgY29kZSB0byBjYWxjdWxhdGUgaXQgYnkgaGFuZFxuRnN0YXQxMiAmbHQ7LSAoYW5vdmEoVGVybV9tbHIxKSQ8Y29kZT5TdW0gU3E8L2NvZGU+WzVdIC0gXG4gICAgICAgICAgICAgIGFub3ZhKFRlcm1fbWxyMikkPGNvZGU+U3VtIFNxPC9jb2RlPls1XSkvKDEqYW5vdmEoVGVybV9tbHIyKSQ8Y29kZT5NZWFuIFNxPC9jb2RlPls1XSlcbkZzdGF0MTJcbmNhdCgmbGRxdW87cC12YWx1ZSBpcyZyZHF1bzssIDEgLSBwZihGc3RhdDEyLCBkZjEgPSAxICwgZGYyID0gYW5vdmEoVGVybV9tbHIyKSREZls1XSkpIn0=
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NWRGF0YVxcXFx0ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvZWZjNjRiYzJkNzhjZjZiNDhhZDJjM2Y1ZTMxODAwY2I3NzNkZTI2MS90ZXJtX2xpZmUuY3N2XCIsIGhlYWRlciA9IFRSVUUpXG5UZXJtMSA8LSBzdWJzZXQoVGVybSwgc3Vic2V0ID0gZmFjZSA+IDApXG5UZXJtNCA8LSBUZXJtMVssYyhcIm51bWhoXCIsIFwiZWR1Y2F0aW9uXCIsIFwibG9naW5jb21lXCIsIFwibWFyc3RhdFwiLCBcImxvZ2ZhY2VcIildXG5UZXJtNCRzaW5nbGUgPC0gMSooVGVybTQkbWFyc3RhdCA9PSAwKVxuVGVybTQkbWFyc3RhdCA8LSBhcy5mYWN0b3IoVGVybTQkbWFyc3RhdClcblRlcm1fbWxyIDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCAsIGRhdGEgPSBUZXJtNClcbmFub3ZhKFRlcm1fbWxyKSIsInNhbXBsZSI6IiMgRml0IGEgTUxSIG1vZGVsIHVzaW5nIHRoZSBiYXNlIGV4cGxhbmF0b3J5IHZhcmlhYmxlcyBwbHVzIGBzaW5nbGVgIGFuZCBhbm90aGVyIG1vZGVsIHVzaW5nIHRoZSBiYXNlIHZhcmlhYmxlcyBwbHVzIGBtYXJzdGF0YC5cblRlcm1fbWxyMSA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggK3NpbmdsZSwgZGF0YSA9IFRlcm00KVxuVGVybV9tbHIyIDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCArbWFyc3RhdCwgZGF0YSA9IFRlcm00KVxuXG4jIFVzZSB0aGUgRiB0ZXN0IHRvIGRlY2lkZSB3aGV0aGVyIHRoZSBhZGRpdGlvbmFsIGNvbXBsZXhpdHkgYG1hcnN0YXRgIGlzIHdhcnJhbnRlZCBieSBjYWxjdWxhdGluZyB0aGUgcC12YWx1ZSBhc3NvY2lhdGVkIHdpdGggdGhpcyB0ZXN0LlxuYW5vdmEoVGVybV9tbHIxLFRlcm1fbWxyMilcblxuIyBGaXQgYSBNTFIgbW9kZWwgdXNpbmcgdGhlIGJhc2UgZXhwbGFuYXRvcnkgdmFyaWFibGVzIHBsdXMgYHNpbmdsZWAgaW50ZXJhY3RlZCB3aXRoIGBsb2dpbmNvbWVgIGFuZCBhbm90aGVyIG1vZGVsIHVzaW5nIHRoZSBiYXNlIHZhcmlhYmxlcyBwbHVzIGBtYXJzdGF0YCBpbnRlcmFjdGVkIHdpdGggYGxvZ2luY29tZWAuXG5UZXJtX21scjMgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICsgc2luZ2xlKmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuVGVybV9tbHI0IDwtIGxtKGxvZ2ZhY2UgfiBsb2dpbmNvbWUgKyBlZHVjYXRpb24gKyBudW1oaCArbWFyc3RhdCpsb2dpbmNvbWUsIGRhdGEgPSBUZXJtNClcblxuIyBVc2UgdGhlIEYgdGVzdCB0byBkZWNpZGUgd2hldGhlciB0aGUgYWRkaXRpb25hbCBjb21wbGV4aXR5IGBtYXJzdGF0YCBpcyB3YXJyYW50ZWQgYnkgY2FsY3VsYXRpbmcgdGhlIHAtdmFsdWUgYXNzb2NpYXRlZCB3aXRoIHRoaXMgdGVzdC5cbmFub3ZhKFRlcm1fbWxyMyxUZXJtX21scjQpIiwic29sdXRpb24iOiJUZXJtX21scjEgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICtzaW5nbGUsIGRhdGEgPSBUZXJtNClcblRlcm1fbWxyMiA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggK21hcnN0YXQsIGRhdGEgPSBUZXJtNClcbmFub3ZhKFRlcm1fbWxyMSxUZXJtX21scjIpXG4jRnN0YXQxMiA8LSAoYW5vdmEoVGVybV9tbHIxKSRgU3VtIFNxYFs1XSAtIFxuIyAgICAgICAgICAgICAgYW5vdmEoVGVybV9tbHIyKSRgU3VtIFNxYFs1XSkvKDEqYW5vdmEoVGVybV9tbHIyKSRgTWVhbiBTcWBbNV0pXG4jRnN0YXQxMlxuI2NhdChcInAtdmFsdWUgaXNcIiwgMSAtIHBmKEZzdGF0MTIsIGRmMSA9IDEgLCBkZjIgPSBhbm92YShUZXJtX21scjIpJERmWzVdKSlcblRlcm1fbWxyMyA8LSBsbShsb2dmYWNlIH4gbG9naW5jb21lICsgZWR1Y2F0aW9uICsgbnVtaGggKyBzaW5nbGUqbG9naW5jb21lLCBkYXRhID0gVGVybTQpXG5UZXJtX21scjQgPC0gbG0obG9nZmFjZSB+IGxvZ2luY29tZSArIGVkdWNhdGlvbiArIG51bWhoICttYXJzdGF0KmxvZ2luY29tZSwgZGF0YSA9IFRlcm00KVxuYW5vdmEoVGVybV9tbHIzLFRlcm1fbWxyNCkiLCJzY3QiOiJleCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjFcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjFgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBzaW5nbGVgIGZyb20gdGhlIGRhdGEgc2V0IGBUZXJtNGAuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjJcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjJgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIGBtYXJzdGF0YCBmcm9tIHRoZSBkYXRhIHNldCBgVGVybTRgLlwiKVxuZXgoKSAlPiUgY2hlY2tfZnVuY3Rpb24oXCJhbm92YVwiLGluZGV4PTEsIG5vdF9jYWxsZWRfbXNnPVwiUnVuIGFuIGFub3ZhIHRlc3QgdG8gY29tcGFyZSB0aGUgdHdvIG1vZGVscyB3ZSBqdXN0IGNyZWF0ZWQuIFwiKSAlPiUgY2hlY2tfcmVzdWx0KCkgJT4lIGNoZWNrX2VxdWFsKGluY29ycmVjdF9tc2c9XCJZb3Ugc2hvdWxkIHJ1biB0aGUgYGFub3ZhYCB0ZXN0IG9uIGBUZXJtX21scjFgIGFuZCBgVGVybV9tbHIyYC5cIilcbmV4KCkgJT4lIGNoZWNrX29iamVjdChcIlRlcm1fbWxyM1wiICwgdW5kZWZpbmVkX21zZz1cIlVzZSBgbG1gIHRvIGNyZWF0ZSBhIGxpbmVhciBtb2RlbCBhbmQgc3RvcmUgaXQgdW5kZXIgdGhlIG5hbWUgYFRlcm1fbWxyM2AuXCIpICU+JSBjaGVja19lcXVhbChpbmNvcnJlY3RfbXNnPVwiWW91ciBtb2RlbCBzaG91bGQgZXhwbGFpbiBgbG9nZmFjZWAgYmFzZWQgb24gYGxvZ2luY29tZWAsIGBlZHVjYXRpb25gLCBgbnVtaGhgLCBhbmQgdGhlIHByb2R1Y3Qgb2YgYHNpbmdsZWAgYW5kIGBsb2dpbmNvbWVgIGZyb20gdGhlIGRhdGEgc2V0IGBUZXJtNGAuXCIpXG5leCgpICU+JSBjaGVja19vYmplY3QoXCJUZXJtX21scjRcIiAsIHVuZGVmaW5lZF9tc2c9XCJVc2UgYGxtYCB0byBjcmVhdGUgYSBsaW5lYXIgbW9kZWwgYW5kIHN0b3JlIGl0IHVuZGVyIHRoZSBuYW1lIGBUZXJtX21scjRgLlwiKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdXIgbW9kZWwgc2hvdWxkIGV4cGxhaW4gYGxvZ2ZhY2VgIGJhc2VkIG9uIGBsb2dpbmNvbWVgLCBgZWR1Y2F0aW9uYCwgYG51bWhoYCwgYW5kIHRoZSBwcm9kdWN0IG9mIGBtYXJzdGF0YCBhbmQgYGxvZ2luY29tZWAgZnJvbSB0aGUgZGF0YSBzZXQgYFRlcm00YC5cIilcbmV4KCkgJT4lIGNoZWNrX2Z1bmN0aW9uKFwiYW5vdmFcIixpbmRleD0yLCBub3RfY2FsbGVkX21zZz1cIlJ1biBhbiBhbm92YSB0ZXN0IHRvIGNvbXBhcmUgdGhlIHR3byBuZXcgbW9kZWxzIHdlIGp1c3QgY3JlYXRlZC4gXCIpICU+JSBjaGVja19yZXN1bHQoKSAlPiUgY2hlY2tfZXF1YWwoaW5jb3JyZWN0X21zZz1cIllvdSBzaG91bGQgcnVuIHRoZSBgYW5vdmFgIHRlc3Qgb24gYFRlcm1fbWxyM2AgYW5kIGBUZXJtX21scjRgLlwiKVxuc3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIEh5cG90aGVzaXMgdGVzdGluZyBpcyBhIHByaW1hcnkgdG9vbCBmb3IgICdpbmZlcnJpbmcnIGFib3V0IHRoZSByZWFsIHdvcmxkIHtpbiBjb250cmFzdCB0byBtYXRoZW1hdGljYWwgJ2RlZHVjdGlvbicufSBNb3Jlb3ZlciwgYXMgd2Ugd2lsbCBzZWUgaW4gdGhlIG5leHQgY2hhcHRlciwgaXQgY2FuIGFsc28gYmUgdXNlZCB0byBkZXZlbG9wIGEgbW9kZWwuXCIpICAiLCJoaW50IjoiSGVyZSBpcyB0aGUgY29kZSB0byBjYWxjdWxhdGUgaXQgYnkgaGFuZFxuRnN0YXQxMiAmbHQ7LSAoYW5vdmEoVGVybV9tbHIxKSQ8Y29kZT5TdW0gU3E8L2NvZGU+WzVdIC1cbmFub3ZhKFRlcm1fbWxyMikkPGNvZGU+U3VtIFNxPC9jb2RlPls1XSkvKDEqYW5vdmEoVGVybV9tbHIyKSQ8Y29kZT5NZWFuIFNxPC9jb2RlPls1XSlcbkZzdGF0MTJcbmNhdChcdTIwMWNwLXZhbHVlIGlzXHUyMDFkLCAxIC0gcGYoRnN0YXQxMiwgZGYxID0gMSAsIGRmMiA9IGFub3ZhKFRlcm1fbWxyMikkRGZbNV0pKSJ9
 </div>
 </div>
-<div id="exercise.-hypothesis-testing-and-wisconsin-hospital-costs" class="section level3">
-<h3><span class="header-section-number">3.5.3</span> Exercise. Hypothesis testing and Wisconsin hospital costs</h3>
+<div id="exercise.-hypothesis-testing-and-wisconsin-hospital-costs" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Exercise. Hypothesis testing and Wisconsin hospital costs<a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-wisconsin-hospital-costs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>In a previous exercise, you were introduced to a dataset with hospital charges aggregated by:</p>
 <ul>
@@ -1341,8 +1380,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNUZXJtIDwtIHJlYWQuY3N2KFwiQ1NW
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNIY29zdCA8LSByZWFkLmNzdihcIkNTVkRhdGFcXFxcV2lzY0hjb3N0cy5jc3ZcIiwgaGVhZGVyID0gVFJVRSlcbkhjb3N0IDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9hc3NldHMuZGF0YWNhbXAuY29tL3Byb2R1Y3Rpb24vcmVwb3NpdG9yaWVzLzI2MTAvZGF0YXNldHMvMmNjMWUyNzM5YmY4MjcwOTNkYjMxZDdjNGU2ZGNkYzM0OGFjOTg0ZS9XaXNjSGNvc3RzLmNzdlwiLCBoZWFkZXIgPSBUUlVFKVxuSGNvc3QxIDwtIHN1YnNldChIY29zdCwgZHJnID09IDIwOXxkcmcgPT0gMzkxfGRyZyA9PSA0MzApIiwic2FtcGxlIjoiIyBSZWdyZXNzIGxvZyBjaGFyZ2VzIG9uIGxvZyBudW1iZXIgb2YgZGlzY2hhcmdlc1xuaG9zcF9ibHIgPC0gbG0obG9nY2hhcmdlIH4gbG9nX251bWRzY2hnICwgZGF0YT1IY29zdDEpXG5hbm92YShob3NwX2JscilcblxuIyBSZWdyZXNzIGxvZyBjaGFyZ2VzIG9uIGxvZyBudW1iZXIgb2YgZGlzY2hhcmdlcyBhbmQgZHJnLiBJZGVudGlmeSB0aGUgKkYqIHN0YXRpc3RpYyBhbmQgKnAqIHZhbHVlIHRoYXQgdGVzdCB0aGUgaW1wb3J0YW5jZSBvZiBkaWFnbm9zdGljIHJlbGF0ZWQgZ3JvdXAuXG5ob3NwX21scjEgPC0gbG0obG9nY2hhcmdlIH4gbG9nX251bWRzY2hnICsgYXMuZmFjdG9yKGRyZyksIGRhdGE9SGNvc3QxKVxuYW5vdmEoaG9zcF9tbHIxKVxuXG4jIFJlZ3Jlc3MgbG9nIGNoYXJnZXMgb24gdGhlIGludGVyYWN0aW9uIG9mIGxvZyBudW1iZXIgb2YgZGlzY2hhcmdlcyBhbmQgZHJnLiBcbmhvc3BfbWxyMiA8LSBsbShsb2djaGFyZ2UgfiBsb2dfbnVtZHNjaGcgKyBhcy5mYWN0b3IoZHJnKSpsb2dfbnVtZHNjaGcsIGRhdGE9SGNvc3QxKVxuYW5vdmEoaG9zcF9tbHIyKVxuXG4jIENhbGN1bGF0ZSBhIGNvZWZmaWNpZW50IG9mIGRldGVybWluYXRpb24sICRSXjIkLCBmb3IgZWFjaCBvZiB0aGVzZSBtb2RlbHMgYXMgd2VsbCBhcyBmb3IgYSBtb2RlbCB1c2luZyBsb2dhcml0aG1pYyBudW1iZXIgb2YgZGlzY2hhcmdlcyBhbmQgY2F0ZWdvcmljYWwgdmFyaWFibGUgYGhzYWAgYXMgcHJlZGljdG9ycy5cbnN1bW1hcnkoaG9zcF9ibHIpJHIuc3F1YXJlZFxuc3VtbWFyeShob3NwX21scjEpJHIuc3F1YXJlZFxuc3VtbWFyeShob3NwX21scjIpJHIuc3F1YXJlZFxuXG5ob3NwX21scjMgPC0gbG0obG9nY2hhcmdlIH4gbG9nX251bWRzY2hnICsgYXMuZmFjdG9yKGhzYSkqbG9nX251bWRzY2hnLCBkYXRhPUhjb3N0MSlcbnN1bW1hcnkoaG9zcF9tbHIzKSRyLnNxdWFyZWQiLCJzb2x1dGlvbiI6Imhvc3BfYmxyIDwtIGxtKGxvZ2NoYXJnZSB+IGxvZ19udW1kc2NoZyAsIGRhdGE9SGNvc3QxKVxuYW5vdmEoaG9zcF9ibHIpXG5ob3NwX21scjEgPC0gbG0obG9nY2hhcmdlIH4gbG9nX251bWRzY2hnICsgYXMuZmFjdG9yKGRyZyksIGRhdGE9SGNvc3QxKVxuYW5vdmEoaG9zcF9tbHIxKVxuaG9zcF9tbHIyIDwtIGxtKGxvZ2NoYXJnZSB+IGxvZ19udW1kc2NoZyArIGFzLmZhY3RvcihkcmcpKmxvZ19udW1kc2NoZywgZGF0YT1IY29zdDEpXG5hbm92YShob3NwX21scjIpXG5zdW1tYXJ5KGhvc3BfYmxyKSRyLnNxdWFyZWRcbnN1bW1hcnkoaG9zcF9tbHIxKSRyLnNxdWFyZWRcbnN1bW1hcnkoaG9zcF9tbHIyKSRyLnNxdWFyZWRcblxuaG9zcF9tbHIzIDwtIGxtKGxvZ2NoYXJnZSB+IGxvZ19udW1kc2NoZyArIGFzLmZhY3Rvcihoc2EpKmxvZ19udW1kc2NoZywgZGF0YT1IY29zdDEpXG5zdW1tYXJ5KGhvc3BfbWxyMykkci5zcXVhcmVkIiwic2N0Ijoic3VjY2Vzc19tc2coXCJDb25ncmF0dWxhdGlvbnMhIEJ5IGV4YW1pbmluZyB0aGUgY29lZmZpY2llbnRzIG9mIGRldGVybWluYXRpb24sICRSXjIkLCBmb3IgZWFjaCBvZiB0aGVzZSBtb2RlbHMsIHlvdSBzZWUgdGhhdCB0aGlzIHByb3ZpZGVzIG9uZSBwaWVjZSBvZiBldmlkZW5jZSB0aGF0IHRoZSBgaHNhYCBpcyBhIGZhciBwb29yZXIgcHJlZGljdG9yIG9mIGNvc3RzIHRoYW4gYGRyZ2AuXCIpIiwiaGludCI6IlRoaXMgZW50aXJlIGV4ZXJjaXNlIGNhbiBiZSBjb21wbGV0ZWQgdXNpbmcgMyBmdW5jdGlvbnM6PGNvZGU+bG0oKTwvY29kZT4sIDxjb2RlPmFub3ZhKCk8L2NvZGU+LCBhbmQgPGNvZGU+c3VtbWFyeSgpPC9jb2RlPiJ9
 </div>
 </div>
-<div id="exercise.-hypothesis-testing-and-auto-claims" class="section level3">
-<h3><span class="header-section-number">3.5.4</span> Exercise. Hypothesis testing and auto claims</h3>
+<div id="exercise.-hypothesis-testing-and-auto-claims" class="section level3 hasAnchor" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Exercise. Hypothesis testing and auto claims<a href="multiple-linear-regression.html#exercise.-hypothesis-testing-and-auto-claims" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Assignment Text</strong></p>
 <p>As an actuarial analyst, you are working with a large insurance company to help them understand their claims distribution for their private passenger automobile policies. You have available claims data for a recent year, consisting of:</p>
 <ul>
@@ -1514,7 +1553,6 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1533,6 +1571,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
 "google": true,
 "instapper": false
@@ -1555,6 +1594,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
@@ -1568,7 +1611,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
