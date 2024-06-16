@@ -16,7 +16,7 @@ description: "Statistical techniques can be used to address new situations. This
 
 
 ```{r include = FALSE}
-#https://github.com/datacamp/tutorial
+knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(results = "hold")
 EVALUATE_CHAP1 <- FALSE
 EVALUATE_CHAP1 <- TRUE
