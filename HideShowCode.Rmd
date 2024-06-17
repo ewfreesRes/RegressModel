@@ -1,0 +1,73 @@
+
+```{r echo = FALSE}
+HtmlEval <- TRUE
+PdfEval <- FALSE
+
+```
+
+```{r echo = FALSE}
+B1 <- '<h5 style="text-align: center;"><a id="displayExample.'
+B2 <- ' href="javascript:toggleEX(\'toggleExample.'
+B3 <- '\',\'displayExample.'
+B4a <- '\');"><i><strong>'
+B4b <- '</strong></i></a> </h5><div id="toggleExample.'
+B5 <- '" style="display: none">'
+
+HideExample <- function(arg1,arg2){
+  return(paste(B1,arg1,'"',B2,arg1,B3,arg1,B4a,arg2,B4b,arg1,B5, sep=""))
+} 
+
+C1 <- '<h5 style="text-align: center;"><a id="displayCode.'
+C2 <- ' href="javascript:togglecode(\'toggleCode.'
+C3 <- '\',\'displayCode.'
+C4a<- '\');"><i><strong>'
+C4b<- '</strong></i></a> </h5><div id="toggleCode.'
+C5 <- '" style="display: none">'
+
+HideRCode <- function(arg1,arg2){
+  return(paste(C1,arg1,'"',C2,arg1,C3,arg1,C4a,arg2,C4b,arg1,C5, sep=""))
+}
+
+D1 <- '<h5 style="text-align: center;"><a id="displayTheory.'
+D2 <- ' href="javascript:toggleTheory(\'toggleTheory.'
+D3 <- '\',\'displayTheory.'
+D4a<- '\');"><i><strong>'
+D4b<- '</strong></i></a> </h5><div id="toggleTheory.'
+D5 <- '" style="display: none">'
+
+HideProofTheory <- function(arg1,arg2){
+  return(paste(D1,arg1,'"',D2,arg1,D3,arg1,D4a,arg2,D4b,arg1,D5, sep=""))
+}
+
+H1 <- '<h5 style="text-align: center;"><a id="displaySolution.'
+H2 <- ' href="javascript:toggleSolution(\'toggleSolution.'
+H3 <- '\',\'displaySolution.'
+H4a<- '\');"><i><strong>'
+H4b<- '</strong></i></a> </h5><div id="toggleSolution.'
+H5 <- '" style="display: none">'
+
+HideSolution <- function(arg1,arg2){
+  return(paste(H1,arg1,'"',H2,arg1,H3,arg1,H4a,arg2,H4b,arg1,H5, sep=""))
+}
+
+```
+
+```{r echo = FALSE, eval = PdfEval}
+# Make eval = TRUE for pdf output
+# Make eval = FALSE for html output
+
+HideExample <- function(arg1,arg2){
+  return("")
+}
+HideRCode <- function(arg1,arg2){
+  return("")
+}
+HideProofTheory <- function(arg1,arg2){
+  return("")
+}
+HideSolution <- function(arg1,arg2){
+  return("")
+}
+
+```
+

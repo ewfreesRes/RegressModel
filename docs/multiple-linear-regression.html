@@ -51,6 +51,72 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+<!-- Mathjax Version 2-->
+<script type='text/x-mathjax-config'>
+		MathJax.Hub.Config({
+			extensions: ['tex2jax.js'],
+			jax: ['input/TeX', 'output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+				displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+				processEscapes: true
+			},
+			'HTML-CSS': { availableFonts: ['TeX'] }
+		});
+</script>
+
+<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML"> </script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+<link href="https://unpkg.com/survey-jquery/modern.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+
+
+<!-- Various toggle functions used throughout --> 
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+function toggleSolution(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}      
+function toggleQuiz(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Quiz Solution";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Quiz Solution";}}      
+</script>
+
+<!-- A few functions for revealing definitions -->
+<script language="javascript">
+<!--   $( function() {
+    $("#tabs").tabs();
+  } ); -->
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
 <script language="javascript">
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -69,104 +135,6 @@ function openTab(evt, tabName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
-
-<script language="javascript">
-function toggle(id1,id2) {
-	var ele = document.getElementById(id1); var text = document.getElementById(id2);
-	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
-		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
-</script>
-
-<script language="javascript">
-function togglecode(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
-</script>
-<script language="javascript">
-function toggleEX(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
-</script>
-<script language="javascript">
-function toggleTheory(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
-</script>
-
-<script language="javascript">
-function toggleDet(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
-</script>
-
-<script language="javascript">
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
-
-
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-
-<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
-});
-</script>
-
-<style>
-/* Rearrange console label */
-.datacamp-exercise ol li, .datacamp-exercise ul li {
-  margin-bottom: 0em !important;
-}
-
-/* Remove bullet marker */
-.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
-  content: '' !important;
-}
-</style>
-
-
-<script language="javascript">
-var submitAnswer = function() {
-
-  var radios = document.getElementsByName('choice');
-  var val= "";
-  for (var i = 0, length = radios.length; i < length; i++) {
-      if (radios[i].checked) {
-         val = radios[i].value; 
-         break;
-       }
-  }
-  
-  if (val == "" ) {
-    alert('please select choice answer');
-  } else if ( val == "Correct" ) {
-    alert('Answer is correct !');
-  } else {
-    alert('Answer is wrong');
-  }
-};
-</script>
-
-
-
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131253904-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-131253904-1');
-
-</script>
-=======
 
 
 
@@ -533,7 +501,7 @@ D Details. Scatter plots of income versus face in original and logarithmic units
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="multiple-linear-regression.html#cb64-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
 <span id="cb64-2"><a href="multiple-linear-regression.html#cb64-2" tabindex="-1"></a><span class="fu">plot</span>(Term2<span class="sc">$</span>income, Term2<span class="sc">$</span>face, <span class="at">xlab =</span> <span class="st">&quot;income&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;face&quot;</span>)</span>
 <span id="cb64-3"><a href="multiple-linear-regression.html#cb64-3" tabindex="-1"></a><span class="fu">plot</span>(Term2<span class="sc">$</span>logincome, Term2<span class="sc">$</span>logface, <span class="at">xlab =</span> <span class="st">&quot;log&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;log face&quot;</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
 </p>
 </div>
 </div>
@@ -587,7 +555,7 @@ B Details. Scatterplot matrix
 <p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="multiple-linear-regression.html#cb67-1" tabindex="-1"></a>Term3 <span class="ot">&lt;-</span> Term1[,<span class="fu">c</span>(<span class="st">&quot;numhh&quot;</span>, <span class="st">&quot;education&quot;</span>, <span class="st">&quot;logincome&quot;</span>, <span class="st">&quot;logface&quot;</span>)]</span>
 <span id="cb67-2"><a href="multiple-linear-regression.html#cb67-2" tabindex="-1"></a><span class="fu">pairs</span>(Term3, <span class="at">upper.panel =</span> <span class="cn">NULL</span>, <span class="at">gap =</span> <span class="dv">0</span>, <span class="at">cex.labels =</span> <span class="fl">1.25</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 </p>
 </div>
 <div id="Over3.1C" class="tabcontent">
@@ -604,7 +572,7 @@ C Details. Visualizing a regression plane
 <span id="cb68-6"><a href="multiple-linear-regression.html#cb68-6" tabindex="-1"></a>logface <span class="ot">&lt;-</span> <span class="fu">outer</span>(education, logincome, f)</span>
 <span id="cb68-7"><a href="multiple-linear-regression.html#cb68-7" tabindex="-1"></a><span class="fu">persp</span>(education, logincome, logface, <span class="at">theta =</span> <span class="dv">30</span>, </span>
 <span id="cb68-8"><a href="multiple-linear-regression.html#cb68-8" tabindex="-1"></a>      <span class="at">phi =</span> <span class="dv">30</span>, <span class="at">expand =</span> <span class="fl">0.5</span>, <span class="at">ticktype =</span> <span class="st">&quot;detailed&quot;</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="multiple-linear-regression.html#cb69-1" tabindex="-1"></a><span class="fu">rm</span>(education,logincome,logface)</span></code></pre></div>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="multiple-linear-regression.html#cb70-1" tabindex="-1"></a>education <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">16</span>, <span class="at">length =</span> <span class="dv">15</span>)</span>
 <span id="cb70-2"><a href="multiple-linear-regression.html#cb70-2" tabindex="-1"></a>logincome <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="at">length =</span> <span class="dv">15</span>)</span>
@@ -615,7 +583,7 @@ C Details. Visualizing a regression plane
 <span id="cb70-7"><a href="multiple-linear-regression.html#cb70-7" tabindex="-1"></a><span class="fu">persp</span>(education, logincome, logface, <span class="at">theta =</span> <span class="dv">30</span>, </span>
 <span id="cb70-8"><a href="multiple-linear-regression.html#cb70-8" tabindex="-1"></a>      <span class="at">phi =</span> <span class="dv">30</span>, <span class="at">expand =</span> <span class="fl">0.5</span>, <span class="at">ticktype =</span> <span class="st">&quot;simple&quot;</span>, <span class="co">#ticktype = &quot;detailed&quot;, #</span></span>
 <span id="cb70-9"><a href="multiple-linear-regression.html#cb70-9" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">&quot;x1&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;x2&quot;</span>,<span class="at">zlab=</span><span class="st">&quot;y&quot;</span>, <span class="at">nticks =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="multiple-linear-regression.html#cb71-1" tabindex="-1"></a><span class="fu">rm</span>(education,logincome,logface)</span></code></pre></div>
 </p>
 </div>
@@ -937,7 +905,7 @@ C Details. R script for visualization
 <span id="cb78-11"><a href="multiple-linear-regression.html#cb78-11" tabindex="-1"></a>Ey2 <span class="ot">&lt;-</span> Ey1 <span class="sc">+</span> model_single<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span>
 <span id="cb78-12"><a href="multiple-linear-regression.html#cb78-12" tabindex="-1"></a><span class="fu">lines</span>(Term4<span class="sc">$</span>logincome, Ey1)</span>
 <span id="cb78-13"><a href="multiple-linear-regression.html#cb78-13" tabindex="-1"></a><span class="fu">lines</span>(Term4<span class="sc">$</span>logincome, Ey2, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 <pre><code>
   0   1   2 
  57 208  10 
@@ -1006,7 +974,7 @@ E Details. Visualizing binary variables with interactions terms
 <span id="cb80-11"><a href="multiple-linear-regression.html#cb80-11" tabindex="-1"></a>Ey2 <span class="ot">&lt;-</span> Ey1 <span class="sc">+</span> model_single_inter<span class="sc">$</span>coefficients[<span class="dv">3</span>]<span class="sc">+</span>model_single_inter<span class="sc">$</span>coefficients[<span class="dv">4</span>]<span class="sc">*</span>Term4<span class="sc">$</span>logincome</span>
 <span id="cb80-12"><a href="multiple-linear-regression.html#cb80-12" tabindex="-1"></a><span class="fu">lines</span>(Term4<span class="sc">$</span>logincome, Ey1)</span>
 <span id="cb80-13"><a href="multiple-linear-regression.html#cb80-13" tabindex="-1"></a><span class="fu">lines</span>(Term4<span class="sc">$</span>logincome, Ey2, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <pre><code>
   0   1   2 
  57 208  10 
@@ -1131,7 +1099,7 @@ C Details. Term life boxplots
 <span id="cb82-6"><a href="multiple-linear-regression.html#cb82-6" tabindex="-1"></a>Term4<span class="sc">$</span>single <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span>(Term4<span class="sc">$</span>marstat <span class="sc">==</span> <span class="dv">0</span>)</span>
 <span id="cb82-7"><a href="multiple-linear-regression.html#cb82-7" tabindex="-1"></a>Term4<span class="sc">$</span>marstat<span class="ot">&lt;-</span> <span class="fu">as.factor</span>(Term4<span class="sc">$</span>marstat)</span>
 <span id="cb82-8"><a href="multiple-linear-regression.html#cb82-8" tabindex="-1"></a><span class="fu">boxplot</span>(logface <span class="sc">~</span> marstat, <span class="at">ylab =</span> <span class="st">&quot;log face&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Marital Status&quot;</span>, <span class="at">data =</span> Term4)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
 <div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="multiple-linear-regression.html#cb83-1" tabindex="-1"></a><span class="fu">table</span>(Term4<span class="sc">$</span>marstat)</span>
 <span id="cb83-2"><a href="multiple-linear-regression.html#cb83-2" tabindex="-1"></a><span class="co">#  SUMMARY BY LEVEL OF MARSTAT</span></span>
 <span id="cb83-3"><a href="multiple-linear-regression.html#cb83-3" tabindex="-1"></a><span class="co">#library(Rcmdr)</span></span>
@@ -1405,7 +1373,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiNIY29zdCA8LSByZWFkLmNzdihcIkNT
 <p>c (iii). Use the model to provide a point estimate of claims in dollars (not log dollars) for a male age 60 in STATE 2 in <code>class</code> C7.</p>
 <p>c (iv). Write down the coefficient associated with <code>class</code> C7 and interpret this coefficient.</p></li>
 </ol>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-156-1.png" width="672" /><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-156-2.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-157-1.png" width="672" /><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-157-2.png" width="672" /></p>
 <pre><code>
 Call:
 lm(formula = logpaid ~ class, data = AutoC)

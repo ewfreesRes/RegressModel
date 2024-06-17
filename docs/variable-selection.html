@@ -51,6 +51,72 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+<!-- Mathjax Version 2-->
+<script type='text/x-mathjax-config'>
+		MathJax.Hub.Config({
+			extensions: ['tex2jax.js'],
+			jax: ['input/TeX', 'output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+				displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+				processEscapes: true
+			},
+			'HTML-CSS': { availableFonts: ['TeX'] }
+		});
+</script>
+
+<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML"> </script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+<link href="https://unpkg.com/survey-jquery/modern.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+
+
+<!-- Various toggle functions used throughout --> 
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+function toggleSolution(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}      
+function toggleQuiz(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Quiz Solution";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Quiz Solution";}}      
+</script>
+
+<!-- A few functions for revealing definitions -->
+<script language="javascript">
+<!--   $( function() {
+    $("#tabs").tabs();
+  } ); -->
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
 <script language="javascript">
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -69,104 +135,6 @@ function openTab(evt, tabName) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 </script>
-
-<script language="javascript">
-function toggle(id1,id2) {
-	var ele = document.getElementById(id1); var text = document.getElementById(id2);
-	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
-		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
-</script>
-
-<script language="javascript">
-function togglecode(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
-</script>
-<script language="javascript">
-function toggleEX(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
-</script>
-<script language="javascript">
-function toggleTheory(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
-</script>
-
-<script language="javascript">
-function toggleDet(id1,id2) {
-   var ele = document.getElementById(id1); var text = document.getElementById(id2);
-   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Details";}
-      else {ele.style.display = "block"; text.innerHTML = "Hide  Details";}}
-</script>
-
-<script language="javascript">
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
-
-
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
-
-<script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
-});
-</script>
-
-<style>
-/* Rearrange console label */
-.datacamp-exercise ol li, .datacamp-exercise ul li {
-  margin-bottom: 0em !important;
-}
-
-/* Remove bullet marker */
-.datacamp-exercise ol li::before, .datacamp-exercise ul li::before {
-  content: '' !important;
-}
-</style>
-
-
-<script language="javascript">
-var submitAnswer = function() {
-
-  var radios = document.getElementsByName('choice');
-  var val= "";
-  for (var i = 0, length = radios.length; i < length; i++) {
-      if (radios[i].checked) {
-         val = radios[i].value; 
-         break;
-       }
-  }
-  
-  if (val == "" ) {
-    alert('please select choice answer');
-  } else if ( val == "Correct" ) {
-    alert('Answer is correct !');
-  } else {
-    alert('Answer is wrong');
-  }
-};
-</script>
-
-
-
-
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131253904-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-131253904-1');
-
-</script>
-=======
 
 
 
@@ -498,7 +466,7 @@ A Details. Iterative approach
 <span id="cb91-36"><a href="variable-selection.html#cb91-36" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">12</span>,<span class="sc">-</span><span class="fl">2.0</span>,<span class="dv">12</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="at">code=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">angle=</span><span class="dv">25</span>,<span class="at">length=</span><span class="fl">0.10</span>)</span>
 <span id="cb91-37"><a href="variable-selection.html#cb91-37" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">12</span>,<span class="sc">-</span><span class="fl">3.0</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="at">code=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">angle=</span><span class="dv">25</span>,<span class="at">length=</span><span class="fl">0.10</span>)</span>
 <span id="cb91-38"><a href="variable-selection.html#cb91-38" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">5</span>,<span class="sc">-</span><span class="fl">3.0</span>,<span class="dv">5</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="at">code=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">angle=</span><span class="dv">25</span>,<span class="at">length=</span><span class="fl">0.10</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 </p>
 </div>
 <div id="Over4.1B" class="tabcontent">
@@ -565,7 +533,7 @@ C Details. Model validation
 <span id="cb92-25"><a href="variable-selection.html#cb92-25" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">2.9</span>,<span class="sc">-</span><span class="fl">0.9</span>,<span class="fl">2.5</span>,<span class="sc">-</span><span class="fl">3.8</span>,<span class="at">code=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">angle=</span><span class="dv">15</span>,<span class="at">length=</span><span class="fl">0.2</span>)</span>
 <span id="cb92-26"><a href="variable-selection.html#cb92-26" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">5.9</span>,<span class="sc">-</span><span class="fl">0.9</span>,<span class="fl">3.1</span>,<span class="sc">-</span><span class="fl">3.8</span>,<span class="at">code=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">angle=</span><span class="dv">15</span>,<span class="at">length=</span><span class="fl">0.2</span>)</span>
 <span id="cb92-27"><a href="variable-selection.html#cb92-27" tabindex="-1"></a><span class="fu">arrows</span>(<span class="fl">7.4</span>,<span class="sc">-</span><span class="fl">0.9</span>,<span class="fl">3.5</span>,<span class="sc">-</span><span class="fl">3.8</span>,<span class="at">code=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">angle=</span><span class="dv">15</span>,<span class="at">length=</span><span class="fl">0.2</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
 </p>
 </div>
 <p>###MC Exercise. An iterative approach to data modeling</p>
@@ -818,7 +786,7 @@ refrigerator in cubic feet (<code>rsize</code>), the size of the freezer compart
 <span id="cb94-10"><a href="variable-selection.html#cb94-10" tabindex="-1"></a><span class="fu">summary</span>(refrig_mlr2)</span>
 <span id="cb94-11"><a href="variable-selection.html#cb94-11" tabindex="-1"></a>Refrig<span class="sc">$</span>residuals2 <span class="ot">&lt;-</span> <span class="fu">residuals</span>(refrig_mlr2)</span>
 <span id="cb94-12"><a href="variable-selection.html#cb94-12" tabindex="-1"></a><span class="fu">plot</span>(Refrig<span class="sc">$</span>residuals2, Refrig<span class="sc">$</span>residuals1)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="variable-selection.html#cb95-1" tabindex="-1"></a><span class="co">#library(Rcmdr)</span></span>
 <span id="cb95-2"><a href="variable-selection.html#cb95-2" tabindex="-1"></a><span class="co">#refrig_mlr3 &lt;- lm(price ~ rsize + fsize + shelves + features + ecost, data = Refrig)</span></span>
 <span id="cb95-3"><a href="variable-selection.html#cb95-3" tabindex="-1"></a><span class="co">#avPlots(refrig_mlr3, terms = &quot;ecost&quot;)</span></span></code></pre></div>
@@ -1003,7 +971,7 @@ E Details. High leverage point graph
 <span id="cb97-8"><a href="variable-selection.html#cb97-8" tabindex="-1"></a>xycov<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">5</span>,<span class="sc">-</span><span class="dv">5</span>, <span class="dv">20</span>),<span class="at">nrow=</span><span class="dv">2</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
 <span id="cb97-9"><a href="variable-selection.html#cb97-9" tabindex="-1"></a>xyloc<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),<span class="at">nrow=</span><span class="dv">1</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
 <span id="cb97-10"><a href="variable-selection.html#cb97-10" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">ellipsoidPoints</span>(xycov, <span class="at">d2 =</span> <span class="dv">2</span>, <span class="at">loc=</span>xyloc),<span class="at">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
+<p><img src="RegressModelDataCamp_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
 </p>
 </div>
 <div id="Over4.4F" class="tabcontent">
