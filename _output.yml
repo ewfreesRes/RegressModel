@@ -1,7 +1,5 @@
 bookdown::gitbook:
   css: style.css
-  includes:
-    in_header: tab.js
   config:
     toc:
       before: |

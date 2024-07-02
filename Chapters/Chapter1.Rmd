@@ -140,6 +140,7 @@ The Galton data has already been read into a dataframe called `heights`. These d
 -  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
 -  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that an adult child's height is less than 72 inches
 
+
 ```{r ex="ExerRegMod1.1.2", type="hint", tut=TRUE}
 Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
 ```

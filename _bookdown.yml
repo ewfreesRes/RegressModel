@@ -1,7 +1,7 @@
 book_filename: "RegressModelDataCamp"
 output_dir: "docs"
-rmd_files: ["index.Rmd", 
-           "Chapters/Chapter1.Rmd",
+rmd_files: ["index.Rmd",
+          "Chapters/Chapter1.Rmd",
            "Chapters/Chapter2.Rmd",
            "Chapters/Chapter3.Rmd", 
            "Chapters/Chapter4.Rmd",

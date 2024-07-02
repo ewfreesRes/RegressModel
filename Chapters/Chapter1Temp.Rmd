@@ -1,0 +1,146 @@
+# Regression and the Normal Distribution
+
+**Chapter description**
+
+Regression analysis is a statistical method that is widely used in many fields of study, with actuarial science being no exception. This chapter introduces the role of the normal distribution in regression and the use of logarithmic transformations in specifying regression relationships.
+
+## Fitting a normal distribution
+
+***
+
+In this section, you learn how to:
+
+-    Calculate and interpret two basic summary statistics
+-    Fit a data set to a normal curve
+-    Calculate probabilities under a standard normal curve
+
+***
+
+### Video 
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=1_e885sczm&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=1_tnia11ze" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+#### Video Overhead Details {-}
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Over1.1A')">A Details. Description of the data</button>
+  <button class="tablinks" onclick="openTab(event, 'Over1.1B')">B Details. Read and examine data structure</button>
+  <button class="tablinks" onclick="openTab(event, 'Over1.1C')">C Details. Summary stats for parents' height</button>
+  <button class="tablinks" onclick="openTab(event, 'Over1.1D')">D. Fit a normal curve to parents' height details</button>
+  <button class="tablinks" onclick="openTab(event, 'Over1.1E')">E Details. Use the normal approximation to determine the probability of the height of tall parents</button>
+</div>
+
+
+<div id="Over1.1A" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A Details. Description of the data</h3>
+  <p>
+
+To illustrate a data set that can be analyzed using regression methods, we consider some data included in Galton's 1885 paper. These data include the heights of 928 adult children (child_ht), together with an index of their parents' height (parent_ht). Here, all female heights were multiplied by 1.08, and the index was created by taking the average of the father's height and rescaled mother's height. Galton was aware that the parents' and the adult child's height could each be adequately approximated by a normal curve. In developing regression analysis, he provided a single model for the joint distribution of heights.
+
+```{r comment = ""}
+heights <- read.csv("CSVData\\galton_height.csv", header = TRUE)
+#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+plot(jitter(heights$parent_ht),jitter(heights$child_ht), ylim = c(60,80), xlim = c(60,80),
+     ylab = "height of child", xlab = "height of parents")
+abline(lm(heights$child_ht~heights$parent_ht))
+abline(0,1,col = "red")
+
+```
+
+</p>
+</div>
+
+<div id="Over1.1B" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B Details. Read and examine data structure</h3>
+  <p>
+
+The data has already been read into a dataset called `heights`. Examine the *structure* of the data with the function [str()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/str/) and use the [head()](https://www.rdocumentation.org/packages/utils/versions/3.5.0/topics/head/) command to looks at the first few records.
+
+```{r comment = ""}
+heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
+#heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+str(heights)
+head(heights)
+
+```
+
+</p>
+</div>
+
+
+<div id="Over1.1C" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>C Details. Summary stats for parents' height</h3>
+  <p>
+
+Next, examine the distribution of the child's height and then examine the distribution of the parents height.
+
+```{r comment = ""}
+ht_par <- heights$parent_ht
+hist(ht_par)
+mean(ht_par)
+sd(ht_par)
+
+```
+
+</p>
+</div>
+
+
+<div id="Over1.1D" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>D. Fit a normal curve to parents' height details</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP1}
+(mparent <- mean(ht_par))
+(sdparent <- sd(ht_par))
+x <- seq(60, 80,by = 0.1)
+hist(ht_par, freq = FALSE)
+lines(x, dnorm(x, mean = mparent, sd = sdparent), col = "blue")
+
+```
+
+</p>
+</div>
+
+
+<div id="Over1.1E" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>E Details. Use the normal approximation to determine the probability of the height of tall parents</h3>
+  <p>
+
+```{r comment = "", eval = EVALUATE_CHAP1}
+TallHeight <- 72
+pnorm(TallHeight, mean = mparent, sd = sdparent)
+pnorm(72, mean = mean(ht_par), sd = sd(ht_par))
+(StdUnitsTallHeight <- (TallHeight - mparent)/sdparent)
+pnorm(StdUnitsTallHeight, mean = 0, sd = 1)
+
+```
+
+</p>
+</div>
+
+### Exercise. Fitting Galton's height data
+
+**Assignment Text**
+
+The Galton data has already been read into a dataframe called `heights`. These data include the heights of 928 adult children `child_ht`, together with an index of their parents' height `parent_ht`.  The video explored the distribution of the parents' height; in this assignment, we investigate the distribution of the heights of the adult children.
+
+**Instructions**
+
+-  Define the height of an adult child as a global variable
+-  Use the function [mean()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/mean/) to calculate the mean and the function [sd()](https://www.rdocumentation.org/packages/base/versions/3.5.0/topics/sd/) to calculate the standard deviation 
+-  Use the normal approximation and the function [pnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/)  determine the probability that an adult child's height is less than 72 inches
+
+
+```{r ex="ExerRegMod1.1.2", type="hint", tut=TRUE}
+Remember that we can reference a variable, say `var`, from a data set such as `heights`, as `heights$var`.
+```
