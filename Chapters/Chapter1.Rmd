@@ -36,7 +36,7 @@ In this section, you learn how to:
 
 
 <div id="Over1.1A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Description of the data</h3>
   <p>
 
@@ -56,7 +56,7 @@ abline(0,1,col = "red")
 </div>
 
 <div id="Over1.1B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Read and examine data structure</h3>
   <p>
 
@@ -75,7 +75,7 @@ head(heights)
 
 
 <div id="Over1.1C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Summary stats for parents' height</h3>
   <p>
 
@@ -94,7 +94,7 @@ sd(ht_par)
 
 
 <div id="Over1.1D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D. Fit a normal curve to parents' height details</h3>
   <p>
 
@@ -112,7 +112,7 @@ lines(x, dnorm(x, mean = mparent, sd = sdparent), col = "blue")
 
 
 <div id="Over1.1E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. Use the normal approximation to determine the probability of the height of tall parents</h3>
   <p>
 
@@ -276,7 +276,7 @@ In this section, you learn how to:
 </div>
 
 <div id="Over1.2" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>Details. Data descriptions</h3>
   <p>
 
@@ -302,7 +302,7 @@ injury3 <- injury2[c("claims","logclaims")]
 </div> 
 
 <div id="Over1.2A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Bring in Data, Introduce Logarithmic Claims</h3>
   <p>
 
@@ -322,7 +322,7 @@ hist(logclaims)
 </div> 
 
 <div id="Over1.2B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Show how to get a finer grid for histograms</h3>
   <p>
 
@@ -336,7 +336,7 @@ hist(logclaims,breaks = 15)
 </div> 
 
 <div id="Over1.2C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Introduce the density plot</h3>
   <p>
 
@@ -444,7 +444,7 @@ In this section, you learn how to:
 </div>
 
 <div id="Over1.3A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Summary statistics</h3>
   <p>
 
@@ -463,7 +463,7 @@ length(claims)
 </div> 
 
 <div id="Over1.3B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Boxplot</h3>
   <p>
 
@@ -486,7 +486,7 @@ text(1.1, 10.9, "outlier",  cex = 0.7)
 </div> 
 
 <div id="Over1.3C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. QQ Plot</h3>
   <p>
 
@@ -524,7 +524,7 @@ So this assignment is based on claims, not the logarithmic version. You will use
 -  Produce a normal qq plot for claims using the function [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). The [qqline()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/) function is handy for producing a reference line.
 
 ```{r ex="ExerRegMod1.3.2", type="hint", tut=TRUE}
-Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`'s!) is for the normal qq plot
+Note that [qnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/Normal/) (one `q`) is for a normal quantile and [qqnorm()](https://www.rdocumentation.org/packages/stats/versions/3.5.0/topics/qqnorm/). (two `q`s!) is for the normal qq plot
 ```
 
 ```{r ex="ExerRegMod1.3.2", type="pre-exercise-code", tut=TRUE}
@@ -675,7 +675,7 @@ In this exercise, you learn how to:
 
 
 <div id="Over1.4A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Simulate a moderately skewed distribution, with transforms</h3>
   <p>
 
@@ -693,7 +693,7 @@ X4 <- -1/X1                     # negative reciprocal transform
 </div> 
 
 <div id="Over1.4B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Visualize the distributions</h3>
   <p>
 

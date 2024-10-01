@@ -1,0 +1,15 @@
+regression-and-the-normal-distribution
+fitting-a-normal-distribution
+video
+exercise.-fitting-galtons-height-data
+exercise.-visualizing-childs-height-distribution
+visualizing-distributions
+video-1
+exercise.-visualizing-bodily-injury-claims-with-density-plots
+summarizing-distributions
+video-2
+exercise.-summarizing-bodily-injury-claims-with-box-and-qq-plots
+exercise.-effects-on-distributions-of-removing-the-largest-claim
+transformations
+video-3
+exercise.-distribution-of-transformed-bodily-injury-claims

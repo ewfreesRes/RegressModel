@@ -54,7 +54,7 @@ summary(meps2)
 
 
 <div id="Over5.1A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. MEPS health expenditures</h3>
   <p>
 
@@ -68,7 +68,7 @@ Our dependent variable is the amount of expenditures for outpatient visits, `exp
 </div> 
 
 <div id="Over5.1B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Overhead MEPS health expenditures</h3>
   <p>
 
@@ -89,7 +89,7 @@ Data from the Medical Expenditure Panel Survey (MEPS), conducted by the U.S. Age
 </div> 
 
 <div id="Over5.1C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Outcome variable</h3>
   <p>
 
@@ -105,7 +105,7 @@ Our dependent variable is expenditures for outpatient admissions.
 </div> 
 
 <div id="Over5.1D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Explanatory variables</h3>
   <p>
 
@@ -134,7 +134,7 @@ $$
 </div> 
 
 <div id="Over5.1E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. Case study outline</h3>
   <p>
 
@@ -351,7 +351,7 @@ From our prior work, the training dataframe `train_meps` has already been loaded
 - You have been reminded by your boss that use of the variable `gender` is unsuitable for actuarial pricing purposes. As an another alternative, drop `gender` from the recommended model (still keeping `phstat`). Note the statistical significance of the variable `usc`with this fitted model.
 
 ```{r ex="ExerRegMod5.1.4", type="hint", tut=TRUE}
-Starting with a model that consists of all your explanatory variables and using `step()` is a good way to create a model that fits the data well. On the other hand, this is simply statistics, which is unable to capture "real" explanations, or follow regulatory rules.  
+Starting with a model that consists of all your explanatory variables and using `step()` is a good way to create a model that fits the data well. On the other hand, this is simply statistics, which is unable to capture real explanations, or follow regulatory rules.  
 ```
 
 ```{r ex="ExerRegMod5.1.4", type="pre-exercise-code", tut=TRUE}
@@ -443,7 +443,7 @@ In the sample code, the cross-validation procedure has been summarized into a fu
 Note which model is suggested by the cross validation function.
 
 ```{r ex="ExerRegMod5.1.5", type="hint", tut=TRUE}
-Performing cross-validation measures on your model allows you to see how well it does when it comes to predicting "out of sample" data points.
+Performing cross-validation measures on your model allows you to see how well it does when it comes to predicting out of sample data points.
 ```
 
 ```{r ex="ExerRegMod5.1.5", type="pre-exercise-code", tut=TRUE}
@@ -707,7 +707,7 @@ In this section, you learn how to:
 
 
 <div id="Over5.2A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Interpreting individual effects</h3>
   <p>
 
@@ -728,7 +728,7 @@ In this section, you learn how to:
 </div> 
 
 <div id="Over5.2B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Other Interpretations</h3>
   <p>
 
@@ -799,12 +799,12 @@ In this section, you learn how to:
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'Over5.3A')">A Details. The importance of variable selection</button>
   <button class="tablinks" onclick="openTab(event, 'Over5.3B')">B Details. Example. Regression using one explanatory variable</button>
-  <button class="tablinks" onclick="openTab(event, 'Over5.3C')"C Details. Principle of parsimony</button>
+  <button class="tablinks" onclick="openTab(event, 'Over5.3C')">C Details. Principle of parsimony</button>
 </div>
 
 
 <div id="Over5.3A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. The importance of variable selection</h3>
   <p>
 
@@ -817,7 +817,7 @@ In this section, you learn how to:
 </div> 
 
 <div id="Over5.3B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Example. Regression using one explanatory variable</h3>
   <p>
 
@@ -844,7 +844,7 @@ There is a persistent, long-term error in omitting the explanatory variable $x$.
 </div> 
 
 <div id="Over5.3C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Principle of parsimony</h3>
   <p>
 

@@ -1,0 +1,12 @@
+interpreting-regression-results
+case-study-meps-health-expenditures
+video
+exercise.-summarizing-data
+exercise.-fit-a-benchmark-multiple-linear-regression-model
+exercise.-variable-selection
+exercise.-model-comparisons-using-cross-validation
+exercise.-out-of-sample-validation
+what-the-modeling-procedure-tells-us
+video-1
+the-importance-of-variable-selection
+video-2

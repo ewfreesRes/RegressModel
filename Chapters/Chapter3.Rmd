@@ -93,7 +93,7 @@ summary(Refrig2)
 
 
 <div id="Over3.0A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Demand for term life insurance</h3>
   <p>
 
@@ -112,7 +112,7 @@ To understand demand, consider the Survey of Consumer Finances (*SCF*)
 </div> 
 
 <div id="Over3.0B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Term life insurance summary statistics</h3>
   <p>
 
@@ -129,7 +129,7 @@ The data suggest that *income* and *face* are skewed so we also introduce logari
 </div> 
 
 <div id="Over3.0C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Summary statistics</h3>
   <p>
 
@@ -152,7 +152,7 @@ describe(Term2)[,c(3,4,8,5,9,2)]
 </div> 
 
 <div id="Over3.0D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Scatter plots of income versus face in original and logarithmic units</h3>
   <p>
 
@@ -195,7 +195,7 @@ In this section, you learn how to:
 
 
 <div id="Over3.1A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Correlation table</h3>
   <p>
 
@@ -207,7 +207,7 @@ round(cor(Term2), digits=3)
 </div> 
 
 <div id="Over3.1B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Scatterplot matrix</h3>
   <p>
 
@@ -220,7 +220,7 @@ pairs(Term3, upper.panel = NULL, gap = 0, cex.labels = 1.25)
 </div> 
 
 <div id="Over3.1C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Visualizing a regression plane</h3>
   <p>
 
@@ -257,7 +257,7 @@ rm(education,logincome,logface)
 
 
 <div id="Over3.1D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Method of least squares</h3>
   <p>
 
@@ -270,7 +270,7 @@ rm(education,logincome,logface)
 </div> 
 
 <div id="Over3.1E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. Fit a multiple linear regression model</h3>
   <p>
 
@@ -569,7 +569,7 @@ In this section, you learn how to:
 </div>
 
 <div id="Over3.2A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Goodness of fit</h3>
   <p>
 
@@ -586,7 +586,7 @@ Summarize
 
 
 <div id="Over3.2B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Goodness of fit and term life</h3>
   <p>
 
@@ -601,7 +601,7 @@ anova(Term_mlr)
 </div> 
 
 <div id="Over3.2C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Statistical inference</h3>
   <p>
 
@@ -612,7 +612,7 @@ anova(Term_mlr)
 </div> 
 
 <div id="Over3.2D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Statistical inference and term life</h3>
   <p>
 
@@ -721,7 +721,7 @@ In this section, you learn how to:
 
 
 <div id="Over3.3A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Binary variables</h3>
   <p>
 
@@ -753,7 +753,7 @@ binary variables.
 </div> 
 
 <div id="Over3.3B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Visualize effect of binary variables</h3>
   <p>
 
@@ -762,7 +762,7 @@ binary variables.
 </div> 
 
 <div id="Over3.3C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. R script for visualization</h3>
   <p>
 
@@ -787,7 +787,7 @@ lines(Term4$logincome, Ey2, col="red")
 </div> 
 
 <div id="Over3.3D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Interaction Terms</h3>
   <p>
 
@@ -809,7 +809,7 @@ $$
 </div> 
 
 <div id="Over3.3E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. Visualizing binary variables with interactions terms</h3>
   <p>
 
@@ -928,7 +928,7 @@ In this section, you learn how to:
 
 
 <div id="Over3.4A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Categorical variables</h3>
   <p>
 
@@ -946,7 +946,7 @@ health insurance.
 </div> 
 
 <div id="Over3.4B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Term life example</h3>
   <p>
 
@@ -961,7 +961,7 @@ of the death of the named insured (in logarithmic dollars), focusing on the expl
 </div> 
 
 <div id="Over3.4C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Term life boxplots</h3>
   <p>
 
@@ -986,7 +986,7 @@ table(Term4$marstat)
 </div> 
 
 <div id="Over3.4D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Regression with a categorical variable</h3>
   <p>
 
@@ -1001,7 +1001,7 @@ summary(lm(logface ~ logincome+education+numhh+marstat, data = Term4))
 </div> 
 
 <div id="Over3.4E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. t-ratios depend on the reference level</h3>
   <p>
 
@@ -1143,7 +1143,7 @@ In this section, you learn how to:
 </div>
 
 <div id="Over3.5A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Testing the significance of a categorical variable</h3>
   <p>
 
@@ -1166,7 +1166,7 @@ cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr1)$Df[5]))
 </div> 
 
 <div id="Over3.5B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Overview of the general linear hypothesis</h3>
   <p>
 
@@ -1181,7 +1181,7 @@ cat("p-value is", 1 - pf(Fstat, df1 = 2 , df2 = anova(Term_mlr1)$Df[5]))
 </div> 
 
 <div id="Over3.5C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details.  Procedure for conducting the general linear hypothesis</h3>
   <p>
 
@@ -1197,7 +1197,7 @@ $$
 </div> 
 
 <div id="Over3.5D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. The general linear hypothesis for a single variable</h3>
   <p>
 
@@ -1241,10 +1241,7 @@ cat("p-value is", 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))
 
 ```{r ex="ExerRegMod3.5.2", type="hint", tut=TRUE}
 Here is the code to calculate it by hand
-Fstat12 <- (anova(Term_mlr1)$`Sum Sq`[5] - 
-              anova(Term_mlr2)$`Sum Sq`[5])/(1*anova(Term_mlr2)$`Mean Sq`[5])
-Fstat12
-cat("p-value is", 1 - pf(Fstat12, df1 = 1 , df2 = anova(Term_mlr2)$Df[5]))
+
 ```
 
 ```{r ex="ExerRegMod3.5.2", type="pre-exercise-code", tut=TRUE}

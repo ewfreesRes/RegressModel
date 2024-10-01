@@ -56,7 +56,7 @@ In this section, you learn how to:
 
 
 <div id="Over2.1A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Wisconsin lottery data description</h3>
   <p>
 
@@ -70,7 +70,7 @@ str(Lot)
 </div>
 
 <div id="Over2.1B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Summary statistics</h3>
   <p>
 
@@ -85,7 +85,7 @@ str(Lot)
 </div>
 
 <div id="Over2.1C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Visualizing skewed distributions</h3>
   <p>
 
@@ -99,7 +99,7 @@ hist(Lot$sales, main = "", xlab = "sales")
 </div>
 
 <div id="Over2.1D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Visualizing relationships with a scatter plot</h3>
   <p>
 
@@ -111,7 +111,7 @@ plot(Lot$pop, Lot$sales, xlab = "population", ylab = "sales")
 </div>
 
 <div id="Over2.1E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. Correlation coefficient</h3>
   <p>
 
@@ -219,7 +219,7 @@ In this section, you learn how to:
 </div>
 
 <div id="Over2.2A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Where to fit the line?</h3>
   <p>
 
@@ -234,7 +234,7 @@ abline(0,1, col="red")
 </div>
 
 <div id="Over2.2B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Method of least squares</h3>
   <p>
 
@@ -247,7 +247,7 @@ abline(0,1, col="red")
 </div>
 
 <div id="Over2.2C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Regression coefficients</h3>
   <p>
 
@@ -262,7 +262,7 @@ abline(model_blr, col="blue")
 </div>
 
 <div id="Over2.2D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Prediction</h3>
   <p>
 
@@ -382,7 +382,7 @@ In this section, you learn how to:
 
 
 <div id="Over2.3A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A and B Details. Visualizing the uncertainty about a line</h3>
   <p>
 
@@ -416,7 +416,7 @@ text(3.5, 2.7, expression( hat(y)== b[0]+ b[1]*x), cex=0.8  )
 </div>
 
 <div id="Over2.3C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C, D and E Details. ANOVA Table</h3>
   <p>
 
@@ -598,7 +598,7 @@ In this section, you learn how to:
 
 
 <div id="Over2.4A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Summary of basic linear regression model</h3>
   <p>
 
@@ -618,7 +618,7 @@ summary(model_blr)
 
 
 <div id="Over2.4B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Hypothesis testing</h3>
   <p>
 
@@ -633,7 +633,7 @@ pop           0.6471    0.04881 13.2579 1.158e-17
 </div>
 
 <div id="Over2.4C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Confidence intervals</h3>
   <p>
 
@@ -647,7 +647,7 @@ confint(model_blr, level = .95)
 </div>
 
 <div id="Over2.4D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Confidence intervals check</h3>
   <p>
 
@@ -670,7 +670,7 @@ confint(model_blr, level = .95)
 
 
 <div id="Over2.4E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. Prediction intervals</h3>
   <p>
 
@@ -798,7 +798,7 @@ In this section, you learn how to:
 
 
 <div id="Over2.5A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Unusual observations in regression</h3>
   <p>
 
@@ -814,7 +814,7 @@ In this section, you learn how to:
 
 
 <div id="Over2.5B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Example. Outliers and High Leverage Points</h3>
   <p>
 
@@ -832,7 +832,7 @@ text(9.8, 2.5, "C")
 </div>
 
 <div id="Over2.5C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Regression fit with 19 base observations</h3>
   <p>
 
@@ -848,7 +848,7 @@ abline(model_outlr0)
 </div>
 
 <div id="Over2.5D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Regression fit with 19 base observations plus C</h3>
   <p>
 
@@ -865,7 +865,7 @@ abline(model_outlrC)
 </div>
 
 <div id="Over2.5E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. R code</h3>
   <p>
 
@@ -884,7 +884,7 @@ summary(model_outlrC)
 </div>
 
 <div id="Over2.5F" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>F Details. Visualizing four regression fits</h3>
   <p>
 
@@ -904,7 +904,7 @@ abline(model_outlrC, col = "blue")
 </div>
 
 <div id="Over2.5G" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>G Details. Results from four regression models</h3>
   <p>
 

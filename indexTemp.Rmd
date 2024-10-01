@@ -1,0 +1,210 @@
+--- 
+title: "Online Tutorial on `Regression Modeling with Actuarial and Financial Applications`"
+author: "Edward (Jed) Frees, University of Wisconsin-Madison, Australian National University"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook:
+    css: style.css
+    includes:
+      in_header: 
+        - ShowHide2024.js
+        - tab.js      
+documentclass: book
+bibliography: ["Bibliography/LDAReferenceB.bib"]
+biblio-style: econPeriod
+link-citations: yes
+github-repo: https://github.com/ewfreesRes/RegressModel
+description: "Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest."
+
+---
+
+
+
+
+```{r include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(results = "hold")
+#EVALUATE_CHAP1 <- FALSE
+EVALUATE_CHAP1 <- TRUE
+EVALUATE_CHAP2 <- FALSE
+#EVALUATE_CHAP2 <- TRUE
+EVALUATE_CHAP3 <- FALSE
+#EVALUATE_CHAP3 <- TRUE
+EVALUATE_CHAP4 <- FALSE
+#EVALUATE_CHAP4 <- TRUE
+EVALUATE_CHAP5 <- FALSE
+#EVALUATE_CHAP5 <- TRUE
+tutorial::go_interactive(greedy = FALSE)
+```
+
+
+```{r child = 'HideShowCode.Rmd', include = FALSE}
+```
+
+
+
+
+# Preface {-}
+
+<p style="text-align:right;">
+*Date: `r format(Sys.Date(), "%d %B %Y")`*</p>
+
+
+
+### About Regression Modeling {-}
+
+Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This book and online tutorial provides budding analysts with a foundation in multiple reression. Viewers will learn about these statistical techniques using data on the demand for insurance, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest.
+
+### Resources {-}
+
+- This tutorial is based on the book [Regression Modeling with Actuarial and Financial Applications](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/regression-modeling-actuarial-and-financial-applications?format=PB).
+    - For resources associated with the book, please visit the [Regression Modeling book web site](http://research.bus.wisc.edu/RegActuaries). 
+- For advanced regression applications in insurance, you may be interested in the series, [Predictive Modeling Applications in Actuarial Science](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/predictive-modeling-applications-actuarial-science-volume-1). 
+    - Sample code and data for the series are available at [series website](http://instruction.bus.wisc.edu/jfrees/jfreesbooks/PredictiveModelingVol1/index.htm).
+- An earlier version of this tutorial, a [Short Course](https://www.datacamp.com/courses/8743) constructed for Indonesian actuaries, uses the [Datacamp](https://www.datacamp.com/) learning platform.
+
+### Tutorial Description {-}
+
+- This online tutorial is designed to guide you through the foundations of regession with applications in actuarial science. 
+- Anticipated completion time is approximately six hours.
+-  The tutorial assumes that you are familiar with the foundations in the statistical software `R`, such as Datacamp's [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r%20).
+
+**General Layout.** There are five chapters in this tutorial that summarize the foundations of multiple linear regression. Each chapter is subdivided into several sections. At the beginning of each section is a short video, typically 4-8 minutes, that summarizes the section key learning outcomes. Following the video, you can see more details about the underlying `R` code for the analysis presented in the video. 
+
+**Role of Exercises.** Following each video, there are one or two exercises that allow you to practice skills to make sure that you fully grasp the learning outcomes. The exercises are implented using an online learning platfor provided by [Datacamp](https://www.datacamp.com/) so that you need not install `R`. Feedback is programmed into the exercises so that you will learn a lot by making mistakes! You will be pacing yourself, so always feel free to reveal the answers by hitting the `Solution` tab. Remember, going through quickly is not equivalent to learning deeply. Use this tool to enhance your understanding of one of the foundations of data science, regression analysis.
+
+
+
+`r HideExample('Intro.Hide',"Aquí está el Prefacio en español")`
+
+**Sobre el Modelado de Regresión**
+
+Las técnicas estadísticas se pueden usar para abordar nuevas situaciones. Esto es importante en un mundo de gestión de riesgos en rápida evolución. Los analistas con una fuerte formación analítica entienden que un gran conjunto de datos puede representar un tesoro de información para explorar y puede ofrecer una gran ventaja competitiva. Este libro y tutorial en línea proporcionan a los analistas principiantes una base en regresión múltiple. Los usuarios aprenderán sobre estas técnicas estadísticas usando datos sobre la demanda de seguros, gastos de salud y otras aplicaciones. Aunque no se presume un conocimiento específico de actuaría o gestión de riesgos, el enfoque introduce aplicaciones en las que las técnicas estadísticas se pueden usar para analizar datos reales de interés.
+
+**Recursos**
+
+- Este tutorial se basa en el libro [Modelado de Regresión con Aplicaciones Actuariales y Financieras](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/regression-modeling-actuarial-and-financial-applications?format=PB).
+    - Para recursos asociados con el libro, por favor visite el [sitio web del libro sobre Modelado de Regresión](http://research.bus.wisc.edu/RegActuaries).
+- Para aplicaciones avanzadas de regresión en seguros, puede estar interesado en la serie, [Aplicaciones de Modelado Predictivo en la Ciencia Actuarial](http://www.cambridge.org/us/academic/subjects/statistics-probability/statistics-econometrics-finance-and-insurance/predictive-modeling-applications-actuarial-science-volume-1).
+    - El código y los datos de muestra para la serie están disponibles en [el sitio web de la serie](http://instruction.bus.wisc.edu/jfrees/jfreesbooks/PredictiveModelingVol1/index.htm).
+- Una versión anterior de este tutorial, un [Curso Corto](https://www.datacamp.com/courses/8743) construido para actuarios indonesios, usa la plataforma de aprendizaje [Datacamp](https://www.datacamp.com/).
+
+**Descripción del Tutorial**
+
+- Este tutorial en línea está diseñado para guiarlo a través de los fundamentos de la regresión con aplicaciones en la ciencia actuarial.
+- Se anticipa que el tiempo de finalización es de aproximadamente seis horas.
+- El tutorial asume que está familiarizado con los fundamentos del software estadístico `R`, como el curso de Datacamp [Introducción a R](https://www.datacamp.com/courses/free-introduction-to-r%20).
+
+**Estructura General.** Hay cinco capítulos en este tutorial que resumen los fundamentos de la regresión lineal múltiple. Cada capítulo está subdividido en varias secciones. Al principio de cada sección hay un video corto, típicamente de 4-8 minutos, que resume los resultados clave de aprendizaje de la sección. Después del video, puede ver más detalles sobre el código subyacente de `R` para el análisis presentado en el video.
+
+**Papel de los Ejercicios.** Después de cada video, hay uno o dos ejercicios que le permiten practicar habilidades para asegurarse de que comprende completamente los resultados de aprendizaje. Los ejercicios se implementan usando una plataforma de aprendizaje en línea proporcionada por [Datacamp](https://www.datacamp.com/) para que no necesite instalar `R`. La retroalimentación está programada en los ejercicios para que aprenda mucho al cometer errores. Usted mismo marcará el ritmo, así que siéntase libre de revelar las respuestas presionando la pestaña `Solution`. Recuerde, pasar rápidamente no equivale a aprender profundamente. Use esta herramienta para mejorar su comprensión de uno de los fundamentos de la ciencia de datos, el análisis de regresión.
+
+
+</div>
+
+
+
+### Welcome to the Tutorial Video {-}
+
+***
+
+In this video, you learn how to:
+
+-   Describe regression briefly, i.e., in a nutshell
+-   Explain Galton's height example as a regression application
+
+***
+
+
+`r HideExample('Intro2.Hide',"En Español")`
+
+**Bienvenido al Video Tutorial**
+
+***
+
+En este video, aprenderá a:
+
+- Describir brevemente la regresión, es decir, en resumen
+- Explicar el ejemplo de altura de Galton como una aplicación de regresión
+
+</div>
+
+
+
+#### Video Overhead {-}
+
+<center>
+
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1660902/sp/166090200/embedIframeJs/uiconf_id/25916071/partner_id/1660902?iframeembed=true&playerId=kaltura_player&entry_id=0_bj34urmj&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;&wid=0_tp96kyab" width="649" height="401" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0" title="Kaltura Player"></iframe>
+
+</center>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'OverWelcomeA')">A. Galton's 1885 Regression Data</button>
+  <button class="tablinks" onclick="openTab(event, 'OverWelcomeB')">B. Supporting R Code</button>
+</div>
+
+<div id="OverWelcomeA" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>A. Galton's 1885 Regression Data</h3>
+  <p>
+  
+$$
+\small{\begin{array}{l|ccccccccccc|c}
+\hline
+\text{Height of }&  &  &  &  &  &  &  &  &  &  &  &  \\
+\text{adult child }&  &  &  &  &  &  &  &  &  &  &  &  \\
+\text{in inches }& <64.0 & 64.5 & 65.5 & 66.5 & 67.5 & 68.5 &
+69.5 & 70.5 & 71.5 & 72.5 & >73.0 & \text{Totals} \\
+\hline
+>73.7 & - & - & - & - & - & - & 5 & 3 & 2 & 4 & - & 14 \\
+73.2 & - & - & - & - & - & 3 & 4 & 3 & 2 & 2 & 3 & 17 \\
+72.2 & - & - & 1 & - & 4 & 4 & 11 & 4 & 9 & 7 & 1 & 41 \\
+71.2 & - & - & 2 & - & 11 & 18 & 20 & 7 & 4 & 2 & - & 64 \\
+70.2 & - & - & 5 & 4 & 19 & 21 & 25 & 14 & 10 & 1 & - & 99 \\
+69.2 & 1 & 2 & 7 & 13 & 38 & 48 & 33 & 18 & 5 & 2 & - & 167 \\
+68.2 & 1 & - & 7 & 14 & 28 & 34 & 20 & 12 & 3 & 1 & - & 120 \\
+67.2 & 2 & 5 & 11 & 17 & 38 & 31 & 27 & 3 & 4 & - & - & 138 \\
+66.2 & 2 & 5 & 11 & 17 & 36 & 25 & 17 & 1 & 3 & - & - & 117 \\
+65.2 & 1 & 1 & 7 & 2 & 15 & 16 & 4 & 1 & 1 & - & - & 48 \\
+64.2 & 4 & 4 & 5 & 5 & 14 & 11 & 16 & - & - & - & - & 59 \\
+63.2 & 2 & 4 & 9 & 3 & 5 & 7 & 1 & 1 & - & - & - & 32 \\
+62.2 & - & 1 & - & 3 & 3 & - & - & - & - & - & - & 7 \\
+<61.2 & 1 & 1 & 1 & - & - & 1 & - & 1 & - & - & - & 5 \\ \hline
+\text{Totals }& 14 & 23 & 66 & 78 & 211 & 219 & 183 & 68 & 43 & 19 & 4 & 928 \\
+\hline
+\end{array}}
+$$
+</p>
+</div>
+
+<div id="OverWelcomeB" class="tabcontent">
+  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <h3>B. Supporting R Code</h3>
+  <p>
+  
+```{r comment = "", eval = FALSE, warning = FALSE}
+# Reformat Data Set
+#heights <- read.csv("CSVData\\GaltonFamily.csv",header = TRUE)
+heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+str(heights)
+head(heights)
+heights$child_ht <- heights$CHILDC
+heights$parent_ht <- heights$PARENTC
+heights2 <- heights[c("child_ht","parent_ht")]
+```
+
+```{r comment = "", eval = EVALUATE_CHAP1}
+#heights <- read.csv("CSVData\\galton_height.csv",header = TRUE)
+heights <- read.csv("https://assets.datacamp.com/production/repositories/2610/datasets/c85ede6c205d22049e766bd08956b225c576255b/galton_height.csv", header = TRUE)
+plot(jitter(heights$parent_ht),jitter(heights$child_ht), ylim = c(60,80), xlim = c(60,80),
+     ylab = "height of child", xlab = "height of parents")
+abline(lm(heights$child_ht~heights$parent_ht))
+abline(0,1,col = "red", lty=2)
+summary(lm(heights$child_ht~heights$parent_ht))
+
+```
+
+</p>
+</div>
+

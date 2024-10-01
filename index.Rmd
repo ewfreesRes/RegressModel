@@ -7,7 +7,7 @@ output:
     css: style.css
     includes:
       in_header: 
-        - ShowHide2024.js
+        - ShowHide2023.js
         - tab.js      
 documentclass: book
 bibliography: ["Bibliography/LDAReferenceB.bib"]
@@ -15,10 +15,7 @@ biblio-style: econPeriod
 link-citations: yes
 github-repo: https://github.com/ewfreesRes/RegressModel
 description: "Statistical techniques can be used to address new situations. This is important in a rapidly evolving risk management world. Analysts with a strong analytical background understand that a large data set can represent a treasure trove of information to be mined and can yield a strong competitive advantage. This course provides budding analysts with a foundation in multiple reression. Participants will learn about these statistical techniques using data on the demand for insurance, lottery sales, healthcare expenditures, and other applications. Although no specific knowledge of actuarial or risk management is presumed, the approach introduces applications in which statistical techniques can be used to analyze real data of interest."
-
 ---
-
-
 
 
 ```{r include = FALSE}

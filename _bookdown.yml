@@ -6,8 +6,6 @@ rmd_files: ["index.Rmd",
            "Chapters/Chapter3.Rmd", 
            "Chapters/Chapter4.Rmd",
            "Chapters/Chapter5.Rmd"]
-#           "Chapters/Bibliography.Rmd"]
-#rmd_files: ["Chapters/ModelSelection.Rmd"]           
 language:
   ui:
     chapter_name: "Chapter "

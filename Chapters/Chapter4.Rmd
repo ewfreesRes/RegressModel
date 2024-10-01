@@ -49,7 +49,7 @@ In this section, you learn how to:
 
 
 <div id="Over4.1A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Iterative approach</h3>
   <p>
 
@@ -103,7 +103,7 @@ arrows(5,-3.0,5,-2,code=2,lwd=2,angle=25,length=0.10)
 </div> 
 
 <div id="Over4.1B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Many possible models</h3>
   <p>
 
@@ -126,7 +126,7 @@ $$
 </div> 
 
 <div id="Over4.1C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Model validation</h3>
   <p>
 
@@ -208,7 +208,7 @@ In this section, you learn how to:
 
 
 <div id="Over4.2A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Classic stepwise regression algorithm</h3>
   <p>
 
@@ -224,7 +224,7 @@ Suppose that the analyst has identified one variable as the outcome, $y$, and $k
 
 
 <div id="Over4.2B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Drawbacks of stepwise regression</h3>
   <p>
 
@@ -237,7 +237,7 @@ Suppose that the analyst has identified one variable as the outcome, $y$, and $k
 </div> 
 
 <div id="Over4.2C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Data-snooping in stepwise regression</h3>
   <p>
 
@@ -266,7 +266,7 @@ F-statistic: 5.212 on 3 and 96 DF,  p-value: 0.002233
 </div> 
 
 <div id="Over4.2D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Variants of stepwise regression</h3>
   <p>
 
@@ -281,7 +281,7 @@ This uses the `R` function [step()](https://www.rdocumentation.org/packages/stat
 </div> 
 
 <div id="Over4.2E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. Automatic variable selection procedures</h3>
   <p>
 
@@ -403,7 +403,7 @@ In this section, you learn how to:
 
 
 <div id="Over4.3A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Residual analysis</h3>
   <p>
 
@@ -416,7 +416,7 @@ In this section, you learn how to:
 </div> 
 
 <div id="Over4.3B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Using residuals to select explanatory variables</h3>
   <p>
 
@@ -429,7 +429,7 @@ In this section, you learn how to:
 </div> 
 
 <div id="Over4.3C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Detecting relationships between residuals and explanatory variables</h3>
   <p>
 
@@ -602,7 +602,7 @@ In this section, you learn how to:
 
 
 <div id="Over4.4A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Unusual observations</h3>
   <p>
 
@@ -617,7 +617,7 @@ In this section, you learn how to:
 </div> 
 
 <div id="Over4.4B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Standardized residuals</h3>
   <p>
 
@@ -638,7 +638,7 @@ $$
 </div> 
 
 <div id="Over4.4C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Outlier - an unusal standardized residual</h3>
   <p>
 
@@ -653,7 +653,7 @@ $$
 </div> 
 
 <div id="Over4.4D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. High leverage points</h3>
   <p>
 
@@ -665,7 +665,7 @@ $$
 </div> 
 
 <div id="Over4.4E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. High leverage point graph</h3>
   <p>
 
@@ -686,7 +686,7 @@ polygon(ellipsoidPoints(xycov, d2 = 2, loc=xyloc),col="black")
 </div> 
 
 <div id="Over4.4F" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>F Details. Leverage</h3>
   <p>
 
@@ -883,7 +883,7 @@ In this section, you learn how to:
 
 
 <div id="Over4.5A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Collinearity</h3>
   <p>
 
@@ -902,7 +902,7 @@ regression coefficients can be large.
 </div> 
 
 <div id="Over4.5B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>B Details. Quantifying collinearity</h3>
   <p>
 
@@ -922,7 +922,7 @@ $$
 
 
 <div id="Over4.5C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Options for handling collinearity</h3>
   <p>
 
@@ -1035,7 +1035,7 @@ In this section, you learn how to:
 
 
 <div id="Over4.6A" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Goodness of fit</h3>
   <p>
 
@@ -1051,7 +1051,7 @@ In this section, you learn how to:
 </div> 
 
 <div id="Over4.6B" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>A Details. Goodness of fit</h3>
   <p>
 
@@ -1077,7 +1077,7 @@ $$
 
 
 <div id="Over4.6C" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>C Details. Out of sample validation</h3>
   <p>
   
@@ -1089,7 +1089,7 @@ $$
 </div> 
 
 <div id="Over4.6D" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>D Details. Out of sample validation procedure</h3>
   <p>
 
@@ -1105,7 +1105,7 @@ Repeat Steps (i) through (iii) for each candidate model. Choose the model with t
 </div> 
 
 <div id="Over4.6E" class="tabcontent">
-  <span onclick="this.parentElement.style.display='none'" class="topright">Hide</span>
+  <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
   <h3>E Details. Cross - validation</h3>
   <p>
 
